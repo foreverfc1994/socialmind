@@ -277,60 +277,37 @@
     }
 </script>
 <script>
+    // http://www.chartjs.org/docs/latest/charts/line.html
     var data = {
         labels : ["January","February","March","April","May","June","July"],
         datasets : [{
-            fillColor : "transparent",     //背景色，常用transparent透明
-            strokeColor : "#000000",  //线条颜色，也可用"#ffffff"
-            pointColor : "#a2a",   //点的填充颜色
-            pointStrokeColor : "#fff",            //点的外边框颜色
+            label: "情绪1",
+            fill: false,
+            pointBackgroundColor: "#FF0000",
+            borderColor: "#F08080",
             data : [65,59,32,29,46,55,40]      //点的Y轴值
-            },
+        },
 
             {
-            fillColor : "transparent",
-            strokeColor : "#000000",
-            pointColor : "#212121",
-            pointStrokeColor : "#fff",
-            data : [23,15,65,75,16,32,15]    //data中的参数，通过下方for循环，获取arr2中的数据
+                label: "情绪2",
+                fill: false,
+                pointBackgroundColor: "#008000",
+                borderColor: "#32CD32",
+                data : [32,44,22,99,33,22,4]      //点的Y轴值
             }]
-        }
+    }
 
-        //定义图表的参数
-        var options = {
-            scaleStartValue: null,     // Y 轴的起始值
-            scaleLineColor: "#999",    // Y/X轴的颜色
-            scaleLineWidth: 1,        // X,Y轴的宽度
-            scaleShowLabels: true,    // 刻度是否显示标签, 即Y轴上是否显示文字
-            scaleLabel: "<%=value%>", // Y轴上的刻度,即文字
-            scaleFontFamily: "'Arial'",  // 字体
-            scaleFontSize: 20,        // 文字大小
-            scaleFontStyle: "normal",  // 文字样式
-            scaleFontColor: "#666",    // 文字颜色
-            scaleShowGridLines: false,   // 是否显示网格
-            scaleGridLineColor: "#888",   // 网格颜色
-            scaleGridLineWidth: 1,      // 网格宽度
-            bezierCurve: true,         // 是否使用贝塞尔曲线? 即:线条是否弯曲
-            pointDot: true,             // 是否显示点数
-            pointDotRadius: 8,          // 圆点的大小
-            pointDotStrokeWidth: 1,     // 圆点的笔触宽度, 即:圆点外层边框大小
-            datasetStroke: true,        // 数据集行程
-            datasetStrokeWidth: 2,      // 线条的宽度, 即:数据集
-            datasetFill: false,         // 是否填充数据集
-            responsive : true,
-            legend:{
-                display: true,
-                position: 'top',
-                labels: {
-                    boxWidth: 14,// 修改宽度
-                    fontSize: 14,
-                    fontColor: '#666666'
-                }
-            }
-        }
+    //定义图表的参数
+    var options = {
+
+    }
+    config = {
+        "type": "line",
+        "data": data,
+        "options": options
+    }
     window.onload = function(){
-        var ctx = document.getElementById("line_pic").getContext("2d");
-        window.myLine = new Chart(ctx).Line(data, options);
+        new Chart(document.getElementById("line_pic"), config)
     }
 
 </script>

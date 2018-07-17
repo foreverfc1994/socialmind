@@ -22,6 +22,8 @@
     <link href="assets/css/style-responsive.css" rel="stylesheet">
 
     <script src="assets/js/chart-master/Chart.js"></script>
+    <script src="assets/js/echarts.js"></script>
+    <script src="assets/js/china.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -185,7 +187,8 @@
                                 <h3 style="float: left;">&nbsp; &nbsp;情绪地图</h3>
                                 <div class="panel-body" style="margin-top: 40px;">
                                     <div class="panel panel-default">
-                                        <img src="assets/img/emotionMap.png">
+                                        <div id="map" style="width: 100%; height: 550px;"></div>
+                                        <!--<img src="assets/img/emotionMap.png">-->
                                     </div>
                                 </div>
                             </div>
@@ -243,62 +246,120 @@
 
 
 <script>
+    // http://www.chartjs.org/docs/latest/charts/line.html
     var data = {
         labels : ["January","February","March","April","May","June","July"],
         datasets : [{
-            fillColor : "transparent",     //背景色，常用transparent透明
-            strokeColor : "#000000",  //线条颜色，也可用"#ffffff"
-            pointColor : "#a2a",   //点的填充颜色
-            pointStrokeColor : "#fff",            //点的外边框颜色
+            label: "情绪1",
+            fill: false,
+            pointBackgroundColor: "#FF0000",
+            borderColor: "#F08080",
             data : [65,59,32,29,46,55,40]      //点的Y轴值
-            },
+        },
 
             {
-            fillColor : "transparent",
-            strokeColor : "#000000",
-            pointColor : "#212121",
-            pointStrokeColor : "#fff",
-            data : [23,15,65,75,16,32,15]    //data中的参数，通过下方for循环，获取arr2中的数据
+                label: "情绪2",
+                fill: false,
+                pointBackgroundColor: "#008000",
+                borderColor: "#32CD32",
+                data : [32,44,22,99,33,22,4]      //点的Y轴值
             }]
-        }
+    }
 
-        //定义图表的参数
-        var options = {
-            scaleStartValue: null,     // Y 轴的起始值
-            scaleLineColor: "#999",    // Y/X轴的颜色
-            scaleLineWidth: 1,        // X,Y轴的宽度
-            scaleShowLabels: true,    // 刻度是否显示标签, 即Y轴上是否显示文字
-            scaleLabel: "<%=value%>", // Y轴上的刻度,即文字
-            scaleFontFamily: "'Arial'",  // 字体
-            scaleFontSize: 20,        // 文字大小
-            scaleFontStyle: "normal",  // 文字样式
-            scaleFontColor: "#666",    // 文字颜色
-            scaleShowGridLines: false,   // 是否显示网格
-            scaleGridLineColor: "#888",   // 网格颜色
-            scaleGridLineWidth: 1,      // 网格宽度
-            bezierCurve: true,         // 是否使用贝塞尔曲线? 即:线条是否弯曲
-            pointDot: true,             // 是否显示点数
-            pointDotRadius: 8,          // 圆点的大小
-            pointDotStrokeWidth: 1,     // 圆点的笔触宽度, 即:圆点外层边框大小
-            datasetStroke: true,        // 数据集行程
-            datasetStrokeWidth: 2,      // 线条的宽度, 即:数据集
-            datasetFill: false,         // 是否填充数据集
-            responsive : true,
-            legend:{
-                display: true,
-                position: 'top',
-                labels: {
-                    boxWidth: 14,// 修改宽度
-                    fontSize: 14,
-                    fontColor: '#666666'
-                }
-            }
-        }
+    //定义图表的参数
+    var options = {
+
+    }
+    config = {
+        "type": "line",
+        "data": data,
+        "options": options
+    }
     window.onload = function(){
-        var ctx = document.getElementById("line_pic").getContext("2d");
-        window.myLine = new Chart(ctx).Line(data, options);
+        new Chart(document.getElementById("line_pic"), config)
     }
 
 </script>
+<script>
+    function randomData() {
+        return Math.round(Math.random()*500);
+    }
+
+    var mydata = [
+        {name: '北京',value: randomData() },{name: '天津',value: randomData() },
+        {name: '上海',value: randomData() },{name: '重庆',value: randomData() },
+        {name: '河北',value: randomData() },{name: '河南',value: randomData() },
+        {name: '云南',value: randomData() },{name: '辽宁',value: randomData() },
+        {name: '黑龙江',value: randomData() },{name: '湖南',value: randomData() },
+        {name: '安徽',value: randomData() },{name: '山东',value: randomData() },
+        {name: '新疆',value: randomData() },{name: '江苏',value: randomData() },
+        {name: '浙江',value: randomData() },{name: '江西',value: randomData() },
+        {name: '湖北',value: randomData() },{name: '广西',value: randomData() },
+        {name: '甘肃',value: randomData() },{name: '山西',value: randomData() },
+        {name: '内蒙古',value: randomData() },{name: '陕西',value: randomData() },
+        {name: '吉林',value: randomData() },{name: '福建',value: randomData() },
+        {name: '贵州',value: randomData() },{name: '广东',value: randomData() },
+        {name: '青海',value: randomData() },{name: '西藏',value: randomData() },
+        {name: '四川',value: randomData() },{name: '宁夏',value: randomData() },
+        {name: '海南',value: randomData() },{name: '台湾',value: randomData() },
+        {name: '香港',value: randomData() },{name: '澳门',value: randomData() }
+    ];
+
+    var option = {
+        backgroundColor: '#FFFFFF',
+        title: {
+            text: '全国地图',
+            subtext: '纯属虚构',
+            x:'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: '{b}<br/>{c}'
+        //    b为省份，c为数据
+        },
+        toolbox: {
+            show: true,
+            orient: 'vertical',
+            left: 'right',
+            top: 'center',
+            feature: {
+                dataView: {readOnly: false},
+                restore: {},
+                saveAsImage: {}
+            }
+        },
+        visualMap: {
+            show : true,
+            x: 'left',
+            y: 'bottom',
+            text: ['正面', '负面'],
+            calculable: true,
+            splitList: [
+                {start: 500, end:600},{start: 400, end: 500},
+                {start: 300, end: 400},{start: 200, end: 300},
+                {start: 100, end: 200},{start: 0, end: 100},
+            ],
+            color: ['#00FF00', '#90EE90', '#ADFF2F','#FFFFE0', '#FFA07A', '#FF0000']
+        },
+        series: [{
+            name: '随机数据',
+            type: 'map',
+            mapType: 'china',
+            roam: false,
+            label: {
+                normal: {
+                    show: false
+                },
+                emphasis: {
+                    show: false
+                }
+            },
+            data:mydata
+        }]
+    };
+    var chart = echarts.init(document.getElementById('map'));
+    chart.setOption(option);
+</script>
+
 </body>
 </html>
