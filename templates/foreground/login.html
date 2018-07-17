@@ -7,11 +7,11 @@
 
 
     <!-- Bootstrap core CSS -->
-    <link href="{% static 'assets/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'assets0/css/bootstrap.css' %}" rel="stylesheet">
     <!--external css-->
-    <link href="{% static 'assets/font-awesome/css/font-awesome.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets0/font-awesome/css/font-awesome.css' %}" rel="stylesheet" />
     <!-- Custom styles for this template -->
-    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'assets0/css/style.css' %}" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -22,9 +22,7 @@
 
         <form class="form-login" id="login" action="/login/" method="post">
             {% csrf_token %}
-            {% if message %}
-                  <div class="alert alert-warning">{{ message }}</div>
-              {% endif %}
+
             <h2 class="form-login-heading">请您登陆</h2>
             <div class="login-wrap">
                 <input name="username" type="text" class="form-control" placeholder="用户名" autofocus required>
@@ -42,6 +40,9 @@
                         <a href="#" onclick="visitor()"> 访客登陆</a>
                     </span>
                 </label>
+                {% if message %}
+                  <div class="alert alert-warning">{{ message }}</div>
+              {% endif %}
                 <button class="btn btn-theme btn-block"  type="submit"><i class="fa fa-lock"></i> &nbsp; &nbsp;登陆</button>
                 <button class="btn btn-theme btn-block" type="button" onclick="signIn()"><i class="fa fa-user"></i> &nbsp; &nbsp;注册</button>
 
@@ -51,12 +52,12 @@
 
 </body>
 <!-- js placed at the end of the document so the pages load faster -->
-<script src="{% static 'assets/js/jquery.js' %}"></script>
-<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets0/js/jquery.js' %}"></script>
+<script src="{% static 'assets0/js/bootstrap.min.js' %}"></script>
 
-<script type="text/javascript" src="{% static 'assets/js/jquery.backstretch.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets0/js/jquery.backstretch.min.js' %}"></script>
 <script>
-    $.backstretch("{% static 'assets/img/bg.jpg' %}", {speed: 0});
+    $.backstretch("{% static 'assets0/img/bg.jpg' %}", {speed: 0});
 </script>
 <script>
     function signIn(){
@@ -76,4 +77,5 @@
         alert("对不起，暂不对访客开放！")
     }
 </script>
+
 </html>
