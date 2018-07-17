@@ -23,4 +23,5 @@ urlpatterns = [
     path('login/', vviews.login, name='login'),
     path('signin/', vviews.signin, name='signin'),
     path('get_address/',vviews.get_address),
+    path('checkuser/', vviews.checkuser),
 ]

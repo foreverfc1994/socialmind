@@ -1,29 +1,4 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-     <meta charset="UTF-8">
-    <title>请您登陆</title>
-
-
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'assets0/css/bootstrap.css' %}" rel="stylesheet">
-    <!--external css-->
-    <link href="{% static 'assets0/font-awesome/css/font-awesome.css' %}" rel="stylesheet" />
-    <!-- Custom styles for this template -->
-    <link href="{% static 'assets0/css/style.css' %}" rel="stylesheet">
-
-
-</head>
-<body>
-<script src="http://apps.bdimg.com/libs/jquery/1.7.2/jquery.min.js"></script>
-<script src="http://www.dawnfly.cn/Public/admin/dialog/layer.js"></script>
-<div class="container">
-    <div class="headerFont">
-            <h1 style="color: #DAA520; margin-top: 100px;">SOCIAL MIND 舆情管理平台</h1>
-            <p style="color: #DAA520;">西安交通大学SICDP实验室</p>
-        </div>
-<form name="signin" class="form-login" id="sing_in" method="post" action="/signin/" enctype="multipartform-data">
+<form class="form-login" id="sing_in" method="post" action="/signin/" enctype="multipartform-data" onsubmit="return beforeSigned()">
     {% csrf_token %}
     <h2 class="form-login-heading">欢迎注册</h2>
     <div class="login-wrap" id="choiced">
@@ -35,7 +10,7 @@
             <option value="2">政府用户</option>
             <option value="3">事业单位用户</option>
         </select><br>
-        <button class="btn btn-theme btn-block" type="button" onclick="sub()">
+        <button class="btn btn-theme btn-block" type="button">
             <i class="fa fa-lock"></i>
             &nbsp; &nbsp;确定
         </button>
@@ -45,15 +20,6 @@
         </button>
     </div>
 </form>
-</div>
-</body>
-<script src="{% static 'assets0/js/jquery.js' %}"></script>
-<script src="{% static 'assets0/js/bootstrap.min.js' %}"></script>
-
-<script type="text/javascript" src="{% static 'assets0/js/jquery.backstretch.min.js' %}"></script>
-<script>
-    $.backstretch("{% static 'assets0/img/bg.jpg' %}", {speed: 0});
-</script>
 <script>
     $(document).click(function(){
         $("#type").change(function(){
@@ -68,12 +34,12 @@
                     "            <option value=\"3\">事业单位用户</option>\n" +
                     "        </select><br>\n" +
                     "        <p>请输入用户名：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input id='username' name='username' type=\"text\" class=\"form-control\" placeholder=\"用户名\" autofocus required=\"true\">\n" +
+                    "        <input name='username' type=\"text\" class=\"form-control\" placeholder=\"用户名\" autofocus required=\"true\">\n" +
                     "        <br>\n" +
                     "        <p>请输入密码：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input id='pwd'name='pwd'type=\"password\" class=\"form-control\" placeholder=\"密码\" required=\"true\"><br>\n" +
+                    "        <input name='pwd'type=\"password\" class=\"form-control\" placeholder=\"密码\" required=\"true\"><br>\n" +
                     "        <p>请再次输入密码：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input id='repwd'name='repwd'type=\"password\" class=\"form-control\" placeholder=\"请再次输入密码\" required=\"true\"><br>\n" +
+                    "        <input name='repwd'type=\"password\" class=\"form-control\" placeholder=\"请再次输入密码\" required=\"true\"><br>\n" +
                     "        <p>请选择性别：<span style=\"color:red\">*</span></p>\n" +
                     "        <select name=\"sex\" class=\"form-control\">\n" +
                     "            <option>男</option>\n" +
@@ -100,7 +66,7 @@
                     "        <input name='job' type=\"text\" class=\"form-control\" placeholder=\"请输入您的职业\" style=\"width: 100%\" required=\"true\"><br>\n" +
                     "        <p>请输入您的兴趣：<span style=\"color:red\">*</span></p>\n" +
                     "        <input name='interest' type=\"text\" class=\"form-control\" placeholder=\"请输入您的兴趣兴趣\" style=\"width: 100%\" required=\"true\"><br>\n" +
-                    "        <button class=\"btn btn-theme btn-block\" type=\"button\" onclick=\"sub()\">\n" +
+                    "        <button class=\"btn btn-theme btn-block\" type=\"submit\">\n" +
                     "            <i class=\"fa fa-lock\"></i>\n" +
                     "            &nbsp; &nbsp;确定\n" +
                     "        </button>" +
@@ -261,39 +227,7 @@
         });
     });
 </script>
-<script>
-    function sub() {
-        var pwd = $("#pwd").val();
-        var repwd=$("#repwd").val();
-        if(pwd!=repwd)
-        {
-           layer.msg('两次密码输入不一致')
-        }
-        else {
-            var username=$("#username").val()
-            var msg = 0
-            $.ajax(
-                {
-                    url:'/checkuser/',
-                    type:'POST',
-                    data:{'user':username},
-                    success:function (data) {
-                        msg = data['msg']
-                        if(msg==0){
-                layer.msg('用户名已存在')
-            }
-                else {
-                document.signin.submit()
-            }
-                    }
-                }
 
-            )
-
-        }
-
-    }
-</script>
 <script>
     function beforeSigned(){
         alert("注册成功！")
@@ -307,6 +241,7 @@
 <script>
     var adress ={}
     $(function () {
+
         $.ajax(
               {
                  url:'/get_address/',
@@ -315,7 +250,9 @@
                       {#console.log(data)#}
                       adress = data
                   }
+
               }
+
           )
     })
     $(document).click(function () {
@@ -342,6 +279,8 @@
                for(var i in cities){
                 $("#city").append('<option value='+i+'>'+i+'</option>');
             }
+
+
         }
         else {
             $("#city").hide()
@@ -360,4 +299,3 @@
         })
     })
 </script>
-</html>

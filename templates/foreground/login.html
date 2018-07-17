@@ -20,7 +20,7 @@
             <p style="color: #DAA520;">西安交通大学SICDP实验室</p>
         </div>
 
-        <form class="form-login" id="login" action="/login/" method="post">
+        <form name= 'login'class="form-login" id="login" action="/login/" method="post">
             {% csrf_token %}
 
             <h2 class="form-login-heading">请您登陆</h2>
@@ -44,7 +44,7 @@
                   <div class="alert alert-warning">{{ message }}</div>
               {% endif %}
                 <button class="btn btn-theme btn-block"  type="submit"><i class="fa fa-lock"></i> &nbsp; &nbsp;登陆</button>
-                <button class="btn btn-theme btn-block" type="button" onclick="signIn()"><i class="fa fa-user"></i> &nbsp; &nbsp;注册</button>
+                <button class="btn btn-theme btn-block" onclick="signIn()" type="button"><i class="fa fa-user"></i> &nbsp; &nbsp;注册</button>
 
             </div>
         </form>
@@ -60,17 +60,11 @@
     $.backstretch("{% static 'assets0/img/bg.jpg' %}", {speed: 0});
 </script>
 <script>
-    function signIn(){
-        $.ajax({
-            type: "GET",
-            url: "/signin/",
-            context: document,
-            success: function(data){
-                $("#login").replaceWith(data);
-                {#alert(data)#}
-            }
-        });
+    function signIn() {
+        document.login.action='/signin/'
+        document.login.submit()
     }
+
 </script>
 <script>
     function visitor(){

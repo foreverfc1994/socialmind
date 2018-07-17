@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from visitor.models import User,Province,City,Area
 from visitor import models
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from visitor.scripts.signin import *
 # Create your views here.
 def login(request):
@@ -28,19 +29,15 @@ def login(request):
 
 def index(request):
     return render(request,'foreground/index.html')
-
+def test(request):
+    return render(request, 'foreground/signin.html')
+    pass
 def signin(request):
+    print(request.POST)
     if request.method == 'POST':
-        errormesg = ''
         userdata = request.POST
-        username = userdata.get('username')
-
-        pwd = userdata.get('pwd')
-        repwd = userdata.get('pwd')
-        if pwd!=repwd:
-            errormesg = '两次密码不一致'
-
         if userdata['user-type']=='0':
+            personuser(userdata)
             pass
 
     return render(request, 'foreground/signin.html')
@@ -66,3 +63,12 @@ def get_address(request):
                 citylist[city.name] = citydic[city.name]
         prodic[province.name] = citylist
     return JsonResponse({'data': prodic})
+@csrf_exempt
+def checkuser(request):
+    username = request.POST.get('user')
+    count = models.User.objects.filter(username=username).count()
+    if count==0:
+        msg = 1
+    else:
+        msg = 0
+    return JsonResponse({'msg':msg})
