@@ -1,0 +1,76 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>请您登陆</title>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'assets/css/bootstrap.css' %}" rel="stylesheet">
+    <!--external css-->
+    <link href="{% static 'assets/font-awesome/css/font-awesome.css' %}" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="headerFont">
+            <h1 style="color: #DAA520; margin-top: 100px;">SOCIAL MIND 舆情管理平台</h1>
+            <p style="color: #DAA520;">西安交通大学SICDP实验室</p>
+        </div>
+
+        <form class="form-login" id="login" action="/login/" method="post">
+            {% csrf_token %}
+            <h2 class="form-login-heading">请您登陆</h2>
+            <div class="login-wrap">
+                <input name="username" type="text" class="form-control" placeholder="用户名" autofocus required>
+                <br>
+                <input name="password" type="password" class="form-control" placeholder="密码" required><br>
+                <p>请选择用户类型:</p>
+                <select name="user-type" class="form-control" required>
+                    <option>个人用户</option>
+                    <option>企业用户</option>
+                    <option>政府用户</option>
+                    <option>事业单位用户</option>
+                </select>
+                <label class="checkbox">
+                    <span class="pull-right">
+                        <a href="#" onclick="visitor()"> 访客登陆</a>
+                    </span>
+                </label>
+                <button class="btn btn-theme btn-block"  type="submit"><i class="fa fa-lock"></i> &nbsp; &nbsp;登陆</button>
+                <button class="btn btn-theme btn-block" type="button" onclick="signIn()"><i class="fa fa-user"></i> &nbsp; &nbsp;注册</button>
+
+            </div>
+        </form>
+    </div>
+
+</body>
+<!-- js placed at the end of the document so the pages load faster -->
+<script src="{% static 'assets/js/jquery.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'assets/js/jquery.backstretch.min.js' %}"></script>
+<script>
+    $.backstretch("{% static 'assets/img/bg.jpg' %}", {speed: 0});
+</script>
+<script>
+    function signIn(){
+        $.ajax({
+            type: "GET",
+            url: "/signin/",
+            context: document,
+            success: function(data){
+                $("#login").replaceWith(data);
+                {#alert(data)#}
+            }
+        });
+    }
+</script>
+<script>
+    function visitor(){
+        alert("对不起，暂不对访客开放！")
+    }
+</script>
+</html>
