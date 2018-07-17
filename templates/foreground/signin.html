@@ -1,4 +1,5 @@
-<form class="form-login" id="sing_in" action="login.html" enctype="multipartform-data" onsubmit="return beforeSigned()">
+<form class="form-login" id="sing_in" method="post" action="/signin/" enctype="multipartform-data" onsubmit="return beforeSigned()">
+    {% csrf_token %}
     <h2 class="form-login-heading">欢迎注册</h2>
     <div class="login-wrap" id="choiced">
         <p>请选择用户类型：</p>
@@ -26,45 +27,45 @@
             if(choice == "0"){
                 $("#choiced").replaceWith("<div class=\"login-wrap\" id=\"choiced\">\n" +
                     "        <p>请选择用户类型：</p>\n" +
-                    "        <select id=\"type\" name=\"用户类型选择\" class=\"form-control\">\n" +
+                    "        <select id=\"type\" name=\"user-type\" class=\"form-control\">\n" +
                     "            <option value=\"0\" selected>个人用户</option>\n" +
                     "            <option value=\"1\">企业用户</option>\n" +
                     "            <option value=\"2\">政府用户</option>\n" +
                     "            <option value=\"3\">事业单位用户</option>\n" +
                     "        </select><br>\n" +
                     "        <p>请输入用户名：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"text\" class=\"form-control\" placeholder=\"用户名\" autofocus required=\"true\">\n" +
+                    "        <input name='username' type=\"text\" class=\"form-control\" placeholder=\"用户名\" autofocus required=\"true\">\n" +
                     "        <br>\n" +
                     "        <p>请输入密码：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"password\" class=\"form-control\" placeholder=\"密码\" required=\"true\"><br>\n" +
+                    "        <input name='pwd'type=\"password\" class=\"form-control\" placeholder=\"密码\" required=\"true\"><br>\n" +
                     "        <p>请再次输入密码：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"password\" class=\"form-control\" placeholder=\"请再次输入密码\" required=\"true\"><br>\n" +
+                    "        <input name='repwd'type=\"password\" class=\"form-control\" placeholder=\"请再次输入密码\" required=\"true\"><br>\n" +
                     "        <p>请选择性别：<span style=\"color:red\">*</span></p>\n" +
-                    "        <select name=\"性别\" class=\"form-control\">\n" +
+                    "        <select name=\"sex\" class=\"form-control\">\n" +
                     "            <option>男</option>\n" +
                     "            <option>女</option>\n" +
                     "        </select><br>\n" +
                     "        <p>请选择生日：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"date\" class=\"form-control\" placeholder=\"生日\" style=\"width: 100%\"; step=\"day\"><br>\n" +
+                    "        <input name='birthday' type=\"date\" class=\"form-control\" placeholder=\"生日\" style=\"width: 100%\"; step=\"day\"><br>\n" +
                     "        <p>请输入手机号：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"text\" class=\"form-control\" placeholder=\"请输入您的手机号\" autofocus required=\"true\"><br>\n" +
+                    "        <input name='phone' type=\"text\" class=\"form-control\" placeholder=\"请输入您的手机号\" autofocus required=\"true\"><br>\n" +
                     "        <p>请输入邮箱： <span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"text\" class=\"form-control\" placeholder=\"请输入您的邮箱\" autofocus required=\"true\"><br>\n" +
+                    "        <input name='email' type=\"email\" class=\"form-control\" placeholder=\"请输入您的邮箱\" autofocus required=\"true\"><br>\n" +
                     "        <p>请选择地区： </p>\n" +
-                    "        <select id=\"province\" name=\"省\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
+                    "        <select id=\"province\" name=\"province\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
                     "            <option>--选择省份--</option>\n" +
                     "        </select>\n" +
                     "\n" +
-                    "        <select id=\"city\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
+                    "        <select name='city' id=\"city\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
                     "            <option>--选择城市--</option>\n" +
                     "        </select>\n" +
-                    "        <select id=\"country\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
+                    "        <select name='country' id=\"country\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
                     "            <option>--选择区县--</option>\n" +
                     "        </select><br>\n" +
                     "        <p>请输入您的职业：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"text\" class=\"form-control\" placeholder=\"请输入您的职业\" style=\"width: 100%\" required=\"true\"><br>\n" +
+                    "        <input name='job' type=\"text\" class=\"form-control\" placeholder=\"请输入您的职业\" style=\"width: 100%\" required=\"true\"><br>\n" +
                     "        <p>请输入您的兴趣：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"text\" class=\"form-control\" placeholder=\"请输入您的兴趣兴趣\" style=\"width: 100%\" required=\"true\"><br>\n" +
+                    "        <input name='interest' type=\"text\" class=\"form-control\" placeholder=\"请输入您的兴趣兴趣\" style=\"width: 100%\" required=\"true\"><br>\n" +
                     "        <button class=\"btn btn-theme btn-block\" type=\"submit\">\n" +
                     "            <i class=\"fa fa-lock\"></i>\n" +
                     "            &nbsp; &nbsp;确定\n" +
@@ -78,45 +79,45 @@
             if(choice == "1"){
                 $("#choiced").replaceWith("<div class=\"login-wrap\" id=\"choiced\">\n" +
                     "        <p>请选择用户类型：</p>\n" +
-                    "        <select id=\"type\" name=\"用户类型选择\" class=\"form-control\">\n" +
+                    "        <select id=\"type\" name=\"user-type\" class=\"form-control\">\n" +
                     "            <option value=\"0\">个人用户</option>\n" +
                     "            <option value=\"1\" selected>企业用户</option>\n" +
                     "            <option value=\"2\">政府用户</option>\n" +
                     "            <option value=\"3\">事业单位用户</option>\n" +
                     "        </select><br>\n" +
                     "        <p>请输入用户名：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"text\" class=\"form-control\" placeholder=\"用户名\" autofocus required=\"true\">\n" +
+                    "        <input name='username' type=\"text\" class=\"form-control\" placeholder=\"用户名\" autofocus required=\"true\">\n" +
                     "        <br>\n" +
                     "        <p>请输入密码：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"password\" class=\"form-control\" placeholder=\"密码\" required=\"true\"><br>\n" +
+                    "        <input name='pwd' type=\"password\" class=\"form-control\" placeholder=\"密码\" required=\"true\"><br>\n" +
                     "        <p>请再次输入密码：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"password\" class=\"form-control\" placeholder=\"请再次输入密码\" required=\"true\"><br>\n" +
+                    "        <input name='repwd' type=\"password\" class=\"form-control\" placeholder=\"请再次输入密码\" required=\"true\"><br>\n" +
                     "        <p>企业法人代表名：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"text\" class=\"form-control\" placeholder=\"企业法人代表名\" required=\"true\"><br>\n" +
+                    "        <input name='bossname' type=\"text\" class=\"form-control\" placeholder=\"企业法人代表名\" required=\"true\"><br>\n" +
                     "        <p>企业法人身份证号：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"text\" class=\"form-control\" placeholder=\"企业法人身份证号\" style=\"width: 100%\"; step=\"day\"><br>\n" +
+                    "        <input name='bosspid' type=\"text\" class=\"form-control\" placeholder=\"企业法人身份证号\" style=\"width: 100%\"; step=\"day\"><br>\n" +
                     "        <p>企业法人身份证正面：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"file\" class=\"form-control\" autofocus required=\"true\"><br>\n" +
+                    "        <input name='idcardA' type=\"file\" class=\"form-control\" autofocus required=\"true\"><br>\n" +
                     "        <p>企业法人身份证背面： <span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"file\" class=\"form-control\" autofocus required=\"true\"><br>\n" +
+                    "        <input name='idcardB' type=\"file\" class=\"form-control\" autofocus required=\"true\"><br>\n" +
                     "        <p>企业名称： <span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"text\" class=\"form-control\" placeholder=\"企业名称\" autofocus required=\"true\"><br>\n" +
+                    "        <input name='companyname' type=\"text\" class=\"form-control\" placeholder=\"企业名称\" autofocus required=\"true\"><br>\n" +
                     "        <p>企业类型： <span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"text\" class=\"form-control\" placeholder=\"企业类型\" autofocus required=\"true\"><br>\n" +
+                    "        <input name='companytype' type=\"text\" class=\"form-control\" placeholder=\"企业类型\" autofocus required=\"true\"><br>\n" +
                     "        <p>营业执照： <span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"file\" class=\"form-control\" placeholder=\"营业执照\" autofocus required=\"true\"><br>\n" +
+                    "        <input name='licence' type=\"file\" class=\"form-control\" placeholder=\"营业执照\" autofocus required=\"true\"><br>\n" +
                     "        <p>请选择省市：</p>\n" +
-                    "        <select id=\"province\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
+                    "        <select name='province' id=\"province\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
                     "            <option>--选择省份--</option>\n" +
                     "        </select>\n" +
-                    "        <select id=\"city\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
+                    "        <select name='city' id=\"city\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
                     "            <option>--选择城市--</option>\n" +
                     "        </select>\n" +
-                    "        <select id=\"country\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
+                    "        <select name='country' id=\"country\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
                     "            <option>--选择区县--</option>\n" +
                     "        </select><br>\n" +
                     "        <p>请输入企业邮箱：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"text\" class=\"form-control\" placeholder=\"请输入企业邮箱\" style=\"width: 100%\" required=\"true\"><br>\n" +
+                    "        <input name='companyemail' type=\"email\" class=\"form-control\" placeholder=\"请输入企业邮箱\" style=\"width: 100%\" required=\"true\"><br>\n" +
                     "        <button class=\"btn btn-theme btn-block\" type=\"submit\">\n" +
                     "            <i class=\"fa fa-lock\"></i>\n" +
                     "            &nbsp; &nbsp;确定\n" +
@@ -130,41 +131,41 @@
             if(choice == "2") {
                 $("#choiced").replaceWith("    <div class=\"login-wrap\" id=\"choiced\">\n" +
                     "        <p>请选择用户类型：</p>\n" +
-                    "        <select id=\"type\" name=\"用户类型选择\" class=\"form-control\">\n" +
+                    "        <select id=\"type\" name=\"usertype\" class=\"form-control\">\n" +
                     "            <option value=\"0\">个人用户</option>\n" +
                     "            <option value=\"1\">企业用户</option>\n" +
                     "            <option value=\"2\" selected>政府用户</option>\n" +
                     "            <option value=\"3\">事业单位用户</option>\n" +
                     "        </select><br>\n" +
                     "        <p>请输入用户名：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"text\" class=\"form-control\" placeholder=\"用户名\" autofocus required=\"true\">\n" +
+                    "        <input name='username' type=\"text\" class=\"form-control\" placeholder=\"用户名\" autofocus required=\"true\">\n" +
                     "        <br>\n" +
                     "        <p>请输入密码：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"password\" class=\"form-control\" placeholder=\"密码\" required=\"true\"><br>\n" +
+                    "        <input name='pwd' type=\"password\" class=\"form-control\" placeholder=\"密码\" required=\"true\"><br>\n" +
                     "        <p>请再次输入密码：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"password\" class=\"form-control\" placeholder=\"请再次输入密码\" required=\"true\"><br>\n" +
+                    "        <input name='repwd' type=\"password\" class=\"form-control\" placeholder=\"请再次输入密码\" required=\"true\"><br>\n" +
                     "        <p>政府法人代表名：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"text\" class=\"form-control\" placeholder=\"政府法人代表名\" required=\"true\"><br>\n" +
+                    "        <input name='bossname' type=\"text\" class=\"form-control\" placeholder=\"政府法人代表名\" required=\"true\"><br>\n" +
                     "        <p>政府法人代表身份证号： <span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"text\" class=\"form-control\" placeholder=\"政府法人代表身份证号\" autofocus required=\"true\"><br>\n" +
+                    "        <input name='bosspid' type=\"text\" class=\"form-control\" placeholder=\"政府法人代表身份证号\" autofocus required=\"true\"><br>\n" +
                     "        <p>政府机构名称：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"text\" class=\"form-control\" placeholder=\"政府机构名称\" style=\"width: 100%\"; step=\"day\"><br>\n" +
+                    "        <input name='gov-name' type=\"text\" class=\"form-control\" placeholder=\"政府机构名称\" style=\"width: 100%\"; step=\"day\"><br>\n" +
                     "        <p>政府机构类型：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"text\" class=\"form-control\" placeholder=\"政府机构类型\" autofocus required=\"true\"><br>\n" +
+                    "        <input name='gov-type' type=\"text\" class=\"form-control\" placeholder=\"政府机构类型\" autofocus required=\"true\"><br>\n" +
                     "        <p>组织机构代码：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"text\" class=\"form-control\" placeholder=\"组织机构代码\" autofocus required=\"true\"><br>\n" +
+                    "        <input name='gov-code' type=\"text\" class=\"form-control\" placeholder=\"组织机构代码\" autofocus required=\"true\"><br>\n" +
                     "        <p>上传政府法人代表身份证正面： <span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"file\" class=\"form-control\" autofocus required=\"true\" id=\"id_card_0\"><br>\n" +
+                    "        <input name='idcardA' type=\"file\" class=\"form-control\" autofocus required=\"true\" id=\"id_card_0\"><br>\n" +
                     "        <p>上传政府法人代表身份证反面： <span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"file\" class=\"form-control\" autofocus required=\"true\" id=\"id_card_1\"><br>\n" +
+                    "        <input name='idcardB' type=\"file\" class=\"form-control\" autofocus required=\"true\" id=\"id_card_1\"><br>\n" +
                     "        <p>上传组织机构照片： <span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"file\" class=\"form-control\" autofocus required=\"true\" id=\"gover_pic\"><br>\n" +
+                    "        <input name='gov-photo' type=\"file\" class=\"form-control\" autofocus required=\"true\" id=\"gover_pic\"><br>\n" +
                     "        <p>请选择所在地图： <span style=\"color:red\">*</span></p>\n" +
-                    "        <select id=\"province\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
+                    "        <select name='province' id=\"province\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
                     "            <option>--选择所在地区省份--</option>\n" +
                     "        </select>\n" +
                     "        <p>请输入邮箱：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"text\" class=\"form-control\" placeholder=\"邮箱\" style=\"width: 100%\" required=\"true\"><br>\n" +
+                    "        <input name='gov-mail' type=\"email\" class=\"form-control\" placeholder=\"邮箱\" style=\"width: 100%\" required=\"true\"><br>\n" +
                     "        <button class=\"btn btn-theme btn-block\" type=\"submit\">\n" +
                     "            <i class=\"fa fa-lock\"></i>\n" +
                     "            &nbsp; &nbsp;确定\n" +
@@ -178,41 +179,41 @@
             if(choice == "3"){
                 $("#choiced").replaceWith("<div class=\"login-wrap\" id=\"choiced\">\n" +
                     "        <p>请选择用户类型：</p>\n" +
-                    "        <select id=\"type\" name=\"用户类型选择\" class=\"form-control\">\n" +
+                    "        <select id=\"type\" name=\"user-type\" class=\"form-control\">\n" +
                     "            <option value=\"0\">个人用户</option>\n" +
                     "            <option value=\"1\">企业用户</option>\n" +
                     "            <option value=\"2\">政府用户</option>\n" +
                     "            <option value=\"3\" selected>事业单位用户</option>\n" +
                     "        </select><br>\n" +
                     "        <p>请输入用户名：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"text\" class=\"form-control\" placeholder=\"用户名\" autofocus required=\"true\">\n" +
+                    "        <input name='username' type=\"text\" class=\"form-control\" placeholder=\"用户名\" autofocus required=\"true\">\n" +
                     "        <br>\n" +
                     "        <p>请输入密码：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"password\" class=\"form-control\" placeholder=\"密码\" required=\"true\"><br>\n" +
+                    "        <input name='pwd' type=\"password\" class=\"form-control\" placeholder=\"密码\" required=\"true\"><br>\n" +
                     "        <p>请再次输入密码：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"password\" class=\"form-control\" placeholder=\"请再次输入密码\" required=\"true\"><br>\n" +
+                    "        <input name='repwd' type=\"password\" class=\"form-control\" placeholder=\"请再次输入密码\" required=\"true\"><br>\n" +
                     "        <p>事业单位法人代表名：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"text\" class=\"form-control\" placeholder=\"事业单位法人代表名\" required=\"true\"><br>\n" +
+                    "        <input name='bossname' type=\"text\" class=\"form-control\" placeholder=\"事业单位法人代表名\" required=\"true\"><br>\n" +
                     "        <p>事业单位法人代表身份证号： <span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"text\" class=\"form-control\" placeholder=\"事业单位法人代表身份证号\" autofocus required=\"true\"><br>\n" +
+                    "        <input name='bosspid' type=\"text\" class=\"form-control\" placeholder=\"事业单位法人代表身份证号\" autofocus required=\"true\"><br>\n" +
                     "        <p>事业单位机构名称：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"text\" class=\"form-control\" placeholder=\"事业单位机构名称\" style=\"width: 100%\"; step=\"day\"><br>\n" +
+                    "        <input name='in-name' type=\"text\" class=\"form-control\" placeholder=\"事业单位机构名称\" style=\"width: 100%\"; step=\"day\"><br>\n" +
                     "        <p>事业单位机构类型：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"text\" class=\"form-control\" placeholder=\"事业单位机构类型\" autofocus required=\"true\"><br>\n" +
+                    "        <input name='in-tpye' type=\"text\" class=\"form-control\" placeholder=\"事业单位机构类型\" autofocus required=\"true\"><br>\n" +
                     "        <p>事业单位机构编号：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"text\" class=\"form-control\" placeholder=\"组织机构编号\" autofocus required=\"true\"><br>\n" +
+                    "        <input name='in-code' type=\"text\" class=\"form-control\" placeholder=\"组织机构编号\" autofocus required=\"true\"><br>\n" +
                     "        <p>上传事业单位法人代表身份证正面： <span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"file\" class=\"form-control\" autofocus required=\"true\" id=\"id_card_00\"><br>\n" +
+                    "        <input name='idcardA' type=\"file\" class=\"form-control\" autofocus required=\"true\" id=\"id_card_00\"><br>\n" +
                     "        <p>上传事业单位法人代表身份证反面： <span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"file\" class=\"form-control\" autofocus required=\"true\" id=\"id_card_01\"><br>\n" +
+                    "        <input name='idcardB' type=\"file\" class=\"form-control\" autofocus required=\"true\" id=\"id_card_01\"><br>\n" +
                     "        <p>上传事业单位登记照片： <span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"file\" class=\"form-control\" autofocus required=\"true\" id=\"ins_pic\"><br>\n" +
+                    "        <input name='in-photo' type=\"file\" class=\"form-control\" autofocus required=\"true\" id=\"ins_pic\"><br>\n" +
                     "        <p>请选择所在地图： <span style=\"color:red\">*</span></p>\n" +
-                    "        <select id=\"province\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
+                    "        <select name='province' id=\"province\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
                     "            <option>--选择所在地区省份--</option>\n" +
                     "        </select>\n" +
                     "        <p>请输入邮箱：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input type=\"text\" class=\"form-control\" placeholder=\"邮箱\" style=\"width: 100%\" required=\"true\"><br>\n" +
+                    "        <input name='in-email' type=\"email\" class=\"form-control\" placeholder=\"邮箱\" style=\"width: 100%\" required=\"true\"><br>\n" +
                     "        <button class=\"btn btn-theme btn-block\" type=\"submit\">\n" +
                     "            <i class=\"fa fa-lock\"></i>\n" +
                     "            &nbsp; &nbsp;确定\n" +
@@ -226,30 +227,7 @@
         });
     });
 </script>
-<script>
-    $("#province").change(function(){
-        var curProvince = $(this).val();
-        if(curProvince !== ""){
 
-        }
-        else {
-            $("#city").empty().append('<option value="">--请选择城市--</option>');
-            $("#county").empty().append('<option value="">--请选择地区--</option>');
-        }
-
-    });
-    $("#city").change(function(){
-        var curCity = $(this).val();
-        if(curProvince !== ""){
-
-        }
-        else {
-            $("#city").empty().append('<option value="">--请选择城市--</option>');
-            $("#county").empty().append('<option value="">--请选择地区--</option>');
-        }
-
-    })
-</script>
 <script>
     function beforeSigned(){
         alert("注册成功！")
