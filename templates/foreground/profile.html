@@ -17,6 +17,7 @@
     <link href="{% static 'assets0/css/style.css' %}" rel="stylesheet">
 
 
+    <script src="{% static 'assets0/js/chart-master/Chart.js' %}"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -25,18 +26,17 @@
     <![endif]-->
   </head>
 <body>
-
-<section id="container" >
+    <section id="container" >
     <!-- **********************************************************************************************************************************************************
     TOP BAR CONTENT & NOTIFICATIONS
     *********************************************************************************************************************************************************** -->
     <!--header start-->
     <header class="header black-bg">
-        <a href="../index.html" class="logo"><b>social mind舆情管理平台</b></a>
-        <a class="logo"><b>&nbsp; &nbsp; &nbsp; >&nbsp; &nbsp; &nbsp; 信息监测</b></a>
+        <a href="index.html" class="logo"><b>social mind舆情管理平台</b></a>
+        <a class="logo"><b>&nbsp; &nbsp; &nbsp; >&nbsp; &nbsp; &nbsp; 个人信息</b></a>
         <div class="top-menu">
             <ul class="nav pull-right top-menu">
-                <li><a class="logout" href="../login.html">登出</a></li>
+                <li><a class="logout" href="login.html">登出</a></li>
             </ul>
         </div>
     </header>
@@ -77,16 +77,10 @@
                 </li>
 
                 <li class="sub-menu">
-                    <a class="active" href="/informationMonitor/" >
+                    <a href="/informationMonitor/" >
                         <i class="fa fa-cogs"></i>
                         <span>信息监测</span>
                     </a>
-                    <ul class="sub">
-                        <li><a href="/informationMonitor0/">政府：敏感事件</a></li>
-                        <li><a href="/informationMonitor1/">企业：负面舆情</a></li>
-                        <li><a href="/informationMonitor2/">个人：热门关注</a></li>
-                        <li><a href="/informationMonitor3/" style="color: #ffffff">事业单位：内部事件</a></li>
-                    </ul>
                 </li>
                 <li class="sub-menu">
                     <a href="/fullTextMonitor/" >
@@ -94,7 +88,7 @@
                         <span>全文检索</span>
                     </a>
                 </li>
-                <li class="sub-menu">
+                <li  class="sub-menu">
                     <a href="/events/" >
                         <i class="fa fa-tasks"></i>
                         <span>全网事件分析</span>
@@ -115,31 +109,24 @@
         <section class="wrapper">
             <div class="col-lg-9 main-chart">
 
-                <div class="white-panel pn donut-chart" style="height: 200px;">
-                    <div class="white-header">
-                        <h3 style="margin-top: 40px;">事业单位：内部事件</h3>
-                    </div>
-                    <div class="search_box">
-                        <div class="col-sm-10">
-                            <input type="text"  class="form-control" placeholder="输入您要搜索的内容：" style="width: 95%">
-                        </div>
-                        <button type="button" class="btn btn-warning" style="float: left; height: 44px; width: 80px;">搜索</button>
-                    </div>
-                </div>
-
                 <div id="morris">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="content-panel">
-                                <h3 style="float: left"> &nbsp; &nbsp;事业单位：内部事件</h3>
-                                <div class="funcs">
-                                    <button type="button" class="btn btn-warning" style="font-size: 10px; margin-right: 10px;">详情</button>
+                                <h3 style="float: left"> &nbsp; &nbsp;热点事件一览</h3>
+                                <div class="form-group" style="margin-top:15px; width: 100%; float: right; width: 35%;">
+                                    <div class="col-sm-3" style="width: 60%; margin-left: 15%;">
+                                        <input type="text" class="form-control" id="gover_heat_search" placeholder="搜索：" style="height: 34px;">
+                                    </div>
+                                    <div class="col-sm-2" style="text-align:left; float: right; margin-right: 30px;">
+                                        <button type="button" id="btn_query" class="btn btn-warning">查询</button>
+                                    </div>
                                 </div>
-                                    <!--表格参照：http://www.cnblogs.com/landeanfen/p/4976838.html-->
+                                <!--表格参照：http://www.cnblogs.com/landeanfen/p/4976838.html-->
                                 <div class="panel-body" style="padding-bottom:0px;">
                                     <div class="panel panel-default">
                                         <div class="panel-body">
-                                            <table id="gover_events" class="table">
+                                            <table id="tb_departments" class="table">
                                                 <thead>
                                                 <tr>
                                                     <th style="width: 15%;">序号</th>
@@ -176,6 +163,51 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-12">
+                            <div class="content-panel">
+                                <h3 style="float: left"> &nbsp; &nbsp; 全网事件一览</h3>
+                                <div class="funcs">
+                                    <button type="button" class="btn btn-warning" style="font-size: 10px;">最新</button>
+                                    <button type="button" class="btn btn-warning" style="font-size: 10px;">增长最快</button>
+                                    <button type="button" class="btn btn-warning" style="font-size: 10px; margin-right: 15px;">所有...</button>
+                                </div>
+                                <div class="panel-body">
+                                    <div id="case_sensitive" class="graph">
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th style="width: 15%;">序号</th>
+                                                <th style="width: 45%;">事件名称</th>
+                                                <th style="width: 20%;">热度</th>
+                                                <th>时间</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>一个很长很长很长很长很长的文本，很长很长</td>
+                                                <td>特别特别特别热</td>
+                                                <td>2018-01-01</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>短</td>
+                                                <td></td>
+                                                <td>2018-01-01</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>正常文本</td>
+                                                <td>很热</td>
+                                                <td>2018-01-01</td>
+                                            </tr>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -184,7 +216,7 @@
     </section>
     <footer class="site-footer">
         <div class="text-center">
-            2018 - <a href="http://www.xjtu.edu.cn" target="_blank" title="西安交通大学">西安交通大学</a> - <a href="http://www.xjtu.edu.cn" title="social mind" target="_blank">social mind舆情分析平台</a>
+            2018 - <a href="www.xjtu.edu.cn" target="_blank" title="西安交通大学">西安交通大学</a> - <a href="http://www.xjtu.edu.cn" title="social mind" target="_blank">social mind舆情分析平台</a>
             <a href="#" class="go-top">
                 <strong>回到顶部</strong>
             </a>
@@ -192,6 +224,8 @@
     </footer>
 </section>
 
+
+</body>
 <!-- js placed at the end of the document so the pages load faster -->
 <script src="{% static 'assets0/js/jquery.js'%}"></script>
 <script src="{% static 'assets0/js/jquery-1.8.3.min.js'%}"></script>
@@ -205,24 +239,6 @@
 <!--common script for all pages-->
 <script src="{% static 'assets0/js/common-scripts.js'%}"></script>
 
-
-<script>
-
-    $(function(){
-        function footerPosition(){
-            $("footer").removeClass("fixed-bottom");
-            var contentHeight = document.body.scrollHeight,//网页正文全文高度
-                winHeight = window.innerHeight;//可视窗口高度，不包括浏览器顶部工具栏
-            if(!(contentHeight > winHeight)){
-                //当网页正文高度小于可视窗口高度时，为footer添加类fixed-bottom
-                $("footer").addClass("fixed-bottom");
-            } else {
-                $("footer").removeClass("fixed-bottom");
-            }
-        }
-        footerPosition();
-        $(window).resize(footerPosition);
-    });
-</script>
-</body>
+<script type="text/javascript" src="{% static 'assets0/js/gritter/js/jquery.gritter.js'%}"></script>
+<script type="text/javascript" src="{% static 'assets0/js/gritter-conf.js'%}"></script>
 </html>

@@ -1016,6 +1016,11 @@ PANELS CONFIGURATIONS
 	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
 }
 
+.pn400{
+    height: 380px;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
 .pn:hover {
 	box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.3);
 	

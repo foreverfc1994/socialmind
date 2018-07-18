@@ -51,4 +51,5 @@ urlpatterns = [
     path('event4/', vviews.event4),
     path('event5/', vviews.event5),
     path('reportMaker/', vviews.reportMaker),
+    path('profile/', vviews.profile),
 ]

@@ -52,7 +52,7 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="{% static 'profile.html' %}"><img src="{% static 'assets0/img/ui-sam.jpg' %}" class="img-circle" width="60"></a></p>
+              	  <p class="centered"><a href="/profile/"><img src="{% static 'assets0/img/friends/fr-09.jpg' %}" class="img-circle" width="60"></a></p>
               	  <h5 class="centered">访客您好</h5>
 
                   <li class="mt">
@@ -117,7 +117,7 @@
               <div class="row">
                   <div class="col-lg-9 main-chart">
 
-                  	<div class="white-panel pn donut-chart">
+                  	<div class="white-panel pn400 donut-chart">
                         <div class="white-panel">
                             <div class="white-header">
                                 <h3>统计</h3>
@@ -125,88 +125,183 @@
                         </div>
                         <div class="boxes" >
                             <div id="statistics00" style="width: 20%; margin-left:4%; float: left">
-                                <div class="pic">
+                                <div class="pic" style="position: relative; width: 240px; height: 240px;">
                                     <canvas id="serverstatus10" height="120px" width="120px"></canvas>
                                     <script>
-                                        var doughnutData = [
-                                            {
-                                                value: 70,
-                                                label: "70%",
-                                                color:"#FFA500"
+                                        var config = {
+                                            type: 'doughnut',
+                                            data:{
+                                                datasets:[{
+                                                    data:[
+                                                        70,
+                                                        300,
+                                                    ],
+                                                    backgroundColor:[
+                                                        "#FFA500",
+                                                        "#666666",
+                                                    ],
+                                                }],
+                                                labels:[
+                                                    "新增热门事件数量：",
+                                                    "原有热门事件数量："
+                                                ],
                                             },
-                                            {
-                                                value : 30,
-                                                color : "#f1f1f1"
+                                            options:{
+                                                cutoutPercentage: 60,
+                                                responsive: true,
+                                                legend:{
+                                                    display: true,
+                                                    position: "bottom",
+                                                },
+                                                title: {
+                                                    display: true,
+                                                    fontSize: 20,
+                                                    fontColor: "#000000",
+                                                    text: "新增热门事件数",
+                                                },
+                                                animation:{
+                                                    animateScale: true,
+                                                    animateRoatae: true
+                                                }
                                             }
-                                        ];
-                                        var myDoughnut = new Chart(document.getElementById("serverstatus10").getContext("2d")).Doughnut(doughnutData, {percentageInnerCutout : 80});
+                                        };
+                                        var myDoughnut = new Chart(document.getElementById("serverstatus10").getContext("2d"), config);
                                     </script>
-                                </div>
-                                <div class="white-header">
-                                    <p>新增热门事件数</p>
                                 </div>
                             </div>
                             <div id="statistics01" style="width: 20%; margin-left:4%; float: left">
-                                <div class="pic">
+                                <div class="pic" style="position: relative; width: 240px; height: 240px;">
                                     <canvas id="serverstatus11" height="120px" width="120px"></canvas>
                                     <script>
-                                        var doughnutData = [
-                                            {
-                                                value: 60,
-                                                color:"#FFA500"
+                                        var config = {
+                                            type: 'doughnut',
+                                            data:{
+                                                datasets:[{
+                                                    data:[
+                                                        120,
+                                                        1000,
+                                                    ],
+                                                    backgroundColor:[
+                                                        "#FFA500",
+                                                        "#666666",
+                                                    ],
+                                                }],
+                                                labels:[
+                                                    "新增敏感信息数：",
+                                                    "原有敏感信息数：",
+                                                ],
                                             },
-                                            {
-                                                value : 40,
-                                                color : "#f1f1f1"
+                                            options:{
+                                                cutoutPercentage: 60,
+                                                responsive: true,
+                                                legend:{
+                                                    display: true,
+                                                    position: "bottom",
+                                                },
+                                                title: {
+                                                    display: true,
+                                                    fontSize: 20,
+                                                    fontColor: "#000000",
+                                                    text: "新增敏感信息数",
+                                                },
+                                                animation:{
+                                                    animateScale: true,
+                                                    animateRoatae: true
+                                                }
                                             }
-                                        ];
-                                        var myDoughnut = new Chart(document.getElementById("serverstatus11").getContext("2d")).Doughnut(doughnutData, {percentageInnerCutout : 80});
+                                        };
+                                        var myDoughnut = new Chart(document.getElementById("serverstatus11").getContext("2d"), config);
                                     </script>
-                                </div>
-                                <div class="white-header">
-                                    <p>新增敏感信息数</p>
                                 </div>
                             </div>
                             <div id="statistics02" style="width: 20%; margin-left:4%; float: left">
-                                <div class="pic">
+                                <div class="pic" style="position: relative; width: 240px; height: 240px;">
                                     <canvas id="serverstatus12" height="120px" width="120px"></canvas>
                                     <script>
-                                        var doughnutData = [
-                                            {
-                                                value: 50,
-                                                color:"#FFA500"
+                                        var config = {
+                                            type: 'doughnut',
+                                            data:{
+                                                datasets:[{
+                                                    data:[
+                                                        48,
+                                                        133,
+                                                    ],
+                                                    backgroundColor:[
+                                                        "#FFA500",
+                                                        "#666666",
+                                                    ],
+                                                }],
+                                                labels:[
+                                                    "新增领导动态数：",
+                                                    "原有领导动态数：",
+                                                ],
                                             },
-                                            {
-                                                value : 50,
-                                                color : "#f1f1f1"
+                                            options:{
+                                                cutoutPercentage: 60,
+                                                responsive: true,
+                                                legend:{
+                                                    display: true,
+                                                    position: "bottom",
+                                                },
+                                                title: {
+                                                    display: true,
+                                                    fontSize: 20,
+                                                    fontColor: "#000000",
+                                                    text: "新增领导动态数",
+                                                },
+                                                animation:{
+                                                    animateScale: true,
+                                                    animateRoatae: true
+                                                }
                                             }
-                                        ];
-                                        var myDoughnut = new Chart(document.getElementById("serverstatus12").getContext("2d")).Doughnut(doughnutData, {percentageInnerCutout : 80});
+                                        };
+                                        var myDoughnut = new Chart(document.getElementById("serverstatus12").getContext("2d"), config);
                                     </script>
-                                </div>
-                                <div class="white-header">
-                                    <p>新增领导动态数</p>
                                 </div>
                             </div>
                             <div id="statistics03" style="width: 20%; margin-left:4%; float: left">
-                                <div class="pic">
+                                <div class="pic" style="position: relative; width: 240px; height: 240px;">
                                     <canvas id="serverstatus13" height="120px" width="120px"></canvas>
                                     <script>
-                                        var doughnutData = [
-                                            {
-                                                value: 40,
-                                                color: "#FFA500"
+                                        var config = {
+                                            type: 'doughnut',
+                                            data:{
+                                                datasets:[{
+                                                    data:[
+                                                        100,
+                                                        33,
+                                                    ],
+                                                    backgroundColor:[
+                                                        "#FFA500",
+                                                        "#666666",
+                                                    ],
+                                                }],
+                                                labels:[
+                                                    "新增下属动态数：",
+                                                    "原有下属动态数：",
+                                                ],
                                             },
-                                            {
-                                                value : 60,
-                                                color : "#f1f1f1"
+                                            options:{
+                                                cutoutPercentage: 60,
+                                                responsive: true,
+                                                legend:{
+                                                    display: true,
+                                                    position: "bottom",
+                                                },
+                                                title: {
+                                                    display: true,
+                                                    fontSize: 20,
+                                                    fontColor: "#000000",
+                                                    text: "新增下属动态数",
+                                                },
+                                                animation:{
+                                                    animateScale: true,
+                                                    animateRoatae: true
+                                                }
                                             }
-                                        ];
-                                        var myDoughnut = new Chart(document.getElementById("serverstatus13").getContext("2d")).Doughnut(doughnutData, {percentageInnerCutout : 80});
+                                        };
+                                        var myDoughnut = new Chart(document.getElementById("serverstatus13").getContext("2d"), config);
                                     </script>
-                                </div>
-                                <div class="white-header">
-                                    <p>新增下属动态数</p>
                                 </div>
                             </div>
 
