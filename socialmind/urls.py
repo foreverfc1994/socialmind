@@ -19,10 +19,10 @@ from visitor import views as vviews
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', vviews.login, name='first'),
-    path('index/',vviews.index, name='index'),
+    path('index/', vviews.index, name='index'),
     path('login/', vviews.login, name='login'),
     path('signin/', vviews.signin, name='signin'),
-    path('get_address/',vviews.get_address),
+    path('get_address/', vviews.get_address),
     path('checkuser/', vviews.checkuser),
     path('heatIndex/', vviews.heatIndex),
     path('heatIndex0/', vviews.heatIndex0),
@@ -52,4 +52,5 @@ urlpatterns = [
     path('event5/', vviews.event5),
     path('reportMaker/', vviews.reportMaker),
     path('profile/', vviews.profile),
+    path('eventParticular/', vviews.particular),
 ]
