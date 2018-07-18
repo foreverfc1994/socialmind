@@ -2436,11 +2436,12 @@ input[type="month"].input-lg {
 }
 .radio,
 .checkbox {
-  position: relative;
+  position: absolute;
   display: block;
   min-height: 20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 50px;
+  font-size: 20px;
+  margin-left: 30%;
 }
 .radio label,
 .checkbox label {

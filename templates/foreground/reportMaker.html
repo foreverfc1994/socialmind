@@ -16,7 +16,7 @@
     <!-- Custom styles for this template -->
     <link href="{% static 'assets0/css/style.css' %}" rel="stylesheet">
 
-
+    <script src="{% static 'assets0/js/chart-master/Chart.js' %}"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -104,14 +104,91 @@
             <!-- sidebar menu end-->
         </div>
     </aside>
-
     <section id="main-content">
         <section class="wrapper">
-            <div class="col-lg-9 main-chart">
-
+            <div id="morris">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="content-panel">
+                            <h2 class="centered" style="float: left; width: 100%;"> &nbsp; &nbsp;简报制作</h2><br>
+                            <div class="reportStep">
+                                <div class="picture" style="width: 100%; height: 650px;">
+                                    <div id="statistics00" style="width: 40%; margin-left:4%; float: left">
+                                        <canvas id="serverstatus10" height="120px" width="120px"></canvas>
+                                        <script>
+                                            var config = {
+                                                type: 'doughnut',
+                                                data:{
+                                                    datasets:[{
+                                                        data:[
+                                                            25,
+                                                            75,
+                                                        ],
+                                                        backgroundColor:[
+                                                            "#FFA500",
+                                                            "#666666",
+                                                        ],
+                                                    }],
+                                                },
+                                                options:{
+                                                    cutoutPercentage: 60,
+                                                    responsive: true,
+                                                    legend:{
+                                                        display: true,
+                                                        position: "bottom",
+                                                    },
+                                                    events: [],
+                                                    title: {
+                                                        display: true,
+                                                        fontSize: 20,
+                                                        fontColor: "#000000",
+                                                        text: "步骤1",
+                                                    },
+                                                    animation:{
+                                                        animateScale: true,
+                                                        animateRoatae: true
+                                                    }
+                                                }
+                                            };
+                                            var myDoughnut = new Chart(document.getElementById("serverstatus10").getContext("2d"), config);
+                                        </script>
+                                    </div>
+                                    <div class="step1" style="padding-top: 80px;">
+                                        <h3> &nbsp; &nbsp;请选择需要的模板：</h3><br>
+                                        <div id="modes" style="margin-left: 45%;">
+                                            <table style="width: 95%;">
+                                                <tr style="text-align: center; height: 30px;">
+                                                    <td><strong>模板1</strong></td>
+                                                    <td><strong>模板2</strong></td>
+                                                    <td><strong>模板3</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 230px;"><img src="{% static 'assets0/img/mode.jpg' %}" style="width: 200px;"></td>
+                                                    <td style="width: 230px;"><img src="{% static 'assets0/img/mode.jpg' %}" style="width: 200px;"></td>
+                                                    <td style="width: 230px;"><img src="{% static 'assets0/img/mode.jpg' %}" style="width: 200px;"></td>
+                                                </tr>
+                                                <tr style="text-align: center; height: 30px;">
+                                                    <td><strong>模板4</strong></td>
+                                                    <td><strong>模板5</strong></td>
+                                                    <td><strong>模板6</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 230px;"><img src="{% static 'assets0/img/mode.jpg' %}" style="width: 200px;"></td>
+                                                    <td style="width: 230px;"><img src="{% static 'assets0/img/mode.jpg' %}" style="width: 200px;"></td>
+                                                    <td style="width: 230px;"><img src="{% static 'assets0/img/mode.jpg' %}" style="width: 200px;"></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </section>
+
     <footer class="site-footer">
         <div class="text-center">
             2018 - <a href="www.xjtu.edu.cn" target="_blank" title="西安交通大学">西安交通大学</a> - <a href="http://www.xjtu.edu.cn" title="social mind" target="_blank">social mind舆情分析平台</a>
@@ -135,10 +212,7 @@
 
 <!--common script for all pages-->
 <script src="{% static 'assets0/js/common-scripts.js'%}"></script>
-
-<script type="text/javascript" src="{% static 'assets0/js/gritter/js/jquery.gritter.js'%}"></script>
-<script type="text/javascript" src="{% static 'assets0/js/gritter-conf.js'%}"></script>
-
+http:/
 
 <script>
 
