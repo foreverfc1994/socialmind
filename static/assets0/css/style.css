@@ -492,7 +492,7 @@ a.logo span {
 }
 
 ul.top-menu > li > a {
-    color: #666666;
+    color: #DAA520;
     font-size: 16px;
     border-radius: 4px;
     -webkit-border-radius: 4px;
@@ -502,6 +502,7 @@ ul.top-menu > li > a {
 }
 
 ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
+    color: #DAA520;
     border:1px solid #b6b6b6 !important;
     background-color: transparent !important;
     border-color: #b6b6b6 !important;
@@ -688,7 +689,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 }
 
 .top-nav ul.top-menu > li > a {
-    border: 1px solid #eeeeee;
+    border: 1px solid #696969;
     border-radius: 4px;
     -webkit-border-radius: 4px;
     padding: 6px;
@@ -700,8 +701,9 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 }
 
 .top-nav ul.top-menu > li > a:hover, .top-nav ul.top-menu > li > a:focus {
-    border:1px solid #F1F2F7;
-    background: #F1F2F7;
+    color: #696969;
+    border:1px solid #696969;
+    background: #696969;
 
 }
 
@@ -714,6 +716,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
     border-top-color: #A4AABA;
 }
 .top-nav ul.top-menu > li > a:hover .caret {
+    color: #696969;
     border-bottom-color: #000;
     border-top-color: #000;
 }
@@ -1014,6 +1017,11 @@ PANELS CONFIGURATIONS
 .pn {
 	height: 250px;
 	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.pn400{
+    height: 380px;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .pn:hover {
@@ -2315,4 +2323,63 @@ label {
 }
 ::-webkit-inner-spin-button {
     visibility: hidden;
+}
+
+.person_block{
+    height: 280px;
+    padding: 80px;
+}
+.person_span{
+    margin-left: 80px;
+    float: left;
+    font-size: 18px;
+}
+.eventDetials{
+    margin-top: 5px;
+    color: #999999;
+    width: 100%;
+    magin: auto;
+    font-size: 12px;
+    text-align: center;
+}
+.margin-15{
+    margin-left: 15px;
+}
+.eventAbstract{
+    color: #000000;
+    background: #DCDCDC;
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+}
+.eventFiles{
+    width: 80%;
+    margin: auto;
+    font-size: 16px;
+    margin-top: 20px;
+}
+.eventData{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.eventButton{
+    width: 19.5%;
+    height: 30px;
+}
+.eventComments{
+    color: #000000;
+    background-color: #DCDCDC;
+    width: 80%;
+    margin: auto;
+    padding-bottom: 10px;
+}
+.comments{
+    margin-top: 20px;
+}
+.linePicture{
+    margin: auto;
+    width: 80%;
+    height: 80%;
 }
