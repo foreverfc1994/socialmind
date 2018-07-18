@@ -23,7 +23,7 @@
             <h1 style="color: #DAA520; margin-top: 100px;">SOCIAL MIND 舆情管理平台</h1>
             <p style="color: #DAA520;">西安交通大学SICDP实验室</p>
         </div>
-<form name="signin" class="form-login" id="sing_in" method="post" action="/signin/" enctype="multipartform-data">
+<form name="signin" class="form-login" id="sing_in" method="post" action="/signin/" enctype="multipart/form-data">
     {% csrf_token %}
     <h2 class="form-login-heading">欢迎注册</h2>
     <div class="login-wrap" id="choiced">
@@ -76,11 +76,16 @@
                     "        <input id='repwd'name='repwd'type=\"password\" class=\"form-control\" placeholder=\"请再次输入密码\" required=\"true\"><br>\n" +
                     "        <p>请选择性别：<span style=\"color:red\">*</span></p>\n" +
                     "        <select name=\"sex\" class=\"form-control\">\n" +
-                    "            <option>男</option>\n" +
-                    "            <option>女</option>\n" +
+                    "            <option value = '1'>男</option>\n" +
+                    "            <option value = '0'>女</option>\n" +
                     "        </select><br>\n" +
                     "        <p>请选择生日：<span style=\"color:red\">*</span></p>\n" +
                     "        <input name='birthday' type=\"date\" class=\"form-control\" placeholder=\"生日\" style=\"width: 100%\"; step=\"day\"><br>\n" +
+                    "        <p>请输入真实姓名：<span style=\"color:red\">*</span></p>\n" +
+                    "        <input name='realname' type=\"text\" class=\"form-control\" placeholder=\"请输入真实姓名\" style=\"width: 100%\"; step=\"day\"><br>\n" +
+                    "        <p>请输入身份证号：<span style=\"color:red\">*</span></p>\n" +
+                    "        <input name='idcard' type=\"text\" class=\"form-control\" placeholder=\"请输入身份证号\" style=\"width: 100%\"; step=\"day\"><br>\n" +
+
                     "        <p>请输入手机号：<span style=\"color:red\">*</span></p>\n" +
                     "        <input name='phone' type=\"text\" class=\"form-control\" placeholder=\"请输入您的手机号\" autofocus required=\"true\"><br>\n" +
                     "        <p>请输入邮箱： <span style=\"color:red\">*</span></p>\n" +
@@ -120,12 +125,12 @@
                     "            <option value=\"3\">事业单位用户</option>\n" +
                     "        </select><br>\n" +
                     "        <p>请输入用户名：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='username' type=\"text\" class=\"form-control\" placeholder=\"用户名\" autofocus required=\"true\">\n" +
+                    "        <input id='username' name='username' type=\"text\" class=\"form-control\" placeholder=\"用户名\" autofocus required=\"true\">\n" +
                     "        <br>\n" +
                     "        <p>请输入密码：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='pwd' type=\"password\" class=\"form-control\" placeholder=\"密码\" required=\"true\"><br>\n" +
+                    "        <input id='pwd' name='pwd' type=\"password\" class=\"form-control\" placeholder=\"密码\" required=\"true\"><br>\n" +
                     "        <p>请再次输入密码：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='repwd' type=\"password\" class=\"form-control\" placeholder=\"请再次输入密码\" required=\"true\"><br>\n" +
+                    "        <input id='repwd' name='repwd' type=\"password\" class=\"form-control\" placeholder=\"请再次输入密码\" required=\"true\"><br>\n" +
                     "        <p>企业法人代表名：<span style=\"color:red\">*</span></p>\n" +
                     "        <input name='bossname' type=\"text\" class=\"form-control\" placeholder=\"企业法人代表名\" required=\"true\"><br>\n" +
                     "        <p>企业法人身份证号：<span style=\"color:red\">*</span></p>\n" +
@@ -287,11 +292,8 @@
             }
                     }
                 }
-
             )
-
         }
-
     }
 </script>
 <script>
@@ -323,6 +325,7 @@
         $("#type").change(function () {
             $("#city").hide()
             $("#country").hide()
+             $("#province").empty()
             console.log(adress)
             for(var i in adress['data'])
             {
