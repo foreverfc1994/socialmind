@@ -16,8 +16,7 @@
     <!-- Custom styles for this template -->
     <link href="{% static 'assets0/css/style.css' %}" rel="stylesheet">
 
-
-
+    <script src="{% static 'assets0/js/chart-master/Chart.js' %}"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -179,7 +178,21 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="content-panel">
+                            <h3 style="float: left"> &nbsp; &nbsp;热门信息数走势图：</h3>
+                            <!--以后加入后台参照： https://blog.csdn.net/bianjj12699/article/details/44857825-->
+                            <!--以后加入后台参照： https://blog.csdn.net/luckycz/article/details/46925619-->
+                            <!--以后加入后台参照： https://segmentfault.com/a/1190000004035743-->
+                            <div class="chart mt">
+                                <div class="linePicture">
+                                    <canvas id="line_pic"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </section>
@@ -225,5 +238,46 @@
         $(window).resize(footerPosition);
     });
 </script>
+<script>
+    // http://www.chartjs.org/docs/latest/charts/line.html
+    var data = {
+        labels : ["January","February","March","April","May","June","July"],
+        datasets : [{
+            label: "教育热门事件",
+            fill: false,
+            pointBackgroundColor: "#FF0000",
+            borderColor: "#F08080",
+            data : [615,589,326,178,846,555,440]      //点的Y轴值
+        },{
+            label: "明星热门事件",
+            fill: false,
+            pointBackgroundColor: "#000000",
+            borderColor: "#aaaaaa",
+            data : [100,866,325,158,476,855,450]      //点的Y轴值
+        },{
+            label: "国防热门事件",
+            fill: false,
+            pointBackgroundColor: "#33CC33",
+            borderColor: "#009933",
+            data : [58,855,25,788,100,500,425]      //点的Y轴值
+        },
+        ]
+    }
+
+    //定义图表的参数
+    var options = {
+
+    }
+    config = {
+        "type": "line",
+        "data": data,
+        "options": options
+    }
+    window.onload = function(){
+        new Chart(document.getElementById("line_pic"), config)
+    }
+
+</script>
+
 </body>
 </html>

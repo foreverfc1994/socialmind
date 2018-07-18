@@ -127,6 +127,12 @@ def reportMaker(request):
 def profile(request):
     return render(request, 'foreground/profile.html')
 
+def eventparticular(request):
+    return render(request, 'foreground/particular.html')
+
+def fileParticular(request):
+    return render(request, 'foreground/file.html')
+
 @csrf_exempt
 def checkuser(request):
     username = request.POST.get('user')

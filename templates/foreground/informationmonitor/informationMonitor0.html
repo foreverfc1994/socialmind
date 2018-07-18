@@ -16,6 +16,7 @@
     <!-- Custom styles for this template -->
     <link href="{% static 'assets0/css/style.css' %}" rel="stylesheet">
 
+    <script src="{% static 'assets0/js/chart-master/Chart.js' %}"></script>
 
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -179,6 +180,21 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="content-panel">
+                            <h3 style="float: left"> &nbsp; &nbsp;每月新增敏感事件走势图</h3>
+                            <!--以后加入后台参照： https://blog.csdn.net/bianjj12699/article/details/44857825-->
+                            <!--以后加入后台参照： https://blog.csdn.net/luckycz/article/details/46925619-->
+                            <!--以后加入后台参照： https://segmentfault.com/a/1190000004035743-->
+                            <div class="chart mt">
+                                <div class="linePicture">
+                                    <canvas id="line_pic" height="350px" width="800px" style="height: 350px; width: 900px;"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </section>
@@ -224,4 +240,47 @@
     });
 </script>
 </body>
+<script>
+    // http://www.chartjs.org/docs/latest/charts/line.html
+    var data = {
+        labels : ["January","February","March","April","May","June","July"],
+        datasets : [{
+            label: "每月新增敏感事件",
+            fill: false,
+            pointBackgroundColor: "#FF0000",
+            borderColor: "#F08080",
+            data : [65,59,32,18,46,55,40]      //点的Y轴值
+        },
+            {
+                label: "每月新增正面敏感事件",
+                fill: false,
+                pointBackgroundColor: "#008000",
+                borderColor: "#32CD32",
+                data : [32,44,22,9,33,22,4]      //点的Y轴值
+            },
+        {
+                label: "每月新增负面敏感事件",
+                fill: false,
+                pointBackgroundColor: "#0033CC",
+                borderColor: "#003399",
+                data : [30,11,10,9,13,33,36]      //点的Y轴值
+            },
+        ]
+    }
+
+    //定义图表的参数
+    var options = {
+
+    }
+    config = {
+        "type": "line",
+        "data": data,
+        "options": options
+    }
+    window.onload = function(){
+        new Chart(document.getElementById("line_pic"), config)
+    }
+
+</script>
+
 </html>

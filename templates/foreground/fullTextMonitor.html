@@ -117,17 +117,22 @@
             <div class="col-lg-9 main-chart">
                 <div class="white-panel pn donut-chart" style="height: 200px;">
                     <div class="white-header">
-                        <h3 style="margin-top: 40px;">信息监测</h3>
+                        <h3 style="margin-top: 40px;">全文搜索</h3>
                     </div>
                     <div class="search_box">
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="输入您要搜索的内容：" style="width: 95%">
+                            <input type="text" class="form-control" placeholder="   输入您要搜索的内容：" style="width: 95%">
                         </div>
                         <button type="button" class="btn btn-warning" style="float: left; height: 44px; width: 80px;">搜索</button>
                     </div>
+                    <div class="radio" style="padding-top: 15px;">
+                        <label style="width: 200px;"><input name="radio" type="radio" value="event"/>事件搜索</label>
+                        <label style="width: 200px;"><input name="radio" type="radio" value="file" />文章搜索</label>
+                    </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-12" id="box0">
+                    <a href="/eventParticular/">
+                        <div class="col-lg-12" id="box0">
                         <div class="content-panel">
                             <div class="event_headers">
                                 <h3 style="float: left; width: 200px;"> &nbsp; &nbsp;事件名称一</h3>
@@ -144,6 +149,7 @@
                             </div>
                         </div>
                     </div>
+                    </a>
                 </div>
                 <div class="row">
                     <div class="col-lg-12" id="box1">
