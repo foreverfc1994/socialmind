@@ -24,6 +24,9 @@
             {% csrf_token %}
 
             <h2 class="form-login-heading">请您登陆</h2>
+                {% if message %}
+                    <div class="alert alert-warning">{{ message }}</div>
+                {% endif %}
             <div class="login-wrap">
                 <p>请选择用户类型:</p>
                 <select name="user-type" class="form-control" required>
@@ -35,15 +38,11 @@
                 <input name="username" type="text" class="form-control" placeholder="用户名" autofocus required>
                 <br>
                 <input name="password" type="password" class="form-control" placeholder="密码" required><br>
-
                 <label class="checkbox">
                     <span class="pull-right">
                         <a href="#" onclick="visitor()"> 访客登陆</a>
                     </span>
                 </label>
-                {% if message %}
-                  <div class="alert alert-warning">{{ message }}</div>
-              {% endif %}
                 <button class="btn btn-theme btn-block"  type="submit"><i class="fa fa-lock"></i> &nbsp; &nbsp;登陆</button>
                 <button class="btn btn-theme btn-block" onclick="signIn()" type="button"><i class="fa fa-user"></i> &nbsp; &nbsp;注册</button>
 
