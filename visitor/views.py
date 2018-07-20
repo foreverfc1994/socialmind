@@ -36,9 +36,13 @@ def signin(request):
     print(request.POST)
     if request.method == 'POST':
         userdata = request.POST
-        if userdata['user-type']=='0':
+        print(type(userdata))
+        if userdata.get('user-type')=='0':
             personuser(userdata)
-            pass
+        elif userdata.get('user-type')=='1':
+            files = request.FILES['idcardA']
+            saveimg(files)
+            companyuser(userdata)
 
     return render(request, 'foreground/signin.html')
 
