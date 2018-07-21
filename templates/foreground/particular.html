@@ -187,7 +187,7 @@
                                     </div>
                                     <div class="eventComments" id="maps">
                                         <div id="heatMap" style="width: 80%; height: 450px; margin-left: 15%;"></div>
-                                            <div id="sensitiveMap" style="width: 80%; height: 450px; margin-left: 15%;"></div>
+                                        <div id="sensitiveMap" style="width: 80%; height: 450px; margin-left: 15%;"></div>
                                     </div>
                                     <div class="eventCloud" id="eventCloud">
                                         <p class="centered" style="font-size: 20px; z-index: 10;"><strong>关键词云</strong></p>
@@ -201,11 +201,11 @@
                                     </div>
                                     <div class="informSource" id="informSource">
                                         <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>信息来源</strong></p>
-                                        <img src="{% static 'assets0/img/informSource.png' %}" style="width: 600px; height: 600px;">
+                                        <img src="{% static 'assets0/img/informSource.png' %}" style="width: 600px; height: 400px;">
                                     </div>
                                     <div id="mediaLiveness" class="mediaLiveness">
                                         <br><p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>媒体活跃度</strong></p>
-                                        <canvas id="mediaLivenessBar" style="height: 280px; width: 80%;"></canvas>
+                                        <canvas id="mediaLivenessBar" style="height: 280px; width: 60%;"></canvas>
                                     </div>
                                     <div id="informTree" class="informTree">
                                         <br><p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>信息传播过程</strong></p>
@@ -217,7 +217,126 @@
                                     </div>
                                 </div>
                                 <div id="emotionAnalyze" class="eventComments centered" style="display: none" hidden="true">
-
+                                    <div id="eventJudeg_emotion" style="width: 100%; height: 400px;">
+                                        <div id="eventJudge" style="width: 49%; margin-left: 1%; float: left;">
+                                            <div id="statisticsEJ" style="width: 70%; margin-left: 25%;">
+                                                <div class="pic" style="position: center; width: 100%; height: 100%;">
+                                                    <canvas id="serverstatusEJ" height="120px" width="120px"></canvas>
+                                                    <script>
+                                                        var config = {
+                                                            type: 'doughnut',
+                                                            data:{
+                                                                datasets:[{
+                                                                    data:[
+                                                                        40,
+                                                                        50,
+                                                                        10,
+                                                                    ],
+                                                                    backgroundColor:[
+                                                                        "#FFA500",
+                                                                        "#666666",
+                                                                        "#CC0000",
+                                                                    ],
+                                                                }],
+                                                                labels:[
+                                                                    "正面比例：",
+                                                                    "负面比例：",
+                                                                    "中性",
+                                                                ],
+                                                            },
+                                                            options:{
+                                                                cutoutPercentage: 60,
+                                                                responsive: true,
+                                                                legend:{
+                                                                    display: true,
+                                                                    position: "bottom",
+                                                                },
+                                                                title: {
+                                                                    display: true,
+                                                                    fontSize: 20,
+                                                                    fontColor: "#000000",
+                                                                    text: "事件正负面比例",
+                                                                },
+                                                                animation:{
+                                                                    animateScale: true,
+                                                                    animateRoatae: true
+                                                                }
+                                                            }
+                                                        };
+                                                        var myDoughnut = new Chart(document.getElementById("serverstatusEJ").getContext("2d"), config);
+                                                    </script>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="eventEmotion" style="width: 49%; margin-left: 1%; float: left;">
+                                            <div id="statisticsEM" style="width: 70%; margin-left: 5%;">
+                                                <div class="pic" style="position: center; width: 100%; height: 100%;">
+                                                    <canvas id="serverstatusEM" height="120px" width="120px"></canvas>
+                                                    <script>
+                                                        var config = {
+                                                            type: 'doughnut',
+                                                            data:{
+                                                                datasets:[{
+                                                                    data:[
+                                                                        50,
+                                                                        25,
+                                                                        15,
+                                                                        5,
+                                                                        2.5,
+                                                                        1.5,
+                                                                        1
+                                                                    ],
+                                                                    backgroundColor:[
+                                                                        "#FFA500",
+                                                                        "#666666",
+                                                                        "#3399CC",
+                                                                        "#CC0000",
+                                                                        "#33FF66",
+                                                                        "#CCFFFF",
+                                                                        "#9966FF",
+                                                                    ],
+                                                                }],
+                                                                labels:[
+                                                                    "喜悦",
+                                                                    "惊奇",
+                                                                    "中性",
+                                                                    "悲伤",
+                                                                    "愤怒",
+                                                                    "恐惧",
+                                                                    "其他",
+                                                                ],
+                                                            },
+                                                            options:{
+                                                                cutoutPercentage: 60,
+                                                                responsive: true,
+                                                                legend:{
+                                                                    display: true,
+                                                                    position: "bottom",
+                                                                },
+                                                                title: {
+                                                                    display: true,
+                                                                    fontSize: 20,
+                                                                    fontColor: "#000000",
+                                                                    text: "事件情绪占比",
+                                                                },
+                                                                animation:{
+                                                                    animateScale: true,
+                                                                    animateRoatae: true
+                                                                }
+                                                            }
+                                                        };
+                                                        var myDoughnut = new Chart(document.getElementById("serverstatusEM").getContext("2d"), config);
+                                                    </script>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="eventComments" id="emMap" style="height: 400px; padding-top: 10px;">
+                                        <div id="emotionMap" style="width: 650px; height: 350px; margin-left: 15%;"></div>
+                                    </div>
+                                    <div class="emotionTrend" id="emotionTrendId">
+                                        <canvas id="emotionLine"></canvas>
+                                    </div>
                                 </div>
 
                             </div>
@@ -378,7 +497,6 @@
 <script class="include" type="text/javascript" src="{% static 'assets0/js/jquery.dcjqaccordion.2.7.js'%}"></script>
 <script src="{% static 'assets0/js/jquery.scrollTo.min.js'%}"></script>
 <script src="{% static 'assets0/js/jquery.sparkline.js'%}"></script>
-<script src="{% static 'assets0/js/swiper-4.3.3.min.js' %}"></script>
 
 <script type="text/javascript" src="{% static 'assets0/js/gritter/js/jquery.gritter.js'%}"></script>
 <script type="text/javascript" src="{% static 'assets0/js/gritter-conf.js'%}"></script>
@@ -542,10 +660,77 @@
         "data": mediaLivenessData,
         "options": mediaLivenessOptions,
     };
+
+    var emotionData = {
+     labels : ["January","February","March","April","May","June","July"],
+     datasets : [{
+         label: "喜悦",
+         fill: false,
+         pointBackgroundColor: "#FF0000",
+         borderColor: "#F08080",
+         backgroundColor: "#F08080",
+         data : [165,159,132,129,146,155,140]
+     },
+
+         {
+             label: "中性",
+             fill: false,
+             pointBackgroundColor: "#008000",
+             borderColor: "#32CD32",
+             backgroundColor: "#32CD32",
+             data : [32,44,22,99,33,22,4]
+         },
+     {
+             label: "悲伤",
+             fill: false,
+             pointBackgroundColor: "#66CCFF",
+             borderColor: "#0033CC",
+             backgroundColor: "#0033CC",
+             data : [32,34,27,19,33,92,44]
+         },{
+             label: "愤怒",
+             fill: false,
+             pointBackgroundColor: "#FF99CC",
+             borderColor: "#FF6699",
+             backgroundColor: "#FF6699",
+             data : [12,21,17,9,13,12,4]      //点的Y轴值
+         },{
+             label: "惊奇",
+             fill: false,
+             pointBackgroundColor: "#FF9900",
+             borderColor: "#FF6600",
+             backgroundColor: "#FF6600",
+             data : [5,8,9,6,2,14,1]      //点的Y轴值
+         },{
+             label: "恐惧",
+             fill: false,
+             pointBackgroundColor: "#00FF66",
+             borderColor: "#33CC00",
+             backgroundColor: "#33CC00",
+             data : [2,1,2,2,0,1,1]      //点的Y轴值
+         }]
+    };
+
+    //定义图表的参数
+    var emotionOptions = {
+        title: {
+            display: true,
+            text: "情绪走势统计",
+            fontSize: 20,
+            fontColor: "#000000",
+        },
+    };
+    emotionConfig = {
+        "type": "line",
+        "data": emotionData,
+        "options": emotionOptions,
+    };
+
     window.onload = function(){
         new Chart(document.getElementById("heatTime"), configTime);
         new Chart(document.getElementById("heatTrendCount"), heatTrendCountconfig);
         new Chart(document.getElementById("mediaLivenessBar"), mediaLivenessConfig);
+        new Chart(document.getElementById("emotionLine"), emotionConfig);
     };
 </script>
 <script>
@@ -572,7 +757,6 @@
         {name: '海南',value: randomData() },{name: '台湾',value: randomData() },
         {name: '香港',value: randomData() },{name: '澳门',value: randomData() }
     ];
-
     var optionHeat = {
         backgroundColor: '#DCDCDC',
         title: {
@@ -655,8 +839,51 @@
             data:mydata
         }]
     };
+    var optionEmotion = {
+        backgroundColor: '#DCDCDC',
+        title: {
+            text: '热度地图',
+            subtext: '纯属虚构',
+            x:'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: '{b}<br/>{c}'
+        //    b为省份，c为数据
+        },
+        visualMap: {
+            show : true,
+            x: 'left',
+            y: 'bottom',
+            text: ['正面', '负面'],
+            calculable: true,
+            splitList: [
+                {start: 500, end:600},{start: 400, end: 500},
+                {start: 300, end: 400},{start: 200, end: 300},
+                {start: 100, end: 200},{start: 0, end: 100},
+            ],
+            color: ['#00FF00', '#90EE90', '#ADFF2F','#FFFFE0', '#FFA07A', '#FF0000']
+        },
+        series: [{
+            name: '随机数据',
+            type: 'map',
+            mapType: 'china',
+            roam: false,
+            label: {
+                normal: {
+                    show: false
+                },
+                emphasis: {
+                    show: false
+                }
+            },
+            data: mydata,
+        }]
+    };
     var chartHeat = echarts.init(document.getElementById('heatMap'));
     var chartSensitive = echarts.init(document.getElementById('sensitiveMap'));
+    var emotionMap = echarts.init(document.getElementById('emotionMap'));
+    emotionMap.setOption(optionEmotion)
     chartHeat.setOption(optionHeat);
     chartSensitive.setOption(optionSensitive);
 </script>

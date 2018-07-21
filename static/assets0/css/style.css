@@ -2396,13 +2396,18 @@ label {
     z-index: 1;
 }
 .informSource{
-    height: 650px;
+    height: 500px;
     width: 80%;
     margin-left: 10%;
 
 }
 .mediaLiveness{
-    height: 400px;
+    height: 500px;
     width: 70%;
     margin-left: 15%;
+}
+.emotionTrend{
+    width: 80%;
+    height: 480px;
+    margin-left: 10%;
 }
