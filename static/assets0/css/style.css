@@ -2368,6 +2368,10 @@ label {
     width: 19.5%;
     height: 30px;
 }
+.event3Buttons{
+    width: 26.2%;
+    height: 40px;
+}
 .eventComments{
     color: #000000;
     background-color: #DCDCDC;
@@ -2382,4 +2386,23 @@ label {
     margin: auto;
     width: 80%;
     height: 80%;
+}
+.eventCloud{
+    width: 80%;
+    margin-left: 10%;
+    height: 380px;
+    position: center;
+    background-color: #DCDCDC;
+    z-index: 1;
+}
+.informSource{
+    height: 650px;
+    width: 80%;
+    margin-left: 10%;
+
+}
+.mediaLiveness{
+    height: 400px;
+    width: 70%;
+    margin-left: 15%;
 }

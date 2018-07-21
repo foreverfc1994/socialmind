@@ -53,70 +53,70 @@
     MAIN SIDEBAR MENU
     *********************************************************************************************************************************************************** -->
     <!--sidebar start-->
-        <aside>
-            <div id="sidebar"  class="nav-collapse ">
-                <!-- sidebar menu start-->
-                <ul class="sidebar-menu" id="nav-accordion">
-
-                    <p class="centered"><a href="/profile/"><img src="{% static 'assets0/img/friends/fr-09.jpg' %}" class="img-circle" width="60"></a></p>
-                    <h5 class="centered">访客您好</h5>
-
-                    <li class="mt">
-                        <a class="active" href="/index/">
-                            <i class="fa fa-dashboard"></i>
-                            <span>首页</span>
-                        </a>
-                    </li>
-
-                    <li class="sub-menu">
-                        <a href="/heatIndex/" >
-                            <i class="fa fa-dashboard"></i>
-                            <span>热度指标</span>
-                        </a>
-                    </li>
-
-                    <li class="sub-menu">
-                        <a href="/emotionMap/" >
-                            <i class="fa fa-desktop"></i>
-                            <span>情绪地图</span>
-                        </a>
-
-                    </li>
-
-                    <li class="sub-menu">
-                        <a href="/informationMonitor/" >
-                            <i class="fa fa-cogs"></i>
-                            <span>信息监测</span>
-                        </a>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="/fullTextMonitor/" >
-                            <i class="fa fa-book"></i>
-                            <span>全文检索</span>
-                        </a>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="/events/" >
-                            <i class="fa fa-tasks"></i>
-                            <span>全网事件分析</span>
-                        </a>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="/reportMaker/" >
-                            <i class="fa fa-th"></i>
-                            <span>简报制作</span>
-                        </a>
-                    </li>
-                </ul>
-                <!-- sidebar menu end-->
-            </div>
-        </aside>
+{#        <aside>#}
+{#            <div id="sidebar"  class="nav-collapse ">#}
+{#                <!-- sidebar menu start-->#}
+{#                <ul class="sidebar-menu" id="nav-accordion">#}
+{##}
+{#                    <p class="centered"><a href="/profile/"><img src="{% static 'assets0/img/friends/fr-09.jpg' %}" class="img-circle" width="60"></a></p>#}
+{#                    <h5 class="centered">访客您好</h5>#}
+{##}
+{#                    <li class="mt">#}
+{#                        <a class="active" href="/index/">#}
+{#                            <i class="fa fa-dashboard"></i>#}
+{#                            <span>首页</span>#}
+{#                        </a>#}
+{#                    </li>#}
+{##}
+{#                    <li class="sub-menu">#}
+{#                        <a href="/heatIndex/" >#}
+{#                            <i class="fa fa-dashboard"></i>#}
+{#                            <span>热度指标</span>#}
+{#                        </a>#}
+{#                    </li>#}
+{##}
+{#                    <li class="sub-menu">#}
+{#                        <a href="/emotionMap/" >#}
+{#                            <i class="fa fa-desktop"></i>#}
+{#                            <span>情绪地图</span>#}
+{#                        </a>#}
+{##}
+{#                    </li>#}
+{##}
+{#                    <li class="sub-menu">#}
+{#                        <a href="/informationMonitor/" >#}
+{#                            <i class="fa fa-cogs"></i>#}
+{#                            <span>信息监测</span>#}
+{#                        </a>#}
+{#                    </li>#}
+{#                    <li class="sub-menu">#}
+{#                        <a href="/fullTextMonitor/" >#}
+{#                            <i class="fa fa-book"></i>#}
+{#                            <span>全文检索</span>#}
+{#                        </a>#}
+{#                    </li>#}
+{#                    <li class="sub-menu">#}
+{#                        <a href="/events/" >#}
+{#                            <i class="fa fa-tasks"></i>#}
+{#                            <span>全网事件分析</span>#}
+{#                        </a>#}
+{#                    </li>#}
+{#                    <li class="sub-menu">#}
+{#                        <a href="/reportMaker/" >#}
+{#                            <i class="fa fa-th"></i>#}
+{#                            <span>简报制作</span>#}
+{#                        </a>#}
+{#                    </li>#}
+{#                </ul>#}
+{#                <!-- sidebar menu end-->#}
+{#            </div>#}
+{#        </aside>#}
 
         <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
         *********************************************************************************************************************************************************** -->
         <!--main content start-->
-        <section id="main-content">
+{#        <section id="main-content">#}
             <section class="wrapper">
                 <div class="row">
                     <div class="col-lg-6 main-chart">
@@ -203,14 +203,14 @@
                     <div class="col-lg-6 main-chart">
                         <div class="white-panel pn400 donut-chart">
                             <div class="white-panel">
-                                <div class="white-header">
+                                <div class="white-header" style="margin-bottom: 0px;">
                                     <h3>当地新事件统计</h3>
                                 </div>
                             </div>
                             <div class="panel-body" style="height: 80%;">
                                 <div class="chart mt">
-                                    <div class="linePicture" style="height: 100%; width: 100%;">
-                                        <canvas id="rtPic" height="300px" width="700px"></canvas>
+                                    <div class="linePicture" style="height: 90%; width: 100%;">
+                                        <canvas id="rtPic" height="280px" width="700px"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -243,8 +243,8 @@
                                             <thead>
                                             <tr>
                                                 <th style="width: 15%;">序号</th>
-                                                <th style="width: 45%;">日志简介</th>
-                                                <th style="width: 20%;">日志类型</th>
+                                                <th style="width: 45%;">事件名称</th>
+                                                <th style="width: 20%;">热度</th>
                                                 <th>时间</th>
                                             </tr>
                                             </thead>
@@ -276,11 +276,11 @@
                     </div>
                     <div class="row mt">
                         <div class="col-lg-3">
-                            <div class="content-panel">
+                            <div class="content-panel" style="height: 290px;">
                                 <h4 style="float: left">关键词云</h4>
                                 <div class="panel-body">
-                                     <div class="pic" style="position: center; width: 240px; height: 240px; margin-left: 12px;">
-                                         <canvas id="cloud" height="230px" width="240px"></canvas>
+                                     <div class="pic" style="position: center; width: 90%; margin-left: 5%;">
+                                         <canvas id="cloud" style="width: 90%; height: 200px; margin-left: 5%;"></canvas>
                                      </div>
                                 </div>
                             </div>
@@ -289,8 +289,8 @@
                             <div class="content-panel">
                                 <h4 style="float: left">文章来源构成</h4>
                                 <div class="panel-body">
-                                    <div id="statistics00" style="width: 30%; margin-left:4%;">
-                                        <div class="pic" style="position: center; width: 240px; height: 240px;">
+                                    <div id="statisticsx00" style="width: 100%;">
+                                        <div class="pic" style="position: center; width: 70%; height: 240px; margin-left: 15%;">
                                             <canvas id="serverstatusPie" height="120px" width="120px"></canvas>
                                             <script>
                                                     var config = {
@@ -387,11 +387,11 @@
                     </div>
                     <div class="row mt">
                         <div class="col-lg-3">
-                            <div class="content-panel">
+                            <div class="content-panel" style="height: 290px;">
                                 <h4 style="float: left">传播信息网络</h4>
                                 <div class="panel-body">
-                                     <div class="pic" style="position: center; width: 240px; height: 240px; margin-left: 12px;">
-                                         <img src="{% static "assets0/img/transportNet.png" %}" style="width: 240px; height: 220px;">
+                                     <div class="pic" style="width: 100%;">
+                                         <img src="{% static "assets0/img/transportNet.png" %}" style="width: 80%; height: 220px; margin-left: 10%;">
                                      </div>
                                 </div>
                             </div>
@@ -400,8 +400,8 @@
                             <div class="content-panel">
                                 <h4 style="float: left">事件情绪组成</h4>
                                 <div class="panel-body">
-                                    <div id="statistics01" style="width: 30%; margin-left:4%;">
-                                        <div class="pic" style="position: center; width: 240px; height: 240px;">
+                                    <div id="statistics01" style="width: 100%;">
+                                        <div class="pic" style="position: center; width: 70%; height: 240px; margin-left: 15%;">
                                             <canvas id="serverstatusPiee" height="120px" width="120px"></canvas>
                                             <script>
                                                     var config = {
@@ -497,7 +497,7 @@
                     </div>
                 </div>
             </section>
-        </section>
+{#        </section>#}
 
         <!--main content end-->
         <!--footer start-->

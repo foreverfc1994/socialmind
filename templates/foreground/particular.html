@@ -16,9 +16,10 @@
     <!-- Custom styles for this template -->
     <link href="{% static 'assets0/css/style.css' %}" rel="stylesheet">
 
-
+    <script src="{% static 'assets0/js/echarts.js' %}"></script>
+    <script src="{% static 'assets0/js/wordcloud2.js' %}"></script>
+    <script src="{% static 'assets0/js/china.js' %}"></script>
     <script src="{% static 'assets0/js/chart-master/Chart.js' %}"></script>
-
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -32,7 +33,7 @@
     *********************************************************************************************************************************************************** -->
     <!--header start-->
     <header class="header black-bg">
-        <a href="index.html" class="logo"><b>social mind舆情管理平台</b></a>
+        <a href="/index/" class="logo"><b>social mind舆情管理平台</b></a>
         <a class="logo"><b>&nbsp; &nbsp; &nbsp; >&nbsp; &nbsp; &nbsp; 事件详情</b></a>
         <div class="top-menu">
             <ul class="nav pull-right top-menu">
@@ -40,65 +41,65 @@
             </ul>
         </div>
     </header>
-    <aside>
-        <div id="sidebar"  class="nav-collapse ">
-            <!-- sidebar menu start-->
-            <ul class="sidebar-menu" id="nav-accordion">
-
-                <p class="centered"><a href="/profile/"><img src="{% static 'assets0/img/friends/fr-09.jpg' %}" class="img-circle" width="60"></a></p>
-                <h5 class="centered">访客您好</h5>
-
-                <li class="mt">
-                    <a href="/index/">
-                        <i class="fa fa-dashboard"></i>
-                        <span>首页</span>
-                    </a>
-                </li>
-
-                <li class="sub-menu">
-                    <a href="/heatIndex/">
-                        <i class="fa fa-dashboard"></i>
-                        <span>热度指标</span>
-                    </a>
-                </li>
-
-                <li class="sub-menu">
-                    <a  href="/emotionMap/" >
-                        <i class="fa fa-desktop"></i>
-                        <span>情绪地图</span>
-                    </a>
-
-                </li>
-
-                <li class="sub-menu">
-                    <a href="/informationMonitor/" >
-                        <i class="fa fa-cogs"></i>
-                        <span>信息监测</span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a href="/fullTextMonitor/" >
-                        <i class="fa fa-book"></i>
-                        <span>全文检索</span>
-                    </a>
-                </li>
-                <li  class="sub-menu">
-                    <a href="/events/" >
-                        <i class="fa fa-tasks"></i>
-                        <span>全网事件分析</span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a href="/reportMaker/" >
-                        <i class="fa fa-th"></i>
-                        <span>简报制作</span>
-                    </a>
-                </li>
-            </ul>
-            <!-- sidebar menu end-->
-        </div>
-    </aside>
-    <section id="main-content">
+{#    <aside>#}
+{#        <div id="sidebar"  class="nav-collapse ">#}
+{#            <!-- sidebar menu start-->#}
+{#            <ul class="sidebar-menu" id="nav-accordion">#}
+{##}
+{#                <p class="centered"><a href="/profile/"><img src="{% static 'assets0/img/friends/fr-09.jpg' %}" class="img-circle" width="60"></a></p>#}
+{#                <h5 class="centered">访客您好</h5>#}
+{##}
+{#                <li class="mt">#}
+{#                    <a href="/index/">#}
+{#                        <i class="fa fa-dashboard"></i>#}
+{#                        <span>首页</span>#}
+{#                    </a>#}
+{#                </li>#}
+{##}
+{#                <li class="sub-menu">#}
+{#                    <a href="/heatIndex/">#}
+{#                        <i class="fa fa-dashboard"></i>#}
+{#                        <span>热度指标</span>#}
+{#                    </a>#}
+{#                </li>#}
+{##}
+{#                <li class="sub-menu">#}
+{#                    <a  href="/emotionMap/" >#}
+{#                        <i class="fa fa-desktop"></i>#}
+{#                        <span>情绪地图</span>#}
+{#                    </a>#}
+{##}
+{#                </li>#}
+{##}
+{#                <li class="sub-menu">#}
+{#                    <a href="/informationMonitor/" >#}
+{#                        <i class="fa fa-cogs"></i>#}
+{#                        <span>信息监测</span>#}
+{#                    </a>#}
+{#                </li>#}
+{#                <li class="sub-menu">#}
+{#                    <a href="/fullTextMonitor/" >#}
+{#                        <i class="fa fa-book"></i>#}
+{#                        <span>全文检索</span>#}
+{#                    </a>#}
+{#                </li>#}
+{#                <li  class="sub-menu">#}
+{#                    <a href="/events/" >#}
+{#                        <i class="fa fa-tasks"></i>#}
+{#                        <span>全网事件分析</span>#}
+{#                    </a>#}
+{#                </li>#}
+{#                <li class="sub-menu">#}
+{#                    <a href="/reportMaker/" >#}
+{#                        <i class="fa fa-th"></i>#}
+{#                        <span>简报制作</span>#}
+{#                    </a>#}
+{#                </li>#}
+{#            </ul>#}
+{#            <!-- sidebar menu end-->#}
+{#        </div>#}
+{#    </aside>#}
+{#    <section id="main-content">#}
         <section class="wrapper">
             <div class="col-lg-9 main-chart">
                 <div id="morris">
@@ -149,12 +150,80 @@
                                         <input type="text"  class="form-control" placeholder="输入您要评论的内容：">
                                     </div>
                                     <button type="button" class="btn btn-warning" style="height: 44px; width: 80px; margin-left: 5%;">评论</button>
-                                    <div class="comments">
+                                    <div class="comments" id="comments">
                                     </div>
                                 </div>
+                                <div id="choiceFunc" class="eventData">
+                                    <button class="btn btn-theme04 event3Buttons" id="change0" value="open0" onclick="changePage(this.value)">事件指数</button>
+                                    <button class="btn btn-warning event3Buttons" id="change1" value="close1" onclick="changePage(this.value)">传播分析</button>
+                                    <button class="btn btn-warning event3Buttons" id="change2" value="close2" onclick="changePage(this.value)">情感分析</button>
+                                </div>
+                                <div id="eventExponent" class="eventComments centered" style="display: block;">
+                                    <table>
+                                        <td style="width: 33%;">
+                                            <div class="items">
+                                                <h4 class="centered">&nbsp; &nbsp;事件热度</h4>
+                                                <div id="heat" style="width: 100%; height: 350px;"></div>
+                                            </div>
+                                        </td>
+                                        <td style="width: 33%;">
+                                            <div class="items">
+                                                <h4 class="centered">&nbsp; &nbsp;事件敏感度</h4>
+                                                <div id="sensitive" style="width: 100%; height: 350px;"></div>
+                                            </div>
+                                        </td>
+                                        <td style="width: 33%;">
+                                            <div class="items">
+                                                <h4 class="centered">&nbsp; &nbsp;事件情感极性</h4>
+                                                <div id="polarity" style="width: 100%; height: 350px;"></div>
+                                            </div>
+                                        </td>
+                                    </table>
+                                    <div style="height: 350px; width: 90%; margin-left: 5%;">
+                                        <canvas id="heatTrendCount" height="300px" width="900px"></canvas>
+                                    </div>
+                                    <div style="height: 350px; width: 90%; margin-left: 5%;">
+                                        <canvas id="heatTime" height="300px" width="900px"></canvas>
+                                    </div>
+                                    <div class="eventComments" id="maps">
+                                        <div id="heatMap" style="width: 80%; height: 450px; margin-left: 15%;"></div>
+                                            <div id="sensitiveMap" style="width: 80%; height: 450px; margin-left: 15%;"></div>
+                                    </div>
+                                    <div class="eventCloud" id="eventCloud">
+                                        <p class="centered" style="font-size: 20px; z-index: 10;"><strong>关键词云</strong></p>
+                                        <canvas id="cloud" style="position: center; width: 50%; height: 300px; margin-top: -10px; z-index: -100;"></canvas>
+                                    </div>
+                                </div>
+                                <div id="transportAnalyze" class="eventComments centered" style="display: none">
+                                    <div class="eventTrend" id="eventTrend">
+                                        <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>事件走势</strong></p>
+                                        <img src="{% static 'assets0/img/eventTrend.png' %}" style="width: 80%; height: 80%;">
+                                    </div>
+                                    <div class="informSource" id="informSource">
+                                        <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>信息来源</strong></p>
+                                        <img src="{% static 'assets0/img/informSource.png' %}" style="width: 600px; height: 600px;">
+                                    </div>
+                                    <div id="mediaLiveness" class="mediaLiveness">
+                                        <br><p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>媒体活跃度</strong></p>
+                                        <canvas id="mediaLivenessBar" style="height: 280px; width: 80%;"></canvas>
+                                    </div>
+                                    <div id="informTree" class="informTree">
+                                        <br><p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>信息传播过程</strong></p>
+                                        <img src="{% static 'assets0/img/informTree.jpg' %}" style="width: 60%; height: 350px;">
+                                    </div>
+                                    <div id="informNet" class="infromNet">
+                                        <br><p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>信息传播网络</strong></p>
+                                        <img src="{% static 'assets0/img/transportNet.png' %}" style="width: 60%; height: 350px;">
+                                    </div>
+                                </div>
+                                <div id="emotionAnalyze" class="eventComments centered" style="display: none" hidden="true">
+
+                                </div>
+
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <a href="/fileParticular/">
                             <div class="col-lg-12">
@@ -289,11 +358,11 @@
 
             </div>
         </section>
-    </section>
+{#    </section>#}
 
     <footer class="site-footer">
         <div class="text-center">
-            2018 - <a href="www.xjtu.edu.cn" target="_blank" title="西安交通大学">西安交通大学</a> - <a href="http://www.xjtu.edu.cn" title="social mind" target="_blank">social mind舆情分析平台</a>
+            2018 - <a href="http://www.xjtu.edu.cn" target="_blank" title="西安交通大学">西安交通大学</a> - <a href="http://www.xjtu.edu.cn" title="social mind" target="_blank">social mind舆情分析平台</a>
             <a href="#" class="go-top">
                 <strong>回到顶部</strong>
             </a>
@@ -303,19 +372,19 @@
 </body>
 <!-- js placed at the end of the document so the pages load faster -->
 <script src="{% static 'assets0/js/jquery.js'%}"></script>
+{#<script src="{% static 'assets0/js/jquery.nicescroll.js'%}" type="text/javascript"></script>#}
 <script src="{% static 'assets0/js/jquery-1.8.3.min.js'%}"></script>
 <script src="{% static 'assets0/js/bootstrap.min.js'%}"></script>
 <script class="include" type="text/javascript" src="{% static 'assets0/js/jquery.dcjqaccordion.2.7.js'%}"></script>
 <script src="{% static 'assets0/js/jquery.scrollTo.min.js'%}"></script>
-<script src="{% static 'assets0/js/jquery.nicescroll.js'%}" type="text/javascript'%}"></script>
 <script src="{% static 'assets0/js/jquery.sparkline.js'%}"></script>
-
-
-<!--common script for all pages-->
-<script src="{% static 'assets0/js/common-scripts.js'%}"></script>
+<script src="{% static 'assets0/js/swiper-4.3.3.min.js' %}"></script>
 
 <script type="text/javascript" src="{% static 'assets0/js/gritter/js/jquery.gritter.js'%}"></script>
 <script type="text/javascript" src="{% static 'assets0/js/gritter-conf.js'%}"></script>
+<!--common script for all pages-->
+<script src="{% static 'assets0/js/common-scripts.js'%}"></script>
+
 
 <script>
     $(function(){
@@ -333,5 +402,365 @@
         footerPosition();
         $(window).resize(footerPosition);
     });
+</script>
+<script>
+    option = {
+        tooltip : {
+            formatter: "{a} <br/>{b} : {c}%"
+        },
+        series: [
+            {
+                name: 'heat',
+                type: 'gauge',
+                detail: {formatter:'{value}%'},
+                data: [{value: 70, name: '事件热度'}]
+            }
+        ]
+    };
+    var chart = echarts.init(document.getElementById('heat'));
+    chart.setOption(option);
+</script>
+<script>
+    option = {
+        tooltip : {
+            formatter: "{a} <br/>{b} : {c}%"
+        },
+        series: [
+            {
+                name: 'sensitive',
+                type: 'gauge',
+                detail: {formatter:'{value}%'},
+                data: [{value: 50, name: '事件敏感度'}]
+            }
+        ]
+    };
+    var chart = echarts.init(document.getElementById('sensitive'));
+    chart.setOption(option,true);
+</script>
+<script>
+    option = {
+        tooltip : {
+            formatter: "{a} <br/>{b} : {c}%"
+        },
+        series: [
+            {
+                name: 'polarity',
+                type: 'gauge',
+                detail: {formatter:'{value}%'},
+                data: [{value: 20, name: '事件极性'}]
+            }
+        ]
+    };
+    var chart = echarts.init(document.getElementById('polarity'));
+    chart.setOption(option,true);
+</script>
+<script>
+     var heatTrendCountData = {
+         labels : ["January","February","March","April","May","June","July"],
+         datasets : [{
+             label: "全网信息数",
+             fill: false,
+             pointBackgroundColor: "#FF0000",
+             borderColor: "#F08080",
+             backgroundColor: "#F08080",
+             data : [165,159,132,129,146,155,140]      //点的Y轴值
+         },
+
+             {
+                 label: "热点文章数",
+                 fill: false,
+                 pointBackgroundColor: "#008000",
+                 borderColor: "#32CD32",
+                 backgroundColor: "#32CD32",
+                 data : [32,44,22,99,33,22,4]      //点的Y轴值
+             },
+         {
+                 label: "敏感文章数",
+                 fill: false,
+                 pointBackgroundColor: "#66CCFF",
+                 borderColor: "#0033CC",
+                 backgroundColor: "#0033CC",
+                 data : [32,34,27,19,33,92,44]      //点的Y轴值
+             }]
+     };
+
+    //定义图表的参数
+    var heatTrendCountOptions = {
+        title: {
+            display: true,
+            text: "事件走势统计",
+            fontSize: 20,
+            fontColor: "#000000",
+        },
+    };
+    heatTrendCountconfig = {
+        "type": "line",
+        "data": heatTrendCountData,
+        "options": heatTrendCountOptions,
+    };
+    var dataTime = {
+     labels : ["January","February","March","April","May","June","July","August"],
+     datasets : [{
+         label: "热度指数",
+         fill: false,
+         pointBackgroundColor: "#FF0000",
+         borderColor: "#F08080",
+         backgroundColor: "#F08080",
+         data : [11,159,250,330,1111,800,200,100]      //点的Y轴值
+     }]
+    };
+
+    //定义图表的参数
+    var optionsTime = {
+        title: {
+            display: true,
+            text: "热度爆发统计",
+            fontSize: 20,
+            fontColor: "#000000",
+        },
+    };
+    configTime = {
+        "type": "line",
+        "data": dataTime,
+        "options": optionsTime,
+    };
+    var mediaLivenessData = {
+     labels : ["新浪微博","微信","今日头条","中华网","新华网","凤凰网","新浪网","其他"],
+     datasets : [{
+         label: "媒体活跃度",
+         data : [11552,9955,2550,1330,1111,800,200,100] ,
+         backgroundColor: "#DAA520",
+         borderColor: "#DAA520",
+     }],
+    };
+
+    //定义图表的参数
+    var mediaLivenessOptions = {
+    };
+    mediaLivenessConfig = {
+        "type": "bar",
+        "data": mediaLivenessData,
+        "options": mediaLivenessOptions,
+    };
+    window.onload = function(){
+        new Chart(document.getElementById("heatTime"), configTime);
+        new Chart(document.getElementById("heatTrendCount"), heatTrendCountconfig);
+        new Chart(document.getElementById("mediaLivenessBar"), mediaLivenessConfig);
+    };
+</script>
+<script>
+    function randomData() {
+        return Math.round(Math.random()*500);
+    }
+
+    var mydata = [
+        {name: '北京',value: randomData() },{name: '天津',value: randomData() },
+        {name: '上海',value: randomData() },{name: '重庆',value: randomData() },
+        {name: '河北',value: randomData() },{name: '河南',value: randomData() },
+        {name: '云南',value: randomData() },{name: '辽宁',value: randomData() },
+        {name: '黑龙江',value: randomData() },{name: '湖南',value: randomData() },
+        {name: '安徽',value: randomData() },{name: '山东',value: randomData() },
+        {name: '新疆',value: randomData() },{name: '江苏',value: randomData() },
+        {name: '浙江',value: randomData() },{name: '江西',value: randomData() },
+        {name: '湖北',value: randomData() },{name: '广西',value: randomData() },
+        {name: '甘肃',value: randomData() },{name: '山西',value: randomData() },
+        {name: '内蒙古',value: randomData() },{name: '陕西',value: randomData() },
+        {name: '吉林',value: randomData() },{name: '福建',value: randomData() },
+        {name: '贵州',value: randomData() },{name: '广东',value: randomData() },
+        {name: '青海',value: randomData() },{name: '西藏',value: randomData() },
+        {name: '四川',value: randomData() },{name: '宁夏',value: randomData() },
+        {name: '海南',value: randomData() },{name: '台湾',value: randomData() },
+        {name: '香港',value: randomData() },{name: '澳门',value: randomData() }
+    ];
+
+    var optionHeat = {
+        backgroundColor: '#DCDCDC',
+        title: {
+            text: '热度地图',
+            subtext: '纯属虚构',
+            x:'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: '{b}<br/>{c}'
+        //    b为省份，c为数据
+        },
+        visualMap: {
+            show : true,
+            x: 'left',
+            y: 'bottom',
+            text: ['正面', '负面'],
+            calculable: true,
+            splitList: [
+                {start: 500, end:600},{start: 400, end: 500},
+                {start: 300, end: 400},{start: 200, end: 300},
+                {start: 100, end: 200},{start: 0, end: 100},
+            ],
+            color: ['#00FF00', '#90EE90', '#ADFF2F','#FFFFE0', '#FFA07A', '#FF0000']
+        },
+        series: [{
+            name: '随机数据',
+            type: 'map',
+            mapType: 'china',
+            roam: false,
+            label: {
+                normal: {
+                    show: false
+                },
+                emphasis: {
+                    show: false
+                }
+            },
+            data:mydata
+        }]
+    };
+    var optionSensitive = {
+        backgroundColor: '#DCDCDC',
+        title: {
+            text: '敏感度地图',
+            subtext: '纯属虚构',
+            x:'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: '{b}<br/>{c}'
+        //    b为省份，c为数据
+        },
+        visualMap: {
+            show : true,
+            x: 'left',
+            y: 'bottom',
+            text: ['正面', '负面'],
+            calculable: true,
+            splitList: [
+                {start: 500, end:600},{start: 400, end: 500},
+                {start: 300, end: 400},{start: 200, end: 300},
+                {start: 100, end: 200},{start: 0, end: 100},
+            ],
+            color: ['#00FF00', '#90EE90', '#ADFF2F','#FFFFE0', '#FFA07A', '#FF0000']
+        },
+        series: [{
+            name: '随机数据',
+            type: 'map',
+            mapType: 'china',
+            roam: false,
+            label: {
+                normal: {
+                    show: false
+                },
+                emphasis: {
+                    show: false
+                }
+            },
+            data:mydata
+        }]
+    };
+    var chartHeat = echarts.init(document.getElementById('heatMap'));
+    var chartSensitive = echarts.init(document.getElementById('sensitiveMap'));
+    chartHeat.setOption(optionHeat);
+    chartSensitive.setOption(optionSensitive);
+</script>
+<script>
+    var list = [
+        ['aaa', 12],
+        ['ddd', 22],
+        ['fff', 12],
+        ['SE', 10],
+        ['ee3e', 7],
+        ['ff2f', 9],
+        ['socialmind', 38],
+        ['ee1e', 24],
+        ['3fff', 16],
+        ['XJTU', 34],
+        ['e4ee', 23],
+        ["Pear", 12],
+        ["Grape", 22],
+        ["Pine", 27],
+        ["Banana", 19],
+        ["Lemon", 5],
+        ["Parigi", 15],
+        ["Apple", 12]
+        ["Mear", 21],
+        ["Torino", 13],
+        ["Mescola", 17],
+        ["Gigi", 7],
+        ["Roma", 6],
+        ["Empoli", 5],
+        ["Mela", 25]
+        ["Alessandro", 15],
+        ["Imola", 4],
+        ["Hp", 14],
+        ["Harry", 8],
+        ["Potter", 18],
+        ["Amsterdam", 15],
+        ["Como", 8]
+    ];
+    var option = {
+        list: list,
+        color: "random-dark",
+        shape: "cardioid",
+        fontWeight: "bold",
+        backgroundColor: "#DCDCDC",
+    };
+    WordCloud(document.getElementById("cloud"), option);
+</script>
+<script>
+    function changePage(value){
+
+        if(value=="open0"){
+            document.getElementById("eventExponent").style.display = 'none';
+            document.getElementById("change0").value = 'close0';
+            document.getElementById("change0").setAttribute("class", "btn btn-warning event3Buttons");
+            return;
+        }
+        else if(value=="close0"){
+            document.getElementById("transportAnalyze").style.display = 'none';
+            document.getElementById("change1").value = 'close1';
+            document.getElementById("change1").setAttribute("class", "btn btn-warning event3Buttons");
+            document.getElementById("emotionAnalyze").style.display = 'none';
+            document.getElementById("change2").value = 'close2';
+            document.getElementById("change2").setAttribute("class", "btn btn-warning event3Buttons");
+            document.getElementById("eventExponent").style.display = 'block';
+            document.getElementById("change0").value = 'open0';
+            document.getElementById("change0").setAttribute("class", "btn btn-theme04 event3Buttons");
+            return;
+        }
+        if(value=="open1"){
+            document.getElementById("transportAnalyze").style.display = 'none';
+            document.getElementById("change1").value = 'close1';
+            document.getElementById("change1").setAttribute("class", "btn btn-warning event3Buttons");
+            return;
+        }
+        else if(value=='close1'){
+            document.getElementById("emotionAnalyze").style.display = 'none';
+            document.getElementById("change2").value = 'close2';
+            document.getElementById("change2").setAttribute("class", "btn btn-warning event3Buttons");
+            document.getElementById("eventExponent").style.display = 'none';
+            document.getElementById("change0").value = 'close0';
+            document.getElementById("change0").setAttribute("class", "btn btn-warning event3Buttons");
+            document.getElementById("transportAnalyze").style.display = 'block';
+            document.getElementById("change1").value = 'open1';
+            document.getElementById("change1").setAttribute("class", "btn btn-theme04 event3Buttons");
+            return;
+        }
+        if(value=="open2"){
+            document.getElementById("emotionAnalyze").style.display = 'none';
+            document.getElementById("change2").value = 'close2';
+            document.getElementById("change2").setAttribute("class", "btn btn-warning event3Buttons");
+            return;
+        }
+        else if(value=='close2'){
+            document.getElementById("transportAnalyze").style.display = 'none';
+            document.getElementById("change1").value = 'close1';
+            document.getElementById("change1").setAttribute("class", "btn btn-warning event3Buttons");
+            document.getElementById("eventExponent").style.display = 'none';
+            document.getElementById("change0").value = 'close0';
+            document.getElementById("change0").setAttribute("class", "btn btn-warning event3Buttons");
+            document.getElementById("emotionAnalyze").style.display = 'block';
+            document.getElementById("change2").value = 'open2';
+            document.getElementById("change2").setAttribute("class", "btn btn-theme04 event3Buttons");
+            return;
+        }
+    }
 </script>
 </html>
