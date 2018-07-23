@@ -42,8 +42,8 @@
         </div>
         <div class="col-lg-8">
             <ul id="menu">
-                <li><a>首页</a></li>
-                <li><a>当地事件</a></li>
+                <li><a href="/com_index/">首页</a></li>
+                <li><a href="/events/?character=com&param=localEvent">当地事件</a></li>
                 <li><a>敏感事件</a></li>
                 <li><a>相关领域</a></li>
                 <li><a>竞争对手</a></li>
@@ -254,14 +254,12 @@
 
 
   </body>
-<script>
-
-    window.onload = function(){
-        emotionCompose();
-        eventChange();
-        sensitiveInform();
-        emotionTrend();
-    };
-
-</script>
+    <script>
+        window.onload = function(){
+            emotionCompose();
+            eventChange();
+            sensitiveInform();
+            emotionTrend();
+        };
+    </script>
 </html>

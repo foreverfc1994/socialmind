@@ -452,10 +452,9 @@ ul.sidebar-menu li a.active i {
 }
 
 a.logo {
-    font-size: 20px;
+    font-size: 28px;
     color: #ffffff;
     float: left;
-    margin-top: 15px;
     text-transform: uppercase;
 }
 
@@ -1022,6 +1021,11 @@ PANELS CONFIGURATIONS
 .pn400{
     height: 360px;
     box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.pn70 {
+	height: 70px;
+	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .pn:hover {
@@ -2382,7 +2386,7 @@ label {
 .comments{
     margin-top: 20px;
 }
-.linePicture{
+.canvas80{
     margin: auto;
     width: 80%;
     height: 80%;
@@ -2410,4 +2414,109 @@ label {
     width: 80%;
     height: 480px;
     margin-left: 10%;
+}
+.headerTitle{
+    float: left;
+    height: 60px;
+    padding-left: 15px;
+    line-height: 60px;
+}
+#menu {
+    list-style:none; /* 将默认的列表符号去掉 */
+    height: 30px;
+    padding:0; /* 将默认的内边距去掉 */
+    margin-top:13px; /* 将默认的外边距去掉 */
+}
+#menu li {
+    float: left;
+}
+#menu li a {
+    display:block; /* 将链接设为块级元素 */
+    padding:8px 10px; /* 设置内边距 */
+    background:#DAA520; /* 设置背景色 */
+    color:#fff; /* 设置文字颜色 */
+    text-decoration:none; /* 去掉下划线 */
+    /*border-right:1px solid #dcdcdc; !* 在左侧加上分隔线 *!*/
+    font-size: 16px;
+    width:100px; /* 设置宽度 */
+    height:30px; /* 设置高度 */
+    line-height:30px; /* 设置行高，将行高和高度设置同一个值，可以让单行文本垂直居中 */
+    text-align:right; /* 居中对齐文字 */
+}
+#menu li a:hover {
+    color:#000000; /* 变换文字颜色 */
+    cursor: pointer;
+}
+#person_center{
+    margin-top: 18px;
+    float: right;
+    margin-right: 15px;
+    background-color: #cdcdcd;
+    height: 30px;
+    width: 90px;
+}
+#person_center ul{
+    height: 30px;
+    padding-left: 0px;
+}
+.liClass{
+    height: 100%;
+    width: 100%;
+    line-height: 30px;
+    text-align: center;
+}
+.liClass ul{
+    display: none;
+}
+.liClass ul li {
+    height: 30px;
+    background-color: #cdcdcd;
+}
+.liClass:hover ul{
+    display: block;
+    width: 90px;
+    background-color: #cdcdcd;
+}
+#person_center li:hover, #person_center a:hover {
+    cursor: pointer;
+}
+.eventTypeMenu{
+    list-style:none; /* 将默认的列表符号去掉 */
+    height: 40px;
+    padding:0; /* 将默认的内边距去掉 */
+    margin-top:13px; /* 将默认的外边距去掉 */
+    margin-bottom: 0px;
+    width: 100%;
+}
+.eventTypeMenu li{
+    float: left;
+    width: 10%;
+    height: 40px;
+    background: #ffffff;
+}
+.eventTypeMenu li a{
+    display:block; /* 将链接设为块级元素 */
+    padding:8px 10px; /* 设置内边距 */
+    background:#ffffff; /* 设置背景色 */
+    color:#696969; /* 设置文字颜色 */
+    text-decoration:none; /* 去掉下划线 */
+    /*border-right:1px solid #dcdcdc; !* 在左侧加上分隔线 *!*/
+    font-size: 16px;
+    width:100%; /* 设置宽度 */
+    height:40px; /* 设置高度 */
+    text-align:center; /* 居中对齐文字 */
+}
+.eventTypeMenu li a:hover{
+    color: #000000;
+    font-weight: bold;
+    cursor: pointer;
+}
+.eventTypeMenu li a:target{
+    color: #000000;
+    font-weight: bold;
+    background-color: #DAA520;
+}
+.action{
+    background: #DAA520;
+    color: #ffffff;
 }
