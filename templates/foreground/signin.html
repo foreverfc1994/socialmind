@@ -104,7 +104,7 @@
                     "        <p>请输入您的职业：<span style=\"color:red\">*</span></p>\n" +
                     "        <input name='job' type=\"text\" class=\"form-control\" placeholder=\"请输入您的职业\" style=\"width: 100%\" required=\"true\"><br>\n" +
                     "        <p>请输入您的兴趣：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='interest' type=\"text\" class=\"form-control\" placeholder=\"请输入您的兴趣兴趣\" style=\"width: 100%\" required=\"true\"><br>\n" +
+                    "        <input onclick= 'interest()'name='interest' type=\"text\" class=\"form-control\" placeholder=\"请输入您的兴趣兴趣\" style=\"width: 100%\" required=\"true\"><br>\n" +
                     "        <button class=\"btn btn-theme btn-block\" type=\"button\" onclick=\"sub()\">\n" +
                     "            <i class=\"fa fa-lock\"></i>\n" +
                     "            &nbsp; &nbsp;确定\n" +
@@ -304,6 +304,9 @@
 <script>
     function exitt(){
         location.reload();
+    }
+    function interest() {
+        
     }
 </script>
 <script>
