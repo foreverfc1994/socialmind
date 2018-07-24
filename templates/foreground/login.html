@@ -22,7 +22,6 @@
 
         <form name= 'login'class="form-login" id="login" action="/login/" method="post">
             {% csrf_token %}
-
             <h2 class="form-login-heading">请您登陆</h2>
                 {% if message %}
                     <div class="alert alert-warning">{{ message }}</div>
@@ -40,7 +39,6 @@
                 <input name="password" type="password" class="form-control" placeholder="密码" required><br>
                 <button class="btn btn-theme btn-block"  type="submit"><i class="fa fa-lock"></i> &nbsp; &nbsp;登陆</button>
                 <button class="btn btn-theme btn-block" onclick="signIn()" type="button"><i class="fa fa-user"></i> &nbsp; &nbsp;注册</button>
-
             </div>
         </form>
     </div>

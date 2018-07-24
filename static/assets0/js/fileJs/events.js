@@ -16,3 +16,23 @@ function footerKeeper(){
     footerPosition();
     $(window).resize(footerPosition);
 }
+
+function clickedEventType(value){
+    var liList = document.getElementById("eventTypeMenu").getElementsByTagName("li");
+    var typeNum = document.getElementById("eventTypeMenu").getElementsByTagName("li").length;
+    if(liList[value-1].className !== 'liAction'){
+        document.getElementById("eventTypeMenu").getElementsByTagName("li")[value-1].className = "liAction";
+        for(i=0; i<typeNum; i++){
+            if(i !== value-1){
+                document.getElementById("eventTypeMenu").getElementsByTagName("li")[i].className = "";
+            }
+        }
+    }
+    else{
+        for(i=0; i<typeNum; i++){
+            document.getElementById("eventTypeMenu").getElementsByTagName("li")[i].className = "";
+        }
+    }
+
+
+}
