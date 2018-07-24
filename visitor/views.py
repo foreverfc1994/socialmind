@@ -148,4 +148,4 @@ def checkuser(request):
     return JsonResponse({'msg':msg})
 
 def test(request):
-    return render(request,'base.html')
+    return render(request, 'foreground/com_index.html')

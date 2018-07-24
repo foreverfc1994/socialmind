@@ -1,249 +1,448 @@
+
+
 {% load staticfiles %}
-<!DOCTYPE html >
-<html lang ="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset = "utf-8" >
-    <meta name = "viewport" content = "width=device-width, initial-scale=1.0" >
-    <meta name = "description" content = "" >
-    <meta name = "author" content = "Dashboard" >
-    <meta name = "keyword" content = "Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina" >
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>social mind 舆情分析平台</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
 
-    <title> social mind舆情分析平台 </title>
-
-    <link href="{% static 'assets0/css/bootstrap.css'%}" rel="stylesheet">
+    <link href="{% static 'assets0/css/bootstrap.css' %}" rel="stylesheet">
     <!--external css -->
-    <link href="{% static 'assets0/font-awesome/css/font-awesome.css'%}" rel="stylesheet"/>
+    <link href="{% static 'assets0/font-awesome/css/font-awesome.css' %}" rel="stylesheet"/>
     <!-- Custom styles for this template -->
-    <link href = "{% static 'assets0/css/style.css' %}" rel = "stylesheet" >
-    <link href = "{% static 'assets0/css/style-responsive.css' %}" rel = "stylesheet" >
-<link rel="stylesheet" href="//res.layui.com/layui/dist/css/layui.css"  media="all">
-    <script src = "{% static 'assets0/js/chart-master/Chart.js' %}" > </script>
-    <script src = "{% static 'assets0/js/echarts.js' %}" > </script>
-    <script src = "{% static 'assets0/js/wordcloud2.js' %}" > </script>
+    <link href="{% static 'assets0/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'assets0/css/style-responsive.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets0/layui/css/layui.css' %}" media="all">
+    <script src="{% static 'assets0/js/chart-master/Chart.js' %}"></script>
+    <script src="{% static 'assets0/js/echarts.js' %}"></script>
+    <script src="{% static 'assets0/js/wordcloud2.js' %}"></script>
     <script src="{% static 'assets0/js/fileJs/com_index.js' %}" type="text/javascript"></script>
-
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
+    <style>
+        .icon-signal {
+            background-position: -408px 0
+        }
 
-  <body>
-  <div class="layui-row">
-      <div class=""></div>
-  </div>
-  <ul class="layui-nav layui-bg-cyan">
-  <li class="layui-nav-item"><a href="">藏青导航</a></li>
-  <li class="layui-nav-item layui-this"><a href="">产品</a></li>
-  <li class="layui-nav-item"><a href="">大数据</a></li>
-  <li class="layui-nav-item">
-    <a href="javascript:;">解决方案</a>
-    <dl class="layui-nav-child">
-      <dd><a href="">移动模块</a></dd>
-      <dd><a href="">后台模版</a></dd>
-      <dd><a href="">电商平台</a></dd>
-    </dl>
-  </li>
-  <li class="layui-nav-item"><a href="">社区</a></li>
-</ul>
+        span.icon {
+            border-right: 1px solid #cdcdcd;
+            padding: 9px 10px 7px 11px;
+            float: left;
+            opacity: .7;
+        }
+
+        .r4_counter {
+            min-height: 100px;
+            margin-bottom: 15px;
+            border-radius: 7px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease-in-out;
+            background: #ffffff;
+            -webkit-box-shadow: 0 2px 28px rgba(0, 0, 0, .1);
+            box-shadow: 0 2px 28px rgba(0, 0, 0, .1);
+        }
+
+        .r4_counter .stats {
+            margin-left: 50px;
+        }
+
+        .ico-icon {
+            position: relative;
+        }
+
+        .ico-icon-w {
+            position: absolute;
+            top: 0;
+            left: 0
+        }
+
+        .ico-icon-w,
+        .r4_counter:hover .ico-icon .ico-icon-w {
+            visibility: hidden;
+        }
+
+        .r4_counter:hover .ico-icon .ico-icon-w {
+            visibility: visible;
+        }
+
+        .r4_counter.has-gradient-to-right-bottom .stats span {
+            color: #f7f7f7;
+        }
+
+        .r4_counter.has-gradient-to-right-bottom,
+        .r4_counter:hover {
+            -webkit-box-shadow: 0 1px 28px rgba(255, 152, 0, .66);
+            box-shadow: 0 1px 28px rgba(255, 152, 0, .66);
+            cursor: pointer;
+        }
+
+        .r4_counter:hover {
+            background-image: linear-gradient(to right bottom, #e8962e, #e45131) !important;
+        }
+
+        .r4_counter:hover h3 {
+            color: #fff
+        }
+
+        .r4_counter:hover span {
+            color: #f7f7f7
+        }
+
+        .r4_counter:hover .icon-primary {
+            color: #fff
+        }
+
+        .r4_counter .icon-after {
+            position: absolute;
+            width: 30%;
+            line-height: 75px;
+            height: 92%;
+            font-size: 84px;
+            color: #f7f7f7;
+            top: 5px;
+            right: 0;
+        }
+
+        .r4_counter.has-gradient-to-right-bottom .icon-after,
+        .r4_counter:hover .icon-after {
+            opacity: 0.2
+        }
+
+        .r4_counter .fa {
+            margin-right: 0px;
+            width: 66px;
+            height: 66px;
+            text-align: center;
+        }
+
+        .r4_counter h4 {
+            margin: 10px 0 5px 0;
+        }
+
+        .db_box {
+            background-color: #ffffff;
+            box-shadow: 0 1px 3px rgba(33, 33, 33, .2);
+            -webkit-box-shadow: 0 1px 3px rgba(33, 33, 33, .2);
+            -moz-box-shadow: 0 1px 3px rgba(33, 33, 33, .2);
+            -o-box-shadow: 0 1px 3px rgba(33, 33, 33, .2);
+            -ms-box-shadow: 0 1px 3px rgba(33, 33, 33, .2);
+
+        }
+
+        .db_box {
+            padding: 15px;
+        }
+
+        .db_box.db_box_large {
+            max-width: inherit;
+            background-color: #ffffff;
+            float: left;
+            margin: 0px 2% 0px 0px;
+            padding: 30px;
+            color: #757575 !important;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .db_box.db_box_large .bold {
+            text-align: left;
+            float: left;
+        }
+
+        .db_box.db_box_large .pull-right {
+            text-align: right;
+        }
+
+        .db_box.db_box_large .clearfix {
+            width: 100%;
+            height: 1px;
+            margin-bottom: 40px;
+        }
+
+        .btn-link:hover {
+            color: #fd8c25 !important;
+            text-decoration: underline;
+            background-color: transparent;
+        }
+
+        .btn-link, .btn-link:active, .btn-link:focus, .btn-link:hover {
+            border-color: transparent;
+        }
+
+        .wrapper1 {
+            display: inline-block;
+            margin-top: 0px;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-bottom: 15px;
+            padding-top: 0px;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* .btn:hover {
+            text-decoration: none !important;
+        } */
+    </style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header layui-bg-cyan">
+        <div class="layui-logo">socialmind</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left layui-bg-cyan">
+            <li class="layui-nav-item"><a href="">首页</a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">新增事件</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">企业相关</a></dd>
+                    <dd><a href="">当地新闻</a></dd>
+                    <dd><a href="">敏感信息</a></dd>
+                    <dd><a href="">领域相关</a></dd>
+                    <dd><a href="">行业信息</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="">全网事件搜索</a></li>
 
 
-        <!-- **********************************************************************************************************************************************************
-        MAIN CONTENT
-        *********************************************************************************************************************************************************** -->
-        <!--main content start-->
-{#        <section id="main-content">#}
-            <section class="wrapper">
-                <div class="row mt">
-                    <div class="col-lg-4">
-                        <div class="white-panel pn70 donut-chart">
-                            <div class="white-header">
-                                <h3>新增事件总数：152</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="white-panel pn70 donut-chart">
-                            <div class="white-header">
-                                <h3>新增敏感信息指数：250</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="white-panel pn70 donut-chart">
-                            <div class="white-header">
-                                <h3>近期情绪趋势: 此处应有emoji</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt">
-                    <div class="col-lg-6">
-                        <div class="white-panel pn400 donut-chart">
-                            <div class="white-panel">
-                                <div class="white-header">
-                                    <h3 id="eventHeader">相关事件</h3>
-                                </div>
-                            </div>
-                            <div class="boxes" >
-                                <table class="index_first_table">
-                                    <td style="width: 25%">
-                                        <div id="sensitiveIndex" style="height: 20%; font-size: 20px; text-align: center; width: 80%; margin-left: 20%;">
-                                            敏感度指数
-                                        </div>
-                                        <div id="sI" style="height: 200px; width: 40%; margin-left: 40%;">
-                                            <div id="sI1" style="height: 40%; width: 100%;"></div>
-                                            <div id="sI2" style="height: 60%; width: 100%; background-color: #DAA520;"></div>
-                                        </div>
-                                    </td>
-                                    <td style="width: 50%">
-                                        <div id="statistics00" style="width: 30%; margin-left:12%;">
-                                            <div class="pic" style="position: center; width: 240px; height: 240px;">
-                                                <canvas id="serverstatus10" height="120px" width="120px"></canvas>
-                                                <script>
-                                                    var config = {
-                                                        type: 'doughnut',
-                                                        data:{
-                                                            datasets:[{
-                                                                data:[
-                                                                    70,
-                                                                    300,
-                                                                    1225
-                                                                ],
-                                                                backgroundColor:[
-                                                                    "#FFA500",
-                                                                    "#666666",
-                                                                    "#00FFFF"
-                                                                ],
-                                                            }],
-                                                            labels:[
-                                                                "敏感事件数：",
-                                                                "热点事件数：",
-                                                                "其他："
-                                                            ],
-                                                        },
-                                                        options:{
-                                                            cutoutPercentage: 60,
-                                                            responsive: true,
-                                                            legend:{
-                                                                display: true,
-                                                                position: "bottom",
-                                                            },
-                                                            title: {
-                                                                display: true,
-                                                                fontSize: 20,
-                                                                fontColor: "#000000",
-                                                                text: "事件总数",
-                                                            },
-                                                            animation:{
-                                                                animateScale: true,
-                                                                animateRoatae: true
-                                                            }
-                                                        }
-                                                    };
-                                                    var myDoughnut = new Chart(document.getElementById("serverstatus10").getContext("2d"), config);
-                                                </script>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div id="heatIndex" style="height: 20%; font-size: 20px; text-align: center; width: 80%;">
-                                            热度指数
-                                        </div>
-                                        <div style="height: 200px; width: 40%; margin-left: 20%;">
-                                            <div id="hI1" style="height: 10%; width: 100%;"></div>
-                                            <div id="hI2" style="height: 90%; width: 100%; background-color: #DAA520;"></div>
-                                        </div>
-                                    </td>
-                                </table>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="white-panel pn400 donut-chart">
-                            <div class="white-panel">
-                                <div class="white-header" style="margin-bottom: 0px;">
-                                    <h3>情绪组成</h3>
-                                </div>
-                            </div>
-                            <div class="panel-body" style="height: 80%; z-index: 1001;">
-                                <div class="chart">
-                                    <div class="canvas80" style="height: 90%; width: 100%;">
-                                        <canvas id="emotionCompose" height="280px" width="700px"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="morris">
-                    <div class="row mt">
-                        <div class="col-lg-6">
-                            <div class="content-panel">
-                                <h4 style="float: left">相关事件走势统计</h4>
-                                <div class="panel-body" style="height: 350px;">
-                                    <div class="chart">
-                                        <div style="height: 345px; width: 90%;">
-                                            <div id="eventChange" style="height: 90%; width: 100%; padding-left: 5%;"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="content-panel">
-                                <h4 style="float: left">相关敏感信息变化</h4>
-                                <div class="panel-body" style="height: 350px;">
-                                    <div class="chart">
-                                        <div style="height: 345px; width: 90%;">
-                                            <div id="sensitiveInform" style="height: 90%; width: 100%; padding-left: 5%;"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mt">
-                        <div class="col-lg-9">
-                            <div class="content-panel">
-                                <h4>情绪走势图</h4>
-                                <div class="chart">
-                                    <div id="emotionTrend" style="height: 350px"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-{#        </section>#}
-
-        <!--main content end-->
-        <!--footer start-->
-        <footer class="site-footer">
-            <div class="text-center">
-                2018 - <a href="http://www.xjtu.edu.cn" target="_blank" title="西安交通大学">西安交通大学</a> - <a href="http://www.xjtu.edu.cn" title="social mind" target="_blank">social mind舆情分析平台</a>
-                <a href="#" class="go-top">
-                    <strong>回到顶部</strong>
+        </ul>
+        <ul class="layui-nav layui-layout-right layui-bg-cyan">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                    贤心
                 </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="">退了</a></li>
+        </ul>
+    </div>
+
+
+    <div class="layui-body">
+        <section class="wrapper1">
+            <div class="row mt">
+                <div class="col-lg-12 main-chart">
+                    <div class="row">
+                        <div class="col-lg-4 col-sm-6 col-xs-12">
+                            <div class="r4_counter db_box">
+                                <div class="icon-after cc BTC-alt"></div>
+                                <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
+                                <div class="stats">
+                                    <h3 class="color-white mb-5">152 新增事件</h3>
+                                    <span>15420 事件总数</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-xs-12">
+                            <div class="r4_counter db_box " onclick="window.open('washData.html','_self')">
+                                <div class="icon-after cc BTC-alt"></div>
+                                <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
+                                <div class="stats">
+                                    <h3 class="color-white mb-5">210 新增敏感信息</h3>
+                                    <span>1140 敏感信息总数</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-xs-12">
+                            <div class="r4_counter db_box " onclick="window.open('operateDiary.html','_self')">
+                                <div class="icon-after cc BTC-alt"></div>
+                                <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
+                                <div class="stats">
+                                    <h3 class="color-white mb-5">情感倾向 正向</h3>
+                                    <span>2018-7-21 12:00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </footer>
-        <!--footer end-->
+            <div class="row mt">
+                <div class="col-lg-6">
+                    <div class="white-panel pn400 donut-chart">
+                        <div class="white-panel">
+                            <div class="white-header">
+                                <h3 id="eventHeader">相关事件</h3>
+                            </div>
+                        </div>
+                        <div class="boxes">
+                            <table class="index_first_table">
+                                <td style="width: 25%">
+                                    <div id="sensitiveIndex"
+                                         style="height: 20%; font-size: 20px; text-align: center; width: 80%; margin-left: 20%;">
+                                        敏感度指数
+                                    </div>
+                                    <div id="sI" style="height: 200px; width: 40%; margin-left: 40%;">
+                                        <div id="sI1" style="height: 40%; width: 100%;"></div>
+                                        <div id="sI2"
+                                             style="height: 60%; width: 100%; background-color: #DAA520;"></div>
+                                    </div>
+                                </td>
+                                <td style="width: 50%">
+                                    <div id="statistics00" style="width: 30%; margin-left:12%;">
+                                        <div class="pic" style="position: center; width: 240px; height: 240px;">
+                                            <canvas id="serverstatus10" height="120px" width="120px"></canvas>
+                                            <script>
+                                                var config = {
+                                                    type: 'doughnut',
+                                                    data: {
+                                                        datasets: [{
+                                                            data: [
+                                                                70,
+                                                                300,
+                                                                1225
+                                                            ],
+                                                            backgroundColor: [
+                                                                "#FFA500",
+                                                                "#666666",
+                                                                "#00FFFF"
+                                                            ],
+                                                        }],
+                                                        labels: [
+                                                            "敏感事件数：",
+                                                            "热点事件数：",
+                                                            "其他："
+                                                        ],
+                                                    },
+                                                    options: {
+                                                        cutoutPercentage: 60,
+                                                        responsive: true,
+                                                        legend: {
+                                                            display: true,
+                                                            position: "bottom",
+                                                        },
+                                                        title: {
+                                                            display: true,
+                                                            fontSize: 20,
+                                                            fontColor: "#000000",
+                                                            text: "事件总数",
+                                                        },
+                                                        animation: {
+                                                            animateScale: true,
+                                                            animateRoatae: true
+                                                        }
+                                                    }
+                                                };
+                                                var myDoughnut = new Chart(document.getElementById("serverstatus10").getContext("2d"), config);
+                                            </script>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div id="heatIndex"
+                                         style="height: 20%; font-size: 20px; text-align: center; width: 80%;">
+                                        热度指数
+                                    </div>
+                                    <div style="height: 200px; width: 40%; margin-left: 20%;">
+                                        <div id="hI1" style="height: 10%; width: 100%;"></div>
+                                        <div id="hI2"
+                                             style="height: 90%; width: 100%; background-color: #DAA520;"></div>
+                                    </div>
+                                </td>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="white-panel pn400 donut-chart">
+                        <div class="white-panel">
+                            <div class="white-header" style="margin-bottom: 0px;">
+                                <h3>情绪组成</h3>
+                            </div>
+                        </div>
+                        <div class="panel-body" style="height: 80%; z-index: 1001;">
+                            <div class="chart">
+                                <div class="canvas80" style="height: 90%; width: 100%;">
+                                    <canvas id="emotionCompose" height="280px" width="700px"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="morris">
+                <div class="row mt">
+                    <div class="col-lg-6">
+                        <div class="content-panel">
+                            <h4 style="float: left">相关事件走势统计</h4>
+                            <div class="panel-body" style="height: 350px;">
+                                <div class="chart">
+                                    <div style="height: 345px; width: 90%;">
+                                        <div id="eventChange" style="height: 90%; width: 100%; padding-left: 5%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="content-panel">
+                            <h4 style="float: left">相关敏感信息变化</h4>
+                            <div class="panel-body" style="height: 350px;">
+                                <div class="chart">
+                                    <div style="height: 345px; width: 90%;">
+                                        <div id="sensitiveInform"
+                                             style="height: 90%; width: 100%; padding-left: 5%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt">
+                    <div class="col-lg-9">
+                        <div class="content-panel">
+                            <h4>情绪走势图</h4>
+                            <div class="chart">
+                                <div id="emotionTrend" style="height: 350px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
-        <!-- js placed at the end of the document so the pages load faster -->
-        <script src="{% static 'assets0/js/jquery.js' %}"></script>
-        <script src="{% static 'assets0/js/jquery-1.8.3.min.js' %}"></script>
-        <script src="{% static 'assets0/js/bootstrap.min.js' %}"></script>
+    </div>
 
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        © layui.com - 底部固定区域
+    </div>
+</div>
+<script src="{% static 'assets0/js/jquery.js' %}"></script>
+<script src="{% static 'assets0/js/jquery-1.8.3.min.js' %}"></script>
+<script src="{% static 'assets0/js/bootstrap.min.js' %}"></script>
+<script src="//res.layui.com/layui/src/layui.js?t=1531663423583" charset="utf-8"></script>
+<script>
+    //JavaScript代码区域
+    layui.use('element', function () {
+        var element = layui.element;
 
-  </body>
-    <script>
-        window.onload = function(){
-            emotionCompose();
-            eventChange();
-            sensitiveInform();
-            emotionTrend();
-        };
-    </script>
+    });
+</script>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_30088308'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "w.cnzz.com/c.php%3Fid%3D30088308' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>
+<script>
+    window.onload = function () {
+        emotionCompose();
+        eventChange();
+        sensitiveInform();
+        emotionTrend();
+    };
+</script>
 </html>
