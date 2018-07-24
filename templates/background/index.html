@@ -1,0 +1,1944 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>SocialMind Admin</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="assets/css/zabuto_calendar.css">
+    <link rel="stylesheet" type="text/css" href="assets/js/gritter/css/jquery.gritter.css" />
+    <link rel="stylesheet" type="text/css" href="assets/lineicons/style.css">    
+    <link rel="stylesheet" href="css/maruti-style.css" />
+    <!-- Custom styles for this template -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style-responsive.css" rel="stylesheet">
+    
+    <!-- <link rel="stylesheet" href="css/maruti-media.css" class="skin-color" /> -->
+    <style>
+        .icon-signal { background-position:-408px 0 }
+        span.icon {
+	        border-right: 1px solid #cdcdcd;
+	        padding: 9px 10px 7px 11px;
+	        float: left;
+	        opacity: .7;
+        }
+        .r4_counter {
+    min-height: 100px;
+    margin-bottom: 15px;
+    border-radius: 7px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    background: #ffffff;
+    -webkit-box-shadow: 0 2px 28px rgba(0,0,0,.1);
+    box-shadow: 0 2px 28px rgba(0,0,0,.1);
+    }
+    .r4_counter .stats {
+    margin-left: 50px;
+}
+.ico-icon{position: relative;}
+.ico-icon-w{
+    position: absolute;
+    top: 0;
+    left: 0
+}
+.ico-icon-w,
+.r4_counter:hover .ico-icon .ico-icon-w{
+    visibility: hidden;
+}
+.r4_counter:hover .ico-icon .ico-icon-w{
+    visibility: visible;
+}
+.r4_counter.has-gradient-to-right-bottom .stats span{
+    color: #f7f7f7;
+}
+.r4_counter.has-gradient-to-right-bottom,
+.r4_counter:hover{
+    -webkit-box-shadow: 0 1px 28px rgba(255,152,0,.66);
+    box-shadow: 0 1px 28px rgba(255,152,0,.66);
+    cursor: pointer;
+}
+.r4_counter:hover{
+    background-image: linear-gradient(to right bottom, #e8962e, #e45131) !important;
+}
+.r4_counter:hover h3{
+    color: #fff
+}
+.r4_counter:hover span{
+    color: #f7f7f7
+}
+.r4_counter:hover .icon-primary{
+    color: #fff
+}
+.r4_counter .icon-after{
+    position: absolute;
+    width: 30%;
+    line-height: 75px;
+    height: 92%;
+    font-size: 84px;
+    color: #f7f7f7;
+    top: 5px;
+    right: 0;
+}
+.r4_counter.has-gradient-to-right-bottom .icon-after,
+.r4_counter:hover .icon-after{
+    opacity: 0.2
+}
+.r4_counter .fa {
+    margin-right: 0px;
+    width: 66px;
+    height: 66px;
+    text-align: center;
+}
+.r4_counter h4 {
+    margin: 10px 0 5px 0;
+}
+.db_box {
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(33,33,33,.2);
+    -webkit-box-shadow: 0 1px 3px rgba(33,33,33,.2);
+    -moz-box-shadow: 0 1px 3px rgba(33,33,33,.2);
+    -o-box-shadow: 0 1px 3px rgba(33,33,33,.2);
+    -ms-box-shadow: 0 1px 3px rgba(33,33,33,.2);
+
+}
+.db_box {
+    padding: 15px;
+}
+ .db_box.db_box_large{
+    max-width: inherit;
+    background-color: #ffffff;
+    float: left;
+    margin: 0px 2% 0px 0px;
+    padding: 30px;
+    color: #757575 !important;
+    text-align: center;
+    margin-bottom: 30px;
+ }
+
+ .db_box.db_box_large .bold
+ {
+    text-align: left;
+    float: left;
+ }
+
+ .db_box.db_box_large .pull-right
+ {
+    text-align: right;
+ }
+
+ .db_box.db_box_large .clearfix{
+    width: 100%;
+    height: 1px;
+    margin-bottom: 40px;
+ }
+ .btn-link:hover {
+    color: #fd8c25 !important;
+    text-decoration: underline;
+    background-color: transparent;
+}
+.btn-link, .btn-link:active, .btn-link:focus, .btn-link:hover {
+    border-color: transparent;
+}
+/* .btn:hover {
+    text-decoration: none !important;
+} */
+    </style>
+    <script src="assets/js/echarts.js" ></script>
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+  <section id="container" >
+      <!-- **********************************************************************************************************************************************************
+      TOP BAR CONTENT & NOTIFICATIONS
+      *********************************************************************************************************************************************************** -->
+      <!--header start-->
+      <header class="header black-bg">
+              <div class="sidebar-toggle-box">
+                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+              </div>
+            <!--logo start-->
+            <a href="index.html" class="logo"><b>SocialMind管理员</b></a>
+            <!--logo end-->
+            <div class="nav notify-row" id="top_menu">
+                <!--  notification start -->
+                <ul class="nav top-menu">
+                    <!-- settings start -->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+                            <i class="fa fa-tasks"></i>
+                            个人中心
+                        </a>
+                    </li>
+                    <!-- inbox dropdown start-->
+                    <li id="header_inbox_bar" class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="fa fa-envelope-o"></i>
+                            消息
+                            <span class="badge bg-theme">5</span>
+                        </a>
+                        <ul class="dropdown-menu extended inbox">
+                            <div class="notify-arrow notify-arrow-green"></div>
+                            <li>
+                                <p class="green">You have 5 new messages</p>
+                            </li>
+                            <li>
+                                <a href="index.html#">
+                                    <span class="photo"><img alt="avatar" src="assets/img/ui-zac.jpg"></span>
+                                    <span class="subject">
+                                    <span class="from">Zac Snider</span>
+                                    <span class="time">Just now</span>
+                                    </span>
+                                    <span class="message">
+                                        Hi mate, how is everything?
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html#">
+                                    <span class="photo"><img alt="avatar" src="assets/img/ui-divya.jpg"></span>
+                                    <span class="subject">
+                                    <span class="from">Divya Manian</span>
+                                    <span class="time">40 mins.</span>
+                                    </span>
+                                    <span class="message">
+                                     Hi, I need your help with this.
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html#">
+                                    <span class="photo"><img alt="avatar" src="assets/img/ui-danro.jpg"></span>
+                                    <span class="subject">
+                                    <span class="from">Dan Rogers</span>
+                                    <span class="time">2 hrs.</span>
+                                    </span>
+                                    <span class="message">
+                                        Love your new Dashboard.
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html#">
+                                    <span class="photo"><img alt="avatar" src="assets/img/ui-sherman.jpg"></span>
+                                    <span class="subject">
+                                    <span class="from">Dj Sherman</span>
+                                    <span class="time">4 hrs.</span>
+                                    </span>
+                                    <span class="message">
+                                        Please, answer asap.
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html#">See all messages</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- inbox dropdown end -->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+                            <i class="fa fa-cog"></i>
+                            设置
+                        </a>
+                        <ul class="dropdown-menu extended tasks-bar">
+                            <div class="notify-arrow notify-arrow-green"></div>
+                            <li>
+                                <p class="green">You have 4 pending tasks</p>
+                            </li>
+                            <li>
+                                <a href="index.html#">
+                                    <div class="task-info">
+                                        <div class="desc">DashGum Admin Panel</div>
+                                        <div class="percent">40%</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html#">
+                                    <div class="task-info">
+                                        <div class="desc">Database Update</div>
+                                        <div class="percent">60%</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                            <span class="sr-only">60% Complete (warning)</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html#">
+                                    <div class="task-info">
+                                        <div class="desc">Product Development</div>
+                                        <div class="percent">80%</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                            <span class="sr-only">80% Complete</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html#">
+                                    <div class="task-info">
+                                        <div class="desc">Payments Sent</div>
+                                        <div class="percent">70%</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+                                            <span class="sr-only">70% Complete (Important)</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="external">
+                                <a href="#">See All Tasks</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- settings end -->
+                    
+                </ul>
+                <!--  notification end -->
+            </div>
+            <div class="top-menu">
+            	<ul class="nav pull-right top-menu">
+                    <li>
+                        <form class="navbar-form navbar-right" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search here..." aria-describedby="basic-addon2" style="height: 28px;margin-top: 7px">
+                            <button type="submit" class="btn btn-default" style="height:28px;border: 1px solid #666666 !important;-webkit-border-radius: 4px;background-color: #ffd777;margin-right: 10px;margin-top: 7px;color: #666666;border-radius: 4px;">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        </form>
+                    </li>
+                    <li><a class="logout" href="login.html">注销</a></li>
+            	</ul>
+            </div>
+        </header>
+      <!--header end-->
+      
+      <!-- **********************************************************************************************************************************************************
+      MAIN SIDEBAR MENU
+      *********************************************************************************************************************************************************** -->
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu" id="nav-accordion">
+              
+              	  <p class="centered"><a href="index.html"><img src="assets/img/ny.jpg" class="img-circle" width="60"></a></p>
+              	  <h5 class="centered"><a href="index.html" style="color: white">首页</a></h5>
+              	  	
+                  <!--<li class="mt">
+                      <a class="active" href="index.html">
+                          <i class="fa fa-dashboard"></i>
+                          <span>爬虫</span>
+                      </a>
+                  </li>-->
+                  <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-dashboard"></i>
+                        <span>爬虫</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a  href="SpiderList.html">爬虫管理</a></li>
+                        <li><a  href="SpiderMonitor.html">爬虫监控</a></li>
+                        <li><a  href="SpiderConfigure.html">爬虫配置</a></li>
+                    </ul>
+                  </li>
+                <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-tasks"></i>
+                        <span>源数据展示模块</span>
+                    </a>
+                    <ul class="sub">
+                      <li><a  href="Author.html">查看作者</a></li>
+                      <li><a  href="ArticlesOfAuthor.html">查看作者相关文章</a></li>
+                      <li><a  href="ArticlesAndComments.html">查看文章及评论</a></li>
+                  </ul>
+                </li>
+                  <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class="fa fa-desktop"></i>
+                          <span>数据清洗</span>
+                      </a>
+                      <ul class="sub">
+                          <li><a  href="DataCleanStatistics.html">清洗数据统计</a></li>
+                          <li><a  href="DataCleanStrategies.html">数据清洗策略配置</a></li>
+                          <li><a  href="DataCleanLog.html">数据清洗日志管理</a></li>
+                          <li><a  href="washData.html">数据清洗</a></li>
+                      </ul>
+                  </li>
+                  <li class="sub-menu">
+                    <a href="topics.html" >
+                        <i class="fa fa-book"></i>
+                        <span>主题管理</span>
+                    </a>
+                  </li>
+                  <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-cogs"></i>
+                        <span>舆情对象管理</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a  href="AddEventObject.html">新增舆情对象</a></li>
+                        <li><a  href="CreateEventObject.html">舆情对象自动生成</a></li>
+                        <li><a  href="ShowEventObject.html">舆情对象展示</a></li>
+                    </ul>
+                  </li>
+                  <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-tasks"></i>
+                        <span>语义工具集</span>
+                    </a>
+                    <ul class="sub">
+                      <li><a  href="semanticsTools.html">新增语义工具</a></li>
+                      <li><a  href="semanticsToolkits.html">新增工具包</a></li>
+                      <li><a  href="ShowToolkits.html">工具包展示</a></li>
+                    </ul>
+                  </li>
+                  <!--<li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class="fa fa-th"></i>
+                          <span>系统操作管理</span>
+                      </a>
+                      <ul class="sub">
+                          <li><a  href="basic_table.html">系统用户评论管理</a></li>
+                          <li><a  href="responsive_table.html">系统用户操作管理</a></li>
+                      </ul>
+                  </li>-->
+                  <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-th"></i>
+                        <span>用户留言管理</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a  href="usrCommentsSelect.html">查看用户留言</a></li>
+                        <li><a  href="usrCommentsCheck.html">审核用户留言</a></li>
+                        <li><a  href="usrCommentsDelete.html">删除用户留言</a></li>
+                    </ul>
+                  </li>
+                <li class="sub-menu">
+                    <a href="AssignAuthorities.html" >
+                        <i class=" fa fa-bar-chart-o"></i>
+                        <span>权限管理</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class=" fa fa-bar-chart-o"></i>
+                        <span>用户管理</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a  href="usersVerify.html">新增用户审核</a></li>
+                        <li><a  href="usrManagement.html">用户管理</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="operateDiary.html" >
+                        <i class=" fa fa-bar-chart-o"></i>
+                        <span>日志管理</span>
+                    </a>
+                    <!--<ul class="sub">
+                        <li><a  href="morris.html">操作日志</a></li>
+                    </ul>-->
+                </li>
+
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+      <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >网页模板</a></div>
+      
+      <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+          <!-- <h3><i class="fa fa-angle-right"></i> 首页</h3> -->
+          
+              <!-- page start-->
+              <div class="row mt">
+                <div class="col-lg-12 main-chart">
+                <!-- <div class="jumbotron" style="background-color: white">
+                    <h3>欢迎使用SocialMind舆情分析系统</h3>
+                    <label>SocialMind舆情分析系统在互联网信息采集、大数据处理与挖掘等领域均拥有核心技术和知识产权,是社会化大数据应用服务平台。</label>
+                    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+                </div> -->
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="r4_counter db_box">
+                            <div class="icon-after cc BTC-alt"></div>
+                            <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
+                            <div class="stats">
+                                <h3 class="color-white mb-5">1.003747 在线用户</h3>
+                                    <span>50名新增用户</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="r4_counter db_box " onclick="window.open('washData.html','_self')">
+                            <div class="icon-after cc BTC-alt"></div>
+                            <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
+                            <div class="stats">
+                                <h3 class="color-white mb-5">1.003747 新增数据</h3>
+                                    <span>人民网 新华网 新浪微博</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <div class="r4_counter db_box " onclick="window.open('operateDiary.html','_self')">
+                            <div class="icon-after cc BTC-alt"></div>
+                            <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
+                            <div class="stats">
+                                <h3 class="color-white mb-5">10 爬虫报错</h3>
+                                    <span>2018-7-21 12:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                    <div class="panel panel-default">
+                        <!-- <div class="panel-heading">
+                            指标统计 共计76项
+                        </div> -->
+                        <div class="panel-body">
+                            <div id="sitepaquspeedlinechart" style="width: 100%;height: 440px;"></div>
+                            <script>
+                                var myChart = echarts.init(document.getElementById('sitepaquspeedlinechart'));
+                                option = {
+    title: {
+        text: '各网站爬取速率统计'
+    },
+    tooltip : {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross',
+            label: {
+                backgroundColor: '#6a7985'
+            }
+        }
+    },
+    legend: {
+        /* x : 'center',
+        y : 'bottom', */
+        x : 'right',
+        data:['人民网','新闻网','新浪新闻','直接访问','搜索引擎']
+    },
+    /* toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    }, */
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : false,
+            data : ['周一','周二','周三','周四','周五','周六','周日']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'人民网',
+            type:'line',
+            stack: '总量',
+            areaStyle: {normal: {}},
+            data:[120, 132, 101, 134, 90, 230, 210]
+        },
+        {
+            name:'新闻网',
+            type:'line',
+            stack: '总量',
+            areaStyle: {normal: {}},
+            data:[220, 182, 191, 234, 290, 330, 310]
+        },
+        {
+            name:'新浪新闻',
+            type:'line',
+            stack: '总量',
+            areaStyle: {normal: {}},
+            data:[150, 232, 201, 154, 190, 330, 410]
+        },
+        {
+            name:'直接访问',
+            type:'line',
+            stack: '总量',
+            areaStyle: {normal: {}},
+            data:[320, 332, 301, 334, 390, 330, 320]
+        },
+        {
+            name:'搜索引擎',
+            type:'line',
+            stack: '总量',
+            label: {
+                normal: {
+                    show: true,
+                    position: 'top'
+                }
+            },
+            areaStyle: {normal: {}},
+            data:[820, 932, 901, 934, 1290, 1330, 1320]
+        }
+    ]
+};
+myChart.setOption(option);
+                            </script>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-4">
+                    <div class="panel panel-default">
+                            <div class="panel-heading">
+                                热点事件排行
+                            </div>
+                        <div class="panel-body">
+                            <div class="list-group">
+                            <a href="#" class="list-group-item active" style="border-color: #e8962e;background-image: linear-gradient(to right bottom, #e8962e, #e45131)">
+                              <h4 class="list-group-item-heading">习近平访问中东非洲五国并出席金砖国家领导人会晤</h4>
+                              <p class="list-group-item-text">
+                                  习近平同塞内加尔总统萨勒举行会谈。
+                              </p>
+                            </a>
+                            <a href="#" class="list-group-item">
+                              <h4 class="list-group-item-heading">共和国农机工业“长子”成长记</h4>
+                              <p class="list-group-item-text">
+                                  东方红拖拉机，60年前中国人自己制造 在改革开放中浴火重生 在世界100多个国家打响名号
+                              </p>
+                            </a>
+                            <a href="#" class="list-group-item">
+                              <h4 class="list-group-item-heading">宁夏红寺堡：农产品“触网”“远嫁”助农民增收</h4>
+                              <p class="list-group-item-text">
+                                  电商真可以，隔着几百公里，也能帮我找到买鸡人。
+                              </p>
+                            </a>
+                            <a href="#" class="list-group-item">
+                              <h4 class="list-group-item-heading">综述：欧盟重罚谷歌背后的理念分歧</h4>
+                              <p class="list-group-item-text">
+                                  欧盟委员会近日宣布对谷歌处以４３．４亿欧元罚款
+                              </p>
+                            </a>
+                            <a href="#" class="list-group-item">
+                              <h4 class="list-group-item-heading">西安市疾控中心提醒市民 热浪来袭预防中暑发生</h4>
+                              <p class="list-group-item-text">西安市疾控中心提醒市民 热浪来袭预防中暑发生</p>
+                            </a>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            系统统计指标
+                        </div>
+                        <div class="panel-body">
+                            <table class="table">
+                                <thead>
+                                    <tr style="border-bottom: 0px"><th>新增用户数</th><th>新增企业用户数</th><th>新增事业用户数</th><th>新增政府用户数</th><th>新增个人用户数</th></tr>
+                                </thead>
+                                <tr><td>7213</td><td>2111</td><td>1111</td><td>2131</td><td>1234</td></tr>
+                            </table>
+                            <div class="row">
+                            <div class="col-lg-6">
+                            <div id="xinzengyonghulinechart" style="width: 100%;height: 400px;"></div>
+                            </div>
+                            <div class="col-lg-6">
+                            <div id="jingxinzengyonghulinechart" style="width: 100%;height: 400px;"></div>
+                            </div>
+                            </div>
+                            <script>
+                                var myChart = echarts.init(document.getElementById('xinzengyonghulinechart'));
+                                var myChart2 = echarts.init(document.getElementById('jingxinzengyonghulinechart'));
+                                option = {
+    title: {
+        x:'center',
+        text: '各类用户增长情况'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+/*     legend: {
+        data:['个人新增用户','政府新增用户','事业新增用户','企业新增用户','全部新增用户']
+    }, */
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['周一','周二','周三','周四','周五','周六','周日']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [
+        {
+            name:'个人新增用户',
+            type:'line',
+            smooth:true,
+            stack: '总量',
+            data:[120, 132, 101, 134, 90, 230, 210]
+        },
+        {
+            name:'政府新增用户',
+            type:'line',
+            smooth:true,
+            stack: '总量',
+            data:[220, 182, 191, 234, 290, 330, 310]
+        },
+        {
+            name:'事业新增用户',
+            type:'line',
+            smooth:true,
+            stack: '总量',
+            data:[150, 232, 201, 154, 190, 330, 410]
+        },
+        {
+            name:'企业新增用户',
+            type:'line',
+            smooth:true,
+            stack: '总量',
+            data:[320, 332, 301, 334, 390, 330, 320]
+        },
+        {
+            name:'全部新增用户',
+            type:'line',
+            smooth:true,
+            stack: '总量',
+            data:[820, 932, 901, 934, 1290, 1330, 1320]
+        }
+    ]
+};
+option2 = {
+    title: {
+        x:'center',
+        text: '各类用户净增长情况'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+/*     legend: {
+        data:['个人新增用户','政府新增用户','事业新增用户','企业新增用户','全部新增用户']
+    }, */
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['周一','周二','周三','周四','周五','周六','周日']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [
+        {
+            name:'个人净新增用户',
+            type:'line',
+            smooth:true,
+            stack: '总量',
+            data:[120, 132, 101, 134, 90, 230, 210]
+        },
+        {
+            name:'政府净新增用户',
+            type:'line',
+            smooth:true,
+            stack: '总量',
+            data:[220, 182, 191, 234, 290, 330, 310]
+        },
+        {
+            name:'事业净新增用户',
+            type:'line',
+            smooth:true,
+            stack: '总量',
+            data:[150, 232, 201, 154, 190, 330, 410]
+        },
+        {
+            name:'企业净新增用户',
+            type:'line',
+            smooth:true,
+            stack: '总量',
+            data:[320, 332, 301, 334, 390, 330, 320]
+        },
+        {
+            name:'全部净新增用户',
+            type:'line',
+            smooth:true,
+            stack: '总量',
+            data:[820, 932, 901, 934, 1290, 1330, 1320]
+        }
+    ]
+};
+myChart.setOption(option);
+myChart2.setOption(option2);
+                            </script>
+                            <hr style="margin-top: 30px;height:2px;border: 0px;background-color: #ddd">
+                            <table class="table">
+                                <thead>
+                                    <tr style="border-bottom: 0px"><th>总用户数</th><th>总企业用户数</th><th>总事业用户数</th><th>总政府用户数</th><th>总个人用户数</th></tr>
+                                </thead>
+                                <tr><td>7213</td><td>2111</td><td>1111</td><td>2131</td><td>1234</td></tr>
+                            </table>
+                            <div id="yonghuzhanbipiechart" style="width: 100%;height: 400px;"></div>
+                            <script>
+                                var myChart = echarts.init(document.getElementById('yonghuzhanbipiechart'));
+option = {
+    title : {
+        text: '系统用户统计图',
+        x:'center'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: [
+        {
+        orient: 'vertical',
+        left: 'left',
+        data: ['企业用户数','个人用户数','事业用户数','政府用户数']
+        },
+        {
+        orient: 'vertical',
+        right: 'right',
+        data: ['新增企业用户数','新增个人用户数','新增事业用户数','新增政府用户数']
+        },
+    ],
+    calculable : true,
+    series : [
+        {
+            name:'半径模式',
+            type:'pie',
+            radius : [20, 110],
+            center : ['25%', '50%'],
+            //roseType : 'radius',
+            /* label: {
+                normal: {
+                    show: false
+                },
+                emphasis: {
+                    show: true
+                }
+            },
+            lableLine: {
+                normal: {
+                    show: false
+                },
+                emphasis: {
+                    show: true
+                }
+            }, */
+            data:[
+                {value:20, name:'企业用户数'},
+                {value:35, name:'政府用户数'},
+                {value:30, name:'事业用户数'},
+                {value:40, name:'个人用户数'}
+            ]
+        },
+        {
+            name:'面积模式',
+            type:'pie',
+            radius : [30, 110],
+            center : ['75%', '50%'],
+            //roseType : 'area',
+            data:[
+                {value:10, name:'新增企业用户数'},
+                {value:5, name:'新增政府用户数'},
+                {value:15, name:'新增事业用户数'},
+                {value:25, name:'新增个人用户数'}
+            ]
+        }
+    ]
+};
+myChart.setOption(option);
+                            </script>
+                            <hr style="height:2px;border: 0px;background-color: #ddd">
+                            <table class="table">
+                                <thead>
+                                    <tr style="border-bottom: 0px"><th>总点击量</th><th>昨日点击量</th><th>总留言量</th><th>昨日留言量</th><th>总日志量</th><th>昨日日志量</th></tr>
+                                </thead>
+                                <tr><td>7213</td><td>123</td><td>321</td><td>255</td><td>854</td><td>645</td></tr>
+                            </table>
+                            <div id="dianjilianglinechart" style="width: 100%;height: 400px;"></div>
+                            <script>
+                                var myChart = echarts.init(document.getElementById('dianjilianglinechart'));
+                                /* option = {
+    title: {
+        x:'left',
+        text: '点击量与日志量统计图'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        x:'right',
+        data:['个人新增用户','政府新增用户','事业新增用户','企业新增用户','全部新增用户']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['周一','周二','周三','周四','周五','周六','周日']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [
+        {
+            name:'个人新增用户',
+            type:'line',
+            smooth:true,
+            stack: '总量',
+            data:[120, 132, 101, 134, 90, 230, 210]
+        },
+        {
+            name:'政府新增用户',
+            type:'line',
+            smooth:true,
+            stack: '总量',
+            data:[220, 182, 191, 234, 290, 330, 310]
+        },
+        {
+            name:'事业新增用户',
+            type:'line',
+            smooth:true,
+            stack: '总量',
+            data:[150, 232, 201, 154, 190, 330, 410]
+        },
+        {
+            name:'企业新增用户',
+            type:'line',
+            smooth:true,
+            stack: '总量',
+            data:[320, 332, 301, 334, 390, 330, 320]
+        },
+        {
+            name:'全部新增用户',
+            type:'line',
+            smooth:true,
+            stack: '总量',
+            data:[820, 932, 901, 934, 1290, 1330, 1320]
+        }
+    ]
+}; */
+option = {
+    title: {
+        text: '点击量与日志量统计图',
+    },
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross'
+        }
+    },
+/*     toolbox: {
+        show: true,
+        feature: {
+            saveAsImage: {}
+        }
+    }, */
+    xAxis:  {
+        type: 'category',
+        boundaryGap: false,
+        data: ['00:00', '01:15', '02:30', '03:45', '05:00', '06:15', '07:30', '08:45', '10:00', '11:15', '12:30', '13:45', '15:00', '16:15', '17:30', '18:45', '20:00', '21:15', '22:30', '23:45']
+    },
+    yAxis: {
+        type: 'value',
+        axisLabel: {
+            formatter: '{value} W'
+        },
+        axisPointer: {
+            snap: true
+        }
+    },
+    visualMap: {
+        show: false,
+        dimension: 0,
+        pieces: [{
+            lte: 6,
+            color: 'green'
+        }, {
+            gt: 6,
+            lte: 8,
+            color: 'red'
+        }, {
+            gt: 8,
+            lte: 14,
+            color: 'green'
+        }, {
+            gt: 14,
+            lte: 17,
+            color: 'red'
+        }, {
+            gt: 17,
+            color: 'green'
+        }]
+    },
+    series: [
+        {
+            name:'系统点击量',
+            type:'line',
+            smooth: true,
+            data: [300, 280, 250, 260, 270, 300, 550, 500, 400, 390, 380, 390, 400, 500, 600, 750, 800, 700, 600, 400],
+            markArea: {
+                data: [ [{
+                    name: '早高峰',
+                    xAxis: '07:30'
+                }, {
+                    xAxis: '10:00'
+                }], [{
+                    name: '晚高峰',
+                    xAxis: '17:30'
+                }, {
+                    xAxis: '21:15'
+                }] ]
+            }
+        }
+    ]
+};
+myChart.setOption(option);
+                            </script>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            爬虫指标统计
+                        </div>
+                        <div class="panel-body">
+                            <table class="table">
+                                <thead>
+                                    <tr><th>最高爬虫速率</th><th>最低爬虫速率</th><th>平均爬虫速率</th><th>日间平均爬虫速率</th><th>夜间平均爬虫速率</th></tr>
+                                </thead>
+                                <tr><td>4245</td><td>123</td><td>3222</td><td>1211</td><td>2245</td></tr>
+                            </table>
+                            <div id="pachongsulvbarchart" style="width: 100%;height: 400px;"></div>
+                            <script>
+                                var myChart = echarts.init(document.getElementById('pachongsulvbarchart'));
+                                option = {
+    title: {
+        text: '爬虫速率统计',
+        x: 'center',
+    },
+    color: ['#3398DB'],
+    tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    xAxis: {
+        type: 'category',
+        data: ['最高爬虫速率', '最低爬虫速率', '平均爬虫速率', '日间平均爬虫速率', '夜间平均爬虫速率']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+        data: [120, 200, 150, 80, 70],
+        barWidth:'60%',
+        type: 'bar'
+    }]
+};
+myChart.setOption(option);
+                            </script>
+                            <hr style="height:2px;border: 0px;background-color: #ddd">
+                            <div id="wangzhanchucuolianglinechart" style="width: 100%;height: 400px;"></div>
+                            <script>
+                                var myChart = echarts.init(document.getElementById('wangzhanchucuolianglinechart'));
+option = {
+    title: {
+        text: '网站出错量统计'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['人民网','凤凰网','新浪','搜狐','搜狗'],
+        x: 'right',
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['周一','周二','周三','周四','周五','周六','周日']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [
+        {
+            name:'人民网',
+            type:'line',
+            stack: '总量',
+            smooth: true,
+            data:[90, 101, 120, 132, 134, 210, 230]
+        },
+        {
+            name:'凤凰网',
+            type:'line',
+            stack: '总量',
+            smooth: true,
+            data:[182, 191, 220, 234, 290, 310, 330]
+        },
+        {
+            name:'新浪',
+            type:'line',
+            stack: '总量',
+            smooth: true,
+            data:[150, 154, 190, 201, 232, 330, 410]
+        },
+        {
+            name:'搜狐',
+            type:'line',
+            stack: '总量',
+            smooth: true,
+            data:[301, 320, 320, 330, 332, 334, 390]
+        },
+        {
+            name:'搜狗',
+            type:'line',
+            stack: '总量',
+            smooth: true,
+            data:[820, 901, 932, 934, 1290, 1320, 1330]
+        }
+    ]
+};
+myChart.setOption(option);
+                            </script>
+                        <hr style="height:2px;border: 0px;background-color: #ddd">
+                        <div id="sitepaquspeedlinechart2" style="width: 100%;height: 440px;"></div>
+                            <script>
+                                var myChart = echarts.init(document.getElementById('sitepaquspeedlinechart2'));
+                                option = {
+    title: {
+        text: '各网站爬取速率统计'
+    },
+    tooltip : {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross',
+            label: {
+                backgroundColor: '#6a7985'
+            }
+        }
+    },
+    legend: {
+        /* x : 'center',
+        y : 'bottom', */
+        x : 'right',
+        data:['人民网','新闻网','新浪新闻','直接访问','搜索引擎']
+    },
+    /* toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    }, */
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : false,
+            data : ['周一','周二','周三','周四','周五','周六','周日']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'人民网',
+            type:'line',
+            stack: '总量',
+            areaStyle: {normal: {}},
+            data:[120, 132, 101, 134, 90, 230, 210]
+        },
+        {
+            name:'新闻网',
+            type:'line',
+            stack: '总量',
+            areaStyle: {normal: {}},
+            data:[220, 182, 191, 234, 290, 330, 310]
+        },
+        {
+            name:'新浪新闻',
+            type:'line',
+            stack: '总量',
+            areaStyle: {normal: {}},
+            data:[150, 232, 201, 154, 190, 330, 410]
+        },
+        {
+            name:'直接访问',
+            type:'line',
+            stack: '总量',
+            areaStyle: {normal: {}},
+            data:[320, 332, 301, 334, 390, 330, 320]
+        },
+        {
+            name:'搜索引擎',
+            type:'line',
+            stack: '总量',
+            label: {
+                normal: {
+                    show: true,
+                    position: 'top'
+                }
+            },
+            areaStyle: {normal: {}},
+            data:[820, 932, 901, 934, 1290, 1330, 1320]
+        }
+    ]
+};
+myChart.setOption(option);
+                            </script>
+                        <hr style="height:2px;border: 0px;background-color: #ddd">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <table class="table table-hover table-bordered">
+                                    <caption>最近新增爬虫</caption>
+                                    <thead>
+                                        <tr><th>爬虫ID</th><th>爬虫名称</th><th>添加时间</th><th>爬虫状态</th><th>网站ID</th><th>网站名</th></tr>
+                                    </thead>
+                                    <tr><td>123</td><td>Trident</td><td>2018-7-21 5:30</td><td>运行中</td><td>123</td><td>localhost</td></tr>
+                                    <tr><td>123</td><td>Trident</td><td>2018-7-21 5:30</td><td>运行中</td><td>123</td><td>localhost</td></tr>
+                                    <tr><td>123</td><td>Trident</td><td>2018-7-21 5:30</td><td>运行中</td><td>123</td><td>localhost</td></tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <table class="table table-hover table-bordered">
+                                    <caption>长时间未运行爬虫</caption>
+                                    <thead>
+                                        <tr><th>爬虫ID</th><th>爬虫名称</th><th>停止时间</th><th>停止原因</th><th>网站ID</th><th>网站名</th></tr>
+                                    </thead>
+                                    <tr><td>123</td><td>Trident</td><td>2018-7-21 5:30</td><td>网络中断</td><td>123</td><td>localhost</td></tr>
+                                    <tr><td>123</td><td>Trident</td><td>2018-7-21 5:30</td><td>网络中断</td><td>123</td><td>localhost</td></tr>
+                                    <tr><td>123</td><td>Trident</td><td>2018-7-21 5:30</td><td>网络中断</td><td>123</td><td>localhost</td></tr>
+                                    <tr><td>123</td><td>Trident</td><td>2018-7-21 5:30</td><td>网络中断</td><td>123</td><td>localhost</td></tr>
+                                </table>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            数据清洗指标统计
+                        </div>
+                        <div class="panel-body">
+                            <table class="table">
+                                <thead><tr><th>总清洗次数</th><th>清洗总量</th><th>数据清洗频率</th><th>上次清洗后新增数据量</th><th>上次清洗时间</th></tr></thead>
+                                <tr><td>123</td><td>454456</td><td>1次/周</td><td>213123</td><td>2018-7-21 8:30</td></tr>
+                            </table>
+                            <table class="table">
+                                <thead><tr><th style="border-bottom: 0px">总清洗次数 10</th><th style="border-bottom: 0px">总清洗数据量 10</th><th style="border-bottom: 0px">数据清洗频率 10</th>
+                                    <th style="width: 12%;padding: 0px;border-bottom: 0px"><a>尚未清洗的表</a></th>
+                                    <th style="width: 12%;padding: 0px;border-bottom: 0px"><a>正在清洗的表</a></th>
+                                    <th style="width: 12%;padding: 0px;border-bottom: 0px"><a>已经清洗的表</a></th>
+                                </tr></thead>
+                            </table>
+                            <table id="yuanshujubiaotable" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr><th>网站名</th><th>数据表名</th><th>表类型</th><th style="width: 8%">列数</th><th>清洗待解决问题</th><th>数据量</th><th>新增数据量</th></tr>
+                                    </thead>
+                                    <tr><td>TTTT</td><td>Crasd</td><td>关系表</td><td><a href="javascript:void(0);" onclick="showandhide(this)" class="btn btn-link" style="padding: 0px 0px;border: 0px;margin-bottom: 0px">10  <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></td><td>数据类型不一致</td><td>10000</td><td>5000</td></tr>
+                                    <tr style="display: none"><td colspan="7">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr><th>列名1</th><th>列名2</th><th>列名3</th><th>列名4</th><th>列名5</th><th>列名6</th><th>列名7</th><th>列名8</th><th>列名9</th><th>列名10</th></tr>
+                                                </thead>
+                                            </table> 
+                                        </div>
+                                    </div></td>
+                                    </tr>
+                                    <tr><td>TTTT</td><td>Crasd</td><td>关系表</td><td><a href="javascript:void(0);" onclick="showandhide(this)" class="btn btn-link" style="padding: 0px 0px;border: 0px;margin-bottom: 0px">10  <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></td><td>数据类型不一致</td><td>10000</td><td>5000</td></tr>
+                                    <tr style="display: none"><td colspan="7">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr><th>列名1</th><th>列名2</th><th>列名3</th><th>列名4</th><th>列名5</th><th>列名6</th><th>列名7</th><th>列名8</th><th>列名9</th><th>列名10</th></tr>
+                                                </thead>
+                                            </table> 
+                                        </div>
+                                    </div></td>
+                                    </tr>
+                                    <tr><td>TTTT</td><td>Crasd</td><td>关系表</td><td><a href="javascript:void(0);" onclick="showandhide(this)" class="btn btn-link" style="padding: 0px 0px;border: 0px;margin-bottom: 0px">10  <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></td><td>数据类型不一致</td><td>10000</td><td>5000</td></tr>
+                                    <tr style="display: none"><td colspan="7">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr><th>列名1</th><th>列名2</th><th>列名3</th><th>列名4</th><th>列名5</th><th>列名6</th><th>列名7</th><th>列名8</th><th>列名9</th><th>列名10</th></tr>
+                                                </thead>
+                                            </table> 
+                                        </div>
+                                    </div></td>
+                                    </tr>
+                                    <tr><td>TTTT</td><td>Crasd</td><td>关系表</td><td><a href="javascript:void(0);" onclick="showandhide(this)" class="btn btn-link" style="padding: 0px 0px;border: 0px;margin-bottom: 0px">10  <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></td><td>数据类型不一致</td><td>10000</td><td>5000</td></tr>
+                                    <tr style="display: none"><td colspan="7">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr><th>列名1</th><th>列名2</th><th>列名3</th><th>列名4</th><th>列名5</th><th>列名6</th><th>列名7</th><th>列名8</th><th>列名9</th><th>列名10</th></tr>
+                                                </thead>
+                                            </table> 
+                                        </div>
+                                    </div></td>
+                                    </tr>
+                            </table>
+                            <script>
+                               function showandhide(thisa){
+                                    $(thisa).parent().parent().next().toggle()
+                                }
+                            </script>
+                            <hr style="height:2px;border: 0px;background-color: #ddd">
+                            <div class="row">
+                                <div class="col-lg-10"><h5>最近清洗数据</h5></div>
+                                <div class="col-lg-2">
+                                    <select class="form-control">
+                                        <option>一天</option>
+                                        <option>一周</option>
+                                        <option>一月</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr><th>表名</th><th>操作人</th><th>时间</th><th>清洗数据量</th><th>操作详情</th></tr>
+                                </thead>
+                                <tr><td>ABC</td><td>xiaoming</td><td>2018-7-21 8:30</td><td>213123</td><td>详情详情详情详情</td></tr>
+                                <tr><td>ABC</td><td>xiaoming</td><td>2018-7-21 8:30</td><td>213123</td><td>详情详情详情详情</td></tr>
+                                <tr><td>ABC</td><td>xiaoming</td><td>2018-7-21 8:30</td><td>213123</td><td>详情详情详情详情</td></tr>
+                                <tr><td>ABC</td><td>xiaoming</td><td>2018-7-21 8:30</td><td>213123</td><td>详情详情详情详情</td></tr>
+                                <tr><td>ABC</td><td>xiaoming</td><td>2018-7-21 8:30</td><td>213123</td><td>详情详情详情详情</td></tr>
+                                <tr><td>ABC</td><td>xiaoming</td><td>2018-7-21 8:30</td><td>213123</td><td>详情详情详情详情</td></tr>
+                            </table>
+                            <hr style="height:2px;border: 0px;background-color: #ddd">
+                            <div id="qingxirenbarchart" style="width: 100%;height: 400px;"></div>
+                                <script>
+                                    var myChart = echarts.init(document.getElementById('qingxirenbarchart'));
+option = {
+    color: ['#3398DB'],
+    title: {
+        x:'center',
+        text: '管理员清洗数据量统计',
+    },
+    tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis : [
+        {
+            type : 'category',
+            data : ['张三', '李四', '王五', '1', '2', '3', '4'],
+            axisTick: {
+                alignWithLabel: true
+            }
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'直接访问',
+            type:'bar',
+            barWidth: '60%',
+            data:[10, 52, 200, 334, 390, 330, 220]
+        }
+    ]
+};
+myChart.setOption(option);
+                            </script>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            舆情事件统计
+                        </div>
+                        <div class="panel-body">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>总事件数</th><th>昨日新增事件数</th><th>最近一周新增事件数</th><th>平均每周新增事件数</th>
+                                    <th>总实体数</th><th>昨日新增实体数</th><th>最近一周新增实体数</th><th>平均每周新增实体数</th>
+                                </tr>
+                                </thead>
+                                <tr>
+                                    <td>213</td><td>12</td><td>100</td><td>100</td>
+                                    <td>132</td><td>21</td><td>101</td><td>101</td>
+                                </tr>
+                            </table>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <select >
+                                        <option>昨日新增事件数</option>
+                                        <option>最近一周新增事件数</option>
+                                        <option>最近一月新增事件数</option>
+                                    </select>
+                            <div id="xinzengshijianshulinechart" style="width: 100%;height: 360px;"></div>
+                                <script>
+                                    var myChart = echarts.init(document.getElementById('xinzengshijianshulinechart'));
+option = {
+    title: {
+        text: '新增事件数统计'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        x:'right',
+        data:['昨日新增事件数','最近一周新增事件数','最近一月新增事件数']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['一','二','三','四','五','六','日']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [
+        {
+            name:'最近一周新增事件数',
+            type:'line',
+            stack: '总量',
+            data:[120, 132, 101, 134, 90, 230, 210]
+        },
+        /* {
+            name:'联盟广告',
+            type:'line',
+            stack: '总量',
+            data:[220, 182, 191, 234, 290, 330, 310]
+        },
+        {
+            name:'视频广告',
+            type:'line',
+            stack: '总量',
+            data:[150, 232, 201, 154, 190, 330, 410]
+        },
+        {
+            name:'直接访问',
+            type:'line',
+            stack: '总量',
+            data:[320, 332, 301, 334, 390, 330, 320]
+        },
+        {
+            name:'搜索引擎',
+            type:'line',
+            stack: '总量',
+            data:[820, 932, 901, 934, 1290, 1330, 1320]
+        } */
+    ]
+};
+                                        myChart.setOption(option);
+                                </script>
+                                </div>
+                                <div class="col-lg-6">
+                                <div id="shijaindianjierduchart" style="width: 100%;height: 400px;"></div>
+                                <script>
+                                var myChart = echarts.init(document.getElementById('shijaindianjierduchart'));
+var colors = ['#5793f3', '#d14a61', '#675bba'];
+option = {
+    color: colors,
+    title : {
+        text: '热点事件时间跨度统计',
+        x:'left'
+    },
+    tooltip: {
+        trigger: 'none',
+        axisPointer: {
+            type: 'cross'
+        }
+    },
+    legend: {
+        x:'right',
+        data:['事件A', '事件B', '事件C', '事件D', '事件E', '事件F', '事件G']
+    },
+    grid: {
+        top: 70,
+        bottom: 50
+    },
+    xAxis: [
+        {
+            type: 'category',
+            axisTick: {
+                alignWithLabel: true
+            },
+            axisLine: {
+                onZero: false,
+                lineStyle: {
+                    color: colors[1]
+                }
+            },
+            axisPointer: {
+                label: {
+                    formatter: function (params) {
+                        return '事件A  ' + params.value
+                            + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
+                    }
+                }
+            },
+            data: ["2016-1", "2016-2", "2016-3", "2016-4", "2016-5", "2016-6", "2016-7", "2016-8", "2016-9", "2016-10", "2016-11", "2016-12"]
+        },
+        {
+            type: 'category',
+            axisTick: {
+                alignWithLabel: true
+            },
+            axisLine: {
+                onZero: false,
+                lineStyle: {
+                    color: colors[0]
+                }
+            },
+            axisPointer: {
+                label: {
+                    formatter: function (params) {
+                        return '事件A' + params.value
+                            + (params.seriesData.length ? '：' + params.seriesData[0].data : '');
+                    }
+                }
+            },
+            data: ["2015-1", "2015-2", "2015-3", "2015-4", "2015-5", "2015-6", "2015-7", "2015-8", "2015-9", "2015-10", "2015-11", "2015-12"]
+        }
+    ],
+    yAxis: [
+        {
+            type: 'value'
+        }
+    ],
+    series: [
+        {
+            name:'事件A',
+            type:'line',
+            xAxisIndex: 1,
+            smooth: true,
+            data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+        },
+        {
+            name:'事件B',
+            type:'line',
+            xAxisIndex: 1,
+            smooth: true,
+            data: [5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3, 1]
+        },
+        {
+            name:'事件E',
+            type:'line',
+            smooth: true,
+            data: [3.9, 5.9, 11.1, 18.7, 48.3, 69.2, 231.6, 46.6, 55.4, 18.4, 10.3, 0.7]
+        }
+    ]
+};
+                                    myChart.setOption(option);
+                                </script>
+                                </div>
+                            </div>
+                            <hr style="height:2px;border: 0px;background-color: #ddd">
+                            <table class="table">
+                                <thead>
+                                    <tr><th>积极情感事件数</th><th>消极情感事件数</th><th>用户参与总人次</th><th>最活跃的网站</th><th>最近一周内访问次数最多的事件</th><th>包含事件最多的主题</th></tr>
+                                </thead>
+                                <tr><td>2543</td><td>1220</td><td>530310</td><td>人民网</td><td>金砖国家领导人会晤</td><td>社会</td></tr>
+                            </table>
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div id="imotionpiechart" style="width: 100%;height: 400px;"></div>
+                                    <script>
+                                var myChart = echarts.init(document.getElementById('imotionpiechart'),'light');
+option = {
+    title : {
+        text: '事件情感比例',
+        x:'center'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        x : 'center',
+        y : 'bottom',
+        data:['正面事件','负面事件','喜','怒','哀','乐']
+    },
+    calculable : true,
+    series : [
+        {
+            name:'面积模式',
+            type:'pie',
+            //radius : [30, 110],
+            //center : ['75%', '50%'],
+            roseType : 'area',
+            data:[
+                {value:10, name:'喜'},
+                {value:5, name:'怒'},
+                {value:15, name:'哀'},
+                {value:25, name:'乐'},
+                {value:20, name:'正面事件'},
+                {value:35, name:'负面事件'},
+            ]
+        }
+    ]
+};
+                                        myChart.setOption(option);
+                                </script>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            最近活跃事件
+                                            <select class="form-control" style="float: right;width: 100px;height: 25px;font-size: 12px">
+                                                <option>最近一周</option>
+                                                <option>最近一月</option>
+                                                <option>最近一年</option>
+                                            </select>
+                                        </div>
+                                        <div class="panel-body" style="padding: 0px">
+                                        <div class="list-group" style="margin: 0px">
+                                        <a href="javascript:void(0)" class="list-group-item list-group-item-info">
+                                            <h4 class="list-group-item-heading">List group item heading</h4>
+                                            <p class="list-group-item-text">...</p>
+                                        </a>
+                                        <a href="javascript:void(0)" class="list-group-item list-group-item-info">
+                                            <h4 class="list-group-item-heading">List group item heading</h4>
+                                            <p class="list-group-item-text">...</p>
+                                        </a>
+                                        <a href="javascript:void(0)" class="list-group-item list-group-item-info">
+                                            <h4 class="list-group-item-heading">List group item heading</h4>
+                                            <p class="list-group-item-text">...</p>
+                                        </a>
+                                        <a href="javascript:void(0)" class="list-group-item list-group-item-info">
+                                            <h4 class="list-group-item-heading">List group item heading</h4>
+                                            <p class="list-group-item-text">...</p>
+                                        </a>
+                                        <a href="javascript:void(0)" class="list-group-item list-group-item-info">
+                                            <h4 class="list-group-item-heading">List group item heading</h4>
+                                            <p class="list-group-item-text">...</p>
+                                        </a>
+                                        <a href="javascript:void(0)" class="list-group-item list-group-item-info">
+                                            <h4 class="list-group-item-heading">List group item heading</h4>
+                                            <p class="list-group-item-text">...</p>
+                                        </a>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div><!-- panel-body -->
+                    </div>
+                    </div>
+                </div>
+                            
+                
+                  	<div class="row mtbox" style="display: none">
+                  		<div class="col-md-2 col-sm-2 col-md-offset-1 box0">
+                  			<div class="box1">
+					  			<span class="glyphicon glyphicon-wrench"></span>
+					  			<h3>配置</h3>
+                  			</div>
+					  			<p></p>
+                  		</div>
+                  		<div class="col-md-2 col-sm-2 box0">
+                  			<div class="box1">
+					  			<span class="li_cloud"></span>
+					  			<h3>主题管理</h3>
+                  			</div>
+					  			<p></p>
+                  		</div>
+                  		<div class="col-md-2 col-sm-2 box0">
+                  			<div class="box1">
+					  			<span class="glyphicon glyphicon-globe"></span>
+					  			<h3>用户</h3>
+                  			</div>
+					  			<p></p>
+                  		</div>
+                  		<div class="col-md-2 col-sm-2 box0">
+                  			<div class="box1">
+					  			<span class="li_news"></span>
+					  			<h3>用户评论</h3>
+                  			</div>
+					  			<p></p>
+                  		</div>
+                  		<div class="col-md-2 col-sm-2 box0">
+                  			<div class="box1">
+					  			<span class="li_data"></span>
+					  			<h3>数据库</h3>
+                  			</div>
+					  			<p></p>
+                  		</div>
+                  	
+                  	</div><!-- /row mt -->	
+                  
+                      
+                    
+					
+					
+                  </div><!-- /col-lg-9 END SECTION MIDDLE -->
+                  
+                  
+      <!-- **********************************************************************************************************************************************************
+      RIGHT SIDEBAR CONTENT
+      *********************************************************************************************************************************************************** -->                  
+                  
+            <div class="col-lg-3 ds" style="margin-top: -40px;display: none">
+                    <!--COMPLETED ACTIONS DONUTS CHART-->
+                       <!-- USERS ONLINE SECTION -->
+                        <h3>今日热点舆情</h3>
+                        <!-- First Member -->
+                        <div class="desc">
+                            <div class="thumb">
+                                <img class="img-circle" src="assets/img/ui-divya.jpg" width="35px" height="35px" align="">
+                            </div>
+                            <div class="details">
+                                <p><!-- <a href="#"></a><br/> -->
+                                    <a href="#">“众筹交通事故赔偿”，不符合慈善伦理</a>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Second Member -->
+                        <div class="desc">
+                            <div class="thumb">
+                                <img class="img-circle" src="assets/img/ui-sherman.jpg" width="35px" height="35px" align="">
+                            </div>
+                            <div class="details">
+                                <p><!-- <a href="#"></a><br/> -->
+                                    <a href="#">中国进入了新时代！高举中国特色社会主义旗帜，坚决拥护和支持党的英明举措！</a>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Third Member -->
+                        <div class="desc">
+                            <div class="thumb">
+                                <img class="img-circle" src="assets/img/ui-danro.jpg" width="35px" height="35px" align="">
+                            </div>
+                            <div class="details">
+                                <p><!-- <a href="#"></a><br/> -->
+                                    <a href="#">纠正幼儿园“小学化”需消除家长焦虑</a>
+                                </p>
+                            </div>
+                        </div>
+                        <h3>系统消息提示</h3>
+                        <!-- First Action -->
+                      <div class="desc">
+                      	<div class="thumb">
+                      		<span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
+                      	</div>
+                      	<div class="details">
+                      		<p><muted>今日</muted><br/>
+                      		   <a href="#">XiaoMing123</a> 申请开通个人用户账户<br/>
+                      		</p>
+                      	</div>
+                      </div>
+                      <!-- Second Action -->
+                      <div class="desc">
+                      	<div class="thumb">
+                      		<span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
+                      	</div>
+                      	<div class="details">
+                      		<p><muted>今日</muted><br/>
+                                管理员发布了新主题<a href="#">科技</a><br/>
+                      		</p>
+                      	</div>
+                      </div>
+                      <!-- Third Action -->
+                      <div class="desc">
+                      	<div class="thumb">
+                      		<span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
+                      	</div>
+                      	<div class="details">
+                              <p><muted>3天前</muted><br/>
+                                管理员添加了新爬虫<a href="#">Trident</a><br/>
+                      		</p>
+                      	</div>
+                      </div>      
+                        <!-- CALENDAR-->
+                        <div id="calendar" class="mb">
+                            <div class="panel green-panel no-margin">
+                                <div class="panel-body">
+                                    <div id="date-popover" class="popover top" style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
+                                        <div class="arrow"></div>
+                                        <h3 class="popover-title" style="disadding: none;"></h3>
+                                        <div id="date-popover-content" class="popover-content"></div>
+                                    </div>
+                                    <div id="my-calendar"></div>
+                                </div>
+                            </div>
+                        </div><!-- / calendar -->
+                      
+                  </div><!-- /col-lg-3 -->
+              </div><!--/row -->
+          </section>
+      </section>
+
+      <!--main content end-->
+      <!--footer start-->
+      <footer class="site-footer">
+          <div class="text-center">
+              2018 - <a href="http://www.xjtu.edu.cn" target="_blank" title="西安交通大学">西安交通大学</a> - <a href="http://www.xjtu.edu.cn" title="social mind" target="_blank">social mind舆情分析平台</a>
+              <a href="#" class="go-top">
+                  <i class="fa fa-angle-up"></i>
+              </a>
+          </div>
+      </footer>
+      <!--footer end-->
+  </section>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/jquery-1.8.3.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="assets/js/jquery.sparkline.js"></script>
+
+
+    <!--common script for all pages-->
+    <script src="assets/js/common-scripts.js"></script>
+    
+    <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
+    <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+
+    <!--script for this page-->
+    <script src="assets/js/sparkline-chart.js"></script>    
+	<script src="assets/js/zabuto_calendar.js"></script>	
+	
+	<script type="text/javascript">
+        $(document).ready(function () {
+
+        return false;
+        });
+	</script>
+	
+	<script type="application/javascript">
+        $(document).ready(function () {
+            $("#date-popover").popover({html: true, trigger: "manual"});
+            $("#date-popover").hide();
+            $("#date-popover").click(function (e) {
+                $(this).hide();
+            });
+        
+            $("#my-calendar").zabuto_calendar({
+                action: function () {
+                    return myDateFunction(this.id, false);
+                },
+                action_nav: function () {
+                    return myNavFunction(this.id);
+                },
+                ajax: {
+                    url: "show_data.php?action=1",
+                    modal: true
+                },
+                legend: [
+                    {type: "text", label: "Special event", badge: "00"},
+                    {type: "block", label: "Regular event", }
+                ]
+            });
+        });
+        
+        
+        function myNavFunction(id) {
+            $("#date-popover").hide();
+            var nav = $("#" + id).data("navigation");
+            var to = $("#" + id).data("to");
+            console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+        }
+    </script>
+
+
+  </body>
+</html>

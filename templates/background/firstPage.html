@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>SocialMind Admin</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <!--external css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="assets/css/zabuto_calendar.css">
+    <link rel="stylesheet" type="text/css" href="assets/js/gritter/css/jquery.gritter.css" />
+    <link rel="stylesheet" type="text/css" href="assets/lineicons/style.css">    
+    
+    <!-- Custom styles for this template -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/maruti-media.css" class="skin-color" />
+
+    <style>
+        .icon-signal { background-position:-408px 0 }
+        span.icon {
+	        border-right: 1px solid #cdcdcd;
+	        padding: 9px 10px 7px 11px;
+	        float: left;
+	        opacity: .7;
+        }
+        body{overflow: hidden;}
+    </style>
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+  <section id="container" >
+      <!-- **********************************************************************************************************************************************************
+      TOP BAR CONTENT & NOTIFICATIONS
+      *********************************************************************************************************************************************************** -->
+      <!--header start-->
+      <!--header end-->
+      
+      <!-- **********************************************************************************************************************************************************
+      MAIN SIDEBAR MENU
+      *********************************************************************************************************************************************************** -->
+      <!--sidebar start-->
+      <!--sidebar end-->
+      <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >网页模板</a></div>
+      
+      <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+      <!--main content start-->
+          <section class="wrapper">
+          <h3><i class="fa fa-angle-right"></i> 首页</h3>
+          
+              <!-- page start-->
+              <div class="row">
+                <div class="col-xs-9 main-chart">
+                    <div class="white-panel pn donut-chart" style="height: auto;">
+                        <!--<div class="row mt">-->
+                      <!--CUSTOM CHART START -->
+                      
+                      <div class="panel-heading" style="text-align:left;">
+                            <span class="glyphicon glyphicon-tags" aria-hidden="true" style="margin-right: 5px"></span>事件个数统计
+                      </div>
+                      <!--<div class="border-head">
+                          <span class="icon"><i class="icon-signal"></i></span>
+                          <h3 style="text-align:left;">事件个数统计</h3>
+                      </div>-->
+                      <!--custom chart end-->
+                    <!--</div>--><!-- /row -->	
+                    <div style="height: 20px;">
+                    </div>
+                </div><!--/grey-panel -->
+
+                <div class="row mt">
+                    <!--<div class="col-lg-6">
+                        <div class="content-panel">
+                            <h4><i class="fa fa-angle-right"></i> 指标统计 <label style="margin-left: 3px;font-size: 12px">共计76项</label></h4>
+                            <div class="panel-body">
+                                <div id="hero-graph" class="graph">
+                                        共计76项
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                    <div class="col-xs-6">
+                        <div class="content-panel">
+                            <h4><i class="fa fa-angle-right"></i> 系统统计</h4>
+                            <div class="panel-body">
+                                <ul class="quick-actions">
+					  <li> <a href="#"> <i class="icon-book"></i> 昨日新增用户数 </a> </li>
+					  <li> <a href="#"> <i class="icon-cabinet"></i> 用户增长速率</a> </li>
+					  <li> <a href="#"> <i class="icon-calendar"></i> 昨日新增个人用户数 </a> </li>
+					  <li> <a href="#"> <i class="icon-client"></i> 昨日新增企业用户数</a> </li>
+					  <li> <a href="#"> <i class="icon-database"></i> 昨日新增事业单位用户数 </a> </li>
+					  <li> <a href="#"> <i class="icon-database"></i> 昨日新增政府用户数 </a> </li>
+					  <li> <a href="#"> <i class="icon-download"></i> 总个人用户数 </a> </li>
+					  <li> <a href="#"> <i class="icon-graph"></i> 总用户数 </a> </li>
+					  <li> <a href="#"> <i class="icon-graph"></i> 总个人数 </a> </li>
+					  <li> <a href="#"> <i class="icon-home"></i>总企业数 </a> </li>
+					  <li> <a href="#"> <i class="icon-lock"></i> 总事业单位数</a> </li>
+					  <li> <a href="#"> <i class="icon-mail"></i>总政府数 </a> </li>
+					  <li> <a href="#"> <i class="icon-pdf"></i> 昨日系统点击量 </a> </li>
+					  <li> <a href="#"> <i class="icon-people"></i> 总系统点击量 </a> </li>
+					  <li> <a href="#"> <i class="icon-piechart"></i> 昨日系统留言量 </a> </li>
+					  <li> <a href="#"> <i class="icon-search"></i> 总留言量 </a> </li>
+					  <li> <a href="#"> <i class="icon-shopping-bag"></i>昨日系统日志生成量 </a> </li>
+					  <li> <a href="#"> <i class="icon-survey"></i> 昨日系统日志生成量 </a> </li>
+					                </ul>
+                                <div id="hero-bar" class="graph">
+                                    共计18项
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="content-panel">
+                            <h4><i class="fa fa-angle-right"></i> 爬虫指标统计</h4>
+                            <div class="panel-body">
+                                    <ul>
+                                            <li> <a href="#"> <i class="icon-book"></i> 最高爬虫速率</a> </li>
+                                            <li> <a href="#"> <i class="icon-cabinet"></i> 最低爬虫速率</a> </li>
+                                            <li> <a href="#"> <i class="icon-calendar"></i> 平均爬虫速率 </a> </li>
+                                            <li> <a href="#"> <i class="icon-client"></i> 日间平均爬虫速率</a> </li>
+                                            <li> <a href="#"> <i class="icon-database"></i> 夜间平均爬虫速率 </a> </li>
+                                            <li> <a href="#"> <i class="icon-download"></i> 最快速率网站 </a> </li>
+                                            
+                                            <li> <a href="#"> <i class="icon-graph"></i> 最慢速率网站 </a> </li>
+                                            <li> <a href="#"> <i class="icon-home"></i>各网站的出错比 </a> </li>
+                                            <li> <a href="#"> <i class="icon-lock"></i> 出错最多的网站</a> </li>
+                                            <li> <a href="#"> <i class="icon-mail"></i>出错最少的网站 </a> </li>
+                                            <li> <a href="#"> <i class="icon-pdf"></i> 最大爬取量</a> </li>
+                                            <li> <a href="#"> <i class="icon-people"></i> 最小爬取量</a> </li>
+                                            <li> <a href="#"> <i class="icon-piechart"></i> 平均爬取量</a> </li>
+                                            <li> <a href="#"> <i class="icon-search"></i> 最大耗时 </a> </li>
+                                            <li> <a href="#"> <i class="icon-shopping-bag"></i>最小耗时</a> </li>
+                                            <li> <a href="#"> <i class="icon-survey"></i> 平均耗时 </a> </li>
+                                            <li> <a href="#"> <i class="icon-tag"></i> 最近新增爬虫 </a> </li>
+                                             <li> <a href="#"> <i class="icon-user"></i> 长时间未运行的爬虫</a> </li>
+                                            <!---<li> <a href="#"> <i class="icon-wallet"></i> icon-wallet </a> </li>
+                                            <li> <a href="#"> <i class="icon-web"></i>icon-web </a> </li>
+                                            <li> <a href="#"> <i class="icon-dashboard"></i> icon-dashboard </a> </li>-->
+                                          </ul>
+                                <div id="hero-bar" class="graph">
+                                    共计18项
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt">
+                    <div class="col-xs-6">
+                        <div class="content-panel">
+                            <h4><i class="fa fa-angle-right"></i> 舆情事件统计</h4>
+                            <div class="panel-body">
+                                <ul class="quick-actions">
+					  <li> <a href="#"> <i class="icon-book"></i> 总事件数 </a> </li>
+					  <li> <a href="#"> <i class="icon-cabinet"></i> 昨日新增事件数</a> </li>
+					  <li> <a href="#"> <i class="icon-calendar"></i> 最近一周新增事件数 </a> </li>
+					  <li> <a href="#"> <i class="icon-client"></i> 最近一月新增事件数 </a> </li>
+					  <li> <a href="#"> <i class="icon-database"></i> 平均每周新增事件数 </a> </li>
+					  <li> <a href="#"> <i class="icon-book"></i> 总实体数 </a> </li>
+					  <li> <a href="#"> <i class="icon-cabinet"></i> 昨日新增实体数</a> </li>
+					  <li> <a href="#"> <i class="icon-calendar"></i> 最近一周新增实体数 </a> </li>
+					  <li> <a href="#"> <i class="icon-client"></i> 最近一月新增实体数 </a> </li>
+					  <li> <a href="#"> <i class="icon-database"></i> 平均每周新增实体数 </a> </li>
+					  <li> <a href="#"> <i class="icon-download"></i> 积极情感事件数 </a> </li>
+					  <li> <a href="#"> <i class="icon-graph"></i> 消极情感事件数 </a> </li>
+					  <li> <a href="#"> <i class="icon-home"></i>用户参与总人次 </a> </li>
+					  <li> <a href="#"> <i class="icon-lock"></i> 事件最长时间跨度</a> </li>
+					  <li> <a href="#"> <i class="icon-mail"></i>事件最短时间跨度 </a> </li>
+					  <li> <a href="#"> <i class="icon-pdf"></i> 最活跃的网站 </a> </li>
+					  <li> <a href="#"> <i class="icon-people"></i> 最近一年最活跃事件 </a> </li>
+					  <li> <a href="#"> <i class="icon-piechart"></i> 最近一月最活跃事件 </a> </li>
+					  <li> <a href="#"> <i class="icon-search"></i> 最近一周最活跃事件</a> </li>
+					  <li> <a href="#"> <i class="icon-shopping-bag"></i>该系统访问次数最多事件 </a> </li>
+					  <li> <a href="#"> <i class="icon-survey"></i> 该系统访问次数最多主题 </a> </li>
+					  <li> <a href="#"> <i class="icon-tag"></i> 包含事件最多的主题 </a> </li>
+					   <li> <a href="#"> <i class="icon-user"></i> 包含事件最少的主题</a> </li>
+					  <li> <a href="#"> <i class="icon-user"></i> 近月包含事件最多的主题</a> </li>
+					  <li> <a href="#"> <i class="icon-user"></i> 近月包含事件最少的主题</a> </li>
+					        </ul>
+                                <div id="hero-bar" class="graph">
+                                    共计25项
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="content-panel">
+                            <h4><i class="fa fa-angle-right"></i> 数据清洗指标统计</h4>
+                            <div class="panel-body">
+                                <ul class="quick-actions">
+					  <li> <a href="#"> <i class="icon-book"></i> 尚未清洗的表</a> </li>
+					  <li> <a href="#"> <i class="icon-cabinet"></i> 正在清洗的表</a> </li>
+					  <li> <a href="#"> <i class="icon-calendar"></i> 已经清洗的表 </a> </li>
+					  <li> <a href="#"> <i class="icon-client"></i> 上一次清洗的表</a> </li>
+					  <li> <a href="#"> <i class="icon-database"></i> 上一次清洗的管理员 </a> </li>
+					  <li> <a href="#"> <i class="icon-download"></i> 清洗待解决问题 </a> </li>
+					  
+					  <li> <a href="#"> <i class="icon-graph"></i> 总清洗次数 </a> </li>
+					  <li> <a href="#"> <i class="icon-people"></i> 数据清洗频率 </a> </li>
+					  <li> <a href="#"> <i class="icon-home"></i>上一次清洗时间 </a> </li>
+					 <li> <a href="#"> <i class="icon-pdf"></i> 每次平均清洗时间 </a> </li>
+					  <li> <a href="#"> <i class="icon-lock"></i> 上次清洗后新增数据量 </a> </li>
+					  <li> <a href="#"> <i class="icon-mail"></i>上次清洗的数据量 </a> </li>
+					  <li> <a href="#"> <i class="icon-piechart"></i> 总清洗数据量 </a> </li>
+					  <li> <a href="#"> <i class="icon-search"></i> 清洗人员统计 </a> </li>
+					  <li> <a href="#"> <i class="icon-shopping-bag"></i>每次平均清洗数据量 </a> </li>
+					  <!-- <li> <a href="#"> <i class="icon-shopping-bag"></i>icon-shopping-bag </a> </li>
+					  <li> <a href="#"> <i class="icon-survey"></i> icon-survey </a> </li>
+					  <li> <a href="#"> <i class="icon-tag"></i> icon-tag </a> </li>
+					   <li> <a href="#"> <i class="icon-user"></i> icon-user</a> </li>
+					  <li> <a href="#"> <i class="icon-wallet"></i> icon-wallet </a> </li>
+					  <li> <a href="#"> <i class="icon-web"></i>icon-web </a> </li>   -->
+
+					</ul>
+                                <div id="hero-bar" class="graph">
+                                    共计15项
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+
+                  	<div class="row mtbox">
+                  		<div class="col-md-2 col-sm-2 col-md-offset-1 box0">
+                  			<div class="box1">
+					  			<span class="glyphicon glyphicon-wrench"></span>
+					  			<h3>配置</h3>
+                  			</div>
+					  			<p></p>
+                  		</div>
+                  		<div class="col-md-2 col-sm-2 box0">
+                  			<div class="box1">
+					  			<span class="li_cloud"></span>
+					  			<h3>主题管理</h3>
+                  			</div>
+					  			<p></p>
+                  		</div>
+                  		<div class="col-md-2 col-sm-2 box0">
+                  			<div class="box1">
+					  			<span class="glyphicon glyphicon-globe"></span>
+					  			<h3>用户</h3>
+                  			</div>
+					  			<p></p>
+                  		</div>
+                  		<div class="col-md-2 col-sm-2 box0">
+                  			<div class="box1">
+					  			<span class="li_news"></span>
+					  			<h3>用户评论</h3>
+                  			</div>
+					  			<p></p>
+                  		</div>
+                  		<div class="col-md-2 col-sm-2 box0">
+                  			<div class="box1">
+					  			<span class="li_data"></span>
+					  			<h3>数据库</h3>
+                  			</div>
+					  			<p></p>
+                  		</div>
+                  	
+                  	</div><!-- /row mt -->	
+                  
+                      
+                    
+					
+					
+                  </div><!-- /col-lg-9 END SECTION MIDDLE -->
+                  
+                  
+      <!-- **********************************************************************************************************************************************************
+      RIGHT SIDEBAR CONTENT
+      *********************************************************************************************************************************************************** -->                  
+                  
+            <div class="col-xs-3 ds" style="margin-top: -40px;">
+                    <!--COMPLETED ACTIONS DONUTS CHART-->
+                       <!-- USERS ONLINE SECTION -->
+						<h3>用户消息提示</h3>
+                      <!-- First Member -->
+                      <div class="desc">
+                      	<div class="thumb">
+                      		<img class="img-circle" src="assets/img/ui-divya.jpg" width="35px" height="35px" align="">
+                      	</div>
+                      	<div class="details">
+                      		<p><a href="#">小明</a><br/>
+                      		  系统日志已更新
+                      		</p>
+                      	</div>
+                      </div>
+                      <!-- Second Member -->
+                      <div class="desc">
+                      	<div class="thumb">
+                      		<img class="img-circle" src="assets/img/ui-sherman.jpg" width="35px" height="35px" align="">
+                      	</div>
+                      	<div class="details">
+                      		<p><a href="#">小明</a><br/>
+                      		   源数据清洗策略更改
+                      		</p>
+                      	</div>
+                      </div>
+                      <!-- Third Member -->
+                      <div class="desc">
+                      	<div class="thumb">
+                      		<img class="img-circle" src="assets/img/ui-danro.jpg" width="35px" height="35px" align="">
+                      	</div>
+                      	<div class="details">
+                      		<p><a href="#">小明</a><br/>
+                                爬虫Trident长时间未运行
+                      		</p>
+                      	</div>
+                      </div>
+                    <h3>系统消息提示</h3>
+                                        
+                      <!-- First Action -->
+                      <div class="desc">
+                      	<div class="thumb">
+                      		<span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
+                      	</div>
+                      	<div class="details">
+                      		<p><muted>今日</muted><br/>
+                      		   <a href="#">XiaoMing123</a> 申请开通个人用户账户<br/>
+                      		</p>
+                      	</div>
+                      </div>
+                      <!-- Second Action -->
+                      <div class="desc">
+                      	<div class="thumb">
+                      		<span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
+                      	</div>
+                      	<div class="details">
+                      		<p><muted>今日</muted><br/>
+                                <a href="#">LXM</a> 发布了主题<a href="#">科技</a><br/>
+                      		</p>
+                      	</div>
+                      </div>
+                      <!-- Third Action -->
+                      <div class="desc">
+                      	<div class="thumb">
+                      		<span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
+                      	</div>
+                      	<div class="details">
+                              <p><muted>3天前</muted><br/>
+                                管理员添加了新爬虫<a href="#">Trident</a><br/>
+                      		</p>
+                      	</div>
+                      </div>  
+
+                        <!-- CALENDAR-->
+                        <div id="calendar" class="mb">
+                            <div class="panel green-panel no-margin">
+                                <div class="panel-body">
+                                    <div id="date-popover" class="popover top" style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
+                                        <div class="arrow"></div>
+                                        <h3 class="popover-title" style="disadding: none;"></h3>
+                                        <div id="date-popover-content" class="popover-content"></div>
+                                    </div>
+                                    <div id="my-calendar"></div>
+                                </div>
+                            </div>
+                        </div><!-- / calendar -->
+                      
+                  </div><!-- /col-lg-3 -->
+              </div><!--/row -->
+          </section>
+
+      <!--main content end-->
+  </section>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/jquery-1.8.3.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/js/jquery.sparkline.js"></script>
+
+
+    <!--common script for all pages-->
+    <script src="assets/js/common-scripts.js"></script>
+    
+    <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
+    <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+
+    <!--script for this page-->
+    <script src="assets/js/sparkline-chart.js"></script>    
+	<script src="assets/js/zabuto_calendar.js"></script>	
+	
+	<script type="text/javascript">
+        $(document).ready(function () {
+
+        return false;
+        });
+	</script>
+	
+	<script type="application/javascript">
+        $(document).ready(function () {
+            $("#date-popover").popover({html: true, trigger: "manual"});
+            $("#date-popover").hide();
+            $("#date-popover").click(function (e) {
+                $(this).hide();
+            });
+        
+            $("#my-calendar").zabuto_calendar({
+                action: function () {
+                    return myDateFunction(this.id, false);
+                },
+                action_nav: function () {
+                    return myNavFunction(this.id);
+                },
+                ajax: {
+                    url: "show_data.php?action=1",
+                    modal: true
+                },
+                legend: [
+                    {type: "text", label: "Special event", badge: "00"},
+                    {type: "block", label: "Regular event", }
+                ]
+            });
+        });
+        
+        
+        function myNavFunction(id) {
+            $("#date-popover").hide();
+            var nav = $("#" + id).data("navigation");
+            var to = $("#" + id).data("to");
+            console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+        }
+    </script>
+
+  </body>
+</html>
