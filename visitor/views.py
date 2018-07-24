@@ -18,7 +18,16 @@ def login(request):
             try:
                 user = models.User.objects.get(username=username)
                 if user.password == password:
-                    return  redirect('/index/')
+                    if user_type == "个人用户":
+                        return redirect('person_index')
+                    if user_type == "企业用户":
+                        return redirect('com_index')
+                    if user_type == "政府用户":
+                        return redirect('gov_index')
+                    if user_type == "事业单位用户":
+                        return redirect('person_index')
+                    else:
+                        return redirect('/login/')
                 else:
                     message ='密码错误'
             except:
@@ -27,8 +36,14 @@ def login(request):
 
     return render(request, 'foreground/login.html')
 
-def index(request):
+def person_index(request):
+    return render(request, 'foreground/person_index.html')
+def com_index(request):
     return render(request, 'foreground/com_index.html')
+def gov_index(request):
+    return render(request, 'foreground/gov_index.html')
+def govcom_index(request):
+    return render(request, 'foreground/govcom_index.html')
 def test(request):
     return render(request, 'foreground/signin.html')
     pass
