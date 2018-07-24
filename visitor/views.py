@@ -28,7 +28,7 @@ def login(request):
     return render(request, 'foreground/login.html')
 
 def index(request):
-    return render(request, 'foreground/index.html')
+    return render(request, 'foreground/com_index.html')
 def test(request):
     return render(request, 'foreground/signin.html')
     pass
@@ -146,3 +146,6 @@ def checkuser(request):
     else:
         msg = 0
     return JsonResponse({'msg':msg})
+
+def test(request):
+    return render(request,'base.html')

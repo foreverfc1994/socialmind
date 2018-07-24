@@ -16,7 +16,7 @@
     <!-- Custom styles for this template -->
     <link href = "{% static 'assets0/css/style.css' %}" rel = "stylesheet" >
     <link href = "{% static 'assets0/css/style-responsive.css' %}" rel = "stylesheet" >
-
+<link rel="stylesheet" href="//res.layui.com/layui/dist/css/layui.css"  media="all">
     <script src = "{% static 'assets0/js/chart-master/Chart.js' %}" > </script>
     <script src = "{% static 'assets0/js/echarts.js' %}" > </script>
     <script src = "{% static 'assets0/js/wordcloud2.js' %}" > </script>
@@ -30,40 +30,24 @@
   </head>
 
   <body>
+  <div class="layui-row">
+      <div class=""></div>
+  </div>
+  <ul class="layui-nav layui-bg-cyan">
+  <li class="layui-nav-item"><a href="">藏青导航</a></li>
+  <li class="layui-nav-item layui-this"><a href="">产品</a></li>
+  <li class="layui-nav-item"><a href="">大数据</a></li>
+  <li class="layui-nav-item">
+    <a href="javascript:;">解决方案</a>
+    <dl class="layui-nav-child">
+      <dd><a href="">移动模块</a></dd>
+      <dd><a href="">后台模版</a></dd>
+      <dd><a href="">电商平台</a></dd>
+    </dl>
+  </li>
+  <li class="layui-nav-item"><a href="">社区</a></li>
+</ul>
 
-  <section id="container">
-      <!-- **********************************************************************************************************************************************************
-    TOP BAR CONTENT & NOTIFICATIONS
-    *********************************************************************************************************************************************************** -->
-    <!--header start-->
-    <header class="header black-bg">
-        <div class="headerTitle">
-            <a href="/com_index/" class="logo"><b>social mind舆情管理平台</b></a>
-        </div>
-        <div class="col-lg-8">
-            <ul id="menu">
-                <li><a>首页</a></li>
-                <li><a>当地事件</a></li>
-                <li><a>敏感事件</a></li>
-                <li><a>相关领域</a></li>
-                <li><a>竞争对手</a></li>
-                <li><a>推荐内容</a></li>
-                <li><a href="/fullTextMonitor/">文章搜索</a></li>
-                <li><a href="/events/" style="width: 120px;">全网事件搜索</a></li>
-            </ul>
-        </div>
-        <div id="person_center">
-            <ul>
-                <li class="liClass">
-                    <a>个人中心</a>
-                    <ul>
-                        <li><a>个人信息</a></li>
-                        <li><a>退出登录</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </header>
 
         <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
@@ -254,14 +238,12 @@
 
 
   </body>
-<script>
-
-    window.onload = function(){
-        emotionCompose();
-        eventChange();
-        sensitiveInform();
-        emotionTrend();
-    };
-
-</script>
+    <script>
+        window.onload = function(){
+            emotionCompose();
+            eventChange();
+            sensitiveInform();
+            emotionTrend();
+        };
+    </script>
 </html>

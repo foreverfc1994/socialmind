@@ -53,5 +53,7 @@ urlpatterns = [
     path('reportMaker/', vviews.reportMaker),
     path('profile/', vviews.profile),
     path('eventParticular/', vviews.eventparticular),
-    path('fileParticular/', vviews.fileParticular)
+    path('fileParticular/', vviews.fileParticular),
+    path('test/',vviews.test)
+
 ]
