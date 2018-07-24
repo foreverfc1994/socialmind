@@ -2481,24 +2481,25 @@ label {
     cursor: pointer;
 }
 .eventTypeMenu{
+    display: block;
     list-style:none; /* 将默认的列表符号去掉 */
     height: 40px;
     padding:0; /* 将默认的内边距去掉 */
     margin-top:13px; /* 将默认的外边距去掉 */
     margin-bottom: 0px;
     width: 100%;
+    background-color: #ffffff;
 }
 .eventTypeMenu li{
+    display: block;
     float: left;
     width: 10%;
     height: 40px;
-    background: #ffffff;
+    overflow: hidden;
 }
 .eventTypeMenu li a{
     display:block; /* 将链接设为块级元素 */
     padding:8px 10px; /* 设置内边距 */
-    background:#ffffff; /* 设置背景色 */
-    color:#696969; /* 设置文字颜色 */
     text-decoration:none; /* 去掉下划线 */
     /*border-right:1px solid #dcdcdc; !* 在左侧加上分隔线 *!*/
     font-size: 16px;
@@ -2507,16 +2508,38 @@ label {
     text-align:center; /* 居中对齐文字 */
 }
 .eventTypeMenu li a:hover{
+    border-radius: 8px;
     color: #000000;
     font-weight: bold;
     cursor: pointer;
 }
-.eventTypeMenu li a:target{
-    color: #000000;
-    font-weight: bold;
-    background-color: #DAA520;
-}
-.action{
-    background: #DAA520;
+.liAction{
+    border-radius: 8px;
     color: #ffffff;
+    font-weight: bold;
+    background: #DAA520;
+}
+.liAction a{
+    color: #ffffff;
+}
+.eventTable{
+    padding-left: 5%;
+    display: block;
+    background: #ffffff;
+    width: 90%;
+    margin-left: 5%;
+    text-align: center;
+}
+.eventTable tr th{
+    height: 35px;
+}
+.eventTable thead{
+    height: 40px;
+    font-size: 20px;
+}
+.pHeader{
+    padding-bottom: 5px;
+    font-size: 40px;
+    text-align: center;
+    width: 100%;
 }

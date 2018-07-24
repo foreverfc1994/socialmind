@@ -33,73 +33,34 @@
     *********************************************************************************************************************************************************** -->
     <!--header start-->
     <header class="header black-bg">
-        <a href="/index/" class="logo"><b>social mind舆情管理平台</b></a>
-        <a class="logo"><b>&nbsp; &nbsp; &nbsp; >&nbsp; &nbsp; &nbsp; 事件详情</b></a>
-        <div class="top-menu">
-            <ul class="nav pull-right top-menu">
-                <li><a class="logout" href="login.html">登出</a></li>
-            </ul>
-        </div>
-    </header>
-{#    <aside>#}
-{#        <div id="sidebar"  class="nav-collapse ">#}
-{#            <!-- sidebar menu start-->#}
-{#            <ul class="sidebar-menu" id="nav-accordion">#}
-{##}
-{#                <p class="centered"><a href="/profile/"><img src="{% static 'assets0/img/friends/fr-09.jpg' %}" class="img-circle" width="60"></a></p>#}
-{#                <h5 class="centered">访客您好</h5>#}
-{##}
-{#                <li class="mt">#}
-{#                    <a href="/index/">#}
-{#                        <i class="fa fa-dashboard"></i>#}
-{#                        <span>首页</span>#}
-{#                    </a>#}
-{#                </li>#}
-{##}
-{#                <li class="sub-menu">#}
-{#                    <a href="/heatIndex/">#}
-{#                        <i class="fa fa-dashboard"></i>#}
-{#                        <span>热度指标</span>#}
-{#                    </a>#}
-{#                </li>#}
-{##}
-{#                <li class="sub-menu">#}
-{#                    <a  href="/emotionMap/" >#}
-{#                        <i class="fa fa-desktop"></i>#}
-{#                        <span>情绪地图</span>#}
-{#                    </a>#}
-{##}
-{#                </li>#}
-{##}
-{#                <li class="sub-menu">#}
-{#                    <a href="/informationMonitor/" >#}
-{#                        <i class="fa fa-cogs"></i>#}
-{#                        <span>信息监测</span>#}
-{#                    </a>#}
-{#                </li>#}
-{#                <li class="sub-menu">#}
-{#                    <a href="/fullTextMonitor/" >#}
-{#                        <i class="fa fa-book"></i>#}
-{#                        <span>全文检索</span>#}
-{#                    </a>#}
-{#                </li>#}
-{#                <li  class="sub-menu">#}
-{#                    <a href="/events/" >#}
-{#                        <i class="fa fa-tasks"></i>#}
-{#                        <span>全网事件分析</span>#}
-{#                    </a>#}
-{#                </li>#}
-{#                <li class="sub-menu">#}
-{#                    <a href="/reportMaker/" >#}
-{#                        <i class="fa fa-th"></i>#}
-{#                        <span>简报制作</span>#}
-{#                    </a>#}
-{#                </li>#}
-{#            </ul>#}
-{#            <!-- sidebar menu end-->#}
-{#        </div>#}
-{#    </aside>#}
-{#    <section id="main-content">#}
+                <div class="headerTitle">
+                    <a href="/com_index/" class="logo"><b>social mind舆情管理平台</b></a>
+                </div>
+                <div class="col-lg-8">
+                    <ul id="menu">
+                        <li><a href="/com_index/">首页</a></li>
+                        <li><a href="/events/?character=com&param=localEvent">当地事件</a></li>
+                        <li><a>敏感事件</a></li>
+                        <li><a>相关领域</a></li>
+                        <li><a>竞争对手</a></li>
+                        <li><a>推荐内容</a></li>
+                        <li><a href="/fullTextMonitor/">文章搜索</a></li>
+                        <li><a href="/events/" style="width: 120px;">全网事件搜索</a></li>
+                    </ul>
+                </div>
+                <div id="person_center">
+                    <ul>
+                        <li class="liClass">
+                            <a>个人中心</a>
+                            <ul>
+                                <li><a>个人信息</a></li>
+                                <li><a>退出登录</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+
         <section class="wrapper">
             <div class="col-lg-9 main-chart">
                 <div id="morris">
