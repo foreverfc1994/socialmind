@@ -10,39 +10,25 @@ def login(request):
     if request.method == 'POST':
         print(request.POST)
         message = ''
-        username = request.POST.get('username', None)
-        password = request.POST.get('password', None)
+        username = request.POST.get('username',None)
+        password = request.POST.get('password',None)
         user_type = request.POST.get('user-type')
         if username and password:
             username = username.strip()
             try:
                 user = models.User.objects.get(username=username)
                 if user.password == password:
-                    if user_type == "个人用户":
-                        return  redirect('/person_index/')
-                    if user_type == "企业用户":
-                        return redirect('/com_index/')
-                    if user_type == "政府用户":
-                        return redirect('/gov_index/')
-                    if user_type == "事业单位用户":
-                        return redirect('/govcom_index/')
+                    return  redirect('/index/')
                 else:
-                    message = '密码错误'
+                    message ='密码错误'
             except:
                 message = '无此用户'
-
         return render(request, 'foreground/login.html', {'message': message})
 
     return render(request, 'foreground/login.html')
 
-def person_index(request):
-    return render(request, 'foreground/person_index.html')
-def com_index(request):
+def index(request):
     return render(request, 'foreground/com_index.html')
-def gov_index(request):
-    return render(request, 'foreground/gov_index.html')
-def govcom_index(request):
-    return render(request, 'foreground/govcom_index.html')
 def test(request):
     return render(request, 'foreground/signin.html')
     pass
@@ -160,3 +146,6 @@ def checkuser(request):
     else:
         msg = 0
     return JsonResponse({'msg':msg})
+
+def test(request):
+    return render(request, 'foreground/com_index.html')
