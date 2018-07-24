@@ -711,7 +711,12 @@ class Tool(models.Model):
     class Meta:
         managed = False
         db_table = 'tool'
+class Topic(models.Model):
 
+    name = models.CharField(db_column='name',max_length=32)
+    class Meta:
+
+        db_table = 'topic'
 
 class Toolkit(models.Model):
     toolkitid = models.CharField(db_column='toolkitID', primary_key=True, max_length=36)  # Field name made lowercase.

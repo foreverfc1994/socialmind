@@ -54,6 +54,7 @@ urlpatterns = [
     path('profile/', vviews.profile),
     path('eventParticular/', vviews.eventparticular),
     path('fileParticular/', vviews.fileParticular),
-    path('test/',vviews.test)
+    path('test/',vviews.test),
+    path('jump/',vviews.jump)
 
 ]

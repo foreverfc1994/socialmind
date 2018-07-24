@@ -39,6 +39,7 @@ def signin(request):
         print(type(userdata))
         if userdata.get('user-type')=='0':
             personuser(userdata)
+            return redirect('/jump/')
         elif userdata.get('user-type')=='1':
             files = request.FILES['idcardA']
             saveimg(files)
@@ -149,3 +150,6 @@ def checkuser(request):
 
 def test(request):
     return render(request, 'foreground/com_index.html')
+
+def jump(request):
+    return render(request, 'foreground/jump.html')
