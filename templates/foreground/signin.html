@@ -13,7 +13,7 @@
     <link href="{% static 'assets0/font-awesome/css/font-awesome.css' %}" rel="stylesheet"/>
     <!-- Custom styles for this template -->
     <link href="{% static 'assets0/css/style.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'assets0/layui/css/layui.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets0/layui/css/layui.css' %}"/>
     <script type="text/javascript" src="{% static 'assets0/js/jquery.validate.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'assets0/js/messages_zh.js' %}"></script>
     <script type="text/javascript" src="{% static 'assets0/js/jquery.js' %}"></script>
@@ -56,14 +56,15 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">兴趣类型</h4>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
             </div>
             <div class="modal-body">
 
 
                 {% get_topic as topics %}
                 {% for topic in topics %}
-                    <button class="layui-btn layui-btn-primary layui-btn-radius" onclick="change(this)" value="{{ topic.name }}">{{ topic.name }}
+                    <button class="layui-btn layui-btn-primary layui-btn-radius" onclick="change(this)"
+                            value="{{ topic.name }}">{{ topic.name }}
                     </button>
                 {% empty %}
 
@@ -164,36 +165,52 @@
                     "        <input id='pwd' name='pwd' type=\"password\" class=\"form-control\" placeholder=\"密码\" required=\"true\"><br>\n" +
                     "        <p>请再次输入密码：<span style=\"color:red\">*</span></p>\n" +
                     "        <input id='repwd' name='repwd' type=\"password\" class=\"form-control\" placeholder=\"请再次输入密码\" required=\"true\"><br>\n" +
-                    "        <p>企业法人代表名：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='bossname' type=\"text\" class=\"form-control\" placeholder=\"企业法人代表名\" required=\"true\"><br>\n" +
+                    "        <p>真实姓名：<span style=\"color:red\">*</span></p>\n" +
+                    "        <input name='realname' type=\"text\" class=\"form-control\" placeholder=\"企业法人代表名\" required=\"true\"><br>\n" +
+                    "        <p>身份证号：<span style=\"color:red\">*</span></p>\n" +
+                    "        <input name='idcard' type=\"text\" class=\"form-control\" placeholder=\"企业法人身份证号\" style=\"width: 100%\"; step=\"day\"><br>\n" +
+                    "        <p>企业法人身份证正面：<span style=\"color:red\">*</span></p>\n" +
+                    "        <input name='idcardA' type=\"file\" class=\"form-control\" autofocus required=\"true\"><br>\n" +
+                    "        <p>企业法人身份证背面： <span style=\"color:red\">*</span></p>\n" +
+                    "        <input name='idcardB' type=\"file\" class=\"form-control\" autofocus required=\"true\"><br>\n" +
                     "        <p>企业名称： <span style=\"color:red\">*</span></p>\n" +
+
                     "        <input name='companyname' type=\"text\" class=\"form-control\" placeholder=\"企业名称\" autofocus required=\"true\"><br>\n" +
                     "        <p>企业类型： <span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='companytype' type=\"text\" class=\"form-control\" placeholder=\"企业类型\" autofocus required=\"true\"><br>\n" +
+                    "        <select name='companytype' id=\"companytype\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
+                    "            <option>有限责任公司</option>\n" +
+                    "            <option>股份有限公司</option>\n" +
+                    "            <option>个人独资企业</option>\n" +
+                    "            <option>合伙企业</option>\n" +
+                    "            <option>全民所有制企业</option>\n" +
+                    "            <option>集体所有制企业</option>\n" +
+
+                    "        </select>\n" +
+
                     "        <p>营业执照： <span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='businessLicence' type=\"file\" class=\"form-control\" autofocus required=\"true\"><br>\n" +
-                    "        <p>营业执照编码： <span style=\"color:red\">*</span></p>\n" +
-                    "        <input id='businessLicenceId' type=\"text\" class=\"form-control\" placeholder=\"营业执照编码\" autofocus required=\"true\"><br>\n" +
+                    "        <input name='licence' type=\"file\" class=\"form-control\" placeholder=\"营业执照\" autofocus required=\"true\"><br>\n" +
+                    "        <p>成立日期：<span style=\"color:red\">*</span></p>\n" +
+                    "        <input name='birthday' type=\"date\" class=\"form-control\" placeholder=\"成立日期\" style=\"width: 100%\"; step=\"day\"><br>\n" +
+                    "        <p>登记机关： <span style=\"color:red\">*</span></p>\n" +
+                    "        <input name='companytype' type=\"text\" class=\"form-control\" placeholder=\"登记机关\" autofocus required=\"true\"><br>\n" +
+                    "        <p>经营范围： <span style=\"color:red\">*</span></p>\n" +
+                    "        <input name='companytype' type=\"text\" class=\"form-control\" placeholder=\"经营范围\" autofocus required=\"true\"><br>\n" +
+
                     "        <p>请选择省市：</p>\n" +
                     "        <select name='province' id=\"province\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
                     "            <option>--选择省份--</option>\n" +
                     "        </select>\n" +
                     "        <select name='city' id=\"city\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
-                    "            <option>--选择城市--</option>\n" +
+
                     "        </select>\n" +
                     "        <select name='country' id=\"country\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
-                    "            <option>--选择区县--</option>\n" +
+
                     "        </select><br>\n" +
-                    "        <p>成立日期：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='registerDate' type=\"date\" class=\"form-control\" placeholder=\"成立日期选择\" style=\"width: 100%\"; step=\"day\"><br>\n" +
-                    "        <p>登记机关：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input id='registerOrg' name='registerOrg' type=\"text\" class=\"form-control\" placeholder=\"请输入登记机关全名\" autofocus required=\"true\">\n" +
-                    "        <p>经营范围：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input id='businessScope' name='businessScope' type=\"text\" class=\"form-control\" placeholder=\"请输入经营范围\" autofocus required=\"true\">\n" +
                     "        <p>请输入企业邮箱：<span style=\"color:red\">*</span></p>\n" +
                     "        <input name='companyemail' type=\"email\" class=\"form-control\" placeholder=\"请输入企业邮箱\" style=\"width: 100%\" required=\"true\"><br>\n" +
-                    "        <p>关注领域：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input onclick= 'pop()' id='interest' name='interest' type=\"text\" class=\"form-control\" placeholder=\"请选择关注领域\" style=\"width: 100%\" required=\"true\"><br>\n" +
+                    "        <p>关注领域： <span style=\"color:red\">*</span></p>\n" +
+                    "        <input onclick= 'pop()' id= 'interest' name='interest' type=\"text\" class=\"form-control\" placeholder=\"关注领域\" autofocus required=\"true\"><br>\n" +
+
                     "        <button class=\"btn btn-theme btn-block\" type=\"submit\">\n" +
                     "            <i class=\"fa fa-lock\"></i>\n" +
                     "            &nbsp; &nbsp;确定\n" +
@@ -221,28 +238,33 @@
                     "        <input name='pwd' type=\"password\" class=\"form-control\" placeholder=\"密码\" required=\"true\"><br>\n" +
                     "        <p>请再次输入密码：<span style=\"color:red\">*</span></p>\n" +
                     "        <input name='repwd' type=\"password\" class=\"form-control\" placeholder=\"请再次输入密码\" required=\"true\"><br>\n" +
-                    "        <p>政府法人代表名：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='bossname' type=\"text\" class=\"form-control\" placeholder=\"政府法人代表名\" required=\"true\"><br>\n" +
-                    "        <p>政府法人代表身份证号： <span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='bosspid' type=\"text\" class=\"form-control\" placeholder=\"政府法人代表身份证号\" autofocus required=\"true\"><br>\n" +
+                    "        <p>真实姓名：<span style=\"color:red\">*</span></p>\n" +
+                    "        <input name='realname' type=\"text\" class=\"form-control\" placeholder=\"真实姓名\" required=\"true\"><br>\n" +
+                    "        <p>身份证号： <span style=\"color:red\">*</span></p>\n" +
+                    "        <input name='idcard' type=\"text\" class=\"form-control\" placeholder=\"身份证号\" autofocus required=\"true\"><br>\n" +
                     "        <p>政府机构名称：<span style=\"color:red\">*</span></p>\n" +
                     "        <input name='gov-name' type=\"text\" class=\"form-control\" placeholder=\"政府机构名称\" style=\"width: 100%\"; step=\"day\"><br>\n" +
                     "        <p>政府机构类型：<span style=\"color:red\">*</span></p>\n" +
                     "        <input name='gov-type' type=\"text\" class=\"form-control\" placeholder=\"政府机构类型\" autofocus required=\"true\"><br>\n" +
                     "        <p>组织机构代码：<span style=\"color:red\">*</span></p>\n" +
                     "        <input name='gov-code' type=\"text\" class=\"form-control\" placeholder=\"组织机构代码\" autofocus required=\"true\"><br>\n" +
-                    "        <p>上传政府法人代表身份证正面： <span style=\"color:red\">*</span></p>\n" +
+                    "        <p>身份证正面： <span style=\"color:red\">*</span></p>\n" +
                     "        <input name='idcardA' type=\"file\" class=\"form-control\" autofocus required=\"true\" id=\"id_card_0\"><br>\n" +
-                    "        <p>上传政府法人代表身份证反面： <span style=\"color:red\">*</span></p>\n" +
+                    "        <p>身份证反面： <span style=\"color:red\">*</span></p>\n" +
                     "        <input name='idcardB' type=\"file\" class=\"form-control\" autofocus required=\"true\" id=\"id_card_1\"><br>\n" +
-                    "        <p>上传组织机构照片： <span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='gov-photo' type=\"file\" class=\"form-control\" autofocus required=\"true\" id=\"gover_pic\"><br>\n" +
-                    "        <p>请选择所在地图： <span style=\"color:red\">*</span></p>\n" +
+
+                    "        <p>请选择地址： <span style=\"color:red\">*</span></p>\n" +
                     "        <select name='province' id=\"province\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
                     "            <option>--选择所在地区省份--</option>\n" +
                     "        </select>\n" +
+                    "    <select name='city' id=\"city\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
+
+                    "        </select>\n" +
+                    "        <select name='country' id=\"country\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
+
+                    "        </select><br>\n" +
                     "        <p>请输入邮箱：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='gov-mail' type=\"email\" class=\"form-control\" placeholder=\"邮箱\" style=\"width: 100%\" required=\"true\"><br>\n" +
+                    "        <input name='mail' type=\"email\" class=\"form-control\" placeholder=\"邮箱\" style=\"width: 100%\" required=\"true\"><br>\n" +
                     "        <button class=\"btn btn-theme btn-block\" type=\"submit\">\n" +
                     "            <i class=\"fa fa-lock\"></i>\n" +
                     "            &nbsp; &nbsp;确定\n" +
@@ -270,28 +292,68 @@
                     "        <input name='pwd' type=\"password\" class=\"form-control\" placeholder=\"密码\" required=\"true\"><br>\n" +
                     "        <p>请再次输入密码：<span style=\"color:red\">*</span></p>\n" +
                     "        <input name='repwd' type=\"password\" class=\"form-control\" placeholder=\"请再次输入密码\" required=\"true\"><br>\n" +
-                    "        <p>事业单位法人代表名：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='bossname' type=\"text\" class=\"form-control\" placeholder=\"事业单位法人代表名\" required=\"true\"><br>\n" +
-                    "        <p>事业单位法人代表身份证号： <span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='bosspid' type=\"text\" class=\"form-control\" placeholder=\"事业单位法人代表身份证号\" autofocus required=\"true\"><br>\n" +
+                    "        <p>真实姓名：<span style=\"color:red\">*</span></p>\n" +
+                    "        <input name='realname' type=\"text\" class=\"form-control\" placeholder=\"真实姓名\" required=\"true\"><br>\n" +
+                    "        <p>身份证号： <span style=\"color:red\">*</span></p>\n" +
+                    "        <input name='idcard' type=\"text\" class=\"form-control\" placeholder=\"身份证号\" autofocus required=\"true\"><br>\n" +
                     "        <p>事业单位机构名称：<span style=\"color:red\">*</span></p>\n" +
                     "        <input name='in-name' type=\"text\" class=\"form-control\" placeholder=\"事业单位机构名称\" style=\"width: 100%\"; step=\"day\"><br>\n" +
+                    "        <p>事业单位机构级别：<span style=\"color:red\">*</span></p>\n" +
+                    "        <select name='in-level' id=\"in-level\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
+                    "            <option>中央直属事业单位</option>\n" +
+                    "            <option>全国人大直属事业单位</option>\n" +
+                    "            <option>国务院直属事业单位</option>\n" +
+                    "            <option>全国政协直属事业单位</option>\n" +
+                    "            <option>最高人民法院直属事业单位</option>\n" +
+                    "            <option>最高人民检察院直属事业单位</option>\n" +
+                    "            <option>民主党派机关直属事业单位</option>\n" +
+                    "            <option>人民团体机关直属事业单位</option>\n" +
+                    "            <option>部属事业单位</option>\n" +
+                    "            <option>其他</option>\n" +
+                    "        </select><br>\n" +
+
                     "        <p>事业单位机构类型：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='in-tpye' type=\"text\" class=\"form-control\" placeholder=\"事业单位机构类型\" autofocus required=\"true\"><br>\n" +
+                    "        <select name='in-type' id=\"in-type\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
+                    "            <option>教育事业单位</option>\n" +
+                    "            <option>科技事业单位</option>\n" +
+                    "            <option>文化事业单位</option>\n" +
+                    "            <option>卫生事业单位</option>\n" +
+                    "            <option>社会福利事业单位</option>\n" +
+                    "            <option>体育事业单位</option>\n" +
+                    "            <option>交通事业单位</option>\n" +
+                    "            <option>城市公用事业单位</option>\n" +
+                    "            <option>农林牧渔水事业单位</option>\n" +
+                    "            <option>信息咨询事业单位</option>\n" +
+                    "            <option>中介服务事业单位</option>\n" +
+                    "            <option>勘察设计事业单位</option>\n" +
+                    "            <option>地震测防事业单位</option>\n" +
+                    "            <option>海洋事业单位</option>\n" +
+                    "            <option>环境保护事业单位</option>\n" +
+                    "            <option>检验检测事业单位</option>\n" +
+                    "            <option>知识产权事业单位</option>\n" +
+                    "            <option>机关后勤服务事业单位</option>\n" +
+                    "            <option>其他</option>\n" +
+                           "        </select><br>\n" +
                     "        <p>事业单位机构编号：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='in-code' type=\"text\" class=\"form-control\" placeholder=\"组织机构编号\" autofocus required=\"true\"><br>\n" +
-                    "        <p>上传事业单位法人代表身份证正面： <span style=\"color:red\">*</span></p>\n" +
+                    "        <input name='in-code' type=\"text\" class=\"form-control\" placeholder=\"事业单位机构编号\" autofocus required=\"true\"><br>\n" +
+                    "        <p>上传身份证正面： <span style=\"color:red\">*</span></p>\n" +
                     "        <input name='idcardA' type=\"file\" class=\"form-control\" autofocus required=\"true\" id=\"id_card_00\"><br>\n" +
-                    "        <p>上传事业单位法人代表身份证反面： <span style=\"color:red\">*</span></p>\n" +
+                    "        <p>上传身份证反面： <span style=\"color:red\">*</span></p>\n" +
                     "        <input name='idcardB' type=\"file\" class=\"form-control\" autofocus required=\"true\" id=\"id_card_01\"><br>\n" +
                     "        <p>上传事业单位登记照片： <span style=\"color:red\">*</span></p>\n" +
                     "        <input name='in-photo' type=\"file\" class=\"form-control\" autofocus required=\"true\" id=\"ins_pic\"><br>\n" +
-                    "        <p>请选择所在地图： <span style=\"color:red\">*</span></p>\n" +
+                    "<p>请选择地址： <span style=\"color:red\">*</span></p>\n" +
                     "        <select name='province' id=\"province\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
                     "            <option>--选择所在地区省份--</option>\n" +
                     "        </select>\n" +
+                    "    <select name='city' id=\"city\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
+
+                    "        </select>\n" +
+                    "        <select name='country' id=\"country\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
+
+                    "        </select><br>\n" +
                     "        <p>请输入邮箱：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='in-email' type=\"email\" class=\"form-control\" placeholder=\"邮箱\" style=\"width: 100%\" required=\"true\"><br>\n" +
+                    "        <input name='email' type=\"email\" class=\"form-control\" placeholder=\"邮箱\" style=\"width: 100%\" required=\"true\"><br>\n" +
                     "        <button class=\"btn btn-theme btn-block\" type=\"submit\">\n" +
                     "            <i class=\"fa fa-lock\"></i>\n" +
                     "            &nbsp; &nbsp;确定\n" +
@@ -330,16 +392,14 @@
             }
             else {
                 var username = $("#username").val()
-                if(username=='')
-                {
+                if (username == '') {
                     layer.msg('用户名不能为空')
                     return
                 }
-                if(pwd=='')
-            {
-                 layer.msg('密码不能为空')
+                if (pwd == '') {
+                    layer.msg('密码不能为空')
                     return
-            }
+                }
                 var msg = 0
                 $.ajax(
                     {
@@ -363,14 +423,6 @@
     }
 </script>
 <script>
-    window.onload = function(){
-        {% csrf_token %}
-            {% if message %}
-                alert({{ mesage }});
-            {% endif %}
-    };
-</script>
-<script>
     function exitt() {
         location.reload();
     }
@@ -378,7 +430,7 @@
 <script>
     function pop() {
         console.log('aaaa')
-     $("#myModal").modal('show')
+        $("#myModal").modal('show')
     }
 </script>
 <script>
@@ -438,24 +490,25 @@
         })
     })
     var interest = new Array()
-    function change(obj){
-			 console.log("111")
-             if($(obj).hasClass("layui-bg-blue"))
-             {
-                 $(obj).removeClass("layui-bg-blue")
-                 var index =interest.indexOf($(obj).val())
-                 interest.splice(index,1)
-             }
-             else {
-			     $(obj).addClass("layui-bg-blue");
-			     interest.push($(obj).val())
-             }
 
-		}
+    function change(obj) {
+        console.log("111")
+        if ($(obj).hasClass("layui-bg-blue")) {
+            $(obj).removeClass("layui-bg-blue")
+            var index = interest.indexOf($(obj).val())
+            interest.splice(index, 1)
+        }
+        else {
+            $(obj).addClass("layui-bg-blue");
+            interest.push($(obj).val())
+        }
+
+    }
+
     function save() {
         $('#myModal').modal('toggle')
         console.log(interest)
-        $('#interest').attr('value',interest)
+        $('#interest').attr('value', interest)
     }
 </script>
 </html>
