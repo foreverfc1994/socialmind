@@ -196,7 +196,7 @@
             <li class="layui-nav-item"><a href="/events/?type=当地新闻">当地新闻</a></li>
             <li class="layui-nav-item"><a href="/events/?type=敏感信息">敏感信息</a></li>
             <li class="layui-nav-item"><a href="/events/?type=领域相关">领域相关</a></li>
-            <li class="layui-nav-item"><a href="/evnets/?type=行业信息">行业信息</a></li>
+            <li class="layui-nav-item"><a href="/events/?type=行业信息">行业信息</a></li>
             <li class="layui-nav-item"><a href="/eventParticular/">全网事件搜索</a></li>
 
 
@@ -227,19 +227,9 @@
                         {% endif %}
                 </div>
                 <div class="white-panel eventTable">
-                    <table id="eventTable">
-                        <thead>
-                            <tr>
-                                <th>序号</th>
-                                <th>事件名称</th>
-                                <th>热度指数</th>
-                                <th>事件信息数</th>
-                                <th>发生时间</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+                    <div class="top"></div>
+                    <table id="eventTable" class="tableStyle"></table>
+                    <div class="bottom" style="margin-top: 5px;"></div>
                 </div>
             </div>
         </div>

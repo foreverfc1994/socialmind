@@ -2539,3 +2539,29 @@ label {
     text-align: center;
     width: 100%;
 }
+td.details-control {
+    background: url("../img/pop.png") no-repeat center center;
+    background-size: 15px 15px;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url("../img/pop.png") no-repeat center center;
+    background-size: 15px 15px;
+}
+.tableStyle{
+    font-size: 20px;
+    color: #DB7093;
+}
+.tableStyle thead{
+    font-size: 20px;
+    color: #191970;
+}
+.moreButton{
+    width: 80px;
+    height: 100px;
+    float: right;
+    border: 3px solid;
+    background-color: #ffffff;
+    border-color: #cdcdcd;
+    border-radius: 16px;
+}
