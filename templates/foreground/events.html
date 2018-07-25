@@ -1,606 +1,291 @@
 {% load staticfiles %}
-<!DOCTYPE html >
-<html lang ="en">
-    <head>
-        <meta charset = "utf-8" >
-        <meta name = "viewport" content = "width=device-width, initial-scale=1.0" >
-        <meta name = "description" content = "" >
-        <meta name = "author" content = "Dashboard" >
-        <meta name = "keyword" content = "Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina" >
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>social mind 舆情分析平台</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
 
-        <title> social mind舆情分析平台 </title>
-
-        <link href="{% static 'assets0/css/bootstrap.css'%}" rel="stylesheet">
-        <!--external css -->
-        <link href="{% static 'assets0/font-awesome/css/font-awesome.css'%}" rel="stylesheet"/>
-        <!-- Custom styles for this template -->
-        <link href = "{% static 'assets0/css/style.css' %}" rel = "stylesheet" >
-        <link href = "{% static 'assets0/css/style-responsive.css' %}" rel = "stylesheet" >
-
-        <script src = "{% static 'assets0/js/chart-master/Chart.js' %}" > </script>
-        <script src = "{% static 'assets0/js/echarts.js' %}" > </script>
-        <script src = "{% static 'assets0/js/wordcloud2.js' %}" > </script>
-
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
-
-    <body>
-
-        <section id="container">
-            <header class="header black-bg">
-                <div class="headerTitle">
-                    <a href="/com_index/" class="logo"><b>social mind舆情管理平台</b></a>
-                </div>
-                <div class="col-lg-8">
-                    <ul id="menu">
-                        <li><a href="/com_index/">首页</a></li>
-                        <li><a href="/events/?character=com&param=localEvent">当地事件</a></li>
-                        <li><a>敏感事件</a></li>
-                        <li><a>相关领域</a></li>
-                        <li><a>竞争对手</a></li>
-                        <li><a>推荐内容</a></li>
-                        <li><a href="/fullTextMonitor/">文章搜索</a></li>
-                        <li><a href="/events/" style="width: 120px;">全网事件搜索</a></li>
-                    </ul>
-                </div>
-                <div id="person_center">
-                    <ul>
-                        <li class="liClass">
-                            <a>个人中心</a>
-                            <ul>
-                                <li><a>个人信息</a></li>
-                                <li><a>退出登录</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </header>
-
-            <section class="wrapper" style="margin-bottom: 15px;">
-                <div class="col-lg-9 mt white-panel" style="height: 100%; padding-bottom: 15px;">
-                    <p class="pHeader" style="margin-top: 20px;">当地事件</p>
-                    <ul class="eventTypeMenu" id="eventTypeMenu">
-                        <li class=""><a href="#" onclick="clickedEventType(1)">类型1</a></li>
-                        <li class=""><a href="#" onclick="clickedEventType(2)">类型2</a></li>
-                        <li class=""><a href="#" onclick="clickedEventType(3)">类型3</a></li>
-                        <li class=""><a href="#" onclick="clickedEventType(4)">类型4</a></li>
-                        <li class=""><a href="#" onclick="clickedEventType(5)">类型5</a></li>
-                        <li class=""><a href="#" onclick="clickedEventType(6)">类型6</a></li>
-                        <li class=""><a href="#" onclick="clickedEventType(7)">类型7</a></li>
-                        <li class=""><a href="#" onclick="clickedEventType(8)">类型8</a></li>
-                        <li class=""><a href="#" onclick="clickedEventType(9)">类型9</a></li>
-                        <li class=""><a href="#" onclick="clickedEventType(10)">类型10</a></li>
-                    </ul>
-                    <div class="eventTable mt" id="eventTable">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th style="width: 15%;">事件名称</th>
-                                    <th style="width: 25%;">事件热度/事件敏感度/事件极性</th>
-                                    <th style="width: 15%;">开始时间</th>
-                                    <th style="width: 30%;">事件简介</th>
-                                    <th style="width: 15%;"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th>
-                                        <a href="/eventParticular/">
-                                            <button class="btn btn-warning" style="width: 90px; margin-left: 35px;">
-                                                详情
-                                            </button>
-                                        </a>
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                                <tr>
-                                    <th>疫苗事件</th>
-                                    <th>
-                                        <strong>极热点事件/</strong>
-                                        <strong>极敏感事件/</strong>
-                                        <strong>极性值</strong>
-                                    </th>
-                                    <th>2018-7-18</th>
-                                    <th>
-                                        这里是事件的简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
-                                    </th>
-                                    <th><button class="btn btn-warning" style="width: 90px; margin-left: 35px;">详情</button></th>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
-
-            <footer class="site-footer">
-                <div class="text-center">
-                    2018 - <a href="http://www.xjtu.edu.cn" target="_blank" title="西安交通大学">西安交通大学</a> - <a href="http://www.xjtu.edu.cn" title="social mind" target="_blank">social mind舆情分析平台</a>
-                    <a href="#" class="go-top">
-                        <strong>回到顶部</strong>
-                    </a>
-                </div>
-            </footer>
-            <!--footer end-->
-        </section>
-        <!-- js placed at the end of the document so the pages load faster -->
-        <script src="{% static 'assets0/js/jquery.js' %}"></script>
-        <script src="{% static 'assets0/js/jquery-1.8.3.min.js' %}"></script>
-        <script src="{% static 'assets0/js/bootstrap.min.js' %}"></script>
-        <script src="{% static 'assets0/js/fileJs/events.js' %}"></script>
-
-    </body>
-
-    <script>
-        window.onload = function(){
-            footerKeeper();
+    <link href="{% static 'assets0/css/bootstrap.css' %}" rel="stylesheet">
+    <!--external css -->
+    <link href="{% static 'assets0/font-awesome/css/font-awesome.css' %}" rel="stylesheet"/>
+    <!-- Custom styles for this template -->
+    <link href="{% static 'assets0/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'assets0/css/style-responsive.css' %}" rel="stylesheet">
+    <link href="{% static 'assets0/dataTable/css/jquery.dataTables.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets0/layui/css/layui.css' %}" media="all">
+    <script src="{% static 'assets0/js/chart-master/Chart.js' %}"></script>
+    <script src="{% static 'assets0/js/echarts.js' %}"></script>
+    <script src="{% static 'assets0/js/wordcloud2.js' %}"></script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .icon-signal {
+            background-position: -408px 0
         }
-    </script>
+
+        span.icon {
+            border-right: 1px solid #cdcdcd;
+            padding: 9px 10px 7px 11px;
+            float: left;
+            opacity: .7;
+        }
+
+        .r4_counter {
+            min-height: 100px;
+            margin-bottom: 15px;
+            border-radius: 7px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease-in-out;
+            background: #ffffff;
+            -webkit-box-shadow: 0 2px 28px rgba(0, 0, 0, .1);
+            box-shadow: 0 2px 28px rgba(0, 0, 0, .1);
+        }
+
+        .r4_counter .stats {
+            margin-left: 50px;
+        }
+
+        .ico-icon {
+            position: relative;
+        }
+
+        .ico-icon-w {
+            position: absolute;
+            top: 0;
+            left: 0
+        }
+
+        .ico-icon-w,
+        .r4_counter:hover .ico-icon .ico-icon-w {
+            visibility: hidden;
+        }
+
+        .r4_counter:hover .ico-icon .ico-icon-w {
+            visibility: visible;
+        }
+
+        .r4_counter.has-gradient-to-right-bottom .stats span {
+            color: #f7f7f7;
+        }
+
+        .r4_counter.has-gradient-to-right-bottom,
+        .r4_counter:hover {
+            -webkit-box-shadow: 0 1px 28px rgba(255, 152, 0, .66);
+            box-shadow: 0 1px 28px rgba(255, 152, 0, .66);
+            cursor: pointer;
+        }
+
+        .r4_counter:hover {
+            background-image: linear-gradient(to right bottom, #e8962e, #e45131) !important;
+        }
+
+        .r4_counter:hover h3 {
+            color: #fff
+        }
+
+        .r4_counter:hover span {
+            color: #f7f7f7
+        }
+
+        .r4_counter:hover .icon-primary {
+            color: #fff
+        }
+
+        .r4_counter .icon-after {
+            position: absolute;
+            width: 30%;
+            line-height: 75px;
+            height: 92%;
+            font-size: 84px;
+            color: #f7f7f7;
+            top: 5px;
+            right: 0;
+        }
+
+        .r4_counter.has-gradient-to-right-bottom .icon-after,
+        .r4_counter:hover .icon-after {
+            opacity: 0.2
+        }
+
+        .r4_counter .fa {
+            margin-right: 0px;
+            width: 66px;
+            height: 66px;
+            text-align: center;
+        }
+
+        .r4_counter h4 {
+            margin: 10px 0 5px 0;
+        }
+
+        .db_box {
+            background-color: #ffffff;
+            box-shadow: 0 1px 3px rgba(33, 33, 33, .2);
+            -webkit-box-shadow: 0 1px 3px rgba(33, 33, 33, .2);
+            -moz-box-shadow: 0 1px 3px rgba(33, 33, 33, .2);
+            -o-box-shadow: 0 1px 3px rgba(33, 33, 33, .2);
+            -ms-box-shadow: 0 1px 3px rgba(33, 33, 33, .2);
+
+        }
+
+        .db_box {
+            padding: 15px;
+        }
+
+        .db_box.db_box_large {
+            max-width: inherit;
+            background-color: #ffffff;
+            float: left;
+            margin: 0px 2% 0px 0px;
+            padding: 30px;
+            color: #757575 !important;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .db_box.db_box_large .bold {
+            text-align: left;
+            float: left;
+        }
+
+        .db_box.db_box_large .pull-right {
+            text-align: right;
+        }
+
+        .db_box.db_box_large .clearfix {
+            width: 100%;
+            height: 1px;
+            margin-bottom: 40px;
+        }
+
+        .wrapper1 {
+            display: inline-block;
+            margin-top: 0px;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-bottom: 15px;
+            padding-top: 0px;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* .btn:hover {
+            text-decoration: none !important;
+        } */
+    </style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header layui-bg-cyan">
+        <div class="layui-logo">socialmind</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left layui-bg-cyan">
+            <li class="layui-nav-item"><a href="/com_index/">首页</a></li>
+            <li class="layui-nav-item"><a href="/events/?type=com_correlation">企业相关</a></li>
+            <li class="layui-nav-item"><a href="/events/?type=com_localNews">当地新闻</a></li>
+            <li class="layui-nav-item"><a href="/events/?type=com_sensitiveInform">敏感信息</a></li>
+            <li class="layui-nav-item"><a href="/events/?type=com_sameArea">领域相关</a></li>
+            <li class="layui-nav-item"><a href="/evnets/?type=com_professionalInform">行业信息</a></li>
+            <li class="layui-nav-item"><a href="/eventParticular/">全网事件搜索</a></li>
+
+
+        </ul>
+        <ul class="layui-nav layui-layout-right layui-bg-cyan">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                    SICDP
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="">退出</a></li>
+        </ul>
+    </div>
+
+
+    <div class="layui-body">
+        <div class="col-lg-9 mt mb">
+            <div class="white-panel">
+                <div class="white-header">
+                    {% csrf_token %}
+                        {% if head %}
+                            <h2 style="padding-top: 20px;">{{ head }}</h2>
+                        {% endif %}
+                </div>
+                <div class="white-panel eventTable" style="height: 400px;">
+                    <table id="eventTable">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>事件名称</th>
+                                <th>热度指数</th>
+                                <th>事件信息数</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>test</td>
+                                <td>56.56</td>
+                                <td>~~~</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>test</td>
+                                <td>56.56</td>
+                                <td>~~~</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>test</td>
+                                <td>56.56</td>
+                                <td>~~~</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-footer layui-bg-cyan" align="center">
+        <!-- 底部固定区域 -->
+        西安交通大学  社会智能与复杂数据处理实验室
+
+    </div>
+</div>
+<script src="{% static 'assets0/js/jquery.js' %}"></script>
+<script src="{% static 'assets0/js/jquery-1.8.3.min.js' %}"></script>
+<script src="{% static 'assets0/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets0/dataTable/js/jquery.dataTables.js' %}" type="text/javascript"></script>
+<script src="{% static 'assets0/js/fileJs/events.js' %}" type="text/javascript"></script>
+<script src="//res.layui.com/layui/src/layui.js?t=1531663423583" charset="utf-8"></script>
+<script>
+    layui.use('element', function () {
+        var element = layui.element;
+
+    });
+</script>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_30088308'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "w.cnzz.com/c.php%3Fid%3D30088308' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>
+<script>
+    window.onload = function () {
+        eventsTable();
+    };
+</script>
 </html>

@@ -2523,19 +2523,14 @@ label {
     color: #ffffff;
 }
 .eventTable{
-    padding-left: 5%;
     display: block;
     background: #ffffff;
-    width: 90%;
-    margin-left: 5%;
+    width: 80%;
+    margin-left: 10%;
     text-align: center;
 }
-.eventTable tr th{
-    height: 35px;
-}
-.eventTable thead{
-    height: 40px;
-    font-size: 20px;
+.eventTable table tr th{
+    text-align: center;
 }
 .pHeader{
     padding-bottom: 5px;

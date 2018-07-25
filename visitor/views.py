@@ -52,13 +52,30 @@ def signin(request):
     if request.method == 'POST':
         userdata = request.POST
         print(type(userdata))
-        if userdata.get('user-type')=='0':
-            personuser(userdata)
+        if userdata.get('user-type') == '0':
+            personUser(userdata)
             return redirect('/jump/')
-        elif userdata.get('user-type')=='1':
-            files = request.FILES['idcardA']
-            saveimg(files)
-            companyuser(userdata)
+        elif userdata.get('user-type') == '1':
+            try:
+                userid = companyUser(userdata)
+                try:
+                    idCardA = request.FILES['idcardA']
+                    saveImg(idCardA, userid, "1")
+                    idCardB = request.FILES['idcardB']
+                    saveImg(idCardB, userid, "2")
+                    businessLicence = request.FILES['businessLicence']
+                    saveImg(businessLicence, userid, "3")
+                    return redirect('/jump/')
+                except:
+                    print("出错了！")
+                    rollbackFunction(userid)
+                    error = 'error'
+                    return render(request, 'foreground/signin.html', {'message': error})
+            except:
+                error = 'error'
+                return render(request, 'foreground/signin.html', {'message': error})
+        elif userdata.get('user-type') == '2':
+            pass
 
     return render(request, 'foreground/signin.html')
 
@@ -89,7 +106,9 @@ def get_address(request):
 
 
 def events(request):
-    return render(request, 'foreground/events.html')
+    head = request.GET
+    messageDic = {'head': head['type']}
+    return render(request, 'foreground/events.html', messageDic)
 
 def profile(request):
     return render(request, 'foreground/profile.html')

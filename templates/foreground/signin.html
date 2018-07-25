@@ -56,7 +56,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                <h4 class="modal-title" id="myModalLabel">兴趣类型</h4>
             </div>
             <div class="modal-body">
 
@@ -166,18 +166,14 @@
                     "        <input id='repwd' name='repwd' type=\"password\" class=\"form-control\" placeholder=\"请再次输入密码\" required=\"true\"><br>\n" +
                     "        <p>企业法人代表名：<span style=\"color:red\">*</span></p>\n" +
                     "        <input name='bossname' type=\"text\" class=\"form-control\" placeholder=\"企业法人代表名\" required=\"true\"><br>\n" +
-                    "        <p>企业法人身份证号：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='bosspid' type=\"text\" class=\"form-control\" placeholder=\"企业法人身份证号\" style=\"width: 100%\"; step=\"day\"><br>\n" +
-                    "        <p>企业法人身份证正面：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='idcardA' type=\"file\" class=\"form-control\" autofocus required=\"true\"><br>\n" +
-                    "        <p>企业法人身份证背面： <span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='idcardB' type=\"file\" class=\"form-control\" autofocus required=\"true\"><br>\n" +
                     "        <p>企业名称： <span style=\"color:red\">*</span></p>\n" +
                     "        <input name='companyname' type=\"text\" class=\"form-control\" placeholder=\"企业名称\" autofocus required=\"true\"><br>\n" +
                     "        <p>企业类型： <span style=\"color:red\">*</span></p>\n" +
                     "        <input name='companytype' type=\"text\" class=\"form-control\" placeholder=\"企业类型\" autofocus required=\"true\"><br>\n" +
                     "        <p>营业执照： <span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='licence' type=\"file\" class=\"form-control\" placeholder=\"营业执照\" autofocus required=\"true\"><br>\n" +
+                    "        <input name='businessLicence' type=\"file\" class=\"form-control\" autofocus required=\"true\"><br>\n" +
+                    "        <p>营业执照编码： <span style=\"color:red\">*</span></p>\n" +
+                    "        <input id='businessLicenceId' type=\"text\" class=\"form-control\" placeholder=\"营业执照编码\" autofocus required=\"true\"><br>\n" +
                     "        <p>请选择省市：</p>\n" +
                     "        <select name='province' id=\"province\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
                     "            <option>--选择省份--</option>\n" +
@@ -188,8 +184,16 @@
                     "        <select name='country' id=\"country\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
                     "            <option>--选择区县--</option>\n" +
                     "        </select><br>\n" +
+                    "        <p>成立日期：<span style=\"color:red\">*</span></p>\n" +
+                    "        <input name='registerDate' type=\"date\" class=\"form-control\" placeholder=\"成立日期选择\" style=\"width: 100%\"; step=\"day\"><br>\n" +
+                    "        <p>登记机关：<span style=\"color:red\">*</span></p>\n" +
+                    "        <input id='registerOrg' name='registerOrg' type=\"text\" class=\"form-control\" placeholder=\"请输入登记机关全名\" autofocus required=\"true\">\n" +
+                    "        <p>经营范围：<span style=\"color:red\">*</span></p>\n" +
+                    "        <input id='businessScope' name='businessScope' type=\"text\" class=\"form-control\" placeholder=\"请输入经营范围\" autofocus required=\"true\">\n" +
                     "        <p>请输入企业邮箱：<span style=\"color:red\">*</span></p>\n" +
                     "        <input name='companyemail' type=\"email\" class=\"form-control\" placeholder=\"请输入企业邮箱\" style=\"width: 100%\" required=\"true\"><br>\n" +
+                    "        <p>关注领域：<span style=\"color:red\">*</span></p>\n" +
+                    "        <input onclick= 'pop()' id='interest' name='interest' type=\"text\" class=\"form-control\" placeholder=\"请选择关注领域\" style=\"width: 100%\" required=\"true\"><br>\n" +
                     "        <button class=\"btn btn-theme btn-block\" type=\"submit\">\n" +
                     "            <i class=\"fa fa-lock\"></i>\n" +
                     "            &nbsp; &nbsp;确定\n" +
@@ -357,6 +361,14 @@
             }
         }
     }
+</script>
+<script>
+    window.onload = function(){
+        {% csrf_token %}
+            {% if message %}
+                alert({{ mesage }});
+            {% endif %}
+    };
 </script>
 <script>
     function exitt() {
