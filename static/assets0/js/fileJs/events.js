@@ -241,5 +241,5 @@ function filesTable(){
 }
 
 function toAllFiles(){
-    window.location.href = '/fileParticular/';
+    window.location.href = '/fileSearch/';
 }

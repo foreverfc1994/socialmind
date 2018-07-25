@@ -77,7 +77,11 @@ def govcom_index(request):
     return render(request, 'foreground/govcom_index.html')
 def test(request):
     return render(request, 'foreground/signin.html')
-    pass
+def fileSearch(request):
+    return render(request, 'foreground/fileSearch.html')
+def eventSearch(request):
+    return render(request, 'foreground/eventSearch.html')
+
 def signin(request):
     print(request.POST)
     if request.method == 'POST':
