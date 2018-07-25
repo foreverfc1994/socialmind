@@ -192,11 +192,11 @@
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left layui-bg-cyan">
             <li class="layui-nav-item"><a href="/com_index/">首页</a></li>
-            <li class="layui-nav-item"><a href="/events/?type=com_correlation">企业相关</a></li>
-            <li class="layui-nav-item"><a href="/events/?type=com_localNews">当地新闻</a></li>
-            <li class="layui-nav-item"><a href="/events/?type=com_sensitiveInform">敏感信息</a></li>
-            <li class="layui-nav-item"><a href="/events/?type=com_sameArea">领域相关</a></li>
-            <li class="layui-nav-item"><a href="/evnets/?type=com_professionalInform">行业信息</a></li>
+            <li class="layui-nav-item"><a href="/events/?type=企业相关">企业相关</a></li>
+            <li class="layui-nav-item"><a href="/events/?type=当地新闻">当地新闻</a></li>
+            <li class="layui-nav-item"><a href="/events/?type=敏感信息">敏感信息</a></li>
+            <li class="layui-nav-item"><a href="/events/?type=领域相关">领域相关</a></li>
+            <li class="layui-nav-item"><a href="/evnets/?type=行业信息">行业信息</a></li>
             <li class="layui-nav-item"><a href="/eventParticular/">全网事件搜索</a></li>
 
 
@@ -219,14 +219,14 @@
 
     <div class="layui-body">
         <div class="col-lg-9 mt mb">
-            <div class="white-panel">
+            <div class="white-panel ">
                 <div class="white-header">
                     {% csrf_token %}
                         {% if head %}
                             <h2 style="padding-top: 20px;">{{ head }}</h2>
                         {% endif %}
                 </div>
-                <div class="white-panel eventTable" style="height: 400px;">
+                <div class="white-panel eventTable">
                     <table id="eventTable">
                         <thead>
                             <tr>
@@ -234,27 +234,10 @@
                                 <th>事件名称</th>
                                 <th>热度指数</th>
                                 <th>事件信息数</th>
+                                <th>发生时间</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>test</td>
-                                <td>56.56</td>
-                                <td>~~~</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>test</td>
-                                <td>56.56</td>
-                                <td>~~~</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>test</td>
-                                <td>56.56</td>
-                                <td>~~~</td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>

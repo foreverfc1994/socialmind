@@ -2527,6 +2527,7 @@ label {
     background: #ffffff;
     width: 80%;
     margin-left: 10%;
+    padding-bottom: 15px;
     text-align: center;
 }
 .eventTable table tr th{
