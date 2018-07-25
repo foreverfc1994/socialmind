@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+{#    <meta http-equiv="refresh" content="5;URL=login.html">#}
+    <title>Title</title>
+</head>
+<body>
+      <p>注册成功，您即将在<span id="sp"></span>秒后跳转到登录界面</p>
+      <span id="sp"></span>
+</body>
+<script type="text/javascript">
+		onload=function(){
+			setInterval(go, 1000);
+		};
+		var x=3; //利用了全局变量来执行
+		function go(){
+		x--;
+			if(x>0){
+			document.getElementById("sp").innerHTML=x;  //每次设置的x的值都不一样了。
+			}else{
+			location.href='/login/';
+			}
+		}
+	</script>
+</html>

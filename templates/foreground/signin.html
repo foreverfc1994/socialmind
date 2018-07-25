@@ -1,51 +1,83 @@
 {% load staticfiles %}
+{% load visitor_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <title>请您登陆</title>
 
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'assets0/css/bootstrap.css' %}" rel="stylesheet">
     <!--external css-->
-    <link href="{% static 'assets0/font-awesome/css/font-awesome.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets0/font-awesome/css/font-awesome.css' %}" rel="stylesheet"/>
     <!-- Custom styles for this template -->
     <link href="{% static 'assets0/css/style.css' %}" rel="stylesheet">
-
-
+    <link rel="stylesheet" href="{% static 'assets0/layui/css/layui.css' %}" />
+    <script type="text/javascript" src="{% static 'assets0/js/jquery.validate.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets0/js/messages_zh.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets0/js/jquery.js' %}"></script>
 </head>
 <body>
 <script src="http://apps.bdimg.com/libs/jquery/1.7.2/jquery.min.js"></script>
 <script src="http://www.dawnfly.cn/Public/admin/dialog/layer.js"></script>
 <div class="container">
     <div class="headerFont">
-            <h1 style="color: #DAA520; margin-top: 100px;">SOCIAL MIND 舆情管理平台</h1>
-            <p style="color: #DAA520;">西安交通大学SICDP实验室</p>
-        </div>
-<form name="signin" class="form-login" id="sing_in" method="post" action="/signin/" enctype="multipart/form-data">
-    {% csrf_token %}
-    <h2 class="form-login-heading">欢迎注册</h2>
-    <div class="login-wrap" id="choiced">
-        <p>请选择用户类型：</p>
-        <select id="type" name="用户类型选择" class="form-control" autofocus>
-            <option value="none" selected>---请选择---</option>
-            <option value="0">个人用户</option>
-            <option value="1">企业用户</option>
-            <option value="2">政府用户</option>
-            <option value="3">事业单位用户</option>
-        </select><br>
-        <button class="btn btn-theme btn-block" type="button" onclick="sub()">
-            <i class="fa fa-lock"></i>
-            &nbsp; &nbsp;确定
-        </button>
-        <button class="btn btn-theme btn-block" type="button" onclick="exitt()">
-            <i class="fa fa-lock"></i>
-            &nbsp; &nbsp;取消
-        </button>
+        <h1 style="color: #DAA520; margin-top: 100px;">SOCIAL MIND 舆情管理平台</h1>
+        <p style="color: #DAA520;">西安交通大学SICDP实验室</p>
     </div>
-</form>
+    <form name="signin" class="form-login" id="sign_in" method="post" action="/signin/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2 class="form-login-heading">欢迎注册</h2>
+        <div class="login-wrap" id="choiced">
+            <p>请选择用户类型：</p>
+            <select id="type" name="用户类型选择" class="form-control" autofocus>
+                <option value="none" selected>---请选择---</option>
+                <option value="0">个人用户</option>
+                <option value="1">企业用户</option>
+                <option value="2">政府用户</option>
+                <option value="3">事业单位用户</option>
+            </select><br>
+            <button class="btn btn-theme btn-block" type="button" onclick="sub()">
+                <i class="fa fa-lock"></i>
+                &nbsp; &nbsp;确定
+            </button>
+            <button class="btn btn-theme btn-block" type="button" onclick="exitt()">
+                <i class="fa fa-lock"></i>
+                &nbsp; &nbsp;取消
+            </button>
+        </div>
+    </form>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+
+
+                {% get_topic as topics %}
+                {% for topic in topics %}
+                    <button class="layui-btn layui-btn-primary layui-btn-radius" onclick="change(this)" value="{{ topic.name }}">{{ topic.name }}
+                    </button>
+                {% empty %}
+
+                {% endfor %}
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" onclick="save()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 <script src="{% static 'assets0/js/jquery.js' %}"></script>
 <script src="{% static 'assets0/js/bootstrap.min.js' %}"></script>
@@ -55,10 +87,10 @@
     $.backstretch("{% static 'assets0/img/bg.jpg' %}", {speed: 0});
 </script>
 <script>
-    $(document).click(function(){
-        $("#type").change(function(){
+    $(document).click(function () {
+        $("#type").change(function () {
             var choice = $("#type option:selected").val();
-            if(choice == "0"){
+            if (choice == "0") {
                 $("#choiced").replaceWith("<div class=\"login-wrap\" id=\"choiced\">\n" +
                     "        <p>请选择用户类型：</p>\n" +
                     "        <select id=\"type\" name=\"user-type\" class=\"form-control\">\n" +
@@ -104,18 +136,19 @@
                     "        <p>请输入您的职业：<span style=\"color:red\">*</span></p>\n" +
                     "        <input name='job' type=\"text\" class=\"form-control\" placeholder=\"请输入您的职业\" style=\"width: 100%\" required=\"true\"><br>\n" +
                     "        <p>请输入您的兴趣：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='interest' type=\"text\" class=\"form-control\" placeholder=\"请输入您的兴趣兴趣\" style=\"width: 100%\" required=\"true\"><br>\n" +
+                    "        <input onclick= 'pop()' id='interest' name='interest' type=\"text\" class=\"form-control\" placeholder=\"请输入您的兴趣\" style=\"width: 100%\" required=\"true\"><br>\n" +
                     "        <button class=\"btn btn-theme btn-block\" type=\"button\" onclick=\"sub()\">\n" +
                     "            <i class=\"fa fa-lock\"></i>\n" +
                     "            &nbsp; &nbsp;确定\n" +
                     "        </button>" +
-                    "        <button class=\"btn btn-theme btn-block\" type=\"button\" onclick=\"exitt()\">"+
-                    "           <i class=\"fa fa-lock\"></i>"+
-                    "               &nbsp; &nbsp;取消"+
-                    "        </button>"+
+                    "        <button class=\"btn btn-theme btn-block\" type=\"button\" onclick=\"exitt()\">" +
+                    "           <i class=\"fa fa-lock\"></i>" +
+                    "               &nbsp; &nbsp;取消" +
+                    "        </button>" +
                     "    </div>")
-            };
-            if(choice == "1"){
+            }
+            ;
+            if (choice == "1") {
                 $("#choiced").replaceWith("<div class=\"login-wrap\" id=\"choiced\">\n" +
                     "        <p>请选择用户类型：</p>\n" +
                     "        <select id=\"type\" name=\"user-type\" class=\"form-control\">\n" +
@@ -161,13 +194,14 @@
                     "            <i class=\"fa fa-lock\"></i>\n" +
                     "            &nbsp; &nbsp;确定\n" +
                     "        </button>\n" +
-                    "        <button class=\"btn btn-theme btn-block\" type=\"button\" onclick=\"exitt()\">\n"+
-                    "           <i class=\"fa fa-lock\"></i>\n"+
-                    "               &nbsp; &nbsp;取消\n"+
-                    "        </button>\n"+
+                    "        <button class=\"btn btn-theme btn-block\" type=\"button\" onclick=\"exitt()\">\n" +
+                    "           <i class=\"fa fa-lock\"></i>\n" +
+                    "               &nbsp; &nbsp;取消\n" +
+                    "        </button>\n" +
                     "    </div>");
-            };
-            if(choice == "2") {
+            }
+            ;
+            if (choice == "2") {
                 $("#choiced").replaceWith("    <div class=\"login-wrap\" id=\"choiced\">\n" +
                     "        <p>请选择用户类型：</p>\n" +
                     "        <select id=\"type\" name=\"usertype\" class=\"form-control\">\n" +
@@ -209,13 +243,14 @@
                     "            <i class=\"fa fa-lock\"></i>\n" +
                     "            &nbsp; &nbsp;确定\n" +
                     "        </button>\n" +
-                    "        <button class=\"btn btn-theme btn-block\" type=\"button\" onclick=\"exitt()\">\n"+
-                    "           <i class=\"fa fa-lock\"></i>\n"+
-                    "               &nbsp; &nbsp;取消\n"+
-                    "        </button>\n"+
+                    "        <button class=\"btn btn-theme btn-block\" type=\"button\" onclick=\"exitt()\">\n" +
+                    "           <i class=\"fa fa-lock\"></i>\n" +
+                    "               &nbsp; &nbsp;取消\n" +
+                    "        </button>\n" +
                     "    </div>\n")
-            };
-            if(choice == "3"){
+            }
+            ;
+            if (choice == "3") {
                 $("#choiced").replaceWith("<div class=\"login-wrap\" id=\"choiced\">\n" +
                     "        <p>请选择用户类型：</p>\n" +
                     "        <select id=\"type\" name=\"user-type\" class=\"form-control\">\n" +
@@ -257,110 +292,158 @@
                     "            <i class=\"fa fa-lock\"></i>\n" +
                     "            &nbsp; &nbsp;确定\n" +
                     "        </button>\n" +
-                    "        <button class=\"btn btn-theme btn-block\" type=\"button\" onclick=\"exitt()\">\n"+
-                    "           <i class=\"fa fa-lock\"></i>\n"+
-                    "               &nbsp; &nbsp;取消\n"+
-                    "        </button>\n"+
+                    "        <button class=\"btn btn-theme btn-block\" type=\"button\" onclick=\"exitt()\">\n" +
+                    "           <i class=\"fa fa-lock\"></i>\n" +
+                    "               &nbsp; &nbsp;取消\n" +
+                    "        </button>\n" +
                     "    </div>")
-            };
+            }
+            ;
         });
     });
 </script>
+
 <script>
     function sub() {
         var pwd = $("#pwd").val();
-        var repwd=$("#repwd").val();
-        if(pwd!=repwd)
-        {
-           layer.msg('两次密码输入不一致')
-        }
-        else {
-            var username=$("#username").val()
-            var msg = 0
-            $.ajax(
+        var repwd = $("#repwd").val();
+        var form = document.getElementById('sign_in')
+        console.log(form)
+        var cansub = true
+        {#for (var i = 0; i < form.length; i++) {#}
+        {#    if (form.elements[i].value == "") {#}
+        {#        layer.msg(form.elements[i].title + 'bunengweikong ')#}
+        {#        form.elements[i].focus()#}
+        {#        cansub = false#}
+        {#    }#}
+
+        if (cansub) {
+
+
+            if (pwd != repwd) {
+                layer.msg('两次密码输入不一致')
+
+            }
+            else {
+                var username = $("#username").val()
+                if(username=='')
                 {
-                    url:'/checkuser/',
-                    type:'POST',
-                    data:{'user':username},
-                    success:function (data) {
-                        msg = data['msg']
-                        if(msg==0){
-                layer.msg('用户名已存在')
-            }
-                else {
-                document.signin.submit()
-            }
-                    }
+                    layer.msg('用户名不能为空')
+                    return
                 }
-            )
+                if(pwd=='')
+            {
+                 layer.msg('密码不能为空')
+                    return
+            }
+                var msg = 0
+                $.ajax(
+                    {
+                        url: '/checkuser/',
+                        type: 'POST',
+                        data: {'user': username},
+                        success: function (data) {
+                            msg = data['msg']
+                            if (msg == 0) {
+                                layer.msg('用户名已存在')
+                            }
+                            else {
+                                document.signin.submit()
+
+                            }
+                        }
+                    }
+                )
+            }
         }
     }
 </script>
 <script>
-    function beforeSigned(){
-        alert("注册成功！")
-    }
-</script>
-<script>
-    function exitt(){
+    function exitt() {
         location.reload();
     }
 </script>
 <script>
-    var adress ={}
+    function pop() {
+        console.log('aaaa')
+     $("#myModal").modal('show')
+    }
+</script>
+<script>
+    var adress = {}
     $(function () {
         $.ajax(
-              {
-                 url:'/get_address/',
-                 type:'GET',
-                  success:function (data) {
-                      {#console.log(data)#}
-                      adress = data
-                  }
-              }
-          )
+            {
+                url: '/get_address/',
+                type: 'GET',
+                success: function (data) {
+                    {#console.log(data)#}
+                    adress = data
+                }
+            }
+        )
     })
     $(document).click(function () {
 
         $("#type").change(function () {
             $("#city").hide()
             $("#country").hide()
-             $("#province").empty()
+            $("#province").empty()
             console.log(adress)
-            for(var i in adress['data'])
-            {
-                 $("#province").append('<option value='+i+'>'+i+'</option>');}
+            for (var i in adress['data']) {
+                $("#province").append('<option value=' + i + '>' + i + '</option>');
+            }
         })
     })
-    var selectedprovince =''
+    var selectedprovince = ''
     $(document).click(function () {
         $("#province").change(function () {
             $("#province option[value=\"\"]").remove()
             var selected = $("#province").val()
-            selectedprovince=selected
-            if(selected){
+            selectedprovince = selected
+            if (selected) {
                 $("#city").show()
                 $("#city").empty()
                 var cities = adress['data'][selected]
-               for(var i in cities){
-                $("#city").append('<option value='+i+'>'+i+'</option>');
+                for (var i in cities) {
+                    $("#city").append('<option value=' + i + '>' + i + '</option>');
+                }
             }
-        }
-        else {
-            $("#city").hide()
-        }
+            else {
+                $("#city").hide()
+            }
         })
     })
     $(document).click(function () {
         $("#city").change(function () {
             var selected = $("#city").val()
-             $("#country").show()
-             $("#country").empty()
-             var countries = adress['data'][selectedprovince][selected]
-            for(var i in countries){
-            $("#country").append('<option value='+countries[i]+'>'+countries[i]+'</option>');
-        }
+            $("#country").show()
+            $("#country").empty()
+            var countries = adress['data'][selectedprovince][selected]
+            for (var i in countries) {
+                $("#country").append('<option value=' + countries[i] + '>' + countries[i] + '</option>');
+            }
         })
     })
+    var interest = new Array()
+    function change(obj){
+			 console.log("111")
+             if($(obj).hasClass("layui-bg-blue"))
+             {
+                 $(obj).removeClass("layui-bg-blue")
+                 var index =interest.indexOf($(obj).val())
+                 interest.splice(index,1)
+             }
+             else {
+			     $(obj).addClass("layui-bg-blue");
+			     interest.push($(obj).val())
+             }
+
+		}
+    function save() {
+        $('#myModal').modal('toggle')
+        console.log(interest)
+        $('#interest').attr('value',interest)
+    }
 </script>
 </html>

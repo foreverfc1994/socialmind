@@ -16,86 +16,23 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from visitor import views as vviews
-from manager import views as bviews
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', vviews.login, name='first'),
-    path('index/', vviews.index, name='index'),
+    # path('index/', vviews.index, name='index'),
+    path('person_index/', vviews.person_index, name='person_index'),
+    path('com_index/', vviews.com_index, name='com_index'),
+    path('gov_index/', vviews.gov_index, name='gov_index'),
+    path('govcom_index/', vviews.govcom_index, name='govcom_index'),
     path('login/', vviews.login, name='login'),
     path('signin/', vviews.signin, name='signin'),
     path('get_address/', vviews.get_address),
     path('checkuser/', vviews.checkuser),
-    path('heatIndex/', vviews.heatIndex),
-    path('heatIndex0/', vviews.heatIndex0),
-    path('heatIndex1/', vviews.heatIndex1),
-    path('heatIndex2/', vviews.heatIndex2),
-    path('heatIndex3/', vviews.heatIndex3),
-    path('heatIndex4/', vviews.heatIndex4),
-    path('heatIndex5/', vviews.heatIndex5),
-    path('emotionMap/', vviews.emotionMap),
-    path('emotionMap0/', vviews.emotionMap0),
-    path('emotionMap1/', vviews.emotionMap1),
-    path('emotionMap2/', vviews.emotionMap2),
-    path('emotionMap3/', vviews.emotionMap3),
-    path('emotionMap4/', vviews.emotionMap4),
-    path('informationMonitor/', vviews.informationMonitor),
-    path('informationMonitor0/', vviews.informationMonitor0),
-    path('informationMonitor1/', vviews.informationMonitor1),
-    path('informationMonitor2/', vviews.informationMonitor2),
-    path('informationMonitor3/', vviews.informationMonitor3),
-    path('fullTextMonitor/', vviews.fullTextMonitor),
     path('events/', vviews.events),
-    path('event0/', vviews.event0),
-    path('event1/', vviews.event1),
-    path('event2/', vviews.event2),
-    path('event3/', vviews.event3),
-    path('event4/', vviews.event4),
-    path('event5/', vviews.event5),
-    path('reportMaker/', vviews.reportMaker),
     path('profile/', vviews.profile),
     path('eventParticular/', vviews.eventparticular),
     path('fileParticular/', vviews.fileParticular),
-    # background url
-    #test
-    path('bindex/', bviews.index, name='index'),
-    path('blogin/', bviews.login, name='login'),
-    path('SpiderList/', bviews.SpiderList),
-    path('SpiderMonitor/', bviews.SpiderMonitor),
-    path('SpiderConfigure/', bviews.SpiderConfigure),
-    path('Author/', bviews.Author),
-    path('ArticlesOfAuthor/', bviews.ArticlesOfAuthor),
-    path('ArticlesAndComments/', bviews.ArticlesAndComments),
-    path('DataCleanStatistics/', bviews.DataCleanStatistics),
-    path('DataCleanStrategies/', bviews.DataCleanStrategies),
-    path('DataCleanLog/', bviews.DataCleanLog),
-    path('washData/', bviews.washData),
-    path('topics/', bviews.topics),
-    path('AddEventObject/', bviews.AddEventObject),
-    path('CreateEventObject/', bviews.CreateEventObject),
-    path('ShowEventObject/', bviews.ShowEventObject),
-    path('semanticsTools/', bviews.semanticsTools),
-    path('semanticsToolkits/', bviews.semanticsToolkits),
-    path('ShowToolkits/', bviews.ShowToolkits),
-    path('usrCommentsSelect/', bviews.usrCommentsSelect),
-    path('usrCommentsCheck/', bviews.usrCommentsCheck),
-    path('usrCommentsDelete/', bviews.usrCommentsDelete),
-    path('AssignAuthorities/', bviews.AssignAuthorities),
-    path('usersVerify/', bviews.usersVerify),
-    path('usrManagement/', bviews.usrManagement),
-    path('operateDiary/', bviews.operateDiary),
-    path('DouBanArticleStyle/', bviews.DouBanArticleStyle),
-
-
-
-
-
-
-
-
-
-
-
-
-
+    path('test/',vviews.test),
+    path('jump/',vviews.jump)
 
 ]

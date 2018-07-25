@@ -1,5 +1,6 @@
-from visitor.models import Area,Province,City
+from visitor.models import *
 from django import template
+
 
 register = template.Library()
 
@@ -14,3 +15,9 @@ def get_city(province):
     pid = Province.objects.get(name=province).code[:2]
     city = City.objects.filter(code__startswith=pid)
     return city
+
+@register.simple_tag
+def get_topic():
+    topic = Topic.objects.all()
+    print(topic)
+    return topic
