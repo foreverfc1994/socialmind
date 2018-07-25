@@ -56,6 +56,7 @@ urlpatterns = [
     path('eventParticular/', vviews.eventparticular),
     path('fileParticular/', vviews.fileParticular),
     # background url
+    #test
     path('bindex/', bviews.index, name='index'),
     path('blogin/', bviews.login, name='login'),
     path('SpiderList/', bviews.SpiderList),
