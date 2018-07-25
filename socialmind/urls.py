@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from visitor import views as vviews
+from manager import views as bviews
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', vviews.login, name='first'),
@@ -53,5 +54,47 @@ urlpatterns = [
     path('reportMaker/', vviews.reportMaker),
     path('profile/', vviews.profile),
     path('eventParticular/', vviews.eventparticular),
-    path('fileParticular/', vviews.fileParticular)
+    path('fileParticular/', vviews.fileParticular),
+    # background url
+    path('bindex/', bviews.index, name='index'),
+    path('blogin/', bviews.login, name='login'),
+    path('SpiderList/', bviews.SpiderList),
+    path('SpiderMonitor/', bviews.SpiderMonitor),
+    path('SpiderConfigure/', bviews.SpiderConfigure),
+    path('Author/', bviews.Author),
+    path('ArticlesOfAuthor/', bviews.ArticlesOfAuthor),
+    path('ArticlesAndComments/', bviews.ArticlesAndComments),
+    path('DataCleanStatistics/', bviews.DataCleanStatistics),
+    path('DataCleanStrategies/', bviews.DataCleanStrategies),
+    path('DataCleanLog/', bviews.DataCleanLog),
+    path('washData/', bviews.washData),
+    path('topics/', bviews.topics),
+    path('AddEventObject/', bviews.AddEventObject),
+    path('CreateEventObject/', bviews.CreateEventObject),
+    path('ShowEventObject/', bviews.ShowEventObject),
+    path('semanticsTools/', bviews.semanticsTools),
+    path('semanticsToolkits/', bviews.semanticsToolkits),
+    path('ShowToolkits/', bviews.ShowToolkits),
+    path('usrCommentsSelect/', bviews.usrCommentsSelect),
+    path('usrCommentsCheck/', bviews.usrCommentsCheck),
+    path('usrCommentsDelete/', bviews.usrCommentsDelete),
+    path('AssignAuthorities/', bviews.AssignAuthorities),
+    path('usersVerify/', bviews.usersVerify),
+    path('usrManagement/', bviews.usrManagement),
+    path('operateDiary/', bviews.operateDiary),
+    path('DouBanArticleStyle/', bviews.DouBanArticleStyle),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ]
