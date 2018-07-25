@@ -28,15 +28,24 @@
                 {% endif %}
             <div class="login-wrap">
                 <p>请选择用户类型:</p>
-                <select name="user-type" class="form-control" required>
+                <select name="usertype" class="form-control" required>
                     <option>个人用户</option>
                     <option>企业用户</option>
                     <option>政府用户</option>
                     <option>事业单位用户</option>
                 </select><br>
+
                 <input name="username" type="text" class="form-control" placeholder="用户名" autofocus required>
                 <br>
                 <input name="password" type="password" class="form-control" placeholder="密码" required><br>
+
+                  {{ login_form.captcha.errors }}
+                  {{ login_form.captcha.label_tag }}
+                  {{ login_form.captcha }}
+
+
+
+
                 <button class="btn btn-theme btn-block"  type="submit"><i class="fa fa-lock"></i> &nbsp; &nbsp;登陆</button>
                 <button class="btn btn-theme btn-block" onclick="signIn()" type="button"><i class="fa fa-user"></i> &nbsp; &nbsp;注册</button>
             </div>

@@ -17,9 +17,12 @@ from django.contrib import admin
 from django.urls import path
 from visitor import views as vviews
 from manager import views as bviews
+from django.conf.urls import include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', vviews.login, name='first'),
+    path('captcha',include('captcha.urls')),
+    path('logout/',vviews.logout),
     path('com_index/', vviews.com_index, name='com_index'),
     path('gov_index/', vviews.gov_index, name='gov_index'),
     path('person_index/', vviews.person_index, name='person_index'),

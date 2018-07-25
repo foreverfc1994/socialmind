@@ -2,39 +2,70 @@ from django.shortcuts import render,redirect
 from visitor.models import User,Province,City,Area
 from visitor import models
 from django.http import JsonResponse
+from visitor import forms
 from django.views.decorators.csrf import csrf_exempt
 from visitor.scripts.signin import *
 # Create your views here.
+
 def login(request):
     print(request.method)
+    if request.session.get('is_login',None):
+        return redirect('/person_index/')
     if request.method == 'POST':
         print(request.POST)
         message = ''
-        username = request.POST.get('username',None)
-        password = request.POST.get('password',None)
-        user_type = request.POST.get('user-type')
-        if username and password:
-            username = username.strip()
+        login_form = forms.loginForm(request.POST)
+        if login_form.is_valid():
+            username = login_form.cleaned_data['username']
+            password = login_form.cleaned_data['password']
+            user_type = login_form.cleaned_data['usertype']
+            print(username,password,user_type)
             try:
                 user = models.User.objects.get(username=username)
                 if user.password == password:
-                    if user_type == "个人用户":
-                        return redirect('person_index')
-                    if user_type == "企业用户":
-                        return redirect('com_index')
-                    if user_type == "政府用户":
-                        return redirect('gov_index')
-                    if user_type == "事业单位用户":
-                        return redirect('person_index')
-                    else:
-                        return redirect('/login/')
+                   request.session['is_login'] = True
+                   request.session['user_id'] = user.pk
+                   request.session['user_name'] = user.username
+                   if user_type == "个人用户":
+                    return redirect('person_index')
+                   if user_type == "企业用户":
+                    return redirect('com_index')
+                   if user_type == "政府用户":
+                    return redirect('gov_index')
+                   if user_type == "事业单位用户":
+                    return redirect('person_index')
+                   else:
+                    return redirect('/login/')
                 else:
-                    message ='密码错误'
+                    message = '密码错误'
             except:
+                request.session.flush()
                 message = '无此用户'
-        return render(request, 'foreground/login.html', {'message': message})
-
-    return render(request, 'foreground/login.html')
+        # username = request.POST.get('username',None)
+        # password = request.POST.get('password',None)
+        # user_type = request.POST.get('user-type')
+        # if username and password:
+        #     username = username.strip()
+        #     try:
+        #         user = models.User.objects.get(username=username)
+        #         if user.password == password:
+        #             if user_type == "个人用户":
+        #                 return redirect('person_index')
+        #             if user_type == "企业用户":
+        #                 return redirect('com_index')
+        #             if user_type == "政府用户":
+        #                 return redirect('gov_index')
+        #             if user_type == "事业单位用户":
+        #                 return redirect('person_index')
+        #             else:
+        #                 return redirect('/login/')
+        #         else:
+        #             message ='密码错误'
+        #     except:
+        #         message = '无此用户'
+        return render(request, 'foreground/login.html', locals())
+    login_form = forms.loginForm()
+    return render(request, 'foreground/login.html',locals())
 
 def person_index(request):
     return render(request, 'foreground/person_index.html')
@@ -63,7 +94,7 @@ def signin(request):
                     saveImg(idCardA, userid, "1")
                     idCardB = request.FILES['idcardB']
                     saveImg(idCardB, userid, "2")
-                    businessLicence = request.FILES['businessLicence']
+                    businessLicence = request.FILES['licence']
                     saveImg(businessLicence, userid, "3")
                     return redirect('/jump/')
                 except:
@@ -134,3 +165,7 @@ def test(request):
 
 def jump(request):
     return render(request, 'foreground/jump.html')
+
+def logout(request):
+    request.session.flush()
+    return redirect("/login/")
