@@ -483,3 +483,227 @@ function changePage(value){//切换按钮
         return;
     }
 }
+
+function keyWordsCloud(){
+    var option = {
+        tooltip: {},
+        series: [ {
+            type: 'wordCloud',
+            gridSize: 2,
+            sizeRange: [12, 50],
+            rotationRange: [-90, 90],
+            shape: 'pentagon',
+            width: 600,
+            height: 400,
+            drawOutOfBound: true,
+            textStyle: {
+                normal: {
+                    color: function () {
+                        return 'rgb(' + [
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160)
+                        ].join(',') + ')';
+                    }
+                },
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowColor: '#333'
+                }
+            },
+            data: [
+                {
+                    name: 'Sam S Club',
+                    value: 10000,
+                    textStyle: {
+                        normal: {
+                            color: 'black'
+                        },
+                        emphasis: {
+                            color: 'red'
+                        }
+                    }
+                },
+                {
+                    name: 'Macys',
+                    value: 6181
+                },
+                {
+                    name: 'Amy Schumer',
+                    value: 4386
+                },
+                {
+                    name: 'Jurassic World',
+                    value: 4055
+                },
+                {
+                    name: 'Charter Communications',
+                    value: 2467
+                },
+                {
+                    name: 'Chick Fil A',
+                    value: 2244
+                },
+                {
+                    name: 'Planet Fitness',
+                    value: 1898
+                },
+                {
+                    name: 'Pitch Perfect',
+                    value: 1484
+                },
+                {
+                    name: 'Express',
+                    value: 1112
+                },
+                {
+                    name: 'Home',
+                    value: 965
+                },
+                {
+                    name: 'Johnny Depp',
+                    value: 847
+                },
+                {
+                    name: 'Lena Dunham',
+                    value: 582
+                },
+                {
+                    name: 'Lewis Hamilton',
+                    value: 555
+                },
+                {
+                    name: 'KXAN',
+                    value: 550
+                },
+                {
+                    name: 'Mary Ellen Mark',
+                    value: 462
+                },
+                {
+                    name: 'Farrah Abraham',
+                    value: 366
+                },
+                {
+                    name: 'Rita Ora',
+                    value: 360
+                },
+                {
+                    name: 'Serena Williams',
+                    value: 282
+                },
+                {
+                    name: 'NCAA baseball tournament',
+                    value: 273
+                },
+                {
+                    name: 'Point Break',
+                    value: 265
+                }
+            ]
+        } ]
+    };
+    var chart = echarts.init(document.getElementById('cloud2'));
+    chart.setOption(option);
+    window.onresize = chart.resize;
+}
+
+function eventJudgeRatio(){
+    var config = {
+        type: 'doughnut',
+        data:{
+            datasets:[{
+                data:[
+                    40,
+                    50,
+                    10,
+                ],
+                backgroundColor:[
+                    "#FFA500",
+                    "#666666",
+                    "#CC0000",
+                ],
+            }],
+            labels:[
+                "正面比例：",
+                "负面比例：",
+                "中性",
+            ],
+        },
+        options:{
+            cutoutPercentage: 60,
+            responsive: true,
+            legend:{
+                display: true,
+                position: "bottom",
+            },
+            title: {
+                display: true,
+                fontSize: 20,
+                fontColor: "#000000",
+                text: "事件正负面评价比例",
+            },
+            animation:{
+                animateScale: true,
+                animateRoatae: true
+            }
+        }
+    };
+    var myDoughnut = new Chart(document.getElementById("serverstatusEJ").getContext("2d"), config);
+}
+
+function emotionRatio(){
+     var config = {
+        type: 'doughnut',
+        data:{
+        datasets:[{
+            data:[
+                50,
+                25,
+                15,
+                5,
+                2.5,
+                1.5,
+                1
+            ],
+            backgroundColor:[
+                "#FFA500",
+                "#666666",
+                "#3399CC",
+                "#CC0000",
+                "#33FF66",
+                "#CCFFFF",
+                "#9966FF",
+            ],
+        }],
+        labels:[
+            "喜悦",
+            "惊奇",
+            "中性",
+            "悲伤",
+            "愤怒",
+            "恐惧",
+            "其他",
+        ],
+        },
+        options:{
+        cutoutPercentage: 60,
+        responsive: true,
+        legend:{
+            display: true,
+            position: "bottom",
+        },
+        title: {
+            display: true,
+            fontSize: 20,
+            fontColor: "#000000",
+            text: "事件情绪占比",
+        },
+        animation:{
+            animateScale: true,
+            animateRoatae: true
+        }
+        }
+        };
+        var myDoughnut = new Chart(document.getElementById("serverstatusEM").getContext("2d"), config);
+}
