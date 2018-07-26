@@ -13,6 +13,11 @@
     <meta name="format-detection" content="telephone=no">
 
     <link href="{% static 'assets0/css/bootstrap.css' %}" rel="stylesheet">
+    <!-- lalalala -->
+    <link rel="stylesheet" href="{% static 'assets0/css/screen.css' %}" type="text/css" media="screen">
+    <link rel="stylesheet" href="{% static 'assets0/css/responsive.css' %}" type="text/css" media="screen">
+    <link rel="stylesheet" href="{% static 'assets0/css/colorbox.css' %}" type="text/css" media="screen">
+    <!-- lalalala -->
     <!--external css -->
     <link href="{% static 'assets0/font-awesome/css/font-awesome.css' %}" rel="stylesheet"/>
     <!-- Custom styles for this template -->
@@ -277,7 +282,7 @@
                                 <button class="btn btn-warning event3Buttons" id="change1" value="close1" onclick="changePage(this.value)">传播分析</button>
                                 <button class="btn btn-warning event3Buttons" id="change2" value="close2" onclick="changePage(this.value)">情感分析</button>
                             </div>
-                            <div id="eventExponent" class="eventComments centered" style="display: block; padding-top: 20px;">
+                            <div id="eventExponent" class="eventComments centered" style="display: block;">
                                 <table>
                                     <td style="width: 33%;">
                                         <div class="items">
@@ -312,12 +317,267 @@
                                     <p class="centered" style="font-size: 20px; z-index: 10;"><strong>关键词云</strong></p>
                                     <!-- <canvas id="cloud" style="position: center; width: 50%; height: 300px; z-index: -100;"></canvas> -->
                                     <div id="cloud2" style="width: 100%;height: 350px;"></div>
+                                    <script>
+                                        var chart = echarts.init(document.getElementById('cloud2'));
+
+            var option = {
+                tooltip: {},
+                series: [ {
+                    type: 'wordCloud',
+                    gridSize: 2,
+                    sizeRange: [12, 50],
+                    rotationRange: [-90, 90],
+                    shape: 'pentagon',
+                    width: 600,
+                    height: 400,
+                    drawOutOfBound: true,
+                    textStyle: {
+                        normal: {
+                            color: function () {
+                                return 'rgb(' + [
+                                    Math.round(Math.random() * 160),
+                                    Math.round(Math.random() * 160),
+                                    Math.round(Math.random() * 160)
+                                ].join(',') + ')';
+                            }
+                        },
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowColor: '#333'
+                        }
+                    },
+                    data: [
+                        {
+                            name: 'Sam S Club',
+                            value: 10000,
+                            textStyle: {
+                                normal: {
+                                    color: 'black'
+                                },
+                                emphasis: {
+                                    color: 'red'
+                                }
+                            }
+                        },
+                        {
+                            name: 'Macys',
+                            value: 6181
+                        },
+                        {
+                            name: 'Amy Schumer',
+                            value: 4386
+                        },
+                        {
+                            name: 'Jurassic World',
+                            value: 4055
+                        },
+                        {
+                            name: 'Charter Communications',
+                            value: 2467
+                        },
+                        {
+                            name: 'Chick Fil A',
+                            value: 2244
+                        },
+                        {
+                            name: 'Planet Fitness',
+                            value: 1898
+                        },
+                        {
+                            name: 'Pitch Perfect',
+                            value: 1484
+                        },
+                        {
+                            name: 'Express',
+                            value: 1112
+                        },
+                        {
+                            name: 'Home',
+                            value: 965
+                        },
+                        {
+                            name: 'Johnny Depp',
+                            value: 847
+                        },
+                        {
+                            name: 'Lena Dunham',
+                            value: 582
+                        },
+                        {
+                            name: 'Lewis Hamilton',
+                            value: 555
+                        },
+                        {
+                            name: 'KXAN',
+                            value: 550
+                        },
+                        {
+                            name: 'Mary Ellen Mark',
+                            value: 462
+                        },
+                        {
+                            name: 'Farrah Abraham',
+                            value: 366
+                        },
+                        {
+                            name: 'Rita Ora',
+                            value: 360
+                        },
+                        {
+                            name: 'Serena Williams',
+                            value: 282
+                        },
+                        {
+                            name: 'NCAA baseball tournament',
+                            value: 273
+                        },
+                        {
+                            name: 'Point Break',
+                            value: 265
+                        }
+                    ]
+                } ]
+            };
+
+            chart.setOption(option);
+
+            window.onresize = chart.resize;
+                                    </script>
                                 </div>
                             </div>
                             <div id="transportAnalyze" class="eventComments centered" style="display: none">
                                 <div class="eventTrend" id="eventTrend">
                                     <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>事件走势</strong></p>
-                                    <img src="{% static 'assets0/img/eventTrend.png' %}" style="width: 80%; height: 80%;">
+                                    <!-- <img src="{% static 'assets0/img/eventTrend.png' %}" style="width: 80%; height: 80%;"> -->
+                                    <div class="container">
+                                            <h1>线性时间轴</h1>
+                                            <p class="lead">Tarek Anandan的timeliner.js jQuery插件工作实例。本页包含两工作实例，说明几个关键特征包括展开/折叠，自动启动/加载，每页的多个时间线。</p>
+                                        
+                                            <h2>民权运动1954-1964</h2>
+                                        
+                                            
+                                            <div id="timelineContainer" class="timelineContainer">
+                                        
+                                                <div class="timelineToggle"><p><a class="expandAll">+ 全部展开</a></p></div>
+                                        
+                                                <br class="clear">
+                                        
+                                                <div class="timelineMajor">
+                                                    <h2 class="timelineMajorMarker"><span>1954</span></h2>
+                                                    <dl class="timelineMinor">
+                                                        <dt id="19540517"><a>布朗诉教育委员会</a></dt>
+                                                        <dd class="timelineEvent" id="19540517EX" style="display:none;">
+                                                            <h3>1954年5月17日</h3>
+                                                            <p>美国最高法院相传一致9-0决定在布朗诉托皮卡教育局案，打开大门，民权运动最终种族融合在美国社会的各个方面。推翻Plessy v. Ferguson（1896），法院裁定“隔离的教育设施是不平等的。</p>
+                                                            <br class="clear">
+                                                        </dd><!-- /.timelineEvent -->
+                                                    </dl><!-- /.timelineMinor -->
+                                                </div><!-- /.timelineMajor -->
+                                        
+                                                <div class="timelineMajor">
+                                                    <h2 class="timelineMajorMarker"><span>1955</span></h2>
+                                                    <dl class="timelineMinor">
+                                                        <dt id="19550828"><a>艾莫特·泰尔</a></dt>
+                                                        <dd class="timelineEvent" id="19550828EX" style="display:none;">
+                                                            <h3>1955年8月28日</h3>
+                                                            <p>十四岁的非裔美国人埃米特被残忍杀害后，据说与白人妇女在访问亲戚在密西西比州。这是第一次，黑人和白人记者报道这次审判的集大成者”之一的第二十世纪最令人震惊的和持久的故事。”白被告，Roy Bryant和J.W. Milam，都被一个白人陪审团仅67分钟；后来他们详细描述为看杂志（付给他们4000美元）他们杀了为止。母亲坚持开放的棺材，和他残缺的身体，强大的图像引起强烈的反应，在全国和世界。</p>
+                                        
+                                                            <br class="clear">
+                                                        </dd><!-- /.timelineEvent -->
+                                                    </dl><!-- /.timelineMinor -->
+                                        
+                                        
+                                                    <dl class="timelineMinor">
+                                                        <dt id="19551201"><a>罗萨公园</a></dt>
+                                                        <dd class="timelineEvent" id="19551201EX" style="display:none;">
+                                                            <h3>December 1, 1955</h3>
+                                                            <p>
+                                                                The arrest of Rosa Parks, a 42-year-old African-American seamstress and civil rights activist who refused to give up her bus seat to a white passenger, sets off a long anticipated bus boycott by residents of Montgomery, Ala. The 13-month protest and ensuing litigation eventually make it to the U.S. Supreme Court, which declares that segregation on public buses is unconstitutional.<sup>4</sup> The Montgomery bus boycott brings the Rev. Dr. Martin Luther King Jr. and his nonviolent approach to social change to the forefront of the civil rights movement.</p>
+                                        
+                                                                <br class="clear">
+                                                        </dd><!-- /.timelineEvent -->
+                                                    </dl><!-- /.timelineMinor -->
+                                                </div><!-- /.timelineMajor -->
+                                        
+                                                <div class="timelineMajor">
+                                                    <h2 class="timelineMajorMarker"><span>1957</span></h2>
+                                                    <dl class="timelineMinor">
+                                                        <dt id="19570904"><a>小石城</a></dt>
+                                                        <dd class="timelineEvent" id="19570904EX" style="display:none;">
+                                                            <h3>September 4, 1957</h3>
+                                        
+                                                    
+                                                            <p>
+                                                                Three years removed from the Brown v. Board of Education decision, Arkansas Gov. Orval Faubus orders the National Guard to stop nine black students from attending the all-white Little Rock Central High School. President Dwight D. Eisenhower intervenes by federalizing the National Guard and deploying Army troops to protect the students, stripping the state of power. Media coverage of the physical and verbal harassment the black students were subjected to is reported and broadcast around the world. In the end, they successfully integrate Central High. <sup>5</sup></p>
+                                        
+                                                            <br class="clear">
+                                                        </dd><!-- /.timelineEvent -->
+                                                    </dl><!-- /.timelineMinor -->
+                                                </div><!-- /.timelineMajor -->
+                                        
+                                                <div class="timelineMajor">
+                                                    <h2 class="timelineMajorMarker"><span>1961</span></h2>
+                                                    <dl class="timelineMinor">
+                                                        <dt id="19610504"><a>自由乘车运动</a></dt>
+                                                        <dd class="timelineEvent" id="19610504EX" style="display:none;">
+                                                            <h3>May 4, 1961</h3>
+                                                    
+                                                        <p>
+                                                            The first of many civil rights “Freedom Rides” leaves Washington, D.C., for New Orleans. The Freedom Riders want to test the validity of the Supreme Court’s decision to outlaw racial segregation in bus terminals and through interstate bus travel.<sup>6</sup> Angry white mobs – with the blessing of Alabama law enforcement – meet the convoy in Anniston and Birmingham, brutally beating the Freedom Riders and firebombing one of the buses.<sup>7</sup></p>
+                                                            <br class="clear">
+                                                        </dd><!-- /.timelineEvent -->
+                                                    </dl><!-- /.timelineMinor -->
+                                                </div><!-- /.timelineMajor -->
+                                        
+                                                <div class="timelineMajor">
+                                                    <h2 class="timelineMajorMarker"><span>1963</span></h2>
+                                                    <dl class="timelineMinor">
+                                                        <dt id="19630828"><a>“我有一个梦想”</a></dt>
+                                                        <dd class="timelineEvent" id="19630828EX" style="display:none;">
+                                                            <h3>August 28, 1963</h3>
+                                                            
+                                                            <p>
+                                                                In one of the largest gatherings in the nation’s capital and one of the first to be broadcast live on national television, at least 200,000 civil rights protesters stage a March on Washington concluding at the Lincoln Memorial. The march is dedicated to jobs and freedom and takes place 100 years after the&nbsp;Emancipation Proclamation. The highlight of the event is Martin Luther King Jr.’s historic “I Have a Dream” speech.</p>
+                                        
+                                                            <blockquote>
+                                                                I have a dream that one day this nation will rise up and live out the true meaning of its creed: "We hold these truths to be self-evident: that all men are created equal."
+                                                                <div class="attribution">&mdash;Martin Luthar King Jr.</div>
+                                                            </blockquote>
+                                        
+                                                            <br class="clear">
+                                                        </dd><!-- /.timelineEvent -->
+                                                    </dl><!-- /.timelineMinor -->
+                                        
+                                                </div><!-- /.timelineMajor -->
+                                        
+                                                <div class="timelineMajor">
+                                                    <h2 class="timelineMajorMarker"><span>1964</span></h2>
+                                        
+                                                    <dl class="timelineMinor">
+                                                        <dt id="19640702"><a>民权法案</a></dt>
+                                                        <dd class="timelineEvent" id="19640702EX" style="display:none;">
+                                                            <h3>July 2, 1964</h3>
+                                                            <p>
+                                                                President Lyndon B. Johnson signs the Civil Rights Act of 1964, mandating equal opportunity employment, and complete desegregation of schools and other public facilities. It also outlaws unequal voter registration requirements.<sup>13</sup> Although it would take years for these changes to take effect in communities around the country, the law is a monumental victory for the civil rights movement.</p>
+                                        
+                                                                <br class="clear">
+                                                        </dd><!-- /.timelineEvent -->
+                                                    </dl><!-- /.timelineMinor -->
+                                        
+                                                    <dl class="timelineMinor">
+                                                        <dt id="19641014"><a>诺贝尔和平奖</a></dt>
+                                                        <dd class="timelineEvent" id="19641014EX" style="display:none;">
+                                                            <h3>October 14, 1964</h3>
+                                                            <p>Martin Luther King Jr. is awarded the Nobel Peace Prize; at 35, he is the youngest recipient.</p>
+                                                            <br class="clear">
+                                                        </dd><!-- /.timelineEvent -->
+                                                    </dl><!-- /.timelineMinor -->
+                                        
+                                                </div><!-- /.timelineMajor -->
+                                                <br class="clear">
+                                            </div><!-- /#timelineContainer -->
+                                        
+                                        </div><!-- /.container -->
                                 </div>
                                 <div class="informSource" id="informSource">
                                     <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>信息来源</strong></p>
@@ -342,6 +602,49 @@
                                         <div id="statisticsEJ" style="width: 70%; margin-left: 25%;">
                                             <div class="pic" style="position: center; width: 100%; height: 100%;">
                                                 <canvas id="serverstatusEJ" height="120px" width="120px"></canvas>
+                                                <script>
+                                                    var config = {
+                                                        type: 'doughnut',
+                                                        data:{
+                                                            datasets:[{
+                                                                data:[
+                                                                    40,
+                                                                    50,
+                                                                    10,
+                                                                ],
+                                                                backgroundColor:[
+                                                                    "#FFA500",
+                                                                    "#666666",
+                                                                    "#CC0000",
+                                                                ],
+                                                            }],
+                                                            labels:[
+                                                                "正面比例：",
+                                                                "负面比例：",
+                                                                "中性",
+                                                            ],
+                                                        },
+                                                        options:{
+                                                            cutoutPercentage: 60,
+                                                            responsive: true,
+                                                            legend:{
+                                                                display: true,
+                                                                position: "bottom",
+                                                            },
+                                                            title: {
+                                                                display: true,
+                                                                fontSize: 20,
+                                                                fontColor: "#000000",
+                                                                text: "事件正负面比例",
+                                                            },
+                                                            animation:{
+                                                                animateScale: true,
+                                                                animateRoatae: true
+                                                            }
+                                                        }
+                                                    };
+                                                    var myDoughnut = new Chart(document.getElementById("serverstatusEJ").getContext("2d"), config);
+                                                </script>
                                             </div>
                                         </div>
                                     </div>
@@ -349,6 +652,61 @@
                                         <div id="statisticsEM" style="width: 70%; margin-left: 5%;">
                                             <div class="pic" style="position: center; width: 100%; height: 100%;">
                                                 <canvas id="serverstatusEM" height="120px" width="120px"></canvas>
+                                                <script>
+                                                    var config = {
+                                                        type: 'doughnut',
+                                                        data:{
+                                                            datasets:[{
+                                                                data:[
+                                                                    50,
+                                                                    25,
+                                                                    15,
+                                                                    5,
+                                                                    2.5,
+                                                                    1.5,
+                                                                    1
+                                                                ],
+                                                                backgroundColor:[
+                                                                    "#FFA500",
+                                                                    "#666666",
+                                                                    "#3399CC",
+                                                                    "#CC0000",
+                                                                    "#33FF66",
+                                                                    "#CCFFFF",
+                                                                    "#9966FF",
+                                                                ],
+                                                            }],
+                                                            labels:[
+                                                                "喜悦",
+                                                                "惊奇",
+                                                                "中性",
+                                                                "悲伤",
+                                                                "愤怒",
+                                                                "恐惧",
+                                                                "其他",
+                                                            ],
+                                                        },
+                                                        options:{
+                                                            cutoutPercentage: 60,
+                                                            responsive: true,
+                                                            legend:{
+                                                                display: true,
+                                                                position: "bottom",
+                                                            },
+                                                            title: {
+                                                                display: true,
+                                                                fontSize: 20,
+                                                                fontColor: "#000000",
+                                                                text: "事件情绪占比",
+                                                            },
+                                                            animation:{
+                                                                animateScale: true,
+                                                                animateRoatae: true
+                                                            }
+                                                        }
+                                                    };
+                                                    var myDoughnut = new Chart(document.getElementById("serverstatusEM").getContext("2d"), config);
+                                                </script>
                                             </div>
                                         </div>
                                     </div>
@@ -537,24 +895,510 @@ document.write(unescape("%3Cspan id='cnzz_stat_icon_30088308'%3E%3C/span%3E%3Csc
 <script type="text/javascript" src="{% static 'assets0/js/gritter-conf.js'%}"></script>
 <!--common script for all pages-->
 <script src="{% static 'assets0/js/common-scripts.js'%}"></script>
-<script src="{% static 'assets0/js/fileJs/particular.js' %}"></script>
+<script src="{% static 'assets0/js/layui.js'%}" charset="utf-8"></script>
+<!-- lalalala -->
+<script type="text/javascript" src="{% static 'assets0/js/colorbox.js'%}"></script>
+<script type="text/javascript" src="{% static 'assets0/js/timeliner.min.js'%}"></script>
+<!-- lalalala -->
 <script>
-    eventHeatIndex();//事件热度
-    eventSensitiveIndex();//事件敏感度
-    eventPolarityEvent();//事件极性
-    heatIndexMap();//热度地图
-    sensitiveIndexMap();//敏感度地图
-    emotionMap();//情绪地图
-    keyWordsCloud();//关键词云
-    eventJudgeRatio();//事件正负面评价占比
-    emotionRatio();//事件情绪占比
+	$(document).ready(function() {
+		$.timeliner({
+			startOpen:['#19550828EX', '#19630828EX']
+		});
+		$.timeliner({
+			timelineContainer: '#timelineContainer_2'
+		});
+		// Colorbox Modal
+		$(".CBmodal").colorbox({inline:true, initialWidth:100, maxWidth:682, initialHeight:100, transition:"elastic",speed:750});
+	});
+</script>
+<!-- lalalala -->
+
+
+<script>
+    $(function(){
+        function footerPosition(){
+            $("footer").removeClass("fixed-bottom");
+            var contentHeight = document.body.scrollHeight,//网页正文全文高度
+                winHeight = window.innerHeight;//可视窗口高度，不包括浏览器顶部工具栏
+            if(!(contentHeight > winHeight)){
+                //当网页正文高度小于可视窗口高度时，为footer添加类fixed-bottom
+                $("footer").addClass("fixed-bottom");
+            } else {
+                $("footer").removeClass("fixed-bottom");
+            }
+        }
+        footerPosition();
+        $(window).resize(footerPosition);
+    });
 </script>
 <script>
-    window.onload = function(){
-        eventTrend();//事件走势
-        heatIndexBoom();//热度爆发统计
-        mediaLivenessIndex();//媒体活跃度
-        emotionTrend();//情绪走势统计
+    option = {
+        tooltip : {
+            formatter: "{a} <br/>{b} : {c}%"
+        },
+        series: [
+            {
+                name: 'heat',
+                type: 'gauge',
+                detail: {formatter:'{value}%'},
+                data: [{value: 70, name: '事件热度'}]
+            }
+        ]
     };
+    var chart = echarts.init(document.getElementById('heat'));
+    chart.setOption(option);
+</script>
+<script>
+    option = {
+        tooltip : {
+            formatter: "{a} <br/>{b} : {c}%"
+        },
+        series: [
+            {
+                name: 'sensitive',
+                type: 'gauge',
+                detail: {formatter:'{value}%'},
+                data: [{value: 50, name: '事件敏感度'}]
+            }
+        ]
+    };
+    var chart = echarts.init(document.getElementById('sensitive'));
+    chart.setOption(option,true);
+</script>
+<script>
+    option = {
+        tooltip : {
+            formatter: "{a} <br/>{b} : {c}%"
+        },
+        series: [
+            {
+                name: 'polarity',
+                type: 'gauge',
+                detail: {formatter:'{value}%'},
+                data: [{value: 20, name: '事件极性'}]
+            }
+        ]
+    };
+    var chart = echarts.init(document.getElementById('polarity'));
+    chart.setOption(option,true);
+</script>
+<script>
+     var heatTrendCountData = {
+         labels : ["January","February","March","April","May","June","July"],
+         datasets : [{
+             label: "全网信息数",
+             fill: false,
+             pointBackgroundColor: "#FF0000",
+             borderColor: "#F08080",
+             backgroundColor: "#F08080",
+             data : [165,159,132,129,146,155,140]      //点的Y轴值
+         },
+
+             {
+                 label: "热点文章数",
+                 fill: false,
+                 pointBackgroundColor: "#008000",
+                 borderColor: "#32CD32",
+                 backgroundColor: "#32CD32",
+                 data : [32,44,22,99,33,22,4]      //点的Y轴值
+             },
+         {
+                 label: "敏感文章数",
+                 fill: false,
+                 pointBackgroundColor: "#66CCFF",
+                 borderColor: "#0033CC",
+                 backgroundColor: "#0033CC",
+                 data : [32,34,27,19,33,92,44]      //点的Y轴值
+             }]
+     };
+
+    //定义图表的参数
+    var heatTrendCountOptions = {
+        title: {
+            display: true,
+            text: "事件走势统计",
+            fontSize: 20,
+            fontColor: "#000000",
+        },
+    };
+    heatTrendCountconfig = {
+        "type": "line",
+        "data": heatTrendCountData,
+        "options": heatTrendCountOptions,
+    };
+    var dataTime = {
+     labels : ["January","February","March","April","May","June","July","August"],
+     datasets : [{
+         label: "热度指数",
+         fill: false,
+         pointBackgroundColor: "#FF0000",
+         borderColor: "#F08080",
+         backgroundColor: "#F08080",
+         data : [11,159,250,330,1111,800,200,100]      //点的Y轴值
+     }]
+    };
+
+    //定义图表的参数
+    var optionsTime = {
+        title: {
+            display: true,
+            text: "热度爆发统计",
+            fontSize: 20,
+            fontColor: "#000000",
+        },
+    };
+    configTime = {
+        "type": "line",
+        "data": dataTime,
+        "options": optionsTime,
+    };
+    var mediaLivenessData = {
+     labels : ["新浪微博","微信","今日头条","中华网","新华网","凤凰网","新浪网","其他"],
+     datasets : [{
+         label: "媒体活跃度",
+         data : [11552,9955,2550,1330,1111,800,200,100] ,
+         backgroundColor: "#DAA520",
+         borderColor: "#DAA520",
+     }],
+    };
+
+    //定义图表的参数
+    var mediaLivenessOptions = {
+    };
+    mediaLivenessConfig = {
+        "type": "bar",
+        "data": mediaLivenessData,
+        "options": mediaLivenessOptions,
+    };
+
+    var emotionData = {
+     labels : ["January","February","March","April","May","June","July"],
+     datasets : [{
+         label: "喜悦",
+         fill: false,
+         pointBackgroundColor: "#FF0000",
+         borderColor: "#F08080",
+         backgroundColor: "#F08080",
+         data : [165,159,132,129,146,155,140]
+     },
+
+         {
+             label: "中性",
+             fill: false,
+             pointBackgroundColor: "#008000",
+             borderColor: "#32CD32",
+             backgroundColor: "#32CD32",
+             data : [32,44,22,99,33,22,4]
+         },
+     {
+             label: "悲伤",
+             fill: false,
+             pointBackgroundColor: "#66CCFF",
+             borderColor: "#0033CC",
+             backgroundColor: "#0033CC",
+             data : [32,34,27,19,33,92,44]
+         },{
+             label: "愤怒",
+             fill: false,
+             pointBackgroundColor: "#FF99CC",
+             borderColor: "#FF6699",
+             backgroundColor: "#FF6699",
+             data : [12,21,17,9,13,12,4]      //点的Y轴值
+         },{
+             label: "惊奇",
+             fill: false,
+             pointBackgroundColor: "#FF9900",
+             borderColor: "#FF6600",
+             backgroundColor: "#FF6600",
+             data : [5,8,9,6,2,14,1]      //点的Y轴值
+         },{
+             label: "恐惧",
+             fill: false,
+             pointBackgroundColor: "#00FF66",
+             borderColor: "#33CC00",
+             backgroundColor: "#33CC00",
+             data : [2,1,2,2,0,1,1]      //点的Y轴值
+         }]
+    };
+
+    //定义图表的参数
+    var emotionOptions = {
+        title: {
+            display: true,
+            text: "情绪走势统计",
+            fontSize: 20,
+            fontColor: "#000000",
+        },
+    };
+    emotionConfig = {
+        "type": "line",
+        "data": emotionData,
+        "options": emotionOptions,
+    };
+
+    window.onload = function(){
+        new Chart(document.getElementById("heatTime"), configTime);
+        new Chart(document.getElementById("heatTrendCount"), heatTrendCountconfig);
+        new Chart(document.getElementById("mediaLivenessBar"), mediaLivenessConfig);
+        new Chart(document.getElementById("emotionLine"), emotionConfig);
+    };
+</script>
+<script>
+    function randomData() {
+        return Math.round(Math.random()*500);
+    }
+
+    var mydata = [
+        {name: '北京',value: randomData() },{name: '天津',value: randomData() },
+        {name: '上海',value: randomData() },{name: '重庆',value: randomData() },
+        {name: '河北',value: randomData() },{name: '河南',value: randomData() },
+        {name: '云南',value: randomData() },{name: '辽宁',value: randomData() },
+        {name: '黑龙江',value: randomData() },{name: '湖南',value: randomData() },
+        {name: '安徽',value: randomData() },{name: '山东',value: randomData() },
+        {name: '新疆',value: randomData() },{name: '江苏',value: randomData() },
+        {name: '浙江',value: randomData() },{name: '江西',value: randomData() },
+        {name: '湖北',value: randomData() },{name: '广西',value: randomData() },
+        {name: '甘肃',value: randomData() },{name: '山西',value: randomData() },
+        {name: '内蒙古',value: randomData() },{name: '陕西',value: randomData() },
+        {name: '吉林',value: randomData() },{name: '福建',value: randomData() },
+        {name: '贵州',value: randomData() },{name: '广东',value: randomData() },
+        {name: '青海',value: randomData() },{name: '西藏',value: randomData() },
+        {name: '四川',value: randomData() },{name: '宁夏',value: randomData() },
+        {name: '海南',value: randomData() },{name: '台湾',value: randomData() },
+        {name: '香港',value: randomData() },{name: '澳门',value: randomData() }
+    ];
+    var optionHeat = {
+        backgroundColor: '#DCDCDC',
+        title: {
+            text: '热度地图',
+            subtext: '纯属虚构',
+            x:'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: '{b}<br/>{c}'
+        //    b为省份，c为数据
+        },
+        visualMap: {
+            show : true,
+            x: 'left',
+            y: 'bottom',
+            text: ['正面', '负面'],
+            calculable: true,
+            splitList: [
+                {start: 500, end:600},{start: 400, end: 500},
+                {start: 300, end: 400},{start: 200, end: 300},
+                {start: 100, end: 200},{start: 0, end: 100},
+            ],
+            color: ['#00FF00', '#90EE90', '#ADFF2F','#FFFFE0', '#FFA07A', '#FF0000']
+        },
+        series: [{
+            name: '随机数据',
+            type: 'map',
+            mapType: 'china',
+            roam: false,
+            label: {
+                normal: {
+                    show: false
+                },
+                emphasis: {
+                    show: false
+                }
+            },
+            data:mydata
+        }]
+    };
+    var optionSensitive = {
+        backgroundColor: '#DCDCDC',
+        title: {
+            text: '敏感度地图',
+            subtext: '纯属虚构',
+            x:'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: '{b}<br/>{c}'
+        //    b为省份，c为数据
+        },
+        visualMap: {
+            show : true,
+            x: 'left',
+            y: 'bottom',
+            text: ['正面', '负面'],
+            calculable: true,
+            splitList: [
+                {start: 500, end:600},{start: 400, end: 500},
+                {start: 300, end: 400},{start: 200, end: 300},
+                {start: 100, end: 200},{start: 0, end: 100},
+            ],
+            color: ['#00FF00', '#90EE90', '#ADFF2F','#FFFFE0', '#FFA07A', '#FF0000']
+        },
+        series: [{
+            name: '随机数据',
+            type: 'map',
+            mapType: 'china',
+            roam: false,
+            label: {
+                normal: {
+                    show: false
+                },
+                emphasis: {
+                    show: false
+                }
+            },
+            data:mydata
+        }]
+    };
+    var optionEmotion = {
+        backgroundColor: '#DCDCDC',
+        title: {
+            text: '热度地图',
+            subtext: '纯属虚构',
+            x:'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: '{b}<br/>{c}'
+        //    b为省份，c为数据
+        },
+        visualMap: {
+            show : true,
+            x: 'left',
+            y: 'bottom',
+            text: ['正面', '负面'],
+            calculable: true,
+            splitList: [
+                {start: 500, end:600},{start: 400, end: 500},
+                {start: 300, end: 400},{start: 200, end: 300},
+                {start: 100, end: 200},{start: 0, end: 100},
+            ],
+            color: ['#00FF00', '#90EE90', '#ADFF2F','#FFFFE0', '#FFA07A', '#FF0000']
+        },
+        series: [{
+            name: '随机数据',
+            type: 'map',
+            mapType: 'china',
+            roam: false,
+            label: {
+                normal: {
+                    show: false
+                },
+                emphasis: {
+                    show: false
+                }
+            },
+            data: mydata,
+        }]
+    };
+    var chartHeat = echarts.init(document.getElementById('heatMap'));
+    var chartSensitive = echarts.init(document.getElementById('sensitiveMap'));
+    var emotionMap = echarts.init(document.getElementById('emotionMap'));
+    emotionMap.setOption(optionEmotion)
+    chartHeat.setOption(optionHeat);
+    chartSensitive.setOption(optionSensitive);
+</script>
+<!-- <script>
+    var list = [
+        ['aaa', 12],
+        ['ddd', 22],
+        ['fff', 12],
+        ['SE', 10],
+        ['ee3e', 7],
+        ['ff2f', 9],
+        ['socialmind', 38],
+        ['ee1e', 24],
+        ['3fff', 16],
+        ['XJTU', 34],
+        ['e4ee', 23],
+        ["Pear", 12],
+        ["Grape", 22],
+        ["Pine", 27],
+        ["Banana", 19],
+        ["Lemon", 5],
+        ["Parigi", 15],
+        ["Apple", 12]
+        ["Mear", 21],
+        ["Torino", 13],
+        ["Mescola", 17],
+        ["Gigi", 7],
+        ["Roma", 6],
+        ["Empoli", 5],
+        ["Mela", 25]
+        ["Alessandro", 15],
+        ["Imola", 4],
+        ["Hp", 14],
+        ["Harry", 8],
+        ["Potter", 18],
+        ["Amsterdam", 15],
+        ["Como", 8]
+    ];
+    var option = {
+        list: list,
+        color: "random-dark",
+        shape: "cardioid",
+        fontWeight: "bold",
+        backgroundColor: "#DCDCDC",
+    };
+    WordCloud(document.getElementById("cloud"), option);
+</script> -->
+<script>
+    function changePage(value){
+
+        if(value=="open0"){
+            document.getElementById("eventExponent").style.display = 'none';
+            document.getElementById("change0").value = 'close0';
+            document.getElementById("change0").setAttribute("class", "btn btn-warning event3Buttons");
+            return;
+        }
+        else if(value=="close0"){
+            document.getElementById("transportAnalyze").style.display = 'none';
+            document.getElementById("change1").value = 'close1';
+            document.getElementById("change1").setAttribute("class", "btn btn-warning event3Buttons");
+            document.getElementById("emotionAnalyze").style.display = 'none';
+            document.getElementById("change2").value = 'close2';
+            document.getElementById("change2").setAttribute("class", "btn btn-warning event3Buttons");
+            document.getElementById("eventExponent").style.display = 'block';
+            document.getElementById("change0").value = 'open0';
+            document.getElementById("change0").setAttribute("class", "btn btn-theme04 event3Buttons");
+            return;
+        }
+        if(value=="open1"){
+            document.getElementById("transportAnalyze").style.display = 'none';
+            document.getElementById("change1").value = 'close1';
+            document.getElementById("change1").setAttribute("class", "btn btn-warning event3Buttons");
+            return;
+        }
+        else if(value=='close1'){
+            document.getElementById("emotionAnalyze").style.display = 'none';
+            document.getElementById("change2").value = 'close2';
+            document.getElementById("change2").setAttribute("class", "btn btn-warning event3Buttons");
+            document.getElementById("eventExponent").style.display = 'none';
+            document.getElementById("change0").value = 'close0';
+            document.getElementById("change0").setAttribute("class", "btn btn-warning event3Buttons");
+            document.getElementById("transportAnalyze").style.display = 'block';
+            document.getElementById("change1").value = 'open1';
+            document.getElementById("change1").setAttribute("class", "btn btn-theme04 event3Buttons");
+            return;
+        }
+        if(value=="open2"){
+            document.getElementById("emotionAnalyze").style.display = 'none';
+            document.getElementById("change2").value = 'close2';
+            document.getElementById("change2").setAttribute("class", "btn btn-warning event3Buttons");
+            return;
+        }
+        else if(value=='close2'){
+            document.getElementById("transportAnalyze").style.display = 'none';
+            document.getElementById("change1").value = 'close1';
+            document.getElementById("change1").setAttribute("class", "btn btn-warning event3Buttons");
+            document.getElementById("eventExponent").style.display = 'none';
+            document.getElementById("change0").value = 'close0';
+            document.getElementById("change0").setAttribute("class", "btn btn-warning event3Buttons");
+            document.getElementById("emotionAnalyze").style.display = 'block';
+            document.getElementById("change2").value = 'open2';
+            document.getElementById("change2").setAttribute("class", "btn btn-theme04 event3Buttons");
+            return;
+        }
+    }
 </script>
 </html>
