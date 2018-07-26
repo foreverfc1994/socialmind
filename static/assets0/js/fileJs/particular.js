@@ -52,7 +52,7 @@ function eventPolarityEvent(){//事件极性
     chart.setOption(option,true);
 }
 
-function eventTrend(){//事件走势
+function eventTrendStatistic(){//事件走势
     var heatTrendCountData = {
          labels : ["January","February","March","April","May","June","July"],
          datasets : [{

@@ -1,5 +1,4 @@
 /* ======= DEMO LAYOUT ======= */
-
 body {
 	/* background-color:#2f2f2f;
 	color:#eeefef; */
@@ -111,7 +110,7 @@ div.timelineMajor {
 }
 
 	.timelineMajor h2 {
-		background:url(../images/timeline_century_tick.gif) left center no-repeat;
+		background:url('../img/timeline_century_tick.gif') left center no-repeat;
 		font-family:Palatino,"Times New Roman", Times, serif;
 		cursor: pointer;
 		font-size:3em;
@@ -141,7 +140,7 @@ dl.timelineMinor {
 }
 
 	.timelineMinor dt {
-		background:url(../images/timeline_decade_tick.gif) left center no-repeat;
+		background:url('../img/timeline_decade_tick.gif') left center no-repeat;
 		clear:left;
 		font-size:1.6em;
 		list-style-type:none;

@@ -286,19 +286,19 @@
                                 <table>
                                     <td style="width: 33%;">
                                         <div class="items">
-                                            <h4 class="centered">&nbsp; &nbsp;事件热度</h4>
+                                            <h4 class="centered mt">&nbsp; &nbsp;事件热度</h4>
                                             <div id="heat" style="width: 100%; height: 350px;"></div>
                                         </div>
                                     </td>
                                     <td style="width: 33%;">
                                         <div class="items">
-                                            <h4 class="centered">&nbsp; &nbsp;事件敏感度</h4>
+                                            <h4 class="centered mt">&nbsp; &nbsp;事件敏感度</h4>
                                             <div id="sensitive" style="width: 100%; height: 350px;"></div>
                                         </div>
                                     </td>
                                     <td style="width: 33%;">
                                         <div class="items">
-                                            <h4 class="centered">&nbsp; &nbsp;事件情感极性</h4>
+                                            <h4 class="centered mt">&nbsp; &nbsp;事件情感极性</h4>
                                             <div id="polarity" style="width: 100%; height: 350px;"></div>
                                         </div>
                                     </td>
@@ -449,16 +449,16 @@
                                 <div class="eventTrend" id="eventTrend">
                                     <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>事件走势</strong></p>
                                     <!-- <img src="{% static 'assets0/img/eventTrend.png' %}" style="width: 80%; height: 80%;"> -->
-                                    <div class="container">
-                                            <h1>线性时间轴</h1>
-                                            <p class="lead">Tarek Anandan的timeliner.js jQuery插件工作实例。本页包含两工作实例，说明几个关键特征包括展开/折叠，自动启动/加载，每页的多个时间线。</p>
+                                    <div class="container" style="text-align: left;width: 80%;margin-left: 20%">
+                                            <!-- <h1>线性时间轴</h1>
+                                            <p class="lead">Tarek Anandan的timeliner.js jQuery插件工作实例。本页包含两工作实例，说明几个关键特征包括展开/折叠，自动启动/加载，每页的多个时间线。</p> -->
                                         
                                             <h2>民权运动1954-1964</h2>
                                         
                                             
                                             <div id="timelineContainer" class="timelineContainer">
                                         
-                                                <div class="timelineToggle"><p><a class="expandAll">+ 全部展开</a></p></div>
+                                                <div style="display: none" class="timelineToggle"><p><a class="expandAll">+ 全部展开</a></p></div>
                                         
                                                 <br class="clear">
                                         
@@ -923,7 +923,7 @@ document.write(unescape("%3Cspan id='cnzz_stat_icon_30088308'%3E%3C/span%3E%3Csc
 </script>
 <script>
     window.onload = function(){
-        eventTrend();
+        eventTrendStatistic();
         heatIndexBoom();
         mediaLivenessIndex();
         emotionTrend();
