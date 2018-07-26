@@ -44,7 +44,7 @@ function eventPolarityEvent(){//事件极性
             name: 'polarity',
             type: 'gauge',
             detail: {formatter:'{value}%'},
-            data: [{value: 20, name: '事件极性'}]
+            data: [{value: 20, name: ''}]
         }
     ]
     };
@@ -52,7 +52,7 @@ function eventPolarityEvent(){//事件极性
     chart.setOption(option,true);
 }
 
-function eventTrendStatistic(){//事件走势
+function eventTrendStatistic(){//事件走势统计
     var heatTrendCountData = {
          labels : ["January","February","March","April","May","June","July"],
          datasets : [{
@@ -707,71 +707,110 @@ function emotionRatio(){
         var myDoughnut = new Chart(document.getElementById("serverstatusEM").getContext("2d"), config);
 }
 
-function informNet(){
-    var informNetData = {"nodes": [
-            {"color": "#4f19c7", "label": "大V一号", "attributes": {}, "y": 0, "x": 0, "id": "大V一号", "size": 5},
-            {"color": "#4f19c7", "label": "大V二号", "attributes": {}, "y": 30, "x": 30, "id": "大V二号", "size": 8},
-            {"color": "#4f19c7", "label": "大V3号", "attributes": {}, "y": 30, "x": -30, "id": "大V二号", "size": 15},
-            {"color": "#4f19c7", "label": "大V4号", "attributes": {}, "y": -30, "x": 30, "id": "大V二号", "size": 8},
-            {"color": "#4f19c7", "label": "大V5号", "attributes": {}, "y": -30, "x": -30, "id": "大V二号", "size": 6},
-            {"color": "#4f19c7", "label": "大V6号", "attributes": {}, "y": 60, "x": 60, "id": "大V二号", "size": 14},
-            {"color": "#4f19c7", "label": "大V7号", "attributes": {}, "y": 60, "x": -60, "id": "大V二号", "size": 5},
-            {"color": "#4f19c7", "label": "大V8号", "attributes": {}, "y": -60, "x": 60, "id": "大V二号", "size": 3},
-            {"color": "#4f19c7", "label": "大V9号", "attributes": {}, "y": -60, "x": -60, "id": "大V二号", "size": 1},
-            {"color": "#4f19c7", "label": "大V10号", "attributes": {}, "y": 90, "x": 90, "id": "大V二号", "size": 5},
-            {"color": "#4f19c7", "label": "大V11号", "attributes": {}, "y": 90, "x": -90, "id": "大V二号", "size": 8},
-            {"color": "#4f19c7", "label": "大V11号", "attributes": {}, "y": -90, "x": -90, "id": "大V二号", "size": 2}
-            ]};
-    informNetDiv.showLoading();
-    $.getJSON(informNetData, function (json) {
-        informNetDiv.hideLoading();
-        informNetDiv.setOption(option = {
-            title: {
-                text: 'NPM Dependencies'
+function informNet() {
+    function randomHexColor() { //随机生成十六进制颜色
+        return '#' + ('00000' + (Math.random() * 0x1000000 << 0).toString(16)).substr(-6);
+    }
+    var informNetData = {
+        "nodes": [
+            {"label": "大V1号", "id": "大V1号"}, {"label": "大V2号", "id": "大V2号"}, {"label": "大V3号", "id": "大V3号"},
+            {"label": "大V6号", "id": "大V6号"}, {"label": "大V5号", "id": "大V5号"}, {"label": "大V4号", "id": "大V4号"},
+            {"label": "大V7号", "id": "大V7号"}, {"label": "大V8号", "id": "大V8号"}, {"label": "大V9号", "id": "大V9号"},
+            {"label": "大V10号", "id": "大V10号"}, {"label": "大V11号", "id": "大V11号"}, {"label": "大V12号", "id": "大V12号"},
+            {"label": "大V13号", "id": "大V13号"}, {"label": "大V14号", "id": "大V14号"}, {"label": "大V15号", "id": "大V15号"},
+            {"label": "大V16号", "id": "大V16号"}, {"label": "大V17号", "id": "大V17号"}, {"label": "大V18号", "id": "大V18号"},
+            {"label": "大V19号", "id": "大V19号"}, {"label": "大V21号", "id": "大V21号"}, {"label": "大V22号", "id": "大V22号"}],
+        "edges":[
+            {"sourceID": "大V1号", "targetID": "大V9号"}
+        ]
+    };
+    infromNetOption = {
+        animationDurationUpdate: 1500,
+        animationEasingUpdate: 'quinticInOut',
+        series: [{
+            type: 'graph',
+            layout: 'none',
+            data: informNetData.nodes.map(function (node){
+                return {
+                    x: Math.round(Math.random()*1000),
+                    y: Math.round(Math.random()*1000),
+                    id: node.id,
+                    name: node.label,
+                    symbolSize: Math.round(Math.random()*100),
+                    itemStyle:{
+                        normal:{color: randomHexColor()}
+                    }
+                };
+            }),
+            edges: informNetData.edges.map(function (edge){
+                return {
+                    source: edge.sourceID,
+                    target: edge.targetID
+                }
+            }),
+            label:{
+                emphasis: {
+                    position: 'center',
+                    show: true
+                }
             },
-            animationDurationUpdate: 1500,
-            animationEasingUpdate: 'quinticInOut',
-            series : [
-                {
-                    type: 'graph',
-                    layout: 'none',
-                    // progressiveThreshold: 700,
-                    data: json.nodes.map(function (node) {
-                        return {
-                            x: node.x,
-                            y: node.y,
-                            id: node.id,
-                            name: node.label,
-                            symbolSize: node.size,
-                            itemStyle: {
-                                normal: {
-                                    color: node.color
-                                }
-                            }
-                        };
-                    }),
-                    edges: json.edges.map(function (edge) {
-                        return {
-                            source: edge.sourceID,
-                            target: edge.targetID
-                        };
-                    }),
-                    label: {
-                        emphasis: {
-                            position: 'right',
-                            show: true
-                        }
-                    },
-                    roam: true,
-                    lineStyle: {
-                        normal: {
-                            width: 0.5,
-                            curveness: 0.3,
-                            opacity: 0.7
-                        }
+            roam: false,
+            focusNodeAdjacency: false,
+            lineStyle:{
+                normal:{
+                    width: 0.5,
+                    curveness: 0.3,
+                    opacity: 0.7
+                }
+            }
+        }]
+    };
+    var newInfromNet = echarts.init(document.getElementById('informNetPic'));
+    newInfromNet.setOption(infromNetOption);
+}
+
+function informTrans(){
+    var transData = {"name": "V字仇杀队播出", "children": [{
+        "name": "新浪微博", "children": [{
+            "name": "微信公众号"
+            },{
+            "name": "知乎"
+            }]
+        }, {
+        "name": "新华网", "children": [{
+            "name": "华商报"
+            },{
+            "name": "豆瓣",
+            }]
+        }]
+    };
+    informTransOption = {
+        tooltip:{
+            trigger: 'item',
+            triggerOn: 'mousemove'
+        },
+        series:[
+            {
+                type: "tree",
+                data: [transData],
+                top: '1%',
+                left: '5%',
+                bottom: '5%',
+                symbolSize: 20,
+                label: {
+                    normal: {
+                        position: 'left',
+                        verticalAlign: 'middle',
+                        align: 'right',
+                        fontSize: 15,
+                        color: '#000000'
                     }
                 }
-            ]
-        }, true);
-    });
+            }
+        ]
+    };
+    var informTransTree = echarts.init(document.getElementById("informTransPic"));
+    informTransTree.showLoading();
+    informTransTree.setOption(informTransOption);
+    informTransTree.hideLoading();
 }

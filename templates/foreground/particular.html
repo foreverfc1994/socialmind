@@ -204,7 +204,7 @@
             <li class="layui-nav-item"><a href="/events/?type=敏感信息">敏感信息</a></li>
             <li class="layui-nav-item"><a href="/events/?type=领域相关">领域相关</a></li>
             <li class="layui-nav-item"><a href="/events/?type=行业信息">行业信息</a></li>
-            <li class="layui-nav-item"><a href="/eventParticular/">全网事件搜索</a></li>
+            <li class="layui-nav-item"><a href="/eventSearch/">全网事件搜索</a></li>
 
 
         </ul>
@@ -317,132 +317,6 @@
                                     <p class="centered" style="font-size: 20px; z-index: 10;"><strong>关键词云</strong></p>
                                     <!-- <canvas id="cloud" style="position: center; width: 50%; height: 300px; z-index: -100;"></canvas> -->
                                     <div id="cloud2" style="width: 100%;height: 350px;"></div>
-                                    <script>
-                                        var chart = echarts.init(document.getElementById('cloud2'));
-
-            var option = {
-                tooltip: {},
-                series: [ {
-                    type: 'wordCloud',
-                    gridSize: 2,
-                    sizeRange: [12, 50],
-                    rotationRange: [-90, 90],
-                    shape: 'pentagon',
-                    width: 600,
-                    height: 400,
-                    drawOutOfBound: true,
-                    textStyle: {
-                        normal: {
-                            color: function () {
-                                return 'rgb(' + [
-                                    Math.round(Math.random() * 160),
-                                    Math.round(Math.random() * 160),
-                                    Math.round(Math.random() * 160)
-                                ].join(',') + ')';
-                            }
-                        },
-                        emphasis: {
-                            shadowBlur: 10,
-                            shadowColor: '#333'
-                        }
-                    },
-                    data: [
-                        {
-                            name: 'Sam S Club',
-                            value: 10000,
-                            textStyle: {
-                                normal: {
-                                    color: 'black'
-                                },
-                                emphasis: {
-                                    color: 'red'
-                                }
-                            }
-                        },
-                        {
-                            name: 'Macys',
-                            value: 6181
-                        },
-                        {
-                            name: 'Amy Schumer',
-                            value: 4386
-                        },
-                        {
-                            name: 'Jurassic World',
-                            value: 4055
-                        },
-                        {
-                            name: 'Charter Communications',
-                            value: 2467
-                        },
-                        {
-                            name: 'Chick Fil A',
-                            value: 2244
-                        },
-                        {
-                            name: 'Planet Fitness',
-                            value: 1898
-                        },
-                        {
-                            name: 'Pitch Perfect',
-                            value: 1484
-                        },
-                        {
-                            name: 'Express',
-                            value: 1112
-                        },
-                        {
-                            name: 'Home',
-                            value: 965
-                        },
-                        {
-                            name: 'Johnny Depp',
-                            value: 847
-                        },
-                        {
-                            name: 'Lena Dunham',
-                            value: 582
-                        },
-                        {
-                            name: 'Lewis Hamilton',
-                            value: 555
-                        },
-                        {
-                            name: 'KXAN',
-                            value: 550
-                        },
-                        {
-                            name: 'Mary Ellen Mark',
-                            value: 462
-                        },
-                        {
-                            name: 'Farrah Abraham',
-                            value: 366
-                        },
-                        {
-                            name: 'Rita Ora',
-                            value: 360
-                        },
-                        {
-                            name: 'Serena Williams',
-                            value: 282
-                        },
-                        {
-                            name: 'NCAA baseball tournament',
-                            value: 273
-                        },
-                        {
-                            name: 'Point Break',
-                            value: 265
-                        }
-                    ]
-                } ]
-            };
-
-            chart.setOption(option);
-
-            window.onresize = chart.resize;
-                                    </script>
                                 </div>
                             </div>
                             <div id="transportAnalyze" class="eventComments centered" style="display: none">
@@ -589,11 +463,11 @@
                                 </div>
                                 <div id="informTree" class="informTree">
                                     <br><p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>信息传播过程</strong></p>
-                                    <img src="{% static 'assets0/img/informTree.jpg' %}" style="width: 60%; height: 350px;">
+                                    <div id="informTransPic" style="width: 800px; height: 400px; margin-left: 15%;"></div>
                                 </div>
                                 <div id="informNet" class="infromNet">
                                     <br><p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>信息传播网络</strong></p>
-                                    <img src="{% static 'assets0/img/transportNet.png' %}" style="width: 60%; height: 350px;">
+                                    <div id="informNetPic" style="width: 800px; height: 400px; margin-left: 15%;"></div>
                                 </div>
                             </div>
                             <div id="emotionAnalyze" class="eventComments centered" style="display: none" hidden="true">
@@ -864,7 +738,7 @@
 <script src="{% static 'assets0/js/jquery-1.8.3.min.js' %}"></script>
 <script src="{% static 'assets0/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'assets0/dataTable/js/jquery.dataTables.js' %}" type="text/javascript"></script>
-<script src="{% static 'assets0/js/fileJs/events.js' %}" type="text/javascript"></script>
+<script src="{% static 'assets0/js/fileJs/particular.js' %}" type="text/javascript"></script>
 <script src="//res.layui.com/layui/src/layui.js?t=1531663423583" charset="utf-8"></script>
 <script>
     layui.use('element', function () {
@@ -914,19 +788,22 @@ document.write(unescape("%3Cspan id='cnzz_stat_icon_30088308'%3E%3C/span%3E%3Csc
 	});
 </script>
 <script>
-    eventHeatIndex();
-    eventSensitiveIndex();
-    eventPolarityEvent();
-    heatIndexMap();
-    sensitiveIndexMap();
-    emotionMap();
+    eventHeatIndex();//事件热度
+    eventSensitiveIndex();//事件敏感度
+    eventPolarityEvent();//事件极性
+    heatIndexMap();//热度地图
+    sensitiveIndexMap();//敏感度地图
+    emotionMap();//情绪地图
+    keyWordsCloud();//关键词云
+    informTrans();//信息传播过程
+    informNet();//信息传播网络
 </script>
 <script>
     window.onload = function(){
-        eventTrendStatistic();
-        heatIndexBoom();
-        mediaLivenessIndex();
-        emotionTrend();
+        eventTrendStatistic();//事件走势统计
+        heatIndexBoom();//热度爆发统计
+        mediaLivenessIndex();//媒体活跃度
+        emotionTrend();//情绪走势统计
     };
 </script>
 </html>
