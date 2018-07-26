@@ -27,15 +27,15 @@ def login(request):
                    request.session['user_id'] = user.pk
                    request.session['user_name'] = user.username
                    if user_type == "个人用户":
-                    return redirect('person_index')
+                       return redirect('person_index')
                    if user_type == "企业用户":
-                    return redirect('com_index')
+                       return redirect('com_index')
                    if user_type == "政府用户":
-                    return redirect('gov_index')
+                       return redirect('gov_index')
                    if user_type == "事业单位用户":
-                    return redirect('person_index')
+                       return redirect('person_index')
                    else:
-                    return redirect('/login/')
+                       return redirect('/login/')
                 else:
                     message = '密码错误'
             except:
