@@ -706,3 +706,72 @@ function emotionRatio(){
         };
         var myDoughnut = new Chart(document.getElementById("serverstatusEM").getContext("2d"), config);
 }
+
+function informNet(){
+    var informNetData = {"nodes": [
+            {"color": "#4f19c7", "label": "大V一号", "attributes": {}, "y": 0, "x": 0, "id": "大V一号", "size": 5},
+            {"color": "#4f19c7", "label": "大V二号", "attributes": {}, "y": 30, "x": 30, "id": "大V二号", "size": 8},
+            {"color": "#4f19c7", "label": "大V3号", "attributes": {}, "y": 30, "x": -30, "id": "大V二号", "size": 15},
+            {"color": "#4f19c7", "label": "大V4号", "attributes": {}, "y": -30, "x": 30, "id": "大V二号", "size": 8},
+            {"color": "#4f19c7", "label": "大V5号", "attributes": {}, "y": -30, "x": -30, "id": "大V二号", "size": 6},
+            {"color": "#4f19c7", "label": "大V6号", "attributes": {}, "y": 60, "x": 60, "id": "大V二号", "size": 14},
+            {"color": "#4f19c7", "label": "大V7号", "attributes": {}, "y": 60, "x": -60, "id": "大V二号", "size": 5},
+            {"color": "#4f19c7", "label": "大V8号", "attributes": {}, "y": -60, "x": 60, "id": "大V二号", "size": 3},
+            {"color": "#4f19c7", "label": "大V9号", "attributes": {}, "y": -60, "x": -60, "id": "大V二号", "size": 1},
+            {"color": "#4f19c7", "label": "大V10号", "attributes": {}, "y": 90, "x": 90, "id": "大V二号", "size": 5},
+            {"color": "#4f19c7", "label": "大V11号", "attributes": {}, "y": 90, "x": -90, "id": "大V二号", "size": 8},
+            {"color": "#4f19c7", "label": "大V11号", "attributes": {}, "y": -90, "x": -90, "id": "大V二号", "size": 2}
+            ]};
+    informNetDiv.showLoading();
+    $.getJSON(informNetData, function (json) {
+        informNetDiv.hideLoading();
+        informNetDiv.setOption(option = {
+            title: {
+                text: 'NPM Dependencies'
+            },
+            animationDurationUpdate: 1500,
+            animationEasingUpdate: 'quinticInOut',
+            series : [
+                {
+                    type: 'graph',
+                    layout: 'none',
+                    // progressiveThreshold: 700,
+                    data: json.nodes.map(function (node) {
+                        return {
+                            x: node.x,
+                            y: node.y,
+                            id: node.id,
+                            name: node.label,
+                            symbolSize: node.size,
+                            itemStyle: {
+                                normal: {
+                                    color: node.color
+                                }
+                            }
+                        };
+                    }),
+                    edges: json.edges.map(function (edge) {
+                        return {
+                            source: edge.sourceID,
+                            target: edge.targetID
+                        };
+                    }),
+                    label: {
+                        emphasis: {
+                            position: 'right',
+                            show: true
+                        }
+                    },
+                    roam: true,
+                    lineStyle: {
+                        normal: {
+                            width: 0.5,
+                            curveness: 0.3,
+                            opacity: 0.7
+                        }
+                    }
+                }
+            ]
+        }, true);
+    });
+}
