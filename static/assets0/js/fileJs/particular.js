@@ -97,7 +97,6 @@ function eventTrend(){//事件走势
         "options": heatTrendCountOptions,
     };
     new Chart(document.getElementById("heatTrendCount"), heatTrendCountconfig);
-
 }
 
 function heatIndexBoom(){//热度爆发统计
