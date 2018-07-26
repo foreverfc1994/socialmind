@@ -455,7 +455,7 @@
                                 </div>
                                 <div class="informSource" id="informSource">
                                     <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>信息来源</strong></p>
-                                    <img src="{% static 'assets0/img/informSource.png' %}" style="width: 600px; height: 400px;">
+                                    <div id="informSourcePic" class="particularPic"></div>
                                 </div>
                                 <div id="mediaLiveness" class="mediaLiveness">
                                     <br><p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>媒体活跃度</strong></p>
@@ -463,11 +463,11 @@
                                 </div>
                                 <div id="informTree" class="informTree">
                                     <br><p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>信息传播过程</strong></p>
-                                    <div id="informTransPic" style="width: 800px; height: 400px; margin-left: 15%;"></div>
+                                    <div id="informTransPic" class="particularPic"></div>
                                 </div>
                                 <div id="informNet" class="infromNet">
                                     <br><p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>信息传播网络</strong></p>
-                                    <div id="informNetPic" style="width: 800px; height: 400px; margin-left: 15%;"></div>
+                                    <div id="informNetPic" class="particularPic"></div>
                                 </div>
                             </div>
                             <div id="emotionAnalyze" class="eventComments centered" style="display: none" hidden="true">
@@ -795,6 +795,7 @@ document.write(unescape("%3Cspan id='cnzz_stat_icon_30088308'%3E%3C/span%3E%3Csc
     sensitiveIndexMap();//敏感度地图
     emotionMap();//情绪地图
     keyWordsCloud();//关键词云
+    informSource();//信息来源
     informTrans();//信息传播过程
     informNet();//信息传播网络
 </script>

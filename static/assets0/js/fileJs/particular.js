@@ -814,3 +814,53 @@ function informTrans(){
     informTransTree.setOption(informTransOption);
     informTransTree.hideLoading();
 }
+
+function informSource (){
+    var informSourceData = {"sourceData": [{
+        "name": "社交平台", "children":[{
+            "name": "新浪微博", "value": 2232
+            },{
+            "name": "微信公众号", "value": 1221
+            },{
+            "name": "QQ空间", "value": 999
+            },{
+            "name": "其他", "value": 11
+            }]
+        },{
+        "name": "新媒体", "children":[{
+            "name": "今日头条", "value": 778
+            },{
+            "name": "xx新闻", "value": 112
+            },{
+            "name": "其他", "value": 11
+            }]
+        },{
+        "name": "传统媒体", "children":[{
+            "name": "新华网", "value": 1000
+            },{
+            "name": "华商报", "value": 100
+            },{
+            "name": "其他", "value": 50
+            }]
+        }]
+    };
+    informSourceOption = {
+        visualMap: {
+            type: 'continuous',
+            min: 0,
+            max: 2000,
+            inRange: {
+                color: ['#2D5F73', '#538EA6', '#F2D1B3', '#F2B8A2', '#F28C8C']
+            },
+            left: 100,
+            bottom: 40,
+        },
+        series: {
+            type: 'sunburst',
+            data: informSourceData.sourceData,
+            radius: ["15%", '90%'],
+        },
+    };
+    var informSource = echarts.init(document.getElementById("informSourcePic"));
+    informSource.setOption(informSourceOption);
+}
