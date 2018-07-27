@@ -68,6 +68,8 @@ urlpatterns = [
     path('usrManagement/<int:a>/', bviews.usrManagement1),
     path('test/',bviews.test),
     path('yuandatashow/',bviews.yuandatashow),
+    path('operate/<int:a>/', bviews.operate),
+    path('articleslist/',bviews.articleslsit)
 
 
 

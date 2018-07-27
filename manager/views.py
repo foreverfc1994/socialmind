@@ -90,3 +90,7 @@ def test(request):
     return render(request,'1.html')
 def yuandatashow(request):
     return render(request, 'background/yuandatashow.html')
+def operate(request,a):
+    return render(request, 'background/operateDiary.html')
+def articleslsit(request):
+    return render(request,'background/Articleslist.html')

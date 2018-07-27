@@ -1,333 +1,348 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
+    <script src="{% static 'assets0/layui/layui.js' %}"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-
+    <link rel="stylesheet" href="//res.layui.com/layui/dist/css/layui.css?t=1531663423583" media="all">
+    <link rel="stylesheet" href="//res.layui.com/static/css/global.css?t=1531663423583-6" media="all">
     <title>DASHGUM - Bootstrap Admin Template</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'backgroundfiles/assets/css/bootstrap.css' %}" rel="stylesheet">
     <!--external css-->
-    <link href="{% static 'backgroundfiles/assets/font-awesome/css/font-awesome.css' %}" rel="stylesheet" />
-        
+    <link href="{% static 'backgroundfiles/assets/font-awesome/css/font-awesome.css' %}" rel="stylesheet"/>
+{#    <link rel="stylesheet" href="//res.layui.com/layui/dist/css/layui.css?t=1531663423583" media="all">#}
+{#    <link rel="stylesheet" href="//res.layui.com/static/css/global.css?t=1531663423583-6" media="all">#}
     <!-- Custom styles for this template -->
     <link href="{% static 'backgroundfiles/assets/css/style.css' %}" rel="stylesheet">
     <link href="{% static 'backgroundfiles/assets/css/style-responsive.css' %}" rel="stylesheet">
-
+{#    <link rel="stylesheet" href="//res.layui.com/layui/dist/css/layui.css?t=1531663423583" media="all">#}
+{#    <link rel="stylesheet" href="//res.layui.com/static/css/global.css?t=1531663423583-6" media="all">#}
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="{% static 'backgroundfiles/assets/js/jquery-3.3.1.min.js' %}"></script>
-  </head>
+</head>
 
-  <body>
+<body>
 
-  <section id="container" >
-      <!-- **********************************************************************************************************************************************************
-      TOP BAR CONTENT & NOTIFICATIONS
-      *********************************************************************************************************************************************************** -->
-      <!--header start-->
-      <header class="header black-bg">
-              <div class="sidebar-toggle-box">
-                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-              </div>
-            <!--logo start-->
-            <a href="/bindex/" class="logo"><b>SocialMind管理员</b></a>
-            <!--logo end-->
-            <div class="nav notify-row" id="top_menu">
-                <!--  notification start -->
-                <ul class="nav top-menu">
-                    <!-- settings start -->
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
-                            <i class="fa fa-tasks"></i>
-                            个人中心
-                        </a>
-                    </li>
-                    <!-- inbox dropdown start-->
-                    <li id="header_inbox_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
-                            <i class="fa fa-envelope-o"></i>
-                            消息
-                            <span class="badge bg-theme">5</span>
-                        </a>
-                        <ul class="dropdown-menu extended inbox">
-                            <div class="notify-arrow notify-arrow-green"></div>
-                            <li>
-                                <p class="green">You have 5 new messages</p>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <span class="photo"><img alt="avatar" src="{% static 'backgroundfiles/assets/img/ui-zac.jpg' %}"></span>
-                                    <span class="subject">
+<section id="container">
+    <!-- **********************************************************************************************************************************************************
+    TOP BAR CONTENT & NOTIFICATIONS
+    *********************************************************************************************************************************************************** -->
+    <!--header start-->
+    <header class="header black-bg">
+        <div class="sidebar-toggle-box">
+            <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+        </div>
+        <!--logo start-->
+        <a href="/bindex/" class="logo"><b>SocialMind管理员</b></a>
+        <!--logo end-->
+        <div class="nav notify-row" id="top_menu">
+            <!--  notification start -->
+            <ul class="nav top-menu">
+                <!-- settings start -->
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
+                        <i class="fa fa-tasks"></i>
+                        个人中心
+                    </a>
+                </li>
+                <!-- inbox dropdown start-->
+                <li id="header_inbox_bar" class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
+                        <i class="fa fa-envelope-o"></i>
+                        消息
+                        <span class="badge bg-theme">5</span>
+                    </a>
+                    <ul class="dropdown-menu extended inbox">
+                        <div class="notify-arrow notify-arrow-green"></div>
+                        <li>
+                            <p class="green">You have 5 new messages</p>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <span class="photo"><img alt="avatar"
+                                                         src="{% static 'backgroundfiles/assets/img/ui-zac.jpg' %}"></span>
+                                <span class="subject">
                                     <span class="from">Zac Snider</span>
                                     <span class="time">Just now</span>
                                     </span>
-                                    <span class="message">
+                                <span class="message">
                                         Hi mate, how is everything?
                                     </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <span class="photo"><img alt="avatar" src="{% static 'backgroundfiles/assets/img/ui-divya.jpg' %}"></span>
-                                    <span class="subject">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <span class="photo"><img alt="avatar"
+                                                         src="{% static 'backgroundfiles/assets/img/ui-divya.jpg' %}"></span>
+                                <span class="subject">
                                     <span class="from">Divya Manian</span>
                                     <span class="time">40 mins.</span>
                                     </span>
-                                    <span class="message">
+                                <span class="message">
                                      Hi, I need your help with this.
                                     </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <span class="photo"><img alt="avatar" src="{% static 'backgroundfiles/assets/img/ui-danro.jpg' %}"></span>
-                                    <span class="subject">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <span class="photo"><img alt="avatar"
+                                                         src="{% static 'backgroundfiles/assets/img/ui-danro.jpg' %}"></span>
+                                <span class="subject">
                                     <span class="from">Dan Rogers</span>
                                     <span class="time">2 hrs.</span>
                                     </span>
-                                    <span class="message">
+                                <span class="message">
                                         Love your new Dashboard.
                                     </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <span class="photo"><img alt="avatar" src="{% static 'backgroundfiles/assets/img/ui-sherman.jpg' %}"></span>
-                                    <span class="subject">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <span class="photo"><img alt="avatar"
+                                                         src="{% static 'backgroundfiles/assets/img/ui-sherman.jpg' %}"></span>
+                                <span class="subject">
                                     <span class="from">Dj Sherman</span>
                                     <span class="time">4 hrs.</span>
                                     </span>
-                                    <span class="message">
+                                <span class="message">
                                         Please, answer asap.
                                     </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">See all messages</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- inbox dropdown end -->
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
-                            <i class="fa fa-cog"></i>
-                            设置
-                        </a>
-                        <ul class="dropdown-menu extended tasks-bar">
-                            <div class="notify-arrow notify-arrow-green"></div>
-                            <li>
-                                <p class="green">You have 4 pending tasks</p>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <div class="task-info">
-                                        <div class="desc">DashGum Admin Panel</div>
-                                        <div class="percent">40%</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">See all messages</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- inbox dropdown end -->
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
+                        <i class="fa fa-cog"></i>
+                        设置
+                    </a>
+                    <ul class="dropdown-menu extended tasks-bar">
+                        <div class="notify-arrow notify-arrow-green"></div>
+                        <li>
+                            <p class="green">You have 4 pending tasks</p>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <div class="task-info">
+                                    <div class="desc">DashGum Admin Panel</div>
+                                    <div class="percent">40%</div>
+                                </div>
+                                <div class="progress progress-striped">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                        <span class="sr-only">40% Complete (success)</span>
                                     </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                            <span class="sr-only">40% Complete (success)</span>
-                                        </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <div class="task-info">
+                                    <div class="desc">Database Update</div>
+                                    <div class="percent">60%</div>
+                                </div>
+                                <div class="progress progress-striped">
+                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                        <span class="sr-only">60% Complete (warning)</span>
                                     </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <div class="task-info">
-                                        <div class="desc">Database Update</div>
-                                        <div class="percent">60%</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <div class="task-info">
+                                    <div class="desc">Product Development</div>
+                                    <div class="percent">80%</div>
+                                </div>
+                                <div class="progress progress-striped">
+                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                        <span class="sr-only">80% Complete</span>
                                     </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                            <span class="sr-only">60% Complete (warning)</span>
-                                        </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <div class="task-info">
+                                    <div class="desc">Payments Sent</div>
+                                    <div class="percent">70%</div>
+                                </div>
+                                <div class="progress progress-striped">
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+                                        <span class="sr-only">70% Complete (Important)</span>
                                     </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <div class="task-info">
-                                        <div class="desc">Product Development</div>
-                                        <div class="percent">80%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                            <span class="sr-only">80% Complete</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <div class="task-info">
-                                        <div class="desc">Payments Sent</div>
-                                        <div class="percent">70%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-                                            <span class="sr-only">70% Complete (Important)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="external">
-                                <a href="#">See All Tasks</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- settings end -->
-                    
-                </ul>
-                <!--  notification end -->
-            </div>
-            <div class="top-menu">
-            	<ul class="nav pull-right top-menu">
-                    <li>
-                        <form class="navbar-form navbar-right" role="search">
+                                </div>
+                            </a>
+                        </li>
+                        <li class="external">
+                            <a href="#">See All Tasks</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- settings end -->
+
+            </ul>
+            <!--  notification end -->
+        </div>
+        <div class="top-menu">
+            <ul class="nav pull-right top-menu">
+                <li>
+                    <form class="navbar-form navbar-right" role="search">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search here..." aria-describedby="basic-addon2" style="height: 28px;margin-top: 7px">
-                            <button type="submit" class="btn btn-default" style="height:28px;border: 1px solid #666666 !important;-webkit-border-radius: 4px;background-color: #ffd777;margin-right: 10px;margin-top: 7px;color: #666666;border-radius: 4px;">
+                            <input type="text" class="form-control" placeholder="Search here..."
+                                   aria-describedby="basic-addon2" style="height: 28px;margin-top: 7px">
+                            <button type="submit" class="btn btn-default"
+                                    style="height:28px;border: 1px solid #666666 !important;-webkit-border-radius: 4px;background-color: #ffd777;margin-right: 10px;margin-top: 7px;color: #666666;border-radius: 4px;">
                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                             </button>
                         </div>
-                        </form>
-                    </li>
-                    <li><a class="logout" href="/login/">注销</a></li>
-            	</ul>
-            </div>
-        </header>
-      <!--header end-->
-      
-      <!-- **********************************************************************************************************************************************************
-      MAIN SIDEBAR MENU
-      *********************************************************************************************************************************************************** -->
-      <!--sidebar start-->
-      <aside>
-          <div id="sidebar"  class="nav-collapse ">
-              <!-- sidebar menu start-->
-              <ul class="sidebar-menu" id="nav-accordion">
-              
-              	  <p class="centered"><a href="/bindex/"><img src="{% static 'backgroundfiles/assets/img/ny.jpg' %}" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered"><a href="/bindex/" style="color: white">首页</a></h5>
-              	  	
-                  <!--<li class="mt">
-                      <a class="active" href="index.html">
-                          <i class="fa fa-dashboard"></i>
-                          <span>爬虫</span>
-                      </a>
-                  </li>-->
-                  <li class="sub-menu">
+                    </form>
+                </li>
+                <li><a class="logout" href="/login/">注销</a></li>
+            </ul>
+        </div>
+    </header>
+    <!--header end-->
+
+    <!-- **********************************************************************************************************************************************************
+    MAIN SIDEBAR MENU
+    *********************************************************************************************************************************************************** -->
+    <!--sidebar start-->
+    <aside>
+        <div id="sidebar" class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+
+                <p class="centered"><a href="/bindex/"><img src="{% static 'backgroundfiles/assets/img/ny.jpg' %}"
+                                                            class="img-circle" width="60"></a></p>
+                <h5 class="centered"><a href="/bindex/" style="color: white">首页</a></h5>
+
+                <!--<li class="mt">
+                    <a class="active" href="index.html">
+                        <i class="fa fa-dashboard"></i>
+                        <span>爬虫</span>
+                    </a>
+                </li>-->
+                <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-dashboard"></i>
                         <span>爬虫</span>
                     </a>
                     <ul class="sub">
                         <li><a href="/SpiderList/">爬虫管理</a></li>
-                        <li><a  href="/SpiderMonitor/">爬虫监控</a></li>
-                        <li><a  href="/SpiderConfigure/">爬虫配置</a></li>
+                        <li><a href="/SpiderMonitor/">爬虫监控</a></li>
+                        <li><a href="/SpiderConfigure/">爬虫配置</a></li>
                     </ul>
-                  </li>
+                </li>
                 <li class="sub-menu">
-                    <a href="javascript:;" >
+                    <a href="javascript:;">
                         <i class="fa fa-tasks"></i>
                         <span>源数据展示模块</span>
                     </a>
                     <ul class="sub">
-                      <li><a  href="/Author/">查看作者</a></li>
-                      <li><a  href="/ArticlesOfAuthor/">查看作者相关文章</a></li>
-                      <li><a  href="/ArticlesAndComments/">查看文章及评论</a></li>
-                  </ul>
+                        <li><a href="/Author/">查看作者</a></li>
+                        <li><a href="/ArticlesOfAuthor/">查看作者相关文章</a></li>
+                        <li><a href="/ArticlesAndComments/">查看文章及评论</a></li>
+                    </ul>
                 </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-desktop"></i>
-                          <span>数据清洗</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="/DataCleanStatistics/">清洗数据统计</a></li>
-                          <li><a  href="/DataCleanStrategies/">数据清洗策略配置</a></li>
-                          <li><a  href="/DataCleanLog/">数据清洗日志管理</a></li>
-                          <li><a  href="/washData/">数据清洗</a></li>
-                      </ul>
-                  </li>
-                  <li class="sub-menu">
-                    <a href="/topics/" >
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-desktop"></i>
+                        <span>数据清洗</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="/DataCleanStatistics/">清洗数据统计</a></li>
+                        <li><a href="/DataCleanStrategies/">数据清洗策略配置</a></li>
+                        <li><a href="/DataCleanLog/">数据清洗日志管理</a></li>
+                        <li><a href="/washData/">数据清洗</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="/topics/">
                         <i class="fa fa-book"></i>
                         <span>主题管理</span>
                     </a>
-                  </li>
-                  <li class="sub-menu">
-                    <a href="javascript:;" >
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
                         <i class="fa fa-cogs"></i>
                         <span>舆情对象管理</span>
                     </a>
                     <ul class="sub">
-                        <li><a  href="/AddEventObject/">新增舆情对象</a></li>
-                        <li><a  href="/CreateEventObject/">舆情对象自动生成</a></li>
-                        <li><a  href="/ShowEventObject/">舆情对象展示</a></li>
+                        <li><a href="/AddEventObject/">新增舆情对象</a></li>
+                        <li><a href="/CreateEventObject/">舆情对象自动生成</a></li>
+                        <li><a href="/ShowEventObject/">舆情对象展示</a></li>
                     </ul>
-                  </li>
-                  <li class="sub-menu">
-                    <a href="javascript:;" >
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
                         <i class="fa fa-tasks"></i>
                         <span>语义工具集</span>
                     </a>
                     <ul class="sub">
-                      <li><a  href="/semanticsTools/">新增语义工具</a></li>
-                      <li><a  href="/semanticsToolkits/">新增工具包</a></li>
-                      <li><a  href="/ShowToolkits/">工具包展示</a></li>
+                        <li><a href="/semanticsTools/">新增语义工具</a></li>
+                        <li><a href="/semanticsToolkits/">新增工具包</a></li>
+                        <li><a href="/ShowToolkits/">工具包展示</a></li>
                     </ul>
-                  </li>
-                  <!--<li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-th"></i>
-                          <span>系统操作管理</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="basic_table.html">系统用户评论管理</a></li>
-                          <li><a  href="responsive_table.html">系统用户操作管理</a></li>
-                      </ul>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class=" fa fa-bar-chart-o"></i>
-                          <span>用户管理</span>
-                      </a>
-                  </li>-->
-                  <li class="sub-menu">
+                </li>
+                <!--<li class="sub-menu">
                     <a href="javascript:;" >
                         <i class="fa fa-th"></i>
-                        <span>用户留言管理</span>
+                        <span>系统操作管理</span>
                     </a>
                     <ul class="sub">
-                        <li><a  href="/usrCommentsSelect/">查看用户留言</a></li>
-                        <li><a  href="/usrCommentsCheck/">审核用户留言</a></li>
-                        <li><a  href="/usrCommentsDelete/">删除用户留言</a></li>
+                        <li><a  href="basic_table.html">系统用户评论管理</a></li>
+                        <li><a  href="responsive_table.html">系统用户操作管理</a></li>
                     </ul>
-                  </li>
-                <li class="sub-menu">
-                    <a href="/AssignAuthorities/" >
-                        <i class=" fa fa-bar-chart-o"></i>
-                        <span>权限管理</span>
-                    </a>
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;" >
                         <i class=" fa fa-bar-chart-o"></i>
                         <span>用户管理</span>
                     </a>
+                </li>-->
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-th"></i>
+                        <span>用户留言管理</span>
+                    </a>
                     <ul class="sub">
-                        <li><a  href="/usersVerify/">新增用户审核</a></li>
-                        <li><a  href="/usrManagement/">用户管理</a></li>
+                        <li><a href="/usrCommentsSelect/">查看用户留言</a></li>
+                        <li><a href="/usrCommentsCheck/">审核用户留言</a></li>
+                        <li><a href="/usrCommentsDelete/">删除用户留言</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="/AssignAuthorities/">
+                        <i class=" fa fa-bar-chart-o"></i>
+                        <span>权限管理</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class=" fa fa-bar-chart-o"></i>
+                        <span>用户管理</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="/usersVerify/">新增用户审核</a></li>
+                        <li><a href="/usrManagement/">用户管理</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -340,172 +355,458 @@
                     </ul>-->
                 </li>
 
-              </ul>
-              <!-- sidebar menu end-->
-          </div>
-      </aside>
-      <!--sidebar end-->
-      
-      <!-- **********************************************************************************************************************************************************
-      MAIN CONTENT
-      *********************************************************************************************************************************************************** -->
-      <!--main content start-->
-      <section id="main-content">
-          <section class="wrapper site-min-height">
-          	<h3><i class="fa fa-angle-right"></i> 操作日志</h3>
-            <div class="row mt">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            系统日志表
-                            <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">entries</span>
-                            <select class="form-control" style="float: right;width: 60px;height: 25px;font-size: 12px">
-                                <option>10</option>
-                                <option>25</option>
-                                <option>50</option>
-                                <option>100</option>
-                            </select>
-                            <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">Show</span>
-                        </div>
-                        <!--<div class="panel-body">-->
-                            <table class="table table-bordered" style="margin: 0%">
-                                <tr><td>角色</td><td>姓名</td><td>IP</td><td>操作时间</td><td>方法逻辑名</td><td>方法名</td><td>参数</td></tr>
-                                <tr><td>个人</td><td>张三</td><td>127.0.0.1</td><td>2017-10-23 04:46</td><td>用户信息删除</td><td>userInforDelete</td><td>参数{1,2}</td></tr>
-                                <tr><td>政府</td><td>张三</td><td>127.0.0.1</td><td>2017-10-23 04:46</td><td>展示用户信息</td><td>userInforDisplay</td><td>参数{1,2}</td></tr>
-                                <tr><td>管理员</td><td>张三</td><td>127.0.0.1</td><td>2017-10-23 04:46</td><td>用户信息更新</td><td>userInforModify</td><td>参数{1,2}</td></tr>
-                            </table>
-                        <!--</div>-->
-                        <div class="panel-footer">
-                            Search:
-                            <input type="text" class="form-control" placeholder="Search for..." style="width: 200px;height: 25px;display: inline-block">
-                            <div class="btn-group btn-group-xs" role="group" aria-label="..." style="float: right;">
-                                <button type="button" class="btn btn-default">First</button>
-                                <button type="button" class="btn btn-default">Previous</button>
-                                <button type="button" class="btn btn-default">1</button>
-                                <button type="button" class="btn btn-default">2</button>
-                                <button type="button" class="btn btn-default">Next</button>
-                                <button type="button" class="btn btn-default">Last</button>
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+    <!--sidebar end-->
+
+    <!-- **********************************************************************************************************************************************************
+    MAIN CONTENT
+    *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper site-min-height">
+            <h3><i class="fa fa-angle-right"></i> 操作日志</h3>
+            <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                <ul class="layui-tab-title">
+                    <li id='sys0'>系统日志</li>
+                    <li id='wash0'>清洗日志</li>
+                    <li id='spider0'>爬虫日志</li>
+                    <li id='error0'>爬虫出错日志</li>
+
+                </ul>
+                <div class="layui-tab-content" style="height: 100px;">
+                    <div id ='sys' class="layui-tab-item">
+                        <div class="row mt">
+                            <div class="col-lg-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        系统日志表
+                                        <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">entries</span>
+                                        <select class="form-control"
+                                                style="float: right;width: 60px;height: 25px;font-size: 12px">
+                                            <option>10</option>
+                                            <option>25</option>
+                                            <option>50</option>
+                                            <option>100</option>
+                                        </select>
+                                        <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">Show</span>
+                                    </div>
+                                    <!--<div class="panel-body">-->
+                                    <table class="table table-bordered" style="margin: 0%">
+                                        <tr>
+                                            <td>角色</td>
+                                            <td>姓名</td>
+                                            <td>IP</td>
+                                            <td>操作时间</td>
+                                            <td>方法逻辑名</td>
+                                            <td>方法名</td>
+                                            <td>请求路径</td>
+                                        </tr>
+                                        <tr>
+                                            <td>个人</td>
+                                            <td>张三</td>
+                                            <td>127.0.0.1</td>
+                                            <td>2017-10-23 04:46</td>
+                                            <td>用户信息删除</td>
+                                            <td>userInforDelete</td>
+                                            <td>http://127.0.0.1:8000/operateDiary/</td>
+                                        </tr>
+                                        <tr>
+                                            <td>政府</td>
+                                            <td>张三</td>
+                                            <td>127.0.0.1</td>
+                                            <td>2017-10-23 04:46</td>
+                                            <td>展示用户信息</td>
+                                            <td>userInforDisplay</td>
+                                            <td>http://127.0.0.1:8000/operateDiary/</td>
+                                        </tr>
+                                        <tr>
+                                            <td>管理员</td>
+                                            <td>张三</td>
+                                            <td>127.0.0.1</td>
+                                            <td>2017-10-23 04:46</td>
+                                            <td>用户信息更新</td>
+                                            <td>userInforModify</td>
+                                            <td>http://127.0.0.1:8000/operateDiary/</td>
+                                        </tr>
+                                    </table>
+                                    <!--</div>-->
+                                    <div class="panel-footer">
+                                        Search:
+                                        <input type="text" class="form-control" placeholder="Search for..."
+                                               style="width: 200px;height: 25px;display: inline-block">
+                                        <div class="btn-group btn-group-xs" role="group" aria-label="..."
+                                             style="float: right;">
+                                            <button type="button" class="btn btn-default">First</button>
+                                            <button type="button" class="btn btn-default">Previous</button>
+                                            <button type="button" class="btn btn-default">1</button>
+                                            <button type="button" class="btn btn-default">2</button>
+                                            <button type="button" class="btn btn-default">Next</button>
+                                            <button type="button" class="btn btn-default">Last</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="row mt">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            数据清洗日志表
-                            <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">entries</span>
-                            <select class="form-control" style="float: right;width: 60px;height: 25px;font-size: 12px">
-                                <option>10</option>
-                                <option>25</option>
-                                <option>50</option>
-                                <option>100</option>
-                            </select>
-                            <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">Show</span>
-                        </div>
-                        <!--<div class="panel-body">-->
-                            <table class="table table-bordered" style="margin: 0%">
-                                <tr><td>角色</td><td>姓名</td><td>IP</td><td>操作时间</td><td>方法逻辑名</td><td>方法名</td><td>参数</td></tr>
-                                <tr><td>个人</td><td>张三</td><td>127.0.0.1</td><td>2017-10-23 04:46</td><td>用户信息删除</td><td>userInforDelete</td><td>参数{1,2}</td></tr>
-                                <tr><td>政府</td><td>张三</td><td>127.0.0.1</td><td>2017-10-23 04:46</td><td>展示用户信息</td><td>userInforDisplay</td><td>参数{1,2}</td></tr>
-                                <tr><td>管理员</td><td>张三</td><td>127.0.0.1</td><td>2017-10-23 04:46</td><td>用户信息更新</td><td>userInforModify</td><td>参数{1,2}</td></tr>
-                            </table>
-                        <!--</div>-->
-                        <div class="panel-footer">
-                            Search:
-                            <input type="text" class="form-control" placeholder="Search for..." style="width: 200px;height: 25px;display: inline-block">
-                            <div class="btn-group btn-group-xs" role="group" aria-label="..." style="float: right;">
-                                <button type="button" class="btn btn-default">First</button>
-                                <button type="button" class="btn btn-default">Previous</button>
-                                <button type="button" class="btn btn-default">1</button>
-                                <button type="button" class="btn btn-default">2</button>
-                                <button type="button" class="btn btn-default">Next</button>
-                                <button type="button" class="btn btn-default">Last</button>
+                    <div id ='wash' class="layui-tab-item">
+                        <div class="row mt">
+                            <div class="col-lg-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        数据清洗日志表
+                                        <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">entries</span>
+                                        <select class="form-control"
+                                                style="float: right;width: 60px;height: 25px;font-size: 12px">
+                                            <option>10</option>
+                                            <option>25</option>
+                                            <option>50</option>
+                                            <option>100</option>
+                                        </select>
+                                        <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">Show</span>
+                                    </div>
+                                    <!--<div class="panel-body">-->
+                                    <table class="table table-bordered" style="margin: 0%">
+                                        <tr>
+                                            <td>角色</td>
+                                            <td>姓名</td>
+                                            <td>IP</td>
+                                            <td>操作时间</td>
+                                            <td>清洗操作</td>
+                                            <td>清洗策略</td>
+                                            <td>数据库名</td>
+                                            <td>表名</td>
+                                            <td>列名</td>
+                                            <td>清洗数据量</td>
+                                        </tr>
+                                        <tr>
+                                            <td>个人</td>
+                                            <td>张三</td>
+                                            <td>127.0.0.1</td>
+                                            <td>2017-10-23 04:46</td>
+                                            <td>缺失值</td>
+                                            <td>填充均值</td>
+                                            <td>jingbao</td>
+                                            <td>news</td>
+                                            <td>follow</td>
+                                            <td>54564</td>
+                                        </tr>
+                                        <tr>
+                                            <td>个人</td>
+                                            <td>张三</td>
+                                            <td>127.0.0.1</td>
+                                            <td>2017-10-23 04:46</td>
+                                            <td>缺失值</td>
+                                            <td>填充均值</td>
+                                            <td>jingbao</td>
+                                            <td>news</td>
+                                            <td>follow</td>
+                                            <td>54564</td>
+                                        </tr>
+                                        <tr>
+                                            <td>个人</td>
+                                            <td>张三</td>
+                                            <td>127.0.0.1</td>
+                                            <td>2017-10-23 04:46</td>
+                                            <td>缺失值</td>
+                                            <td>填充均值</td>
+                                            <td>jingbao</td>
+                                            <td>news</td>
+                                            <td>follow</td>
+                                            <td>54564</td>
+                                        </tr>
+                                    </table>
+                                    <!--</div>-->
+                                    <div class="panel-footer">
+                                        Search:
+                                        <input type="text" class="form-control" placeholder="Search for..."
+                                               style="width: 200px;height: 25px;display: inline-block">
+                                        <div class="btn-group btn-group-xs" role="group" aria-label="..."
+                                             style="float: right;">
+                                            <button type="button" class="btn btn-default">First</button>
+                                            <button type="button" class="btn btn-default">Previous</button>
+                                            <button type="button" class="btn btn-default">1</button>
+                                            <button type="button" class="btn btn-default">2</button>
+                                            <button type="button" class="btn btn-default">Next</button>
+                                            <button type="button" class="btn btn-default">Last</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="row mt">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            爬虫日志表
-                            <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">entries</span>
-                            <select class="form-control" style="float: right;width: 60px;height: 25px;font-size: 12px">
-                                <option>10</option>
-                                <option>25</option>
-                                <option>50</option>
-                                <option>100</option>
-                            </select>
-                            <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">Show</span>
-                        </div>
-                        <!--<div class="panel-body">-->
-                            <table class="table table-bordered" style="margin: 0%">
-                                <tr><td>日志ID</td><td>IP</td><td>出错条目</td><td>出错详情</td><td>爬虫ID（FK）</td><td>出错时间</td></tr>
-                                <tr><td>001</td><td>127.0.0.1</td><td>出错条目</td><td>出错详情</td><td>123</td><td>2017-10-23 04:46</td></tr>
-                                <tr><td>001</td><td>127.0.0.1</td><td>出错条目</td><td>出错详情</td><td>123</td><td>2017-10-23 04:46</td></tr>
-                                <tr><td>001</td><td>127.0.0.1</td><td>出错条目</td><td>出错详情</td><td>123</td><td>2017-10-23 04:46</td></tr>
-                                <tr><td>001</td><td>127.0.0.1</td><td>出错条目</td><td>出错详情</td><td>123</td><td>2017-10-23 04:46</td></tr>
-                            </table>
-                        <!--</div>-->
-                        <div class="panel-footer">
-                            Search:
-                            <input type="text" class="form-control" placeholder="Search for..." style="width: 200px;height: 25px;display: inline-block">
-                            <div class="btn-group btn-group-xs" role="group" aria-label="..." style="float: right;">
-                                <button type="button" class="btn btn-default">First</button>
-                                <button type="button" class="btn btn-default">Previous</button>
-                                <button type="button" class="btn btn-default">1</button>
-                                <button type="button" class="btn btn-default">2</button>
-                                <button type="button" class="btn btn-default">Next</button>
-                                <button type="button" class="btn btn-default">Last</button>
+                    <div id='spider' class="layui-tab-item">
+                        <div class="row mt">
+                            <div class="col-lg-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        爬虫日志表
+                                        <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">entries</span>
+                                        <select class="form-control"
+                                                style="float: right;width: 60px;height: 25px;font-size: 12px">
+                                            <option>10</option>
+                                            <option>25</option>
+                                            <option>50</option>
+                                            <option>100</option>
+                                        </select>
+                                        <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">Show</span>
+                                    </div>
+                                    <!--<div class="panel-body">-->
+                                    <table class="table table-bordered" style="margin: 0%">
+                                        <tr>
+                                            <td>日志ID</td>
+                                            <td>爬虫名</td>
+                                            <td>网站</td>
+                                            <td>URL</td>
+                                            <td>爬虫策略</td>
+                                            <td>开始时间</td>
+                                            <td>结束时间</td>
+                                            <td>数据库</td>
+                                            <td>表名</td>
+                                            <td>数据量</td>
+                                            <td>出错比</td>
+                                        </tr>
+                                        <tr>
+                                            <td>001</td>
+                                            <td>jingbaospider</td>
+                                            <td>京报网</td>
+                                            <td>http://www.bjd.com.cn/</td>
+                                            <td>策略1</td>
+                                            <td>2017-10-23 04:46</td>
+                                            <td>2017-10-23 11:46</td>
+                                            <td>jingbao</td>
+                                            <td>news</td>
+                                            <td>4564</td>
+                                            <td>1124/4564</td>
+                                        </tr>
+                                        <tr>
+                                            <td>001</td>
+                                            <td>jingbaospider</td>
+                                            <td>京报网</td>
+                                            <td>http://www.bjd.com.cn/</td>
+                                            <td>策略1</td>
+                                            <td>2017-10-23 04:46</td>
+                                            <td>2017-10-23 11:46</td>
+                                            <td>jingbao</td>
+                                            <td>news</td>
+                                            <td>4564</td>
+                                            <td>1124/4564</td>
+                                        </tr>
+                                        <tr>
+                                            <td>001</td>
+                                            <td>jingbaospider</td>
+                                            <td>京报网</td>
+                                            <td>http://www.bjd.com.cn/</td>
+                                            <td>策略1</td>
+                                            <td>2017-10-23 04:46</td>
+                                            <td>2017-10-23 11:46</td>
+                                            <td>jingbao</td>
+                                            <td>news</td>
+                                            <td>4564</td>
+                                            <td>1124/4564</td>
+                                        </tr>
+                                        <tr>
+                                            <td>001</td>
+                                            <td>jingbaospider</td>
+                                            <td>京报网</td>
+                                            <td>http://www.bjd.com.cn/</td>
+                                            <td>策略1</td>
+                                            <td>2017-10-23 04:46</td>
+                                            <td>2017-10-23 11:46</td>
+                                            <td>jingbao</td>
+                                            <td>news</td>
+                                            <td>4564</td>
+                                            <td>1124/4564</td>
+                                        </tr>
+
+                                    </table>
+                                    <!--</div>-->
+                                    <div class="panel-footer">
+                                        Search:
+                                        <input type="text" class="form-control" placeholder="Search for..."
+                                               style="width: 200px;height: 25px;display: inline-block">
+                                        <div class="btn-group btn-group-xs" role="group" aria-label="..."
+                                             style="float: right;">
+                                            <button type="button" class="btn btn-default">First</button>
+                                            <button type="button" class="btn btn-default">Previous</button>
+                                            <button type="button" class="btn btn-default">1</button>
+                                            <button type="button" class="btn btn-default">2</button>
+                                            <button type="button" class="btn btn-default">Next</button>
+                                            <button type="button" class="btn btn-default">Last</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+                    </div>
+                     <div id='error' class="layui-tab-item">
+                        <div class="row mt">
+                            <div class="col-lg-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        爬虫出错日志表
+                                        <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">entries</span>
+                                        <select class="form-control"
+                                                style="float: right;width: 60px;height: 25px;font-size: 12px">
+                                            <option>10</option>
+                                            <option>25</option>
+                                            <option>50</option>
+                                            <option>100</option>
+                                        </select>
+                                        <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">Show</span>
+                                    </div>
+                                    <!--<div class="panel-body">-->
+                                    <table class="table table-bordered" style="margin: 0%">
+                                        <tr>
+                                            <td>日志ID</td>
+                                            <td>爬虫名</td>
+                                            <td>网站</td>
+                                            <td>URL</td>
+                                            <td>爬虫策略</td>
+                                            <td>开始时间</td>
+                                            <td>出错时间</td>
+                                            <td>出错详情</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>001</td>
+                                            <td>jingbaospider</td>
+                                            <td>京报网</td>
+                                            <td>http://www.bjd.com.cn/</td>
+                                            <td>策略1</td>
+                                            <td>2017-10-23 04:46</td>
+                                            <td>2017-10-23 11:46</td>
+                                            <td>403</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>001</td>
+                                            <td>jingbaospider</td>
+                                            <td>京报网</td>
+                                            <td>http://www.bjd.com.cn/</td>
+                                            <td>策略1</td>
+                                            <td>2017-10-23 04:46</td>
+                                            <td>2017-10-23 11:46</td>
+                                            <td>403</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>001</td>
+                                            <td>jingbaospider</td>
+                                            <td>京报网</td>
+                                            <td>http://www.bjd.com.cn/</td>
+                                            <td>策略1</td>
+                                            <td>2017-10-23 04:46</td>
+                                            <td>2017-10-23 11:46</td>
+                                            <td>403</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>001</td>
+                                            <td>jingbaospider</td>
+                                            <td>京报网</td>
+                                            <td>http://www.bjd.com.cn/</td>
+                                            <td>策略1</td>
+                                            <td>2017-10-23 04:46</td>
+                                            <td>2017-10-23 11:46</td>
+                                            <td>403</td>
+
+                                        </tr>
+
+                                    </table>
+                                    <!--</div>-->
+                                    <div class="panel-footer">
+                                        Search:
+                                        <input type="text" class="form-control" placeholder="Search for..."
+                                               style="width: 200px;height: 25px;display: inline-block">
+                                        <div class="btn-group btn-group-xs" role="group" aria-label="..."
+                                             style="float: right;">
+                                            <button type="button" class="btn btn-default">First</button>
+                                            <button type="button" class="btn btn-default">Previous</button>
+                                            <button type="button" class="btn btn-default">1</button>
+                                            <button type="button" class="btn btn-default">2</button>
+                                            <button type="button" class="btn btn-default">Next</button>
+                                            <button type="button" class="btn btn-default">Last</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
 
-			
-		</section><!--/wrapper -->
-      </section><!-- /MAIN CONTENT -->
-
-      <!--main content end-->
-      <!--footer start-->
-      <footer class="site-footer">
-          <div class="text-center">
-               2018 - <a href="http://www.xjtu.edu.cn" target="_blank" title="西安交通大学">西安交通大学</a> - <a href="http://www.xjtu.edu.cn" title="social mind" target="_blank">social mind舆情分析平台</a>
-              <a href="#" class="go-top">
-                  <i class="fa fa-angle-up"></i>
-              </a>
-          </div>
-      </footer>
-      <!--footer end-->
-  </section>
-
-    <!-- js placed at the end of the document so the pages load faster -->
-    <script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script>
-    <script src="{% static 'backgroundfiles/assets/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'backgroundfiles/assets/js/jquery-ui-1.9.2.custom.min.js' %}"></script>
-    <script src="{% static 'backgroundfiles/assets/js/jquery.ui.touch-punch.min.js' %}"></script>
-    <script class="include" type="text/javascript" src="{% static 'backgroundfiles/assets/js/jquery.dcjqaccordion.2.7.js' %}"></script>
-    <script src="{% static 'backgroundfiles/assets/js/jquery.scrollTo.min.js' %}"></script>
-    <script src="{% static 'backgroundfiles/assets/js/jquery.nicescroll.js' %}" type="text/javascript"></script>
 
 
-    <!--common script for all pages-->
-    <script src="{% static 'backgroundfiles/assets/js/common-scripts.js' %}"></script>
 
-    <!--script for this page-->
-    
-  <script>
-      //custom select box
+        </section><!--/wrapper -->
+    </section><!-- /MAIN CONTENT -->
 
-      $(function(){
-          $('select.styled').customSelect();
-      });
+    <!--main content end-->
+    <!--footer start-->
+    <footer class="site-footer">
+        <div class="text-center">
+            2018 - <a href="http://www.xjtu.edu.cn" target="_blank" title="西安交通大学">西安交通大学</a> - <a
+                href="http://www.xjtu.edu.cn" title="social mind" target="_blank">social mind舆情分析平台</a>
+            <a href="#" class="go-top">
+                <i class="fa fa-angle-up"></i>
+            </a>
+        </div>
+    </footer>
+    <!--footer end-->
+</section>
 
-  </script>
+<!-- js placed at the end of the document so the pages load faster -->
+<script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script>
+<script src="{% static 'backgroundfiles/assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'backgroundfiles/assets/js/jquery-ui-1.9.2.custom.min.js' %}"></script>
+<script src="{% static 'backgroundfiles/assets/js/jquery.ui.touch-punch.min.js' %}"></script>
+<script class="include" type="text/javascript"
+        src="{% static 'backgroundfiles/assets/js/jquery.dcjqaccordion.2.7.js' %}"></script>
+<script src="{% static 'backgroundfiles/assets/js/jquery.scrollTo.min.js' %}"></script>
+<script src="{% static 'backgroundfiles/assets/js/jquery.nicescroll.js' %}" type="text/javascript"></script>
 
-  </body>
+
+<!--common script for all pages-->
+<script src="{% static 'backgroundfiles/assets/js/common-scripts.js' %}"></script>
+
+<!--script for this page-->
+
+<script>
+    //custom s elect box
+
+    $(function () {
+        var url = document.location.toString()
+        var arrurl = url.split('/')
+        var para = arrurl[4]
+        if(para==3)
+    {
+        $("#error0").addClass('layui-this');
+            $("#error").addClass('layui-show');
+    }
+    else {
+        $("#sys0").addClass('layui-this');
+            $("#sys").addClass('layui-show');
+    }
+        layui.use('element', function () {
+            var $ = layui.jquery
+                , element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+        });
+        $('select.styled').customSelect();
+    });
+
+</script>
+<script>
+    layui.use('element', function () {
+        var $ = layui.jquery
+            , element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+
+
+    });
+</script>
+</body>
 </html>
