@@ -88,3 +88,5 @@ def test(request):
     return render(request,'background/usrManagement1.html')
 def test(request):
     return render(request,'1.html')
+def yuandatashow(request):
+    return render(request, 'background/yuandatashow.html')

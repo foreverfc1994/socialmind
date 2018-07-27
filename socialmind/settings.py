@@ -81,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'socialmind',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': '461834084',
         'HOST': 'localhost',
         'PORT': '3306'
     }
