@@ -65,6 +65,7 @@ urlpatterns = [
     path('usrManagement/', bviews.usrManagement),
     path('operateDiary/', bviews.operateDiary),
     path('DouBanArticleStyle/', bviews.DouBanArticleStyle),
+    path('usrManagement/<int:a>/', bviews.usrManagement1),
 
 
 

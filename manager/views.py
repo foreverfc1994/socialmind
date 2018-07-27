@@ -70,3 +70,16 @@ def operateDiary(request):
     return render(request, 'background/operateDiary.html')
 def DouBanArticleStyle(request):
     return render(request, 'background/DouBanArticleStyle.html')
+def usrManagement1(request,a):
+
+    if a==0:
+
+        return render(request, 'background/usrManagement.html',{'type0':1})
+    elif a==1:
+        return render(request, 'background/usrManagement.html',{'type1':1})
+    elif  a==2:
+        return render(request, 'background/usrManagement.html',{'type2':1})
+    elif  a==3:
+        return render(request, 'background/usrManagement.html',{'type3':1})
+    else:
+        return render(request, 'background/usrManagement.html')

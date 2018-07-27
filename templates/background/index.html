@@ -817,6 +817,7 @@ option2 = {
 };
 myChart.setOption(option);
 myChart2.setOption(option2);
+
                             </script>
                             <hr style="margin-top: 30px;height:2px;border: 0px;background-color: #ddd">
                             <table class="table">
@@ -896,6 +897,22 @@ option = {
     ]
 };
 myChart.setOption(option);
+myChart.on('click', function (params) {
+    if(params.dataIndex==0){
+         window.location.href='/usrManagement/0/';
+    }
+    else if(params.dataIndex==1){
+         window.location.href='/usrManagement/1/';
+    }
+    else if(params.dataIndex==2){
+         window.location.href='/usrManagement/2/';
+    }
+    else if(params.dataIndex==3){
+         window.location.href='/usrManagement/3/';
+    }
+
+
+});
                             </script>
                             <hr style="height:2px;border: 0px;background-color: #ddd">
                             <table class="table">
