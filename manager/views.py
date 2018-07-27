@@ -83,3 +83,8 @@ def usrManagement1(request,a):
         return render(request, 'background/usrManagement.html',{'type3':1})
     else:
         return render(request, 'background/usrManagement.html')
+
+def test(request):
+    return render(request,'background/usrManagement1.html')
+def test(request):
+    return render(request,'1.html')
