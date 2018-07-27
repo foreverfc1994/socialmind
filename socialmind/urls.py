@@ -67,6 +67,7 @@ urlpatterns = [
     path('DouBanArticleStyle/', bviews.DouBanArticleStyle),
     path('usrManagement/<int:a>/', bviews.usrManagement1),
     path('test/',bviews.test),
+    path('yuandatashow/',bviews.yuandatashow),
 
 
 
