@@ -37,6 +37,7 @@ urlpatterns = [
     path('fileParticular/', vviews.fileParticular),
     path('fileSearch/', vviews.fileSearch, name='fileSearch'),
     path('eventSearch/', vviews.eventSearch, name='eventSearch'),
+    path('competitive_products/', vviews.competitive_products),
     # background url
     path('bindex/', bviews.index, name='index'),
     path('blogin/', bviews.login, name='login'),

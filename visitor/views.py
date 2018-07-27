@@ -27,13 +27,13 @@ def login(request):
                    request.session['user_id'] = user.pk
                    request.session['user_name'] = user.username
                    if user_type == "个人用户":
-                       return redirect('person_index')
+                       return redirect('person_index', {"role": "个人用户"})
                    if user_type == "企业用户":
-                       return redirect('com_index')
+                       return redirect('com_index', {"role": "企业用户"})
                    if user_type == "政府用户":
-                       return redirect('gov_index')
+                       return redirect('gov_index', {"role": "政府用户"})
                    if user_type == "事业单位用户":
-                       return redirect('person_index')
+                       return redirect('person_index', {"role": "事业单位用户"})
                    else:
                        return redirect('/login/')
                 else:
@@ -136,13 +136,14 @@ def get_address(request):
         prodic[province.name] = citylist
     return JsonResponse({'data': prodic})
 
-
+def competitive_products(request):
+    return render(request, 'foreground/competitive_products.html')
 
 
 
 def events(request):
     head = request.GET
-    messageDic = {'head': head['type']}
+    messageDic = {"head": head["type"], "role": head["role"]}
     return render(request, 'foreground/events.html', messageDic)
 
 def profile(request):

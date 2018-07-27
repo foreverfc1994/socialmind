@@ -770,7 +770,7 @@ function informNet() {
 }
 
 function informTrans(){
-    var transData = {"name": "V字仇杀队播出", "children": [{
+    var transData = {"name": "事件发生", "children": [{
         "name": "新浪微博", "children": [{
             "name": "微信公众号"
             },{
@@ -794,12 +794,13 @@ function informTrans(){
                 type: "tree",
                 data: [transData],
                 top: '1%',
-                left: '5%',
+                right: '1%',
+                left: '10%',
                 bottom: '5%',
                 symbolSize: 20,
                 label: {
                     normal: {
-                        position: 'left',
+                        position: 'center',
                         verticalAlign: 'middle',
                         align: 'right',
                         fontSize: 15,
