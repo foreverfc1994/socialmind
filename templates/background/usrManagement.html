@@ -3,12 +3,13 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+     <script src="{% static 'backgroundfiles/assets/js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'assets0/layui/layui.js' %}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-    <link rel="stylesheet" href="//res.layui.com/layui/dist/css/layui.css?t=1531663423583" media="all">
+    <link rel="stylesheet" href="{% static 'assets0/layui/css/layui.css' %}" media="all">
     <link rel="stylesheet" href="//res.layui.com/static/css/global.css?t=1531663423583-6" media="all">
     <title>DASHGUM - Bootstrap Admin Template</title>
 
@@ -1221,7 +1222,7 @@
 </section>
 
 <!-- js placed at the end of the document so the pages load faster -->
-<script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script>
+{#<script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script>#}
 <script src="{% static 'backgroundfiles/assets/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'backgroundfiles/assets/js/jquery-ui-1.9.2.custom.min.js' %}"></script>
 <script src="{% static 'backgroundfiles/assets/js/jquery.ui.touch-punch.min.js' %}"></script>
