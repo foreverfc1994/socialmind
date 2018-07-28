@@ -25,6 +25,11 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="{% static 'backgroundfiles/assets/js/jquery-3.3.1.min.js' %}"></script>
+    <style>
+        #authorinfotb tr td{
+            border-top: 0px solid #ddd;
+        }
+    </style>
   </head>
 
   <body>
@@ -360,10 +365,63 @@
       <section id="main-content">
           <section class="wrapper site-min-height">
           	<h3><i class="fa fa-angle-right"></i> 作者相关文章</h3>
-				<div class="row">
+                <div class="row">
+	                  <div class="col-md-12 mt">
+	                  	<div class="content-panel" style="height: 274px;">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img style="width: 100%" src="{% static 'backgroundfiles/assets/img/ui-zac.jpg' %}">
+                                </div>
+                                <div class="col-md-9" style="padding-left: 0px">
+                                    <table id="authorinfotb" class="table" style="margin-top: 30px;height: 210px;">
+                                        <thead></thead>
+                                        <tbody>
+                                            <tr><td style="text-align: right;width: 60px">昵称</td><td>小明</td><td style="text-align: right">网站</td><td>虎扑网</td><td style="text-align: right">性别</td><td>男</td></tr>
+                                            <tr><td style="text-align: right">年龄</td><td>25</td><td style="text-align: right">地址</td><td>辽宁省</td><td style="text-align: right">个人介绍</td><td>篮球</td></tr>
+                                            <tr style="height: 1px;"><td style="text-align: right;">关注数</td><td>100</td><td style="text-align: right">粉丝数</td><td>50</td><td style="text-align: right">文章数</td><td>200</td></tr>
+                                        </tbody>
+                                    </table>
+                                        <table style="display: none" class="table table-hover">
+                                                <!-- <h4><i class="fa fa-angle-right"></i> 文章</h4> -->
+                                                <!-- <hr> -->
+                                                <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>文章</th>
+                                                    <th>作者</th>
+                                                    <th>网站</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>博格巴+姆巴佩破门！法国4-2克罗地亚夺冠，法国世界杯第二次封王</td>
+                                                    <td>钓鱼方程式</td>
+                                                    <td>新浪微博</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>博格巴姆巴佩破门，法国4-2克罗地亚夺得世界杯冠军</td>
+                                                    <td>围观世界杯</td>
+                                                    <td>新浪微博</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>博格巴姆巴佩破门，法国4-2克罗地亚夺得世界杯冠军</td>
+                                                    <td>围观世界杯</td>
+                                                    <td>新浪微博</td>
+                                                </tr>
+                                                </tbody>
+                                        </table>
+                                </div>
+                            </div>
+	                  	  </div><!--/content-panel -->
+	                  </div><!-- /col-md-12 -->
+				</div><!-- row -->
+                <div class="row">
 	                  <div class="col-md-12 mt">
 	                  	<div class="content-panel">
-	                          <table class="table table-hover">
+	                          <table id="tbclick" class="table table-hover">
 	                  	  	  <h4><i class="fa fa-angle-right"></i> 文章</h4>
 	                  	  	  <hr>
 	                              <thead>
@@ -397,7 +455,7 @@
                               </table>
                               <script>
                                   $(document).ready(function(){
-                                      $("tbody tr").click(function(){
+                                      $("#tbclick tbody tr").click(function(){
                                         $(location).attr('href', '/DouBanArticleStyle/');
                                       });
                                   });
