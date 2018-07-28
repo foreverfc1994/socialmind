@@ -720,9 +720,7 @@ function informNet() {
             {"label": "大V13号", "id": "大V13号"}, {"label": "大V14号", "id": "大V14号"}, {"label": "大V15号", "id": "大V15号"},
             {"label": "大V16号", "id": "大V16号"}, {"label": "大V17号", "id": "大V17号"}, {"label": "大V18号", "id": "大V18号"},
             {"label": "大V19号", "id": "大V19号"}, {"label": "大V21号", "id": "大V21号"}, {"label": "大V22号", "id": "大V22号"}],
-        "edges":[
-            {"sourceID": "大V1号", "targetID": "大V9号"}
-        ]
+        "edges":[]
     };
     infromNetOption = {
         animationDurationUpdate: 1500,
@@ -732,8 +730,8 @@ function informNet() {
             layout: 'none',
             data: informNetData.nodes.map(function (node){
                 return {
-                    x: Math.round(Math.random()*1000),
-                    y: Math.round(Math.random()*1000),
+                    x: Math.round(Math.random()*600),
+                    y: Math.round(Math.random()*400),
                     id: node.id,
                     name: node.label,
                     symbolSize: Math.round(Math.random()*100),
@@ -794,10 +792,10 @@ function informTrans(){
                 type: "tree",
                 data: [transData],
                 top: '1%',
-                right: '1%',
                 left: '10%',
+                right: '4%',
                 bottom: '5%',
-                symbolSize: 20,
+                symbolSize: 18,
                 label: {
                     normal: {
                         position: 'center',
@@ -849,7 +847,7 @@ function informSource (){
         visualMap: {
             type: 'continuous',
             min: 0,
-            max: 2000,
+            max: 2500,
             inRange: {
                 color: ['#2D5F73', '#538EA6', '#F2D1B3', '#F2B8A2', '#F28C8C']
             },

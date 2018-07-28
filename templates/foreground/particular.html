@@ -12,6 +12,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
 
+    <script src="{% static 'assets0/layui/layui.js' %}"></script>
     <link href="{% static 'assets0/css/bootstrap.css' %}" rel="stylesheet">
     <!-- lalalala -->
     <link rel="stylesheet" href="{% static 'assets0/css/screen.css' %}" type="text/css" media="screen">
@@ -199,6 +200,33 @@
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left layui-bg-cyan">
             <li class="layui-nav-item"><a href="/com_index/">首页</a></li>
+{#            {% csrf_token %}#}
+{#                {% if role == "个人用户" %}#}
+{#                    <li class="layui-nav-item"><a href="/events/?role=个人用户&type=兴趣相关">兴趣相关</a></li>#}
+{#                    <li class="layui-nav-item"><a href="/events/?role=个人用户type=当地新闻">当地新闻</a></li>#}
+{#                    <li class="layui-nav-item"><a href="/events/?role=个人用户type=敏感信息">敏感信息</a></li>#}
+{#                    <li class="layui-nav-item"><a href="/events/?role=个人用户type=领域相关">领域相关</a></li>#}
+{#                    <li class="layui-nav-item"><a href="/events/?role=个人用户type=行业信息">行业信息</a></li>#}
+{#                {% elif role == "企业用户" %}#}
+{#                    <li class="layui-nav-item"><a href="/events/?role=企业用户&type=企业相关">企业相关</a></li>#}
+{#                    <li class="layui-nav-item"><a href="/events/?role=企业用户&type=当地新闻">当地新闻</a></li>#}
+{#                    <li class="layui-nav-item"><a href="/events/?role=企业用户&type=敏感信息">敏感信息</a></li>#}
+{#                    <li class="layui-nav-item"><a href="/events/?role=企业用户&type=领域相关">领域相关</a></li>#}
+{#                    <li class="layui-nav-item"><a href="/events/?role=企业用户&type=行业信息">行业信息</a></li>#}
+{#                    <li class="layui-nav-item"><a href="/competitive_products/">竞品信息</a></li>#}
+{#                {% elif role == "政府用户" %}#}
+{#                    <li class="layui-nav-item"><a href="/events/?role=政府用户&type=政务相关">政务相关</a></li>#}
+{#                    <li class="layui-nav-item"><a href="/events/?role=政府用户&type=当地新闻">当地新闻</a></li>#}
+{#                    <li class="layui-nav-item"><a href="/events/?role=政府用户&type=敏感信息">敏感信息</a></li>#}
+{#                    <li class="layui-nav-item"><a href="/events/?role=政府用户&type=领域相关">领域相关</a></li>#}
+{#                    <li class="layui-nav-item"><a href="/events/?role=政府用户&type=上下级信息">上下级信息</a></li>#}
+{#                {% elif role == "事业单位用户" %}#}
+{#                    <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=工作相关">工作相关</a></li>#}
+{#                    <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=当地新闻">当地新闻</a></li>#}
+{#                    <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=敏感信息">敏感信息</a></li>#}
+{#                    <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=领域相关">领域相关</a></li>#}
+{#                    <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=上下级信息">上下级信息</a></li>#}
+{#                {% endif %}#}
             <li class="layui-nav-item"><a href="/events/?type=企业相关">企业相关</a></li>
             <li class="layui-nav-item"><a href="/events/?type=当地新闻">当地新闻</a></li>
             <li class="layui-nav-item"><a href="/events/?type=敏感信息">敏感信息</a></li>
@@ -215,7 +243,7 @@
                     SICDP
                 </a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="/profile/">基本资料</a></dd>
                     <dd><a href="">安全设置</a></dd>
                 </dl>
             </li>
@@ -264,16 +292,16 @@
 {#                                    此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文#}
 {#                                </div>#}
                             <div id="eventData" class="eventData">
-                                <button class="btn btn-warning eventButton">收藏量：22</button>
-                                <button class="btn btn-warning eventButton">点赞数：22</button>
-                                <button class="btn btn-warning eventButton">判真数：22</button>
-                                <button class="btn btn-warning eventButton">判假数：22</button>
+                                <button class="btn btn-warning eventButton">📂 收藏量：22</button>
+                                <button class="btn btn-warning eventButton">👍 点赞数：22</button>
+                                <button class="btn btn-warning eventButton">😊 判真数：22</button>
+                                <button class="btn btn-warning eventButton">🤬 判假数：22</button>
                             </div>
                             <div class="eventComments"><br>
                                 <div style="float: left; margin-left: 25%; width: 40%;">
                                     <input type="text"  class="form-control" placeholder="输入您要评论的内容：">
                                 </div>
-                                <button type="button" class="btn btn-warning" style="height: 44px; width: 80px; margin-left: 5%;">评论</button>
+                                <button type="button" class="btn btn-warning" style="height: 44px; width: 80px; margin-left: 5%;">🖊 评论</button>
                                 <div class="comments" id="comments">
                                 </div>
                             </div>
@@ -313,7 +341,7 @@
                                     <div id="heatMap" style="width: 80%; height: 450px; margin-left: 15%;"></div>
                                     <div id="sensitiveMap" style="width: 80%; height: 450px; margin-left: 15%;"></div>
                                 </div>
-                                <div class="eventCloud" id="eventCloud">
+                                <div class="eventCloud" id="eventCloud" style="height: 380px;">
                                     <p class="centered" style="font-size: 20px; z-index: 10;"><strong>关键词云</strong></p>
                                     <!-- <canvas id="cloud" style="position: center; width: 50%; height: 300px; z-index: -100;"></canvas> -->
                                     <div id="cloud2" style="width: 100%;height: 350px;"></div>
@@ -463,11 +491,11 @@
                                 </div>
                                 <div id="informTree" class="informTree">
                                     <br><p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>信息传播过程</strong></p>
-                                    <div id="informTransPic" class="particularPic"></div>
+                                    <div id="informTransPic" class="echartsLinePic"></div>
                                 </div>
                                 <div id="informNet" class="infromNet">
                                     <br><p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>信息传播网络</strong></p>
-                                    <div id="informNetPic" class="particularPic"></div>
+                                    <div id="informNetPic" class="particularPic" style="margin-left: 20%"></div>
                                 </div>
                             </div>
                             <div id="emotionAnalyze" class="eventComments centered" style="display: none" hidden="true">
@@ -476,49 +504,6 @@
                                         <div id="statisticsEJ" style="width: 70%; margin-left: 25%;">
                                             <div class="pic" style="position: center; width: 100%; height: 100%;">
                                                 <canvas id="serverstatusEJ" height="120px" width="120px"></canvas>
-                                                <script>
-                                                    var config = {
-                                                        type: 'doughnut',
-                                                        data:{
-                                                            datasets:[{
-                                                                data:[
-                                                                    40,
-                                                                    50,
-                                                                    10,
-                                                                ],
-                                                                backgroundColor:[
-                                                                    "#FFA500",
-                                                                    "#666666",
-                                                                    "#CC0000",
-                                                                ],
-                                                            }],
-                                                            labels:[
-                                                                "正面比例：",
-                                                                "负面比例：",
-                                                                "中性",
-                                                            ],
-                                                        },
-                                                        options:{
-                                                            cutoutPercentage: 60,
-                                                            responsive: true,
-                                                            legend:{
-                                                                display: true,
-                                                                position: "bottom",
-                                                            },
-                                                            title: {
-                                                                display: true,
-                                                                fontSize: 20,
-                                                                fontColor: "#000000",
-                                                                text: "事件正负面比例",
-                                                            },
-                                                            animation:{
-                                                                animateScale: true,
-                                                                animateRoatae: true
-                                                            }
-                                                        }
-                                                    };
-                                                    var myDoughnut = new Chart(document.getElementById("serverstatusEJ").getContext("2d"), config);
-                                                </script>
                                             </div>
                                         </div>
                                     </div>
@@ -526,61 +511,6 @@
                                         <div id="statisticsEM" style="width: 70%; margin-left: 5%;">
                                             <div class="pic" style="position: center; width: 100%; height: 100%;">
                                                 <canvas id="serverstatusEM" height="120px" width="120px"></canvas>
-                                                <script>
-                                                    var config = {
-                                                        type: 'doughnut',
-                                                        data:{
-                                                            datasets:[{
-                                                                data:[
-                                                                    50,
-                                                                    25,
-                                                                    15,
-                                                                    5,
-                                                                    2.5,
-                                                                    1.5,
-                                                                    1
-                                                                ],
-                                                                backgroundColor:[
-                                                                    "#FFA500",
-                                                                    "#666666",
-                                                                    "#3399CC",
-                                                                    "#CC0000",
-                                                                    "#33FF66",
-                                                                    "#CCFFFF",
-                                                                    "#9966FF",
-                                                                ],
-                                                            }],
-                                                            labels:[
-                                                                "喜悦",
-                                                                "惊奇",
-                                                                "中性",
-                                                                "悲伤",
-                                                                "愤怒",
-                                                                "恐惧",
-                                                                "其他",
-                                                            ],
-                                                        },
-                                                        options:{
-                                                            cutoutPercentage: 60,
-                                                            responsive: true,
-                                                            legend:{
-                                                                display: true,
-                                                                position: "bottom",
-                                                            },
-                                                            title: {
-                                                                display: true,
-                                                                fontSize: 20,
-                                                                fontColor: "#000000",
-                                                                text: "事件情绪占比",
-                                                            },
-                                                            animation:{
-                                                                animateScale: true,
-                                                                animateRoatae: true
-                                                            }
-                                                        }
-                                                    };
-                                                    var myDoughnut = new Chart(document.getElementById("serverstatusEM").getContext("2d"), config);
-                                                </script>
                                             </div>
                                         </div>
                                     </div>
@@ -734,6 +664,7 @@
     <!-- 底部固定区域 -->
     西安交通大学  社会智能与复杂数据处理实验室
     </div>
+</div>
 <script src="{% static 'assets0/js/jquery.js' %}"></script>
 <script src="{% static 'assets0/js/jquery-1.8.3.min.js' %}"></script>
 <script src="{% static 'assets0/js/bootstrap.min.js' %}"></script>
@@ -753,7 +684,6 @@ document.write(unescape("%3Cspan id='cnzz_stat_icon_30088308'%3E%3C/span%3E%3Csc
         eventsTable();
     };
 </script>
-</html>
 
 </body>
 <!-- js placed at the end of the document so the pages load faster -->
@@ -805,6 +735,8 @@ document.write(unescape("%3Cspan id='cnzz_stat_icon_30088308'%3E%3C/span%3E%3Csc
         heatIndexBoom();//热度爆发统计
         mediaLivenessIndex();//媒体活跃度
         emotionTrend();//情绪走势统计
+        eventJudgeRatio();//事件正负面评价比例
+        emotionRatio();//事件情绪占比
     };
 </script>
 </html>

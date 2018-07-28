@@ -20,9 +20,15 @@
     <link href="{% static 'assets0/css/style-responsive.css' %}" rel="stylesheet">
     <link href="{% static 'assets0/dataTable/css/jquery.dataTables.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'assets0/layui/css/layui.css' %}" media="all">
+    <link rel="stylesheet" href="{% static 'assets0/css/colorbox.css' %}" type="text/css" media="screen">
+    <!-- 时间线的css -->
+    <link rel="stylesheet" href="{% static 'assets0/css/screen.css' %}" type="text/css" media="screen">
+    <link rel="stylesheet" href="{% static 'assets0/css/responsive.css' %}" type="text/css" media="screen">
     <script src="{% static 'assets0/js/chart-master/Chart.js' %}"></script>
     <script src="{% static 'assets0/js/echarts.js' %}"></script>
     <script src="{% static 'assets0/js/wordcloud2.js' %}"></script>
+    <script src="{% static 'assets0/js/china.js' %}"></script>
+    <script src="{% static 'assets0/js/echarts-wordcloud.min.js' %}"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -192,12 +198,13 @@
             <!-- 头部区域（可配合layui已有的水平导航） -->
             <ul class="layui-nav layui-layout-left layui-bg-cyan">
                 <li class="layui-nav-item"><a href="/com_index/">首页</a></li>
-                <li class="layui-nav-item"><a href="/events/?type=企业相关">企业相关</a></li>
-                <li class="layui-nav-item"><a href="/events/?type=当地新闻">当地新闻</a></li>
-                <li class="layui-nav-item"><a href="/events/?type=敏感信息">敏感信息</a></li>
-                <li class="layui-nav-item"><a href="/events/?type=领域相关">领域相关</a></li>
-                <li class="layui-nav-item"><a href="/events/?type=行业信息">行业信息</a></li>
-                <li class="layui-nav-item"><a href="/eventSearch/">全网事件搜索</a></li>
+                <li class="layui-nav-item"><a href="/events/?role=企业用户&type=企业相关">企业相关</a></li>
+                <li class="layui-nav-item"><a href="/events/?role=企业用户&type=当地新闻">当地新闻</a></li>
+                <li class="layui-nav-item"><a href="/events/?role=企业用户&type=敏感信息">敏感信息</a></li>
+                <li class="layui-nav-item"><a href="/events/?role=企业用户&type=领域相关">领域相关</a></li>
+                <li class="layui-nav-item"><a href="/events/?role=企业用户&type=行业信息">行业信息</a></li>
+                <li class="layui-nav-item"><a href="/competitive_products/?role=企业用户">竞品信息</a></li>
+                <li class="layui-nav-item"><a href="/eventSearch/?role=企业用户">全网事件搜索</a></li>
             </ul>
             <ul class="layui-nav layui-layout-right layui-bg-cyan">
                 <li class="layui-nav-item">
@@ -213,10 +220,511 @@
                 <li class="layui-nav-item"><a href="">退出</a></li>
             </ul>
         </div>
+        <div class="layui-body">
+            <section class="wrapper1">
+                <div class="row mt">
+                    <div class="col-lg-6">
+                        <div class="white-panel donut-chart">
+                            <div class="white-panel pn70">
+                                <input class="form-control productSearchInput" id="selfProdects" type="text" value="   关键词1">
+                                <button class="btn btn-warning prodectsSearchButton">查找</button>
+                            </div>
+                        </div>
+                        <div class="content-panel mt" style="padding-bottom: 15px;">
+                            <h2 class="centered" style="float: left; width: 100%;"> &nbsp; &nbsp;此处为事件名称</h2><br>
+                            <div class="eventDetials">
+                                <span class="margin-15">开始时间：2018-01-01</span>
+                                <span class="margin-15">结束时间：2018-10-10</span>
+                            </div>
+                            <div class="eventAbstract">
+                                <div style="padding: 20px;" id="abstract">
+                                    &nbsp; &nbsp; &nbsp; &nbsp; <strong>此处为事件简介</strong>介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介
+                                    绍介绍介绍介绍介绍介绍介绍介绍
+                                介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍
+                                介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍绍介绍介绍介绍介绍介绍介绍介绍
+                                介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍
+                                介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍绍介绍介绍介绍介绍介绍介绍介绍
+                                介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍
+                                介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍。
+                                </div>
+                            </div>
+                            <div id="eventData" class="eventData">
+                                <button class="btn btn-warning eventButton">📂 收藏量：22</button>
+                                <button class="btn btn-warning eventButton">👍 点赞数：22</button>
+                                <button class="btn btn-warning eventButton">😊 判真数：22</button>
+                                <button class="btn btn-warning eventButton">🤬 判假数：22</button>
+                            </div>
+                            <div class="eventComments"><br>
+                                <div style="float: left; margin-left: 25%; width: 40%;">
+                                    <input type="text"  class="form-control" placeholder="输入您要评论的内容：">
+                                </div>
+                                <button type="button" class="btn btn-warning" style="height: 44px; width: 80px; margin-left: 5%;">🖊 评论</button>
+                                <div class="comments" id="comments">
+                                </div>
+                            </div>
+                            <div id="eventExponent1" class="eventComments centered" style="margin-top: 10px;">
+                                <div class="items">
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>事件热度</strong></p>
+                                    <div id="heat1" style="width: 100%; height: 250px;"></div>
+                                </div>
+                                <div class="items">
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>事件敏感度</strong></p>
+                                    <div id="sensitive1" style="width: 100%; height: 250px;"></div>
+                                </div>
+                                <div class="items">
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>事件极性</strong></p>
+                                    <div id="polarity1" style="width: 100%; height: 250px;"></div>
+                                </div>
+                                <div style="height: 300px; width: 90%; margin-left: 5%;">
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>事件走势统计</strong></p>
+                                    <canvas id="heatTrendCount1" height="40px" width="90%"></canvas>
+                                </div>
+                                <div style="height: 300px; width: 90%; margin-left: 5%;">
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>热度爆发统计</strong></p>
+                                    <canvas id="heatTime1" height="40px" width="90%"></canvas>
+                                </div>
+                                <div style="height: 300px; width: 90%; margin-left: 5%;">
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>情绪走势统计</strong></p>
+                                    <canvas id="emotionTrendLine1" height="40px" width="90%"></canvas>
+                                </div>
+                                <div class="eventComments" id="maps">
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>热度地图</strong></p>
+                                    <div id="heatMap1" style="width: 90%; height: 250px; margin-left: 15%;"></div>
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>敏感度地图</strong></p>
+                                    <div id="sensitiveMap1" style="width: 90%; height: 250px; margin-left: 15%;"></div>
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>情绪地图</strong></p>
+                                    <div id="emotionMap1" style="width: 90%; height: 250px; margin-left: 15%;"></div>
+                                </div>
+                                <div class="eventCloud" id="eventCloud">
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>关键词云</strong></p>
+                                    <div id="cloud1" class="mb" style="width: 100%;height: 240px; margin-top: 15px;"></div>
+                                </div>
+                                <div class="eventTrend mt" id="eventTrend">
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>事件走势</strong></p>
+                                    <!-- <img src="{% static 'assets0/img/eventTrend.png' %}" style="width: 80%; height: 80%;"> -->
+                                    <div class="container" style="text-align: left;width: 80%;margin-left: 20%">
+                                            <!-- <h1>线性时间轴</h1>
+                                            <p class="lead">Tarek Anandan的timeliner.js jQuery插件工作实例。本页包含两工作实例，说明几个关键特征包括展开/折叠，自动启动/加载，每页的多个时间线。</p> -->
+
+                                            <h2>民权运动1954-1964</h2>
+
+
+                                            <div id="timelineContainer" class="timelineContainer">
+
+{#                                                <div style="display: none" class="timelineToggle"><p><a class="expandAll">+ 全部展开</a></p></div>#}
+
+                                                <br class="clear">
+
+                                                <div class="timelineMajor">
+                                                    <h2 class="timelineMajorMarker"><span>1954</span></h2>
+                                                    <dl class="timelineMinor">
+                                                        <dt id="19540517"><a>布朗诉教育委员会</a></dt>
+                                                        <dd class="timelineEvent" id="19540517EX" style="display:none;">
+                                                            <h3>1954年5月17日</h3>
+                                                            <p style="width: 50%;">美国最高法院相传一致9-0决定在布朗诉托皮卡教育局案，打开大门，民权运动最终种族融合在美国社会的各个方面。推翻Plessy v. Ferguson（1896），法院裁定“隔离的教育设施是不平等的。</p>
+                                                            <br class="clear">
+                                                        </dd><!-- /.timelineEvent -->
+                                                    </dl><!-- /.timelineMinor -->
+                                                </div><!-- /.timelineMajor -->
+
+                                                <div class="timelineMajor">
+                                                    <h2 class="timelineMajorMarker"><span>1955</span></h2>
+                                                    <dl class="timelineMinor">
+                                                        <dt id="19550828"><a>艾莫特·泰尔</a></dt>
+                                                        <dd class="timelineEvent" id="19550828EX" style="display:none;">
+                                                            <h3>1955年8月28日</h3>
+                                                            <p style="width: 50%;">十四岁的非裔美国人埃米特被残忍杀害后，据说与白人妇女在访问亲戚在密西西比州。这是第一次，黑人和白人记者报道这次审判的集大成者”之一的第二十世纪最令人震惊的和持久的故事。”白被告，Roy Bryant和J.W. Milam，都被一个白人陪审团仅67分钟；后来他们详细描述为看杂志（付给他们4000美元）他们杀了为止。母亲坚持开放的棺材，和他残缺的身体，强大的图像引起强烈的反应，在全国和世界。</p>
+                                                            <br class="clear">
+                                                        </dd><!-- /.timelineEvent -->
+                                                    </dl><!-- /.timelineMinor -->
+                                                    <dl class="timelineMinor">
+                                                        <dt id="19551201"><a>罗萨公园</a></dt>
+                                                        <dd class="timelineEvent" id="19551201EX" style="display:none;">
+                                                            <h3>December 1, 1955</h3>
+                                                            <p style="width: 50%;">
+                                                                The arrest of Rosa Parks, a 42-year-old African-American seamstress and civil rights activist who refused to give up her bus seat to a white passenger, sets off a long anticipated bus boycott by residents of Montgomery, Ala. The 13-month protest and ensuing litigation eventually make it to the U.S. Supreme Court, which declares that segregation on public buses is unconstitutional.<sup>4</sup> The Montgomery bus boycott brings the Rev. Dr. Martin Luther King Jr. and his nonviolent approach to social change to the forefront of the civil rights movement.</p>
+                                                                <br class="clear">
+                                                        </dd><!-- /.timelineEvent -->
+                                                    </dl><!-- /.timelineMinor -->
+                                                </div><!-- /.timelineMajor -->
+
+                                                <div class="timelineMajor">
+                                                    <h2 class="timelineMajorMarker"><span>1957</span></h2>
+                                                    <dl class="timelineMinor">
+                                                        <dt id="19570904"><a>小石城</a></dt>
+                                                        <dd class="timelineEvent" id="19570904EX" style="display:none;">
+                                                            <h3>September 4, 1957</h3>
+                                                            <p style="width: 50%;">
+                                                                Three years removed from the Brown v. Board of Education decision, Arkansas Gov. Orval Faubus orders the National Guard to stop nine black students from attending the all-white Little Rock Central High School. President Dwight D. Eisenhower intervenes by federalizing the National Guard and deploying Army troops to protect the students, stripping the state of power. Media coverage of the physical and verbal harassment the black students were subjected to is reported and broadcast around the world. In the end, they successfully integrate Central High. <sup>5</sup></p>
+                                                            <br class="clear">
+                                                        </dd><!-- /.timelineEvent -->
+                                                    </dl><!-- /.timelineMinor -->
+                                                </div><!-- /.timelineMajor -->
+
+                                                <div class="timelineMajor">
+                                                    <h2 class="timelineMajorMarker"><span>1961</span></h2>
+                                                    <dl class="timelineMinor">
+                                                        <dt id="19610504"><a>自由乘车运动</a></dt>
+                                                        <dd class="timelineEvent" id="19610504EX" style="display:none;">
+                                                            <h3>May 4, 1961</h3>
+                                                        <p style="width: 50%;">
+                                                            The first of many civil rights “Freedom Rides” leaves Washington, D.C., for New Orleans. The Freedom Riders want to test the validity of the Supreme Court’s decision to outlaw racial segregation in bus terminals and through interstate bus travel.<sup>6</sup> Angry white mobs – with the blessing of Alabama law enforcement – meet the convoy in Anniston and Birmingham, brutally beating the Freedom Riders and firebombing one of the buses.<sup>7</sup></p>
+                                                            <br class="clear">
+                                                        </dd><!-- /.timelineEvent -->
+                                                    </dl><!-- /.timelineMinor -->
+                                                </div><!-- /.timelineMajor -->
+
+                                                <div class="timelineMajor">
+                                                    <h2 class="timelineMajorMarker"><span>1963</span></h2>
+                                                    <dl class="timelineMinor">
+                                                        <dt id="19630828"><a>“我有一个梦想”</a></dt>
+                                                        <dd class="timelineEvent" id="19630828EX" style="display:none;">
+                                                            <h3>August 28, 1963</h3>
+
+                                                            <p style="width: 50%;">
+                                                                In one of the largest gatherings in the nation’s capital and one of the first to be broadcast live on national television, at least 200,000 civil rights protesters stage a March on Washington concluding at the Lincoln Memorial. The march is dedicated to jobs and freedom and takes place 100 years after the&nbsp;Emancipation Proclamation. The highlight of the event is Martin Luther King Jr.’s historic “I Have a Dream” speech.</p>
+
+                                                            <blockquote>
+                                                                I have a dream that one day this nation will rise up and live out the true meaning of its creed: "We hold these truths to be self-evident: that all men are created equal."
+                                                                <div class="attribution">&mdash;Martin Luthar King Jr.</div>
+                                                            </blockquote>
+
+                                                            <br class="clear">
+                                                        </dd><!-- /.timelineEvent -->
+                                                    </dl><!-- /.timelineMinor -->
+
+                                                </div><!-- /.timelineMajor -->
+
+                                                <div class="timelineMajor">
+                                                    <h2 class="timelineMajorMarker"><span>1964</span></h2>
+
+                                                    <dl class="timelineMinor">
+                                                        <dt id="19640702"><a>民权法案</a></dt>
+                                                        <dd class="timelineEvent" id="19640702EX" style="display:none;">
+                                                            <h3>July 2, 1964</h3>
+                                                            <p>
+                                                                President Lyndon B. Johnson signs the Civil Rights Act of 1964, mandating equal opportunity employment, and complete desegregation of schools and other public facilities. It also outlaws unequal voter registration requirements.<sup>13</sup> Although it would take years for these changes to take effect in communities around the country, the law is a monumental victory for the civil rights movement.</p>
+
+                                                                <br class="clear">
+                                                        </dd><!-- /.timelineEvent -->
+                                                    </dl><!-- /.timelineMinor -->
+
+                                                    <dl class="timelineMinor">
+                                                        <dt id="19641014"><a>诺贝尔和平奖</a></dt>
+                                                        <dd class="timelineEvent" id="19641014EX" style="display:none;">
+                                                            <h3>October 14, 1964</h3>
+                                                            <p>Martin Luther King Jr. is awarded the Nobel Peace Prize; at 35, he is the youngest recipient.</p>
+                                                            <br class="clear">
+                                                        </dd><!-- /.timelineEvent -->
+                                                    </dl><!-- /.timelineMinor -->
+
+                                                </div><!-- /.timelineMajor -->
+                                                <br class="clear">
+                                            </div><!-- /#timelineContainer -->
+
+                                        </div><!-- /.container -->
+                                </div>
+                                <div class="informSourceHalf" id="informSource">
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>信息来源</strong></p>
+                                    <div id="informSourcePic1" class="particularPicHalf"></div>
+                                </div>
+                                <div id="mediaLiveness" class="mediaLivenessHalf">
+                                    <br><p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>媒体活跃度</strong></p>
+                                    <canvas id="mediaLivenessBar1" height="50px" width="80%"></canvas>
+                                </div>
+                                <div class="informSourceHalf" id="statisticsEJ1">
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>事件正负面评价比例</strong></p>
+                                    <canvas id="serverstatusEJ1" class="chartPicHalf"></canvas>
+                                </div>
+                                <div class="informSourceHalf" id="statisticsEM1">
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>事件情绪占比</strong></p>
+                                    <canvas id="serverstatusEM1" class="chartPicHalf"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="white-panel donut-chart">
+                            <div class="white-panel pn70">
+                                <input class="form-control productSearchInput" id="otherProdects" type="text" value="   输入竞品名称">
+                                <button class="btn btn-warning prodectsSearchButton">查找</button>
+                            </div>
+                        </div>
+                        <div class="content-panel mt" style="padding-bottom: 15px;">
+                            <h2 class="centered" style="float: left; width: 100%;"> &nbsp; &nbsp;此处为事件名称2</h2><br>
+                            <div class="eventDetials">
+                                <span class="margin-15">开始时间：2018-01-03</span>
+                                <span class="margin-15">结束时间：2018-10-16</span>
+                            </div>
+                            <div class="eventAbstract">
+                                <div style="padding: 20px;" id="abstract">
+                                    &nbsp; &nbsp; &nbsp; &nbsp; <strong>此处为事件简介</strong>介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介
+                                    绍介绍介绍介绍介绍介绍介绍介绍
+                                介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍
+                                介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍绍介绍介绍介绍介绍介绍介绍介绍
+                                介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍
+                                介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍绍介绍介绍介绍介绍介绍介绍介绍
+                                介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍
+                                介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍。
+                                </div>
+                            </div>
+                            <div id="eventData" class="eventData">
+                                <button class="btn btn-warning eventButton">📂 收藏量：11</button>
+                                <button class="btn btn-warning eventButton">👍 点赞数：22</button>
+                                <button class="btn btn-warning eventButton">😊 判真数：32</button>
+                                <button class="btn btn-warning eventButton">🤬 判假数：42</button>
+                            </div>
+                            <div class="eventComments"><br>
+                                <div style="float: left; margin-left: 25%; width: 40%;">
+                                    <input type="text"  class="form-control" placeholder="输入您要评论的内容：">
+                                </div>
+                                <button type="button" class="btn btn-warning" style="height: 44px; width: 80px; margin-left: 5%;">🖊 评论</button>
+                                <div class="comments" id="comments">
+                                </div>
+                            </div>
+                            <div id="eventExponent2" class="eventComments centered" style="margin-top: 10px;">
+                                <div class="items">
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>事件热度</strong></p>
+                                    <div id="heat2" style="width: 100%; height: 250px;"></div>
+                                </div>
+                                <div class="items">
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>事件敏感度</strong></p>
+                                    <div id="sensitive2" style="width: 100%; height: 250px;"></div>
+                                </div>
+                                <div class="items">
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>事件极性</strong></p>
+                                    <div id="polarity2" style="width: 100%; height: 250px;"></div>
+                                </div>
+                                <div style="height: 300px; width: 90%; margin-left: 5%;">
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>事件走势统计</strong></p>
+                                    <canvas id="heatTrendCount2" height="40px" width="90%"></canvas>
+                                </div>
+                                <div style="height: 300px; width: 90%; margin-left: 5%;">
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>热度爆发统计</strong></p>
+                                    <canvas id="heatTime2" height="40px" width="90%"></canvas>
+                                </div>
+                                <div style="height: 300px; width: 90%; margin-left: 5%;">
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>情绪走势统计</strong></p>
+                                    <canvas id="emotionTrendLine2" height="40px" width="90%"></canvas>
+                                </div>
+                                <div class="eventComments" id="maps2">
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>热度地图</strong></p>
+                                    <div id="heatMap2" style="width: 90%; height: 250px; margin-left: 15%;"></div>
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>敏感度地图</strong></p>
+                                    <div id="sensitiveMap2" style="width: 90%; height: 250px; margin-left: 15%;"></div>
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>情绪地图</strong></p>
+                                    <div id="emotionMap2" style="width: 90%; height: 250px; margin-left: 15%;"></div>
+                                </div>
+                                <div class="eventCloud mb" id="eventCloud2">
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>关键词云</strong></p>
+                                    <div id="cloud2" class="mb" style="width: 98%;height: 220px; margin-top: 15px;"></div>
+                                </div>
+                                <div class="eventTrend" id="eventTrend2">
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>事件走势</strong></p>
+                                    <!-- <img src="{% static 'assets0/img/eventTrend.png' %}" style="width: 80%; height: 80%;"> -->
+                                    <div class="container" style="text-align: left;width: 80%;margin-left: 20%">
+                                            <!-- <h1>线性时间轴</h1>
+                                            <p class="lead">Tarek Anandan的timeliner.js jQuery插件工作实例。本页包含两工作实例，说明几个关键特征包括展开/折叠，自动启动/加载，每页的多个时间线。</p> -->
+
+                                            <h2>民权运动1954-1964</h2>
+
+
+                                            <div id="timelineContainer" class="timelineContainer">
+
+{#                                                <div style="display: none" class="timelineToggle"><p><a class="expandAll">+ 全部展开</a></p></div>#}
+
+                                                <br class="clear">
+
+                                                <div class="timelineMajor">
+                                                    <h2 class="timelineMajorMarker"><span>1954</span></h2>
+                                                    <dl class="timelineMinor">
+                                                        <dt id="19540517"><a>布朗诉教育委员会</a></dt>
+                                                        <dd class="timelineEvent" id="19540517EX" style="display:none;">
+                                                            <h3>1954年5月17日</h3>
+                                                            <p style="width: 50%;">美国最高法院相传一致9-0决定在布朗诉托皮卡教育局案，打开大门，民权运动最终种族融合在美国社会的各个方面。推翻Plessy v. Ferguson（1896），法院裁定“隔离的教育设施是不平等的。</p>
+                                                            <br class="clear">
+                                                        </dd><!-- /.timelineEvent -->
+                                                    </dl><!-- /.timelineMinor -->
+                                                </div><!-- /.timelineMajor -->
+
+                                                <div class="timelineMajor">
+                                                    <h2 class="timelineMajorMarker"><span>1955</span></h2>
+                                                    <dl class="timelineMinor">
+                                                        <dt id="19550828"><a>艾莫特·泰尔</a></dt>
+                                                        <dd class="timelineEvent" id="19550828EX" style="display:none;">
+                                                            <h3>1955年8月28日</h3>
+                                                            <p style="width: 50%;">十四岁的非裔美国人埃米特被残忍杀害后，据说与白人妇女在访问亲戚在密西西比州。这是第一次，黑人和白人记者报道这次审判的集大成者”之一的第二十世纪最令人震惊的和持久的故事。”白被告，Roy Bryant和J.W. Milam，都被一个白人陪审团仅67分钟；后来他们详细描述为看杂志（付给他们4000美元）他们杀了为止。母亲坚持开放的棺材，和他残缺的身体，强大的图像引起强烈的反应，在全国和世界。</p>
+                                                            <br class="clear">
+                                                        </dd><!-- /.timelineEvent -->
+                                                    </dl><!-- /.timelineMinor -->
+                                                    <dl class="timelineMinor">
+                                                        <dt id="19551201"><a>罗萨公园</a></dt>
+                                                        <dd class="timelineEvent" id="19551201EX" style="display:none;">
+                                                            <h3>December 1, 1955</h3>
+                                                            <p style="width: 50%;">
+                                                                The arrest of Rosa Parks, a 42-year-old African-American seamstress and civil rights activist who refused to give up her bus seat to a white passenger, sets off a long anticipated bus boycott by residents of Montgomery, Ala. The 13-month protest and ensuing litigation eventually make it to the U.S. Supreme Court, which declares that segregation on public buses is unconstitutional.<sup>4</sup> The Montgomery bus boycott brings the Rev. Dr. Martin Luther King Jr. and his nonviolent approach to social change to the forefront of the civil rights movement.</p>
+                                                                <br class="clear">
+                                                        </dd><!-- /.timelineEvent -->
+                                                    </dl><!-- /.timelineMinor -->
+                                                </div><!-- /.timelineMajor -->
+
+                                                <div class="timelineMajor">
+                                                    <h2 class="timelineMajorMarker"><span>1957</span></h2>
+                                                    <dl class="timelineMinor">
+                                                        <dt id="19570904"><a>小石城</a></dt>
+                                                        <dd class="timelineEvent" id="19570904EX" style="display:none;">
+                                                            <h3>September 4, 1957</h3>
+                                                            <p style="width: 50%;">
+                                                                Three years removed from the Brown v. Board of Education decision, Arkansas Gov. Orval Faubus orders the National Guard to stop nine black students from attending the all-white Little Rock Central High School. President Dwight D. Eisenhower intervenes by federalizing the National Guard and deploying Army troops to protect the students, stripping the state of power. Media coverage of the physical and verbal harassment the black students were subjected to is reported and broadcast around the world. In the end, they successfully integrate Central High. <sup>5</sup></p>
+                                                            <br class="clear">
+                                                        </dd><!-- /.timelineEvent -->
+                                                    </dl><!-- /.timelineMinor -->
+                                                </div><!-- /.timelineMajor -->
+
+                                                <div class="timelineMajor">
+                                                    <h2 class="timelineMajorMarker"><span>1961</span></h2>
+                                                    <dl class="timelineMinor">
+                                                        <dt id="19610504"><a>自由乘车运动</a></dt>
+                                                        <dd class="timelineEvent" id="19610504EX" style="display:none;">
+                                                            <h3>May 4, 1961</h3>
+                                                        <p style="width: 50%;">
+                                                            The first of many civil rights “Freedom Rides” leaves Washington, D.C., for New Orleans. The Freedom Riders want to test the validity of the Supreme Court’s decision to outlaw racial segregation in bus terminals and through interstate bus travel.<sup>6</sup> Angry white mobs – with the blessing of Alabama law enforcement – meet the convoy in Anniston and Birmingham, brutally beating the Freedom Riders and firebombing one of the buses.<sup>7</sup></p>
+                                                            <br class="clear">
+                                                        </dd><!-- /.timelineEvent -->
+                                                    </dl><!-- /.timelineMinor -->
+                                                </div><!-- /.timelineMajor -->
+
+                                                <div class="timelineMajor">
+                                                    <h2 class="timelineMajorMarker"><span>1963</span></h2>
+                                                    <dl class="timelineMinor">
+                                                        <dt id="19630828"><a>“我有一个梦想”</a></dt>
+                                                        <dd class="timelineEvent" id="19630828EX" style="display:none;">
+                                                            <h3>August 28, 1963</h3>
+
+                                                            <p style="width: 50%;">
+                                                                In one of the largest gatherings in the nation’s capital and one of the first to be broadcast live on national television, at least 200,000 civil rights protesters stage a March on Washington concluding at the Lincoln Memorial. The march is dedicated to jobs and freedom and takes place 100 years after the&nbsp;Emancipation Proclamation. The highlight of the event is Martin Luther King Jr.’s historic “I Have a Dream” speech.</p>
+
+                                                            <blockquote>
+                                                                I have a dream that one day this nation will rise up and live out the true meaning of its creed: "We hold these truths to be self-evident: that all men are created equal."
+                                                                <div class="attribution">&mdash;Martin Luthar King Jr.</div>
+                                                            </blockquote>
+
+                                                            <br class="clear">
+                                                        </dd><!-- /.timelineEvent -->
+                                                    </dl><!-- /.timelineMinor -->
+
+                                                </div><!-- /.timelineMajor -->
+
+                                                <div class="timelineMajor">
+                                                    <h2 class="timelineMajorMarker"><span>1964</span></h2>
+
+                                                    <dl class="timelineMinor">
+                                                        <dt id="19640702"><a>民权法案</a></dt>
+                                                        <dd class="timelineEvent" id="19640702EX" style="display:none;">
+                                                            <h3>July 2, 1964</h3>
+                                                            <p>
+                                                                President Lyndon B. Johnson signs the Civil Rights Act of 1964, mandating equal opportunity employment, and complete desegregation of schools and other public facilities. It also outlaws unequal voter registration requirements.<sup>13</sup> Although it would take years for these changes to take effect in communities around the country, the law is a monumental victory for the civil rights movement.</p>
+
+                                                                <br class="clear">
+                                                        </dd><!-- /.timelineEvent -->
+                                                    </dl><!-- /.timelineMinor -->
+
+                                                    <dl class="timelineMinor">
+                                                        <dt id="19641014"><a>诺贝尔和平奖</a></dt>
+                                                        <dd class="timelineEvent" id="19641014EX" style="display:none;">
+                                                            <h3>October 14, 1964</h3>
+                                                            <p>Martin Luther King Jr. is awarded the Nobel Peace Prize; at 35, he is the youngest recipient.</p>
+                                                            <br class="clear">
+                                                        </dd><!-- /.timelineEvent -->
+                                                    </dl><!-- /.timelineMinor -->
+
+                                                </div><!-- /.timelineMajor -->
+                                                <br class="clear">
+                                            </div><!-- /#timelineContainer -->
+
+                                        </div><!-- /.container -->
+                                </div>
+                                <div class="informSourceHalf" id="informSource2">
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>信息来源</strong></p>
+                                    <div id="informSourcePic2" class="particularPicHalf"></div>
+                                </div>
+                                <div id="mediaLiveness2" class="mediaLivenessHalf">
+                                    <br><p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>媒体活跃度</strong></p>
+                                    <canvas id="mediaLivenessBar2" height="50px" width="80%"></canvas>
+                                </div>
+                                <div class="informSourceHalf" id="statisticsEJ2">
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>事件正负面评价比例</strong></p>
+                                    <canvas id="serverstatusEJ2" class="chartPicHalf"></canvas>
+                                </div>
+                                <div class="informSourceHalf" id="statisticsEM2">
+                                    <p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>事件情绪占比</strong></p>
+                                    <canvas id="serverstatusEM2" class="chartPicHalf"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
         <div class="layui-footer layui-bg-cyan" align="center">
         <!-- 底部固定区域 -->
         西安交通大学  社会智能与复杂数据处理实验室
         </div>
     </div>
+    <script src="{% static 'assets0/js/jquery.js' %}"></script>
+    <script src="{% static 'assets0/js/jquery-1.8.3.min.js' %}"></script>
+    <script src="{% static 'assets0/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets0/dataTable/js/jquery.dataTables.js' %}" type="text/javascript"></script>
+    <script src="//res.layui.com/layui/src/layui.js?t=1531663423583" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'assets0/js/colorbox.js'%}"></script>
+    <script type="text/javascript" src="{% static 'assets0/js/timeliner.min.js'%}"></script>
+    <script src="{% static 'assets0/js/fileJs/competitive_prodects.js' %}" type="text/javascript"></script>
 </body>
+<script>
+    window.onload = function(){
+        eventHeatIndex1();//事件热度
+        {#eventHeatIndex2();#}
+
+        eventSensitiveIndex1();//事件敏感度
+        {#eventSensitiveIndex2();#}
+
+        eventPolarityEvent1();//事件极性
+        {#eventPolarityEvent2();#}
+
+        eventTrendStatistic1();//事件走势统计
+
+        heatIndexBoom1();//热度爆发统计
+
+        emotionTrend1();//情绪走势
+
+        heatIndexMap1();//热度地图
+
+        emotionMap1();//情绪地图
+
+        sensitiveIndexMap1();//敏感度地图
+
+        keyWordsCloud1();//关键词云
+
+        informSource1();//信息来源
+
+        mediaLivenessIndex1();//媒体活跃度
+
+        eventJudgeRatio1();//事件正负面评价比例
+
+        emotionRatio1();//情绪占比
+
+    }
+</script>
+<script>
+	$(document).ready(function() {
+		$.timeliner({
+			startOpen:['#19550828EX', '#19630828EX']
+		});
+		$.timeliner({
+			timelineContainer: '#timelineContainer_2'
+		});
+		// Colorbox Modal
+		$(".CBmodal").colorbox({inline:true, initialWidth:100, maxWidth:682, initialHeight:100, transition:"elastic",speed:750});
+	});
+</script>
 </html>

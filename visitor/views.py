@@ -19,7 +19,7 @@ def login(request):
             username = login_form.cleaned_data['username']
             password = login_form.cleaned_data['password']
             user_type = login_form.cleaned_data['usertype']
-            print(username,password,user_type)
+            print(username, password, user_type)
             try:
                 user = models.User.objects.get(username=username)
                 if user.password == password:
@@ -27,13 +27,13 @@ def login(request):
                    request.session['user_id'] = user.pk
                    request.session['user_name'] = user.username
                    if user_type == "个人用户":
-                       return redirect('person_index', {"role": "个人用户"})
+                       return redirect('person_index')
                    if user_type == "企业用户":
-                       return redirect('com_index', {"role": "企业用户"})
+                       return redirect('com_index')
                    if user_type == "政府用户":
-                       return redirect('gov_index', {"role": "政府用户"})
+                       return redirect('gov_index')
                    if user_type == "事业单位用户":
-                       return redirect('person_index', {"role": "事业单位用户"})
+                       return redirect('person_index')
                    else:
                        return redirect('/login/')
                 else:
@@ -80,7 +80,8 @@ def test(request):
 def fileSearch(request):
     return render(request, 'foreground/fileSearch.html')
 def eventSearch(request):
-    return render(request, 'foreground/eventSearch.html')
+    role = request.GET.get("role")
+    return render(request, 'foreground/eventSearch.html', {"role": role})
 
 def signin(request):
     print(request.POST)
@@ -143,11 +144,12 @@ def competitive_products(request):
 
 def events(request):
     head = request.GET
-    messageDic = {"head": head["type"], "role": head["role"]}
+    messageDic = {"type": head["type"], "role": head["role"]}
     return render(request, 'foreground/events.html', messageDic)
 
 def profile(request):
-    return render(request, 'foreground/profile.html')
+    userid = request.session["userid"]
+    return render(request, 'foreground/profile.html', {"userid": userid})
 
 def eventparticular(request):
     return render(request, 'foreground/particular.html')
