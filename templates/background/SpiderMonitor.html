@@ -473,14 +473,76 @@
                         </div>
 
                         <!-- Table -->
-                        <table class="table" id="pachongsulvTB">
+                        <!-- <table class="table" id="pachongsulvTB">
                             <tr><td>爬虫名称</td><td>网站名称</td><td>URL</td><td>数据量</td><td>爬取时间</td><td>爬取日期</td></tr>
                             <tr><td>Trident</td><td>localhost</td><td>127.0.0.1</td><td>0</td><td>04:46</td><td>2017-10-23</td></tr>
                             <tr><td>Trident</td><td>localhost</td><td>127.0.0.1</td><td>0</td><td>04:46</td><td>2017-10-23</td></tr>
                             <tr><td>Trident</td><td>localhost</td><td>127.0.0.1</td><td>0</td><td>04:46</td><td>2017-10-23</td></tr>
                             <tr><td>Trident</td><td>localhost</td><td>127.0.0.1</td><td>0</td><td>04:46</td><td>2017-10-23</td></tr>
                             <tr><td>Trident</td><td>localhost</td><td>127.0.0.1</td><td>0</td><td>04:46</td><td>2017-10-23</td></tr>
-                        </table>
+                        </table> -->
+                        <div style="position: relative;width: 100%;">
+                                <canvas id="myChart"></canvas>
+                                </div>
+                                <script type="text/javascript">
+                                /* var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']; */
+                                var data = {
+                                        labels: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],  //x轴
+                                        datasets: [  //y轴
+                                            {
+                                            label: "人民网",  //曲线名称
+                                            fillColor: "rgba(250,250,255,255)",
+                                            strokeColor: "rgba(0,0,0,1)",
+                                            lineTension: 0,  //去掉变光滑
+                                            pointColor: "rgba(220,220,220,255)",
+                                            pointStrokeColor: "#fff",
+                                            pointHighlightFill: "#fff",
+                                            pointHighlightStroke: "rgba(220,220,220,1)",
+                                            data: [65, 59, 80, 81, 56, 55, 40]  //y轴数值
+                                            },
+                                            {
+                                                label: "新浪网",//曲线名称
+                                                fill: true, //曲线下阴影
+                                                lineTension: 0,  //去掉变光滑
+                                                backgroundColor: "rgba(75,192,192,0.4)",//最后一位是透明度
+                                                borderColor: "rgba(75,192,192,0.4)",
+                                                borderCapStyle: 'square',//不知道什么卵用,butt,round,square
+                                                borderDash: [4],//夹数值变虚线，数值越大越稀疏
+                                                //borderDashOffset: 0.0,//不知道什么乱用
+                                                borderJoinStyle: 'miter',//不知道什么乱用，"bevel" || "round" || "miter"
+                                                pointBorderColor: "rgba(75,192,192,1)",//结点颜色
+                                                pointBackgroundColor: "#fff",
+                                                pointBorderWidth: 5,
+                                                pointHoverRadius: 5,//光标覆盖时半径
+                                                pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                                                pointHoverBorderColor: "rgba(220,220,220,1)",
+                                                pointHoverBorderWidth: 2,//光标覆盖时结点外边圈的厚度
+                                                pointRadius: 1,//结点空心大小？
+                                                pointHitRadius: 10,//不知道有什么卵用
+                                                data: [50, 70, 60, 31, 92, 78, 13],//y轴数值
+                                                spanGaps: false,//不知道有什么卵用
+                                            }
+                                        ]
+                                    };    
+                                var config = {
+                                    type: 'line',
+                                    data: data,
+                                    options: {
+                                        responsive: true,
+                                        title: {
+                                            display: false,
+                                            text: 'Chart.js Line Chart'
+                                        },
+                                        
+                                    }
+                                };
+                        
+                                //window.onload = function() {
+                                    var ctx = document.getElementById('myChart').getContext('2d');
+                                    var myLinechart = new Chart(ctx, config);
+                                //};
+                        
+                                </script>
                     </div>
                 </div>
             </div> 
@@ -537,7 +599,7 @@
                     </div>
                 </div>
             </div> 
-            <div class="row mt">
+            <div class="row mt" style="display: none">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">

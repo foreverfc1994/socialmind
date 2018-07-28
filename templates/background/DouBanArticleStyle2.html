@@ -1,0 +1,762 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>DASHGUM - Bootstrap Admin Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'backgroundfiles/assets/css/bootstrap.css' %}" rel="stylesheet">
+    <!--external css-->
+    <link href="{% static 'backgroundfiles/assets/font-awesome/css/font-awesome.css' %}" rel="stylesheet" />
+        
+    <!-- Custom styles for this template -->
+    <link href="{% static 'backgroundfiles/assets/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'backgroundfiles/assets/css/style-responsive.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'backgroundfiles/css/maruti-style.css' %}" />
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="{% static 'backgroundfiles/assets/js/jquery-3.3.1.min.js' %}"></script>
+    <style>
+        .image-caption {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 13px;
+    color: #999;
+}
+div.comment-item {
+    margin-bottom: 1em;
+    word-break: break-word;
+}
+    </style>
+    <!-- 豆瓣css -->
+    <style>
+.note-container h1 {
+    padding: 0 0 20px 0;
+    color: #111;
+    line-height: 1.4;
+}
+/* .note blockquote {
+    color: #7b7b7b;
+}
+.note p, .note blockquote, .note .DRE-unstyled {
+    margin: 0 0 20px 0;
+    line-height: 1.8;
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    word-wrap: break-word;
+} */
+blockquote {
+    padding-top: 0px;
+    margin-top: 30px;
+    background: url("https://img3.doubanio.com/f/sns/4e05379b65eac9cbef392f0343a6494c18db06ae/pics/sns/note/editor_icons/svg_blockquote1.svg") no-repeat 0 0;
+}
+#articlepanel h1 {
+    font-size: 26px;
+}
+#articlepanel h1 {
+    font-weight: bold;
+}
+.action-react {
+    display: inline-block;
+    margin-right: 10px;
+}
+.action-react .react-add:hover, .action-react .react-add:active {
+    border: 1px solid #f8c79d;
+}
+.action-react .react-add:link, .action-react .react-add:visited {
+    border: 1px solid #FAD5B5;
+}
+.action-react .react-add {
+    color: #CA6445;
+    background-color: #FBE9D9;
+    background-image: url(/f/shire/4da1c5c7e1d146d33008a6879dee93f45f5de79f/pics/actions/ic_action_like@2x.png);
+}
+.action-react .react-add, .action-react .react-cancel {
+    background-position: 5px center;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+}
+.action-btn, .action-react .react-add, .action-react .react-cancel {
+    display: inline-block;
+    vertical-align: middle;
+    height: 12px;
+    line-height: 1;
+    border-radius: 2px;
+    padding: 6px 9px 4px 24px;
+}
+.sharing-button {
+    display: inline-block;
+    vertical-align: middle;
+    height: 22px;
+    border: 1px solid #DAEDE4;
+    border-radius: 2px;
+    background-color: #EFF7ED;
+    color: #4F946E;
+    cursor: pointer;
+    font-size: 0;
+}
+a.lnk-sharing:link, a.lnk-sharing:visited {
+    border-color: #e3f1ed;
+    background-color: #f2f8f2;
+    color: #4f946e;
+}
+.sharing-douban .lnk-sharing {
+    height: 12px;
+    line-height: 1;
+}
+.update-item .pic, .comment-item .pic {
+    float: left;
+    margin-right: 20px;
+}
+.update-item .content, .comment-item .content {
+    overflow: hidden;
+    zoom: 1;
+}
+.op-lnks a:link, .op-lnks a:visited {
+    color: #bbb;
+}
+div.comment-item {
+    margin-bottom: 1em;
+    word-break: break-word;
+}
+    </style>
+    <script src="https://img3.doubanio.com/f/shire/f010949d3f23dd7c972ad7cb40b800bf70723c93/js/douban.js"></script>
+    <!-- <link href="{% static 'backgroundfiles/css/douban.css' %}" rel="stylesheet" type="text/css"> -->
+  </head>
+
+  <body>
+
+  <section id="container" >
+      <!-- **********************************************************************************************************************************************************
+      TOP BAR CONTENT & NOTIFICATIONS
+      *********************************************************************************************************************************************************** -->
+      <!--header start-->
+      <header class="header black-bg">
+              <div class="sidebar-toggle-box">
+                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+              </div>
+            <!--logo start-->
+            <a href="/bindex/" class="logo"><b>SocialMind管理员</b></a>
+            <!--logo end-->
+            <div class="nav notify-row" id="top_menu">
+                <!--  notification start -->
+                <ul class="nav top-menu">
+                    <!-- settings start -->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
+                            <i class="fa fa-tasks"></i>
+                            个人中心
+                        </a>
+                    </li>
+                    <!-- inbox dropdown start-->
+                    <li id="header_inbox_bar" class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
+                            <i class="fa fa-envelope-o"></i>
+                            消息
+                            <span class="badge bg-theme">5</span>
+                        </a>
+                        <ul class="dropdown-menu extended inbox">
+                            <div class="notify-arrow notify-arrow-green"></div>
+                            <li>
+                                <p class="green">You have 5 new messages</p>
+                            </li>
+                            <li>
+                                <a href="/bindex/">
+                                    <span class="photo"><img alt="avatar" src="{% static 'backgroundfiles/assets/img/ui-zac.jpg' %}"></span>
+                                    <span class="subject">
+                                    <span class="from">Zac Snider</span>
+                                    <span class="time">Just now</span>
+                                    </span>
+                                    <span class="message">
+                                        Hi mate, how is everything?
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/bindex/">
+                                    <span class="photo"><img alt="avatar" src="{% static 'backgroundfiles/assets/img/ui-divya.jpg' %}"></span>
+                                    <span class="subject">
+                                    <span class="from">Divya Manian</span>
+                                    <span class="time">40 mins.</span>
+                                    </span>
+                                    <span class="message">
+                                     Hi, I need your help with this.
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/bindex/">
+                                    <span class="photo"><img alt="avatar" src="{% static 'backgroundfiles/assets/img/ui-danro.jpg' %}"></span>
+                                    <span class="subject">
+                                    <span class="from">Dan Rogers</span>
+                                    <span class="time">2 hrs.</span>
+                                    </span>
+                                    <span class="message">
+                                        Love your new Dashboard.
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/bindex/">
+                                    <span class="photo"><img alt="avatar" src="{% static 'backgroundfiles/assets/img/ui-sherman.jpg' %}"></span>
+                                    <span class="subject">
+                                    <span class="from">Dj Sherman</span>
+                                    <span class="time">4 hrs.</span>
+                                    </span>
+                                    <span class="message">
+                                        Please, answer asap.
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/bindex/">See all messages</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- inbox dropdown end -->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
+                            <i class="fa fa-cog"></i>
+                            设置
+                        </a>
+                        <ul class="dropdown-menu extended tasks-bar">
+                            <div class="notify-arrow notify-arrow-green"></div>
+                            <li>
+                                <p class="green">You have 4 pending tasks</p>
+                            </li>
+                            <li>
+                                <a href="/bindex/">
+                                    <div class="task-info">
+                                        <div class="desc">DashGum Admin Panel</div>
+                                        <div class="percent">40%</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/bindex/">
+                                    <div class="task-info">
+                                        <div class="desc">Database Update</div>
+                                        <div class="percent">60%</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                            <span class="sr-only">60% Complete (warning)</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/bindex/">
+                                    <div class="task-info">
+                                        <div class="desc">Product Development</div>
+                                        <div class="percent">80%</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                            <span class="sr-only">80% Complete</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/bindex/">
+                                    <div class="task-info">
+                                        <div class="desc">Payments Sent</div>
+                                        <div class="percent">70%</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+                                            <span class="sr-only">70% Complete (Important)</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="external">
+                                <a href="#">See All Tasks</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- settings end -->
+                    
+                </ul>
+                <!--  notification end -->
+            </div>
+            <div class="top-menu">
+            	<ul class="nav pull-right top-menu">
+                    <li>
+                        <form class="navbar-form navbar-right" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search here..." aria-describedby="basic-addon2" style="height: 28px;margin-top: 7px">
+                            <button type="submit" class="btn btn-default" style="height:28px;border: 1px solid #666666 !important;-webkit-border-radius: 4px;background-color: #ffd777;margin-right: 10px;margin-top: 7px;color: #666666;border-radius: 4px;">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        </form>
+                    </li>
+                    <li><a class="logout" href="/login/">注销</a></li>
+            	</ul>
+            </div>
+        </header>
+      <!--header end-->
+      
+      <!-- **********************************************************************************************************************************************************
+      MAIN SIDEBAR MENU
+      *********************************************************************************************************************************************************** -->
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu" id="nav-accordion">
+              
+              	  <p class="centered"><a href="/bindex/"><img src="{% static 'backgroundfiles/assets/img/ny.jpg' %}" class="img-circle" width="60"></a></p>
+              	  <h5 class="centered"><a href="/bindex/" style="color: white">首页</a></h5>
+              	  	
+                  <!--<li class="mt">
+                      <a class="active" href="index.html">
+                          <i class="fa fa-dashboard"></i>
+                          <span>爬虫</span>
+                      </a>
+                  </li>-->
+                  <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-dashboard"></i>
+                        <span>爬虫</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="/SpiderList/">爬虫管理</a></li>
+                        <li><a  href="/SpiderMonitor/">爬虫监控</a></li>
+                        <li><a  href="/SpiderConfigure/">爬虫配置</a></li>
+                    </ul>
+                  </li>
+                <li class="sub-menu">
+                    <a href="javascript:;" class="active">
+                        <i class="fa fa-tasks"></i>
+                        <span>源数据展示模块</span>
+                    </a>
+                    <ul class="sub">
+                      <li><a  href="/Author/">查看作者</a></li>
+                      <li><a  href="/ArticlesOfAuthor/" style="color: #fff;">查看作者相关文章</a></li>
+                      <script>
+                            $(document).ready(function(){
+                                $("li:not([class])>a:not(a:contains('查看作者相关文章'))").hover(function(){
+                                    $("a:contains('查看作者相关文章')").removeAttr("style")
+                                });
+                            });
+                      </script>
+                      <li><a  href="/ArticlesAndComments/">查看文章及评论</a></li>
+                  </ul>
+                </li>
+                  <li class="sub-menu">
+                      <a href="javascript:;">
+                          <i class="fa fa-desktop"></i>
+                          <span>数据清洗</span>
+                      </a>
+                      <ul class="sub">
+                          <li><a  href="/DataCleanStatistics/">清洗数据统计</a></li>
+                          <li><a  href="/DataCleanStrategies/">数据清洗策略配置</a></li>
+                          <li><a  href="/DataCleanLog/">数据清洗日志管理</a></li>
+                          <li><a  href="/washData/">数据清洗</a></li>
+                      </ul>
+                  </li>
+                  <li class="sub-menu">
+                    <a href="/topics/">
+                        <i class="fa fa-book"></i>
+                        <span>主题管理</span>
+                    </a>
+                  </li>
+                  <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-cogs"></i>
+                        <span>舆情对象管理</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a  href="/AddEventObject/">新增舆情对象</a></li>
+                        <li><a  href="/CreateEventObject/">舆情对象自动生成</a></li>
+                        <li><a  href="/ShowEventObject/">舆情对象展示</a></li>
+                    </ul>
+                  </li>
+                  <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-tasks"></i>
+                        <span>语义工具集</span>
+                    </a>
+                    <ul class="sub">
+                      <li><a  href="/semanticsTools/">新增语义工具</a></li>
+                      <li><a  href="/semanticsToolkits/">新增工具包</a></li>
+                      <li><a  href="/ShowToolkits/">工具包展示</a></li>
+                    </ul>
+                  </li>
+                  <!--<li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class="fa fa-th"></i>
+                          <span>系统操作管理</span>
+                      </a>
+                      <ul class="sub">
+                          <li><a  href="basic_table.html">系统用户评论管理</a></li>
+                          <li><a  href="responsive_table.html">系统用户操作管理</a></li>
+                      </ul>
+                  </li>
+                  <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class=" fa fa-bar-chart-o"></i>
+                          <span>用户管理</span>
+                      </a>
+                  </li>-->
+                  <li class="sub-menu">
+                    <a href="/usrCommentsSelect/" >
+                        <i class="fa fa-th"></i>
+                        <span>用户留言管理</span>
+                    </a>
+                    <!-- <ul class="sub">
+                        <li><a  href="/usrCommentsSelect/">查看用户留言</a></li>
+                        <li><a  href="/usrCommentsCheck/">审核用户留言</a></li>
+                        <li><a  href="/usrCommentsDelete/">删除用户留言</a></li>
+                    </ul> -->
+                  </li>
+                <li class="sub-menu">
+                    <a href="/AssignAuthorities/" >
+                        <i class=" fa fa-bar-chart-o"></i>
+                        <span>权限管理</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a href="/usrManagement/" >
+                        <i class=" fa fa-bar-chart-o"></i>
+                        <span>用户管理</span>
+                    </a>
+                    <!-- <ul class="sub">
+                        <li><a  href="/usersVerify/">新增用户审核</a></li>
+                        <li><a  href="/usrManagement/">用户管理</a></li>
+                    </ul> -->
+                </li>
+                <li class="sub-menu">
+                    <a href="/operateDiary/" >
+                        <i class=" fa fa-bar-chart-o"></i>
+                        <span>日志管理</span>
+                    </a>
+                    <!--<ul class="sub">
+                        <li><a  href="morris.html">操作日志</a></li>
+                    </ul>-->
+                </li>
+
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+      
+      <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper site-min-height">
+          	<h3><i class="fa fa-angle-right"></i>  作者相关文章</h3>
+          	<div class="row mt">
+          		<div class="col-lg-12">
+          		<div id="articlepanel" class="panel panel-default">
+                        <!-- <div class="panel-heading">
+                        </div> -->
+                        <div class="panel-body">
+                                    <div class="note-header note-header-container">
+                                    <h1>在我最自暴自弃的时候，是音乐给了我出口</h1>
+                            
+                                
+                                <div>
+                                    <a href="https://www.douban.com/people/douban-time/"><img class="note_author_avatar" width="24" height="24" src="https://img3.doubanio.com/icon/u157526587-4.jpg" alt="豆瓣时间"></a>
+                                    <a href="https://www.douban.com/people/douban-time/" class="note-author">豆瓣时间</a>
+                                    <span class="pub-date">2018-06-15 10:56:20</span>
+                                </div>
+                                </div>
+                                <div id="note_673644060_full" >
+            
+                                        <div class="note" id="link-report"><blockquote> 做一个尽可能丰富的人，做一个尽可能投入的人，去爱，去感受，去表达，去生活得更多。 </blockquote><div class="image-container image-float-center image-badge-gif"><div class="image-wrapper"><img data-original-url="https://img3.doubanio.com/view/note/raw/public/p51448280.jpg" data-render-type="gif" src="https://img3.doubanio.com/view/note/l/public/p51448280.webp"/></div></div><p>本文作者：陈思呈</p><p></p><h2>01</h2><p>我也曾是个哭着练琴的人。</p><p>我爸喜欢音乐，八十年代时他在家里订了《广播歌选》这本杂志，对着杂志教我在玩具钢琴上弹《丰收之歌》、《垄上行》，那些熟悉的旋律如今都能带我回到彼时的空气里。尤其喜欢“垄上行”中的这几句：“蓝天，多辽阔，点缀着白云几朵，青山，不寂寞，有河水潺潺流过”，仿佛在悠扬中被高举，在婉转中来到开阔地，心胸为之一畅，似乎有点失重，但顷刻中又柔情暗涌。</p><p>很快我爸就意识到玩具钢琴上不了台面，他买了两把小提琴，请了个老师来家里教我们。彼时极少有人请家教，尤其在小城市。这种奢侈的行为以及这个高雅的乐器把我的邻居们吓坏了，有个婶婶对我说，你成天歪着脖子夹琴，你当心以后得歪脖子病。我转述给我爸，我爸说：“你咋不会回答她，你说，你骑单车也要举着手扶车头，怎么不担心手再也放不下来了。”</p><p>可惜我跟小提琴八字不合，有一次我爸一怒之下拿谱架打，逼我练琴，可能是不小心打到墙上，总之铁做的谱架都打散了，没法放谱子，别以为可以不练了，临时放在窗台上还是照常练。后来又买了个更牢固的谱架，还是得继续练。</p><p>常看到别人讨论，逼孩子学点什么，有没有好处？我总是很怂地回答，有好处的。如今走在路上，或者看电影时，只要有旋律处，会比没学过琴的人敏感很多，尽管不专业，但对生活的感受多了一个维度，是从童年起就开启的维度，会比中年时再开启来得更充分一些。如果是练琴过程听过的歌，更是连当时的时光整块地挖出来呈在眼前，那其实是一个家园。</p><div class="image-container image-float-center"><div class="image-wrapper"><img src="https://img3.doubanio.com/view/note/l/public/p51448284.webp"/></div></div><p>练琴痛苦，但有另一个际遇充分地让我体会到音乐之美。我们学校来了一个姓苏的音乐老师。苏老师除了长得很美很美，还有一种魔力，她对生活饱含感情。那是无法伪造出来的，即使一个小学五年级学生，也能轻易被感染。那种对生活的感情，她通过她的歌声，通过她组织我们编排的舞蹈和合唱，很好地传达给我们。</p><p>非常简单的旋律，她都投入地演绎，即使只是一个面对小学生的课堂，即使只是音乐课本上一首儿童题材的歌曲。我们很快领悟到，在语言的有限之处，音乐消弥了这种有限。我们尚未恋爱，又怎么能解释自己竟然会被《喀秋莎》感动得泪眼模糊？我们未曾在乡村生活，又怎么能解释苗寨的《小竹桥》栩栩如在眼前？</p><p>当时在我们班，有很多同学都如我这般感受。音乐在上空，笼罩了那个小教室里四十多名十三岁少年的夏天。初涉人世，我们就幸运地听到苏老师的歌声，这幸运的相遇并不在于要使我们中的某个人成为音乐家，而是给予我们一个美好的洞见：</p><p>世界上有那么多美好的事物，每首歌后面的那个辽阔世界，被我们窥见一角。世界上有那么多的好事，都可能与你有关，但这一切的前提，是，你要做好了准备：做一个尽可能丰富的人，做一个尽可能投入的人，去爱，去感受，去表达，去生活得更多。</p><div class="image-container image-float-center"><div class="image-wrapper"><img src="https://img3.doubanio.com/view/note/l/public/p51448281.webp"/></div></div><p></p><div class="separator"><hr/></div><h2>02</h2><p>说起来，影响过孩子一生的音乐老师，在影视作品中出现过不少。你很容易猜到，我说的是《放牛班的春天》。这部电影很多人看过，即使没看过也知道大概的情节，是说在1949年的法国乡村，马修老师到了一间外号叫“塘低”的男子寄宿学校当助理教师。学校里的学生都是问题儿童或者问题少年，都放弃了自己。马修老师用组织合唱团、作曲的方式，改变了这些学生的状态和命运。</p><div class="subject-wrapper"><a href="https://movie.douban.com/subject/1291549/"><div class="subject-cover"><img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1910824951.webp"/></div><div class="subject-info"><div class="subject-title"><span class="title-play"></span><span class="title-text">放牛班的春天</span><span class="title-tail"> (2004)</span></div><div class="subject-rating"><span class="rating-star1"></span><span class="rating-star1"></span><span class="rating-star1"></span><span class="rating-star1"></span><span class="rating-star2"></span><span class="rating-score">9.2</span></div><div class="subject-summary">2004 / 法国 瑞士 德国 / 剧情 音乐 / 克里斯托夫·巴拉蒂 / 热拉尔·朱尼奥 让-巴蒂斯特·莫尼耶</div></div></a></div><p></p><div class="image-container image-float-center image-badge-gif"><div class="image-wrapper"><img data-original-url="https://img1.doubanio.com/view/note/raw/public/p51448287.jpg" data-render-type="gif" src="https://img1.doubanio.com/view/note/l/public/p51448287.webp"/></div></div><p>关于这部电影，我曾看过一篇影评，作者讲到她自己的经历，让我印象很深，比原电影还深。毕竟，相对于1949年的法国，还是上世纪九十年代的中国中学生更让我亲切。</p><p>作者所在的高中跟放牛班很像，同学打架，逃课，到外面混，甚至有少年犯，觉得前途什么的是一个笑话。但学校里有一位姓顾的音乐老师，非常投入地组织一个合唱队，组织他们参赛，参加了一个又一个的比赛，在当地几成奇闻，因为一个各方面都很差的学校，竟然在合唱这方面竟有这么出色的成绩，这不合逻辑。</p><p>作者说，顾老师也从不对他们说励志的话，更不和他们谈人生，就是教他们唱歌，但在一次次合唱练习和比赛中，他们的生活有了变化，比如：本来每天回家一路无所事事，桥洞底下打几把牌，路上偷几个玉米。现在不一样了，一路走一路哼哼练谱视唱，时间过得快得多。</p><p>正因为顾老师和马修老师的不同，顾老师仅仅通过自己对音乐的热情（而没有其它生活接触）就改变了孩子们的生活，所以作者认为，顾老师比马修老师更加成功：”音乐可以改变一个人的生活，即使是最简单的音乐。它改变人的方式可以是惊人一致的，比如顾老师与马修老师。”</p><p>这种方式是什么方式呢？也许我可以帮作者稍微总结一点：</p><p>当我们把那些自暴自弃的垃圾时光，用来专注地唱歌，通过对合唱比赛这一件事的建设，我们也想对整个生活都好好建设。我们唱好了一首又一首的歌，之后，我们也想做一个更好的人。</p><p>我本来想说，对处于黑暗谷底的你和我，音乐像一道光柱。但其实不仅仅那么文艺，它比光柱更具体，像绳索，是能具体地借力的。拉住它使劲地攀爬，是能爬出谷底的。</p><div class="image-container image-float-center image-badge-gif"><div class="image-wrapper"><img data-original-url="https://img3.doubanio.com/view/note/raw/public/p51448292.jpg" data-render-type="gif" src="https://img3.doubanio.com/view/note/l/public/p51448292.webp"/></div></div><p></p><div class="separator"><hr/></div><p></p><h2>03</h2><p>三毛，就是台湾那个作家，小时候练钢琴，不想练时，她爸爸告诉她说，你现在学习这些，以后痛苦的时候，音乐可以安慰你。</p><p>都是不想练琴，人家爸爸就好好说话还说得这么有哲理，我爸就把谱架都给打散了。区别就是他的女儿成了三毛，而我，还是我。</p><p>父母让孩子学乐器，其实是他们的未雨绸缪。他们希望自己的儿女拥有更多的技能，成年以后各种困阻艰难中，父母不能再替孩子承担，连打一顿也不能了。那时候，儿女也许能通过儿时学过的，获得各种保护。</p><div class="image-container image-float-center"><div class="image-wrapper"><img src="https://img3.doubanio.com/view/note/l/public/p51448293.webp"/></div></div><p>有另一部讲到音乐的电影叫《八月迷情》，这部电影其实非常惨烈。一个被父母抛弃的孩子埃文，从小住在孤儿院。他执意要找到自己的亲生父母，通过音乐的帮助，真的找到了。在孤儿院被霸凌被折磨的时候，他说，生活确实让人很痛苦，但他相信音乐，就像有人相信童话那样。</p><p>这印证了三毛的父亲那句话，音乐能在困难时保护他、安慰他、守望他。作为一个拥有音乐天才的案例，埃文也许是特殊的，但事实上，音乐并不会对任何人提出要求，也不会对任何人提出拒绝。它不像别的学科需要公式，不像语文需要识字，只要去听就够了。</p><p>即使你在要饭，也可以在要饭的路上纵声歌唱。那个边唱歌边要饭的人应该会比无法张口歌唱的人更幸福吧。</p><div class="subject-wrapper"><a href="https://movie.douban.com/subject/1844413/"><div class="subject-cover"><img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p792528025.webp"/></div><div class="subject-info"><div class="subject-title"><span class="title-play"></span><span class="title-text">八月迷情</span><span class="title-tail"> (2007)</span></div><div class="subject-rating"><span class="rating-star1"></span><span class="rating-star1"></span><span class="rating-star1"></span><span class="rating-star1"></span><span class="rating-star0"></span><span class="rating-score">8.3</span></div><div class="subject-summary">2007 / 美国 / 剧情 音乐 爱情 / 科斯汀·谢里丹 / 乔纳森·莱斯·梅耶斯 弗莱迪·海默</div></div></a></div><p>在山区听到一个故事。二十年前，这里有专人每天挑担给开荒队送物资。挑担非常辛苦，东西重，又走着山路。但有个挑担者，担头永远绑着一把二胡，只要一停下歇脚，他就把二胡解下来，一边拉，一边唱。后来，一见他来，后面都跟着孩子，他在前面走，孩子在后面跟。</p><p>这个挑担的人和这些孩子，生活当然辛苦，但我也想着他们克服万难非要唱歌的那激情，他们克服的困难有多大，得到的快乐应该还要再大一点，从性价比来讲才合适，所以如此看来，音乐带来的快乐的份量，我们就略能想象。</p><div class="image-container image-float-center"><div class="image-wrapper"><img src="https://img3.doubanio.com/view/note/l/public/p51448296.webp"/></div></div><p>从这个角度看，他们算是找到快乐的人。《八月迷情》中有一句台词特别有意思，“奇才”问埃文说，你改个名字作为艺名吧，你闭眼想一想你最想得到什么，你就叫那个名字。埃文说，那我想叫“找到”。</p><p>能“找到”是最幸福的，对埃文来说，是找到父母，找到爱，但他一开始就找到了音乐。对很多人来说，还需要找到那个让自己快乐的事，即使对于音乐而言，也要找到能听到它、理解它的钥匙。</p><p></p><div class="separator"><hr/></div><p><span style="font-weight: bold;">豆瓣时间的新课</span><a href="https://m.douban.com/time/column/99/?dt_time_source=dairy-dbsj" rel="nofollow"><span style="font-weight: bold;">《古典音乐的奇幻之旅》</span></a><span style="font-weight: bold;">就是一把这样的钥匙——</span></p><p>这门以古典音乐为题的课程特别邀请到了拥有三十余年教学经验的台湾著名教授和演奏家<span style="font-weight: bold;">彭广林</span>，以通俗易懂的语言和循循善诱的教学方式引领大家进行一次古典音乐的奇幻之旅。</p><div class="image-container image-float-center"><div class="image-wrapper"><img src="https://img1.doubanio.com/view/note/l/public/p51449037.webp"/></div></div><p>围绕音乐史，专栏总共设置了【108期主课】，通过对4个音乐时代的讲述，拆解古典音乐史上最精华的240年，清晰梳理呈现古典乐的发展脉络，全盘搭建欧洲古典音乐的完整知识体系。</p><p>另外，专栏还特别打造了【108期音乐小课堂】，每期用2分钟的时间介绍和解释一个特定的乐理小知识，帮助你搞懂那些晦涩的“专有名词”。</p><div class="image-container image-float-center"><div class="image-wrapper"><img src="https://img1.doubanio.com/view/note/l/public/p51448459.webp"/></div></div><p> 除了这些，在这个专栏中你还可以获得： </p><p>✔彭广林老师现场拉奏小提琴！边演示边解说，把看似艰深的音乐用简单的方式“说”给你听。</p><p>✔每次12分钟，听懂交响乐、协奏曲、管弦乐……收获各类古典乐的聆听欣赏方法。</p><p>✔ 了解古典音乐史上最重要的25位音乐家。</p><p>✔ 重点精讲近60首经典名曲，提供每一首的欣赏方式，完全听懂音乐的表达。</p><p>✔串讲近200首名曲，完成大脑和耳朵的音乐欣赏进阶训练。</p><p>✔ 乐曲最佳版本list：版本有别，听对版本太重要！老师甄选推荐最优演奏版本，告诉你听什么最正确，让欣赏事半功倍。</p><p>【108期主课】＋【108期小课堂】＝216期古典乐上瘾指南</p><p></p><p><span style="font-weight: bold;">— 你将获得 —</span></p><p>知识：一个欧洲古典音乐知识体系和必知的音乐小知识</p><p>欣赏技能：拥有听懂古典音乐的能力</p><p>修养提升：提高音乐修养，也是日常生活里有趣的放松</p><p>曲单：版本最佳、最值得听名曲曲单</p><p></p><p><span style="font-weight: bold;">— 适合谁听 —</span></p><p>▶想入门的小白：想听古典乐，却不知道如何开始的人</p><p>▶音乐爱好者：对古典音乐有兴趣，但总觉得听不懂的人</p><p>▶求知者：扩展知识面，希望通过简单的方式，学习古典音乐知识的人</p><p>▶自我提升者：想给自己建立古典音乐知识体系</p><p></p><h2><a href="https://m.douban.com/time/column/99/?dt_time_source=dairy-dbsj" rel="nofollow"><span style="font-weight: bold;">点击链接 即可试听和订阅→《古典音乐的奇幻之旅》</span></a></h2><p><span style="font-weight: bold;">特别福利：给专栏留言，即有机会获赠中国国家大剧院演出票，详情请点击专栏页面</span></p><p><span style="font-weight: bold;">小贴士：关注豆瓣时间公众号【doubantime】回复【福利】可获得全场通用优惠券</span></p><p></p><p></p></div>
+                                        
+                                
+                                    <div class="mod-tags">
+                                            <a href="https://www.douban.com/channel/30169229" target="_blank">音乐</a>
+                                            <a href="https://www.douban.com/channel/30169576" target="_blank">情感</a>
+                                            <a href="https://www.douban.com/channel/30168795" target="_blank">人生</a>
+                                            <a href="https://www.douban.com/channel/30168783" target="_blank">思想</a>
+                                    </div>
+                            
+                                        <div id="link-report_note">
+                                        </div>
+                                          
+                              <div class="copyright-claim original">
+                                <p>&copy; 本文版权归 <a href="https://www.douban.com/people/douban-time/">豆瓣时间</a> 所有，任何形式转载请联系作者。</p>
+                                <p>&copy; <a href="https://help.douban.com/diary?app=main#t2-qs" target="_blank">了解版权计划</a></p>
+                              </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-9"></div>
+                                    <div class="col-lg-3">
+                                        <div class="text-danger" style="margin-left: 75px;margin-right: 20px;display: inline-block">👍 点赞数23</div>
+                                        <div class="text-success" style="margin-right: 10px;display: inline-block">📌 转发量20</div>
+                                    </div>
+                                </div>
+                                <hr style="margin-top: 30px;height:2px;border: 0px;background-color: #ddd">
+                                <div id="comments" class="">
+                                        <div class="comment-item" id="54046973" data-cid="54046973" data-target_id="673644060" data-target_kind="1015">
+    
+                                                <div class="pic">
+                                                    <a href="https://www.douban.com/people/154263428/"><img width="48" height="48" class="" src="https://img3.doubanio.com/icon/u154263428-1.jpg" alt="语翎"></a>
+                                                </div>
+                                                <div class="content report-comment">
+                                                    <div class="author">
+                                                        <span class="">2018-06-15 11:48:19</span>
+                                                        <a href="https://www.douban.com/people/154263428/" class="  ">语翎</a> 
+                                                    </div>
+                                            
+                                                    
+                                                    <p class="">音乐，和所有的艺术，都可以成为苦难岁月中的灵魂救赎，那就像一道圣洁美好的光，照进黑暗的角落。</p>
+                                            
+                                                    <div class="op-lnks">
+                                                    
+                                                      <a href="https://www.douban.com/doubanapp/" class="comment-source" target="_blank">来自豆瓣App</a>
+                                            
+                                                    <a href="?cid=54046973#add_comment" class="lnk-reply hidden">回应</a>
+                                            
+                                                    <a rel="nofollow" href="https://www.douban.com/note/673644060/remove_comment?start=0&amp;cid=54046973&amp;ck=None" class="j a_confirm_link lnk-delete lnk-delete-54046973 hidden" title="删除语翎的留言?">删除</a>
+                                            
+                                                    <a rel="nofollow" href="https://www.douban.com/misc/remove_comment?kind=1015&amp;target_id=673644060&amp;start=0&amp;cid=54046973&amp;ck=None" class="j a_confirm_link lnk-admin-delete lnk-admin-delete-54046973 hidden" title="删除语翎的留言?">删除</a>
+                                            
+                                                    </div>
+                                            
+                                                    <div class="group_banned">
+                                                        <span class="gact hidden p_u154263428 p_admin p_intern fright">&gt;
+                                                            <a rel="nofollow" href="https://www.douban.com/note/673644060/remove_comment?cid=54046973" class="j a_confirm_link" title="删除语翎的发言?">删除</a>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <div class="comment-item" id="54048625" data-cid="54048625" data-target_id="673644060" data-target_kind="1015">
+    
+                                                <div class="pic">
+                                                    <a href="https://www.douban.com/people/43867587/"><img width="48" height="48" class="" src="https://img1.doubanio.com/icon/u43867587-69.jpg" alt="e大萌萌"></a>
+                                                </div>
+                                                <div class="content report-comment">
+                                                    <div class="author">
+                                                        <span class="">2018-06-15 14:45:53</span>
+                                                        <a href="https://www.douban.com/people/43867587/" class="  ">e大萌萌</a>  (less is more.)
+                                                    </div>
+                                            
+                                                    
+                                                    <p class="">你现在学习这些，以后痛苦的时候，音乐可以安慰你。绘画也是~但是我都没有学，只求文字和舞蹈可以救赎~</p>
+                                            
+                                                    <div class="op-lnks">
+                                                    
+                                            
+                                                    <a href="?cid=54048625#add_comment" class="lnk-reply hidden">回应</a>
+                                            
+                                                    <a rel="nofollow" href="https://www.douban.com/note/673644060/remove_comment?start=0&amp;cid=54048625&amp;ck=None" class="j a_confirm_link lnk-delete lnk-delete-54048625 hidden" title="删除e大萌萌的留言?">删除</a>
+                                            
+                                                    <a rel="nofollow" href="https://www.douban.com/misc/remove_comment?kind=1015&amp;target_id=673644060&amp;start=0&amp;cid=54048625&amp;ck=None" class="j a_confirm_link lnk-admin-delete lnk-admin-delete-54048625 hidden" title="删除e大萌萌的留言?">删除</a>
+                                            
+                                                    </div>
+                                            
+                                                    <div class="group_banned">
+                                                        <span class="gact hidden p_u43867587 p_admin p_intern fright">&gt;
+                                                            <a rel="nofollow" href="https://www.douban.com/note/673644060/remove_comment?cid=54048625" class="j a_confirm_link" title="删除e大萌萌的发言?">删除</a>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <div class="comment-item" id="54052254" data-cid="54052254" data-target_id="673644060" data-target_kind="1015">
+    
+                                                <div class="pic">
+                                                    <a href="https://www.douban.com/people/152989618/"><img width="48" height="48" class="" src="https://img3.doubanio.com/icon/u152989618-1.jpg" alt="锦夜"></a>
+                                                </div>
+                                                <div class="content report-comment">
+                                                    <div class="author">
+                                                        <span class="">2018-06-15 19:43:22</span>
+                                                        <a href="https://www.douban.com/people/152989618/" class="  ">锦夜</a> 
+                                                    </div>
+                                            
+                                                    
+                                                    <p class="">版权归作者所有，任何形式转载请联系作者。<br>作者：豆瓣时间（来自豆瓣）<br>来源：<a href="https://www.douban.com/link2/?url=https%3A%2F%2Fwww.douban.com%2Fdoubanapp%2Fdispatch%3Furi%3D%2Fnote%2F673644060%2F">https://www.douban.c<wbr>om/doubanapp/dispatc<wbr>h?uri=/note/67364406<wbr>0/</a><br><br>世界上有那么多美好的事物，每首歌后面的那个辽阔世界，被我们窥见一角。世界上有那么多的好事，都可能与你有关，但这一切的前提，是，你要做好了准备：做一个尽可能丰富的人，做一个尽可能投入的人，去爱，去感受，去表达，去生活得更多。<br>很喜欢这段话，想复制分享一下！😁</p>
+                                            
+                                                    <div class="op-lnks">
+                                                    
+                                                      <a href="https://www.douban.com/doubanapp/" class="comment-source" target="_blank">来自豆瓣App</a>
+                                            
+                                                    <a href="?cid=54052254#add_comment" class="lnk-reply hidden">回应</a>
+                                            
+                                                    <a rel="nofollow" href="https://www.douban.com/note/673644060/remove_comment?start=0&amp;cid=54052254&amp;ck=None" class="j a_confirm_link lnk-delete lnk-delete-54052254 hidden" title="删除锦夜的留言?">删除</a>
+                                            
+                                                    <a rel="nofollow" href="https://www.douban.com/misc/remove_comment?kind=1015&amp;target_id=673644060&amp;start=0&amp;cid=54052254&amp;ck=None" class="j a_confirm_link lnk-admin-delete lnk-admin-delete-54052254 hidden" title="删除锦夜的留言?">删除</a>
+                                            
+                                                    </div>
+                                            
+                                                    <div class="group_banned">
+                                                        <span class="gact hidden p_u152989618 p_admin p_intern fright">&gt;
+                                                            <a rel="nofollow" href="https://www.douban.com/note/673644060/remove_comment?cid=54052254" class="j a_confirm_link" title="删除锦夜的发言?">删除</a>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <div class="comment-item" id="54063441" data-cid="54063441" data-target_id="673644060" data-target_kind="1015">
+    
+                                                <div class="pic">
+                                                    <a href="https://www.douban.com/people/122310507/"><img width="48" height="48" class="" src="https://img3.doubanio.com/icon/u122310507-3.jpg" alt="深海小豚鼠"></a>
+                                                </div>
+                                                <div class="content report-comment">
+                                                    <div class="author">
+                                                        <span class="">2018-06-17 00:34:46</span>
+                                                        <a href="https://www.douban.com/people/122310507/" class="  ">深海小豚鼠</a> 
+                                                    </div>
+                                            
+                                                    
+                                                    <p class="">好久不见“今日热点”</p>
+                                            
+                                                    <div class="op-lnks">
+                                                    
+                                                      <a href="https://www.douban.com/doubanapp/" class="comment-source" target="_blank">来自豆瓣App</a>
+                                            
+                                                    <a href="?cid=54063441#add_comment" class="lnk-reply hidden">回应</a>
+                                            
+                                                    <a rel="nofollow" href="https://www.douban.com/note/673644060/remove_comment?start=0&amp;cid=54063441&amp;ck=None" class="j a_confirm_link lnk-delete lnk-delete-54063441 hidden" title="删除深海小豚鼠的留言?">删除</a>
+                                            
+                                                    <a rel="nofollow" href="https://www.douban.com/misc/remove_comment?kind=1015&amp;target_id=673644060&amp;start=0&amp;cid=54063441&amp;ck=None" class="j a_confirm_link lnk-admin-delete lnk-admin-delete-54063441 hidden" title="删除深海小豚鼠的留言?">删除</a>
+                                            
+                                                    </div>
+                                            
+                                                    <div class="group_banned">
+                                                        <span class="gact hidden p_u122310507 p_admin p_intern fright">&gt;
+                                                            <a rel="nofollow" href="https://www.douban.com/note/673644060/remove_comment?cid=54063441" class="j a_confirm_link" title="删除深海小豚鼠的发言?">删除</a>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <div class="comment-item" id="54063446" data-cid="54063446" data-target_id="673644060" data-target_kind="1015">
+    
+                                                <div class="pic">
+                                                    <a href="https://www.douban.com/people/122310507/"><img width="48" height="48" class="" src="https://img3.doubanio.com/icon/u122310507-3.jpg" alt="深海小豚鼠"></a>
+                                                </div>
+                                                <div class="content report-comment">
+                                                    <div class="author">
+                                                        <span class="">2018-06-17 00:35:15</span>
+                                                        <a href="https://www.douban.com/people/122310507/" class="  ">深海小豚鼠</a> 
+                                                    </div>
+                                            
+                                                    
+                                                    <p class="">还以为作者是陈思诚～</p>
+                                            
+                                                    <div class="op-lnks">
+                                                    
+                                                      <a href="https://www.douban.com/doubanapp/" class="comment-source" target="_blank">来自豆瓣App</a>
+                                            
+                                                    <a href="?cid=54063446#add_comment" class="lnk-reply hidden">回应</a>
+                                            
+                                                    <a rel="nofollow" href="https://www.douban.com/note/673644060/remove_comment?start=0&amp;cid=54063446&amp;ck=None" class="j a_confirm_link lnk-delete lnk-delete-54063446 hidden" title="删除深海小豚鼠的留言?">删除</a>
+                                            
+                                                    <a rel="nofollow" href="https://www.douban.com/misc/remove_comment?kind=1015&amp;target_id=673644060&amp;start=0&amp;cid=54063446&amp;ck=None" class="j a_confirm_link lnk-admin-delete lnk-admin-delete-54063446 hidden" title="删除深海小豚鼠的留言?">删除</a>
+                                            
+                                                    </div>
+                                            
+                                                    <div class="group_banned">
+                                                        <span class="gact hidden p_u122310507 p_admin p_intern fright">&gt;
+                                                            <a rel="nofollow" href="https://www.douban.com/note/673644060/remove_comment?cid=54063446" class="j a_confirm_link" title="删除深海小豚鼠的发言?">删除</a>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <div class="comment-item" id="54063836" data-cid="54063836" data-target_id="673644060" data-target_kind="1015">
+    
+                                                <div class="pic">
+                                                    <a href="https://www.douban.com/people/katexia/"><img width="48" height="48" class="" src="https://img1.doubanio.com/icon/u1808845-117.jpg" alt="六如石"></a>
+                                                </div>
+                                                <div class="content report-comment">
+                                                    <div class="author">
+                                                        <span class="">2018-06-17 02:04:18</span>
+                                                        <a href="https://www.douban.com/people/katexia/" class="  ">六如石</a>  (一切有为法，如梦幻泡影)
+                                                    </div>
+                                            
+                                                    
+                                                    <p class="">小时候家里没多少钱，住在筒子楼，爸妈还是不知从哪淘弄来一台二手钢琴，比标准的短一截。从此天天被爸爸逼着练钢琴，有时也是一边哭一边练，虽然后来并没有坚持下来，也没练得多好。不过前年我妈妈去世了，感觉生活天翻地覆，美好时光一下子就结束了，过得一直很颓废。最近老公买回个手卷钢琴，有时就翻出童年的旧谱子对着练，会假装以前爸爸妈妈都在，我坐在那里叮叮咚咚练琴的时光又回来了。哎，幸福没有了，在琴声里假装幸福一会儿也是好的。</p>
+                                            
+                                                    <div class="op-lnks">
+                                                    
+                                                      <a href="https://www.douban.com/doubanapp/" class="comment-source" target="_blank">来自豆瓣App</a>
+                                            
+                                                    <a href="?cid=54063836#add_comment" class="lnk-reply hidden">回应</a>
+                                            
+                                                    <a rel="nofollow" href="https://www.douban.com/note/673644060/remove_comment?start=0&amp;cid=54063836&amp;ck=None" class="j a_confirm_link lnk-delete lnk-delete-54063836 hidden" title="删除六如石的留言?">删除</a>
+                                            
+                                                    <a rel="nofollow" href="https://www.douban.com/misc/remove_comment?kind=1015&amp;target_id=673644060&amp;start=0&amp;cid=54063836&amp;ck=None" class="j a_confirm_link lnk-admin-delete lnk-admin-delete-54063836 hidden" title="删除六如石的留言?">删除</a>
+                                            
+                                                    </div>
+                                            
+                                                    <div class="group_banned">
+                                                        <span class="gact hidden p_u1808845 p_admin p_intern fright">&gt;
+                                                            <a rel="nofollow" href="https://www.douban.com/note/673644060/remove_comment?cid=54063836" class="j a_confirm_link" title="删除六如石的发言?">删除</a>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                </div> 
+                        </div>
+                        <!-- <div class="panel-footer">
+                        </div> -->
+                    </div>
+          		</div>
+            </div>
+			
+		</section><!--/wrapper -->
+      </section><!-- /MAIN CONTENT -->
+
+      <!--main content end-->
+      <!--footer start-->
+      <footer class="site-footer">
+          <div class="text-center">
+              2018 - <a href="http://www.xjtu.edu.cn" target="_blank" title="西安交通大学">西安交通大学</a> - <a href="http://www.xjtu.edu.cn" title="social mind" target="_blank">social mind舆情分析平台</a>
+              <a href="#" class="go-top">
+                  <i class="fa fa-angle-up"></i>
+              </a>
+          </div>
+      </footer>
+      <!--footer end-->
+  </section>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script>
+    <script src="{% static 'backgroundfiles/assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'backgroundfiles/assets/js/jquery-ui-1.9.2.custom.min.js' %}"></script>
+    <script src="{% static 'backgroundfiles/assets/js/jquery.ui.touch-punch.min.js' %}"></script>
+    <script class="include" type="text/javascript" src="{% static 'backgroundfiles/assets/js/jquery.dcjqaccordion.2.7.js' %}"></script>
+    <script src="{% static 'backgroundfiles/assets/js/jquery.scrollTo.min.js' %}"></script>
+    <script src="{% static 'backgroundfiles/assets/js/jquery.nicescroll.js' %}" type="text/javascript"></script>
+
+
+    <!--common script for all pages-->
+    <script src="{% static 'backgroundfiles/assets/js/common-scripts.js' %}"></script>
+
+    <!--script for this page-->
+    
+  <script>
+      //custom select box
+
+      $(function(){
+          $('select.styled').customSelect();
+      });
+
+  </script>
+
+  </body>
+</html>
