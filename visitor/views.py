@@ -26,6 +26,7 @@ def login(request):
                    request.session['is_login'] = True
                    request.session['user_id'] = user.pk
                    request.session['user_name'] = user.username
+                   request.session['user_type'] = user.usertype
                    if user_type == "个人用户":
                        return redirect('person_index')
                    if user_type == "企业用户":
@@ -78,9 +79,10 @@ def govcom_index(request):
 def test(request):
     return render(request, 'foreground/signin.html')
 def fileSearch(request):
-    return render(request, 'foreground/fileSearch.html')
+    role = request.session["user_type"]
+    return render(request, 'foreground/fileSearch.html', {"role": role})
 def eventSearch(request):
-    role = request.GET.get("role")
+    role = request.session["user_type"]
     return render(request, 'foreground/eventSearch.html', {"role": role})
 
 def signin(request):
@@ -140,22 +142,23 @@ def get_address(request):
 def competitive_products(request):
     return render(request, 'foreground/competitive_products.html')
 
-
-
 def events(request):
     head = request.GET
     messageDic = {"type": head["type"], "role": head["role"]}
     return render(request, 'foreground/events.html', messageDic)
 
 def profile(request):
-    userid = request.session["userid"]
-    return render(request, 'foreground/profile.html', {"userid": userid})
+    userid = request.session["user_id"]
+    role = request.session["user_type"]
+    return render(request, 'foreground/profile.html', {"userid": userid, "role": role})
 
 def eventparticular(request):
-    return render(request, 'foreground/particular.html')
+    role = request.session["user_type"]
+    return render(request, 'foreground/particular.html', {"role": role})
 
 def fileParticular(request):
-    return render(request, 'foreground/file.html')
+    role = request.session["user_type"]
+    return render(request, 'foreground/file.html', {"role": role})
 
 @csrf_exempt
 def checkuser(request):

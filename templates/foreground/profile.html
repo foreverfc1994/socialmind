@@ -1,656 +1,274 @@
 {% load staticfiles %}
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html>
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Dashboard">
-    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>social mind 舆情分析平台</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
 
-    <title>social mind舆情分析平台</title>
-
-    <script src="{% static 'assets0/layui/layui.js' %}"></script>    <link href="{% static 'assets0/css/bootstrap.css' %}" rel="stylesheet">
-    <!--external css-->
-    <link href="{% static 'assets0/font-awesome/css/font-awesome.css' %}" rel="stylesheet" />
+    <script src="{% static 'assets0/layui/layui.js' %}"></script>
+    <link href="{% static 'assets0/css/bootstrap.css' %}" rel="stylesheet">
+    <!--external css -->
+    <link href="{% static 'assets0/font-awesome/css/font-awesome.css' %}" rel="stylesheet"/>
     <!-- Custom styles for this template -->
     <link href="{% static 'assets0/css/style.css' %}" rel="stylesheet">
-
-
+    <link href="{% static 'assets0/css/style-responsive.css' %}" rel="stylesheet">
+    <link href="{% static 'assets0/dataTable/css/jquery.dataTables.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets0/layui/css/layui.css' %}" media="all">
     <script src="{% static 'assets0/js/chart-master/Chart.js' %}"></script>
-
+    <script src="{% static 'assets0/js/echarts.js' %}"></script>
+    <script src="{% static 'assets0/js/wordcloud2.js' %}"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
-<body>
-    <section id="container" >
-    <!-- **********************************************************************************************************************************************************
-    TOP BAR CONTENT & NOTIFICATIONS
-    *********************************************************************************************************************************************************** -->
-    <!--header start-->
-    <header class="header black-bg">
-        <a href="com_index.html" class="logo"><b>social mind舆情管理平台</b></a>
-        <a class="logo"><b>&nbsp; &nbsp; &nbsp; >&nbsp; &nbsp; &nbsp; 个人中心</b></a>
-        <div class="top-menu">
-            <ul class="nav pull-right top-menu">
-                <li><a class="logout" href="login.html">登出</a></li>
-            </ul>
-        </div>
-    </header>
-    <!--header end-->
+    <style>
+        .icon-signal {
+            background-position: -408px 0
+        }
 
-    <!-- **********************************************************************************************************************************************************
-    MAIN SIDEBAR MENU
-    *********************************************************************************************************************************************************** -->
-    <!--sidebar start-->
-    <aside>
-        <div id="sidebar"  class="nav-collapse ">
-            <!-- sidebar menu start-->
-            <ul class="sidebar-menu" id="nav-accordion">
+        span.icon {
+            border-right: 1px solid #cdcdcd;
+            padding: 9px 10px 7px 11px;
+            float: left;
+            opacity: .7;
+        }
 
-                <p class="centered"><a href="/profile/"><img src="{% static 'assets0/img/friends/fr-09.jpg' %}" class="img-circle" width="60"></a></p>
-                <h5 class="centered">访客您好</h5>
+        .r4_counter {
+            min-height: 100px;
+            margin-bottom: 15px;
+            border-radius: 7px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease-in-out;
+            background: #ffffff;
+            -webkit-box-shadow: 0 2px 28px rgba(0, 0, 0, .1);
+            box-shadow: 0 2px 28px rgba(0, 0, 0, .1);
+        }
 
-                <li class="mt">
-                    <a href="/index/">
-                        <i class="fa fa-dashboard"></i>
-                        <span>首页</span>
-                    </a>
-                </li>
+        .r4_counter .stats {
+            margin-left: 50px;
+        }
 
-                <li class="sub-menu">
-                    <a href="/heatIndex/">
-                        <i class="fa fa-dashboard"></i>
-                        <span>热度指标</span>
-                    </a>
-                </li>
+        .ico-icon {
+            position: relative;
+        }
 
-                <li class="sub-menu">
-                    <a  href="/emotionMap/" >
-                        <i class="fa fa-desktop"></i>
-                        <span>情绪地图</span>
-                    </a>
+        .ico-icon-w {
+            position: absolute;
+            top: 0;
+            left: 0
+        }
 
-                </li>
+        .ico-icon-w,
+        .r4_counter:hover .ico-icon .ico-icon-w {
+            visibility: hidden;
+        }
 
-                <li class="sub-menu">
-                    <a href="/informationMonitor/" >
-                        <i class="fa fa-cogs"></i>
-                        <span>信息监测</span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a href="/fullTextMonitor/" >
-                        <i class="fa fa-book"></i>
-                        <span>全文检索</span>
-                    </a>
-                </li>
-                <li  class="sub-menu">
-                    <a href="/events/" >
-                        <i class="fa fa-tasks"></i>
-                        <span>全网事件分析</span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a href="/reportMaker/" >
-                        <i class="fa fa-th"></i>
-                        <span>简报制作</span>
-                    </a>
-                </li>
-            </ul>
-            <!-- sidebar menu end-->
-        </div>
-    </aside>
+        .r4_counter:hover .ico-icon .ico-icon-w {
+            visibility: visible;
+        }
 
-    <section id="main-content">
-        <section class="wrapper">
-            <div class="col-lg-9 main-chart">
+        .r4_counter.has-gradient-to-right-bottom .stats span {
+            color: #f7f7f7;
+        }
 
-                <div id="morris">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="content-panel">
-                                <h2 class="centered" style="float: left; width: 100%;"> &nbsp; &nbsp;个人资料</h2><br>
-                                <!--表格参照：http://www.cnblogs.com/landeanfen/p/4976838.html-->
-                                <div class="panel-body person_block">
-                                    <span class="person_span">
-                                        <img src="{% static 'assets0/img/friends/fr-09.jpg' %}" width="120">
-                                    </span>
-                                    <span class="person_span">
-                                        <ul>
-                                            <li>用户名：xxx</li><br>
-                                            <li>用户类别：个人用户</li><br>
-                                            <li>邮箱：xxx@stu.xjtu.edu.cn</li><br>
-                                        </ul>
-                                    </span>
-                                    <span class="person_span">
-                                        <ul>
-                                            <li>性别：男</li><br>
-                                            <li>手机号：110</li><br>
-                                            <li>注册时间：2018-01-01</li><br>
-                                        </ul>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 mt">
-                            <div class="content-panel">
-                                <h3 style="float: left; width: 100%;"> &nbsp; &nbsp; 统计概况</h3>
-                                <div class="panel-body">
-                                    <div class="boxes" >
-                                        <div id="statistics00" style="width: 18%; margin-left:2%; float: left">
-                                            <div class="pic" style="position: relative; width: 200px; height: 200px;">
-                                                <canvas id="serverstatus10" style="width: 40px; height: 40px;"></canvas>
-                                                <script>
-                                                    var config = {
-                                                        type: 'doughnut',
-                                                        data:{
-                                                            datasets:[{
-                                                                data:[
-                                                                    70,
-                                                                    300,
-                                                                ],
-                                                                backgroundColor:[
-                                                                    "#FFA500",
-                                                                    "#666666",
-                                                                ],
-                                                                borderWidth: [0.1, 0.1],
-                                                            }],
-                                                            labels:[
-                                                                "我的收藏量：",
-                                                                "未收藏事件总数："
-                                                            ],
-                                                        },
-                                                        options:{
-                                                            cutoutPercentage: 60,
-                                                            responsive: true,
-                                                            legend:{
-                                                                display: true,
-                                                                position: "bottom",
-                                                            },
-                                                            title: {
-                                                                display: true,
-                                                                fontSize: 15,
-                                                                fontColor: "#000000",
-                                                                text: "我的收藏量",
-                                                            },
-                                                            animation:{
-                                                                animateScale: true,
-                                                                animateRoatae: true
-                                                            }
-                                                        }
-                                                    };
-                                                    var myDoughnut = new Chart(document.getElementById("serverstatus10").getContext("2d"), config);
-                                                </script>
-                                            </div>
-                                        </div>
-                                        <div id="statistics01" style="width: 18%; margin-left:2%; float: left">
-                                            <div class="pic" style="position: relative; width: 200px; height: 200px;">
-                                                <canvas id="serverstatus11" style="width: 40px; height: 40px;"></canvas>
-                                                <script>
-                                                    var config = {
-                                                        type: 'doughnut',
-                                                        data:{
-                                                            datasets:[{
-                                                                data:[
-                                                                    120,
-                                                                    1000,
-                                                                ],
-                                                                backgroundColor:[
-                                                                    "#FFA500",
-                                                                    "#666666",
-                                                                ],
-                                                            }],
-                                                            labels:[
-                                                                "我的浏览量：",
-                                                                "未浏览的对象总数：",
-                                                            ],
-                                                        },
-                                                        options:{
-                                                            cutoutPercentage: 60,
-                                                            responsive: true,
-                                                            legend:{
-                                                                display: true,
-                                                                position: "bottom",
-                                                            },
-                                                            title: {
-                                                                display: true,
-                                                                fontSize: 15,
-                                                                fontColor: "#000000",
-                                                                text: "我的浏览量",
-                                                            },
-                                                            animation:{
-                                                                animateScale: true,
-                                                                animateRoatae: true
-                                                            }
-                                                        }
-                                                    };
-                                                    var myDoughnut = new Chart(document.getElementById("serverstatus11").getContext("2d"), config);
-                                                </script>
-                                            </div>
-                                        </div>
-                                        <div id="statistics02" style="width: 18%; margin-left:2%; float: left">
-                                            <div class="pic" style="position: relative; width: 200px; height: 200px;">
-                                                <canvas id="serverstatus12" height="40px" width="40px"></canvas>
-                                                <script>
-                                                    var config = {
-                                                        type: 'doughnut',
-                                                        data:{
-                                                            datasets:[{
-                                                                data:[
-                                                                    48,
-                                                                    133,
-                                                                ],
-                                                                backgroundColor:[
-                                                                    "#FFA500",
-                                                                    "#666666",
-                                                                ],
-                                                            }],
-                                                            labels:[
-                                                                "我的点赞量：",
-                                                                "未点赞的事件总数：",
-                                                            ],
-                                                        },
-                                                        options:{
-                                                            cutoutPercentage: 60,
-                                                            responsive: true,
-                                                            legend:{
-                                                                display: true,
-                                                                position: "bottom",
-                                                            },
-                                                            title: {
-                                                                display: true,
-                                                                fontSize: 15,
-                                                                fontColor: "#000000",
-                                                                text: "我的点赞量",
-                                                            },
-                                                            animation:{
-                                                                animateScale: true,
-                                                                animateRoatae: true
-                                                            }
-                                                        }
-                                                    };
-                                                    var myDoughnut = new Chart(document.getElementById("serverstatus12").getContext("2d"), config);
-                                                </script>
-                                            </div>
-                                        </div>
-                                        <div id="statistics03" style="width: 18%; margin-left:2%; float: left">
-                                            <div class="pic" style="position: relative; width: 200px; height: 200px;">
-                                                <canvas id="serverstatus13" height="40px" width="40px"></canvas>
-                                                <script>
-                                                    var config = {
-                                                        type: 'doughnut',
-                                                        data:{
-                                                            datasets:[{
-                                                                data:[
-                                                                    200,
-                                                                    12245,
-                                                                ],
-                                                                backgroundColor:[
-                                                                    "#FFA500",
-                                                                    "#666666",
-                                                                ],
-                                                            }],
-                                                            labels:[
-                                                                "我的评论量：",
-                                                                "未评论的事件总数：",
-                                                            ],
-                                                        },
-                                                        options:{
-                                                            cutoutPercentage: 60,
-                                                            responsive: true,
-                                                            legend:{
-                                                                display: true,
-                                                                position: "bottom",
-                                                            },
-                                                            title: {
-                                                                display: true,
-                                                                fontSize: 15,
-                                                                fontColor: "#000000",
-                                                                text: "我的评论量",
-                                                            },
-                                                            animation:{
-                                                                animateScale: true,
-                                                                animateRoatae: true
-                                                            }
-                                                        }
-                                                    };
-                                                    var myDoughnut = new Chart(document.getElementById("serverstatus13").getContext("2d"), config);
-                                                </script>
-                                            </div>
-                                        </div>
-                                        <div id="statistics04" style="width: 18%; margin-left:2%; float: left">
-                                            <div class="pic" style="position: relative; width: 200px; height: 200px;">
-                                                <canvas id="serverstatus14" height="40px" width="40px"></canvas>
-                                                <script>
-                                                    var config = {
-                                                        type: 'doughnut',
-                                                        data:{
-                                                            datasets:[{
-                                                                data:[
-                                                                    210,
-                                                                    198,
-                                                                ],
-                                                                backgroundColor:[
-                                                                    "#FFA500",
-                                                                    "#666666",
-                                                                ],
-                                                            }],
-                                                            labels:[
-                                                                "我认为真：",
-                                                                "我认为假：",
-                                                            ],
-                                                        },
-                                                        options:{
-                                                            cutoutPercentage: 60,
-                                                            responsive: true,
-                                                            legend:{
-                                                                display: true,
-                                                                position: "bottom",
-                                                            },
-                                                            title: {
-                                                                display: true,
-                                                                fontSize: 15,
-                                                                fontColor: "#000000",
-                                                                text: "我的判定",
-                                                            },
-                                                            animation:{
-                                                                animateScale: true,
-                                                                animateRoatae: true
-                                                            }
-                                                        }
-                                                    };
-                                                    var myDoughnut = new Chart(document.getElementById("serverstatus14").getContext("2d"), config);
-                                                </script>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mt">
-                         <div class="col-lg-6">
-                             <div class="content-panel">
-                                 <h4 style="float: left">我的收藏</h4>
-                                 <div class="funcInIndex">
-                                     <button type="button" class="btn btn-warning" style="font-size: 10px; margin-right: 15px;">更多...</button>
-                                 </div>
-                                 <div class="panel-body">
-                                     <div id="myCollection" class="graph">
-                                         <table class="table">
-                                             <thead>
-                                             <tr>
-                                                 <th style="width: 15%;">序号</th>
-                                                 <th style="width: 65%;">收藏内容</th>
-                                                 <th style="width: 20%;">管理</th>
-                                             </tr>
-                                             </thead>
-                                             <tbody>
-                                             <tr>
-                                                 <td>1</td>
-                                                 <td>一个很长很长很长很长很长的文本，很长很长</td>
-                                                 <td><button type="button" class="btn btn-warning" style="font-size: 8px;">删除</button></td>
-                                             </tr>
-                                             <tr>
-                                                 <td>2</td>
-                                                 <td>短</td>
-                                                 <td><button type="button" class="btn btn-warning" style="font-size: 8px;">删除</button></td>
-                                             </tr>
-                                             <tr>
-                                                 <td>3</td>
-                                                 <td>正常文本</td>
-                                                 <td><button type="button" class="btn btn-warning" style="font-size: 8px;">删除</button></td>
-                                             </tr>
-                                             </tbody>
-                                         </table>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                         <div class="col-lg-6">
-                             <div class="content-panel">
-                                 <h4 style="float: left">我的浏览历史</h4>
-                                 <div class="funcInIndex">
-                                     <button type="button" class="btn btn-warning" style="font-size: 10px; margin-right: 15px;">更多...</button>
-                                 </div>
-                                 <div class="panel-body">
-                                     <div id="browseHistory" class="graph">
-                                         <table class="table">
-                                             <thead>
-                                             <tr>
-                                                 <th style="width: 15%;">序号</th>
-                                                 <th style="width: 65%;">浏览内容</th>
-                                                 <th style="width: 20%;">操作</th>
+        .r4_counter.has-gradient-to-right-bottom,
+        .r4_counter:hover {
+            -webkit-box-shadow: 0 1px 28px rgba(255, 152, 0, .66);
+            box-shadow: 0 1px 28px rgba(255, 152, 0, .66);
+            cursor: pointer;
+        }
 
-                                             </tr>
-                                             </thead>
-                                             <tbody>
-                                             <tr>
-                                                 <td>1</td>
-                                                 <td>一个很长很长很长很长很长的文本，很长很长</td>
-                                                 <td><button type="button" class="btn btn-warning" style="font-size: 8px;">详情</button></td>
-                                             </tr>
-                                             <tr>
-                                                 <td>2</td>
-                                                 <td>短</td>
-                                                 <td><button type="button" class="btn btn-warning" style="font-size: 8px;">详情</button></td>
-                                             </tr>
-                                             <tr>
-                                                 <td>3</td>
-                                                 <td>正常文本</td>
-                                                 <td><button type="button" class="btn btn-warning" style="font-size: 8px;">详情</button></td>
-                                             </tr>
-                                             </tbody>
-                                         </table>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                    </div>
-                    <div class="row mt">
-                         <div class="col-lg-6">
-                             <div class="content-panel">
-                                 <h4 style="float: left">我的点赞</h4>
-                                 <div class="funcInIndex">
-                                     <button type="button" class="btn btn-warning" style="font-size: 10px; margin-right: 15px;">更多...</button>
-                                 </div>
-                                 <div class="panel-body">
-                                     <div id="myCollection" class="graph">
-                                         <table class="table">
-                                             <thead>
-                                             <tr>
-                                                 <th style="width: 15%;">序号</th>
-                                                 <th style="width: 65%;">点赞内容</th>
-                                                 <th style="width: 20%;">管理</th>
-                                             </tr>
-                                             </thead>
-                                             <tbody>
-                                             <tr>
-                                                 <td>1</td>
-                                                 <td>一个很长很长很长很长很长的文本，很长很长</td>
-                                                 <td><button type="button" class="btn btn-warning" style="font-size: 8px;">撤回</button></td>
-                                                 <td><button type="button" class="btn btn-warning" style="font-size: 8px;">详情</button></td>
-                                             </tr>
-                                             <tr>
-                                                 <td>2</td>
-                                                 <td>短</td>
-                                                 <td><button type="button" class="btn btn-warning" style="font-size: 8px;">撤回</button></td>
-                                                 <td><button type="button" class="btn btn-warning" style="font-size: 8px;">详情</button></td>
-                                             </tr>
-                                             <tr>
-                                                 <td>3</td>
-                                                 <td>正常文本</td>
-                                                 <td><button type="button" class="btn btn-warning" style="font-size: 8px;">撤回</button></td>
-                                                 <td><button type="button" class="btn btn-warning" style="font-size: 8px;">详情</button></td>
-                                             </tr>
-                                             </tbody>
-                                         </table>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                         <div class="col-lg-6">
-                             <div class="content-panel">
-                                 <h4 style="float: left">我的评论</h4>
-                                 <div class="funcInIndex">
-                                     <button type="button" class="btn btn-warning" style="font-size: 10px; margin-right: 15px;">更多...</button>
-                                 </div>
-                                 <div class="panel-body">
-                                     <div id="browseHistory" class="graph">
-                                         <table class="table">
-                                             <thead>
-                                             <tr>
-                                                 <th style="width: 15%;">序号</th>
-                                                 <th style="width: 65%;">事件名称</th>
-                                                 <th style="width: 20%;">操作</th>
+        .r4_counter:hover {
+            background-image: linear-gradient(to right bottom, #e8962e, #e45131) !important;
+        }
 
-                                             </tr>
-                                             </thead>
-                                             <tbody>
-                                             <tr>
-                                                 <td>1</td>
-                                                 <td>一个很长很长很长很长很长的文本，很长很长</td>
-                                                 <td><button type="button" class="btn btn-warning" style="font-size: 8px;">详情</button></td>
-                                             </tr>
-                                             <tr>
-                                                 <td>2</td>
-                                                 <td>短</td>
-                                                 <td><button type="button" class="btn btn-warning" style="font-size: 8px;">详情</button></td>
-                                             </tr>
-                                             <tr>
-                                                 <td>3</td>
-                                                 <td>正常文本</td>
-                                                 <td><button type="button" class="btn btn-warning" style="font-size: 8px;">详情</button></td>
-                                             </tr>
-                                             </tbody>
-                                         </table>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                    </div>
-                    <div class="row mt">
-                         <div class="col-lg-6">
-                             <div class="content-panel">
-                                 <h4 style="float: left">真假事件</h4>
-                                 <div class="funcInIndex">
-                                     <button type="button" class="btn btn-warning" style="font-size: 10px; margin-right: 15px;">更多...</button>
-                                 </div>
-                                 <div class="panel-body">
-                                     <div id="myCollection" class="graph">
-                                         <table class="table">
-                                             <thead>
-                                             <tr>
-                                                 <th style="width: 15%;">序号</th>
-                                                 <th style="width: 55%;">事件名称</th>
-                                                 <th style="width: 30%;">再次操作</th>
-                                             </tr>
-                                             </thead>
-                                             <tbody>
-                                             <tr>
-                                                 <td>1</td>
-                                                 <td>一个很长很长很长很长很长的文本，很长很长</td>
-                                                 <td>
-                                                     <button type="button" class="btn btn-warning" style="font-size: 8px;">判真</button>
-                                                     <button type="button" class="btn btn-warning" style="font-size: 8px;">判假</button>
-                                                 </td>
-                                             </tr>
-                                             <tr>
-                                                 <td>2</td>
-                                                 <td>短</td>
-                                                 <td>
-                                                     <button type="button" class="btn btn-warning" style="font-size: 8px;">判真</button>
-                                                     <button type="button" class="btn btn-warning" style="font-size: 8px;">判假</button>
-                                                 </td>
-                                             </tr>
-                                             <tr>
-                                                 <td>3</td>
-                                                 <td>正常文本</td>
-                                                 <td>
-                                                     <button type="button" class="btn btn-warning" style="font-size: 8px;">判真</button>
-                                                     <button type="button" class="btn btn-warning" style="font-size: 8px;">判假</button>
-                                                 </td>
-                                             </tr>
-                                             </tbody>
-                                         </table>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                         <div class="col-lg-6">
-                             <div class="content-panel">
-                                 <h4 style="float: left">我的简报</h4>
-                                 <div class="funcInIndex">
-                                     <button type="button" class="btn btn-warning" style="font-size: 10px; margin-right: 15px;">更多...</button>
-                                 </div>
-                                 <div class="panel-body">
-                                     <div id="browseHistory" class="graph">
-                                         <table class="table">
-                                             <thead>
-                                             <tr>
-                                                 <th style="width: 15%;">序号</th>
-                                                 <th style="width: 65%;">简报内容</th>
-                                                 <th style="width: 20%;">操作</th>
+        .r4_counter:hover h3 {
+            color: #fff
+        }
 
-                                             </tr>
-                                             </thead>
-                                             <tbody>
-                                             <tr>
-                                                 <td>1</td>
-                                                 <td>一个很长很长很长很长很长的文本，很长很长</td>
-                                                 <td><button type="button" class="btn btn-warning" style="font-size: 8px;">详情</button></td>
-                                             </tr>
-                                             <tr>
-                                                 <td>2</td>
-                                                 <td>短</td>
-                                                 <td><button type="button" class="btn btn-warning" style="font-size: 8px;">详情</button></td>
-                                             </tr>
-                                             <tr>
-                                                 <td>3</td>
-                                                 <td>正常文本</td>
-                                                 <td><button type="button" class="btn btn-warning" style="font-size: 8px;">详情</button></td>
-                                             </tr>
-                                             </tbody>
-                                         </table>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                    </div>
-                </div>
+        .r4_counter:hover span {
+            color: #f7f7f7
+        }
 
-            </div>
-        </section>
-    </section>
-    <footer class="site-footer">
-        <div class="text-center">
-            2018 - <a href="www.xjtu.edu.cn" target="_blank" title="西安交通大学">西安交通大学</a> - <a href="http://www.xjtu.edu.cn" title="social mind" target="_blank">social mind舆情分析平台</a>
-            <a href="#" class="go-top">
-                <strong>回到顶部</strong>
-            </a>
-        </div>
-    </footer>
-</section>
+        .r4_counter:hover .icon-primary {
+            color: #fff
+        }
+
+        .r4_counter .icon-after {
+            position: absolute;
+            width: 30%;
+            line-height: 75px;
+            height: 92%;
+            font-size: 84px;
+            color: #f7f7f7;
+            top: 5px;
+            right: 0;
+        }
+
+        .r4_counter.has-gradient-to-right-bottom .icon-after,
+        .r4_counter:hover .icon-after {
+            opacity: 0.2
+        }
+
+        .r4_counter .fa {
+            margin-right: 0px;
+            width: 66px;
+            height: 66px;
+            text-align: center;
+        }
+
+        .r4_counter h4 {
+            margin: 10px 0 5px 0;
+        }
+
+        .db_box {
+            background-color: #ffffff;
+            box-shadow: 0 1px 3px rgba(33, 33, 33, .2);
+            -webkit-box-shadow: 0 1px 3px rgba(33, 33, 33, .2);
+            -moz-box-shadow: 0 1px 3px rgba(33, 33, 33, .2);
+            -o-box-shadow: 0 1px 3px rgba(33, 33, 33, .2);
+            -ms-box-shadow: 0 1px 3px rgba(33, 33, 33, .2);
+
+        }
+
+        .db_box {
+            padding: 15px;
+        }
+
+        .db_box.db_box_large {
+            max-width: inherit;
+            background-color: #ffffff;
+            float: left;
+            margin: 0px 2% 0px 0px;
+            padding: 30px;
+            color: #757575 !important;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .db_box.db_box_large .bold {
+            text-align: left;
+            float: left;
+        }
+
+        .db_box.db_box_large .pull-right {
+            text-align: right;
+        }
+
+        .db_box.db_box_large .clearfix {
+            width: 100%;
+            height: 1px;
+            margin-bottom: 40px;
+        }
+
+        .wrapper1 {
+            display: inline-block;
+            margin-top: 0px;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-bottom: 15px;
+            padding-top: 0px;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* .btn:hover {
+            text-decoration: none !important;
+        } */
+    </style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header layui-bg-cyan">
+        <div class="layui-logo">socialmind</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left layui-bg-cyan">
+            {% csrf_token %}
+                {% if role == "个人用户" %}
+                    <li class="layui-nav-item"><a href="/person_index/">首页</a></li>
+                    <li class="layui-nav-item"><a href="/events/?role=个人用户&type=兴趣相关">兴趣相关</a></li>
+                    <li class="layui-nav-item"><a href="/events/?role=个人用户type=当地新闻">当地新闻</a></li>
+                    <li class="layui-nav-item"><a href="/events/?role=个人用户type=敏感信息">敏感信息</a></li>
+                    <li class="layui-nav-item"><a href="/events/?role=个人用户type=领域相关">领域相关</a></li>
+                    <li class="layui-nav-item"><a href="/events/?role=个人用户type=行业信息">行业信息</a></li>
+                    <li class="layui-nav-item"><a href="/eventSearch/">全网事件搜索</a></li>
+                    <li class="layui-nav-item"><a href="/fileSearch/">全网文章搜索</a></li>
+                {% elif role == "企业用户" %}
+                    <li class="layui-nav-item"><a href="/com_index/">首页</a></li>
+                    <li class="layui-nav-item"><a href="/events/?role=企业用户&type=企业相关">企业相关</a></li>
+                    <li class="layui-nav-item"><a href="/events/?role=企业用户&type=当地新闻">当地新闻</a></li>
+                    <li class="layui-nav-item"><a href="/events/?role=企业用户&type=敏感信息">敏感信息</a></li>
+                    <li class="layui-nav-item"><a href="/events/?role=企业用户&type=领域相关">领域相关</a></li>
+                    <li class="layui-nav-item"><a href="/events/?role=企业用户&type=行业信息">行业信息</a></li>
+                    <li class="layui-nav-item"><a href="/competitive_products/">竞品信息</a></li>
+                    <li class="layui-nav-item"><a href="/eventSearch/">全网事件搜索</a></li>
+                    <li class="layui-nav-item"><a href="/fileSearch/">全网文章搜索</a></li>
+                {% elif role == "政府用户" %}
+                    <li class="layui-nav-item"><a href="/gov_index/">首页</a></li>
+                    <li class="layui-nav-item"><a href="/events/?role=政府用户&type=政务相关">政务相关</a></li>
+                    <li class="layui-nav-item"><a href="/events/?role=政府用户&type=当地新闻">当地新闻</a></li>
+                    <li class="layui-nav-item"><a href="/events/?role=政府用户&type=敏感信息">敏感信息</a></li>
+                    <li class="layui-nav-item"><a href="/events/?role=政府用户&type=领域相关">领域相关</a></li>
+                    <li class="layui-nav-item"><a href="/events/?role=政府用户&type=上下级信息">上下级信息</a></li>
+                    <li class="layui-nav-item"><a href="/eventSearch/">全网事件搜索</a></li>
+                    <li class="layui-nav-item"><a href="/fileSearch/">全网文章搜索</a></li>
+                {% elif role == "事业单位用户" %}
+                    <li class="layui-nav-item"><a href="/govcom_index/">首页</a></li>
+                    <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=工作相关">工作相关</a></li>
+                    <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=当地新闻">当地新闻</a></li>
+                    <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=敏感信息">敏感信息</a></li>
+                    <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=领域相关">领域相关</a></li>
+                    <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=上下级信息">上下级信息</a></li>
+                    <li class="layui-nav-item"><a href="/eventSearch/">全网事件搜索</a></li>
+                    <li class="layui-nav-item"><a href="/fileSearch/">全网文章搜索</a></li>
+                {% endif %}
+        </ul>
+        <ul class="layui-nav layui-layout-right layui-bg-cyan">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                    SICDP
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="/profile/">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="">退出</a></li>
+        </ul>
+    </div>
 
 
+    <div class="layui-body">
+    </div>
+
+    <div class="layui-footer layui-bg-cyan" align="center">
+        <!-- 底部固定区域 -->
+        西安交通大学  社会智能与复杂数据处理实验室
+
+    </div>
+</div>
+<script src="{% static 'assets0/js/jquery.js' %}"></script>
+<script src="{% static 'assets0/js/jquery-1.8.3.min.js' %}"></script>
+<script src="{% static 'assets0/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets0/dataTable/js/jquery.dataTables.js' %}" type="text/javascript"></script>
+<script src="{% static 'assets0/js/fileJs/events.js' %}" type="text/javascript"></script>
+<script src="//res.layui.com/layui/src/layui.js?t=1531663423583" charset="utf-8"></script>
+<script>
+    layui.use('element', function () {
+        var element = layui.element;
+
+    });
+</script>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cspan id='cnzz_stat_icon_30088308'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "w.cnzz.com/c.php%3Fid%3D30088308' type='text/javascript'%3E%3C/script%3E"));</script>
 </body>
-<!-- js placed at the end of the document so the pages load faster -->
-<script src="{% static 'assets0/js/jquery.js'%}"></script>
-<script src="{% static 'assets0/js/jquery-1.8.3.min.js'%}"></script>
-<script src="{% static 'assets0/js/bootstrap.min.js'%}"></script>
-<script class="include" type="text/javascript" src="{% static 'assets0/js/jquery.dcjqaccordion.2.7.js'%}"></script>
-<script src="{% static 'assets0/js/jquery.scrollTo.min.js'%}"></script>
-<script src="{% static 'assets0/js/jquery.nicescroll.js'%}" type="text/javascript'%}"></script>
-<script src="{% static 'assets0/js/jquery.sparkline.js'%}"></script>
-
-
-<!--common script for all pages-->
-<script src="{% static 'assets0/js/common-scripts.js'%}"></script>
-
-<script type="text/javascript" src="{% static 'assets0/js/gritter/js/jquery.gritter.js'%}"></script>
-<script type="text/javascript" src="{% static 'assets0/js/gritter-conf.js'%}"></script>
-</html>

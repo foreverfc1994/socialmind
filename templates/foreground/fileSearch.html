@@ -192,13 +192,45 @@
             <div class="layui-logo">socialmind</div>
             <!-- 头部区域（可配合layui已有的水平导航） -->
             <ul class="layui-nav layui-layout-left layui-bg-cyan">
-                <li class="layui-nav-item"><a href="/com_index/">首页</a></li>
-                <li class="layui-nav-item"><a href="/events/?type=企业相关">企业相关</a></li>
-                <li class="layui-nav-item"><a href="/events/?type=当地新闻">当地新闻</a></li>
-                <li class="layui-nav-item"><a href="/events/?type=敏感信息">敏感信息</a></li>
-                <li class="layui-nav-item"><a href="/events/?type=领域相关">领域相关</a></li>
-                <li class="layui-nav-item"><a href="/events/?type=行业信息">行业信息</a></li>
-                <li class="layui-nav-item"><a href="/eventSearch/">全网事件搜索</a></li>
+                {% csrf_token %}
+                    {% if role == "个人用户" %}
+                        <li class="layui-nav-item"><a href="/person_index/">首页</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=个人用户&type=兴趣相关">兴趣相关</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=个人用户type=当地新闻">当地新闻</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=个人用户type=敏感信息">敏感信息</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=个人用户type=领域相关">领域相关</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=个人用户type=行业信息">行业信息</a></li>
+                        <li class="layui-nav-item"><a href="/eventSearch/?role=个人用户">全网事件搜索</a></li>
+                        <li class="layui-nav-item"><a href="/fileSearch/?role=个人用户">全网文章搜索</a></li>
+                    {% elif role == "企业用户" %}
+                        <li class="layui-nav-item"><a href="/com_index/">首页</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=企业用户&type=企业相关">企业相关</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=企业用户&type=当地新闻">当地新闻</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=企业用户&type=敏感信息">敏感信息</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=企业用户&type=领域相关">领域相关</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=企业用户&type=行业信息">行业信息</a></li>
+                        <li class="layui-nav-item"><a href="/competitive_products/">竞品信息</a></li>
+                        <li class="layui-nav-item"><a href="/eventSearch/?role=企业用户">全网事件搜索</a></li>
+                        <li class="layui-nav-item"><a href="/fileSearch/?role=企业用户">全网文章搜索</a></li>
+                    {% elif role == "政府用户" %}
+                        <li class="layui-nav-item"><a href="/gov_index/">首页</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=政府用户&type=政务相关">政务相关</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=政府用户&type=当地新闻">当地新闻</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=政府用户&type=敏感信息">敏感信息</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=政府用户&type=领域相关">领域相关</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=政府用户&type=上下级信息">上下级信息</a></li>
+                        <li class="layui-nav-item"><a href="/eventSearch/?role=政府用户">全网事件搜索</a></li>
+                        <li class="layui-nav-item"><a href="/fileSearch/?role=政府用户">全网文章搜索</a></li>
+                    {% elif role == "事业单位用户" %}
+                        <li class="layui-nav-item"><a href="/govcom_index/">首页</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=工作相关">工作相关</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=当地新闻">当地新闻</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=敏感信息">敏感信息</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=领域相关">领域相关</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=上下级信息">上下级信息</a></li>
+                        <li class="layui-nav-item"><a href="/eventSearch/?role=事业单位用户">全网事件搜索</a></li>
+                        <li class="layui-nav-item"><a href="/fileSearch/?role=事业单位用户">全网文章搜索</a></li>
+                    {% endif %}
             </ul>
             <ul class="layui-nav layui-layout-right layui-bg-cyan">
                 <li class="layui-nav-item">
