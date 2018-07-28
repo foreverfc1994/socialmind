@@ -150,7 +150,48 @@ def events(request):
 def profile(request):
     userid = request.session["user_id"]
     role = request.session["user_type"]
-    return render(request, 'foreground/profile.html', {"userid": userid, "role": role})
+    username = request.session["user_name"]
+    currentUser = models.User.objects.get(userid=userid)
+    email = currentUser.email
+    try:
+        if(role == "个人用户"):
+            personalized_data = models.PersonUser.objects.get(userid=userid)
+            sex = personalized_data.sex
+            phoneNumber = personalized_data.phonenumber
+            hobby = personalized_data.hobby
+            career = personalized_data.career
+            realName = personalized_data.realname
+            return render(request, 'foreground/personalInformation.html', {"userid": userid, "role": role, "username": username, "email": email,
+                                                               "sex": sex, "phoneNumber": phoneNumber, "hobby": hobby,
+                                                               "career": career, "realname": realName})
+        elif(role == "企业用户"):
+            personalized_data = models.CompanyUser.objects.get(userid=userid)
+            bossname = personalized_data.bossname
+            companyname = personalized_data.companyname
+            businessLicenceId = personalized_data.businesslicenceid
+            bussinessLicencePic = str(personalized_data.businesslicenceurl)
+            return render(request, 'foreground/personalInformation.html', {"userid": userid, "username": username, "role": role, "email": email,
+                                                               "bossname": bossname, "companyname": companyname,
+                                                               "businessLicenceId": businessLicenceId, "bussinessLicencePic":
+                                                                   bussinessLicencePic})
+        elif(role == "政府用户"):
+            personalized_data = models.GovUser.objects.get(userid=userid)
+            bossname = personalized_data.bossname
+            govname = personalized_data.govname
+            type = personalized_data.type
+            return render(request, 'foreground/personalInformation.html', {"userid": userid, "username": username, "role": role, "email": email,
+                                                               "bossname": bossname, "govname": govname, "type": type})
+        elif(role == "事业单位用户"):
+            personalized_data = models.InstitutionUser.objects.get(userid=userid)
+            bossname = personalized_data.bossname
+            institutionName = personalized_data.institutionname
+            institutionCode = personalized_data.institudecode
+            insitudeCodeUrl = personalized_data.institudecodeurl
+            return render(request, 'foreground/personalInformation.html', {"userid": userid, "username": username, "role": role, "email": email,
+                                                               "bossname": bossname, "institutionName": institutionName,
+                                                               "institutionCode": institutionCode, "insitudeCodeUrl": insitudeCodeUrl})
+    except:
+        return render(request, 'foreground/login.html')
 
 def eventparticular(request):
     role = request.session["user_type"]
