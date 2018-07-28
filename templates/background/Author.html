@@ -266,15 +266,15 @@
                         <span>源数据展示模块</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="/Author/" style="color: #fff;">查看作者</a></li>
+                        <li><a href="/Author/" style="color: #fff;">作者管理</a></li>
                         <script>
                             $(document).ready(function () {
-                                $("li:not([class])>a:not(a:contains('查看作者'))").hover(function () {
-                                    $("a:contains('查看作者')").removeAttr("style")
+                                $("li:not([class])>a:not(a:contains('作者管理'))").hover(function () {
+                                    $("a:contains('作者管理')").removeAttr("style")
                                 });
                             });
                         </script>
-                        <li><a href="/ArticlesOfAuthor/">查看作者相关文章</a></li>
+                        <li><a href="/yuandatashow/">数据表管理</a></li>
                         <li><a href="/ArticlesAndComments/">查看文章及评论</a></li>
                     </ul>
                 </li>
@@ -329,10 +329,7 @@
                     </ul>
                 </li>
                 <li class="sub-menu">
-                    <a href="javascript:;" >
-                        <i class=" fa fa-bar-chart-o"></i>
-                        <span>用户管理</span>
-                    </a>
+                    <a href="/usrManagement/" >                         <i class=" fa fa-bar-chart-o"></i>                         <span>用户管理</span>                     </a>
                 </li>-->
                 <li class="sub-menu">
                     <a href="/usrCommentsSelect/">
@@ -356,10 +353,7 @@
                         <i class=" fa fa-bar-chart-o"></i>
                         <span>用户管理</span>
                     </a>
-                    <!-- <ul class="sub">
-                        <li><a href="/usersVerify/">新增用户审核</a></li>
-                        <li><a href="/usrManagement/">用户管理</a></li>
-                    </ul> -->
+                    <!--  -->
                 </li>
                 <li class="sub-menu">
                     <a href="/operateDiary/">
@@ -386,7 +380,7 @@
             <h3><i class="fa fa-angle-right"></i> 作者信息</h3>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="content-panel">
+
 
                         <hr>
                         <table id="table_id_example" class="display">
@@ -420,148 +414,9 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+
             </div>
-            {#            <div class="row">#}
-            {##}
-            {#                <div class="col-md-12">#}
-            {#                    <div class="content-panel">#}
-            {#                        <h4><i class="fa fa-angle-right"></i> 作者信息</h4>#}
-            {#                        <hr>#}
-            {#                        <table class="table">#}
-            {#                            <thead>#}
-            {#                            <tr>#}
-            {#                                <th>#</th>#}
-            {#                                <th>作者名称</th>#}
-            {#                                <th>昵称</th>#}
-            {#                                <th>注册网站</th>#}
-            {#                                <th>文章数</th>#}
-            {#                                <th>详情</th>#}
-            {#                            </tr>#}
-            {#                            </thead>#}
-            {#                            <tbody>#}
-            {#                            <tr>#}
-            {#                                <td>1</td>#}
-            {#                                <td>小明</td>#}
-            {#                                <td>小明</td>#}
-            {#                                <td>成都商报</td>#}
-            {#                                <td>22</td>#}
-            {#                                <td><a href="/ArticlesOfAuthor/">详情</a></td>#}
-            {#                            </tr>#}
-            {#                            <tr>#}
-            {#                                <td>2</td>#}
-            {#                                <td>小明</td>#}
-            {#                                <td>小明</td>#}
-            {#                                <td>成都商报</td>#}
-            {#                                <td>22</td>#}
-            {#                                <td><a href="/ArticlesOfAuthor/">详情</a></td>#}
-            {#                            </tr>#}
-            {#                            <tr>#}
-            {#                                <td>3</td>#}
-            {#                                <td>小明</td>#}
-            {#                                <td>小明</td>#}
-            {#                                <td>成都商报</td>#}
-            {#                                <td>22</td>#}
-            {#                                <td><a href="/ArticlesOfAuthor/">详情</a></td>#}
-            {#                            </tr>#}
-            {#                            </tbody>#}
-            {#                        </table>#}
-            {#                    </div><!--/content-panel -->#}
-            {#                </div><!-- /col-md-12 -->#}
-            {#            </div><!-- row -->#}
-            {##}
-            {#            <div class="row mt">#}
-            {#                <div class="col-md-12">#}
-            {#                    <div class="content-panel">#}
-            {#                        <table class="table table-striped table-advance table-hover">#}
-            {#                            <h4><i class="fa fa-angle-right"></i> 新增作者信息</h4>#}
-            {#                            <hr>#}
-            {#                            <thead>#}
-            {#                            <tr>#}
-            {#                                <th><i class="fa fa-bullhorn"></i> 名称</th>#}
-            {#                                <th class="hidden-phone"><i class="fa fa-question-circle"></i> 简介</th>#}
-            {#                                <th><i class="fa fa-bookmark"></i> 关注事件</th>#}
-            {#                                <th><i class=" fa fa-edit"></i> 状态</th>#}
-            {#                                <th></th>#}
-            {#                            </tr>#}
-            {#                            </thead>#}
-            {#                            <tbody>#}
-            {#                            <tr>#}
-            {#                                <td><a href="#"> 现代快报全媒体</a></td>#}
-            {#                                <td class="hidden-phone">。。。</td>#}
-            {#                                <td>社会民生</td>#}
-            {#                                <td><span class="label label-info label-mini">Due</span></td>#}
-            {#                                <td>#}
-            {#                                    <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>#}
-            {#                                    <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>#}
-            {#                                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>#}
-            {#                                </td>#}
-            {#                            </tr>#}
-            {#                            <tr>#}
-            {#                                <td>#}
-            {#                                    <a href="#">#}
-            {#                                        现代快报全媒体#}
-            {#                                    </a>#}
-            {#                                </td>#}
-            {#                                <td class="hidd现代快报全媒体en-phone">。。。</td>#}
-            {#                                <td>社会民生</td>#}
-            {#                                <td><span class="label label-warning label-mini">Due</span></td>#}
-            {#                                <td>#}
-            {#                                    <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>#}
-            {#                                    <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>#}
-            {#                                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>#}
-            {#                                </td>#}
-            {#                            </tr>#}
-            {#                            <tr>#}
-            {#                                <td>#}
-            {#                                    <a href="#">#}
-            {#                                        现代快报全媒体#}
-            {#                                    </a>#}
-            {#                                </td>#}
-            {#                                <td class="hidden-phone">。。。</td>#}
-            {#                                <td>社会民生</td>#}
-            {#                                <td><span class="label label-success label-mini">Paid</span></td>#}
-            {#                                <td>#}
-            {#                                    <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>#}
-            {#                                    <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>#}
-            {#                                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>#}
-            {#                                </td>#}
-            {#                            </tr>#}
-            {#                            <tr>#}
-            {#                                <td>#}
-            {#                                    <a href="#">#}
-            {#                                        现代快报全媒体#}
-            {#                                    </a>#}
-            {#                                </td>#}
-            {#                                <td class="hidden-phone">。。。</td>#}
-            {#                                <td>社会民生</td>#}
-            {#                                <td><span class="label label-success label-mini">Paid</span></td>#}
-            {#                                <td>#}
-            {#                                    <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>#}
-            {#                                    <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>#}
-            {#                                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>#}
-            {#                                </td>#}
-            {#                            </tr>#}
-            {#                            <tr>#}
-            {#                                <td>#}
-            {#                                    <a href="#">#}
-            {#                                        现代快报全媒体#}
-            {#                                    </a>#}
-            {#                                </td>#}
-            {#                                <td class="hidden-phone">。。。</td>#}
-            {#                                <td>社会民生</td>#}
-            {#                                <td><span class="label label-warning label-mini">Due</span></td>#}
-            {#                                <td>#}
-            {#                                    <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>#}
-            {#                                    <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>#}
-            {#                                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>#}
-            {#                                </td>#}
-            {#                            </tr>#}
-            {#                            </tbody>#}
-            {#                        </table>#}
-            {#                    </div><!-- /content-panel -->#}
-            {#                </div><!-- /col-md-12 -->#}
-            {#            </div><!-- /row -->#}
+
 
         </section><!--/wrapper -->
     </section><!-- /MAIN CONTENT -->

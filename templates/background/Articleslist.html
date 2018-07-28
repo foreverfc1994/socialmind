@@ -266,15 +266,15 @@
                         <span>源数据展示模块</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="/Author/" style="color: #fff;">查看作者</a></li>
+                        <li><a href="/Author/" style="color: #fff;">作者管理</a></li>
                         <script>
                             $(document).ready(function () {
-                                $("li:not([class])>a:not(a:contains('查看作者'))").hover(function () {
-                                    $("a:contains('查看作者')").removeAttr("style")
+                                $("li:not([class])>a:not(a:contains('作者管理'))").hover(function () {
+                                    $("a:contains('作者管理')").removeAttr("style")
                                 });
                             });
                         </script>
-                        <li><a href="/ArticlesOfAuthor/">查看作者相关文章</a></li>
+                        <li><a href="/yuandatashow/">数据表管理</a></li>
                         <li><a href="/ArticlesAndComments/">查看文章及评论</a></li>
                     </ul>
                 </li>
@@ -329,10 +329,7 @@
                     </ul>
                 </li>
                 <li class="sub-menu">
-                    <a href="javascript:;" >
-                        <i class=" fa fa-bar-chart-o"></i>
-                        <span>用户管理</span>
-                    </a>
+                    <a href="/usrManagement/" >                         <i class=" fa fa-bar-chart-o"></i>                         <span>用户管理</span>                     </a>
                 </li>-->
                 <li class="sub-menu">
                     <a href="javascript:;">
@@ -352,14 +349,8 @@
                     </a>
                 </li>
                 <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class=" fa fa-bar-chart-o"></i>
-                        <span>用户管理</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="/usersVerify/">新增用户审核</a></li>
-                        <li><a href="/usrManagement/">用户管理</a></li>
-                    </ul>
+                    <a href="/usrManagement/">                         <i class=" fa fa-bar-chart-o"></i>                         <span>用户管理</span>                     </a>
+
                 </li>
                 <li class="sub-menu">
                     <a href="/operateDiary/">

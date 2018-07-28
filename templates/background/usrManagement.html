@@ -3,14 +3,13 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-     <script src="{% static 'backgroundfiles/assets/js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'assets0/layui/layui.js' %}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-    <link rel="stylesheet" href="{% static 'assets0/layui/css/layui.css' %}" media="all">
-    <link rel="stylesheet" href="//res.layui.com/static/css/global.css?t=1531663423583-6" media="all">
+    <link rel="stylesheet" href="//res.layui.com/layui/dist/css/layui.css?t=1531663423583" media="all">
+{#    <link rel="stylesheet" href="//res.layui.com/static/css/global.css?t=1531663423583-6" media="all">#}
     <title>DASHGUM - Bootstrap Admin Template</title>
 
     <!-- Bootstrap core CSS -->
@@ -297,8 +296,8 @@
                         <span>源数据展示模块</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="/Author/">查看作者</a></li>
-                        <li><a href="/ArticlesOfAuthor/">查看作者相关文章</a></li>
+                        <li><a href="/Author/">作者管理</a></li>
+                        <li><a href="/yuandatashow/">数据表管理</a></li>
                         <li><a href="/ArticlesAndComments/">查看文章及评论</a></li>
                     </ul>
                 </li>
@@ -344,15 +343,11 @@
                 </li>
 
                 <li class="sub-menu">
-                    <a href="javascript:;">
+                    <a href="/usrCommentsSelect/">
                         <i class="fa fa-th"></i>
                         <span>用户留言管理</span>
                     </a>
-                    <ul class="sub">
-                        <li><a href="/usrCommentsSelect/">查看用户留言</a></li>
-                        <li><a href="/usrCommentsCheck/">审核用户留言</a></li>
-                        <li><a href="/usrCommentsDelete/">删除用户留言</a></li>
-                    </ul>
+
                 </li>
                 <li class="sub-menu">
                     <a href="/AssignAuthorities/">
@@ -361,21 +356,11 @@
                     </a>
                 </li>
                 <li class="sub-menu">
-                    <a href="javascript:;" class="active">
+                    <a href="/usrManagement/" class="active">
                         <i class=" fa fa-bar-chart-o"></i>
                         <span>用户管理</span>
                     </a>
-                    <ul class="sub">
-                        <li><a href="/usersVerify/">新增用户审核</a></li>
-                        <li><a href="/usrManagement/" style="color: #fff;">用户管理</a></li>
-                        <script>
-                            $(document).ready(function () {
-                                $("li:not([class])>a:not(a:contains('用户管理'))").hover(function () {
-                                    $("a:contains('用户管理')").removeAttr("style")
-                                });
-                            });
-                        </script>
-                    </ul>
+
                 </li>
                 <li class="sub-menu">
                     <a href="/operateDiary/">
@@ -1222,7 +1207,7 @@
 </section>
 
 <!-- js placed at the end of the document so the pages load faster -->
-{#<script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script>#}
+<script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script>
 <script src="{% static 'backgroundfiles/assets/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'backgroundfiles/assets/js/jquery-ui-1.9.2.custom.min.js' %}"></script>
 <script src="{% static 'backgroundfiles/assets/js/jquery.ui.touch-punch.min.js' %}"></script>
