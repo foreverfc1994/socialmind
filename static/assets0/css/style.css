@@ -2394,7 +2394,7 @@ label {
 .eventCloud{
     width: 80%;
     margin-left: 10%;
-    height: 380px;
+    height: 280px;
     position: center;
     background-color: #DCDCDC;
     z-index: 1;
@@ -2403,13 +2403,21 @@ label {
     height: 500px;
     width: 80%;
     margin-left: 10%;
-
+}
+.informSourceHalf{
+    height: 300px;
+    width: 80%;
+    margin-left: 10%;
 }
 .mediaLiveness{
     height: 500px;
     width: 70%;
     margin-left: 15%;
 }
+.mediaLivenessHalf{
+    height: 300px;
+    width: 70%;
+    margin-left: 15%;}
 .emotionTrend{
     width: 80%;
     height: 480px;
@@ -2561,7 +2569,7 @@ tr.shown td.details-control {
     height: 100px;
     float: right;
     border: 3px solid;
-    background-color: #ffffff;
+    backgroundonut-chartd-color: #ffffff;
     border-color: #cdcdcd;
     border-radius: 16px;
 }
@@ -2571,6 +2579,19 @@ tr.shown td.details-control {
     margin-left: 25%;
     float: left;
 }
+.productSearchInput{
+    margin-top: 15px;
+    float: left;
+    width: 50%;
+    margin-left: 20%;
+}
+.prodectsSearchButton{
+    float: left;
+    margin-left: 10px;
+    margin-top: 15px;
+    height: 44px;
+    width: 60px;
+}
 .searhButton{
     margin-top: 40px;
     width: 80px;
@@ -2578,7 +2599,24 @@ tr.shown td.details-control {
     margin-right: 18%;
 }
 .particularPic{
-    width: 800px;
+    width: 650px;
     height: 400px;
     margin-left: 15%;
+}
+.particularPicHalf{
+    width: 90%;
+    height: 250px;
+    margin-left: 15%;
+}
+.chartPicHalf{
+    width: 90%;
+    height: 250px;
+}
+.echartsLinePic{
+    width: 770px;
+    height: 400px;
+    margin-left: 15%;
+}
+.pd10{
+    padding-top: 10px;
 }
