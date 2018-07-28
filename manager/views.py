@@ -70,6 +70,8 @@ def operateDiary(request):
     return render(request, 'background/operateDiary.html')
 def DouBanArticleStyle(request):
     return render(request, 'background/DouBanArticleStyle.html')
+def DouBanArticleStyle2(request):
+    return render(request, 'background/DouBanArticleStyle2.html')
 def usrManagement1(request,a):
 
     if a==0:
