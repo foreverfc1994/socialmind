@@ -2663,3 +2663,23 @@ tr.shown td.details-control {
 .historyTitle a:hover{
     cursor: pointer;
 }
+#typeSelect{
+    font-size: 20px;
+    line-height: 30px;
+}
+#typeSelect a:hover {
+    cursor: pointer;
+    color: #DAA520;
+    font-weight: 900;
+    display: inline-block;
+    border-bottom: 3px solid #DAA520;
+    line-height: 25px;
+}
+#typeSelect td.active{
+    background-color: #DAA520;
+    color: #ffffff;
+    border-radius: 4px;
+}
+#typeSelect a.visited{
+    color: #ffffff;
+}

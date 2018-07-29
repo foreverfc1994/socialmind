@@ -194,44 +194,41 @@
             <!-- 头部区域（可配合layui已有的水平导航） -->
             <ul class="layui-nav layui-layout-left layui-bg-cyan">
                 {% csrf_token %}
-                {% if role == "个人用户" %}
-                    <li class="layui-nav-item"><a href="/person_index/">首页</a></li>
-                    <li class="layui-nav-item"><a href="/events/?role=个人用户&type=兴趣相关">兴趣相关</a></li>
-                    <li class="layui-nav-item"><a href="/events/?role=个人用户type=当地新闻">当地新闻</a></li>
-                    <li class="layui-nav-item"><a href="/events/?role=个人用户type=敏感信息">敏感信息</a></li>
-                    <li class="layui-nav-item"><a href="/events/?role=个人用户type=领域相关">领域相关</a></li>
-                    <li class="layui-nav-item"><a href="/events/?role=个人用户type=行业信息">行业信息</a></li>
-                    <li class="layui-nav-item"><a href="/eventSearch/?role=个人用户">全网事件搜索</a></li>
-                    <li class="layui-nav-item"><a href="/fileSearch/?role=个人用户">全网文章搜索</a></li>
-                {% elif role == "企业用户" %}
-                    <li class="layui-nav-item"><a href="/com_index/">首页</a></li>
-                    <li class="layui-nav-item"><a href="/events/?role=企业用户&type=企业相关">企业相关</a></li>
-                    <li class="layui-nav-item"><a href="/events/?role=企业用户&type=当地新闻">当地新闻</a></li>
-                    <li class="layui-nav-item"><a href="/events/?role=企业用户&type=敏感信息">敏感信息</a></li>
-                    <li class="layui-nav-item"><a href="/events/?role=企业用户&type=领域相关">领域相关</a></li>
-                    <li class="layui-nav-item"><a href="/events/?role=企业用户&type=行业信息">行业信息</a></li>
-                    <li class="layui-nav-item"><a href="/competitive_products/">竞品信息</a></li>
-                    <li class="layui-nav-item"><a href="/eventSearch/?role=企业用户">全网事件搜索</a></li>
-                    <li class="layui-nav-item"><a href="/fileSearch/?role=企业用户">全网文章搜索</a></li>
-                {% elif role == "政府用户" %}
-                    <li class="layui-nav-item"><a href="/gov_index/">首页</a></li>
-                    <li class="layui-nav-item"><a href="/events/?role=政府用户&type=政务相关">政务相关</a></li>
-                    <li class="layui-nav-item"><a href="/events/?role=政府用户&type=当地新闻">当地新闻</a></li>
-                    <li class="layui-nav-item"><a href="/events/?role=政府用户&type=敏感信息">敏感信息</a></li>
-                    <li class="layui-nav-item"><a href="/events/?role=政府用户&type=领域相关">领域相关</a></li>
-                    <li class="layui-nav-item"><a href="/events/?role=政府用户&type=上下级信息">上下级信息</a></li>
-                    <li class="layui-nav-item"><a href="/eventSearch/?role=政府用户">全网事件搜索</a></li>
-                    <li class="layui-nav-item"><a href="/fileSearch/?role=政府用户">全网文章搜索</a></li>
-                {% elif role == "事业单位用户" %}
-                    <li class="layui-nav-item"><a href="/govcom_index/">首页</a></li>
-                    <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=工作相关">工作相关</a></li>
-                    <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=当地新闻">当地新闻</a></li>
-                    <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=敏感信息">敏感信息</a></li>
-                    <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=领域相关">领域相关</a></li>
-                    <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=上下级信息">上下级信息</a></li>
-                    <li class="layui-nav-item"><a href="/eventSearch/?role=事业单位用户">全网事件搜索</a></li>
-                    <li class="layui-nav-item"><a href="/fileSearch/?role=事业单位用户">全网文章搜索</a></li>
-                {% endif %}
+                    {% if role == "个人用户" %}
+                        <li class="layui-nav-item"><a href="/events/?role=个人用户&type=全网热点">全网热点</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=个人用户&type=当地新闻">当地新闻</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=个人用户&type=敏感信息">关注领域</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=个人用户&type=领域相关">系统推荐</a></li>
+                        <li class="layui-nav-item"><a href="/fileSearch/?role=政府用户">全网文章搜索</a></li>
+                    {% elif role == "企业用户" %}
+                        <li class="layui-nav-item"><a href="/com_index/">首页</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=企业用户&type=企业相关">企业相关</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=企业用户&type=当地新闻">当地新闻</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=企业用户&type=敏感信息">敏感信息</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=企业用户&type=领域相关">领域相关</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=企业用户&type=行业信息">行业信息</a></li>
+                        <li class="layui-nav-item"><a href="/competitive_products/">竞品信息</a></li>
+                        <li class="layui-nav-item"><a href="/eventSearch/?role=企业用户">全网事件搜索</a></li>
+                        <li class="layui-nav-item"><a href="/fileSearch/?role=企业用户">全网文章搜索</a></li>
+                    {% elif role == "政府用户" %}
+                        <li class="layui-nav-item"><a href="/gov_index/">首页</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=政府用户&type=政务相关">政务相关</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=政府用户&type=当地新闻">当地新闻</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=政府用户&type=敏感信息">敏感信息</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=政府用户&type=领域相关">领域相关</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=政府用户&type=上下级信息">上下级信息</a></li>
+                        <li class="layui-nav-item"><a href="/eventSearch/?role=政府用户">全网事件搜索</a></li>
+                        <li class="layui-nav-item"><a href="/fileSearch/?role=政府用户">全网文章搜索</a></li>
+                    {% elif role == "事业单位用户" %}
+                        <li class="layui-nav-item"><a href="/govcom_index/">首页</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=工作相关">工作相关</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=当地新闻">当地新闻</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=敏感信息">敏感信息</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=领域相关">领域相关</a></li>
+                        <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=上下级信息">上下级信息</a></li>
+                        <li class="layui-nav-item"><a href="/eventSearch/?role=事业单位用户">全网事件搜索</a></li>
+                        <li class="layui-nav-item"><a href="/fileSearch/?role=事业单位用户">全网文章搜索</a></li>
+                    {% endif %}
             </ul>
             <ul class="layui-nav layui-layout-right layui-bg-cyan">
                 <li class="layui-nav-item">
@@ -259,22 +256,22 @@
                                 <input class="form-control panel-input" id="fileSearchInput" type="text" value="          事件查找">
                                 <button class="btn btn-warning searhButton">查找</button>
                             </div>
-                            <table>
-                                <tr>
-                                    <td>热点</td>
-                                    <td>教育</td>
-                                    <td>明星</td>
-                                    <td>股票</td>
-                                    <td>娱乐</td>
-                                    <td>人物</td>
-                                    <td>汽车</td>
-                                    <td>手机</td>
-                                    <td>景区</td>
-                                    <td>电脑</td>
-                                    <td>家电</td>
-                                    <td>食品</td>
-                                    <td>美妆</td>
-                                    <td>金融</td>
+                            <table class="mt">
+                                <tr id="typeSelect">
+                                    <td class="active"><a href="javascript:void(0);" onclick="pickType(0);">热点</a></td>
+                                    <td class><a href="javascript:void(0);" onclick="pickType(1);">教育</a></td>
+                                    <td class><a href="javascript:void(0);" onclick="pickType(2);">明星</a></td>
+                                    <td class><a href="javascript:void(0);" onclick="pickType(3);">股票</a></td>
+                                    <td class><a href="javascript:void(0);" onclick="pickType(4);">娱乐</a></td>
+                                    <td class><a href="javascript:void(0);" onclick="pickType(5);">人物</a></td>
+                                    <td class><a href="javascript:void(0);" onclick="pickType(6);">汽车</a></td>
+                                    <td class><a href="javascript:void(0);" onclick="pickType(7);">手机</a></td>
+                                    <td class><a href="javascript:void(0);" onclick="pickType(8);">景区</a></td>
+                                    <td class><a href="javascript:void(0);" onclick="pickType(9);">电脑</a></td>
+                                    <td class><a href="javascript:void(0);" onclick="pickType(10);">家电</a></td>
+                                    <td class><a href="javascript:void(0);" onclick="pickType(11);">食品</a></td>
+                                    <td class><a href="javascript:void(0);" onclick="pickType(12);">美妆</a></td>
+                                    <td class><a href="javascript:void(0);" onclick="pickType(13);">金融</a></td>
                                 </tr>
                             </table>
                         </div>
@@ -611,4 +608,5 @@
 <script src="{% static 'assets0/js/jquery-1.8.3.min.js' %}"></script>
 <script src="{% static 'assets0/js/bootstrap.min.js' %}"></script>
 <script src="//res.layui.com/layui/src/layui.js?t=1531663423583" charset="utf-8"></script>
+<script src="{% static 'assets0/js/fileJs/eventSearch.js' %}"></script>
 </body>

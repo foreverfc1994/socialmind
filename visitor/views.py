@@ -157,13 +157,15 @@ def profile(request):
         if(role == "个人用户"):
             personalized_data = models.PersonUser.objects.get(userid=userid)
             sex = personalized_data.sex
+            birthday = personalized_data.birthday
             phoneNumber = personalized_data.phonenumber
             hobby = personalized_data.hobby
             career = personalized_data.career
             realName = personalized_data.realname
+            print(birthday)
             return render(request, 'foreground/personalInformation.html', {"userid": userid, "role": role, "username": username, "email": email,
                                                                "sex": sex, "phoneNumber": phoneNumber, "hobby": hobby,
-                                                               "career": career, "realname": realName})
+                                                               "career": career, "realname": realName, "birthday": birthday})
         elif(role == "企业用户"):
             personalized_data = models.CompanyUser.objects.get(userid=userid)
             bossname = personalized_data.bossname
