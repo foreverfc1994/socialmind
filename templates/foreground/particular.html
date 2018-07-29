@@ -328,13 +328,19 @@
                                         </div>
                                     </td>
                                 </table>
-                                <div style="height: 350px; width: 90%; margin-left: 5%;">
+                                <div style="height: 350px; width: 90%; margin-left: 5%;" class="row">
                                     <canvas id="heatTrendCount" height="300px" width="900px"></canvas>
                                 </div>
-                                <div style="height: 350px; width: 90%; margin-left: 5%;">
+                                <br>
+                                <br><br><br><br><br>
+
+
+                                <div style="height: 350px; width: 90%; margin-left: 5%;"class="row">
                                     <canvas id="heatTime" height="300px" width="900px"></canvas>
                                 </div>
-                                <div class="eventComments" id="maps">
+                                <br>
+                                <br><br><br><br><br>
+                                <div class="eventComments row" id="maps" >
                                     <div id="heatMap" style="width: 80%; height: 450px; margin-left: 15%;"></div>
                                     <div id="sensitiveMap" style="width: 80%; height: 450px; margin-left: 15%;"></div>
                                 </div>
@@ -486,6 +492,7 @@
                                     <br><p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>媒体活跃度</strong></p>
                                     <canvas id="mediaLivenessBar" style="height: 280px; width: 60%;"></canvas>
                                 </div>
+                                <br><br><br>
                                 <div id="informTree" class="informTree">
                                     <br><p class="centered" style="font-size: 20px; padding-top: 15px;"><strong>信息传播过程</strong></p>
                                     <div id="informTransPic" class="echartsLinePic"></div>
@@ -496,7 +503,8 @@
                                 </div>
                             </div>
                             <div id="emotionAnalyze" class="eventComments centered" style="display: none" hidden="true">
-                                <div id="eventJudeg_emotion" style="width: 100%; height: 400px;">
+                                <div class="row">
+                                    <div id="eventJudeg_emotion" style="width: 100%; height: 400px;">
                                     <div id="eventJudge" style="width: 49%; margin-left: 1%; float: left;">
                                         <div id="statisticsEJ" style="width: 70%; margin-left: 25%;">
                                             <div class="pic" style="position: center; width: 100%; height: 100%;">
@@ -512,12 +520,18 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="eventComments" id="emMap" style="height: 400px; padding-top: 10px;">
-                                    <div id="emotionMap" style="width: 650px; height: 350px; margin-left: 15%;"></div>
                                 </div>
-                                <div class="emotionTrend" id="emotionTrendId">
-                                    <canvas id="emotionLine"></canvas>
+                                <div class="row">
+                                    <div class="eventComments" id="emMap" style="height: 400px; padding-top: 10px;">
+                                    <div id="emotionMap" style="width: 900px; height: 400px; margin-left: 15%;"></div>
                                 </div>
+                                </div>
+                                <div class="row">
+                                    <div class="emotionTrend" id="emotionTrendId">
+                                    <canvas id="emotionLine" height="350px" width="900px"></canvas>
+                                </div>
+                                </div>
+
                             </div>
 
                         </div>
