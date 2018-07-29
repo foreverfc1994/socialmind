@@ -195,6 +195,7 @@
         <ul class="layui-nav layui-layout-left layui-bg-cyan">
             {% csrf_token %}
                 {% if role == "个人用户" %}
+                    <li class="layui-nav-item"><a href="/person_index/">首页</a></li>
                     <li class="layui-nav-item"><a href="/events/?role=个人用户&type=全网热点">全网热点</a></li>
                     <li class="layui-nav-item"><a href="/events/?role=个人用户&type=当地新闻">当地新闻</a></li>
                     <li class="layui-nav-item"><a href="/events/?role=个人用户&type=敏感信息">关注领域</a></li>
@@ -301,9 +302,41 @@
                                                         <li>{{ businessLicenceId }}</li>
                                                     </ul>
                                                 {% elif role == "政府用户" %}
-                                                    <li>用户名: {{ role }}</li>
+                                                    <div class="white-header">
+                                                        <h2 style="text-align: left; font-size: 40px;">{{ username }}</h2>
+                                                    </div>
+                                                    <ul style="width: 40%; float: left; text-align: left; line-height: 30px;">
+                                                        <li><strong>&nbsp;&nbsp;用户类型：</strong></li>
+                                                        <li><strong>&nbsp;&nbsp;邮箱：</strong></li>
+                                                        <li><strong>&nbsp;&nbsp;机关名称：</strong></li>
+                                                        <li><strong>&nbsp;&nbsp;‍法人代表名称：</strong></li>
+                                                        <li><strong>&nbsp;&nbsp;机关工作领域：</strong></li>
+                                                    </ul>
+                                                    <ul style="width: 40%; margin-left: 50%; text-align: left; line-height: 30px;">
+                                                        <li>{{ role }}</li>
+                                                        <li>{{ email }}</li>
+                                                        <li>{{ govname }}</li>
+                                                        <li>{{ bossname }}</li>
+                                                        <li>{{ type }}</li>
+                                                    </ul>
                                                 {% elif role == "事业单位用户" %}
-                                                    <li>用户名: {{ role }}</li>
+                                                     <div class="white-header">
+                                                        <h2 style="text-align: left; font-size: 40px;">{{ username }}</h2>
+                                                    </div>
+                                                    <ul style="width: 40%; float: left; text-align: left; line-height: 30px;">
+                                                        <li><strong>&nbsp;&nbsp;用户类型：</strong></li>
+                                                        <li><strong>&nbsp;&nbsp;邮箱：</strong></li>
+                                                        <li><strong>&nbsp;&nbsp;单位名称：</strong></li>
+                                                        <li><strong>&nbsp;&nbsp;‍法人代表名称：</strong></li>
+                                                        <li><strong>&nbsp;&nbsp;单位工作领域：</strong></li>
+                                                    </ul>
+                                                    <ul style="width: 40%; margin-left: 50%; text-align: left; line-height: 30px;">
+                                                        <li>{{ role }}</li>
+                                                        <li>{{ email }}</li>
+                                                        <li>{{ institutionName }}</li>
+                                                        <li>{{ bossname }}</li>
+                                                        <li>{{ type }}</li>
+                                                    </ul>
                                                 {% endif %}
                                         </ul>
                                     </td>

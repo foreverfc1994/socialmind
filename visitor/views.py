@@ -162,7 +162,6 @@ def profile(request):
             hobby = personalized_data.hobby
             career = personalized_data.career
             realName = personalized_data.realname
-            print(birthday)
             return render(request, 'foreground/personalInformation.html', {"userid": userid, "role": role, "username": username, "email": email,
                                                                "sex": sex, "phoneNumber": phoneNumber, "hobby": hobby,
                                                                "career": career, "realname": realName, "birthday": birthday})
@@ -189,9 +188,11 @@ def profile(request):
             institutionName = personalized_data.institutionname
             institutionCode = personalized_data.institudecode
             insitudeCodeUrl = personalized_data.institudecodeurl
+            type = personalized_data.type
             return render(request, 'foreground/personalInformation.html', {"userid": userid, "username": username, "role": role, "email": email,
                                                                "bossname": bossname, "institutionName": institutionName,
-                                                               "institutionCode": institutionCode, "insitudeCodeUrl": insitudeCodeUrl})
+                                                               "institutionCode": institutionCode, "insitudeCodeUrl": insitudeCodeUrl,
+                                                                           "type": type})
     except:
         return render(request, 'foreground/login.html')
 
