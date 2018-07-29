@@ -157,13 +157,14 @@ def profile(request):
         if(role == "个人用户"):
             personalized_data = models.PersonUser.objects.get(userid=userid)
             sex = personalized_data.sex
+            birthday = personalized_data.birthday
             phoneNumber = personalized_data.phonenumber
             hobby = personalized_data.hobby
             career = personalized_data.career
             realName = personalized_data.realname
             return render(request, 'foreground/personalInformation.html', {"userid": userid, "role": role, "username": username, "email": email,
                                                                "sex": sex, "phoneNumber": phoneNumber, "hobby": hobby,
-                                                               "career": career, "realname": realName})
+                                                               "career": career, "realname": realName, "birthday": birthday})
         elif(role == "企业用户"):
             personalized_data = models.CompanyUser.objects.get(userid=userid)
             bossname = personalized_data.bossname
@@ -187,9 +188,11 @@ def profile(request):
             institutionName = personalized_data.institutionname
             institutionCode = personalized_data.institudecode
             insitudeCodeUrl = personalized_data.institudecodeurl
+            type = personalized_data.type
             return render(request, 'foreground/personalInformation.html', {"userid": userid, "username": username, "role": role, "email": email,
                                                                "bossname": bossname, "institutionName": institutionName,
-                                                               "institutionCode": institutionCode, "insitudeCodeUrl": insitudeCodeUrl})
+                                                               "institutionCode": institutionCode, "insitudeCodeUrl": insitudeCodeUrl,
+                                                                           "type": type})
     except:
         return render(request, 'foreground/login.html')
 

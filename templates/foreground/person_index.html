@@ -196,9 +196,9 @@
             {% csrf_token %}
             {% if request.session.user_type == "个人用户" %}
                 <li class="layui-nav-item"><a href="/events/?role=个人用户&type=全网热点">全网热点</a></li>
-                <li class="layui-nav-item"><a href="/events/?role=个人用户&type=当地新闻">当地新闻</a></li>
-                <li class="layui-nav-item"><a href="/events/?role=个人用户&type=敏感信息">关注领域</a></li>
-                <li class="layui-nav-item"><a href="/events/?role=个人用户&type=领域相关">系统推荐</a></li>
+                <li class="layui-nav-item"><a href="/events/?role=个人用户type=当地新闻">当地新闻</a></li>
+                <li class="layui-nav-item"><a href="/events/?role=个人用户type=敏感信息">关注领域</a></li>
+                <li class="layui-nav-item"><a href="/events/?role=个人用户type=领域相关">系统推荐</a></li>
                 <li class="layui-nav-item"><a href="/fileSearch/?role=政府用户">全网文章搜索</a></li>
             {% elif request.session.user_type == "企业用户" %}
                 <li class="layui-nav-item"><a href="/events/?role=企业用户&type=企业相关">企业相关</a></li>
@@ -246,34 +246,24 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            全网热点
+                            热点事件排行
                         </div>
                         <div class="panel-body">
                             <div class="list-group">
                                 <a href="/DouBanArticleStyle/" class="list-group-item active"
                                    style="border-color: #e8962e;background-image: linear-gradient(to right bottom, #e8962e, #e45131)">
                                     <div class="row">
-                                        <div class="col-lg-8">
+                                        <div class="col-lg-12">
                                             <h3 class="list-group-item-heading">习近平访问中东非洲五国并出席金砖国家领导人会晤</h3>
 
                                         </div>
-                                        <div class="col-lg-4">
-                                            <table>
-                                                <tr>
-                                                    <td>时间：2018-5-17</td>
-                                                    <td>热度：12401</td>
-                                                    <td>点赞：114</td>
-                                                    <td>收藏：741</td>
-                                                    <td>评论：71</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        {#                                        <div class="col-lg-4">#}
-                                        {#                                            <span class="layui-badge layui-bg-blue">点赞 1</span>#}
-                                        {#                                            <span class="layui-badge layui-bg-blue">评论 2</span>#}
-                                        {#                                            <span class="layui-badge layui-bg-blue">收藏 3</span>#}
-                                        {#                                        </div>#}
+{#                                        <div class="col-lg-4">#}
+{#                                            <span class="layui-badge layui-bg-blue">点赞 1</span>#}
+{#                                            <span class="layui-badge layui-bg-blue">评论 2</span>#}
+{#                                            <span class="layui-badge layui-bg-blue">收藏 3</span>#}
+{#                                        </div>#}
                                     </div>
+
 
 
                                     <p class="list-group-item-text">
@@ -281,116 +271,25 @@
                                     </p>
                                 </a>
                                 <a href="/DouBanArticleStyle/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <h3 class="list-group-item-heading">习近平访问中东非洲五国并出席金砖国家领导人会晤</h3>
-
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <table>
-                                                <tr>
-                                                    <td>时间：2018-5-17</td>
-                                                    <td>热度：12401</td>
-                                                    <td>点赞：114</td>
-                                                    <td>收藏：741</td>
-                                                    <td>评论：71</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <p class="list-group-item-text">
-                                        习近平同塞内加尔总统萨勒举行会谈。
-                                    </p>
-                                </a>
-                                <a href="/DouBanArticleStyle/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <h3 class="list-group-item-heading">共和国农机工业“长子”成长记</h3>
-
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <table>
-                                                <tr>
-                                                    <td>时间：2018-5-17</td>
-                                                    <td>热度：12401</td>
-                                                    <td>点赞：114</td>
-                                                    <td>收藏：741</td>
-                                                    <td>评论：71</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
+                                    <h3 class="list-group-item-heading">共和国农机工业“长子”成长记</h3>
                                     <p class="list-group-item-text">
                                         东方红拖拉机，60年前中国人自己制造 在改革开放中浴火重生 在世界100多个国家打响名号
                                     </p>
                                 </a>
                                 <a href="/DouBanArticleStyle/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <h3 class="list-group-item-heading">宁夏红寺堡：农产品“触网”“远嫁”助农民增收</h3>
-
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <table>
-                                                <tr>
-                                                    <td>时间：2018-5-17</td>
-                                                    <td>热度：12401</td>
-                                                    <td>点赞：114</td>
-                                                    <td>收藏：741</td>
-                                                    <td>评论：71</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
-
+                                    <h3 class="list-group-item-heading">宁夏红寺堡：农产品“触网”“远嫁”助农民增收</h3>
                                     <p class="list-group-item-text">
                                         电商真可以，隔着几百公里，也能帮我找到买鸡人。
                                     </p>
                                 </a>
                                 <a href="/DouBanArticleStyle/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <h3 class="list-group-item-heading">综述：欧盟重罚谷歌背后的理念分歧</h3>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <table>
-                                                <tr>
-                                                    <td>时间：2018-5-17</td>
-                                                    <td>热度：12401</td>
-                                                    <td>点赞：114</td>
-                                                    <td>收藏：741</td>
-                                                    <td>评论：71</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
-
+                                    <h3 class="list-group-item-heading">综述：欧盟重罚谷歌背后的理念分歧</h3>
                                     <p class="list-group-item-text">
                                         欧盟委员会近日宣布对谷歌处以４３．４亿欧元罚款
                                     </p>
                                 </a>
                                 <a href="/DouBanArticleStyle/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <h3 class="list-group-item-heading">西安市疾控中心提醒市民 热浪来袭预防中暑发生</h3>
-
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <table>
-                                                <tr>
-                                                    <td>时间：2018-5-17</td>
-                                                    <td>热度：12401</td>
-                                                    <td>点赞：114</td>
-                                                    <td>收藏：741</td>
-                                                    <td>评论：71</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
+                                    <h3 class="list-group-item-heading">西安市疾控中心提醒市民 热浪来袭预防中暑发生</h3>
                                     <p class="list-group-item-text">西安市疾控中心提醒市民 热浪来袭预防中暑发生</p>
                                 </a>
                             </div>
@@ -398,155 +297,41 @@
                     </div>
                 </div>
             </div>
-             <div class="row">
+            <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            当地新闻
+                            热点事件排行
                         </div>
                         <div class="panel-body">
                             <div class="list-group">
                                 <a href="/DouBanArticleStyle/" class="list-group-item active"
                                    style="border-color: #e8962e;background-image: linear-gradient(to right bottom, #e8962e, #e45131)">
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <h3 class="list-group-item-heading">习近平访问中东非洲五国并出席金砖国家领导人会晤</h3>
-
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <table>
-                                                <tr>
-                                                    <td>时间：2018-5-17</td>
-                                                    <td>热度：12401</td>
-                                                    <td>点赞：114</td>
-                                                    <td>收藏：741</td>
-                                                    <td>评论：71</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        {#                                        <div class="col-lg-4">#}
-                                        {#                                            <span class="layui-badge layui-bg-blue">点赞 1</span>#}
-                                        {#                                            <span class="layui-badge layui-bg-blue">评论 2</span>#}
-                                        {#                                            <span class="layui-badge layui-bg-blue">收藏 3</span>#}
-                                        {#                                        </div>#}
-                                    </div>
-
-
+                                    <h3 class="list-group-item-heading">习近平访问中东非洲五国并出席金砖国家领导人会晤</h3>
                                     <p class="list-group-item-text">
                                         习近平同塞内加尔总统萨勒举行会谈。
                                     </p>
                                 </a>
                                 <a href="/DouBanArticleStyle/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <h3 class="list-group-item-heading">习近平访问中东非洲五国并出席金砖国家领导人会晤</h3>
-
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <table>
-                                                <tr>
-                                                    <td>时间：2018-5-17</td>
-                                                    <td>热度：12401</td>
-                                                    <td>点赞：114</td>
-                                                    <td>收藏：741</td>
-                                                    <td>评论：71</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <p class="list-group-item-text">
-                                        习近平同塞内加尔总统萨勒举行会谈。
-                                    </p>
-                                </a>
-                                <a href="/DouBanArticleStyle/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <h3 class="list-group-item-heading">共和国农机工业“长子”成长记</h3>
-
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <table>
-                                                <tr>
-                                                    <td>时间：2018-5-17</td>
-                                                    <td>热度：12401</td>
-                                                    <td>点赞：114</td>
-                                                    <td>收藏：741</td>
-                                                    <td>评论：71</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
+                                    <h3 class="list-group-item-heading">共和国农机工业“长子”成长记</h3>
                                     <p class="list-group-item-text">
                                         东方红拖拉机，60年前中国人自己制造 在改革开放中浴火重生 在世界100多个国家打响名号
                                     </p>
                                 </a>
                                 <a href="/DouBanArticleStyle/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <h3 class="list-group-item-heading">宁夏红寺堡：农产品“触网”“远嫁”助农民增收</h3>
-
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <table>
-                                                <tr>
-                                                    <td>时间：2018-5-17</td>
-                                                    <td>热度：12401</td>
-                                                    <td>点赞：114</td>
-                                                    <td>收藏：741</td>
-                                                    <td>评论：71</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
-
+                                    <h3 class="list-group-item-heading">宁夏红寺堡：农产品“触网”“远嫁”助农民增收</h3>
                                     <p class="list-group-item-text">
                                         电商真可以，隔着几百公里，也能帮我找到买鸡人。
                                     </p>
                                 </a>
                                 <a href="/DouBanArticleStyle/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <h3 class="list-group-item-heading">综述：欧盟重罚谷歌背后的理念分歧</h3>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <table>
-                                                <tr>
-                                                    <td>时间：2018-5-17</td>
-                                                    <td>热度：12401</td>
-                                                    <td>点赞：114</td>
-                                                    <td>收藏：741</td>
-                                                    <td>评论：71</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
-
+                                    <h3 class="list-group-item-heading">综述：欧盟重罚谷歌背后的理念分歧</h3>
                                     <p class="list-group-item-text">
                                         欧盟委员会近日宣布对谷歌处以４３．４亿欧元罚款
                                     </p>
                                 </a>
                                 <a href="/DouBanArticleStyle/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <h3 class="list-group-item-heading">西安市疾控中心提醒市民 热浪来袭预防中暑发生</h3>
-
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <table>
-                                                <tr>
-                                                    <td>时间：2018-5-17</td>
-                                                    <td>热度：12401</td>
-                                                    <td>点赞：114</td>
-                                                    <td>收藏：741</td>
-                                                    <td>评论：71</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
+                                    <h3 class="list-group-item-heading">西安市疾控中心提醒市民 热浪来袭预防中暑发生</h3>
                                     <p class="list-group-item-text">西安市疾控中心提醒市民 热浪来袭预防中暑发生</p>
                                 </a>
                             </div>
@@ -554,155 +339,41 @@
                     </div>
                 </div>
             </div>
-             <div class="row">
+            <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            关注领域
+                            热点事件排行
                         </div>
                         <div class="panel-body">
                             <div class="list-group">
                                 <a href="/DouBanArticleStyle/" class="list-group-item active"
                                    style="border-color: #e8962e;background-image: linear-gradient(to right bottom, #e8962e, #e45131)">
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <h3 class="list-group-item-heading">习近平访问中东非洲五国并出席金砖国家领导人会晤</h3>
-
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <table>
-                                                <tr>
-                                                    <td>时间：2018-5-17</td>
-                                                    <td>热度：12401</td>
-                                                    <td>点赞：114</td>
-                                                    <td>收藏：741</td>
-                                                    <td>评论：71</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        {#                                        <div class="col-lg-4">#}
-                                        {#                                            <span class="layui-badge layui-bg-blue">点赞 1</span>#}
-                                        {#                                            <span class="layui-badge layui-bg-blue">评论 2</span>#}
-                                        {#                                            <span class="layui-badge layui-bg-blue">收藏 3</span>#}
-                                        {#                                        </div>#}
-                                    </div>
-
-
+                                    <h3 class="list-group-item-heading">习近平访问中东非洲五国并出席金砖国家领导人会晤</h3>
                                     <p class="list-group-item-text">
                                         习近平同塞内加尔总统萨勒举行会谈。
                                     </p>
                                 </a>
                                 <a href="/DouBanArticleStyle/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <h3 class="list-group-item-heading">习近平访问中东非洲五国并出席金砖国家领导人会晤</h3>
-
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <table>
-                                                <tr>
-                                                    <td>时间：2018-5-17</td>
-                                                    <td>热度：12401</td>
-                                                    <td>点赞：114</td>
-                                                    <td>收藏：741</td>
-                                                    <td>评论：71</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <p class="list-group-item-text">
-                                        习近平同塞内加尔总统萨勒举行会谈。
-                                    </p>
-                                </a>
-                                <a href="/DouBanArticleStyle/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <h3 class="list-group-item-heading">共和国农机工业“长子”成长记</h3>
-
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <table>
-                                                <tr>
-                                                    <td>时间：2018-5-17</td>
-                                                    <td>热度：12401</td>
-                                                    <td>点赞：114</td>
-                                                    <td>收藏：741</td>
-                                                    <td>评论：71</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
+                                    <h3 class="list-group-item-heading">共和国农机工业“长子”成长记</h3>
                                     <p class="list-group-item-text">
                                         东方红拖拉机，60年前中国人自己制造 在改革开放中浴火重生 在世界100多个国家打响名号
                                     </p>
                                 </a>
                                 <a href="/DouBanArticleStyle/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <h3 class="list-group-item-heading">宁夏红寺堡：农产品“触网”“远嫁”助农民增收</h3>
-
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <table>
-                                                <tr>
-                                                    <td>时间：2018-5-17</td>
-                                                    <td>热度：12401</td>
-                                                    <td>点赞：114</td>
-                                                    <td>收藏：741</td>
-                                                    <td>评论：71</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
-
+                                    <h3 class="list-group-item-heading">宁夏红寺堡：农产品“触网”“远嫁”助农民增收</h3>
                                     <p class="list-group-item-text">
                                         电商真可以，隔着几百公里，也能帮我找到买鸡人。
                                     </p>
                                 </a>
                                 <a href="/DouBanArticleStyle/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <h3 class="list-group-item-heading">综述：欧盟重罚谷歌背后的理念分歧</h3>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <table>
-                                                <tr>
-                                                    <td>时间：2018-5-17</td>
-                                                    <td>热度：12401</td>
-                                                    <td>点赞：114</td>
-                                                    <td>收藏：741</td>
-                                                    <td>评论：71</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
-
+                                    <h3 class="list-group-item-heading">综述：欧盟重罚谷歌背后的理念分歧</h3>
                                     <p class="list-group-item-text">
                                         欧盟委员会近日宣布对谷歌处以４３．４亿欧元罚款
                                     </p>
                                 </a>
                                 <a href="/DouBanArticleStyle/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <h3 class="list-group-item-heading">西安市疾控中心提醒市民 热浪来袭预防中暑发生</h3>
-
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <table>
-                                                <tr>
-                                                    <td>时间：2018-5-17</td>
-                                                    <td>热度：12401</td>
-                                                    <td>点赞：114</td>
-                                                    <td>收藏：741</td>
-                                                    <td>评论：71</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
+                                    <h3 class="list-group-item-heading">西安市疾控中心提醒市民 热浪来袭预防中暑发生</h3>
                                     <p class="list-group-item-text">西安市疾控中心提醒市民 热浪来袭预防中暑发生</p>
                                 </a>
                             </div>
@@ -710,155 +381,41 @@
                     </div>
                 </div>
             </div>
-             <div class="row">
+            <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            系统推荐
+                            热点事件排行
                         </div>
                         <div class="panel-body">
                             <div class="list-group">
                                 <a href="/DouBanArticleStyle/" class="list-group-item active"
                                    style="border-color: #e8962e;background-image: linear-gradient(to right bottom, #e8962e, #e45131)">
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <h3 class="list-group-item-heading">习近平访问中东非洲五国并出席金砖国家领导人会晤</h3>
-
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <table>
-                                                <tr>
-                                                    <td>时间：2018-5-17</td>
-                                                    <td>热度：12401</td>
-                                                    <td>点赞：114</td>
-                                                    <td>收藏：741</td>
-                                                    <td>评论：71</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        {#                                        <div class="col-lg-4">#}
-                                        {#                                            <span class="layui-badge layui-bg-blue">点赞 1</span>#}
-                                        {#                                            <span class="layui-badge layui-bg-blue">评论 2</span>#}
-                                        {#                                            <span class="layui-badge layui-bg-blue">收藏 3</span>#}
-                                        {#                                        </div>#}
-                                    </div>
-
-
+                                    <h3 class="list-group-item-heading">习近平访问中东非洲五国并出席金砖国家领导人会晤</h3>
                                     <p class="list-group-item-text">
                                         习近平同塞内加尔总统萨勒举行会谈。
                                     </p>
                                 </a>
                                 <a href="/DouBanArticleStyle/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <h3 class="list-group-item-heading">习近平访问中东非洲五国并出席金砖国家领导人会晤</h3>
-
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <table>
-                                                <tr>
-                                                    <td>时间：2018-5-17</td>
-                                                    <td>热度：12401</td>
-                                                    <td>点赞：114</td>
-                                                    <td>收藏：741</td>
-                                                    <td>评论：71</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <p class="list-group-item-text">
-                                        习近平同塞内加尔总统萨勒举行会谈。
-                                    </p>
-                                </a>
-                                <a href="/DouBanArticleStyle/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <h3 class="list-group-item-heading">共和国农机工业“长子”成长记</h3>
-
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <table>
-                                                <tr>
-                                                    <td>时间：2018-5-17</td>
-                                                    <td>热度：12401</td>
-                                                    <td>点赞：114</td>
-                                                    <td>收藏：741</td>
-                                                    <td>评论：71</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
+                                    <h3 class="list-group-item-heading">共和国农机工业“长子”成长记</h3>
                                     <p class="list-group-item-text">
                                         东方红拖拉机，60年前中国人自己制造 在改革开放中浴火重生 在世界100多个国家打响名号
                                     </p>
                                 </a>
                                 <a href="/DouBanArticleStyle/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <h3 class="list-group-item-heading">宁夏红寺堡：农产品“触网”“远嫁”助农民增收</h3>
-
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <table>
-                                                <tr>
-                                                    <td>时间：2018-5-17</td>
-                                                    <td>热度：12401</td>
-                                                    <td>点赞：114</td>
-                                                    <td>收藏：741</td>
-                                                    <td>评论：71</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
-
+                                    <h3 class="list-group-item-heading">宁夏红寺堡：农产品“触网”“远嫁”助农民增收</h3>
                                     <p class="list-group-item-text">
                                         电商真可以，隔着几百公里，也能帮我找到买鸡人。
                                     </p>
                                 </a>
                                 <a href="/DouBanArticleStyle/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <h3 class="list-group-item-heading">综述：欧盟重罚谷歌背后的理念分歧</h3>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <table>
-                                                <tr>
-                                                    <td>时间：2018-5-17</td>
-                                                    <td>热度：12401</td>
-                                                    <td>点赞：114</td>
-                                                    <td>收藏：741</td>
-                                                    <td>评论：71</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
-
+                                    <h3 class="list-group-item-heading">综述：欧盟重罚谷歌背后的理念分歧</h3>
                                     <p class="list-group-item-text">
                                         欧盟委员会近日宣布对谷歌处以４３．４亿欧元罚款
                                     </p>
                                 </a>
                                 <a href="/DouBanArticleStyle/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <h3 class="list-group-item-heading">西安市疾控中心提醒市民 热浪来袭预防中暑发生</h3>
-
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <table>
-                                                <tr>
-                                                    <td>时间：2018-5-17</td>
-                                                    <td>热度：12401</td>
-                                                    <td>点赞：114</td>
-                                                    <td>收藏：741</td>
-                                                    <td>评论：71</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
+                                    <h3 class="list-group-item-heading">西安市疾控中心提醒市民 热浪来袭预防中暑发生</h3>
                                     <p class="list-group-item-text">西安市疾控中心提醒市民 热浪来袭预防中暑发生</p>
                                 </a>
                             </div>
@@ -866,7 +423,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-lg-12 main-chart">
                     <div class="row">
