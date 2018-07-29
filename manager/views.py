@@ -103,3 +103,20 @@ def eventshow(request):
     return render(request,'background/Eventlist.html')
 def jianbao(request):
     return render(request,'background/jianbao.html')
+def qiantaimotaikuang(request):
+    # userid = request.session["user_id"]
+    # role = request.session["user_type"]
+    # username = request.session["user_name"]
+    # currentUser = models.User.objects.get(userid=userid)
+    # email = currentUser.email
+    # personalized_data = models.CompanyUser.objects.get(userid=userid)
+    # bossname = personalized_data.bossname
+    # companyname = personalized_data.companyname
+    # businessLicenceId = personalized_data.businesslicenceid
+    # bussinessLicencePic = str(personalized_data.businesslicenceurl)
+    return render(request, 'foreground/personalInformation.html',
+                  {"userid": '123', "username": 123, "role": '个人用户', "email": '461834084@qq.com',
+                   "bossname": '123', "companyname": '123',
+                   "businessLicenceId": '123', "bussinessLicencePic":
+                       '123'})
+    # return render(request,'foreground/personalInformation.html')

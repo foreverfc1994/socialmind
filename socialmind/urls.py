@@ -33,6 +33,7 @@ urlpatterns = [
     path('checkuser/', vviews.checkuser),
     path('events/', vviews.events),
     path('profile/', vviews.profile),
+    path('jump/',vviews.jump),
     path('eventParticular/', vviews.eventparticular),
     path('fileParticular/', vviews.fileParticular),
     path('fileSearch/', vviews.fileSearch, name='fileSearch'),
@@ -75,6 +76,7 @@ urlpatterns = [
     path('objectshow/',bviews.objectshow),
     path('Eventshow/',bviews.eventshow),
     path('jianbao/',bviews.jianbao),
+    path('qiantaimotaikuang',bviews.qiantaimotaikuang),
 
 
 
