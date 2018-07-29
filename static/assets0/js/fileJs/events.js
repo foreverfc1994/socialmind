@@ -156,7 +156,7 @@ function format (d) {
     // `d` is the original data object for the row
     return '<table>'+
         '<tr><td style="width: 80%;">'+
-            '<table cellpadding="5" cellspacing="0" border="0" style="width: 100%; height: 200px; float: left; margin-left: 10%;" id="filesTable">'+
+            '<table cellpadding="5" cellspacing="0" border="0" class="ui celled table" id="filesTable">'+
         '</table></td><td>'+
         '<button class="moreButton" onclick="toAllFiles()">所有文章</button></td>'+
         '</tr></table>';
@@ -212,7 +212,7 @@ function eventsTable(){
 
 function filesTable(){
     $("#filesTable").DataTable({
-        "dom": '<"top">rt<"bottom"><"clear">',
+        // "dom": '<"top">rt<"bottom"><"clear">',
         "order": [1, "dsc"],
         "aLengthMenu": [[5], [5]],
         "language": {
