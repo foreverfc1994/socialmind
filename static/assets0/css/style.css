@@ -2620,3 +2620,19 @@ tr.shown td.details-control {
 .pd10{
     padding-top: 10px;
 }
+.bigButton{
+    width: 50%;
+    height: 50%;
+    border-width: 0px;
+    background-color: #F5F5F5;
+    float: left;
+    font-size: 35px;
+}
+.bigButtonClicked{
+    width: 50%;
+    height: 50%;
+    border-width: 0px;
+    float: left;
+    font-size: 35px;
+    background-color: #DAA520;
+}

@@ -26,6 +26,7 @@ def login(request):
                    request.session['is_login'] = True
                    request.session['user_id'] = user.pk
                    request.session['user_name'] = user.username
+                   request.session['user_type'] = user.usertype
                    if user_type == "个人用户":
                        return redirect('person_index')
                    if user_type == "企业用户":
@@ -78,9 +79,10 @@ def govcom_index(request):
 def test(request):
     return render(request, 'foreground/signin.html')
 def fileSearch(request):
-    return render(request, 'foreground/fileSearch.html')
+    role = request.session["user_type"]
+    return render(request, 'foreground/fileSearch.html', {"role": role})
 def eventSearch(request):
-    role = request.GET.get("role")
+    role = request.session["user_type"]
     return render(request, 'foreground/eventSearch.html', {"role": role})
 
 def signin(request):
@@ -140,22 +142,64 @@ def get_address(request):
 def competitive_products(request):
     return render(request, 'foreground/competitive_products.html')
 
-
-
 def events(request):
     head = request.GET
     messageDic = {"type": head["type"], "role": head["role"]}
     return render(request, 'foreground/events.html', messageDic)
 
 def profile(request):
-    userid = request.session["userid"]
-    return render(request, 'foreground/profile.html', {"userid": userid})
+    userid = request.session["user_id"]
+    role = request.session["user_type"]
+    username = request.session["user_name"]
+    currentUser = models.User.objects.get(userid=userid)
+    email = currentUser.email
+    try:
+        if(role == "个人用户"):
+            personalized_data = models.PersonUser.objects.get(userid=userid)
+            sex = personalized_data.sex
+            phoneNumber = personalized_data.phonenumber
+            hobby = personalized_data.hobby
+            career = personalized_data.career
+            realName = personalized_data.realname
+            return render(request, 'foreground/personalInformation.html', {"userid": userid, "role": role, "username": username, "email": email,
+                                                               "sex": sex, "phoneNumber": phoneNumber, "hobby": hobby,
+                                                               "career": career, "realname": realName})
+        elif(role == "企业用户"):
+            personalized_data = models.CompanyUser.objects.get(userid=userid)
+            bossname = personalized_data.bossname
+            companyname = personalized_data.companyname
+            businessLicenceId = personalized_data.businesslicenceid
+            bussinessLicencePic = str(personalized_data.businesslicenceurl)
+            return render(request, 'foreground/personalInformation.html', {"userid": userid, "username": username, "role": role, "email": email,
+                                                               "bossname": bossname, "companyname": companyname,
+                                                               "businessLicenceId": businessLicenceId, "bussinessLicencePic":
+                                                                   bussinessLicencePic})
+        elif(role == "政府用户"):
+            personalized_data = models.GovUser.objects.get(userid=userid)
+            bossname = personalized_data.bossname
+            govname = personalized_data.govname
+            type = personalized_data.type
+            return render(request, 'foreground/personalInformation.html', {"userid": userid, "username": username, "role": role, "email": email,
+                                                               "bossname": bossname, "govname": govname, "type": type})
+        elif(role == "事业单位用户"):
+            personalized_data = models.InstitutionUser.objects.get(userid=userid)
+            bossname = personalized_data.bossname
+            institutionName = personalized_data.institutionname
+            institutionCode = personalized_data.institudecode
+            insitudeCodeUrl = personalized_data.institudecodeurl
+            return render(request, 'foreground/personalInformation.html', {"userid": userid, "username": username, "role": role, "email": email,
+                                                               "bossname": bossname, "institutionName": institutionName,
+                                                               "institutionCode": institutionCode, "insitudeCodeUrl": insitudeCodeUrl})
+    except:
+        return render(request, 'foreground/login.html')
 
 def eventparticular(request):
-    return render(request, 'foreground/particular.html')
+    role = request.session["user_type"]
+    return render(request, 'foreground/particular.html', {"role": role})
 
 def fileParticular(request):
-    return render(request, 'foreground/file.html')
+    role = request.session["user_type"]
+    return render(request, 'foreground/file.html', {"role": role})
 
 @csrf_exempt
 def checkuser(request):

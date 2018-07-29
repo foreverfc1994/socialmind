@@ -26,9 +26,63 @@
     <![endif]-->
     <script src="{% static 'backgroundfiles/assets/js/jquery-3.3.1.min.js' %}"></script>
     <style>
+        .bot p {
+    margin-right: 10px;
+}
+.bot p, .artical-list .bot .edit {
+    font-size: 12px;
+    color: #999;
+    padding: 0 6px;
+    height: 18px;
+    line-height: 18px;
+}
         #authorinfotb tr td{
             border-top: 0px solid #ddd;
+        }   
+        #infotb td{
+            text-align: center;
         }
+        #infotb td{ border-right:1px solid white;padding-right: 20px;padding-top: 5px;
+        }
+        #authnumtb td{
+            padding-right: 15px;
+            color: white
+        }
+    img {
+    border-radius: 50%;
+}
+        .xiaoimg{
+            display: block;
+            width: 30px;
+            height: 30px;
+        }
+        .tit {
+    display: inline-block;
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+    line-height: 36px;
+    margin-top: 12px;
+}
+.con {
+    display: block;
+    font-size: 14px;
+    color: #666;
+    line-height: 24px;
+    height: 48px;
+    margin-top: 12px;
+    overflow: hidden;
+    cursor: default;
+}
+.original {
+    color: #f96f85;
+    border: 1px solid #f96f85;
+}
+.tab {
+    margin-right: 14px;
+    font-size: 12px;
+    border-radius: 4px;
+}
     </style>
   </head>
 
@@ -359,59 +413,168 @@
           <section class="wrapper site-min-height">
           	<h3><i class="fa fa-angle-right"></i> 作者相关文章</h3>
                 <div class="row">
-	                  <div class="col-md-12 mt">
-	                  	<div class="content-panel" style="height: 274px;">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img style="width: 100%" src="{% static 'backgroundfiles/assets/img/ui-zac.jpg' %}">
+	                  <div class="col-md-12 mt" style="margin-left: 0px;margin-right: 0px;background-color: #5F9EA0;min-height: 200px">
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col-md-2">
+                                <img style="width: 100%" src="{% static 'backgroundfiles/assets/img/ui-zac.jpg' %}">
+                            </div>
+                            <div class="col-md-10" style="padding-left: 30px">
+                                <div class="row">
+                                    <h3 style="color: white;">小明</h3>
                                 </div>
-                                <div class="col-md-9" style="padding-left: 0px">
-                                    <table id="authorinfotb" class="table" style="margin-top: 30px;height: 210px;">
-                                        <thead></thead>
-                                        <tbody>
-                                            <tr><td style="text-align: right;width: 60px">昵称</td><td>小明</td><td style="text-align: right">网站</td><td>虎扑网</td><td style="text-align: right">性别</td><td>男</td></tr>
-                                            <tr><td style="text-align: right">年龄</td><td>25</td><td style="text-align: right">地址</td><td>辽宁省</td><td style="text-align: right">个人介绍</td><td>篮球</td></tr>
-                                            <tr style="height: 1px;"><td style="text-align: right;">关注数</td><td>100</td><td style="text-align: right">粉丝数</td><td>50</td><td style="text-align: right">文章数</td><td>200</td></tr>
-                                        </tbody>
+                                <div class="row">
+                                    <table id="infotb" style="color: white;">
+                                        <tr>
+                                            <td>
+                                                <b>虎扑论坛</b>
+                                                <p>网站</p>
+                                            </td>
+                                            <td style="padding-left: 20px">
+                                                <b>篮球</b>
+                                                <p>个人介绍</p>
+                                            </td>
+                                            <td style="padding-left: 20px">
+                                                <b>男</b>
+                                                <p>性别</p>
+                                            </td>
+                                            <td style="padding-left: 20px">
+                                                <b>22</b>
+                                                <p>年龄</p>
+                                            </td>
+                                            <td style="padding-left: 20px;border-right: 0px">
+                                                <b>辽宁省</b>
+                                                <p>地址</p>
+                                            </td>
+                                        </tr>
                                     </table>
-                                        <table style="display: none" class="table table-hover">
-                                                <!-- <h4><i class="fa fa-angle-right"></i> 文章</h4> -->
-                                                <!-- <hr> -->
-                                                <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>文章</th>
-                                                    <th>作者</th>
-                                                    <th>网站</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>博格巴+姆巴佩破门！法国4-2克罗地亚夺冠，法国世界杯第二次封王</td>
-                                                    <td>钓鱼方程式</td>
-                                                    <td>新浪微博</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>博格巴姆巴佩破门，法国4-2克罗地亚夺得世界杯冠军</td>
-                                                    <td>围观世界杯</td>
-                                                    <td>新浪微博</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3</td>
-                                                    <td>博格巴姆巴佩破门，法国4-2克罗地亚夺得世界杯冠军</td>
-                                                    <td>围观世界杯</td>
-                                                    <td>新浪微博</td>
-                                                </tr>
-                                                </tbody>
-                                        </table>
+                                </div>
+                                <div class="row" style="margin-top: 30px">
+                                    <table id="authnumtb">
+                                        <tr>
+                                            <td>
+                                                关注数&nbsp;100
+                                            </td>
+                                            <td>
+                                                粉丝数&nbsp;50
+                                            </td>
+                                            <td>
+                                                文章数&nbsp;200
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
-	                  	  </div><!--/content-panel -->
+                        </div>
 	                  </div><!-- /col-md-12 -->
-				</div><!-- row -->
-                <div class="row">
+                </div><!-- row -->
+                <div class="container">
+                    <div class="row" style="padding-top: 20px;padding-bottom: 20px">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-4" style="padding-left: 0px">
+                                <img style="display: inline-block" class="xiaoimg" src="{% static 'backgroundfiles/assets/img/ui-zac.jpg' %}" alt="">
+                                <a style="font-size: 12px;color: #333;margin-left: 12px;line-height: 30px;">小明</a>
+                                <a style="font-size: 12px;color: #969696;margin-left: 8px;line-height: 30px;cursor: default;">
+                                    发布于：2018-05-11
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <a class="tit">博格巴+姆巴佩破门！法国4-2克罗地亚夺冠，法国世界杯第二次封王</a>
+                            <a class="con">
+                                    在项目开发中，遇到这样一个问题，网页中有多组单选问题和复选项，甚至还有下拉列表或文本输入框……除了text文本输入框可以给它添加required属性外之外，其他都不能用html自带的属性来实现必选的功能。新手瞎折腾，大神见笑了~！欢迎指点更好的解决方法哦~！
+                            </a>
+                        </div>
+                        <div class="row bot" style="margin-top: 20px">
+                            <p class="tab original fl" style="color: #f96f85;display: inline-block">原创</p>
+                            <p class="read fl" style="display: inline-block">阅读&nbsp;455</p>
+                            <p class="comment fl" style="display: inline-block">评论&nbsp;2</p>
+                            <p class="collect fl" style="display: inline-block">收藏&nbsp;0</p>
+                        </div>
+                    </div>
+                    </div>
+                    <hr style="margin: 0px;height:2px;border: 0px;background-color: #ddd">
+                    <div class="row" style="padding-top: 20px;padding-bottom: 20px">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-4" style="padding-left: 0px">
+                                <img style="display: inline-block" class="xiaoimg" src="{% static 'backgroundfiles/assets/img/ui-zac.jpg' %}" alt="">
+                                <a style="font-size: 12px;color: #333;margin-left: 12px;line-height: 30px;">小明</a>
+                                <a style="font-size: 12px;color: #969696;margin-left: 8px;line-height: 30px;cursor: default;">
+                                    发布于：2018-05-11
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <a class="tit">博格巴+姆巴佩破门！法国4-2克罗地亚夺冠，法国世界杯第二次封王</a>
+                            <a class="con">
+                                    在项目开发中，遇到这样一个问题，网页中有多组单选问题和复选项，甚至还有下拉列表或文本输入框……除了text文本输入框可以给它添加required属性外之外，其他都不能用html自带的属性来实现必选的功能。新手瞎折腾，大神见笑了~！欢迎指点更好的解决方法哦~！
+                            </a>
+                        </div>
+                        <div class="row bot" style="margin-top: 20px">
+                            <p class="tab original fl" style="color: #f96f85;display: inline-block">原创</p>
+                            <p class="read fl" style="display: inline-block">阅读&nbsp;455</p>
+                            <p class="comment fl" style="display: inline-block">评论&nbsp;2</p>
+                            <p class="collect fl" style="display: inline-block">收藏&nbsp;0</p>
+                        </div>
+                    </div>
+                    </div>
+                    <hr style="margin: 0px;height:2px;border: 0px;background-color: #ddd">
+                    <div class="row" style="padding-top: 20px;padding-bottom: 20px">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-4" style="padding-left: 0px">
+                                <img style="display: inline-block" class="xiaoimg" src="{% static 'backgroundfiles/assets/img/ui-zac.jpg' %}" alt="">
+                                <a style="font-size: 12px;color: #333;margin-left: 12px;line-height: 30px;">小明</a>
+                                <a style="font-size: 12px;color: #969696;margin-left: 8px;line-height: 30px;cursor: default;">
+                                    发布于：2018-05-11
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <a class="tit">博格巴+姆巴佩破门！法国4-2克罗地亚夺冠，法国世界杯第二次封王</a>
+                            <a class="con">
+                                    在项目开发中，遇到这样一个问题，网页中有多组单选问题和复选项，甚至还有下拉列表或文本输入框……除了text文本输入框可以给它添加required属性外之外，其他都不能用html自带的属性来实现必选的功能。新手瞎折腾，大神见笑了~！欢迎指点更好的解决方法哦~！
+                            </a>
+                        </div>
+                        <div class="row bot" style="margin-top: 20px">
+                            <p class="tab original fl" style="color: #f96f85;display: inline-block">原创</p>
+                            <p class="read fl" style="display: inline-block">阅读&nbsp;455</p>
+                            <p class="comment fl" style="display: inline-block">评论&nbsp;2</p>
+                            <p class="collect fl" style="display: inline-block">收藏&nbsp;0</p>
+                        </div>
+                    </div>
+                    </div>
+                    <hr style="margin: 0px;height:2px;border: 0px;background-color: #ddd">
+                    <div class="row" style="padding-top: 20px;padding-bottom: 20px">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-4" style="padding-left: 0px">
+                                <img style="display: inline-block" class="xiaoimg" src="{% static 'backgroundfiles/assets/img/ui-zac.jpg' %}" alt="">
+                                <a style="font-size: 12px;color: #333;margin-left: 12px;line-height: 30px;">小明</a>
+                                <a style="font-size: 12px;color: #969696;margin-left: 8px;line-height: 30px;cursor: default;">
+                                    发布于：2018-05-11
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <a class="tit">博格巴+姆巴佩破门！法国4-2克罗地亚夺冠，法国世界杯第二次封王</a>
+                            <a class="con">
+                                    在项目开发中，遇到这样一个问题，网页中有多组单选问题和复选项，甚至还有下拉列表或文本输入框……除了text文本输入框可以给它添加required属性外之外，其他都不能用html自带的属性来实现必选的功能。新手瞎折腾，大神见笑了~！欢迎指点更好的解决方法哦~！
+                            </a>
+                        </div>
+                        <div class="row bot" style="margin-top: 20px">
+                            <p class="tab original fl" style="color: #f96f85;display: inline-block">原创</p>
+                            <p class="read fl" style="display: inline-block">阅读&nbsp;455</p>
+                            <p class="comment fl" style="display: inline-block">评论&nbsp;2</p>
+                            <p class="collect fl" style="display: inline-block">收藏&nbsp;0</p>
+                        </div>
+                    </div>
+                    </div>
+                    <hr style="margin: 0px;height:2px;border: 0px;background-color: #ddd">
+                </div>
+                
+                <div class="row" style="display: none">
 	                  <div class="col-md-12 mt">
 	                  	<div class="content-panel">
 	                          <table id="tbclick" class="table table-hover">
