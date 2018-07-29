@@ -148,51 +148,43 @@ def events(request):
     return render(request, 'foreground/events.html', messageDic)
 
 def profile(request):
-    userid = request.session["user_id"]
+    # userid = request.session["user_id"]
     role = request.session["user_type"]
-    username = request.session["user_name"]
-    currentUser = models.User.objects.get(userid=userid)
-    email = currentUser.email
+    # username = request.session["user_name"]
+    # currentUser = models.User.objects.get(userid=userid)
+    # email = currentUser.email
     try:
         if(role == "个人用户"):
-            personalized_data = models.PersonUser.objects.get(userid=userid)
-            sex = personalized_data.sex
-            birthday = personalized_data.birthday
-            phoneNumber = personalized_data.phonenumber
-            hobby = personalized_data.hobby
-            career = personalized_data.career
-            realName = personalized_data.realname
-            return render(request, 'foreground/personalInformation.html', {"userid": userid, "role": role, "username": username, "email": email,
-                                                               "sex": sex, "phoneNumber": phoneNumber, "hobby": hobby,
-                                                               "career": career, "realname": realName, "birthday": birthday})
+            # personalized_data = models.PersonUser.objects.get(userid=userid)
+            # sex = personalized_data.sex
+            # birthday = personalized_data.birthday
+            # phoneNumber = personalized_data.phonenumber
+            # hobby = personalized_data.hobby
+            # career = personalized_data.career
+            # realName = personalized_data.realname
+            return render(request, 'foreground/personalInformation.html', {"userid": '122', "role": '个人', "username": '1111', "email": '4545',
+                                                               "sex": 'asda', "phoneNumber": 'sadasd', "hobby": 'sadasda',
+                                                               "career": 'sadasdsa', "realname": 'sadas', "birthday": 'asdasda'})
         elif(role == "企业用户"):
-            personalized_data = models.CompanyUser.objects.get(userid=userid)
-            bossname = personalized_data.bossname
-            companyname = personalized_data.companyname
-            businessLicenceId = personalized_data.businesslicenceid
-            bussinessLicencePic = str(personalized_data.businesslicenceurl)
-            return render(request, 'foreground/personalInformation.html', {"userid": userid, "username": username, "role": role, "email": email,
-                                                               "bossname": bossname, "companyname": companyname,
-                                                               "businessLicenceId": businessLicenceId, "bussinessLicencePic":
-                                                                   bussinessLicencePic})
+            # personalized_data = models.CompanyUser.objects.get(userid=userid)
+            # bossname = personalized_data.bossname
+            # companyname = personalized_data.companyname
+            # businessLicenceId = personalized_data.businesslicenceid
+            # bussinessLicencePic = str(personalized_data.businesslicenceurl)
+            return render(request, 'foreground/personalInformation.html', {"userid": '122', "role": '个人', "username": '1111', "email": '4545',
+                                                               "bossname": 'dasdad', "companyname": 'sdasdasda',
+                                                               "businessLicenceId": '2153511', "bussinessLicencePic":
+                                                                   '445554'})
         elif(role == "政府用户"):
-            personalized_data = models.GovUser.objects.get(userid=userid)
-            bossname = personalized_data.bossname
-            govname = personalized_data.govname
-            type = personalized_data.type
-            return render(request, 'foreground/personalInformation.html', {"userid": userid, "username": username, "role": role, "email": email,
-                                                               "bossname": bossname, "govname": govname, "type": type})
+
+            return render(request, 'foreground/personalInformation.html', {"userid": '122', "role": '个人', "username": '1111', "email": '4545',
+                                                               "bossname": 'sadasd', "govname": 'asdasdsad', "type": 'sadasd'})
         elif(role == "事业单位用户"):
-            personalized_data = models.InstitutionUser.objects.get(userid=userid)
-            bossname = personalized_data.bossname
-            institutionName = personalized_data.institutionname
-            institutionCode = personalized_data.institudecode
-            insitudeCodeUrl = personalized_data.institudecodeurl
-            type = personalized_data.type
-            return render(request, 'foreground/personalInformation.html', {"userid": userid, "username": username, "role": role, "email": email,
-                                                               "bossname": bossname, "institutionName": institutionName,
-                                                               "institutionCode": institutionCode, "insitudeCodeUrl": insitudeCodeUrl,
-                                                                           "type": type})
+
+            return render(request, 'foreground/personalInformation.html', {"userid": '122', "role": '个人', "username": '1111', "email": '4545',
+                                                               "bossname": 'sadasda', "institutionName": 'sadasda',
+                                                               "institutionCode": 'sdasdasd', "insitudeCodeUrl": 'sdasdasd',
+                                                                           "type": 'sdasdasd'})
     except:
         return render(request, 'foreground/login.html')
 

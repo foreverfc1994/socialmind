@@ -199,14 +199,14 @@
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left layui-bg-cyan">
             {% csrf_token %}
-                {% if role == "个人用户" %}
+                {% if request.session.user_type == "个人用户" %}
                     <li class="layui-nav-item"><a href="/person_index/">首页</a></li>
                     <li class="layui-nav-item"><a href="/events/?role=个人用户&type=全网热点">全网热点</a></li>
                     <li class="layui-nav-item"><a href="/events/?role=个人用户&type=当地新闻">当地新闻</a></li>
                     <li class="layui-nav-item"><a href="/events/?role=个人用户&type=敏感信息">关注领域</a></li>
                     <li class="layui-nav-item"><a href="/events/?role=个人用户&type=领域相关">系统推荐</a></li>
                     <li class="layui-nav-item"><a href="/fileSearch/?role=政府用户">全网文章搜索</a></li>
-                {% elif role == "企业用户" %}
+                {% elif request.session.user_type == "企业用户" %}
                     <li class="layui-nav-item"><a href="/com_index/">首页</a></li>
                     <li class="layui-nav-item"><a href="/events/?role=企业用户&type=企业相关">企业相关</a></li>
                     <li class="layui-nav-item"><a href="/events/?role=企业用户&type=当地新闻">当地新闻</a></li>
@@ -216,7 +216,7 @@
                     <li class="layui-nav-item"><a href="/competitive_products/">竞品信息</a></li>
                     <li class="layui-nav-item"><a href="/eventSearch/">全网事件搜索</a></li>
                     <li class="layui-nav-item"><a href="/fileSearch/">全网文章搜索</a></li>
-                {% elif role == "政府用户" %}
+                {% elif request.session.user_type == "政府用户" %}
                     <li class="layui-nav-item"><a href="/gov_index/">首页</a></li>
                     <li class="layui-nav-item"><a href="/events/?role=政府用户&type=政务相关">政务相关</a></li>
                     <li class="layui-nav-item"><a href="/events/?role=政府用户&type=当地新闻">当地新闻</a></li>
@@ -225,7 +225,7 @@
                     <li class="layui-nav-item"><a href="/events/?role=政府用户&type=上下级信息">上下级信息</a></li>
                     <li class="layui-nav-item"><a href="/eventSearch/">全网事件搜索</a></li>
                     <li class="layui-nav-item"><a href="/fileSearch/">全网文章搜索</a></li>
-                {% elif role == "事业单位用户" %}
+                {% elif request.session.user_type == "事业单位用户" %}
                     <li class="layui-nav-item"><a href="/govcom_index/">首页</a></li>
                     <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=工作相关">工作相关</a></li>
                     <li class="layui-nav-item"><a href="/events/?role=事业单位用户&type=当地新闻">当地新闻</a></li>
@@ -265,7 +265,7 @@
                                     </td>
                                     <td id="selfInformation" style="width: 40%; height: 200px; padding-left: 40px;">
                                             {% csrf_token %}
-                                                {% if role == "个人用户" %}
+                                                {% if request.session.user_type == "个人用户" %}
                                                     <h2 style="text-align: left; font-size: 40px;">{{ username }}</h2>
                                                     <ul style="width: 40%; float: left; text-align: left; line-height: 30px;">
                                                         <li><strong>&nbsp;&nbsp;用户类型：</strong></li>
@@ -288,7 +288,7 @@
                                                         <li>{{ career }}</li>
                                                         <li>{{ realname }}</li>
                                                     </ul>
-                                                {% elif role == "企业用户" %}
+                                                {% elif request.session.user_type == "企业用户" %}
                                                     <div class="white-header">
                                                         <h2 style="text-align: left; font-size: 40px;">{{ username }}</h2>
                                                     </div>
@@ -306,7 +306,7 @@
                                                         <li>{{ bossname }}</li>
                                                         <li>{{ businessLicenceId }}</li>
                                                     </ul>
-                                                {% elif role == "政府用户" %}
+                                                {% elif request.session.user_type == "政府用户" %}
                                                     <div class="white-header">
                                                         <h2 style="text-align: left; font-size: 40px;">{{ username }}</h2>
                                                     </div>
@@ -324,7 +324,7 @@
                                                         <li>{{ bossname }}</li>
                                                         <li>{{ type }}</li>
                                                     </ul>
-                                                {% elif role == "事业单位用户" %}
+                                                {% elif request.session.user_type == "事业单位用户" %}
                                                      <div class="white-header">
                                                         <h2 style="text-align: left; font-size: 40px;">{{ username }}</h2>
                                                     </div>
