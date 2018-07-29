@@ -30,7 +30,6 @@ body {
     height: 1px;
     width: 90%;
 }
-
 .view{
     border: #000000 solid 1px;
 }
@@ -2574,7 +2573,7 @@ tr.shown td.details-control {
     border-radius: 16px;
 }
 .panel-input{
-    margin-top: 40px;
+    margin-top: 10px;
     width: 40%;
     margin-left: 25%;
     float: left;
@@ -2593,7 +2592,7 @@ tr.shown td.details-control {
     width: 60px;
 }
 .searhButton{
-    margin-top: 40px;
+    margin-top: 10px;
     width: 80px;
     height: 44px;
     margin-right: 18%;
@@ -2634,5 +2633,33 @@ tr.shown td.details-control {
     border-width: 0px;
     float: left;
     font-size: 35px;
-    background-color: #DAA520;
+    background-color: #cdcdcd;
+}
+.historyTitle{
+    text-align: left;
+    font-size: 25px;
+    margin-left: 1%;
+}
+.files{
+    text-align: left;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 20px;
+}
+.filesTable{
+    text-align: left;
+    margin-left: 1%;
+}
+.verticalBottom{
+    vertical-align: bottom;
+}
+.fileTextTr{
+    padding-top: 15px;
+}
+.fileP{
+    padding-top: 10px;
+    padding-right: 15px;
+}
+.historyTitle a:hover{
+    cursor: pointer;
 }
