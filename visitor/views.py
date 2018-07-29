@@ -80,7 +80,7 @@ def test(request):
     return render(request, 'foreground/signin.html')
 def fileSearch(request):
     role = request.session["user_type"]
-    return render(request, 'foreground/fileSearch.html', {"role": role})
+    return render(request, 'foreground/ArticleSearch.html', {"role": role})
 def eventSearch(request):
     role = request.session["user_type"]
     return render(request, 'foreground/eventSearch.html', {"role": role})
