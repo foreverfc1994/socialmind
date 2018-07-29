@@ -189,7 +189,7 @@ function eventsTable(){
             {"data": "name", "title": "事件名称"},
             {"data": "index", "title": "事件热度"},
             {"data": "number", "title": "相关信息数"},
-            {"data": "date", "title": "发生事件"},
+            {"data": "date", "title": "发生时间"},
             {"data": "id", "visible": false}
         ]
     });
