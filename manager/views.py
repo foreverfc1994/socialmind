@@ -101,3 +101,5 @@ def objectshow(request):
     return  render(request,'background/socialobject.html')
 def eventshow(request):
     return render(request,'background/Eventlist.html')
+def jianbao(request):
+    return render(request,'background/jianbao.html')

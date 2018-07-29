@@ -1,0 +1,1723 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<!-- saved from url=(0014)index:internet -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<link href="http://cdn.files.51wyq.cn/web/css/brief/make/bootstrap.min.css?v=201807262020" rel="stylesheet" type="text/css"/>
+<link href="http://cdn.files.51wyq.cn/web/css/brief/make/style-metro.css?v=201807262020" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="/css/brief/make/fonts-yqticon.css?v=201807262020"/>
+<link rel="stylesheet" type="text/css" href="http://cdn.files.51wyq.cn/web/css/brief/make/jquery-ui-1.10.1.custom.min.css?v=201807262020"/>
+<link href="http://cdn.files.51wyq.cn/web/css/style.css?v=201807262020" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="http://cdn.files.51wyq.cn/web/css/brief/make/common.css?v=201807262020"/>
+<link href="http://cdn.files.51wyq.cn/web/css/brief/make/report.css?v=201807262020" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="http://cdn.files.51wyq.cn/web/css/brief/make/tooltip.css?v=201807262020"/>
+ <style type="text/css">
+	
+input[id="contentTitle"]{height:20px;width:150px;font-size:20px;color:black;background:transparent;border:none;border-bottom:3px solid #0099FF;
+	box-shadow:inset 1px 1px 4px #ffffff;
+   -webkit-box-shadow: inset 1px 1px 4px #ffffff;
+   -moz-box-shadow: inset 1px 1px 4px #ffffff;
+
+}
+input[id="contentTitle"]:focus {
+ color:black;
+ border: none;
+ border-bottom:3px solid #0099FF;
+ box-shadow:inset 1px 1px 4px #ffffff;
+   -webkit-box-shadow: inset 1px 1px 4px #ffffff;
+   -moz-box-shadow: inset 1px 1px 4px #ffffff;
+}
+
+input[id="contentTitle"]:hover {
+border: none;
+border-bottom:3px solid #0099FF;
+}
+.icon-trash:before {
+    content: "\e641";
+}
+.icon-move:before {
+    content: "\e6a8";
+}
+.icon, [class^="icon-"], [class*=" icon-"] {
+    font-family: 'iconfont' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+</style>
+<link href="http://cdn.files.51wyq.cn/web/css/brief/make/common.css?v=201807262020" rel="stylesheet" type="text/css"/>
+<link href="http://cdn.files.51wyq.cn/web/css/font-icon.css?v=201807262020" rel="stylesheet" type="text/css"/>
+</head>
+
+<body class="floatShow" style="background-color: rgba(0, 0, 0,.1);">
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<title>制作简报</title>
+<style>
+    input[id="contentTitle"] {
+    height: 20px;
+    width: 150px;
+    font-size: 15px;
+    color: black;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid #0099FF;
+    box-shadow: inset 1px 1px 4px #ffffff;
+    -webkit-box-shadow: inset 1px 1px 4px #ffffff;
+    -moz-box-shadow: inset 1px 1px 4px #ffffff;
+    }
+</style>
+</head>
+<!-- 礼品卡弹框 -->
+<div class="page-container" style="max-width: none;"><!-- 有用 -->
+<FORM method="post" name="frmPopWin" >
+<input type=hidden name="checkedIds"  id="checkedIds">
+<input type=hidden name="model.styleType"  id="model.styleType" value="1">	 
+
+
+<!--右侧内容 start--> <!-- 有用 -->
+<div class=" ">
+<div class="page-container rel" style="max-width: none;">
+    
+<!-- 右边工具栏 -->
+<div id="nav2" style="top: 22px">
+	<div class="title">
+		<h1>纬度</h1>
+	</div>
+	<ul id="catalog">
+  <li>
+
+ <div class="view">
+ 	<div class="h1"><i class="fa-text-o fc-1"></i>文本</div>
+  	 	<!--文本 start-->
+	 <div class="row-fluid">
+    <div class="textShow">
+      <div class="tit"  >
+      			<input  type="text"  id="contentTitle" placeholder="文本" class="contenteditable" value="">  
+      	<div class="btn-group">
+			<a class="btn mini dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+				样式 <i class="icon-angle-down"></i>
+			</a>
+			<ul class="dropdown-menu align_l textSele">
+				<li class="active"><a href="javascript:void(0)">标题1（三号，加粗）<i class="icon-ok"></i></a></li>
+				<li><a href="javascript:void(0)">标题2（三号，加粗，缩进）<i class="icon-ok"></i></a></li>
+				<li><a href="javascript:void(0)">正文<i class="icon-ok"></i></a></li>
+			</ul>
+
+
+		</div>
+		<div class="tool tooledit abs">
+      		<i class="icon-move"  title="移动版块"></i>
+      		<i class="icon-trash" title="删除版块"></i>
+      </div>
+     </div>
+    </div>
+    <div class="textShow">
+      	<div class="text">
+      	<textarea id="contentelement" placeholder="文本" name="ttt" class="textCon contenteditable" contenteditable="true" style="width:96%;height:120px;"/></textarea>
+      	<script type="text/javascript">document.getElementsByName("ttt")[0].innerHTML="";</script>
+      </div>
+    </div>
+</div>
+ <!--文本 end-->
+  	 </div>
+  </li>
+  <li>
+  	<div class="view">
+  		<div class="h1">
+  			<i class="fa-text-o fc-1"></i>简报概述
+  		</div>
+  		<!--简报概述 start-->
+ <div class="row-fluid">
+    <div class="textShow">
+      <div class="tit"  >
+      		 <input type="text"  class="contenteditable"  id="contentTitle" value="简报概述" >
+      	<div class="btn-group">
+			<a class="btn mini dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+				样式 <i class="icon-angle-down"></i>
+			</a>
+
+			<ul class="dropdown-menu align_l textSele">
+				<li class="active"><a href="javascript:void(0)">标题1（三号，加粗）<i class="icon-ok"></i></a></li>
+				<li><a href="javascript:void(0)">标题2（三号，加粗，缩进）<i class="icon-ok"></i></a></li>
+				<li><a href="javascript:void(0)">正文<i class="icon-ok"></i></a></li>
+			</ul>
+
+		</div>
+		<div class="tool tooledit abs">
+      		<i class="icon-move" title="移动版块"></i>
+      		<i class="icon-trash" title="删除版块"></i>
+      </div>
+     </div>
+    </div>
+     <div class="textShow">
+      	<div class="text">
+      	 
+		
+	<textarea readonly id="contentelement" class="textCon contenteditable" contenteditable="true" style="width:96%;height:150px;" readonly>本报告就加入素材的文章进行分析，共有**篇相关素材。其中，博客100篇，占比59%；微信98篇，占比54%；新闻40篇，占比45%。而论坛的比重最大，共有**篇，达到信息总量的60%。目前主要的报道集中在网易新闻、和讯论坛、中青网、新民网、百度、中国江苏网等几大站点。详细报告请继续浏览。</textarea> 	
+       
+      </div>		 
+    </div>		    		
+</div>
+ <!--简报概述 end-->
+  	</div>
+  </li>
+  <li>
+  	<div class="view">
+  		<div class="h1"><i class="fa-text-o fc-1"></i>监测概述</div>
+  		<!--监测概述 start-->
+ <div class="row-fluid">
+    <div class="textShow">
+      <div class="tit"  >
+      		 
+
+				 <input type="text"  class="contenteditable"  id="contentTitle" value="监测概述" >  
+      	<div class="btn-group">
+			<a class="btn mini dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+				样式 <i class="icon-angle-down"></i>
+			</a>
+			<ul class="dropdown-menu align_l textSele">
+				<li class="active"><a href="javascript:void(0)">标题1（三号，加粗）<i class="icon-ok"></i></a></li>
+				<li><a href="javascript:void(0)">标题2（三号，加粗，缩进）<i class="icon-ok"></i></a></li>
+				<li><a href="javascript:void(0)">正文<i class="icon-ok"></i></a></li>
+			</ul>
+
+		</div>
+		<div class="tool tooledit abs">
+      		<i class="icon-move" title="移动版块"></i>
+      		<i class="icon-trash" title="删除版块"></i>
+      </div>
+     </div>
+    </div>
+     <div class="textShow">
+      	<div class="text">
+
+       
+
+	<textarea readonly id="contentelement" class="textCon contenteditable" contenteditable="true"  style="width:98%;height:100px;"/>监测主题相关信息49条，其中敏感5条，敏感占比10.2%，非敏感44条，非敏感占比89.8%。</textarea> 
+
+      				
+       
+      </div>		 
+    </div>		    		
+</div>
+ <!--监测概述 end-->
+  	</div>
+  </li>
+  <li><div class="view">
+  		<div class="h1"><i class="fa-tongji-1 fc-2"></i>事件走势图</div>
+  		 <!--事件走势图 start-->
+ <div class="row-fluid">
+    <div class="textShow">
+      <div class="tit"  >
+      			<input type="text"  id="contentTitle" class="contenteditable" value="事件走势图">
+      	<div class="btn-group">
+			<a class="btn mini dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+				样式 <i class="icon-angle-down"></i>
+			</a>
+			<ul class="dropdown-menu align_l textSele">
+				<li class="active"><a href="javascript:void(0)">标题1（三号，加粗）<i class="icon-ok"></i></a></li>
+				<li><a href="javascript:void(0)">标题2（三号，加粗，缩进）<i class="icon-ok"></i></a></li>
+				<li><a href="javascript:void(0)">正文<i class="icon-ok"></i></a></li>
+			</ul>
+
+		</div>
+		<div class="tool tooledit abs">
+      		
+      		<div class="btn-group">
+			<a class="btn mini dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" style="margin-top:-5px;">
+				选表现 <i class="icon-angle-down"></i>
+			</a>
+			<ul class="dropdown-menu align_l chart-menu">
+				<li><a href="javascript:void(0)">
+					<h1>信息走势柱状图</h1>
+					<img src="/images/briefmodel/u702.png" id="2"/>
+				    </a>
+				</li>
+			</ul>
+		</div>
+		<i class="icon-move" title="移动版块"></i>
+      		<i class="icon-trash" title="删除版块"></i>
+
+      </div>
+     </div>
+    </div>
+     <div class="textShow chart">
+      	<div class="text">
+      	<div class="chartMap ">
+      		<h1>信息走势折线图</h1>
+      	    <img src="/images/briefmodel/u697.png" id="1"/>
+      	</div>
+      </div>
+    </div>
+</div>
+ <!--事件走势图 end-->
+      </div>
+  </li>
+ 
+  <li>
+  	<div class="view">
+  		<div class="h1"><i class="fa-tongji-2 fc-3"></i>面积走势图</div>
+  		<!--面积走势图 start-->
+ <div class="row-fluid">
+    <div class="textShow">
+      <div class="tit"  >
+      			<input type="text"  id="contentTitle" class="contenteditable" value="面积走势图">
+      	<div class="btn-group">
+			<a class="btn mini dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+				样式 <i class="icon-angle-down"></i>
+			</a>
+		<ul class="dropdown-menu align_l textSele">
+				<li class="active"><a href="javascript:void(0)">标题1（三号，加粗）<i class="icon-ok"></i></a></li>
+				<li><a href="javascript:void(0)">标题2（三号，加粗，缩进）<i class="icon-ok"></i></a></li>
+				<li><a href="javascript:void(0)">正文<i class="icon-ok"></i></a></li>
+			</ul>
+
+		</div>
+		<div class="tool tooledit abs">
+      		
+			<!--
+      		<div class="btn-group">
+			<a class="btn mini dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" style="margin-top:-5px;">
+				选表现 <i class="icon-angle-down"></i>
+			</a>
+			<ul class="dropdown-menu align_l chart-menu">
+				<li><a href="javascript:void(0)">
+					<h1 >面积走势图与标注</h1>
+					<img src="/images/briefmodel/u520.png" id="5"/>
+				    </a>
+				</li>
+			</ul>
+			</div>
+			-->
+			<i class="icon-move" title="移动版块"></i>
+      		<i class="icon-trash" title="删除版块"></i>
+
+      </div>
+     </div>
+    </div>
+     <div class="textShow chart">
+      	<div class="text">
+      	<div class="chartMap">
+			<h1 >面积走势图</h1>
+      	    <img src="/images/briefmodel/u500.png" id="4"/>
+      	</div>
+      </div>
+    </div>
+</div>
+ <!--面积走势图 end-->
+  	</div>
+  </li>
+  <li>
+  	<div class="view">
+  		<div class="h1"><i class="fa-tongji-3 fc-4"></i>网站统计</div>
+  	 <!--网站统计 start-->
+ <div class="row-fluid">
+    <div class="textShow">
+      <div class="tit"  >
+      			<input type="text"  id="contentTitle" class="contenteditable" value="网站统计"> 
+      	<div class="btn-group">
+			<a class="btn mini dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+				样式 <i class="icon-angle-down"></i>
+			</a>
+			<ul class="dropdown-menu align_l textSele">
+				<li class="active"><a href="javascript:void(0)">标题1（三号，加粗）<i class="icon-ok"></i></a></li>
+				<li><a href="javascript:void(0)">标题2（三号，加粗，缩进）<i class="icon-ok"></i></a></li>
+				<li><a href="javascript:void(0)">正文<i class="icon-ok"></i></a></li>
+			</ul>
+
+		</div>
+		<div class="tool tooledit abs">
+      		<i class="icon-move" title="移动版块"></i>
+      		<i class="icon-trash" title="删除版块"></i>
+		 </div>
+     </div>
+    </div>
+     <div class="textShow">
+      	<div class="text">
+      	<table border="0" cellspacing="0" cellpadding="0" class="table table2 table3 table4">
+    						<thead>
+    						<tr>
+    							<th>序列号</th>
+    							<th>重点媒体</th>
+    							<th>监测对象</th>
+    							<th>发布数量</th>
+    						</tr>
+    						</thead>
+    						<tbody>
+    						<tr>
+    							<td>1</td>
+    							<td>新浪网</td>
+    							<td>
+    								<dl class="jcdx">
+    								   <dd>中信证券</dd>
+    								   <dd>中信证券</dd>
+    								</dl>
+    								</td>
+    							<td>
+                                    <dl class="jcdx">
+    								   <dd>21</dd>
+    								   <dd>21</dd>
+    								</dl>
+    							</td>
+    						</tr>
+    						<tr>
+    							<td>2</td>
+    							<td>网易</td>
+    							<td>
+    								<dl class="jcdx">
+    								   <dd>中信证券</dd>
+    								</dl>
+    								</td>
+    							<td>
+    								<dl class="jcdx">
+    								   <dd>22</dd>
+    								</dl>
+    							</td>
+    						</tr>
+    	     </tbody>
+    	</table>
+      </div>
+    </div>
+</div>
+ <!--网站统计 end-->
+  	</div>
+  </li>
+  <li>
+  	<div class="view">
+  		<div class="h1"><i class="fa-tongji-4 fc-5"></i>来源类型分析</div>
+  		 <!--来源类型分析 start-->
+ <div class="row-fluid">
+    <div class="textShow">
+      <div class="tit"  >
+      			<input type="text"  id="contentTitle" class="contenteditable" value="来源类型分析">
+      	<div class="btn-group">
+			<a class="btn mini dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+				样式 <i class="icon-angle-down"></i>
+			</a>
+			<ul class="dropdown-menu align_l textSele">
+				<li class="active"><a href="javascript:void(0)">标题1（三号，加粗）<i class="icon-ok"></i></a></li>
+				<li><a href="javascript:void(0)">标题2（三号，加粗，缩进）<i class="icon-ok"></i></a></li>
+				<li><a href="javascript:void(0)">正文<i class="icon-ok"></i></a></li>
+			</ul>
+
+		</div>
+		<div class="tool tooledit abs">
+      		
+      		<div class="btn-group">
+			<a class="btn mini dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" style="margin-top:-5px;">
+				选表现 <i class="icon-angle-down"></i>
+			</a>
+			<ul class="dropdown-menu align_l chart-menu chart-menuThree">
+				<li><a href="javascript:void(0)">
+					<h1 >标准饼图</h1>
+					<img src="/images/briefmodel/u541.png" id="7"/>
+				    </a>
+				</li>
+				<!--
+				<li><a href="javascript:void(0)">
+					<h1>彩虹图</h1>
+					<img src="/images/briefmodel/u543.png" id="9"/>
+				    </a>
+				</li>
+				
+				<li><a href="javascript:void(0)">
+					<h1>凸出饼图</h1>
+					<img src="/images/briefmodel/u553.png" id="9"/>
+				    </a>
+				</li>
+				-->
+			 
+				<li><a href="javascript:void(0)">
+					<h1>圆环图</h1>
+					<img src="/images/briefmodel/u545.png" id="10"/>
+				    </a>
+				</li>
+				<li><a href="javascript:void(0)">
+					<h1>南丁格尔玫瑰图</h1>
+					<img src="/images/briefmodel/u547.png" id="11"/>
+				    </a>
+				</li>
+				<!--
+				<li><a href="javascript:void(0)">
+					<h1>多系列层叠图</h1>
+					<img src="/images/briefmodel/u559.png" id="12"/>
+				    </a>
+				</li>
+				-->
+			</ul>
+		</div>
+		<i class="icon-move" title="移动版块"></i>
+      		<i class="icon-trash" title="删除版块"></i>
+
+      </div>
+     </div>
+    </div>
+     <div class="textShow chart">
+      	<div class="text">
+      	<div class="chartMap">
+			<h1>猫爪图</h1>
+      	    <img src="/images/briefmodel/u485.png" id="6"/>
+      	</div>
+      </div>
+    </div>
+</div>
+ <!--来源类型分析 end-->
+  	</div>
+  </li>
+  <li>
+  	<div class="view">
+  		<div class="h1"><i class="fa-tongji-7 fc-6"></i>媒体活跃度</div>
+  	 <!--媒体活跃度分析 start-->
+ <div class="row-fluid">
+    <div class="textShow">
+      <div class="tit"  >
+      			<input type="text"  id="contentTitle" class="contenteditable" value="媒体活跃度">
+      	<div class="btn-group">
+			<a class="btn mini dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+				样式 <i class="icon-angle-down"></i>
+			</a>
+			<ul class="dropdown-menu align_l textSele">
+				<li class="active"><a href="javascript:void(0)">标题1（三号，加粗）<i class="icon-ok"></i></a></li>
+				<li><a href="javascript:void(0)">标题2（三号，加粗，缩进）<i class="icon-ok"></i></a></li>
+				<li><a href="javascript:void(0)">正文<i class="icon-ok"></i></a></li>
+			</ul>
+
+		</div>
+		<div class="tool tooledit abs">
+      		
+
+      			<input type="checkbox" name="isHaveWBData" id="isHaveWBData" value="" /> 是否包含微博数据
+
+      		<div class="btn-group">
+			<a class="btn mini dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" style="margin-top:-5px;">
+				选表现 <i class="icon-angle-down"></i>
+			</a>
+			<ul class="dropdown-menu align_l chart-menu chart-menuThree">
+				<li><a href="javascript:void(0)">
+					<h1 >标准饼图</h1>
+					<img src="/images/briefmodel/u541.png" id="7"/>
+				    </a>
+				</li>
+				<!--
+				<li><a href="javascript:void(0)">
+					<h1>彩虹图</h1>
+					<img src="/images/briefmodel/u543.png" id="9"/>
+				    </a>
+				</li>
+				
+				<li><a href="javascript:void(0)">
+					<h1>凸出饼图</h1>
+					<img src="/images/briefmodel/u553.png" id="9"/>
+				    </a>
+				</li>
+				-->
+				 
+				<li><a href="javascript:void(0)">
+					<h1>圆环图</h1>
+					<img src="/images/briefmodel/u545.png" id="10"/>
+				    </a>
+				</li>
+				<li><a href="javascript:void(0)">
+					<h1>南丁格尔玫瑰图</h1>
+					<img src="/images/briefmodel/u547.png" id="11"/>
+				    </a>
+				</li>
+			</ul>
+		</div>
+		<i class="icon-move" title="移动版块"></i>
+      		<i class="icon-trash" title="删除版块"></i>
+
+      </div>
+     </div>
+    </div>
+     <div class="textShow chart">
+      	<div class="text">
+      	<div class="chartMap">
+			<h1>柱状图</h1>
+      	    <img src="/images/briefmodel/u487.png" id="13"/>
+      	</div>
+      </div>
+    </div>
+</div>
+ <!--媒体活跃度分析 end-->
+  	</div>
+  </li>
+  <li>
+  	<div class="view">
+  		<div class="h1"><i class="fa-tongji-5 fc-7"></i>情感分析</div>
+  	 <!--情感分析 start-->
+ <div class="row-fluid">
+    <div class="textShow">
+      <div class="tit"  >
+      			<input type="text"  id="contentTitle" class="contenteditable" value="情感分析">
+      	<div class="btn-group">
+			<a class="btn mini dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+				样式 <i class="icon-angle-down"></i>
+			</a>
+			<ul class="dropdown-menu align_l textSele">
+				<li class="active"><a href="javascript:void(0)">标题1（三号，加粗）<i class="icon-ok"></i></a></li>
+				<li><a href="javascript:void(0)">标题2（三号，加粗，缩进）<i class="icon-ok"></i></a></li>
+				<li><a href="javascript:void(0)">正文<i class="icon-ok"></i></a></li>
+			</ul>
+
+		</div>
+		<div class="tool tooledit abs">
+      		
+      		<div class="btn-group">
+			<a class="btn mini dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" style="margin-top:-5px;">
+				选表现 <i class="icon-angle-down"></i>
+			</a>
+			<ul class="dropdown-menu align_l chart-menu chart-menuThree">
+				<li><a href="javascript:void(0)">
+					<h1>环形图</h1>
+					<img src="/images/briefmodel/u982.png" id="14"/>
+				    </a>
+				</li>
+				<li><a href="javascript:void(0)">
+					<h1>标准仪表盘</h1>
+					<img src="/images/briefmodel/u984.png" id="15"/>
+				    </a>
+				</li>
+				<li><a href="javascript:void(0)">
+					<h1>面积仪表盘</h1>
+					<img src="/images/briefmodel/u986.png" id="16"/>
+				    </a>
+				</li>
+
+			</ul>
+		</div>
+		<i class="icon-move" title="移动版块"></i>
+      		<i class="icon-trash" title="删除版块"></i>
+
+      </div>
+     </div>
+    </div>
+     <div class="textShow chart">
+      	<div class="text">
+      	<div class="chartMap">
+      	    <img src="/images/briefmodel/u921.png" id="10">
+      	</div>
+      </div>
+    </div>
+</div>
+ <!--情感分析 end-->
+  	</div>
+  </li>
+  <li>
+  	<div class="view">
+  		<div class="h1"><i class="fa-tongji-5 fc-7"></i>境内外分布</div>
+  	  <!--境内外分布 start-->
+ <div class="row-fluid">
+    <div class="textShow">
+      <div class="tit"  >
+      			<input type="text"  id="contentTitle" class="contenteditable" value="境内外分布">      	<div class="btn-group">
+			<a class="btn mini dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+				样式 <i class="icon-angle-down"></i>
+			</a>
+			<ul class="dropdown-menu align_l textSele">
+				<li class="active"><a href="javascript:void(0)">标题1（三号，加粗）<i class="icon-ok"></i></a></li>
+				<li><a href="javascript:void(0)">标题2（三号，加粗，缩进）<i class="icon-ok"></i></a></li>
+				<li><a href="javascript:void(0)">正文<i class="icon-ok"></i></a></li>
+			</ul>
+
+		</div>
+		<div class="tool tooledit abs">
+      		
+      		<div class="btn-group">
+			<a class="btn mini dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" style="margin-top:-5px;">
+				选表现 <i class="icon-angle-down"></i>
+			</a>
+			<ul class="dropdown-menu align_l chart-menu chart-menuThree">
+				<li><a href="javascript:void(0)">
+					<h1>环形图</h1>
+					<img src="/images/briefmodel/u982.png" id="14"/>
+				    </a>
+				</li>
+				<li><a href="javascript:void(0)">
+					<h1>标准仪表盘</h1>
+					<img src="/images/briefmodel/u984.png" id="15"/>
+				    </a>
+				</li>
+				<li><a href="javascript:void(0)">
+					<h1>面积仪表盘</h1>
+					<img src="/images/briefmodel/u986.png" id="16"/>
+				    </a>
+				</li>
+
+			</ul>
+		</div>
+		<i class="icon-move" title="移动版块"></i>
+      		<i class="icon-trash" title="删除版块"></i>
+
+      </div>
+     </div>
+    </div>
+     <div class="textShow chart">
+      	<div class="text">
+      	<div class="chartMap">
+      	    <img src="/images/briefmodel/u936.png" id="10"/>
+      	</div>
+      </div>
+    </div>
+</div>
+ <!--境内外分布 end-->
+  	</div>
+  </li>
+  <li>
+  	<div class="view">
+  		<div class="h1"><i class="fa-tongji-8 fc-3"></i>地域分布图</div>
+  	 <!--地域分布图 start-->
+ <div class="row-fluid">
+    <div class="textShow">
+      <div class="tit">
+      			<input type="text"  id="contentTitle" class="contenteditable" value="地域分布图">
+      	<div class="btn-group">
+			<a class="btn mini dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+				样式 <i class="icon-angle-down"></i>
+			</a>
+			<ul class="dropdown-menu align_l textSele">
+				<li class="active"><a href="javascript:void(0)">标题1（三号，加粗）<i class="icon-ok"></i></a></li>
+				<li><a href="javascript:void(0)">标题2（三号，加粗，缩进）<i class="icon-ok"></i></a></li>
+				<li><a href="javascript:void(0)">正文<i class="icon-ok"></i></a></li>
+			</ul>
+
+		</div>
+		<div class="tool tooledit abs">
+      		
+      		<div class="btn-group">
+			<a class="btn mini dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" style="margin-top:-5px;">
+				选表现 <i class="icon-angle-down"></i>
+			</a>
+			<ul class="dropdown-menu align_l chart-menu">
+				<li><a href="javascript:void(0)">
+					<h1>地域分布柱状图</h1>
+					<img src="/images/briefmodel/u621.png" id="18"/>
+				    </a>
+				</li>
+				<!--
+				<li><a href="javascript:void(0)">
+					<h1>地域分布-地图，柱状图混合图</h1>
+					<img src="/images/briefmodel/u627.png"/>
+				    </a>
+				</li>
+				 -->
+			</ul>
+		</div>
+		<i class="icon-move" title="移动版块"></i>
+      		<i class="icon-trash" title="删除版块"></i>
+
+      </div>
+     </div>
+    </div>
+     <div class="textShow chart">
+      	<div class="text">
+      	<div class="chartMap">
+      	    <img src="/images/briefmodel/u489.png" id="17"/>
+      	</div>
+      </div>
+    </div>
+</div>
+ <!--地域分布图 end-->
+  	</div>
+  </li>
+  <li>
+  	<div class="view">
+  		<div class="h1"><i class="fa-text-o fc-1"></i>主要信息</div>
+  	<!--主要舆情 start-->
+<div class="row-fluid">
+	 <div class="textShow">
+			<div class="tit">
+				<input type="text"  id="contentTitle" class="contenteditable" value="主要信息">
+				<div class="btn-group">
+					<a class="btn mini dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+						样式 <i class="icon-angle-down"></i>
+					</a>
+					<ul class="dropdown-menu align_l textSele">
+						<li class="active"><a href="javascript:void(0)">标题1（三号，加粗）<i class="icon-ok"></i></a></li>
+						<li><a href="javascript:void(0)">标题2（三号，加粗，缩进）<i class="icon-ok"></i></a></li>
+						<li><a href="javascript:void(0)">正文<i class="icon-ok"></i></a></li>
+					</ul>
+
+				</div>
+				<div class="tool tooledit abs">
+					
+					<select name="dataType" style="width: auto;" id="dataType">
+						<option value="0">全部</option>
+						<option value="1">敏感信息</option>
+						<option value="2">非敏感信息</option>
+					</select>
+					<select name="sortBy" style="width: auto;" id="sortBy">
+						<option value="0">发布时间降序</option>
+						<option value="1">发布时间升序</option>
+						<option value="2">相同文章数</option>
+						<option value="3">入库顺序</option>
+						<!-- <option value="4">手动排序</option> -->
+					</select>
+					<input type="hidden" name="selColumn" id="selColumn" value="2345">
+					<div class="btn-group">
+					<a class="btn mini" href="#form_customList" onClick="setColumn($(this));" data-toggle="modal" style="margin-top:-5px;" id='3333'>
+						自定义列
+					</a>
+
+					</div>
+					<i class="icon-move" title="移动版块"></i>
+					<i class="icon-trash" title="删除版块"></i>
+
+				 </div>
+			</div>
+	 </div>
+     <div class="textShow" id="textShowTableDiv" name="textShowTableDiv">
+      	<div class="text">
+      	<div>
+		<table border="0" cellspacing="0" cellpadding="0" class="table table2 float_l"  name="myTable" id="myTable">
+   <thead>
+      <tr>
+		<th width="35" style="display:none">序列</th>
+        <th >标题</th>
+        <th width="120">来源站点</th>
+        <th width="120">日期</th>
+        <th width="10%">相同文章数</th>
+		<th width="120" style="display:none">日期与来源</th>
+		<th width="60" style="display:none">属性</th>
+		<th style="display:none">标题与摘要</th>
+
+
+        <th width="8%" class="operation">操作</th>
+      </tr>
+   </thead>
+   <tbody>
+	  <tr>
+			<td style="display:none">1</td>
+
+		 <td>实拍：海口小区住户被困电梯近3小时后坠亡 </td>
+	     <td>新浪</td>
+	     <td>2016-2-1  19:00</td>
+         <td>10</td>
+		 <td style="display:none">新浪微博<br>2016-07-08 11:00</td>
+		 <td style="display:none">敏感</td>
+
+		<td style="display:none" >
+
+			<span style="margin:0 auto;font-weight: bold;">天津市司法局领导信息</span><br>
+
+			<span style="text-align: left; float:left"><span style="font-weight: bold;">摘要：</span>
+
+			内 容 概 述内 容 全 文主管工作：主持全面工作。基本情况：张铁英，男，汉族，1961年10月生，河北唐山人，中共党员，市委党校研究生学历，法学学士。工作经历：1976年12月起，历任天津警备区警备</span>
+			</td>
+
+         <td class="operation">
+            <div class="btn-group">
+			<a class="btn dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+				 <i class="icon-edit"></i>
+			</a>
+			<ul class="dropdown-menu align_l">
+				<li><a href="javascript:void(0)">增加</a></li>
+				<li><a href="javascript:void(0)">修改</a></li>
+				<li><a href="javascript:void(0)">删除</a></li>
+				<li><a href="javascript:void(0)">上移</a></li>
+				<li><a href="javascript:void(0)">下移</a></li>
+			</ul>
+		   </div>
+        </td>
+	 </tr>
+	 <tr>
+	 	 <td style="display:none">2</td>
+	     <td >实拍：海口小区住户被困电梯近3小时后坠亡 </td>
+ 	     <td>新浪</td>
+	     <td>2016-2-1  19:00</td>
+         <td>10</td>
+		 <td style="display:none">新浪微博<br>2016-07-08 11:00</td>
+		 <td style="display:none">敏感</td>
+
+		 <td style="display:none">
+
+			<span style="margin:0 auto;font-weight: bold;">天津市司法局领导信息</span><br>
+
+			<span style="text-align: left; float:left"><span style="font-weight: bold;">摘要：</span>
+
+			内 容 概 述内 容 全 文主管工作：主持全面工作。基本情况：张铁英，男，汉族，1961年10月生，河北唐山人，中共党员，市委党校研究生学历，法学学士。工作经历：1976年12月起，历任天津警备区警备</span>
+			</td>
+
+         <td class="operation">
+            <div class="btn-group">
+			<a class="btn dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+				 <i class="icon-edit"></i>
+			</a>
+			<ul class="dropdown-menu align_l">
+				<li><a href="javascript:void(0)">增加</a></li>
+				<li><a href="javascript:void(0)">修改</a></li>
+				<li><a href="javascript:void(0)">删除</a></li>
+				<li><a href="javascript:void(0)">上移</a></li>
+				<li><a href="javascript:void(0)">下移</a></li>
+			</ul>
+		   </div>
+        </td>
+	 </tr>
+	 
+  </tbody>
+</table>
+      	</div>
+      </div>
+    </div>
+</div>
+ <!--主要舆情 end-->
+  	</div>
+ </li>
+  <li>
+  	<div class="view">
+  		<div class="h1"><i class="fa-text-o  fc-1"></i>信息导读</div>
+  		 <!--舆情导读 start-->
+ <div class="row-fluid">
+    <div class="textShow">
+      <div class="tit">
+      			<input type="text"  id="contentTitle" class="contenteditable" value="信息导读">
+      	<div class="btn-group">
+			<a class="btn mini dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+				样式 <i class="icon-angle-down"></i>
+			</a>
+			<ul class="dropdown-menu align_l textSele">
+				<li class="active"><a href="javascript:void(0)">标题1（三号，加粗）<i class="icon-ok"></i></a></li>
+				<li><a href="javascript:void(0)">标题2（三号，加粗，缩进）<i class="icon-ok"></i></a></li>
+				<li><a href="javascript:void(0)">正文<i class="icon-ok"></i></a></li>
+			</ul>
+
+		</div>
+		<div class="tool tooledit abs">
+      	
+      		<select name="dataType" style="width: auto;" id="dataType">
+      			<option value="0">全部</option>
+      			<option value="1">敏感信息</option>
+      			<option value="2">非敏感信息</option>
+      		</select>
+      		<select name="sortBy" style="width: auto;" id="sortBy">
+      			<option value="0">发布时间降序</option>
+      			<option value="1">发布时间升序</option>
+      			<option value="2">相同文章数</option>
+      			<option value="3">入库顺序</option>
+      		<!-- 	<option value="4">手动排序</option> -->
+      		</select>
+
+      		<div class="btn-group">
+				<a class="btn mini dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" style="margin-top:-5px;">
+					选表现 <i class="icon-angle-down"></i>
+				</a>
+				<ul class="dropdown-menu align_l chart-menu">
+				<li class="style2 " id="19"><a href="javascript:void(0)">
+					<img src="/images/briefmodel/u680.png"  />
+				    </a>
+				</li>
+				
+				<li class="style1" id="20"><a href="javascript:void(0)">
+					<img src="/images/briefmodel/u679.png" />
+				    </a>
+				</li>
+				
+
+			</ul>
+		</div>
+			<i class="icon-move" title="移动版块"></i>
+      		<i class="icon-trash" title="删除版块"></i>
+
+      </div>
+     </div>
+    </div>
+    <div class="textShow"  >
+
+      	<div class="text">
+      	<div class="row-fluid">
+      		<p><em>（1）三亚：无证经营水果店店主暴力抗法 被行拘7天罚款500元</em></p>
+			<!--舆情导读样式1 start-->
+			<div class="yqddStyle1 yqddStyle" id="19">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table2 table3">
+					<tbody><tr>
+                        <th width="60px">性质</th>
+                        <th width="70px">非敏感</th>
+                        <th width="100px">文章来源</th>
+                        <th width="">新浪微博</th>
+                        <th width="60px">时间</th>
+                        <th width="180px">2015-6-24 12:00</th>
+					</tr>
+
+					<tr>
+						<td>内容3</td>
+						<td colspan="5" class="tdCon"><p>3月1日，南海网记者从三亚市吉阳区政府获悉，近日，旅游市场整治组对大东海区域一家无证经营的水果店进行依法取缔时，遭遇暴力抗法。</p>
+
+							<p>南海网三亚3月1日消息(南海网、三亚新闻网记者刘丽萍)3月1日，南海网记者从三亚市吉阳区政府获悉，近日，旅游市场整治组对大东海区域一家无证经营的水果店进行依法取缔时，遭遇暴力抗法。目前，该店主已被行政拘留7天，并罚款500元。</p>
+
+							<p>2月27日，吉阳区旅游市场整治组对大东海区域非法无证经营的水果店进行依法取缔，在暂扣“海南特产茗杨专营店”违法经营物品时，遭遇暴力抗法。店主李某及其母用椰子、水果刀和牙齿做武器，攻击执法人员，其中组员王鹏被李某用椰子击伤。</p>
+
+						</td>
+					</tr>
+					<tr>
+						<td colspan="6" style="text-align:left; padding:10px;"><p style=""><a href="http://www.gywb.cn/content/2015-03/01/content_2542944.htm" target="_blank">原文链接：http://www.gywb.cn/content/2015-03/01/content_2542944content.htm</a></p></td>
+					</tr>
+					</tbody></table>
+			</div>
+			<!--舆情导读样式1 end-->
+
+
+			<!--舆情导读样式2 start-->
+			<div class="yqddStyle2 "  id="20">
+				<dl>
+					<dd class="span6">
+						<b>发布媒体：</b>西楚网
+					</dd>
+					<dd class="span6">
+						2015年10月15日
+					</dd>
+				</dl>
+				<dl>
+					<dd class="span12">
+						<b>信息网址:</b>
+						<a href="#">http://www.gywb.cn/content/2015-03/01/content_2542944content.htm</a>
+					</dd>
+				</dl>
+				<div class="cont">
+					<h1>信息摘要：</h1>
+					<p>
+						3月1日，南海网记者从三亚市吉阳区政府获悉，近日，旅游市场整治组对大东海区域一家无证经营的水果店进行依法取缔时，遭遇暴力抗法。<br>
+						南海网三亚3月1日消息(南海网、三亚新闻网记者刘丽萍)3月1日，南海网记者从三亚市吉阳区政府获悉，近日，旅游市场整治组对大东海区域一家无证经营的水果店进行依法取缔时，遭遇暴力抗法。目前，该店主已被行政拘留7天，并罚款500元。
+					</p>
+				</div>
+			</div>
+			<!--舆情导读样式2 end-->
+      	</div>
+
+
+
+      </div>
+    </div>
+</div>
+ <!--舆情导读 end-->
+  	</div>
+  </li>
+  <li>
+  	<div class="view">
+  		<div class="h1"><i class="fa-text-o fc-1"></i>处置建议</div>
+  		 <!--处置建议 start-->
+ <div class="row-fluid">
+    <div class="textShow">
+      <div class="tit">
+      			<input type="text"  id="contentTitle" class="contenteditable" value="处置建议">
+      	<div class="btn-group">
+			<a class="btn mini dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+				样式 <i class="icon-angle-down"></i>
+			</a>
+		<ul class="dropdown-menu align_l textSele">
+				<li class="active"><a href="javascript:void(0)">标题1（三号，加粗）<i class="icon-ok"></i></a></li>
+				<li><a href="javascript:void(0)">标题2（三号，加粗，缩进）<i class="icon-ok"></i></a></li>
+				<li><a href="javascript:void(0)">正文<i class="icon-ok"></i></a></li>
+			</ul>
+
+		</div>
+		<div class="tool tooledit abs">
+      		<i class="icon-move" title="移动版块"></i>
+      		<i class="icon-trash" title="删除版块"></i>
+      </div>
+     </div>
+    </div>
+     <div class="textShow">
+      	<div class="text">
+      	<div   >
+      				<textarea id="contentelement" class="textCon contenteditable" contenteditable="true" style="width:96%;height:150px;" />对于信息中具有潜在危害的事件及情况应给予关注并积极处理，防止不良影响产生及扩散。此外，密切关注此前敏感预警事件的发展情况，及时制定有效应对措施。鉴于监测结果中负面信息时有发生， 应吸取相关经验教训，做好预防和处理工作。</textarea> 
+	
+      	</div>
+      </div>		 
+    </div>		    		
+</div>
+ <!--处置建议 end-->
+  	</div>
+  </li>
+</ul>
+</div>
+<!--分析完毕 start-->
+
+<div style="margin-left: 150px;margin-top: 30px;margin-right: 20px"><!-- 最外层画画板 -->
+<div class="reportCon"><!-- 画画板中间层 -->
+
+<div class="reportBox" style="background-color: white"><!-- 画画板最里层 -->
+
+
+	<div id="sortable">
+         <div class="tool tooledit abs" style="top: 10px; z-index: 3; display: inline-block;">
+        </div>
+            <script>
+               var nowTime = new Date();
+            </script>
+        <div class="reportTit">
+            <input type="text" class="contenteditable" style="height:48px;width:300px;font-size:30px;text-align:center;color:red;background:transparent;border:1px solid #ffffff;" id="model.modelTitle" name="model.modelTitle" value="行业版">     
+            <p id="model_title_num">第（ ）期</p>
+            <p><span id="model_from"><input type="text" id="model.modelFrom" name="model.modelFrom" class="textCon contenteditable" contenteditable="true" style="font-size:15px;width:120px;" value="网络信息中心"> &nbsp;&nbsp;</span><span id="model_date"><script> document.write(nowTime.format("yyyy-MM-dd hh:mm:ss"));</script>2018-07-29 16:18:22</span></p>
+        </div>
+	  <ul>
+ 
+      </ul>
+	</div>
+</div>
+</div>
+<div class="bottom align_c">
+  <a  href="#form_saveMould" id="save_button"  data-toggle="modal" class="button button2" onClick="checkElement();">保存模板</a>
+  <a href="javascript:void(0)" class="button button2" id="previewOpen">预览模板</a>
+  <!-- <a href="/briefReport/briefReport.shtml" class="button button5" id="black">返回</a> -->
+  <a href="javascript:void(0)" class="button button5" id="previewClose">返回</a>
+
+</div>
+
+</div>
+
+</div><!-- class="page-container rel" end -->
+<!--分析完毕 end-->
+</div><!-- class=" " end -->
+<!--右侧内容 end-->
+
+</div><!-- class="page-container" end -->
+<!--保存模板弹出 start-->
+<div id="form_saveMould" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true" style="width: 50%; left: 25%; margin-left: 0;">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+		<h3 id="myModalLabel2">保存模板</h3>
+	</div>
+	<div class="modal-body">
+		<div class="form-horizontal">
+			 <div class="row-fluid">
+                <div class="span12">
+			 	     <div class="control-group control-group1">
+						<label class="control-label" for="title">模板名称：</label>
+						<div class="controls">
+							<input type="text" id="model.name" name="model.name" class="m-wrap span11" placeholder="模版名称字数10字内" maxlength="10" value="">
+							<input type="hidden" id="model.modelImage" name="model.modelImage"   >
+						</div>
+					</div>
+					<div class="control-group control-group1">
+						<label class="control-label" for="title">模版封面：</label>
+						<div class="controls thumbnail2">
+							<ul id="modelImageDiv">
+								<li class="active">
+									<i class="icon-ok"></i>
+									<img src="/images/briefmodel/model_01.png"/>
+								</li>
+								<li>
+									<i class="icon-ok"></i>
+									<img src="/images/briefmodel/model_02.png"/>
+								</li>
+								<li>
+									<i class="icon-ok"></i>
+									<img src="/images/briefmodel/model_03.png"/>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+                </div>
+
+			 </div>
+		</div>
+	</div>
+	<div class="modal-footer" style="text-align: center;">
+	    <a class="btn yellow btn-primary"  style="background-color: #ff8500;"  onClick="getElementLi();">保存</a>
+		   <!-- <button class="btn yellow btn-primary"  style="background-color: #ff8500;"  onClick="getElementLi();">保存</button> -->
+		   <button class="btn" data-dismiss="modal" aria-hidden="true">返回</button>
+		</div>
+</div>
+</div>
+<!--保存模板弹出 end-->
+</FORM>
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+	var njxImgSrc='';
+	var actionBase='';
+	var staticResourcePath = 'http://cdn.files.51wyq.cn/web';
+ 
+</script>
+<script type='text/javascript' src='http://cdn.files.51wyq.cn/web/js/jquery-1.10.2.min.js?v=201807262020'></script>
+<link type="text/css" rel="stylesheet" href="http://cdn.files.51wyq.cn/web/css/tips.css?v=201807262020">
+<script type='text/javascript' src='http://cdn.files.51wyq.cn/web/js/tips.js?v=201807262020'></script>
+<input id="style" name="style" value="0" type="hidden"/>
+<link rel="stylesheet" type="text/css" href="http://cdn.files.51wyq.cn/web/css/accordion.css?v=201807262020"/>
+<link rel="stylesheet" type="text/css" href="http://cdn.files.51wyq.cn/web/css/animate.min.css?v=201807262020">
+<link rel="stylesheet" type="text/css" href="http://cdn.files.51wyq.cn/web/css/common.css?v=201807262020"/>
+<link rel="stylesheet" type="text/css" href="http://cdn.files.51wyq.cn/web/css/anina.css?v=201807262020">
+<script type='text/javascript' src='http://cdn.files.51wyq.cn/web/js/prettify.js?v=201807262020'></script>
+<script type='text/javascript' src='http://cdn.files.51wyq.cn/web/js/jquery.slimscroll.js?v=201807262020'></script>
+<script type='text/javascript' src='http://cdn.files.51wyq.cn/web/js/jquery.tabs.js?v=201807262020'></script>
+<script type='text/javascript' src='http://cdn.files.51wyq.cn/web/js/jquery-ui-1.9.1.custom.js?v=201807262020'></script>
+<script type='text/javascript' src='http://cdn.files.51wyq.cn/web/js/taskMessage.js?v=201807262020' charset="GBK"></script>
+<style type="text/css">
+.btn-orange {
+    color: #fff !important;
+    background-color: #f5773b !important;
+    border-color: #f5773b !important;
+}
+</style>
+<script type="text/javascript">
+    var baseAction = '';
+
+	$(function () {
+      	var sid = getQueryString("sid");
+      	if(sid != null){
+      		$.ajax({
+                url : baseAction+"/view/user/outIntoLogin.action",
+                type : "post",
+                data : {'sid':sid},
+                success : function(data){
+                	var outIntoType = getQueryString("outIntoType");
+                  	if(outIntoType != null){
+                    	if(data == 1){
+                  			loginIntoTo(outIntoType);
+                    	}else{
+                  			intoTo(outIntoType);
+                    	}
+             		}
+                }
+            })
+      	}else{
+          	var outIntoType = getQueryString("outIntoType");
+          	if(outIntoType != null){
+          		
+          			loginIntoTo(outIntoType);
+          		
+          		
+     		}
+      	}
+    });
+	//获取url中的参数
+	function getQueryString(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); // 匹配目标参数
+		var result = window.location.search.substr(1).match(reg); // 对querystring匹配目标参数
+		if (result != null) {
+			return decodeURIComponent(result[2]);
+		} else {
+			return null;
+		}
+	}
+	
+	//登录跳转
+    function loginIntoTo(type){
+		if(type == 0){
+			window.location = baseAction + "/home.shtml";
+		}else{
+	        var data = {"notLoginOperateRecord.operateType":type}
+	        $.ajax({
+	            url : baseAction+"/view/hotSearch/recordOperateInfo.action",
+	            type : "post",
+	            data : data,
+	            success : function(){
+	            	window.location = baseAction + "/home.shtml";
+	                //$("#promptModal").modal();
+	                //$("#login").click();
+	            }
+	        })
+		}
+    }
+
+	//登录自动跳转产品页
+    function intoTo(type){
+        var data = {"notLoginOperateRecord.operateType":type}
+        $.ajax({
+            url : baseAction+"/view/hotSearch/recordOperateInfo.action",
+            type : "post",
+            data : data,
+            success : function(){
+                $("#loginModal").modal();
+                //$("#promptModal").modal();
+                //$("#login").click();
+            }
+        })
+    }
+    (function($){
+        var _ajax=$.ajax;
+        $.ajax=function(opt){
+            var fn = {
+            		beforeSend:function(XMLHttpRequest){},
+                    error:function(XMLHttpRequest, textStatus, errorThrown){},
+                    success:function(data, textStatus){},
+                    complete:function(data, textStatus){}
+                }
+            if(opt.error){
+                fn.error=opt.error;
+            }
+            if(opt.success){
+                fn.success=opt.success;
+            }
+            if(opt.complete){
+            	fn.complete=opt.complete;
+            }
+            if(opt.beforeSend){
+            	fn.beforeSend=opt.beforeSend;
+            }
+            var _opt = $.extend(opt,{
+            	beforeSend:function(XMLHttpRequest){
+            		XMLHttpRequest.setRequestHeader("browser-w", window.innerWidth||document.documentElement.clientWidth);
+            		XMLHttpRequest.setRequestHeader("browser-h", window.innerHeight||document.documentElement.clientHeight);
+                    fn.beforeSend(XMLHttpRequest);
+                },
+    			complete:function(data, textStatus){
+                    fn.complete(data, textStatus);
+                },
+                success:function(data, textStatus){
+                    fn.success(data, textStatus);
+                },
+    			error:function(XMLHttpRequest, textStatus, errorThrown){
+                    fn.error(XMLHttpRequest, textStatus, errorThrown);
+                },
+            });
+            return _ajax(opt);
+        };
+        
+    })(jQuery);
+    
+
+
+  //验证码以毫秒+四位随机数作为唯一凭证
+  function getRequestRan() {
+  	// 若框架页内session失效，则整个页面重新加载
+  	if(window != top){  
+  		top.location.reload(true);
+  		return;
+  	}
+  	
+  	var _t = new Date().getMilliseconds();
+  	var _ran = _t + '' + Math.round(Math.random()*10) + '' + Math.round(Math.random()*10) + '' + Math.round(Math.random()*10) + '' + Math.round(Math.random()*10);
+  	var _u = baseAction + "/view/common/validation.jsp?c=lg_" + _ran;
+  	$('#imgVcode_request').attr('src', _u);
+  	$('#_ran_request').val(_ran);
+  }
+</script>
+<script src="http://cdn.files.51wyq.cn/web/js/bootstrap.min.js?v=201807262020" type="text/javascript"></script>  
+<script src="http://cdn.files.51wyq.cn/web/js/jquery-ui-1.10.1.custom.min.js?v=201807262020" type="text/javascript"></script> 
+ <SCRIPT type="text/javascript" src="http://cdn.files.51wyq.cn/web/js/scripts.js?v=201807262020"></SCRIPT>
+ <script>
+function checkCookie()
+	 {
+	 var alerttimes=getCookie();
+	 if (alerttimes!=null && alerttimes!="")
+	 { if(alerttimes==2)
+	 {
+		 document.getElementById("ats").style.display="none";
+	 }
+	 	 else{ 
+	 		 alerttimes++;
+	 		 document.cookie="alerttimes="+alerttimes;
+	 	 }
+	 }
+	 else
+	 	{      var date=new Date(); 
+	 	date.setTime(date.getTime()+300000*60*1000);
+		 document.cookie="alerttimes="+"0;expires="+date.toGMTString(); 
+	    }
+	  }
+function getCookie()
+	  {
+	  if (document.cookie.length>0)
+	  {
+	 	 var arrStr = document.cookie.split(";");  
+	 	 for(var i = 0;i < arrStr.length;i++){	 
+	 	 var temp = arrStr[i].split("=");  
+	 	 if(temp[0] == 'alerttimes'){ 
+	 		 return temp[1];
+	 	}
+	 	 else{;}
+	  }
+	 	 return null;
+	 }
+	  else{return "66";}
+	 }
+  $(".thumbnail2>ul>li").on("click",function(){
+        $(".thumbnail2>ul>li").removeClass("active");
+        $(this).addClass("active");
+
+    });
+
+	function changeTitle(modelId){
+			if (modelId==1){
+					document.getElementById("model.styleType").value=1;
+					document.getElementById("model.modelTitle").value="行业版";
+
+					document.getElementById("model_title_num").style.display="";
+				    document.getElementById("model_from").style.display="";
+					document.getElementById("model_date").innerHTML = nowTime.format("yyyy-MM-dd hh:mm:ss");
+			}
+			else if(modelId==2){
+				document.getElementById("model.styleType").value=2;
+				document.getElementById("model.modelTitle").value="党政版";
+				document.getElementById("model_title_num").style.display="none";
+				document.getElementById("model_from").style.display="";
+				document.getElementById("model_date").innerHTML = nowTime.format("yyyy-MM-dd hh:mm:ss");
+				//document.getElementById("model.modelTitle").style.color="red";
+			}
+			else if(modelId==3){
+				document.getElementById("model.styleType").value=3;
+				document.getElementById("model.modelTitle").value="摘要版";
+				document.getElementById("model_title_num").style.display="none";
+				document.getElementById("model_from").style.display="none";
+				document.getElementById("model_date").innerHTML = nowTime.format("yyyy-MM-dd");
+			}
+
+	}
+function checkElement(){
+
+		var success=1;
+		$.each($(".ui-sortable>li>div"), function() {
+			 
+
+				var thisId = $(this).attr("id");
+				if(typeof(thisId) == "undefined") {
+					success=0 ;
+				}
+		});	
+
+		if (success>0){
+			$("#save_button").attr("data-toggle","modal");
+		
+		}
+		else{
+			alert("请选择一个维度!");
+			$("#save_button").removeAttr("data-toggle");
+		}
+	}
+
+
+	function getElementLi(){
+		   var emptyT=document.getElementById("model.modelTitle").value;
+		   var emptyN=document.getElementById("model.name").value;
+		   if(  emptyN.trim()==""){
+		    	alert("为模板起个名字吧~");
+
+				$("#save_model").removeAttr("data-dismiss");
+			 
+			 	return;
+		   	}
+
+			var modelArray  = new Array();
+			
+			
+				modelArray[0] = "行业版";
+			
+			
+				modelArray[1] = "经典版";
+			
+			
+				modelArray[2] = "党政版";
+			
+			
+				modelArray[3] = "摘要版";
+			
+			
+				modelArray[4] = "网宣版";
+			
+			
+				modelArray[5] = "企业版";
+			
+
+			for (var i=0; i<modelArray.length;i++){
+				 
+				 if (emptyN==modelArray[i]){
+				 
+					alert("此模板名称已存在,请取一个新的名字");
+					return;
+					}
+			}
+
+	 
+		$("#save_model").attr("data-dismiss","modal");
+		    
+		var eleIds = "{\"elementList\":[";
+			
+		$.each($(".ui-sortable>li>div"), function() {
+
+
+				var thisId = $(this).attr("id");
+				if(typeof(thisId) == "undefined")
+					{alert("请至少选择一个维度！");}
+				
+
+				var pos = thisId.lastIndexOf("-");
+				var eId = parseInt(thisId.substring(pos+1,thisId.length)) + 1;  //页面上元素从0开始标记，数据库里从1开始
+
+				if (eId>4){
+				
+					eId = eId + 1;
+				}
+
+
+				
+				var contentname = this.getElementsByTagName("input");
+
+				for (var i= 0; i<contentname.length; i++){
+					var elem = contentname[i];
+
+					 if (elem.id=="contentTitle"){
+						eleIds +=  "{\"eleId\":"+ eId + ",\"title\":\"" + elem.value + "\"";
+					 
+					 }
+				}
+				 
+				var contentelements = this.getElementsByTagName("textarea");
+
+				for (var i= 0; i<contentelements.length; i++){
+					var elem = contentelements[i];
+
+					 if (elem.id=="contentelement"){
+
+					//	 alert(elem.value );
+						 eleIds += ",\"econtent\":\"" + elem.value + "\"";
+					 }
+				}
+				var imgObj =$(this).find(".textShow.chart .text .chartMap img");
+
+				if (typeof(imgObj.attr("id"))!=="undefined"){
+
+
+
+					eleIds += ",\"styleid\":\"" + imgObj.attr("id") + "\"";
+				}
+
+				//舆情导读
+				var daodustyle = $(this).find(".row-fluid .textShow .tit .tool.tooledit.abs .btn-group .style1");
+
+				if(typeof(daodustyle.attr("id"))!=="undefined"){
+
+					
+					  
+
+					 if($(this).parents("li").attr("class")=="yqddStyle"){
+					 
+						eleIds += ",\"styleid\":\"20\"";
+					 }
+					 else{
+						 eleIds += ",\"styleid\":\"19\"";
+					 
+					 }
+					 
+				}
+				 
+
+				var styleObj = $(this).find(".row-fluid .textShow .tit .btn-group .textSele .active a");
+				//btn mini dropdown-toggle
+				//	.dropdown-menu.align_l.textSele  .active
+
+				if (styleObj.html().indexOf("标题1")>=0){
+						 eleIds += ",\"titleStyle\":\"标题1\"";
+				}
+				else if (styleObj.html().indexOf("标题2")>=0){
+						 eleIds += ",\"titleStyle\":\"标题2\"";
+				}
+				else if (styleObj.html().indexOf("正文")>=0){
+					 eleIds += ",\"titleStyle\":\"正文\"";
+				}
+
+
+
+
+				var isHaveWBdataObj = $(this).find(".row-fluid .textShow .tit .tool.tooledit.abs input");
+				//btn mini dropdown-toggle
+				//.dropdown-menu.align_l.textSele  .active
+
+
+				if (typeof(isHaveWBdataObj.attr("id"))!=="undefined"){
+
+					if(isHaveWBdataObj.attr("id")=="isHaveWBData"){
+
+						if (isHaveWBdataObj.is(':checked')==true){
+
+							eleIds += ",\"isHaveWBData\":1";
+						}
+					}
+				}
+
+				var selectObj1 = $(this).find(".row-fluid .textShow .tit .tool.tooledit.abs select[name='dataType']");
+				//btn mini dropdown-toggle
+				//.dropdown-menu.align_l.textSele  .active
+
+
+					if (typeof(selectObj1.attr("id"))!=="undefined"){
+
+						 eleIds += ",\"dataType\":"+ selectObj1.val();
+
+					}
+
+				 var selectObj2 = $(this).find(".row-fluid .textShow .tit .tool.tooledit.abs select[name='sortBy']");
+				//btn mini dropdown-toggle
+				//.dropdown-menu.align_l.textSele  .active
+
+
+				 if (typeof(selectObj2.attr("id"))!=="undefined"){
+
+						 eleIds += ",\"sortBy\":"+selectObj2.val();
+
+					}
+
+
+				  var checkObj = $(this).find(".row-fluid .textShow .tit .tool.tooledit.abs input[name='selColumn']");
+
+				  if  (typeof(checkObj.val())!=="undefined"){
+
+						 eleIds += ",\"titleColumn\":"+checkObj.val();
+				  }
+
+
+				// styleObj.removeClass("active");
+				eleIds += "},";
+
+			 
+
+
+
+		});
+
+		eleIds = eleIds.substring(0,eleIds.length-1);
+
+		eleIds += "]}";
+
+		//var JSONObj = new Object();
+		//JSONObj.jsonStr = JSON.stringify(eleIds);
+
+		//alert(JSONObj);
+
+			 document.getElementById("checkedIds").value = eleIds;
+
+			 
+				var ulDiv = $("#modelImageDiv");
+				var liDiv = ulDiv.find("li.active");
+
+				var divHtml =liDiv.html();
+
+				if (divHtml.indexOf("model_01.png")>0){
+
+					 document.getElementById("model.modelImage").value="model_01.png";
+
+				}
+				else if (divHtml.indexOf("model_02.png")>0){
+
+					 document.getElementById("model.modelImage").value="model_02.png";
+
+				}
+				else if (divHtml.indexOf("model_03.png")>0){
+
+					 document.getElementById("model.modelImage").value="model_03.png";
+
+				}
+
+			 //frmPopWin.action="/jianbao/";
+			 /* frmPopWin.target=""; */
+			 /* frmPopWin.submit(); */
+             $(".modal").modal("hide");
+             /* window.location.href='/jianbao/'; */
+		
+
+	}
+
+	var $colObj ;
+	function setColumn(obj){
+		 
+		var btn = obj.parents(".tool.tooledit.abs").find("input[name='selColumn']");
+		if (typeof(btn.val())!=="undefined"){
+			$colObj = btn;
+			var selColV= btn.val();
+
+			
+			 
+			for (var i=1; i<9; i++){
+				if (selColV.indexOf(i)>=0){
+					 
+					document.getElementById("title_list_"+i).checked = true;
+					 
+				}
+				else{
+				
+					document.getElementById("title_list_"+i).checked = false;
+				}
+			}
+		}
+		
+	}
+
+
+
+	function changeColumn(){
+
+		var selectTitleID = "";
+		var btn = $colObj.parents(".tool.tooledit.abs").find("input[name='selColumn']");
+
+		var mTable = $colObj.parents(".view .row-fluid").find("div[name='textShowTableDiv']").find(".text").find("table[name='myTable']");
+		 
+		if (typeof(btn.val())!=="undefined"){
+
+
+			for (var i=1; i<9; i++){
+				if ($("#title_list_"+i).is(":checked")==true){
+				//	alert(mTable.attr("id"));
+					  mTable.find("tr td:nth-child("+i+")") .show();
+					  mTable.find("tr th:nth-child("+i+")") .show();
+						selectTitleID = selectTitleID+i;
+				}
+				else{
+					 mTable.find("tr td:nth-child("+i+")") .hide();
+					  mTable.find("tr th:nth-child("+i+")") .hide();
+				
+				}
+			}
+
+			if (selectTitleID.length>4 ){
+
+					alert("请最多选4项!");
+					$("#hide_button").removeAttr("data-dismiss");
+					return;
+			}
+			else{
+				if(selectTitleID.length<1){
+					alert("请至少选1项！");
+					$("#hide_button").removeAttr("data-dismiss");
+					return;}
+				else{
+				btn.val(selectTitleID);
+				$("#hide_button").attr("data-dismiss","modal");}
+			}
+
+		}
+
+	}
+	
+	function charJson(re){
+		
+		re = re.replace(/"/g,"\'\'"); 
+		
+		return re;
+	
+	}
+ 
+</script>
+<script>
+$(function(){
+	$(function () { $('.tooltips').tooltip('hide');});
+	 //模板缩略图点击选中效果
+   $(".thumbnail2>ul>li").on("click",function(){
+        $(".thumbnail2>ul>li").removeClass("active");
+        $(this).addClass("active");
+
+    });
+});
+</script>
+</body>
+</html>
