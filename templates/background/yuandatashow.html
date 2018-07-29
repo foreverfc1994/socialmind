@@ -268,11 +268,11 @@
                     </a>
                     <ul class="sub">
                         <li><a href="/Author/">作者管理</a></li>
-                        <li><a href="/yuandatashow/">数据表管理</a></li>
+                        <li><a href="/yuandatashow/" style="color: #fff;">数据表管理</a></li>
                         <script>
                             $(document).ready(function () {
-                                $("li:not([class])>a:not(a:contains('查看作者相关文章'))").hover(function () {
-                                    $("a:contains('查看作者相关文章')").removeAttr("style")
+                                $("li:not([class])>a:not(a:contains('数据表管理'))").hover(function () {
+                                    $("a:contains('数据表管理')").removeAttr("style")
                                 });
                             });
                         </script>
@@ -285,7 +285,7 @@
                         <span>数据清洗</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="/DataCleanStatistics/">清洗数据统计</a></li>
+                        <!-- <li><a href="/DataCleanStatistics/">清洗数据统计</a></li> -->
                         <li><a href="/DataCleanStrategies/">数据清洗策略配置</a></li>
                         <li><a href="/DataCleanLog/">数据清洗日志管理</a></li>
                         <li><a href="/washData/">数据清洗</a></li>

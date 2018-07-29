@@ -47,7 +47,8 @@ def AddEventObject(request):
 def CreateEventObject(request):
     return render(request, 'background/CreateEventObject.html')
 def ShowEventObject(request):
-    return render(request, 'background/ShowEventObject.html')
+    #return render(request, 'background/ShowEventObject.html')
+    return render(request, 'background/socialobject.html')
 def semanticsTools(request):
     return render(request, 'background/semanticsTools.html')
 def semanticsToolkits(request):

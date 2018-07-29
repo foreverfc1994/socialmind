@@ -8,8 +8,9 @@
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-    <link rel="stylesheet" href="//res.layui.com/layui/dist/css/layui.css?t=1531663423583" media="all">
-    {#    <link rel="stylesheet" href="//res.layui.com/static/css/global.css?t=1531663423583-6" media="all">#}
+    <link rel="stylesheet" href="{% static 'assets0/layui/css/layui.css' %}" media="all">
+    <!-- <link rel="stylesheet" href="//res.layui.com/layui/dist/css/layui.css?t=1531663423583" media="all">
+    {#    <link rel="stylesheet" href="//res.layui.com/static/css/global.css?t=1531663423583-6" media="all">#} -->
     <title>DASHGUM - Bootstrap Admin Template</title>
 
     <!-- Bootstrap core CSS -->
@@ -307,7 +308,7 @@
                         <span>数据清洗</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="/DataCleanStatistics/">清洗数据统计</a></li>
+                        <!-- <li><a href="/DataCleanStatistics/">清洗数据统计</a></li> -->
                         <li><a href="/DataCleanStrategies/">数据清洗策略配置</a></li>
                         <li><a href="/DataCleanLog/">数据清洗日志管理</a></li>
                         <li><a href="/washData/">数据清洗</a></li>
@@ -320,14 +321,21 @@
                     </a>
                 </li>
                 <li class="sub-menu">
-                    <a href="javascript:;">
+                    <a href="javascript:;" class="active">
                         <i class="fa fa-cogs"></i>
                         <span>舆情对象管理</span>
                     </a>
                     <ul class="sub">
                         <li><a href="/AddEventObject/">新增舆情对象</a></li>
                         <li><a href="/CreateEventObject/">舆情对象自动生成</a></li>
-                        <li><a href="/objectshow/">舆情对象展示</a></li>
+                        <li><a href="/objectshow/" style="color: #fff;">舆情对象展示</a></li>
+                        <script>
+                            $(document).ready(function(){
+                                $("li:not([class])>a:not(a:contains('舆情对象展示'))").hover(function(){
+                                    $("a:contains('舆情对象展示')").removeAttr("style")
+                                });
+                            });
+                      </script>
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -356,7 +364,7 @@
                     </a>
                 </li>
                 <li class="sub-menu">
-                    <a href="/usrManagement/" class="active">
+                    <a href="/usrManagement/">
                         <i class=" fa fa-bar-chart-o"></i>
                         <span>用户管理</span>
                     </a>
