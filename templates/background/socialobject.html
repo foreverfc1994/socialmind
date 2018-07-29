@@ -9,7 +9,7 @@
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <link rel="stylesheet" href="//res.layui.com/layui/dist/css/layui.css?t=1531663423583" media="all">
-{#    <link rel="stylesheet" href="//res.layui.com/static/css/global.css?t=1531663423583-6" media="all">#}
+    {#    <link rel="stylesheet" href="//res.layui.com/static/css/global.css?t=1531663423583-6" media="all">#}
     <title>DASHGUM - Bootstrap Admin Template</title>
 
     <!-- Bootstrap core CSS -->
@@ -385,25 +385,24 @@
     <section id="main-content">
         <section class="wrapper site-min-height">
 
-            <h3><i class="fa fa-angle-right"></i> 用户管理</h3>
+            <h3><i class="fa fa-angle-right"></i> 舆情对象管理</h3>
             <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
                 <ul class="layui-tab-title">
-                    <li id ='3' >个人用户</li>
-                    <li id ='0'>企业用户</li>
-                    <li id ='2'>事业单位用户</li>
-                    <li id ='1'>政府机构用户</li>
+                    <li id='3'>事件管理</li>
+                    <li id='0'>实体管理</li>
+
 
                 </ul>
                 <div class="layui-tab-content" style="height: 100px;">
 
 
-                    <div  id = '33' class="layui-tab-item">
+                    <div id='33' class="layui-tab-item">
                         <div class="row mt">
                             <div class="col-lg-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <!--<label for="jiaose">筛选:</label><input id="jiaose" style="margin-left: 5px;height: 25px;width: 13%;display: inline-block" type="text" class="form-control" placeholder="请输入筛选条件">-->
-                                        个人用户
+                                        事件管理
                                         <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">entries</span>
                                         <select class="form-control"
                                                 style="float: right;width: 60px;height: 25px;font-size: 12px">
@@ -417,68 +416,177 @@
                                     <!--<div class="panel-body">-->
                                     <table class="table table-bordered table-hover" style="margin: 0%">
                                         <tr>
-                                            <td id="usridtd">User ID</td>
-                                            <td>真实姓名</td>
-                                            <td>性别</td>
-                                            <td>年龄</td>
-                                            <td>手机</td>
-                                            <td>邮箱</td>
-                                            <td>职业</td>
-                                            <td>注册时间</td>
+                                            <td>事件ID</td>
+                                            <td>事件名称</td>
+                                            <td>发生时间</td>
+                                            <td>结束时间</td>
+                                            <td>地点</td>
+                                            <td>事件简介</td>
+                                            <td>事件总结</td>
+                                            <td>相关文章数</td>
                                             <td style="width: 4%">管理</td>
                                         </tr>
                                         <tr>
-                                            <td><a>XiaoMing123</a></td>
-                                            <td>小明</td>
-                                            <td>男</td>
-                                            <td>22</td>
-                                            <td>13988886666</td>
-                                            <td>123@qq.com</td>
-                                            <td>学生</td>
-                                            <td>2018-5-20 12:11:25</td>
+                                            <td>1</td>
+                                            <td>十九大召开</td>
+                                            <td>2017-10-18</td>
+                                            <td>2017-10-24</td>
+                                            <td>北京</td>
+                                            <td>中国共产党第十九次全国代表大会（简称党的十九大）于2017年10月18日至10月24日在北京召开。</td>
+                                            <td>
+                                                党的十九大是在全面建成小康社会关键阶段、中国特色社会主义发展关键时期召开的一次十分重要的大会，对鼓舞和动员全党全国各族人民继续推进全面建成小康社会、坚持和发展中国特色社会主义具有重大意义。
+                                            </td>
+                                            <td><a href="/articlelist/">1242</a></td>
                                             <td>
                                                 <button type="button" class="btn btn-danger btn-xs">删除</button>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><a>XiaoMing123</a></td>
-                                            <td>小明</td>
-                                            <td>男</td>
-                                            <td>22</td>
-                                            <td>13988886666</td>
-                                            <td>123@qq.com</td>
-                                            <td>学生</td>
-                                            <td>2018-5-20 12:11:25</td>
+                                            <td>1</td>
+                                            <td>十九大召开</td>
+                                            <td>2017-10-18</td>
+                                            <td>2017-10-24</td>
+                                            <td>北京</td>
+                                            <td>中国共产党第十九次全国代表大会（简称党的十九大）于2017年10月18日至10月24日在北京召开。</td>
+                                            <td>
+                                                党的十九大是在全面建成小康社会关键阶段、中国特色社会主义发展关键时期召开的一次十分重要的大会，对鼓舞和动员全党全国各族人民继续推进全面建成小康社会、坚持和发展中国特色社会主义具有重大意义。
+                                            </td>
+                                            <td><a href="/articlelist/">1242</a></td>
+
                                             <td>
                                                 <button type="button" class="btn btn-danger btn-xs">删除</button>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><a>XiaoMing123</a></td>
-                                            <td>小明</td>
-                                            <td>男</td>
-                                            <td>22</td>
-                                            <td>13988886666</td>
-                                            <td>123@qq.com</td>
-                                            <td>学生</td>
-                                            <td>2018-5-20 12:11:25</td>
+                                            <td>1</td>
+                                            <td>十九大召开</td>
+                                            <td>2017-10-18</td>
+                                            <td>2017-10-24</td>
+                                            <td>北京</td>
+                                            <td>中国共产党第十九次全国代表大会（简称党的十九大）于2017年10月18日至10月24日在北京召开。</td>
+                                            <td>
+                                                党的十九大是在全面建成小康社会关键阶段、中国特色社会主义发展关键时期召开的一次十分重要的大会，对鼓舞和动员全党全国各族人民继续推进全面建成小康社会、坚持和发展中国特色社会主义具有重大意义。
+                                            </td>
+                                            <td><a href="/articlelist/">1242</a></td>
+
                                             <td>
                                                 <button type="button" class="btn btn-danger btn-xs">删除</button>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><a>XiaoMing123</a></td>
-                                            <td>小明</td>
-                                            <td>男</td>
-                                            <td>22</td>
-                                            <td>13988886666</td>
-                                            <td>123@qq.com</td>
-                                            <td>学生</td>
-                                            <td>2018-5-20 12:11:25</td>
+                                            <td>1</td>
+                                            <td>十九大召开</td>
+                                            <td>2017-10-18</td>
+                                            <td>2017-10-24</td>
+                                            <td>北京</td>
+                                            <td>中国共产党第十九次全国代表大会（简称党的十九大）于2017年10月18日至10月24日在北京召开。</td>
+                                            <td>
+                                                党的十九大是在全面建成小康社会关键阶段、中国特色社会主义发展关键时期召开的一次十分重要的大会，对鼓舞和动员全党全国各族人民继续推进全面建成小康社会、坚持和发展中国特色社会主义具有重大意义。
+                                            </td>
+                                            <td><a href="/articlelist/">1242</a></td>
+
                                             <td>
                                                 <button type="button" class="btn btn-danger btn-xs">删除</button>
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>十九大召开</td>
+                                            <td>2017-10-18</td>
+                                            <td>2017-10-24</td>
+                                            <td>北京</td>
+                                            <td>中国共产党第十九次全国代表大会（简称党的十九大）于2017年10月18日至10月24日在北京召开。</td>
+                                            <td>
+                                                党的十九大是在全面建成小康社会关键阶段、中国特色社会主义发展关键时期召开的一次十分重要的大会，对鼓舞和动员全党全国各族人民继续推进全面建成小康社会、坚持和发展中国特色社会主义具有重大意义。
+                                            </td>
+                                            <td><a href="/articlelist/">1242</a></td>
+
+                                            <td>
+                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>十九大召开</td>
+                                            <td>2017-10-18</td>
+                                            <td>2017-10-24</td>
+                                            <td>北京</td>
+                                            <td>中国共产党第十九次全国代表大会（简称党的十九大）于2017年10月18日至10月24日在北京召开。</td>
+                                            <td>
+                                                党的十九大是在全面建成小康社会关键阶段、中国特色社会主义发展关键时期召开的一次十分重要的大会，对鼓舞和动员全党全国各族人民继续推进全面建成小康社会、坚持和发展中国特色社会主义具有重大意义。
+                                            </td>
+                                            <td><a href="/articlelist/">1242</a></td>
+
+                                            <td>
+                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>十九大召开</td>
+                                            <td>2017-10-18</td>
+                                            <td>2017-10-24</td>
+                                            <td>北京</td>
+                                            <td>中国共产党第十九次全国代表大会（简称党的十九大）于2017年10月18日至10月24日在北京召开。</td>
+                                            <td>
+                                                党的十九大是在全面建成小康社会关键阶段、中国特色社会主义发展关键时期召开的一次十分重要的大会，对鼓舞和动员全党全国各族人民继续推进全面建成小康社会、坚持和发展中国特色社会主义具有重大意义。
+                                            </td>
+                                            <td><a href="/articlelist/">1242</a></td>
+
+                                            <td>
+                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>十九大召开</td>
+                                            <td>2017-10-18</td>
+                                            <td>2017-10-24</td>
+                                            <td>北京</td>
+                                            <td>中国共产党第十九次全国代表大会（简称党的十九大）于2017年10月18日至10月24日在北京召开。</td>
+                                            <td>
+                                                党的十九大是在全面建成小康社会关键阶段、中国特色社会主义发展关键时期召开的一次十分重要的大会，对鼓舞和动员全党全国各族人民继续推进全面建成小康社会、坚持和发展中国特色社会主义具有重大意义。
+                                            </td>
+                                            <td><a href="/articlelist/">1242</a></td>
+
+                                            <td>
+                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>十九大召开</td>
+                                            <td>2017-10-18</td>
+                                            <td>2017-10-24</td>
+                                            <td>北京</td>
+                                            <td>中国共产党第十九次全国代表大会（简称党的十九大）于2017年10月18日至10月24日在北京召开。</td>
+                                            <td>
+                                                党的十九大是在全面建成小康社会关键阶段、中国特色社会主义发展关键时期召开的一次十分重要的大会，对鼓舞和动员全党全国各族人民继续推进全面建成小康社会、坚持和发展中国特色社会主义具有重大意义。
+                                            </td>
+                                            <td><a href="/articlelist/">1242</a></td>
+
+                                            <td>
+                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>十九大召开</td>
+                                            <td>2017-10-18</td>
+                                            <td>2017-10-24</td>
+                                            <td>北京</td>
+                                            <td>中国共产党第十九次全国代表大会（简称党的十九大）于2017年10月18日至10月24日在北京召开。</td>
+                                            <td>
+                                                党的十九大是在全面建成小康社会关键阶段、中国特色社会主义发展关键时期召开的一次十分重要的大会，对鼓舞和动员全党全国各族人民继续推进全面建成小康社会、坚持和发展中国特色社会主义具有重大意义。
+                                            </td>
+                                            <td><a href="/articlelist/">1242</a></td>
+
+                                            <td>
+                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
+                                            </td>
+                                        </tr>
+
+
                                     </table>
                                     <script>
                                         $(document).ready(function () {
@@ -538,13 +646,13 @@
                             </div>
                         </div>
                     </div>
-                    <div  id = '00' class="layui-tab-item">
+                    <div id='00' class="layui-tab-item">
                         <div class="row mt">
                             <div class="col-lg-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <!--<label for="jiaose">筛选:</label><input id="jiaose" style="margin-left: 5px;height: 25px;width: 13%;display: inline-block" type="text" class="form-control" placeholder="请输入筛选条件">-->
-                                        企业用户
+                                        实体管理
                                         <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">entries</span>
                                         <select class="form-control"
                                                 style="float: right;width: 60px;height: 25px;font-size: 12px">
@@ -558,68 +666,87 @@
                                     <!--<div class="panel-body">-->
                                     <table class="table table-bordered table-hover" style="margin: 0%">
                                         <tr>
-                                            <td id="usridtd">User ID</td>
-                                            <td>真实姓名</td>
-                                            <td>性别</td>
-                                            <td>年龄</td>
-                                            <td>手机</td>
-                                            <td>邮箱</td>
-                                            <td>职业</td>
-                                            <td>注册时间</td>
-                                            <td style="width: 4%">审核</td>
+                                            {#                                            <td id="usridtd">User ID</td>#}
+                                            <td>实体ID</td>
+                                            <td>实体名称</td>
+                                            <td>实体类型</td>
+                                            <td>实体相关事件数</td>
+                                            <td style="width: 4%">管理</td>
                                         </tr>
                                         <tr>
-                                            <td><a>QuJiangDiYiPubSenti</a></td>
-                                            <td>李晓明</td>
-                                            <td>男</td>
-                                            <td>40</td>
-                                            <td>14988886666</td>
-                                            <td>123@qq.com</td>
-                                            <td>企业法人</td>
-                                            <td>2018-5-20 12:11:25</td>
+                                            <td>1</td>
+                                            <td>西安</td>
+                                            <td>地名</td>
+                                            <td><a href="/Eventshow/">40</a></td>
                                             <td>
                                                 <button type="button" class="btn btn-danger btn-xs">删除</button>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><a>QuJiangDiYiPubSenti</a></td>
-                                            <td>李晓明</td>
-                                            <td>男</td>
-                                            <td>40</td>
-                                            <td>14988886666</td>
-                                            <td>123@qq.com</td>
-                                            <td>企业法人</td>
-                                            <td>2018-5-20 12:11:25</td>
+                                            <td>1</td>
+                                            <td>西安</td>
+                                            <td>地名</td>
+                                            <td><a href="/Eventshow/">40</a></td>
                                             <td>
                                                 <button type="button" class="btn btn-danger btn-xs">删除</button>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><a>QuJiangDiYiPubSenti</a></td>
-                                            <td>李晓明</td>
-                                            <td>男</td>
-                                            <td>40</td>
-                                            <td>14988886666</td>
-                                            <td>123@qq.com</td>
-                                            <td>企业法人</td>
-                                            <td>2018-5-20 12:11:25</td>
+                                            <td>1</td>
+                                            <td>西安</td>
+                                            <td>地名</td>
+                                            <td><a href="/Eventshow/">40</a></td>
                                             <td>
                                                 <button type="button" class="btn btn-danger btn-xs">删除</button>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><a>QuJiangDiYiPubSenti</a></td>
-                                            <td>李晓明</td>
-                                            <td>男</td>
-                                            <td>40</td>
-                                            <td>14988886666</td>
-                                            <td>123@qq.com</td>
-                                            <td>企业法人</td>
-                                            <td>2018-5-20 12:11:25</td>
+                                            <td>1</td>
+                                            <td>西安</td>
+                                            <td>地名</td>
+                                            <td><a href="/Eventshow/">40</a></td>
                                             <td>
                                                 <button type="button" class="btn btn-danger btn-xs">删除</button>
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>西安</td>
+                                            <td>地名</td>
+                                            <td><a href="/Eventshow/">40</a></td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>西安</td>
+                                            <td>地名</td>
+                                            <td><a href="/Eventshow/">40</a></td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>西安</td>
+                                            <td>地名</td>
+                                            <td><a href="/Eventshow/">40</a></td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>西安</td>
+                                            <td>地名</td>
+                                            <td><a href="/Eventshow/">40</a></td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
+                                            </td>
+                                        </tr>
+
+
                                     </table>
                                     <!--</div>-->
                                     <div class="panel-footer">
@@ -641,212 +768,7 @@
                             </div>
                         </div>
                     </div>
-                    <div  id = '22' class="layui-tab-item">
-                        <div class="row mt">
-                            <div class="col-lg-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <!--<label for="jiaose">筛选:</label><input id="jiaose" style="margin-left: 5px;height: 25px;width: 13%;display: inline-block" type="text" class="form-control" placeholder="请输入筛选条件">-->
-                                        事业单位用户
-                                        <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">entries</span>
-                                        <select class="form-control"
-                                                style="float: right;width: 60px;height: 25px;font-size: 12px">
-                                            <option>10</option>
-                                            <option>25</option>
-                                            <option>50</option>
-                                            <option>100</option>
-                                        </select>
-                                        <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">Show</span>
-                                    </div>
-                                    <!--<div class="panel-body">-->
-                                    <table class="table table-bordered table-hover" style="margin: 0%">
-                                        <tr>
-                                            <td id="usridtd">User ID</td>
-                                            <td>真实姓名</td>
-                                            <td>性别</td>
-                                            <td>年龄</td>
-                                            <td>手机</td>
-                                            <td>邮箱</td>
-                                            <td>职业</td>
-                                            <td>注册时间</td>
-                                            <td style="width: 4%">审核</td>
-                                        </tr>
-                                        <tr>
-                                            <td><a>LXM</a></td>
-                                            <td>李晓明</td>
-                                            <td>男</td>
-                                            <td>40</td>
-                                            <td>14988886666</td>
-                                            <td>133@qq.com</td>
-                                            <td>事业单位法人</td>
-                                            <td>2018-5-20 12:11:25</td>
-                                            <td>
-                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a>LXM</a></td>
-                                            <td>李晓明</td>
-                                            <td>男</td>
-                                            <td>40</td>
-                                            <td>14988886666</td>
-                                            <td>133@qq.com</td>
-                                            <td>事业单位法人</td>
-                                            <td>2018-5-20 12:11:25</td>
-                                            <td>
-                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a>LXM</a></td>
-                                            <td>李晓明</td>
-                                            <td>男</td>
-                                            <td>40</td>
-                                            <td>14988886666</td>
-                                            <td>133@qq.com</td>
-                                            <td>事业单位法人</td>
-                                            <td>2018-5-20 12:11:25</td>
-                                            <td>
-                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a>LXM</a></td>
-                                            <td>李晓明</td>
-                                            <td>男</td>
-                                            <td>40</td>
-                                            <td>14988886666</td>
-                                            <td>133@qq.com</td>
-                                            <td>事业单位法人</td>
-                                            <td>2018-5-20 12:11:25</td>
-                                            <td>
-                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <!--</div>-->
-                                    <div class="panel-footer">
-                                        Search:
-                                        <input type="text" class="form-control" placeholder="Search for..."
-                                               style="width: 200px;height: 25px;display: inline-block">
-                                        <div class="btn-group btn-group-xs" role="group" aria-label="..."
-                                             style="float: right;">
-                                            <button type="button" class="btn btn-default">First</button>
-                                            <button type="button" class="btn btn-default">Previous</button>
-                                            <button type="button" class="btn btn-default">1</button>
-                                            <button type="button" class="btn btn-default">2</button>
-                                            <button type="button" class="btn btn-default">Next</button>
-                                            <button type="button" class="btn btn-default">Last</button>
-                                        </div>
-                                        <!--<button class="btn btn-success btn-sm" style="margin-left: 10px;background-color: #41cac0;border-color:#41cac0;width: 6%"> 确认 </button>-->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div  id = '11' class="layui-tab-item">
-                        <div class="row mt">
-                            <div class="col-lg-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <!--<label for="jiaose">筛选:</label><input id="jiaose" style="margin-left: 5px;height: 25px;width: 13%;display: inline-block" type="text" class="form-control" placeholder="请输入筛选条件">-->
-                                        政府用户
-                                        <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">entries</span>
-                                        <select class="form-control"
-                                                style="float: right;width: 60px;height: 25px;font-size: 12px">
-                                            <option>10</option>
-                                            <option>25</option>
-                                            <option>50</option>
-                                            <option>100</option>
-                                        </select>
-                                        <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">Show</span>
-                                    </div>
-                                    <!--<div class="panel-body">-->
-                                    <table class="table table-bordered table-hover" style="margin: 0%">
-                                        <tr>
-                                            <td id="usridtd">User ID</td>
-                                            <td>真实姓名</td>
-                                            <td>性别</td>
-                                            <td>年龄</td>
-                                            <td>手机</td>
-                                            <td>邮箱</td>
-                                            <td>职业</td>
-                                            <td>注册时间</td>
-                                            <td style="width: 4%">审核</td>
-                                        </tr>
-                                        <tr>
-                                            <td><a>XianGov</a></td>
-                                            <td>王明</td>
-                                            <td>男</td>
-                                            <td>36</td>
-                                            <td>18988886666</td>
-                                            <td>135@qq.com</td>
-                                            <td>处长</td>
-                                            <td>2018-5-20 12:11:25</td>
-                                            <td>
-                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a>XianGov</a></td>
-                                            <td>王明</td>
-                                            <td>男</td>
-                                            <td>36</td>
-                                            <td>18988886666</td>
-                                            <td>135@qq.com</td>
-                                            <td>处长</td>
-                                            <td>2018-5-20 12:11:25</td>
-                                            <td>
-                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a>XianGov</a></td>
-                                            <td>王明</td>
-                                            <td>男</td>
-                                            <td>36</td>
-                                            <td>18988886666</td>
-                                            <td>135@qq.com</td>
-                                            <td>处长</td>
-                                            <td>2018-5-20 12:11:25</td>
-                                            <td>
-                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a>XianGov</a></td>
-                                            <td>王明</td>
-                                            <td>男</td>
-                                            <td>36</td>
-                                            <td>18988886666</td>
-                                            <td>135@qq.com</td>
-                                            <td>处长</td>
-                                            <td>2018-5-20 12:11:25</td>
-                                            <td>
-                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <!--</div>-->
-                                    <div class="panel-footer">
-                                        Search:
-                                        <input type="text" class="form-control" placeholder="Search for..."
-                                               style="width: 200px;height: 25px;display: inline-block">
-                                        <div class="btn-group btn-group-xs" role="group" aria-label="..."
-                                             style="float: right;">
-                                            <button type="button" class="btn btn-default">First</button>
-                                            <button type="button" class="btn btn-default">Previous</button>
-                                            <button type="button" class="btn btn-default">1</button>
-                                            <button type="button" class="btn btn-default">2</button>
-                                            <button type="button" class="btn btn-default">Next</button>
-                                            <button type="button" class="btn btn-default">Last</button>
-                                        </div>
-                                        <!--<button class="btn btn-success btn-sm" style="margin-left: 10px;background-color: #41cac0;border-color:#41cac0;width: 6%"> 确认 </button>-->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
 
                 </div>
             </div>
@@ -1261,32 +1183,28 @@
     //custom select box
 
     $(function () {
-console.log(111111)
+        console.log(111111)
         var url = document.location.toString()
         var arrurl = url.split('/')
         var para = arrurl[4]
         console.log(para)
-        if(para==0&&para!='')
-             {
+        if (para == 0 && para != '') {
             $("#0").addClass('layui-this');
             $("#00").addClass('layui-show');
         }
-        else if(para==2)
-        {
+        else if (para == 2) {
             $("#2").addClass('layui-this');
             $("#22").addClass('layui-show');
         }
-         else if(para==1)
-        {
+        else if (para == 1) {
             $("#1").addClass('layui-this');
             $("#11").addClass('layui-show');
         }
-         else
-        {
+        else {
             $("#3").addClass('layui-this');
             $("#33").addClass('layui-show');
         }
-         layui.use('element', function () {
+        layui.use('element', function () {
             var $ = layui.jquery
                 , element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
         });

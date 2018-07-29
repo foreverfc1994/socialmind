@@ -26,7 +26,7 @@ def login(request):
                    request.session['is_login'] = True
                    request.session['user_id'] = user.pk
                    request.session['user_name'] = user.username
-                   request.session['user_type'] = user.usertype
+                   request.session['user_type'] = user_type
                    if user_type == "个人用户":
                        return redirect('person_index')
                    if user_type == "企业用户":

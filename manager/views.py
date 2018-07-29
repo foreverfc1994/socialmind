@@ -96,3 +96,7 @@ def operate(request,a):
     return render(request, 'background/operateDiary.html')
 def articleslsit(request):
     return render(request,'background/Articleslist.html')
+def objectshow(request):
+    return  render(request,'background/socialobject.html')
+def eventshow(request):
+    return render(request,'background/Eventlist.html')

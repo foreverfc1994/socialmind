@@ -7,9 +7,15 @@
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-    <script src="{% static 'assets0/layui/layui.js' %}"></script>
+
     <title>DASHGUM - Bootstrap Admin Template</title>
-    <link rel="stylesheet" href="//res.layui.com/layui/dist/css/layui.css?t=1531663423583" media="all">
+    <script type="text/javascript" charset="utf8"
+            src="{% static 'backgroundfiles/DataTables-1.10.15/media/js/jquery.js' %}"></script>
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'backgroundfiles/DataTables-1.10.15/media/css/jquery.dataTables.css' %}">
+    <script type="text/javascript" charset="utf8"
+            src="{% static 'backgroundfiles/DataTables-1.10.15/media/js/jquery.dataTables.js' %}"></script>
+
     <!-- Bootstrap core CSS -->
     <link href="{% static 'backgroundfiles/assets/css/bootstrap.css' %}" rel="stylesheet">
     <!--external css-->
@@ -24,7 +30,14 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="{% static 'backgroundfiles/assets/js/jquery-3.3.1.min.js' %}"></script>
+    {#    <script src="{% static 'backgroundfiles/assets/js/jquery-3.3.1.min.js' %}"></script>#}
+    <style>
+        .tfoot input {
+        width: 100%;
+        padding: 3px;
+        box-sizing: border-box;
+    }
+    </style>
 </head>
 
 <body>
@@ -248,12 +261,19 @@
                     </ul>
                 </li>
                 <li class="sub-menu">
-                    <a href="javascript:;">
+                    <a href="javascript:;" class="active">
                         <i class="fa fa-tasks"></i>
                         <span>源数据展示模块</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="/Author/">作者管理</a></li>
+                        <li><a href="/Author/" style="color: #fff;">作者管理</a></li>
+                        <script>
+                            $(document).ready(function () {
+                                $("li:not([class])>a:not(a:contains('作者管理'))").hover(function () {
+                                    $("a:contains('作者管理')").removeAttr("style")
+                                });
+                            });
+                        </script>
                         <li><a href="/yuandatashow/">数据表管理</a></li>
                         <li><a href="/articlelist/">文章管理</a></li>
                     </ul>
@@ -312,11 +332,16 @@
                     <a href="/usrManagement/" >                         <i class=" fa fa-bar-chart-o"></i>                         <span>用户管理</span>                     </a>
                 </li>-->
                 <li class="sub-menu">
-                    <a href="/usrCommentsSelect/" class="active">
+                    <a href="javascript:;">
                         <i class="fa fa-th"></i>
                         <span>用户留言管理</span>
                     </a>
-
+                    <ul class="sub">
+                        <li><a href="/usrCommentsSelect/">查看用户留言</a></li>
+                        <li><a href="/usrCommentsCheck/">审核用户留言</a></li>
+                        <li><a href="/usrCommentsDelete/">删除用户留言</a></li>
+                    </ul>
+                </li>
                 <li class="sub-menu">
                     <a href="/AssignAuthorities/">
                         <i class=" fa fa-bar-chart-o"></i>
@@ -349,238 +374,178 @@
     <!--main content start-->
     <section id="main-content">
         <section class="wrapper site-min-height">
-            <h3><i class="fa fa-angle-right"></i> 留言管理</h3>
-            <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
-                <ul class="layui-tab-title">
-                    <li id='0' class="layui-this">留言审核</li>
-                    <li id='1'>留言管理</li>
+            <h3><i class="fa fa-angle-right"></i> XX相关事件</h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content-panel">
 
-                </ul>
-                <div class="layui-tab-content" style="height: 100px;">
-                    <div id='33' class="layui-tab-item layui-show">
-                        <div class="row mt">
-                            <div class="col-lg-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        待审核用户评论 共25条
-                                        <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">entries</span>
-                                        <select class="form-control"
-                                                style="float: right;width: 60px;height: 25px;font-size: 12px">
-                                            <option>10</option>
-                                            <option>25</option>
-                                            <option>50</option>
-                                            <option>100</option>
-                                        </select>
-                                        <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">Show</span>
-                                        <button class="btn btn-success btn-xs" style="margin-right: 10px;float: right">
-                                            批量审核通过
-                                        </button>
-                                        <button class="btn btn-danger btn-xs" style="margin-right: 10px;float: right">
-                                            批量审核不通过
-                                        </button>
-                                    </div>
-                                    <!--<div class="panel-body">-->
-                                    <table class="table table-bordered" style="margin: 0%">
-                                        <tr>
-                                            <td  style="width: 9%">是否全选<input id='is_all0' type="checkbox"></td>
-                                            <td>序号</td>
-                                            <td>用户类型</td>
-                                            <td>用户名</td>
-                                            <td>事件名</td>
-                                            <td>评论内容</td>
-                                            <td style="width: 9%">审核</td>
-                                        </tr>
-                                        <tr>
-                                            <td><input class="qx" type="checkbox"></td>
-                                            <td>1</td>
-                                            <td>个人用户</td>
-                                            <td>小明</td>
-                                            <td>十九大胜利召开</td>
-                                            <td>改变了主要矛盾，厉害了我的国！</td>
-                                            <td>
-                                                <div style="margin-top: -3px;margin-bottom: -8px;"
-                                                     class="switch switch-square" data-on-label="通过"
-                                                     data-off-label="未通过"><input  type="checkbox" checked=""/></div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><input class="qx" type="checkbox"></td>
-                                            <td>2</td>
-                                            <td>个人用户</td>
-                                            <td>小明</td>
-                                            <td>十九大胜利召开</td>
-                                            <td>改变了主要矛盾，厉害了我的国！</td>
-                                            <td>
-                                                <div style="margin-top: -3px;margin-bottom: -8px;"
-                                                     class="switch switch-square" data-on-label="通过"
-                                                     data-off-label="未通过"><input  type="checkbox" checked=""/></div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><input class="qx" type="checkbox"></td>
-                                            <td>3</td>
-                                            <td>个人用户</td>
-                                            <td>小明</td>
-                                            <td>十九大胜利召开</td>
-                                            <td>改变了主要矛盾，厉害了我的国！</td>
-                                            <td>
-                                                <div style="margin-top: -3px;margin-bottom: -8px;"
-                                                     class="switch switch-square" data-on-label="通过"
-                                                     data-off-label="未通过"><input type="checkbox" checked=""/></div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><input class="qx" type="checkbox"></td>
-                                            <td>4</td>
-                                            <td>个人用户</td>
-                                            <td>小明</td>
-                                            <td>十九大胜利召开</td>
-                                            <td>改变了主要矛盾，厉害了我的国！</td>
-                                            <td>
-                                                <div style="margin-top: -3px;margin-bottom: -8px;"
-                                                     class="switch switch-square" data-on-label="通过"
-                                                     data-off-label="未通过"><input  type="checkbox" checked=""/></div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><input class="qx" type="checkbox"></td>
-                                            <td>5</td>
-                                            <td>个人用户</td>
-                                            <td>小明</td>
-                                            <td>十九大胜利召开</td>
-                                            <td>改变了主要矛盾，厉害了我的国！</td>
-                                            <td>
-                                                <div style="margin-top: -3px;margin-bottom: -8px;"
-                                                     class="switch switch-square" data-on-label="通过"
-                                                     data-off-label="未通过"><input  type="checkbox" checked=""/></div>
-                                            </td>
-                                        </tr>
-                                    </table>
+                        <hr>
+                        <table id="table_id_example" class="display">
+                            <thead>
+                            <tr>
+                                <th>事件ID</th>
+                                <th>事件名称</th>
+                                <th>发生时间</th>
+                                <th>结束时间</th>
+                                <th>地点</th>
+                                <th>事件简介</th>
+                                <th>事件总结</th>
+                                <th>相关文章数</th>
+                                <th>管理</th>
 
-                                    <!--</div>-->
-                                    <div class="panel-footer">
-                                        Search:
-                                        <input type="text" class="form-control" placeholder="Search for..."
-                                               style="width: 200px;height: 25px;display: inline-block">
-                                        <div class="btn-group btn-group-xs" role="group" aria-label="..."
-                                             style="float: right;">
-                                            <button type="button" class="btn btn-default">First</button>
-                                            <button type="button" class="btn btn-default">Previous</button>
-                                            <button type="button" class="btn btn-default">1</button>
-                                            <button type="button" class="btn btn-default">Next</button>
-                                            <button type="button" class="btn btn-default">Last</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id='11' class="layui-tab-item">
-                        <div class="row mt">
-                            <div class="col-lg-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        用户评论展示 共500条
-                                        <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">entries</span>
-                                        <select class="form-control"
-                                                style="float: right;width: 60px;height: 25px;font-size: 12px">
-                                            <option>10</option>
-                                            <option>25</option>
-                                            <option>50</option>
-                                            <option>100</option>
-                                        </select>
-                                        <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">Show</span>
-                                        <button class="btn btn-danger btn-xs" style="margin-right: 10px;float: right">
-                                            批量删除
-                                        </button>
-                                    </div>
-                                    <!--<div class="panel-body">-->
-                                    <table class="table table-bordered" style="margin: 0%">
+
+                            </tr>
+                            </thead>
+{#                            <tfoot>#}
+{#                            <tr>#}
+{#                                 <th>事件ID</th>#}
+{#                                <th>事件名称</th>#}
+{#                                <th>发生时间</th>#}
+{#                                <th>结束时间</th>#}
+{#                                <th>地点</th>#}
+{#                                <th>事件简介</th>#}
+{#                                <th>事件总结</th>#}
+{#                                <th>相关文章数</th>#}
+{#                                <th>管理</th>#}
+{##}
+{##}
+{#                            </tr>#}
+{#                            </tfoot>#}
+                            <tbody id="tbody">
+
                                         <tr>
-                                            <td>全选<input id='is_all1' type="checkbox"></td>
-                                            <td>序号</td>
-                                            <td>用户类型</td>
-                                            <td>用户名</td>
-                                            <td>事件名</td>
-                                            <td>评论内容</td>
-                                            <td>操作</td>
-                                        </tr>
-                                        <tr>
-                                            <td><input class="qx1" type="checkbox"></td>
                                             <td>1</td>
-                                            <td>政府用户</td>
-                                            <td>西安市政府</td>
-                                            <td>十九大胜利召开</td>
-                                            <td>中国进入了新时代！高举中国特色社会主义旗帜，坚决拥护和支持党的英明举措！</td>
+                                            <td>十九大召开</td>
+                                            <td>2017-10-18</td>
+                                            <td>2017-10-24</td>
+                                            <td>北京</td>
+                                            <td>中国共产党第十九次全国代表大会（简称党的十九大）于2017年10月18日至10月24日在北京召开。</td>
+                                            <td>党的十九大是在全面建成小康社会关键阶段、中国特色社会主义发展关键时期召开的一次十分重要的大会，对鼓舞和动员全党全国各族人民继续推进全面建成小康社会、坚持和发展中国特色社会主义具有重大意义。</td>
+                                            <td>1242</td>
                                             <td>
                                                 <button type="button" class="btn btn-danger btn-xs">删除</button>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td><input class="qx1" type="checkbox"></td>
-                                            <td>2</td>
-                                            <td>政府用户</td>
-                                            <td>西安市政府</td>
-                                            <td>十九大胜利召开</td>
-                                            <td>中国进入了新时代！高举中国特色社会主义旗帜，坚决拥护和支持党的英明举措！</td>
+                                         <tr>
+                                            <td>1</td>
+                                            <td>十九大召开</td>
+                                            <td>2017-10-18</td>
+                                            <td>2017-10-24</td>
+                                            <td>北京</td>
+                                            <td>中国共产党第十九次全国代表大会（简称党的十九大）于2017年10月18日至10月24日在北京召开。</td>
+                                            <td>党的十九大是在全面建成小康社会关键阶段、中国特色社会主义发展关键时期召开的一次十分重要的大会，对鼓舞和动员全党全国各族人民继续推进全面建成小康社会、坚持和发展中国特色社会主义具有重大意义。</td>
+                                            <td>1242</td>
                                             <td>
                                                 <button type="button" class="btn btn-danger btn-xs">删除</button>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td><input class="qx1" type="checkbox"></td>
-                                            <td>3</td>
-                                            <td>政府用户</td>
-                                            <td>西安市政府</td>
-                                            <td>十九大胜利召开</td>
-                                            <td>中国进入了新时代！高举中国特色社会主义旗帜，坚决拥护和支持党的英明举措！</td>
+                                         <tr>
+                                            <td>1</td>
+                                            <td>十九大召开</td>
+                                            <td>2017-10-18</td>
+                                            <td>2017-10-24</td>
+                                            <td>北京</td>
+                                            <td>中国共产党第十九次全国代表大会（简称党的十九大）于2017年10月18日至10月24日在北京召开。</td>
+                                            <td>党的十九大是在全面建成小康社会关键阶段、中国特色社会主义发展关键时期召开的一次十分重要的大会，对鼓舞和动员全党全国各族人民继续推进全面建成小康社会、坚持和发展中国特色社会主义具有重大意义。</td>
+                                            <td>1242</td>
                                             <td>
                                                 <button type="button" class="btn btn-danger btn-xs">删除</button>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td><input class="qx1" type="checkbox"></td>
-                                            <td>4</td>
-                                            <td>政府用户</td>
-                                            <td>西安市政府</td>
-                                            <td>十九大胜利召开</td>
-                                            <td>中国进入了新时代！高举中国特色社会主义旗帜，坚决拥护和支持党的英明举措！</td>
+                                         <tr>
+                                            <td>1</td>
+                                            <td>十九大召开</td>
+                                            <td>2017-10-18</td>
+                                            <td>2017-10-24</td>
+                                            <td>北京</td>
+                                            <td>中国共产党第十九次全国代表大会（简称党的十九大）于2017年10月18日至10月24日在北京召开。</td>
+                                            <td>党的十九大是在全面建成小康社会关键阶段、中国特色社会主义发展关键时期召开的一次十分重要的大会，对鼓舞和动员全党全国各族人民继续推进全面建成小康社会、坚持和发展中国特色社会主义具有重大意义。</td>
+                                            <td>1242</td>
                                             <td>
                                                 <button type="button" class="btn btn-danger btn-xs">删除</button>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td><input class="qx1" type="checkbox"></td>
-                                            <td>4</td>
-                                            <td>政府用户</td>
-                                            <td>西安市政府</td>
-                                            <td>十九大胜利召开</td>
-                                            <td>中国进入了新时代！高举中国特色社会主义旗帜，坚决拥护和支持党的英明举措！</td>
+                                         <tr>
+                                            <td>1</td>
+                                            <td>十九大召开</td>
+                                            <td>2017-10-18</td>
+                                            <td>2017-10-24</td>
+                                            <td>北京</td>
+                                            <td>中国共产党第十九次全国代表大会（简称党的十九大）于2017年10月18日至10月24日在北京召开。</td>
+                                            <td>党的十九大是在全面建成小康社会关键阶段、中国特色社会主义发展关键时期召开的一次十分重要的大会，对鼓舞和动员全党全国各族人民继续推进全面建成小康社会、坚持和发展中国特色社会主义具有重大意义。</td>
+                                            <td>1242</td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
+                                            </td>
+                                        </tr> <tr>
+                                            <td>1</td>
+                                            <td>十九大召开</td>
+                                            <td>2017-10-18</td>
+                                            <td>2017-10-24</td>
+                                            <td>北京</td>
+                                            <td>中国共产党第十九次全国代表大会（简称党的十九大）于2017年10月18日至10月24日在北京召开。</td>
+                                            <td>党的十九大是在全面建成小康社会关键阶段、中国特色社会主义发展关键时期召开的一次十分重要的大会，对鼓舞和动员全党全国各族人民继续推进全面建成小康社会、坚持和发展中国特色社会主义具有重大意义。</td>
+                                            <td>1242</td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
+                                            </td>
+                                        </tr> <tr>
+                                            <td>1</td>
+                                            <td>十九大召开</td>
+                                            <td>2017-10-18</td>
+                                            <td>2017-10-24</td>
+                                            <td>北京</td>
+                                            <td>中国共产党第十九次全国代表大会（简称党的十九大）于2017年10月18日至10月24日在北京召开。</td>
+                                            <td>党的十九大是在全面建成小康社会关键阶段、中国特色社会主义发展关键时期召开的一次十分重要的大会，对鼓舞和动员全党全国各族人民继续推进全面建成小康社会、坚持和发展中国特色社会主义具有重大意义。</td>
+                                            <td>1242</td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
+                                            </td>
+                                        </tr> <tr>
+                                            <td>1</td>
+                                            <td>十九大召开</td>
+                                            <td>2017-10-18</td>
+                                            <td>2017-10-24</td>
+                                            <td>北京</td>
+                                            <td>中国共产党第十九次全国代表大会（简称党的十九大）于2017年10月18日至10月24日在北京召开。</td>
+                                            <td>党的十九大是在全面建成小康社会关键阶段、中国特色社会主义发展关键时期召开的一次十分重要的大会，对鼓舞和动员全党全国各族人民继续推进全面建成小康社会、坚持和发展中国特色社会主义具有重大意义。</td>
+                                            <td>1242</td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
+                                            </td>
+                                        </tr> <tr>
+                                            <td>1</td>
+                                            <td>十九大召开</td>
+                                            <td>2017-10-18</td>
+                                            <td>2017-10-24</td>
+                                            <td>北京</td>
+                                            <td>中国共产党第十九次全国代表大会（简称党的十九大）于2017年10月18日至10月24日在北京召开。</td>
+                                            <td>党的十九大是在全面建成小康社会关键阶段、中国特色社会主义发展关键时期召开的一次十分重要的大会，对鼓舞和动员全党全国各族人民继续推进全面建成小康社会、坚持和发展中国特色社会主义具有重大意义。</td>
+                                            <td>1242</td>
                                             <td>
                                                 <button type="button" class="btn btn-danger btn-xs">删除</button>
                                             </td>
                                         </tr>
-                                    </table>
-                                    <!--</div>-->
-                                    <div class="panel-footer">
-                                        Search:
-                                        <input type="text" class="form-control" placeholder="Search for..."
-                                               style="width: 200px;height: 25px;display: inline-block">
-                                        <div class="btn-group btn-group-xs" role="group" aria-label="..."
-                                             style="float: right;">
-                                            <button type="button" class="btn btn-default">First</button>
-                                            <button type="button" class="btn btn-default">Previous</button>
-                                            <button type="button" class="btn btn-default">1</button>
-                                            <button type="button" class="btn btn-default">Next</button>
-                                            <button type="button" class="btn btn-default">Last</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                         <tr>
+                                            <td>1</td>
+                                            <td>十九大召开</td>
+                                            <td>2017-10-18</td>
+                                            <td>2017-10-24</td>
+                                            <td>北京</td>
+                                            <td>中国共产党第十九次全国代表大会（简称党的十九大）于2017年10月18日至10月24日在北京召开。</td>
+                                            <td>党的十九大是在全面建成小康社会关键阶段、中国特色社会主义发展关键时期召开的一次十分重要的大会，对鼓舞和动员全党全国各族人民继续推进全面建成小康社会、坚持和发展中国特色社会主义具有重大意义。</td>
+                                            <td>1242</td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
+                                            </td>
+                                        </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
+
+
         </section><!--/wrapper -->
     </section><!-- /MAIN CONTENT -->
 
@@ -599,7 +564,7 @@
 </section>
 
 <!-- js placed at the end of the document so the pages load faster -->
-<script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script>
+{#    <script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script>#}
 <script src="{% static 'backgroundfiles/assets/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'backgroundfiles/assets/js/jquery-ui-1.9.2.custom.min.js' %}"></script>
 <script src="{% static 'backgroundfiles/assets/js/jquery.ui.touch-punch.min.js' %}"></script>
@@ -613,52 +578,50 @@
 <script src="{% static 'backgroundfiles/assets/js/common-scripts.js' %}"></script>
 
 <!--script for this page-->
-<!--custom checkbox & radio-->
-
-
-<script type="text/javascript"
-        src="{% static 'backgroundfiles/assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js' %}"></script>
-
-
-<script src="{% static 'backgroundfiles/assets/js/form-component.js' %}"></script>
-
-<script src="{% static 'backgroundfiles/assets/js/jquery-ui-1.9.2.custom.min.js' %}"></script>
-
-<!--custom switch-->
-<script src="{% static 'backgroundfiles/assets/js/bootstrap-switch.js' %}"></script>
-
-<!--custom tagsinput-->
-<script src="{% static 'backgroundfiles/assets/js/jquery.tagsinput.js' %}"></script>
-
-<!--custom checkbox & radio-->
-
-
-<script type="text/javascript"
-        src="{% static 'backgroundfiles/assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js' %}"></script>
-
 
 <script>
     //custom select box
 
     $(function () {
- $("td").click(function () {
-                event.stopPropagation()
-                if (($(this).html().indexOf("div") == -1) && ($(this).html().indexOf("input") == -1)) {//没有出现“div”
-                    $(this).parent().find('div input').click()
-                }
-            });
-        $('#is_all0').change(function () {
-            var a = $('#is_all0').prop('checked')
-            $('.qx').prop('checked',a);
-        })
-        $('#is_all1').change(function () {
-           var a = $('#is_all1').prop('checked')
-            $('.qx1').prop('checked',a);
-        })
-        layui.use('element', function () {
-            var $ = layui.jquery
-                , element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
-        });
+        {#var data = ['十九大成功召开', '腾讯新闻', '吴大傻蛋', '新闻', '13221','2132']#}
+        {#var tbody = document.getElementById('tbody')#}
+        {#for (var i = 0; i < 100; i++) {#}
+        {#    var tr = document.createElement('tr')#}
+        {#    var td0 = document.createElement('td')#}
+        {#    td0.innerHTML = i.toString()#}
+        {#    tr.appendChild(td0)#}
+        {#    for (var j = 0; j < 6; j++) {#}
+        {#        var td = document.createElement('td')#}
+        {#        td.innerHTML = data[j]#}
+        {#        tr.appendChild(td)#}
+        {#    }#}
+        {#    var td2 = document.createElement('td')#}
+        {#    td2.innerHTML = '<a href="/DouBanArticleStyle/">详情</a>'#}
+        {#    var td1 = document.createElement('td')#}
+        {#    td1.innerHTML =#}
+        {#        '                                    <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>\n' +#}
+        {#        '                                    <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>\n' +#}
+        {#        '                                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>'#}
+        {#    tr.appendChild(td2)#}
+        {#    tr.appendChild(td1)#}
+        {##}
+        {##}
+        {#    tbody.appendChild(tr)#}
+{#        #}
+         $('#table_id_example tfoot th').each( function () {
+             var title = $('#table_id_example thead th').eq($(this).index()).text();
+             if (title == '事件ID' || title == '事件名称' || title == '地点' )
+                 $(this).html('<input type="text" placeholder="' + title + '" />');
+         } );
+        var table=$('#table_id_example').DataTable();
+        table.columns().eq( 0 ).each( function ( colIdx ) {
+        $( 'input', table.column( colIdx ).footer() ).on( 'keyup change', function () {
+            table
+                .column( colIdx )
+                .search( this.value )
+                .draw();
+        } );
+    } );
         $('select.styled').customSelect();
     });
 

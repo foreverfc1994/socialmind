@@ -71,7 +71,9 @@ urlpatterns = [
     path('test/',bviews.test),
     path('yuandatashow/',bviews.yuandatashow),
     path('operate/<int:a>/', bviews.operate),
-    path('articleslist/',bviews.articleslsit)
+    path('articlelist/',bviews.articleslsit),
+    path('objectshow/',bviews.objectshow),
+    path('Eventshow/',bviews.eventshow),
 
 
 

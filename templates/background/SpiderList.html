@@ -1,7 +1,7 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -9,223 +9,240 @@
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
     <title>DASHGUM - Bootstrap Admin Template</title>
-
+<script src="{% static 'backgroundfiles/assets/js/jquery-3.3.1.min.js' %}"></script>
     <!-- Bootstrap core CSS -->
     <link href="{% static 'backgroundfiles/assets/css/bootstrap.css' %}" rel="stylesheet">
     <!--external css-->
-    <link href="{% static 'backgroundfiles/assets/font-awesome/css/font-awesome.css' %}" rel="stylesheet" />
-        
+    <link href="{% static 'backgroundfiles/assets/font-awesome/css/font-awesome.css' %}" rel="stylesheet"/>
+
     <!-- Custom styles for this template -->
     <link href="{% static 'backgroundfiles/assets/css/style.css' %}" rel="stylesheet">
     <link href="{% static 'backgroundfiles/assets/css/style-responsive.css' %}" rel="stylesheet">
-
+    <script src="{% static 'assets0/layui/layui.js' %}"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="{% static 'backgroundfiles/assets/js/jquery-3.3.1.min.js' %}"></script>
-  </head>
+    <link href="{% static 'backgroundfiles/bootstrap-select-master/dist/css/bootstrap-select.css' %}" rel="stylesheet" >
+    <script src="{% static 'backgroundfiles/bootstrap-select-master/dist/js/bootstrap-select.js' %}"></script>
+    <script src="{% static 'backgroundfiles/bootstrap-select-master/dist/js/i18n/defaults-zh_CN.js' %}"></script>
+{#    <script src="{% static 'backgroundfiles/assets/js/jquery-3.3.1.min.js' %}"></script>#}
+    <link rel="stylesheet" href="//res.layui.com/layui/dist/css/layui.css?t=1531663423583" media="all">
 
-  <body>
 
-  <section id="container" >
-      <!-- **********************************************************************************************************************************************************
-      TOP BAR CONTENT & NOTIFICATIONS
-      *********************************************************************************************************************************************************** -->
-      <!--header start-->
-      <header class="header black-bg">
-              <div class="sidebar-toggle-box">
-                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-              </div>
-            <!--logo start-->
-            <a href="/bindex/" class="logo"><b>SocialMind管理员</b></a>
-            <!--logo end-->
-            <div class="nav notify-row" id="top_menu">
-                <!--  notification start -->
-                <ul class="nav top-menu">
-                    <!-- settings start -->
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
-                            <i class="fa fa-tasks"></i>
-                            个人中心
-                        </a>
-                    </li>
-                    <!-- inbox dropdown start-->
-                    <li id="header_inbox_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
-                            <i class="fa fa-envelope-o"></i>
-                            消息
-                            <span class="badge bg-theme">5</span>
-                        </a>
-                        <ul class="dropdown-menu extended inbox">
-                            <div class="notify-arrow notify-arrow-green"></div>
-                            <li>
-                                <p class="green">You have 5 new messages</p>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <span class="photo"><img alt="avatar" src="{% static 'backgroundfiles/assets/img/ui-zac.jpg' %}"></span>
-                                    <span class="subject">
+</head>
+
+<body>
+
+<section id="container">
+    <!-- **********************************************************************************************************************************************************
+    TOP BAR CONTENT & NOTIFICATIONS
+    *********************************************************************************************************************************************************** -->
+    <!--header start-->
+    <header class="header black-bg">
+        <div class="sidebar-toggle-box">
+            <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+        </div>
+        <!--logo start-->
+        <a href="/bindex/" class="logo"><b>SocialMind管理员</b></a>
+        <!--logo end-->
+        <div class="nav notify-row" id="top_menu">
+            <!--  notification start -->
+            <ul class="nav top-menu">
+                <!-- settings start -->
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
+                        <i class="fa fa-tasks"></i>
+                        个人中心
+                    </a>
+                </li>
+                <!-- inbox dropdown start-->
+                <li id="header_inbox_bar" class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
+                        <i class="fa fa-envelope-o"></i>
+                        消息
+                        <span class="badge bg-theme">5</span>
+                    </a>
+                    <ul class="dropdown-menu extended inbox">
+                        <div class="notify-arrow notify-arrow-green"></div>
+                        <li>
+                            <p class="green">You have 5 new messages</p>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <span class="photo"><img alt="avatar"
+                                                         src="{% static 'backgroundfiles/assets/img/ui-zac.jpg' %}"></span>
+                                <span class="subject">
                                     <span class="from">Zac Snider</span>
                                     <span class="time">Just now</span>
                                     </span>
-                                    <span class="message">
+                                <span class="message">
                                         Hi mate, how is everything?
                                     </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <span class="photo"><img alt="avatar" src="{% static 'backgroundfiles/assets/img/ui-divya.jpg' %}"></span>
-                                    <span class="subject">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <span class="photo"><img alt="avatar"
+                                                         src="{% static 'backgroundfiles/assets/img/ui-divya.jpg' %}"></span>
+                                <span class="subject">
                                     <span class="from">Divya Manian</span>
                                     <span class="time">40 mins.</span>
                                     </span>
-                                    <span class="message">
+                                <span class="message">
                                      Hi, I need your help with this.
                                     </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <span class="photo"><img alt="avatar" src="{% static 'backgroundfiles/assets/img/ui-danro.jpg' %}"></span>
-                                    <span class="subject">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <span class="photo"><img alt="avatar"
+                                                         src="{% static 'backgroundfiles/assets/img/ui-danro.jpg' %}"></span>
+                                <span class="subject">
                                     <span class="from">Dan Rogers</span>
                                     <span class="time">2 hrs.</span>
                                     </span>
-                                    <span class="message">
+                                <span class="message">
                                         Love your new Dashboard.
                                     </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <span class="photo"><img alt="avatar" src="{% static 'backgroundfiles/assets/img/ui-sherman.jpg' %}"></span>
-                                    <span class="subject">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <span class="photo"><img alt="avatar"
+                                                         src="{% static 'backgroundfiles/assets/img/ui-sherman.jpg' %}"></span>
+                                <span class="subject">
                                     <span class="from">Dj Sherman</span>
                                     <span class="time">4 hrs.</span>
                                     </span>
-                                    <span class="message">
+                                <span class="message">
                                         Please, answer asap.
                                     </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">See all messages</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- inbox dropdown end -->
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
-                            <i class="fa fa-cog"></i>
-                            设置
-                        </a>
-                        <ul class="dropdown-menu extended tasks-bar">
-                            <div class="notify-arrow notify-arrow-green"></div>
-                            <li>
-                                <p class="green">You have 4 pending tasks</p>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <div class="task-info">
-                                        <div class="desc">DashGum Admin Panel</div>
-                                        <div class="percent">40%</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">See all messages</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- inbox dropdown end -->
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
+                        <i class="fa fa-cog"></i>
+                        设置
+                    </a>
+                    <ul class="dropdown-menu extended tasks-bar">
+                        <div class="notify-arrow notify-arrow-green"></div>
+                        <li>
+                            <p class="green">You have 4 pending tasks</p>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <div class="task-info">
+                                    <div class="desc">DashGum Admin Panel</div>
+                                    <div class="percent">40%</div>
+                                </div>
+                                <div class="progress progress-striped">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                        <span class="sr-only">40% Complete (success)</span>
                                     </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                            <span class="sr-only">40% Complete (success)</span>
-                                        </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <div class="task-info">
+                                    <div class="desc">Database Update</div>
+                                    <div class="percent">60%</div>
+                                </div>
+                                <div class="progress progress-striped">
+                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                        <span class="sr-only">60% Complete (warning)</span>
                                     </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <div class="task-info">
-                                        <div class="desc">Database Update</div>
-                                        <div class="percent">60%</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <div class="task-info">
+                                    <div class="desc">Product Development</div>
+                                    <div class="percent">80%</div>
+                                </div>
+                                <div class="progress progress-striped">
+                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                        <span class="sr-only">80% Complete</span>
                                     </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                            <span class="sr-only">60% Complete (warning)</span>
-                                        </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <div class="task-info">
+                                    <div class="desc">Payments Sent</div>
+                                    <div class="percent">70%</div>
+                                </div>
+                                <div class="progress progress-striped">
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+                                        <span class="sr-only">70% Complete (Important)</span>
                                     </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <div class="task-info">
-                                        <div class="desc">Product Development</div>
-                                        <div class="percent">80%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                            <span class="sr-only">80% Complete</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <div class="task-info">
-                                        <div class="desc">Payments Sent</div>
-                                        <div class="percent">70%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-                                            <span class="sr-only">70% Complete (Important)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="external">
-                                <a href="#">See All Tasks</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- settings end -->
-                    
-                </ul>
-                <!--  notification end -->
-            </div>
-            <div class="top-menu">
-            	<ul class="nav pull-right top-menu">
-                    <li>
-                        <form class="navbar-form navbar-right" role="search">
+                                </div>
+                            </a>
+                        </li>
+                        <li class="external">
+                            <a href="#">See All Tasks</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- settings end -->
+
+            </ul>
+            <!--  notification end -->
+        </div>
+        <div class="top-menu">
+            <ul class="nav pull-right top-menu">
+                <li>
+                    <form class="navbar-form navbar-right" role="search">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search here..." aria-describedby="basic-addon2" style="height: 28px;margin-top: 7px">
-                            <button type="submit" class="btn btn-default" style="height:28px;border: 1px solid #666666 !important;-webkit-border-radius: 4px;background-color: #ffd777;margin-right: 10px;margin-top: 7px;color: #666666;border-radius: 4px;">
+                            <input type="text" class="form-control" placeholder="Search here..."
+                                   aria-describedby="basic-addon2" style="height: 28px;margin-top: 7px">
+                            <button type="submit" class="btn btn-default"
+                                    style="height:28px;border: 1px solid #666666 !important;-webkit-border-radius: 4px;background-color: #ffd777;margin-right: 10px;margin-top: 7px;color: #666666;border-radius: 4px;">
                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                             </button>
                         </div>
-                        </form>
-                    </li>
-                    <li><a class="logout" href="/login/">注销</a></li>
-            	</ul>
-            </div>
-        </header>
-      <!--header end-->
-      
-      <!-- **********************************************************************************************************************************************************
-      MAIN SIDEBAR MENU
-      *********************************************************************************************************************************************************** -->
-      <!--sidebar start-->
-      <aside>
-          <div id="sidebar"  class="nav-collapse ">
-              <!-- sidebar menu start-->
-              <ul class="sidebar-menu" id="nav-accordion">
-              
-              	  <p class="centered"><a href="/bindex/"><img src="{% static 'backgroundfiles/assets/img/ny.jpg' %}" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered"><a href="/bindex/" style="color: white">首页</a></h5>
-              	  	
-                  <!--<li class="mt">
-                      <a class="active" href="index.html">
-                          <i class="fa fa-dashboard"></i>
-                          <span>爬虫</span>
-                      </a>
-                  </li>-->
-                  <li class="sub-menu">
+                    </form>
+                </li>
+                <li><a class="logout" href="/login/">注销</a></li>
+            </ul>
+        </div>
+    </header>
+    <!--header end-->
+
+    <!-- **********************************************************************************************************************************************************
+    MAIN SIDEBAR MENU
+    *********************************************************************************************************************************************************** -->
+    <!--sidebar start-->
+    <aside>
+        <div id="sidebar" class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+
+                <p class="centered"><a href="/bindex/"><img src="{% static 'backgroundfiles/assets/img/ny.jpg' %}"
+                                                            class="img-circle" width="60"></a></p>
+                <h5 class="centered"><a href="/bindex/" style="color: white">首页</a></h5>
+
+                <!--<li class="mt">
+                    <a class="active" href="index.html">
+                        <i class="fa fa-dashboard"></i>
+                        <span>爬虫</span>
+                    </a>
+                </li>-->
+                <li class="sub-menu">
                     <a href="javascript:;" class="active">
                         <i class="fa fa-dashboard"></i>
                         <span>爬虫</span>
@@ -233,102 +250,102 @@
                     <ul class="sub">
                         <li><a href="/SpiderList/" style="color: #fff;">爬虫管理</a></li>
                         <script>
-                            $(document).ready(function(){
-                                $("li:not([class])>a:not(a:contains('爬虫管理'))").hover(function(){
+                            $(document).ready(function () {
+                                $("li:not([class])>a:not(a:contains('爬虫管理'))").hover(function () {
                                     $("a:contains('爬虫管理')").removeAttr("style")
                                 });
                             });
                         </script>
-                        <li><a  href="/SpiderMonitor/">爬虫监控</a></li>
-                        <li><a  href="/SpiderConfigure/">爬虫配置</a></li>
+                        <li><a href="/SpiderMonitor/">爬虫监控</a></li>
+                        <li><a href="/SpiderConfigure/">爬虫配置</a></li>
                     </ul>
-                  </li>
+                </li>
                 <li class="sub-menu">
-                    <a href="javascript:;" >
+                    <a href="javascript:;">
                         <i class="fa fa-tasks"></i>
                         <span>源数据展示模块</span>
                     </a>
                     <ul class="sub">
-                      <li><a  href="/Author/">作者管理</a></li>
-                      <li><a  href="/ArticlesOfAuthor/">查看作者相关文章</a></li>
-                      <li><a  href="/ArticlesAndComments/">查看文章及评论</a></li>
-                  </ul>
+                        <li><a href="/Author/">作者管理</a></li>
+                        <li><a href="/ArticlesOfAuthor/">查看作者相关文章</a></li>
+                        <li><a href="/articlelist/">文章管理</a></li>
+                    </ul>
                 </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-desktop"></i>
-                          <span>数据清洗</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="/DataCleanStatistics/">清洗数据统计</a></li>
-                          <li><a  href="/DataCleanStrategies/">数据清洗策略配置</a></li>
-                          <li><a  href="/DataCleanLog/">数据清洗日志管理</a></li>
-                          <li><a  href="/washData/">数据清洗</a></li>
-                      </ul>
-                  </li>
-                  <li class="sub-menu">
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-desktop"></i>
+                        <span>数据清洗</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="/DataCleanStatistics/">清洗数据统计</a></li>
+                        <li><a href="/DataCleanStrategies/">数据清洗策略配置</a></li>
+                        <li><a href="/DataCleanLog/">数据清洗日志管理</a></li>
+                        <li><a href="/washData/">数据清洗</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
                     <a href="/topics/">
                         <i class="fa fa-book"></i>
                         <span>主题管理</span>
                     </a>
-                  </li>
-                  <li class="sub-menu">
-                    <a href="javascript:;" >
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
                         <i class="fa fa-cogs"></i>
                         <span>舆情对象管理</span>
                     </a>
                     <ul class="sub">
-                        <li><a  href="/AddEventObject/">新增舆情对象</a></li>
-                        <li><a  href="/CreateEventObject/">舆情对象自动生成</a></li>
-                        <li><a  href="/ShowEventObject/">舆情对象展示</a></li>
+                        <li><a href="/AddEventObject/">新增舆情对象</a></li>
+                        <li><a href="/CreateEventObject/">舆情对象自动生成</a></li>
+                        <li><a href="/objectshow/">舆情对象展示</a></li>
                     </ul>
-                  </li>
-                  <li class="sub-menu">
-                    <a href="javascript:;" >
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
                         <i class="fa fa-tasks"></i>
                         <span>语义工具集</span>
                     </a>
                     <ul class="sub">
-                      <li><a  href="/semanticsTools/">新增语义工具</a></li>
-                      <li><a  href="/semanticsToolkits/">新增工具包</a></li>
-                      <li><a  href="/ShowToolkits/">工具包展示</a></li>
+                        <li><a href="/semanticsTools/">新增语义工具</a></li>
+                        <li><a href="/semanticsToolkits/">新增工具包</a></li>
+                        <li><a href="/ShowToolkits/">工具包展示</a></li>
                     </ul>
-                  </li>
-                  <!--<li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-th"></i>
-                          <span>系统操作管理</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="basic_table.html">系统用户评论管理</a></li>
-                          <li><a  href="responsive_table.html">系统用户操作管理</a></li>
-                      </ul>
-                  </li>-->
-                  <li class="sub-menu">
-                    <a href="/usrCommentsSelect/" >
+                </li>
+                <!--<li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-th"></i>
+                        <span>系统操作管理</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a  href="basic_table.html">系统用户评论管理</a></li>
+                        <li><a  href="responsive_table.html">系统用户操作管理</a></li>
+                    </ul>
+                </li>-->
+                <li class="sub-menu">
+                    <a href="/usrCommentsSelect/">
                         <i class="fa fa-th"></i>
                         <span>用户留言管理</span>
                     </a>
                     <!--  -->
-                  </li>
+                </li>
                 <li class="sub-menu">
-                    <a href="/AssignAuthorities/" >
+                    <a href="/AssignAuthorities/">
                         <i class=" fa fa-bar-chart-o"></i>
                         <span>权限管理</span>
                     </a>
                 </li>
                 <li class="sub-menu">
-                      <a href="/usrManagement/" >
-                          <i class=" fa fa-bar-chart-o"></i>
-                          <span>用户管理</span>
-                      </a>
-                      <!-- <ul class="sub">
-                        <li><a  href="/usersVerify/">新增用户审核</a></li>
-                        <li><a  href="/usrManagement/">用户管理</a></li>
-                      </ul> -->
-                  </li>
+                    <a href="/usrManagement/">
+                        <i class=" fa fa-bar-chart-o"></i>
+                        <span>用户管理</span>
+                    </a>
+                    <!-- <ul class="sub">
+                      <li><a  href="/usersVerify/">新增用户审核</a></li>
+                      <li><a  href="/usrManagement/">用户管理</a></li>
+                    </ul> -->
+                </li>
                 <li class="sub-menu">
-                    <a href="/operateDiary/" >
+                    <a href="/operateDiary/">
                         <i class=" fa fa-bar-chart-o"></i>
                         <span>日志管理</span>
                     </a>
@@ -337,25 +354,38 @@
                     </ul>-->
                 </li>
 
-              </ul>
-              <!-- sidebar menu end-->
-          </div>
-      </aside>
-      <!--sidebar end-->
-      
-      <!-- **********************************************************************************************************************************************************
-      MAIN CONTENT
-      *********************************************************************************************************************************************************** -->
-      <!--main content start-->
-      <section id="main-content">
-          <section class="wrapper site-min-height">
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+    <!--sidebar end-->
+
+    <!-- **********************************************************************************************************************************************************
+    MAIN CONTENT
+    *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper site-min-height">
             <h3><i class="fa fa-angle-right"></i> 爬虫列表</h3>
-          	<div class="row mt">
-          		<div class="col-lg-12">
-          		<div class="panel panel-default">
+
+            <div class="row mt">
+                <div class="col-lg-12">
+                    <button class="layui-btn layui-btn-radius layui-btn-primary" onclick="addspider()">添加爬虫<i
+                            class="layui-icon">&#xe654;</i>
+                    </button>
+                    <button class="layui-btn layui-btn-radius layui-btn-primary" onclick="addconfig()">添加配置<i class="layui-icon">&#xe654;</i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="row mt">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
+
                             爬虫列表
                             <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">entries</span>
+
                             <select class="form-control" style="float: right;width: 60px;height: 25px;font-size: 12px">
                                 <option>10</option>
                                 <option>25</option>
@@ -365,69 +395,120 @@
                             <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">Show</span>
                         </div>
                         <!--<div class="panel-body">-->
-                            <table id="spiderlisttable" class="table table-bordered table-hover" style="margin: 0%">
-                                <!-- <tr><td>爬虫名称</td><td>网站名</td><td>网站URL</td><td>运行时间</td><td>爬取数据量</td><td>出错数据量</td><td>爬虫状态</td><td>操作</td></tr>   -->
-                                <tr><td>爬虫名称</td><td>网站名</td><td>网站URL</td><td>运行时间</td><td>爬取数据量</td><td>出错数据量</td><td>爬虫状态</td><td>操作</td></tr>  
-                                <tr><td>Trident</td><td>Internet Explorer 4.0</td><td>Win 95+</td><td>4</td><td>Trident</td><td>Trident</td><td>运行中</td>
-                                    <td style="width: 180px;">
-                                        <div class="btn-group" role="group" aria-label="...">
-                                            <button type="button" class="btn btn-info active">开启</button>
-                                            <button type="button" class="btn btn-info">停止</button>
-                                            <button type="button" class="btn btn-danger">删除</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr><td>Trident</td><td>Internet Explorer 4.0</td><td>Win 95+</td><td>4</td><td>Trident</td><td>Trident</td><td>运行中</td>
-                                    <td style="width: 180px;">
-                                        <div class="btn-group" role="group" aria-label="...">
-                                            <button type="button" class="btn btn-info active">开启</button>
-                                            <button type="button" class="btn btn-info">停止</button>
-                                            <button type="button" class="btn btn-danger">删除</button>
-                                        </div>
-                                    </td>
-                                </tr>    
-                                <tr><td>Trident</td><td>Internet Explorer 4.0</td><td>Win 95+</td><td>4</td><td>Trident</td><td>Trident</td><td>运行中</td>
-                                    <td style="width: 180px;">
-                                        <div class="btn-group" role="group" aria-label="...">
-                                            <button type="button" class="btn btn-info active">开启</button>
-                                            <button type="button" class="btn btn-info">停止</button>
-                                            <button type="button" class="btn btn-danger">删除</button>
-                                        </div>
-                                    </td>
-                                </tr>                
-                                <tr><td>Trident</td><td>Internet Explorer 4.0</td><td>Win 95+</td><td>4</td><td>Trident</td><td>Trident</td><td>停止</td>
-                                    <td style="width: 180px;">
-                                        <div class="btn-group" role="group" aria-label="...">
-                                            <button type="button" class="btn btn-info">开启</button>
-                                            <button type="button" class="btn btn-info active">停止</button>
-                                            <button type="button" class="btn btn-danger">删除</button>
-                                        </div>
-                                    </td>
-                                </tr>    
-                                <tr><td>Trident</td><td>Internet Explorer 4.0</td><td>Win 95+</td><td>4</td><td>Trident</td><td>Trident</td><td>停止</td>
-                                    <td style="width: 180px;">
-                                        <div class="btn-group" role="group" aria-label="...">
-                                            <button type="button" class="btn btn-info">开启</button>
-                                            <button type="button" class="btn btn-info active">停止</button>
-                                            <button type="button" class="btn btn-danger">删除</button>
-                                        </div>
-                                    </td>
-                                </tr>    
-                            </table>
+                        <table id="spiderlisttable" class="table table-bordered table-hover" style="margin: 0%">
+                            <!-- <tr><td>爬虫名称</td><td>网站名</td><td>网站URL</td><td>运行时间</td><td>爬取数据量</td><td>出错数据量</td><td>爬虫状态</td><td>操作</td></tr>   -->
+                            <tr>
+                                <td>爬虫名称</td>
+                                <td>网站名</td>
+                                <td>网站URL</td>
+                                <td>文件路徑</td>
+                                <td>运行时间</td>
+                                <td>爬取数据量</td>
+                                <td>出错数据量</td>
+                                <td>爬虫状态</td>
+                                <td>操作</td>
+                            </tr>
+                            <tr>
+                                <td>Trident</td>
+                                <td>Internet Explorer 4.0</td>
+                                <td>Win 95+</td>
+                                <td>D:\spider\peopleSpider</td>
+                                <td>4</td>
+                                <td>Trident</td>
+                                <td>Trident</td>
+                                <td>运行中</td>
+                                <td style="width: 180px;">
+                                    <div class="btn-group" role="group" aria-label="...">
+                                        <button type="button" class="btn btn-info active">开启</button>
+                                        <button type="button" class="btn btn-info">停止</button>
+                                        <button type="button" class="btn btn-danger">删除</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Trident</td>
+                                <td>Internet Explorer 4.0</td>
+                                <td>Win 95+</td>
+                                <td>D:\spider\peopleSpider</td>
+                                <td>4</td>
+                                <td>Trident</td>
+                                <td>Trident</td>
+                                <td>运行中</td>
+                                <td style="width: 180px;">
+                                    <div class="btn-group" role="group" aria-label="...">
+                                        <button type="button" class="btn btn-info active">开启</button>
+                                        <button type="button" class="btn btn-info">停止</button>
+                                        <button type="button" class="btn btn-danger">删除</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Trident</td>
+                                <td>Internet Explorer 4.0</td>
+                                <td>Win 95+</td>
+                                <td>D:\spider\peopleSpider</td>
+                                <td>4</td>
+                                <td>Trident</td>
+                                <td>Trident</td>
+                                <td>运行中</td>
+                                <td style="width: 180px;">
+                                    <div class="btn-group" role="group" aria-label="...">
+                                        <button type="button" class="btn btn-info active">开启</button>
+                                        <button type="button" class="btn btn-info">停止</button>
+                                        <button type="button" class="btn btn-danger">删除</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Trident</td>
+                                <td>Internet Explorer 4.0</td>
+                                <td>Win 95+</td>
+                                <td>D:\spider\peopleSpider</td>
+                                <td>4</td>
+                                <td>Trident</td>
+                                <td>Trident</td>
+                                <td>停止</td>
+                                <td style="width: 180px;">
+                                    <div class="btn-group" role="group" aria-label="...">
+                                        <button type="button" class="btn btn-info">开启</button>
+                                        <button type="button" class="btn btn-info active">停止</button>
+                                        <button type="button" class="btn btn-danger">删除</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Trident</td>
+                                <td>Internet Explorer 4.0</td>
+                                <td>Win 95+</td>
+                                <td>D:\spider\peopleSpider</td>
+                                <td>4</td>
+                                <td>Trident</td>
+                                <td>Trident</td>
+                                <td>停止</td>
+                                <td style="width: 180px;">
+                                    <div class="btn-group" role="group" aria-label="...">
+                                        <button type="button" class="btn btn-info">开启</button>
+                                        <button type="button" class="btn btn-info active">停止</button>
+                                        <button type="button" class="btn btn-danger">删除</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
                         <!--</div>-->
                         <script>
-                            $(document).ready(function(){
-                                $("#spiderlisttable tr td").click(function(){
-                                    if($(this).html().indexOf("div") == -1){//没有出现“div”
+                            $(document).ready(function () {
+                                $("#spiderlisttable tr td").click(function () {
+                                    if ($(this).html().indexOf("div") == -1) {//没有出现“div”
                                         $(location).attr('href', '/SpiderConfigure/');
                                     }
-                                    
+
                                 });
                             });
                         </script>
                         <div class="panel-footer">
                             Search:
-                            <input type="text" class="form-control" placeholder="Search for..." style="width: 200px;height: 25px;display: inline-block">
+                            <input type="text" class="form-control" placeholder="Search for..."
+                                   style="width: 200px;height: 25px;display: inline-block">
                             <div class="btn-group btn-group-xs" role="group" aria-label="..." style="float: right;">
                                 <button type="button" class="btn btn-default">First</button>
                                 <button type="button" class="btn btn-default">Previous</button>
@@ -437,119 +518,204 @@
                             </div>
                         </div>
                     </div>
-          		</div>
-              </div>
-              <div class="row mt">
-          		<div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <!--<label for="jiaose">筛选:</label><input id="jiaose" style="margin-left: 5px;height: 25px;width: 13%;display: inline-block" type="text" class="form-control" placeholder="请输入筛选条件">-->
-                            添加爬虫
+                </div>
+            </div>
+{#            <div class="row mt">#}
+{#                <div class="col-lg-12">#}
+{#                    <div class="panel panel-default">#}
+{#                        <div class="panel-heading">#}
+{#                            <!--<label for="jiaose">筛选:</label><input id="jiaose" style="margin-left: 5px;height: 25px;width: 13%;display: inline-block" type="text" class="form-control" placeholder="请输入筛选条件">-->#}
+{#                            添加爬虫#}
+{#                        </div>#}
+{##}
+{#                        <div class="panel-body">#}
+{#                            <form class="form-horizontal">#}
+{#                                <div class="form-group">#}
+{#                                    <label for="inputPassword" class="col-sm-2 control-label">爬虫名称</label>#}
+{#                                    <div class="col-sm-10">#}
+{#                                        <input type="text" class="form-control" id="inputPassword" placeholder="">#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="form-group">#}
+{#                                    <label for="inputPassword" class="col-sm-2 control-label">添加时间</label>#}
+{#                                    <div class="col-sm-10">#}
+{#                                        <input type="text" class="form-control" id="inputPassword" placeholder="">#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="form-group">#}
+{#                                    <label for="inputPassword" class="col-sm-2 control-label">爬虫源路径</label>#}
+{#                                    <div class="col-sm-10">#}
+{#                                        <input type="text" class="form-control" id="inputPassword" placeholder="">#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="form-group">#}
+{#                                    <label for="inputPassword" class="col-sm-2 control-label">爬虫状态</label>#}
+{#                                    <div class="col-sm-10">#}
+{#                                        <input type="text" class="form-control" id="inputPassword" placeholder="">#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="form-group">#}
+{#                                    <label for="inputPassword" class="col-sm-2 control-label">最大深度</label>#}
+{#                                    <div class="col-sm-10">#}
+{#                                        <input type="text" class="form-control" id="inputPassword" placeholder="">#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="form-group">#}
+{#                                    <label for="inputPassword" class="col-sm-2 control-label">单个IP并发请求最大值</label>#}
+{#                                    <div class="col-sm-10">#}
+{#                                        <input type="text" class="form-control" id="inputPassword" placeholder="">#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="form-group">#}
+{#                                    <label for="inputPassword" class="col-sm-2 control-label">单个网站并发请求最大值</label>#}
+{#                                    <div class="col-sm-10">#}
+{#                                        <input type="text" class="form-control" id="inputPassword" placeholder="">#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="form-group">#}
+{#                                    <label for="inputPassword" class="col-sm-2 control-label">同时处理item的最大值</label>#}
+{#                                    <div class="col-sm-10">#}
+{#                                        <input type="text" class="form-control" id="inputPassword" placeholder="">#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="form-group">#}
+{#                                    <label for="inputPassword" class="col-sm-2 control-label">是否收集最大深度数据</label>#}
+{#                                    <div class="col-sm-10">#}
+{#                                        <input type="text" class="form-control" id="inputPassword" placeholder="">#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </form>#}
+{#                        </div>#}
+{#                        <div class="panel-footer" style="height: 40px;">#}
+{#                            <button class="btn btn-success btn-sm"#}
+{#                                    style="float: right;margin-top: -5px; margin-left: 10px;background-color: #41cac0;border-color:#41cac0;">#}
+{#                                增加配置#}
+{#                            </button>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">增加爬虫</h4>
                         </div>
-                        <div class="panel-body">
-                            <form class="form-horizontal">
+                        <div class="modal-body">
+                            <form action="">
                                 <div class="form-group">
-                                    <label for="inputPassword" class="col-sm-2 control-label">爬虫名称</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
-                                    </div>
+                                    <label for="spider-name" class="control-label">爬虫名字</label>
+                                    <input type="text" class="form-control" id="spider-name">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputPassword" class="col-sm-2 control-label">添加时间</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
-                                    </div>
+                                    <label for="website" class="control-label">网站</label>
+                                    <input type="text" class="form-control" id="website">
+                                </div>
+                                <div class="layui-upload">
+                                    <button type="button" class="layui-btn layui-btn-normal" id="test8">选择文件</button>
+{#                                    <button type="button" class="layui-btn" id="test9">开始上传</button>#}
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <label for="config" class="control-label">爬虫配置</label>
+
+
+                                    <select class="selectpicker">
+                                       <option>配置1</option>
+                                       <option>配置2</option>
+                                       <option>配置3</option>
+                                       <option>配置4</option>
+                                       <option>配置5</option>
+                                       <option>配置6</option>
+                                       <option>配置7</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputPassword" class="col-sm-2 control-label">爬虫源路径</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputPassword" class="col-sm-2 control-label">爬虫状态</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputPassword" class="col-sm-2 control-label">最大深度</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputPassword" class="col-sm-2 control-label">单个IP并发请求最大值</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputPassword" class="col-sm-2 control-label">单个网站并发请求最大值</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputPassword" class="col-sm-2 control-label">同时处理item的最大值</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputPassword" class="col-sm-2 control-label">是否收集最大深度数据</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
-                                    </div>
+                                    <label for="jianjie" class="control-label">简介</label>
+                                    <textarea class="form-control" id="jianjie"></textarea>
                                 </div>
                             </form>
                         </div>
-                        <div class="panel-footer" style="height: 40px;">
-                            <button class="btn btn-success btn-sm" style="float: right;margin-top: -5px; margin-left: 10px;background-color: #41cac0;border-color:#41cac0;"> 增加配置 </button>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary" onclick="subspider()">确定</button>
                         </div>
                     </div>
-          		</div>
-          	</div>
-			
-		</section><!--/wrapper -->
-      </section><!-- /MAIN CONTENT -->
+                </div>
+            </div>
+        </section><!--/wrapper -->
+    </section><!-- /MAIN CONTENT -->
 
-      <!--main content end-->
-      <!--footer start-->
-      <footer class="site-footer">
-          <div class="text-center">
-              2018 - <a href="http://www.xjtu.edu.cn" target="_blank" title="西安交通大学">西安交通大学</a> - <a href="http://www.xjtu.edu.cn" title="social mind" target="_blank">social mind舆情分析平台</a>
-              <a href="#" class="go-top">
-                  <i class="fa fa-angle-up"></i>
-              </a>
-          </div>
-      </footer>
-      <!--footer end-->
-  </section>
+    <!--main content end-->
+    <!--footer start-->
+    <footer class="site-footer">
+        <div class="text-center">
+            2018 - <a href="http://www.xjtu.edu.cn" target="_blank" title="西安交通大学">西安交通大学</a> - <a
+                href="http://www.xjtu.edu.cn" title="social mind" target="_blank">social mind舆情分析平台</a>
+            <a href="#" class="go-top">
+                <i class="fa fa-angle-up"></i>
+            </a>
+        </div>
+    </footer>
+    <!--footer end-->
+</section>
 
-    <!-- js placed at the end of the document so the pages load faster -->
-    <script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script>
-    <script src="{% static 'backgroundfiles/assets/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'backgroundfiles/assets/js/jquery-ui-1.9.2.custom.min.js' %}"></script>
-    <script src="{% static 'backgroundfiles/assets/js/jquery.ui.touch-punch.min.js' %}"></script>
-    <script class="include" type="text/javascript" src="{% static 'backgroundfiles/assets/js/jquery.dcjqaccordion.2.7.js' %}"></script>
-    <script src="{% static 'backgroundfiles/assets/js/jquery.scrollTo.min.js' %}"></script>
-    <script src="{% static 'backgroundfiles/assets/js/jquery.nicescroll.js' %}" type="text/javascript"></script>
+<!-- js placed at the end of the document so the pages load faster -->
+{#<script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script>#}
+<script src="{% static 'backgroundfiles/assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'backgroundfiles/assets/js/jquery-ui-1.9.2.custom.min.js' %}"></script>
+<script src="{% static 'backgroundfiles/assets/js/jquery.ui.touch-punch.min.js' %}"></script>
+<script class="include" type="text/javascript"
+        src="{% static 'backgroundfiles/assets/js/jquery.dcjqaccordion.2.7.js' %}"></script>
+<script src="{% static 'backgroundfiles/assets/js/jquery.scrollTo.min.js' %}"></script>
+<script src="{% static 'backgroundfiles/assets/js/jquery.nicescroll.js' %}" type="text/javascript"></script>
 
 
-    <!--common script for all pages-->
-    <script src="{% static 'backgroundfiles/assets/js/common-scripts.js' %}"></script>
+<!--common script for all pages-->
+<script src="{% static 'backgroundfiles/assets/js/common-scripts.js' %}"></script>
 
-    <!--script for this page-->
-    
-  <script>
-      //custom select box
+<!--script for this page-->
 
-      $(function(){
-          $('select.styled').customSelect();
-      });
+<script>
+    //custom select box
 
-  </script>
+    $(function () {
+        $('select.styled').customSelect();
+    });
 
-  </body>
+</script>
+<script>
+    function addspider() {
+        $('#myModal').modal(
+            {
+                backdrop: 'static'
+            }
+        )
+    }
+
+    function subspider() {
+        $('#myModal').modal('hide')
+    }
+    layui.use('upload',function () {
+        var $ = layui.jquery
+  ,upload = layui.upload;
+  var uploadInst = upload.render({
+    elem: '#test8'
+    ,url: '/upload/'
+    ,auto: false
+    //,multiple: true
+    ,bindAction: '#test9'
+    ,done: function(res){
+      console.log(res)
+    }
+  });
+    })
+    function addconfig() {
+        document.location.href='/SpiderConfigure/'
+    }
+</script>
+</body>
 </html>
