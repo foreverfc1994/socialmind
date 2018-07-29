@@ -74,6 +74,7 @@ urlpatterns = [
     path('articlelist/',bviews.articleslsit),
     path('objectshow/',bviews.objectshow),
     path('Eventshow/',bviews.eventshow),
+    path('jianbao/',bviews.jianbao),
 
 
 
