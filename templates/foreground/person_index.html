@@ -196,9 +196,11 @@
             {% csrf_token %}
             {% if request.session.user_type == "个人用户" %}
                 <li class="layui-nav-item"><a href="/events/?role=个人用户&type=全网热点">全网热点</a></li>
-                <li class="layui-nav-item"><a href="/events/?role=个人用户type=当地新闻">当地新闻</a></li>
-                <li class="layui-nav-item"><a href="/events/?role=个人用户type=敏感信息">关注领域</a></li>
-                <li class="layui-nav-item"><a href="/events/?role=个人用户type=领域相关">系统推荐</a></li>
+                <li class="layui-nav-item"><a href="/events/?role=个人用户&type=当地新闻">当地新闻</a></li>
+                <li class="layui-nav-item"><a href="/events/?role=个人用户&type=敏感信息">关注领域</a></li>
+                <li class="layui-nav-item"><a href="/events/?role=个人用户&type=领域相关">系统推荐</a></li>
+                <li class="layui-nav-item"><a href="/eventSearch/?role=个人用户">全网事件搜索</a></li>
+
                 <li class="layui-nav-item"><a href="/fileSearch/?role=政府用户">全网文章搜索</a></li>
             {% elif request.session.user_type == "企业用户" %}
                 <li class="layui-nav-item"><a href="/events/?role=企业用户&type=企业相关">企业相关</a></li>
@@ -250,45 +252,44 @@
                         </div>
                         <div class="panel-body">
                             <div class="list-group">
-                                <a href="/DouBanArticleStyle/" class="list-group-item active"
+                                <a href="/eventParticular/" class="list-group-item active"
                                    style="border-color: #e8962e;background-image: linear-gradient(to right bottom, #e8962e, #e45131)">
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <h3 class="list-group-item-heading">习近平访问中东非洲五国并出席金砖国家领导人会晤</h3>
 
                                         </div>
-{#                                        <div class="col-lg-4">#}
-{#                                            <span class="layui-badge layui-bg-blue">点赞 1</span>#}
-{#                                            <span class="layui-badge layui-bg-blue">评论 2</span>#}
-{#                                            <span class="layui-badge layui-bg-blue">收藏 3</span>#}
-{#                                        </div>#}
+                                        {#                                        <div class="col-lg-4">#}
+                                        {#                                            <span class="layui-badge layui-bg-blue">点赞 1</span>#}
+                                        {#                                            <span class="layui-badge layui-bg-blue">评论 2</span>#}
+                                        {#                                            <span class="layui-badge layui-bg-blue">收藏 3</span>#}
+                                        {#                                        </div>#}
                                     </div>
-
 
 
                                     <p class="list-group-item-text">
                                         习近平同塞内加尔总统萨勒举行会谈。
                                     </p>
                                 </a>
-                                <a href="/DouBanArticleStyle/" class="list-group-item">
+                                <a href="/eventParticular/" class="list-group-item">
                                     <h3 class="list-group-item-heading">共和国农机工业“长子”成长记</h3>
                                     <p class="list-group-item-text">
                                         东方红拖拉机，60年前中国人自己制造 在改革开放中浴火重生 在世界100多个国家打响名号
                                     </p>
                                 </a>
-                                <a href="/DouBanArticleStyle/" class="list-group-item">
+                                <a href="/eventParticular/" class="list-group-item">
                                     <h3 class="list-group-item-heading">宁夏红寺堡：农产品“触网”“远嫁”助农民增收</h3>
                                     <p class="list-group-item-text">
                                         电商真可以，隔着几百公里，也能帮我找到买鸡人。
                                     </p>
                                 </a>
-                                <a href="/DouBanArticleStyle/" class="list-group-item">
+                                <a href="/eventParticular/" class="list-group-item">
                                     <h3 class="list-group-item-heading">综述：欧盟重罚谷歌背后的理念分歧</h3>
                                     <p class="list-group-item-text">
                                         欧盟委员会近日宣布对谷歌处以４３．４亿欧元罚款
                                     </p>
                                 </a>
-                                <a href="/DouBanArticleStyle/" class="list-group-item">
+                                <a href="/eventParticular/" class="list-group-item">
                                     <h3 class="list-group-item-heading">西安市疾控中心提醒市民 热浪来袭预防中暑发生</h3>
                                     <p class="list-group-item-text">西安市疾控中心提醒市民 热浪来袭预防中暑发生</p>
                                 </a>
@@ -305,32 +306,32 @@
                         </div>
                         <div class="panel-body">
                             <div class="list-group">
-                                <a href="/DouBanArticleStyle/" class="list-group-item active"
+                                <a href="/eventParticular/" class="list-group-item active"
                                    style="border-color: #e8962e;background-image: linear-gradient(to right bottom, #e8962e, #e45131)">
                                     <h3 class="list-group-item-heading">习近平访问中东非洲五国并出席金砖国家领导人会晤</h3>
                                     <p class="list-group-item-text">
                                         习近平同塞内加尔总统萨勒举行会谈。
                                     </p>
                                 </a>
-                                <a href="/DouBanArticleStyle/" class="list-group-item">
+                                <a href="/eventParticular/" class="list-group-item">
                                     <h3 class="list-group-item-heading">共和国农机工业“长子”成长记</h3>
                                     <p class="list-group-item-text">
                                         东方红拖拉机，60年前中国人自己制造 在改革开放中浴火重生 在世界100多个国家打响名号
                                     </p>
                                 </a>
-                                <a href="/DouBanArticleStyle/" class="list-group-item">
+                                <a href="/eventParticular/" class="list-group-item">
                                     <h3 class="list-group-item-heading">宁夏红寺堡：农产品“触网”“远嫁”助农民增收</h3>
                                     <p class="list-group-item-text">
                                         电商真可以，隔着几百公里，也能帮我找到买鸡人。
                                     </p>
                                 </a>
-                                <a href="/DouBanArticleStyle/" class="list-group-item">
+                                <a href="/eventParticular/" class="list-group-item">
                                     <h3 class="list-group-item-heading">综述：欧盟重罚谷歌背后的理念分歧</h3>
                                     <p class="list-group-item-text">
                                         欧盟委员会近日宣布对谷歌处以４３．４亿欧元罚款
                                     </p>
                                 </a>
-                                <a href="/DouBanArticleStyle/" class="list-group-item">
+                                <a href="/eventParticular/" class="list-group-item">
                                     <h3 class="list-group-item-heading">西安市疾控中心提醒市民 热浪来袭预防中暑发生</h3>
                                     <p class="list-group-item-text">西安市疾控中心提醒市民 热浪来袭预防中暑发生</p>
                                 </a>
@@ -347,32 +348,32 @@
                         </div>
                         <div class="panel-body">
                             <div class="list-group">
-                                <a href="/DouBanArticleStyle/" class="list-group-item active"
+                                <a href="/eventParticular/" class="list-group-item active"
                                    style="border-color: #e8962e;background-image: linear-gradient(to right bottom, #e8962e, #e45131)">
                                     <h3 class="list-group-item-heading">习近平访问中东非洲五国并出席金砖国家领导人会晤</h3>
                                     <p class="list-group-item-text">
                                         习近平同塞内加尔总统萨勒举行会谈。
                                     </p>
                                 </a>
-                                <a href="/DouBanArticleStyle/" class="list-group-item">
+                                <a href="/eventParticular/" class="list-group-item">
                                     <h3 class="list-group-item-heading">共和国农机工业“长子”成长记</h3>
                                     <p class="list-group-item-text">
                                         东方红拖拉机，60年前中国人自己制造 在改革开放中浴火重生 在世界100多个国家打响名号
                                     </p>
                                 </a>
-                                <a href="/DouBanArticleStyle/" class="list-group-item">
+                                <a href="/eventParticular/" class="list-group-item">
                                     <h3 class="list-group-item-heading">宁夏红寺堡：农产品“触网”“远嫁”助农民增收</h3>
                                     <p class="list-group-item-text">
                                         电商真可以，隔着几百公里，也能帮我找到买鸡人。
                                     </p>
                                 </a>
-                                <a href="/DouBanArticleStyle/" class="list-group-item">
+                                <a href="/eventParticular/" class="list-group-item">
                                     <h3 class="list-group-item-heading">综述：欧盟重罚谷歌背后的理念分歧</h3>
                                     <p class="list-group-item-text">
                                         欧盟委员会近日宣布对谷歌处以４３．４亿欧元罚款
                                     </p>
                                 </a>
-                                <a href="/DouBanArticleStyle/" class="list-group-item">
+                                <a href="/eventParticular/" class="list-group-item">
                                     <h3 class="list-group-item-heading">西安市疾控中心提醒市民 热浪来袭预防中暑发生</h3>
                                     <p class="list-group-item-text">西安市疾控中心提醒市民 热浪来袭预防中暑发生</p>
                                 </a>
@@ -389,32 +390,32 @@
                         </div>
                         <div class="panel-body">
                             <div class="list-group">
-                                <a href="/DouBanArticleStyle/" class="list-group-item active"
+                                <a href="/eventParticular/" class="list-group-item active"
                                    style="border-color: #e8962e;background-image: linear-gradient(to right bottom, #e8962e, #e45131)">
                                     <h3 class="list-group-item-heading">习近平访问中东非洲五国并出席金砖国家领导人会晤</h3>
                                     <p class="list-group-item-text">
                                         习近平同塞内加尔总统萨勒举行会谈。
                                     </p>
                                 </a>
-                                <a href="/DouBanArticleStyle/" class="list-group-item">
+                                <a href="/eventParticular/" class="list-group-item">
                                     <h3 class="list-group-item-heading">共和国农机工业“长子”成长记</h3>
                                     <p class="list-group-item-text">
                                         东方红拖拉机，60年前中国人自己制造 在改革开放中浴火重生 在世界100多个国家打响名号
                                     </p>
                                 </a>
-                                <a href="/DouBanArticleStyle/" class="list-group-item">
+                                <a href="/eventParticular/" class="list-group-item">
                                     <h3 class="list-group-item-heading">宁夏红寺堡：农产品“触网”“远嫁”助农民增收</h3>
                                     <p class="list-group-item-text">
                                         电商真可以，隔着几百公里，也能帮我找到买鸡人。
                                     </p>
                                 </a>
-                                <a href="/DouBanArticleStyle/" class="list-group-item">
+                                <a href="/eventParticular/" class="list-group-item">
                                     <h3 class="list-group-item-heading">综述：欧盟重罚谷歌背后的理念分歧</h3>
                                     <p class="list-group-item-text">
                                         欧盟委员会近日宣布对谷歌处以４３．４亿欧元罚款
                                     </p>
                                 </a>
-                                <a href="/DouBanArticleStyle/" class="list-group-item">
+                                <a href="/eventParticular/" class="list-group-item">
                                     <h3 class="list-group-item-heading">西安市疾控中心提醒市民 热浪来袭预防中暑发生</h3>
                                     <p class="list-group-item-text">西安市疾控中心提醒市民 热浪来袭预防中暑发生</p>
                                 </a>
@@ -423,185 +424,185 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12 main-chart">
-                    <div class="row">
-                        <div class="col-lg-4 col-sm-6 col-xs-12">
-                            <div class="r4_counter db_box">
-                                <div class="icon-after cc BTC-alt"></div>
-                                <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
-                                <div class="stats">
-                                    <h3 class="color-white mb-5">152 新增事件</h3>
-                                    <span>15420 事件总数</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6 col-xs-12">
-                            <div class="r4_counter db_box " onclick="window.open('washData.html','_self')">
-                                <div class="icon-after cc BTC-alt"></div>
-                                <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
-                                <div class="stats">
-                                    <h3 class="color-white mb-5">210 新增敏感信息</h3>
-                                    <span>1140 敏感信息总数</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-6 col-xs-12">
-                            <div class="r4_counter db_box " onclick="window.open('operateDiary.html','_self')">
-                                <div class="icon-after cc BTC-alt"></div>
-                                <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
-                                <div class="stats">
-                                    <h3 class="color-white mb-5">情感倾向 正向</h3>
-                                    <span>2018-7-21 12:00</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt">
-                <div class="col-lg-6">
-                    <div class="white-panel pn400 donut-chart">
-                        <div class="white-panel">
-                            <div class="white-header">
-                                <h3 id="eventHeader">相关事件</h3>
-                            </div>
-                        </div>
-                        <div class="boxes">
-                            <table class="index_first_table">
-                                <td style="width: 25%">
-                                    <div id="sensitiveIndex"
-                                         style="height: 20%; font-size: 20px; text-align: center; width: 80%; margin-left: 20%;">
-                                        敏感度指数
-                                    </div>
-                                    <div id="sI" style="height: 200px; width: 40%; margin-left: 40%;">
-                                        <div id="sI1" style="height: 40%; width: 100%;"></div>
-                                        <div id="sI2"
-                                             style="height: 60%; width: 100%; background-color: #DAA520;"></div>
-                                    </div>
-                                </td>
-                                <td style="width: 50%">
-                                    <div id="statistics00" style="width: 30%; margin-left:12%;">
-                                        <div class="pic" style="position: center; width: 240px; height: 240px;">
-                                            <canvas id="serverstatus10" height="120px" width="120px"></canvas>
-                                            <script>
-                                                var config = {
-                                                    type: 'doughnut',
-                                                    data: {
-                                                        datasets: [{
-                                                            data: [
-                                                                70,
-                                                                300,
-                                                                1225
-                                                            ],
-                                                            backgroundColor: [
-                                                                "#FFA500",
-                                                                "#666666",
-                                                                "#00FFFF"
-                                                            ],
-                                                        }],
-                                                        labels: [
-                                                            "敏感事件数：",
-                                                            "热点事件数：",
-                                                            "其他："
-                                                        ],
-                                                    },
-                                                    options: {
-                                                        cutoutPercentage: 60,
-                                                        responsive: true,
-                                                        legend: {
-                                                            display: true,
-                                                            position: "bottom",
-                                                        },
-                                                        title: {
-                                                            display: true,
-                                                            fontSize: 20,
-                                                            fontColor: "#000000",
-                                                            text: "事件总数",
-                                                        },
-                                                        animation: {
-                                                            animateScale: true,
-                                                            animateRoatae: true
-                                                        }
-                                                    }
-                                                };
-                                                var myDoughnut = new Chart(document.getElementById("serverstatus10").getContext("2d"), config);
-                                            </script>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div id="heatIndex"
-                                         style="height: 20%; font-size: 20px; text-align: center; width: 80%;">
-                                        热度指数
-                                    </div>
-                                    <div style="height: 200px; width: 40%; margin-left: 20%;">
-                                        <div id="hI1" style="height: 10%; width: 100%;"></div>
-                                        <div id="hI2"
-                                             style="height: 90%; width: 100%; background-color: #DAA520;"></div>
-                                    </div>
-                                </td>
-                            </table>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="white-panel pn400 donut-chart">
-                        <div class="white-panel">
-                            <div class="white-header" style="margin-bottom: 0px;">
-                                <h3>情绪组成</h3>
-                            </div>
-                        </div>
-                        <div class="panel-body" style="height: 80%; z-index: 1001;">
-                            <div class="chart">
-                                <div class="canvas80" style="height: 90%; width: 100%;">
-                                    <canvas id="emotionCompose" height="280px" width="700px"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="morris">
-                <div class="row mt">
-                    <div class="col-lg-6">
-                        <div class="content-panel">
-                            <h4 style="float: left">相关事件走势统计</h4>
-                            <div class="panel-body" style="height: 350px;">
-                                <div class="chart">
-                                    <div style="height: 345px; width: 90%;">
-                                        <div id="eventChange" style="height: 90%; width: 100%; padding-left: 5%;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="content-panel">
-                            <h4 style="float: left">相关敏感信息变化</h4>
-                            <div class="panel-body" style="height: 350px;">
-                                <div class="chart">
-                                    <div style="height: 345px; width: 90%;">
-                                        <div id="sensitiveInform"
-                                             style="height: 90%; width: 100%; padding-left: 5%;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt mb">
-                    <div class="col-lg-9">
-                        <div class="content-panel">
-                            <h4>情绪走势图</h4>
-                            <div class="chart">
-                                <div id="emotionTrend" style="height: 350px"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {#            <div class="row">#}
+            {#                <div class="col-lg-12 main-chart">#}
+            {#                    <div class="row">#}
+            {#                        <div class="col-lg-4 col-sm-6 col-xs-12">#}
+            {#                            <div class="r4_counter db_box">#}
+            {#                                <div class="icon-after cc BTC-alt"></div>#}
+            {#                                <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>#}
+            {#                                <div class="stats">#}
+            {#                                    <h3 class="color-white mb-5">152 新增事件</h3>#}
+            {#                                    <span>15420 事件总数</span>#}
+            {#                                </div>#}
+            {#                            </div>#}
+            {#                        </div>#}
+            {#                        <div class="col-lg-4 col-sm-6 col-xs-12">#}
+            {#                            <div class="r4_counter db_box " onclick="window.open('washData.html','_self')">#}
+            {#                                <div class="icon-after cc BTC-alt"></div>#}
+            {#                                <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>#}
+            {#                                <div class="stats">#}
+            {#                                    <h3 class="color-white mb-5">210 新增敏感信息</h3>#}
+            {#                                    <span>1140 敏感信息总数</span>#}
+            {#                                </div>#}
+            {#                            </div>#}
+            {#                        </div>#}
+            {#                        <div class="col-lg-4 col-sm-6 col-xs-12">#}
+            {#                            <div class="r4_counter db_box " onclick="window.open('operateDiary.html','_self')">#}
+            {#                                <div class="icon-after cc BTC-alt"></div>#}
+            {#                                <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>#}
+            {#                                <div class="stats">#}
+            {#                                    <h3 class="color-white mb-5">情感倾向 正向</h3>#}
+            {#                                    <span>2018-7-21 12:00</span>#}
+            {#                                </div>#}
+            {#                            </div>#}
+            {#                        </div>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
+            {#            <div class="row mt">#}
+            {#                <div class="col-lg-6">#}
+            {#                    <div class="white-panel pn400 donut-chart">#}
+            {#                        <div class="white-panel">#}
+            {#                            <div class="white-header">#}
+            {#                                <h3 id="eventHeader">相关事件</h3>#}
+            {#                            </div>#}
+            {#                        </div>#}
+            {#                        <div class="boxes">#}
+            {#                            <table class="index_first_table">#}
+            {#                                <td style="width: 25%">#}
+            {#                                    <div id="sensitiveIndex"#}
+            {#                                         style="height: 20%; font-size: 20px; text-align: center; width: 80%; margin-left: 20%;">#}
+            {#                                        敏感度指数#}
+            {#                                    </div>#}
+            {#                                    <div id="sI" style="height: 200px; width: 40%; margin-left: 40%;">#}
+            {#                                        <div id="sI1" style="height: 40%; width: 100%;"></div>#}
+            {#                                        <div id="sI2"#}
+            {#                                             style="height: 60%; width: 100%; background-color: #DAA520;"></div>#}
+            {#                                    </div>#}
+            {#                                </td>#}
+            {#                                <td style="width: 50%">#}
+            {#                                    <div id="statistics00" style="width: 30%; margin-left:12%;">#}
+            {#                                        <div class="pic" style="position: center; width: 240px; height: 240px;">#}
+            {#                                            <canvas id="serverstatus10" height="120px" width="120px"></canvas>#}
+            {#                                            <script>#}
+            {#                                                var config = {#}
+            {#                                                    type: 'doughnut',#}
+            {#                                                    data: {#}
+            {#                                                        datasets: [{#}
+            {#                                                            data: [#}
+            {#                                                                70,#}
+            {#                                                                300,#}
+            {#                                                                1225#}
+            {#                                                            ],#}
+            {#                                                            backgroundColor: [#}
+            {#                                                                "#FFA500",#}
+            {#                                                                "#666666",#}
+            {#                                                                "#00FFFF"#}
+            {#                                                            ],#}
+            {#                                                        }],#}
+            {#                                                        labels: [#}
+            {#                                                            "敏感事件数：",#}
+            {#                                                            "热点事件数：",#}
+            {#                                                            "其他："#}
+            {#                                                        ],#}
+            {#                                                    },#}
+            {#                                                    options: {#}
+            {#                                                        cutoutPercentage: 60,#}
+            {#                                                        responsive: true,#}
+            {#                                                        legend: {#}
+            {#                                                            display: true,#}
+            {#                                                            position: "bottom",#}
+            {#                                                        },#}
+            {#                                                        title: {#}
+            {#                                                            display: true,#}
+            {#                                                            fontSize: 20,#}
+            {#                                                            fontColor: "#000000",#}
+            {#                                                            text: "事件总数",#}
+            {#                                                        },#}
+            {#                                                        animation: {#}
+            {#                                                            animateScale: true,#}
+            {#                                                            animateRoatae: true#}
+            {#                                                        }#}
+            {#                                                    }#}
+            {#                                                };#}
+            {#                                                var myDoughnut = new Chart(document.getElementById("serverstatus10").getContext("2d"), config);#}
+            {#                                            </script>#}
+            {#                                        </div>#}
+            {#                                    </div>#}
+            {#                                </td>#}
+            {#                                <td>#}
+            {#                                    <div id="heatIndex"#}
+            {#                                         style="height: 20%; font-size: 20px; text-align: center; width: 80%;">#}
+            {#                                        热度指数#}
+            {#                                    </div>#}
+            {#                                    <div style="height: 200px; width: 40%; margin-left: 20%;">#}
+            {#                                        <div id="hI1" style="height: 10%; width: 100%;"></div>#}
+            {#                                        <div id="hI2"#}
+            {#                                             style="height: 90%; width: 100%; background-color: #DAA520;"></div>#}
+            {#                                    </div>#}
+            {#                                </td>#}
+            {#                            </table>#}
+            {##}
+            {#                        </div>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#                <div class="col-lg-6">#}
+            {#                    <div class="white-panel pn400 donut-chart">#}
+            {#                        <div class="white-panel">#}
+            {#                            <div class="white-header" style="margin-bottom: 0px;">#}
+            {#                                <h3>情绪组成</h3>#}
+            {#                            </div>#}
+            {#                        </div>#}
+            {#                        <div class="panel-body" style="height: 80%; z-index: 1001;">#}
+            {#                            <div class="chart">#}
+            {#                                <div class="canvas80" style="height: 90%; width: 100%;">#}
+            {#                                    <canvas id="emotionCompose" height="280px" width="700px"></canvas>#}
+            {#                                </div>#}
+            {#                            </div>#}
+            {#                        </div>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
+            {#            <div id="morris">#}
+            {#                <div class="row mt">#}
+            {#                    <div class="col-lg-6">#}
+            {#                        <div class="content-panel">#}
+            {#                            <h4 style="float: left">相关事件走势统计</h4>#}
+            {#                            <div class="panel-body" style="height: 350px;">#}
+            {#                                <div class="chart">#}
+            {#                                    <div style="height: 345px; width: 90%;">#}
+            {#                                        <div id="eventChange" style="height: 90%; width: 100%; padding-left: 5%;"></div>#}
+            {#                                    </div>#}
+            {#                                </div>#}
+            {#                            </div>#}
+            {#                        </div>#}
+            {#                    </div>#}
+            {#                    <div class="col-lg-6">#}
+            {#                        <div class="content-panel">#}
+            {#                            <h4 style="float: left">相关敏感信息变化</h4>#}
+            {#                            <div class="panel-body" style="height: 350px;">#}
+            {#                                <div class="chart">#}
+            {#                                    <div style="height: 345px; width: 90%;">#}
+            {#                                        <div id="sensitiveInform"#}
+            {#                                             style="height: 90%; width: 100%; padding-left: 5%;"></div>#}
+            {#                                    </div>#}
+            {#                                </div>#}
+            {#                            </div>#}
+            {#                        </div>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#                <div class="row mt mb">#}
+            {#                    <div class="col-lg-9">#}
+            {#                        <div class="content-panel">#}
+            {#                            <h4>情绪走势图</h4>#}
+            {#                            <div class="chart">#}
+            {#                                <div id="emotionTrend" style="height: 350px"></div>#}
+            {#                            </div>#}
+            {#                        </div>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
         </section>
     </div>
 
