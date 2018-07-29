@@ -237,14 +237,14 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">
                     <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                    SICDP
+                    {{ request.session.user_name }}
                 </a>
                 <dl class="layui-nav-child">
                     <dd><a href="/profile/">基本资料</a></dd>
                     <dd><a href="">安全设置</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="">退出</a></li>
+            <li class="layui-nav-item"><a href="/logout/">退出</a></li>
         </ul>
     </div>
     <div class="layui-body">
@@ -735,10 +735,12 @@
 
     </div>
 </div>
+
+</body>
 <script src="{% static 'assets0/js/jquery.js' %}"></script>
-<script src="{% static 'assets0/js/jquery-1.8.3.min.js' %}"></script>
+{#<script src="{% static 'assets0/js/jquery-1.8.3.min.js' %}"></script>#}
 <script src="{% static 'assets0/js/bootstrap.min.js' %}"></script>
-<script src="//res.layui.com/layui/src/layui.js?t=1531663423583" charset="utf-8"></script>
+{#<script src="//res.layui.com/layui/src/layui.js?t=1531663423583" charset="utf-8"></script>#}
 <script>
     function pickType(num) {
         var tds = document.getElementById("typeSelect").getElementsByTagName("td");
@@ -751,4 +753,10 @@
         }
     }
 </script>
-</body>
+<script>
+     layui.use('element', function () {
+        var element = layui.element;
+
+    });
+</script>
+</html>

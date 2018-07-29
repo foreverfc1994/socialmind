@@ -205,14 +205,14 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">
                     <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                    SICDP
+                    {{request.session.user_type}}
                 </a>
                 <dl class="layui-nav-child">
                     <dd><a href="/profile/">基本资料</a></dd>
                     <dd><a href="">安全设置</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="">退出</a></li>
+            <li class="layui-nav-item"><a href="/logout/">退出</a></li>
         </ul>
     </div>
 
@@ -223,7 +223,7 @@
                 <div class="col-lg-12 main-chart">
                     <div class="row">
                         <div class="col-lg-4 col-sm-6 col-xs-12">
-                            <div class="r4_counter db_box">
+                            <div class="r4_counter db_box" onclick="window.open('/events/?role=企业用户&type=企业相关','_self')">
                                 <div class="icon-after cc BTC-alt"></div>
                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                 <div class="stats">
@@ -233,7 +233,7 @@
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6 col-xs-12">
-                            <div class="r4_counter db_box " onclick="window.open('washData.html','_self')">
+                            <div class="r4_counter db_box " onclick="window.open('/events/?role=企业用户&type=敏感信息','_self')">
                                 <div class="icon-after cc BTC-alt"></div>
                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                 <div class="stats">
@@ -243,7 +243,7 @@
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6 col-xs-12">
-                            <div class="r4_counter db_box " onclick="window.open('operateDiary.html','_self')">
+                            <div class="r4_counter db_box ">
                                 <div class="icon-after cc BTC-alt"></div>
                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                 <div class="stats">
