@@ -34,7 +34,7 @@ def login(request):
                    if user_type == "政府用户":
                        return redirect('gov_index')
                    if user_type == "事业单位用户":
-                       return redirect('person_index')
+                       return redirect('govcom_index')
                    else:
                        return redirect('/login/')
                 else:

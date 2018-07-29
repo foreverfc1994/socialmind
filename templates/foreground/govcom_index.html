@@ -212,7 +212,7 @@
                     <dd><a href="">安全设置</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="">退出</a></li>
+            <li class="layui-nav-item"><a href="/logout/">退出</a></li>
         </ul>
     </div>
 
@@ -390,6 +390,16 @@
                 <div class="row mt mb">
                     <div class="col-lg-9">
                         <div class="content-panel">
+                            <h4>上下级事件数</h4>
+                            <div class="chart">
+                                <div id="colleagueEvents" style="height: 350px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt mb">
+                    <div class="col-lg-9">
+                        <div class="content-panel">
                             <h4>情绪走势图</h4>
                             <div class="chart">
                                 <div id="emotionTrend" style="height: 350px"></div>
@@ -411,7 +421,7 @@
 <script src="{% static 'assets0/js/jquery-1.8.3.min.js' %}"></script>
 <script src="{% static 'assets0/js/bootstrap.min.js' %}"></script>
 <script src="//res.layui.com/layui/src/layui.js?t=1531663423583" charset="utf-8"></script>
-    <script src="{% static 'assets0/js/fileJs/govcom_index.js.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets0/js/fileJs/govcom_index.js' %}" type="text/javascript"></script>
 <script>
     layui.use('element', function () {
         var element = layui.element;
