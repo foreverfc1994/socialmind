@@ -12,6 +12,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
 
+    <link href="{% static 'assets0/dataTable/css/jquery.dataTables.css' %}" rel="stylesheet">
     <link href="{% static 'assets0/css/bootstrap.css' %}" rel="stylesheet">
     <!--external css -->
     <link rel="stylesheet" href="{% static 'assets0/layui/css/layui.css' %}" media="all">
@@ -19,7 +20,6 @@
     <!-- Custom styles for this template -->
     <link href="{% static 'assets0/css/style.css' %}" rel="stylesheet">
     <link href="{% static 'assets0/css/style-responsive.css' %}" rel="stylesheet">
-    <link href="{% static 'assets0/dataTable/css/jquery.dataTables.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'assets0/layui/css/layui.css' %}" media="all">
     <link rel="stylesheet" href="{% static 'assets0/css/colorbox.css' %}" type="text/css" media="screen">
     <!-- 时间线的css -->
@@ -531,7 +531,7 @@
                                             <h2>民权运动1954-1964</h2>
 
 
-                                            <div id="timelineContainer" class="timelineContainer">
+                                            <div id="timelineContainer2" class="timelineContainer">
 
 {#                                                <div style="display: none" class="timelineToggle"><p><a class="expandAll">+ 全部展开</a></p></div>#}
 
@@ -540,7 +540,7 @@
                                                 <div class="timelineMajor">
                                                     <h2 class="timelineMajorMarker"><span>1954</span></h2>
                                                     <dl class="timelineMinor">
-                                                        <dt id="19540517"><a>布朗诉教育委员会</a></dt>
+                                                        <dt id="19540515"><a>布朗诉教育委员会</a></dt>
                                                         <dd class="timelineEvent" id="19540517EX" style="display:none;">
                                                             <h3>1954年5月17日</h3>
                                                             <p style="width: 50%;">美国最高法院相传一致9-0决定在布朗诉托皮卡教育局案，打开大门，民权运动最终种族融合在美国社会的各个方面。推翻Plessy v. Ferguson（1896），法院裁定“隔离的教育设施是不平等的。</p>
@@ -720,7 +720,6 @@
 <script>
 	$(document).ready(function() {
 		$.timeliner({
-			startOpen:['#19550828EX', '#19630828EX']
 		});
 		$.timeliner({
 			timelineContainer: '#timelineContainer_2'
