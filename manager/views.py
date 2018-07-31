@@ -1,7 +1,9 @@
 from django.shortcuts import render,redirect
 from visitor.models import User,Province,City,Area
 from visitor import models
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
+import json
+from manager.mysqlNullWash import if_is_None
 from django.views.decorators.csrf import csrf_exempt
 from visitor.scripts.signin import *
 # Create your views here.
@@ -120,3 +122,21 @@ def qiantaimotaikuang(request):
                    "businessLicenceId": '123', "bussinessLicencePic":
                        '123'})
     # return render(request,'foreground/personalInformation.html')
+
+
+def getAuthors(request):
+    dataList = []
+    results = models.Author.objects.filter()
+    for result in results:
+        try:
+            authorID = result.authorid
+            name = if_is_None(result.name)
+            fansNumber = str(result.fansnumber)
+            filesNumber = models.Article.objects.filter(authorid=authorID).count()
+            web = if_is_None(result.websiteid.websitename)
+            dic = {"authorId": authorID, "name": name, "filesNumber": filesNumber, "fansNumber": fansNumber, "web": web}
+            dataList.append(dic)
+        except:
+            pass
+    data = {"data": dataList}
+    return HttpResponse(json.dumps(data))

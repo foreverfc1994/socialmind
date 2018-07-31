@@ -384,34 +384,34 @@
 
                         <hr>
                         <table id="table_id_example" class="display">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>作者昵称</th>
-                                <th>网站</th>
-                                <th>文章数</th>
-                                <th>粉丝数</th>
-                                <th>详情</th>
-                                <th>操作</th>
-
-
-                            </tr>
-                            </thead>
-                            <tfoot>
-                            <tr>
-                                <th>ID</th>
-                                <th>作者昵称</th>
-                                <th>网站</th>
-                                <th>文章数</th>
-                                <th>粉丝数</th>
-                                <th>详情</th>
-                                <th>操作</th>
-
-
-                            </tr>
-                            </tfoot>
-                            <tbody id="tbody">
-                            </tbody>
+{#                            <thead>#}
+{#                            <tr>#}
+{#                                <th>ID</th>#}
+{#                                <th>作者昵称</th>#}
+{#                                <th>网站</th>#}
+{#                                <th>文章数</th>#}
+{#                                <th>粉丝数</th>#}
+{#                                <th>详情</th>#}
+{#                                <th>操作</th>#}
+{##}
+{##}
+{#                            </tr>#}
+{#                            </thead>#}
+{#                            <tfoot>#}
+{#                            <tr>#}
+{#                                <th>ID</th>#}
+{#                                <th>作者昵称</th>#}
+{#                                <th>网站</th>#}
+{#                                <th>文章数</th>#}
+{#                                <th>粉丝数</th>#}
+{#                                <th>详情</th>#}
+{#                                <th>操作</th>#}
+{##}
+{##}
+{#                            </tr>#}
+{#                            </tfoot>#}
+{#                            <tbody id="tbody">#}
+{#                            </tbody>#}
                         </table>
                     </div>
 
@@ -448,56 +448,67 @@
 
 <!--common script for all pages-->
 <script src="{% static 'backgroundfiles/assets/js/common-scripts.js' %}"></script>
-
 <!--script for this page-->
+<script src="{% static 'backgroundfiles/js/fileJs/Author.js' %}"></script>
 
+{#<script>#}
+{#    //custom select box#}
+{#    $(function () {#}
+{#        var data = ['wind', '猫扑论坛', '22', '1452', '详情']#}
+{#        var tbody = document.getElementById('tbody')#}
+{#        for (var i = 0; i < 100; i++) {#}
+{#            var tr = document.createElement('tr')#}
+{#            var td0 = document.createElement('td')#}
+{#            td0.innerHTML = i.toString()#}
+{#            tr.appendChild(td0)#}
+{#            for (var j = 0; j < 4; j++) {#}
+{#                var td = document.createElement('td')#}
+{#                td.innerHTML = data[j]#}
+{#                tr.appendChild(td)#}
+{#            }#}
+{#            var td2 = document.createElement('td')#}
+{#            td2.innerHTML = '<a href="/ArticlesOfAuthor/">详情</a>'#}
+{#            var td1 = document.createElement('td')#}
+{#            td1.innerHTML =#}
+{#                '                                    <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>\n' +#}
+{#                '                                    <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>\n' +#}
+{#                '                                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>'#}
+{#            tr.appendChild(td2)#}
+{#            tr.appendChild(td1)#}
+{#            tbody.appendChild(tr)#}
+{#        }#}
+{#         $('#table_id_example tfoot th').each( function () {#}
+{#        var title = $('#table_id_example thead th').eq( $(this).index() ).text();#}
+{#        if(title=='ID'||title=='作者昵称'||title=='网站')#}
+{#           $(this).html( '<input type="text" placeholder="Search '+title+'" />' );#}
+{#    } );#}
+{#        var table=$('#table_id_example').DataTable();#}
+{#        table.columns().eq( 0 ).each( function ( colIdx ) {#}
+{#        $( 'input', table.column( colIdx ).footer() ).on( 'keyup change', function () {#}
+{#            table#}
+{#                .column( colIdx )#}
+{#                .search( this.value )#}
+{#                .draw();#}
+{#        } );#}
+{#    } );#}
+{#        $('select.styled').customSelect();#}
+{#    });#}
+{##}
+{#</script>#}
 <script>
-    //custom select box
-
-    $(function () {
-        var data = ['wind', '猫扑论坛', '22', '1452', '详情']
-        var tbody = document.getElementById('tbody')
-        for (var i = 0; i < 100; i++) {
-            var tr = document.createElement('tr')
-            var td0 = document.createElement('td')
-            td0.innerHTML = i.toString()
-            tr.appendChild(td0)
-            for (var j = 0; j < 4; j++) {
-                var td = document.createElement('td')
-                td.innerHTML = data[j]
-                tr.appendChild(td)
+    window.onload = function(){
+        $.ajax({
+            url: '/author/getAuthors/',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data){
+                getTableData(data.data);
+            },
+            error: function(data){
+                alert("数据错误");
             }
-            var td2 = document.createElement('td')
-            td2.innerHTML = '<a href="/ArticlesOfAuthor/">详情</a>'
-            var td1 = document.createElement('td')
-            td1.innerHTML =
-                '                                    <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>\n' +
-                '                                    <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>\n' +
-                '                                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>'
-            tr.appendChild(td2)
-            tr.appendChild(td1)
-
-
-            tbody.appendChild(tr)
-        }
-         $('#table_id_example tfoot th').each( function () {
-        var title = $('#table_id_example thead th').eq( $(this).index() ).text();
-        if(title=='ID'||title=='作者昵称'||title=='网站')
-           $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
-    } );
-        var table=$('#table_id_example').DataTable();
-        table.columns().eq( 0 ).each( function ( colIdx ) {
-        $( 'input', table.column( colIdx ).footer() ).on( 'keyup change', function () {
-            table
-                .column( colIdx )
-                .search( this.value )
-                .draw();
-        } );
-    } );
-        $('select.styled').customSelect();
-    });
-
+        });
+    }
 </script>
-
 </body>
 </html>
