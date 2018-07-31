@@ -21,6 +21,8 @@
     <!-- Custom styles for this template -->
     <link href="{% static 'backgroundfiles/assets/css/style.css' %}" rel="stylesheet">
     <link href="{% static 'backgroundfiles/assets/css/style-responsive.css' %}" rel="stylesheet">
+    <script src="{% static 'assets0/js/echarts.js' %}"></script>
+    <script src="{% static 'assets0/js/china.js' %}"></script>
     
     <!-- <link rel="stylesheet" href="css/maruti-media.css" class="skin-color" /> -->
     <style>
@@ -161,7 +163,6 @@
 .pimgl img{float:right;}
 .pimg img{float:left;}
     </style>
-    <script src="{% static 'backgroundfiles/assets/js/echarts.js' %}" ></script>
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -1333,8 +1334,8 @@ option = {
         }
     },
     legend: {
-        show:false,
-        data: ['博客', '评论','帖子','新闻']
+        show:true,
+        data: ['博客', '评论','作者','帖子','新闻']
     },
     grid: {
         left: '3%',
@@ -1409,7 +1410,7 @@ option = {
         },
     ]
 };
-option2 = {
+/* option2 = {
     title: {
         text: '新增数据来源统计',
         //subtext: '虚构数据',
@@ -1448,17 +1449,74 @@ option2 = {
             }
         }
     ]
+}; */
+option2 = {
+    title: {
+        text: '新增数据来源统计',
+        //subtext: '虚构数据',
+        left: 'center'
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b}: {c} ({d}%)"
+    },
+    legend: {
+        /* orient: 'vertical',
+        x: 'left', */
+        bottom: 10,
+        data:['博客','帖子','新闻','邮件营销','联盟广告','视频广告','百度','谷歌','必应','其他']
+    },
+    series: [
+        {
+            name:'访问来源',
+            type:'pie',
+            selectedMode: 'single',
+            radius: [0, '30%'],
+
+            label: {
+                normal: {
+                    position: 'inner'
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: false
+                }
+            },
+            data:[
+                {value:335, name:'博客', selected:true},
+                {value:679, name:'帖子'},
+                {value:102, name:'其他'},
+                {value:1446, name:'新闻'},     
+            ]
+        },
+        {
+            name:'数据来源',
+            type:'pie',
+            radius: ['40%', '55%'],
+            data:[
+                {value:335, name:'博客'},
+                {value:310, name:'贴吧1'},
+                {value:234, name:'贴吧2'},
+                {value:135, name:'贴吧3'},
+                {value:102, name:'其他'},
+                {value:1048, name:'新浪网'},
+                {value:251, name:'人民网'},
+                {value:147, name:'中国日报网'},
+            ]
+        }
+    ]
 };
                                 
 myChart2.setOption(option);
 myChart.setOption(option2);
-myChart.on('legendselectchanged', function (params) {
+/* myChart.on('legendselectchanged', function (params) {
     //alert(params.name)
     myChart2.dispatchAction({
         type: 'legendToggleSelect',
         name: params.name,
     });
-});
+}); */
                             </script>
                             <hr style="height:2px;border: 0px;background-color: #ddd">
                             <!-- <table class="table">
@@ -1582,7 +1640,19 @@ myChart.on('click', function (params) {
                             </script>
                             <hr style="height:2px;border: 0px;background-color: #ddd">
                             <div style="text-align: right">
-                            <div class="dropdown">
+                            <div class="dropdown" style="display: inline-block">
+                                <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                  选择网站
+                                <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                                  <li><a href="javascript:void(0);">央视网</a></li>
+                                  <li><a href="javascript:void(0);">中国日报网</a></li>
+                                  <li><a href="javascript:void(0);">光明网</a></li>
+                                  <li><a href="javascript:void(0);">中国经济网</a></li>
+                                </ul>
+                            </div>
+                            <div class="dropdown" style="display: inline-block">
                                 <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                   选择日期
                                 <span class="caret"></span>
@@ -2202,24 +2272,106 @@ myChart.setOption(option);
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <select >
-                                        <option>昨日新增事件数</option>
-                                        <option>最近一周新增事件数</option>
-                                        <option>最近一月新增事件数</option>
-                                    </select>
-                            <div id="xinzengshijianshulinechart" style="width: 100%;height: 360px;"></div>
+                                    
+                            <div id="xinzengshitishulinechart" style="width: 100%;height: 360px;"></div>
+                                <script>
+                                    function randomData() {
+                                        return Math.round(Math.random()*200);
+                                    }
+                                    var mydata = [
+                                        {name: '北京',value: randomData() },{name: '天津',value: randomData() },
+                                        {name: '上海',value: randomData() },{name: '重庆',value: randomData() },
+                                        {name: '河北',value: randomData() },{name: '河南',value: randomData() },
+                                        {name: '云南',value: randomData() },{name: '辽宁',value: randomData() },
+                                        {name: '黑龙江',value: randomData() },{name: '湖南',value: randomData() },
+                                        {name: '安徽',value: randomData() },{name: '山东',value: randomData() },
+                                        {name: '新疆',value: randomData() },{name: '江苏',value: randomData() },
+                                        {name: '浙江',value: randomData() },{name: '江西',value: randomData() },
+                                        {name: '湖北',value: randomData() },{name: '广西',value: randomData() },
+                                        {name: '甘肃',value: randomData() },{name: '山西',value: randomData() },
+                                        {name: '内蒙古',value: randomData() },{name: '陕西',value: randomData() },
+                                        {name: '吉林',value: randomData() },{name: '福建',value: randomData() },
+                                        {name: '贵州',value: randomData() },{name: '广东',value: randomData() },
+                                        {name: '青海',value: randomData() },{name: '西藏',value: randomData() },
+                                        {name: '四川',value: randomData() },{name: '宁夏',value: randomData() },
+                                        {name: '海南',value: randomData() },{name: '台湾',value: randomData() },
+                                        {name: '香港',value: randomData() },{name: '澳门',value: randomData() }
+                                    ];
+                                    var optionSensitive = {
+                                        backgroundColor: '#FFFFFF',
+                                        title: {
+                                            text: '舆情事件统计'
+                                        },
+                                        tooltip : {
+                                            trigger: 'item',
+                                            formatter: '{b}<br/>最近一周新增事件数：{c}<br/>最近一周新增实体数：'+randomData()
+                                        //    b为省份，c为数据
+                                        },
+                                        visualMap: {
+                                            show : true,
+                                            x: 'left',
+                                            y: 'bottom',
+                                            text: ['正面', '负面'],
+                                            calculable: true,
+                                            splitList: [
+                                                {start: 500, end:600},{start: 400, end: 500},
+                                                {start: 300, end: 400},{start: 200, end: 300},
+                                                {start: 100, end: 200},{start: 0, end: 100},
+                                            ],
+                                            color: ['#00FF00', '#90EE90', '#ADFF2F','#FFFFE0', '#FFA07A', '#FF0000']
+                                        },
+                                        series: [{
+                                            name: '随机数据',
+                                            type: 'map',
+                                            mapType: 'china',
+                                            roam: false,
+                                            label: {
+                                                normal: {
+                                                    show: false
+                                                },
+                                                emphasis: {
+                                                    show: false
+                                                }
+                                            },
+                                            data:mydata
+                                        }]
+                                    };
+                                    var chartSensitive = echarts.init(document.getElementById('xinzengshitishulinechart'));
+                                    chartSensitive.setOption(optionSensitive);
+                                    chartSensitive.on('click', function (params) {
+                                        //alert(params.data.name)
+                                        redrawprovince(params.data.name);
+});
+                                </script>
+                                </div>
+                                <div class="col-lg-6">
+                                <div style="text-align: right;margin-right: 15px">
+                                    <div class="dropdown">
+                                        <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                          选择日期
+                                        <span class="caret"></span>
+                                        </button>
+                                    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                                      <li><a href="javascript:void(0);">一周</a></li>
+                                      <li><a href="javascript:void(0);">一月</a></li>
+                                      <li><a href="javascript:void(0);">三月</a></li>
+                                      <li><a href="javascript:void(0);">一年</a></li>
+                                    </ul>
+                                </div>
+                                </div>
+                                <div id="xinzengshijianshulinechart" style="width: 100%;height: 360px;"></div>
                                 <script>
                                     var myChart = echarts.init(document.getElementById('xinzengshijianshulinechart'));
 option = {
-    title: {
-        text: '新增事件数统计'
-    },
     tooltip: {
         trigger: 'axis'
     },
+    title: {
+        text: '全国舆情事件、实体变化趋势统计'
+    },
     legend: {
         x:'right',
-        data:['新增事件数','最近一周新增事件数','最近一月新增事件数']
+        data:['新增事件数','新增实体数','最近一月新增事件数']
     },
     grid: {
         left: '3%',
@@ -2253,8 +2405,24 @@ option = {
         {
             name:'新增事件数',
             type:'line',
-            stack: '总量',
+            smooth: true, 
+            //stack: '总量',
             data:[120, 132, 101, 134, 90, 230, 210]
+        },
+        {
+            name:'新增实体数',
+            type:'line',
+            smooth: true,
+            itemStyle : {  
+                normal : {  
+                    color:'#00FF00',
+                    lineStyle:{  
+                        color:'#00FF00'  
+                    }  
+                }  
+            }, 
+            //stack: '总量',
+            data:[80, 100, 144, 90, 170, 144, 240]
         },
         /* {
             name:'联盟广告',
@@ -2283,27 +2451,18 @@ option = {
     ]
 };
                                         myChart.setOption(option);
-                                </script>
-                                </div>
-                                <div class="col-lg-6">
-                                    <select >
-                                        <option>昨日新增实体数</option>
-                                        <option>最近一周新增事件数</option>
-                                        <option>最近一月新增事件数</option>
-                                    </select>
-                            <div id="xinzengshitishulinechart" style="width: 100%;height: 360px;"></div>
-                                <script>
-                                    var myChart = echarts.init(document.getElementById('xinzengshitishulinechart'));
-option = {
-    title: {
-        text: '新增实体数统计'
-    },
+                                        function redrawprovince(t){
+                                            var myChart = echarts.init(document.getElementById('xinzengshijianshulinechart'));
+                                            option = {
     tooltip: {
         trigger: 'axis'
     },
+    title: {
+        text: t+'舆情事件、实体变化趋势统计'
+    },
     legend: {
         x:'right',
-        data:['新增实体数','最近一周新增事件数','最近一月新增事件数']
+        data:['新增事件数','新增实体数','最近一月新增事件数']
     },
     grid: {
         left: '3%',
@@ -2335,46 +2494,30 @@ option = {
     ],
     series: [
         {
-            name:'新增实体数',
+            name:'新增事件数',
             type:'line',
-            stack: '总量',
-            itemStyle : {  
-                normal : {  
-                color:'#00FF00', 
-                lineStyle:{  
-                    color:'#00FF00'  
-                }  
-            }  
-        },  
+            smooth: true, 
             data:[120, 132, 101, 134, 90, 230, 210]
         },
-        /* {
-            name:'联盟广告',
-            type:'line',
-            stack: '总量',
-            data:[220, 182, 191, 234, 290, 330, 310]
-        },
         {
-            name:'视频广告',
+            name:'新增实体数',
             type:'line',
-            stack: '总量',
-            data:[150, 232, 201, 154, 190, 330, 410]
+            smooth: true,
+            itemStyle : {  
+                normal : {  
+                    color:'#00FF00',
+                    lineStyle:{  
+                        color:'#00FF00'  
+                    }  
+                }  
+            }, 
+            data:[80, 100, 144, 90, 170, 144, 240]
         },
-        {
-            name:'直接访问',
-            type:'line',
-            stack: '总量',
-            data:[320, 332, 301, 334, 390, 330, 320]
-        },
-        {
-            name:'搜索引擎',
-            type:'line',
-            stack: '总量',
-            data:[820, 932, 901, 934, 1290, 1330, 1320]
-        } */
     ]
 };
-                                        myChart.setOption(option);
+                                            myChart.clear()
+                                            myChart.setOption(option);
+                                        }
                                 </script>
                                 </div>
                             </div>
