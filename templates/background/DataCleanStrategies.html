@@ -386,6 +386,11 @@
                 </ul>
                 <div class="layui-tab-content" style="height: 100px;">
                     <div id='manmade' class="layui-tab-item layui-show">
+                        <div class="row mt" style="margin-top: 0px">
+                            <div id="qingxiInfo1" class="col-lg-12" style="color: #5cb85c;font-size: 23px">
+                                <b>自动清洗中。。。</b>
+                            </div> 
+                        </div>
                         <div class="row mt">
                             <div class="col-lg-12">
                                 <div class="panel panel-default">
@@ -492,9 +497,9 @@
                                         }
                                     </script>
                                     <div class="panel-footer">
-                                        <button type="button" class="btn btn-info">
+                                        <button type="button" class="btn btn-info" onclick="stopautowash()">
                                             <i class="fa fa-power-off" aria-hidden="true"></i>
-                                            开启人工清洗
+                                            停止自动清洗
                                         </button>
                                     </div>
                                 </div>
@@ -579,6 +584,11 @@
                         </div>
                     </div>
                     <div id='auto' class="layui-tab-item">
+                        <div class="row mt" style="margin-top: 0px">
+                            <div id="qingxiInfo2" class="col-lg-12" style="color: #5cb85c;font-size: 23px">
+                                <b>自动清洗中。。。</b>
+                            </div> 
+                        </div>
                         <div class="row mt">
                             <div class="col-lg-12">
                                 <div class="panel panel-default">
@@ -591,107 +601,198 @@
                                         <tr>
                                             <th>检查数据异常</th>
                                             <th>使用策略</th>
-                                            <th>不常用策略</th>
                                         </tr>
                                         </thead>
                                         <tr>
                                             <td style="width: 15%">缺失值：</td>
-                                            <td id="1td1" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                                <label id="11" draggable="true" ondragstart="drag(event)"
-                                                       class="bg-success">填充null</label>
-                                                <label id="12" draggable="true" ondragstart="drag(event)"
-                                                       class="bg-success">填充均值</label>
-                                                <label id="13" draggable="true" ondragstart="drag(event)"
-                                                       class="bg-success"> 填充最大值</label>
-                                                <label id="14" draggable="true" ondragstart="drag(event)"
-                                                       class="bg-success"> 填充最小值 </label>
-                                                <label id="15" draggable="true" ondragstart="drag(event)"
-                                                       class="bg-success">填充中值</label>
-                                                <label id="16" draggable="true" ondragstart="drag(event)"
-                                                       class="bg-success"> 填充最频繁值</label>
-                                                <label id="17" draggable="true" ondragstart="drag(event)"
-                                                       class="bg-success"> 填充指定值 </label>
-                                                <label id="18" draggable="true" ondragstart="drag(event)"
-                                                       class="bg-success">删除该列</label>
+                                            <td id="1td2">
+                                                <div class="radio-inline">
+                                                    <label>
+                                                        <input type="radio" name="queshizhi" id="optionsRadios1" value="0" checked>
+                                                        填充null
+                                                    </label>
+                                                </div>
+                                                <div class="radio-inline">
+                                                    <label>
+                                                        <input type="radio" name="queshizhi" id="optionsRadios1" value="1">
+                                                        填充均值
+                                                    </label>
+                                                </div>
+                                                <div class="radio-inline">
+                                                    <label>
+                                                        <input type="radio" name="queshizhi" id="optionsRadios1" value="2">
+                                                        填充最大值
+                                                    </label>
+                                                </div>
+                                                <div class="radio-inline">
+                                                    <label>
+                                                        <input type="radio" name="queshizhi" id="optionsRadios1" value="3">
+                                                        填充最小值
+                                                    </label>
+                                                </div>
+                                                <div class="radio-inline">
+                                                    <label>
+                                                        <input type="radio" name="queshizhi" id="optionsRadios1" value="4">
+                                                        填充中值
+                                                    </label>
+                                                </div>
+                                                <div class="radio-inline">
+                                                    <label>
+                                                        <input type="radio" name="queshizhi" id="optionsRadios1" value="5">
+                                                        填充最频繁值
+                                                    </label>
+                                                </div>
+                                                <div class="radio-inline">
+                                                    <label>
+                                                        <input type="radio" name="queshizhi" id="optionsRadios1" value="6">
+                                                        填充指定值
+                                                    </label>
+                                                </div>
+                                                <div class="radio-inline">
+                                                    <label>
+                                                        <input type="radio" name="queshizhi" id="optionsRadios1" value="7">
+                                                        删除该列
+                                                    </label>
+                                                </div>
                                             </td>
-                                            <td id="1td2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                                         </tr>
                                         <tr>
                                             <td style="width: 15%">一致性：</td>
-                                            <td id="2td1" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                                <label id="21" draggable="true" ondragstart="drag(event)"
-                                                       class="bg-success">去掉重复行</label>
+                                            <td id="2td2">
+                                                <div class="radio-inline">
+                                                    <label>
+                                                        <input type="radio" name="yizhixing" id="optionsRadios1" value="0" checked>
+                                                        去掉重复行
+                                                    </label>
+                                                </div>
+                                                <!-- <div class="radio-inline">
+                                                    <label>
+                                                        <input type="radio" name="yizhixing" id="optionsRadios1" value="1">
+                                                        去掉重复行
+                                                    </label>
+                                                </div> -->
                                             </td>
-                                            <td id="2td2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                                         </tr>
                                         <tr>
                                             <td style="width: 15%">字符串错误：</td>
-                                            <td id="3td1" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                                <label id="31" draggable="true" ondragstart="drag(event)"
-                                                       class="bg-success">删除字符串左右的空格</label>
-                                                <label id="32" draggable="true" ondragstart="drag(event)"
-                                                       class="bg-success">将字符串中间的空格改为一个</label>
-                                                <label id="33" draggable="true" ondragstart="drag(event)"
-                                                       class="bg-success">将指定子字符串修改为某特定字符串</label>
+                                            <td id="3td2">
+                                                <div class="radio-inline">
+                                                    <label>
+                                                        <input type="radio" name="zifuchuancuowu" id="optionsRadios1" value="0" checked>
+                                                        删除字符串左右的空格
+                                                    </label>
+                                                </div>
+                                                <div class="radio-inline">
+                                                    <label>
+                                                        <input type="radio" name="zifuchuancuowu" id="optionsRadios1" value="1">
+                                                        将字符串中间的空格改为一个
+                                                    </label>
+                                                </div>
+                                                <div class="radio-inline">
+                                                    <label>
+                                                        <input type="radio" name="zifuchuancuowu" id="optionsRadios1" value="2">
+                                                        将指定字符串修改为某特定字符串
+                                                    </label>
+                                                </div>
                                             </td>
-                                            <td id="3td2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                                         </tr>
                                         <tr>
                                             <td style="width: 15%">时间格式：</td>
-                                            <td id="4td1" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                                <label id="41" draggable="true" ondragstart="drag(event)"
-                                                       class="bg-success">统一为xxxx-xx-xx xx:xx:xx</label>
+                                            <td id="4td2">
+                                                <div class="radio-inline">
+                                                    <label>
+                                                        <input type="radio" name="shijiangeshi" id="optionsRadios1" value="0" checked>
+                                                        统一为xxxx-xx-xx
+                                                    </label>
+                                                </div>
                                             </td>
-                                            <td id="4td2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                                         </tr>
                                         <tr>
                                             <td style="width: 15%">合并两列</td>
-                                            <td id="5td1" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                                <label id="51" draggable="true" ondragstart="drag(event)"
-                                                       class="bg-success">重复项第一列覆盖第二列</label>
-                                                <label id="52" draggable="true" ondragstart="drag(event)"
-                                                       class="bg-success">重复项第二列覆盖第一列</label>
-                                                <label id="53" draggable="true" ondragstart="drag(event)"
-                                                       class="bg-success">重复项叠加</label>
+                                            <td id="5td2">
+                                                <div class="radio-inline">
+                                                    <label>
+                                                        <input type="radio" name="hebinglianglie" id="optionsRadios1" value="0" checked>
+                                                        重复项第一列覆盖第二列
+                                                    </label>
+                                                </div>
+                                                <div class="radio-inline">
+                                                    <label>
+                                                        <input type="radio" name="hebinglianglie" id="optionsRadios1" value="1">
+                                                        第一列覆盖第二列
+                                                    </label>
+                                                </div>
+                                                <div class="radio-inline">
+                                                    <label>
+                                                        <input type="radio" name="hebinglianglie" id="optionsRadios1" value="2">
+                                                        重复项第二列覆盖第一列
+                                                    </label>
+                                                </div>
+                                                <div class="radio-inline">
+                                                    <label>
+                                                        <input type="radio" name="hebinglianglie" id="optionsRadios1" value="3">
+                                                        第二列覆盖第一列
+                                                    </label>
+                                                </div>
+                                                <div class="radio-inline">
+                                                    <label>
+                                                        <input type="radio" name="hebinglianglie" id="optionsRadios1" value="4">
+                                                        重复项第一列追加到第二列后
+                                                    </label>
+                                                </div>
+                                                <div class="radio-inline">
+                                                    <label>
+                                                        <input type="radio" name="hebinglianglie" id="optionsRadios1" value="5">
+                                                        重复项第二列追加到第一列后
+                                                    </label>
+                                                </div>
                                             </td>
-                                            <td id="5td2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
                                         </tr>
-                                        <tr>
+                                        <!-- <tr>
                                             <td style="width: 15%">拆分为指定列数</td>
-                                            <td id="6td1" ondrop="drop(event)" ondragover="allowDrop(event)">
-                                                <label id="61" draggable="true" ondragstart="drag(event)"
-                                                       class="bg-success">按数据类型拆分</label>
-                                                <label id="62" draggable="true" ondragstart="drag(event)"
-                                                       class="bg-success">按自定义阈值拆分</label>
-                                                <label id="63" draggable="true" ondragstart="drag(event)"
-                                                       class="bg-success">按包含不同关键字拆分</label>
+                                            <td id="6td2">
+                                                <div class="radio-inline">
+                                                    <label>
+                                                        <input type="radio" name="chaifenweizhidinglieshu" id="optionsRadios1" value="0" checked>
+                                                        ...
+                                                    </label>
+                                                </div>
                                             </td>
-                                            <td id="6td2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                        </tr> -->
+                                        <tr>
+                                            <th colspan="2">选择清洗频率</th>
                                         </tr>
                                         <tr>
-                                            <th>选择清洗频率</th>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
+                                            <td colspan="2">
+                                                <div class="radio-inline">
+                                                    <label>
+                                                        <input type="radio" name="qingxipinlv" id="optionsRadios1" value="0" checked>
+                                                        每周一次
+                                                    </label>
+                                                </div>
+                                                <div class="radio-inline">
+                                                    <label>
+                                                        <input type="radio" name="qingxipinlv" id="optionsRadios1" value="1">
+                                                        每日一次
+                                                    </label>
+                                                </div>
+                                                <div class="radio-inline">
+                                                    <label>
+                                                        <input type="radio" name="qingxipinlv" id="optionsRadios1" value="2">
+                                                        两周一次
+                                                    </label>
+                                                </div>
+                                                <div class="radio-inline">
+                                                    <label>
+                                                        <input type="radio" name="qingxipinlv" id="optionsRadios1" value="3">
+                                                        每月一次
+                                                    </label>
+                                                </div>
+                                            </td>
                                         </tr>
                                     </table>
-                                    <script type="text/javascript">
-                                        function allowDrop(ev) {
-                                            ev.preventDefault();
-                                        }
-
-                                        function drag(ev) {
-                                            ev.dataTransfer.setData("Text", ev.target.id);
-                                        }
-
-                                        function drop(ev) {
-                                            ev.preventDefault();
-                                            var data = ev.dataTransfer.getData("Text");
-                                            ev.target.appendChild(document.getElementById(data));
-                                        }
-                                    </script>
                                     <div class="panel-footer">
-                                        <button type="button" class="btn btn-info">
+                                        <button type="button" class="btn btn-info" onclick="startautowash()">
                                             <i class="fa fa-power-off" aria-hidden="true"></i>
                                             开启自动清洗
                                         </button>
@@ -754,7 +855,14 @@
         });
         $('select.styled').customSelect();
     });
-
+    function stopautowash(){
+        $("#qingxiInfo2").hide()
+        $("#qingxiInfo1").hide()
+    }
+    function startautowash(){
+        $("#qingxiInfo2").show()
+        $("#qingxiInfo1").show()
+    }
 </script>
 <script>
     layui.use('element', function () {
