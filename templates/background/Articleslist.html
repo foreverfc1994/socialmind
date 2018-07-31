@@ -380,40 +380,7 @@
                     <div class="content-panel">
 
                         <hr>
-                        <table id="table_id_example" class="display">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>文章名称</th>
-                                <th>网站</th>
-                                <th>作者</th>
-                                <th>类型</th>
-                                <th>阅读</th>
-                                <th>热度</th>
-                                <th>详情</th>
-                                <th>操作</th>
-
-
-                            </tr>
-                            </thead>
-                            <tfoot>
-                            <tr>
-                                <th>ID</th>
-                                <th>文章名称</th>
-                                <th>网站</th>
-                                <th>作者</th>
-                                <th>类型</th>
-                                <th>阅读</th>
-                                <th>热度</th>
-                                <th>详情</th>
-                                <th>操作</th>
-
-
-                            </tr>
-                            </tfoot>
-                            <tbody id="tbody">
-                            </tbody>
-                        </table>
+                        <table id="table_id_example" class="display" style="width: 98%; margin-left: 1%;"></table>
                     </div>
                 </div>
             </div>
@@ -451,54 +418,69 @@
 <script src="{% static 'backgroundfiles/assets/js/common-scripts.js' %}"></script>
 
 <!--script for this page-->
+<script src="{% static 'backgroundfiles/js/fileJs/Author&ArticleList.js' %}"></script>
 
+{#<script>#}
+{#    //custom select box#}
+{##}
+{#    $(function () {#}
+{#        var data = ['十九大成功召开', '腾讯新闻', '吴大傻蛋', '新闻', '13221','2132']#}
+{#        var tbody = document.getElementById('tbody')#}
+{#        for (var i = 0; i < 100; i++) {#}
+{#            var tr = document.createElement('tr')#}
+{#            var td0 = document.createElement('td')#}
+{#            td0.innerHTML = i.toString()#}
+{#            tr.appendChild(td0)#}
+{#            for (var j = 0; j < 6; j++) {#}
+{#                var td = document.createElement('td')#}
+{#                td.innerHTML = data[j]#}
+{#                tr.appendChild(td)#}
+{#            }#}
+{#            var td2 = document.createElement('td')#}
+{#            td2.innerHTML = '<a href="/DouBanArticleStyle2/">详情</a>'#}
+{#            var td1 = document.createElement('td')#}
+{#            td1.innerHTML =#}
+{#                '                                    <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>\n' +#}
+{#                '                                    <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>\n' +#}
+{#                '                                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>'#}
+{#            tr.appendChild(td2)#}
+{#            tr.appendChild(td1)#}
+{##}
+{##}
+{#            tbody.appendChild(tr)#}
+{#        }#}
+{#         $('#table_id_example tfoot th').each( function () {#}
+{#        var title = $('#table_id_example thead th').eq( $(this).index() ).text();#}
+{#        if(title=='ID'||title=='文章名称'||title=='网站'||title=='作者'||title=='类型')#}
+{#           $(this).html( '<input type="text" placeholder="Search '+title+'" />' );#}
+{#    } );#}
+{#        var table=$('#table_id_example').DataTable();#}
+{#        table.columns().eq( 0 ).each( function ( colIdx ) {#}
+{#        $( 'input', table.column( colIdx ).footer() ).on( 'keyup change', function () {#}
+{#            table#}
+{#                .column( colIdx )#}
+{#                .search( this.value )#}
+{#                .draw();#}
+{#        } );#}
+{#    } );#}
+{#        $('select.styled').customSelect();#}
+{#    });#}
+{##}
+{#</script>#}
 <script>
-    //custom select box
-
-    $(function () {
-        var data = ['十九大成功召开', '腾讯新闻', '吴大傻蛋', '新闻', '13221','2132']
-        var tbody = document.getElementById('tbody')
-        for (var i = 0; i < 100; i++) {
-            var tr = document.createElement('tr')
-            var td0 = document.createElement('td')
-            td0.innerHTML = i.toString()
-            tr.appendChild(td0)
-            for (var j = 0; j < 6; j++) {
-                var td = document.createElement('td')
-                td.innerHTML = data[j]
-                tr.appendChild(td)
+    window.onload = function(){
+        $.ajax({
+            url: '/articlelist/getArticleList/',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data){
+                getArticleListData(data.data);
+            },
+            error: function(data){
+                alert("数据错误");
             }
-            var td2 = document.createElement('td')
-            td2.innerHTML = '<a href="/DouBanArticleStyle2/">详情</a>'
-            var td1 = document.createElement('td')
-            td1.innerHTML =
-                '                                    <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>\n' +
-                '                                    <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>\n' +
-                '                                    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>'
-            tr.appendChild(td2)
-            tr.appendChild(td1)
-
-
-            tbody.appendChild(tr)
-        }
-         $('#table_id_example tfoot th').each( function () {
-        var title = $('#table_id_example thead th').eq( $(this).index() ).text();
-        if(title=='ID'||title=='文章名称'||title=='网站'||title=='作者'||title=='类型')
-           $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
-    } );
-        var table=$('#table_id_example').DataTable();
-        table.columns().eq( 0 ).each( function ( colIdx ) {
-        $( 'input', table.column( colIdx ).footer() ).on( 'keyup change', function () {
-            table
-                .column( colIdx )
-                .search( this.value )
-                .draw();
-        } );
-    } );
-        $('select.styled').customSelect();
-    });
-
+        });
+    }
 </script>
-
 </body>
 </html>

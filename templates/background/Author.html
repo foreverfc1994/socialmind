@@ -449,7 +449,7 @@
 <!--common script for all pages-->
 <script src="{% static 'backgroundfiles/assets/js/common-scripts.js' %}"></script>
 <!--script for this page-->
-<script src="{% static 'backgroundfiles/js/fileJs/Author.js' %}"></script>
+<script src="{% static 'backgroundfiles/js/fileJs/Author&ArticleList.js' %}"></script>
 
 {#<script>#}
 {#    //custom select box#}
@@ -502,7 +502,7 @@
             type: 'GET',
             dataType: 'json',
             success: function(data){
-                getTableData(data.data);
+                getTableAuthorData(data.data);
             },
             error: function(data){
                 alert("数据错误");

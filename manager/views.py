@@ -3,7 +3,7 @@ from visitor.models import User,Province,City,Area
 from visitor import models
 from django.http import JsonResponse, HttpResponse
 import json
-from manager.mysqlNullWash import if_is_None
+from manager.mysqlNullWash import if_is_None, webType_to_strType
 from django.views.decorators.csrf import csrf_exempt
 from visitor.scripts.signin import *
 # Create your views here.
@@ -132,11 +132,34 @@ def getAuthors(request):
             authorID = result.authorid
             name = if_is_None(result.name)
             fansNumber = str(result.fansnumber)
+            web = "暂缺"
             filesNumber = models.Article.objects.filter(authorid=authorID).count()
-            web = if_is_None(result.websiteid.websitename)
+            if result.websiteid != None:
+                web = if_is_None(result.websiteid.websitename)
             dic = {"authorId": authorID, "name": name, "filesNumber": filesNumber, "fansNumber": fansNumber, "web": web}
             dataList.append(dic)
         except:
-            pass
+            print(authorID+" was wrong")
     data = {"data": dataList}
     return HttpResponse(json.dumps(data))
+
+def getArticleList(request):
+    dataList = []
+    results = models.Article.objects.filter()
+    for result in results:
+        articleId = result.articleid
+        authorId = if_is_None(result.authorid)
+        authorName = "暂缺"
+        title = if_is_None(result.title)
+        readed = if_is_None(result.scannumber, 0)#数据类型为int
+        if(readed >= 100):
+            heat = "超热"
+        else:
+            heat = "不热"
+        webName = if_is_None(result.websiteid.websitename)
+        webType = webType_to_strType(if_is_None(result.websiteid.websitetypeid, "0"))
+        if(authorId != ""):
+            authorName = authorId.name
+        dataList.append({"id": articleId, "title": title, "web": webName, "author": authorName, "type": webType, "readed": str(readed), "heat": heat})
+    res = {"data": dataList}
+    return HttpResponse(json.dumps(res))

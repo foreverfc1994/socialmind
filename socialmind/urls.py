@@ -80,8 +80,8 @@ urlpatterns = [
 
 
 
-    path('author/getAuthors/', bviews.getAuthors)#/Author/作者信息ajax路径
-
+    path('author/getAuthors/', bviews.getAuthors), #/Author/作者信息ajax路径
+    path('articlelist/getArticleList/', bviews.getArticleList)
 
 
 
