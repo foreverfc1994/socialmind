@@ -166,12 +166,12 @@
                     "        <p>请再次输入密码：<span style=\"color:red\">*</span></p>\n" +
                     "        <input id='repwd' name='repwd' type=\"password\" class=\"form-control\" placeholder=\"请再次输入密码\" required=\"true\"><br>\n" +
                     "        <p>真实姓名：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='realname' type=\"text\" class=\"form-control\" placeholder=\"企业法人代表名\" required=\"true\"><br>\n" +
+                    "        <input name='realname' type=\"text\" class=\"form-control\" placeholder=\"真实姓名\" required=\"true\"><br>\n" +
                     "        <p>身份证号：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='idcard' type=\"text\" class=\"form-control\" placeholder=\"企业法人身份证号\" style=\"width: 100%\"; step=\"day\"><br>\n" +
-                    "        <p>企业法人身份证正面：<span style=\"color:red\">*</span></p>\n" +
+                    "        <input name='idcard' type=\"text\" class=\"form-control\" placeholder=\"身份证号\" style=\"width: 100%\"; step=\"day\"><br>\n" +
+                    "        <p>身份证正面：<span style=\"color:red\">*</span></p>\n" +
                     "        <input name='idcardA' type=\"file\" class=\"form-control\" autofocus required=\"true\"><br>\n" +
-                    "        <p>企业法人身份证背面： <span style=\"color:red\">*</span></p>\n" +
+                    "        <p>身份证背面： <span style=\"color:red\">*</span></p>\n" +
                     "        <input name='idcardB' type=\"file\" class=\"form-control\" autofocus required=\"true\"><br>\n" +
                     "        <p>企业名称： <span style=\"color:red\">*</span></p>\n" +
 
@@ -185,16 +185,17 @@
                     "            <option>全民所有制企业</option>\n" +
                     "            <option>集体所有制企业</option>\n" +
 
-                    "        </select>\n" +
-
+                    "        </select><br>\n" +
+                    "        <p>营业执照编码： <span style=\"color:red\">*</span></p>\n" +
+                    "        <input name='licenceid' type=\"text\" class=\"form-control\" placeholder=\"营业执照编码\" autofocus required=\"true\"><br>\n" +
                     "        <p>营业执照： <span style=\"color:red\">*</span></p>\n" +
                     "        <input name='licence' type=\"file\" class=\"form-control\" placeholder=\"营业执照\" autofocus required=\"true\"><br>\n" +
                     "        <p>成立日期：<span style=\"color:red\">*</span></p>\n" +
                     "        <input name='birthday' type=\"date\" class=\"form-control\" placeholder=\"成立日期\" style=\"width: 100%\"; step=\"day\"><br>\n" +
                     "        <p>登记机关： <span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='companytype' type=\"text\" class=\"form-control\" placeholder=\"登记机关\" autofocus required=\"true\"><br>\n" +
+                    "        <input name='register_ins' type=\"text\" class=\"form-control\" placeholder=\"登记机关\" autofocus required=\"true\"><br>\n" +
                     "        <p>经营范围： <span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='companytype' type=\"text\" class=\"form-control\" placeholder=\"经营范围\" autofocus required=\"true\"><br>\n" +
+                    "        <input name='shop_scope' type=\"text\" class=\"form-control\" placeholder=\"经营范围\" autofocus required=\"true\"><br>\n" +
 
                     "        <p>请选择省市：</p>\n" +
                     "        <select name='province' id=\"province\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
@@ -206,8 +207,8 @@
                     "        <select name='country' id=\"country\" class=\"form-control\" style=\"margin-top: 5px;\">\n" +
 
                     "        </select><br>\n" +
-                    "        <p>请输入企业邮箱：<span style=\"color:red\">*</span></p>\n" +
-                    "        <input name='companyemail' type=\"email\" class=\"form-control\" placeholder=\"请输入企业邮箱\" style=\"width: 100%\" required=\"true\"><br>\n" +
+                    "        <p>请输入邮箱：<span style=\"color:red\">*</span></p>\n" +
+                    "        <input name='email' type=\"email\" class=\"form-control\" placeholder=\"请输入邮箱\" style=\"width: 100%\" required=\"true\"><br>\n" +
                     "        <p>关注领域： <span style=\"color:red\">*</span></p>\n" +
                     "        <input onclick= 'pop()' id= 'interest' name='interest' type=\"text\" class=\"form-control\" placeholder=\"关注领域\" autofocus required=\"true\"><br>\n" +
 
@@ -225,7 +226,7 @@
             if (choice == "2") {
                 $("#choiced").replaceWith("    <div class=\"login-wrap\" id=\"choiced\">\n" +
                     "        <p>请选择用户类型：</p>\n" +
-                    "        <select id=\"type\" name=\"usertype\" class=\"form-control\">\n" +
+                    "        <select id=\"type\" name=\"user-type\" class=\"form-control\">\n" +
                     "            <option value=\"0\">个人用户</option>\n" +
                     "            <option value=\"1\">企业用户</option>\n" +
                     "            <option value=\"2\" selected>政府用户</option>\n" +
@@ -265,6 +266,9 @@
                     "        </select><br>\n" +
                     "        <p>请输入邮箱：<span style=\"color:red\">*</span></p>\n" +
                     "        <input name='mail' type=\"email\" class=\"form-control\" placeholder=\"邮箱\" style=\"width: 100%\" required=\"true\"><br>\n" +
+                     "        <p>关注领域： <span style=\"color:red\">*</span></p>\n" +
+                    "        <input onclick= 'pop()' id= 'interest' name='interest' type=\"text\" class=\"form-control\" placeholder=\"关注领域\" autofocus required=\"true\"><br>\n" +
+
                     "        <button class=\"btn btn-theme btn-block\" type=\"submit\">\n" +
                     "            <i class=\"fa fa-lock\"></i>\n" +
                     "            &nbsp; &nbsp;确定\n" +
@@ -333,7 +337,7 @@
                     "            <option>知识产权事业单位</option>\n" +
                     "            <option>机关后勤服务事业单位</option>\n" +
                     "            <option>其他</option>\n" +
-                           "        </select><br>\n" +
+                    "        </select><br>\n" +
                     "        <p>事业单位机构编号：<span style=\"color:red\">*</span></p>\n" +
                     "        <input name='in-code' type=\"text\" class=\"form-control\" placeholder=\"事业单位机构编号\" autofocus required=\"true\"><br>\n" +
                     "        <p>上传身份证正面： <span style=\"color:red\">*</span></p>\n" +
@@ -354,6 +358,9 @@
                     "        </select><br>\n" +
                     "        <p>请输入邮箱：<span style=\"color:red\">*</span></p>\n" +
                     "        <input name='email' type=\"email\" class=\"form-control\" placeholder=\"邮箱\" style=\"width: 100%\" required=\"true\"><br>\n" +
+                     "        <p>关注领域： <span style=\"color:red\">*</span></p>\n" +
+                    "        <input onclick= 'pop()' id= 'interest' name='interest' type=\"text\" class=\"form-control\" placeholder=\"关注领域\" autofocus required=\"true\"><br>\n" +
+
                     "        <button class=\"btn btn-theme btn-block\" type=\"submit\">\n" +
                     "            <i class=\"fa fa-lock\"></i>\n" +
                     "            &nbsp; &nbsp;确定\n" +

@@ -95,25 +95,31 @@ def signin(request):
             return redirect('/jump/')
         elif userdata.get('user-type') == '1':
             try:
-                userid = companyUser(userdata)
-                try:
-                    idCardA = request.FILES['idcardA']
-                    saveImg(idCardA, userid, "1")
-                    idCardB = request.FILES['idcardB']
-                    saveImg(idCardB, userid, "2")
-                    businessLicence = request.FILES['licence']
-                    saveImg(businessLicence, userid, "3")
-                    return redirect('/jump/')
-                except:
-                    print("出错了！")
-                    rollbackFunction(userid)
-                    error = 'error'
-                    return render(request, 'foreground/signin.html', {'message': error})
+                companyUser(request)
+                return redirect('/jump/')
             except:
                 error = 'error'
                 return render(request, 'foreground/signin.html', {'message': error})
         elif userdata.get('user-type') == '2':
+            try:
+                print(1)
+                govUser(request)
+                return redirect('/jump/')
+            except Exception as e:
+                print(e)
+                error = 'error'
+                return render(request, 'foreground/signin.html', {'message': error})
+        elif userdata.get('user-type') == '3':
+            try:
+                InstitutionUser(request)
+                return  redirect('/jump/')
+            except Exception as e:
+                print(e)
+                error = 'error'
+                return render(request, 'foreground/signin.html', {'message': error})
+        else:
             pass
+
 
     return render(request, 'foreground/signin.html')
 

@@ -272,16 +272,20 @@ class Comment(models.Model):
 
 class CompanyUser(models.Model):
     userid = models.ForeignKey('User', models.DO_NOTHING, db_column='userID', primary_key=True)  # Field name made lowercase.
-    bossname = models.CharField(db_column='bossName', max_length=32, blank=True, null=True)  # Field name made lowercase.
+    realname = models.CharField(db_column='RealName', max_length=32, blank=True, null=True)  # Field name made lowercase.
     idfronturl = models.CharField(db_column='IDFrontUrl', max_length=255, blank=True, null=True)  # Field name made lowercase.
     companyname = models.CharField(db_column='companyName', max_length=64, blank=True, null=True)  # Field name made lowercase.
-    type = models.CharField(max_length=32, blank=True, null=True)
+    companytype = models.CharField(db_column='companyType', max_length=64, blank=True, null=True)  # Field name made lowercase.
     idbackurl = models.CharField(db_column='IDBackUrl', max_length=255, blank=True, null=True)  # Field name made lowercase.
     businesslicenceurl = models.CharField(db_column='businessLicenceUrl', max_length=255, blank=True, null=True)  # Field name made lowercase.
     businesslicenceid = models.CharField(db_column='businessLicenceId', max_length=64, blank=True, null=True)  # Field name made lowercase.
+    registertime = models.CharField(db_column='registerTime', max_length=64, blank=True, null=True)  # Field name made lowercase.
+    registerorg = models.CharField(db_column='registerORG',max_length=32, blank=True, null=True)
+    businessscope = models.CharField(db_column='businessScope',max_length=32, blank=True, null=True)
+    interest = models.CharField(db_column='interest',max_length=32, blank=True, null=True)
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'company_user'
 
 
@@ -385,19 +389,17 @@ class EventSeedsBase(models.Model):
 
 class GovUser(models.Model):
     userid = models.ForeignKey('User', models.DO_NOTHING, db_column='userID', primary_key=True)  # Field name made lowercase.
-    bossname = models.CharField(db_column='bossName', max_length=32, blank=True, null=True)  # Field name made lowercase.
+    realname = models.CharField(db_column='realName', max_length=32, blank=True, null=True)  # Field name made lowercase.
     govname = models.CharField(db_column='govName', max_length=64, blank=True, null=True)  # Field name made lowercase.
-    type = models.CharField(max_length=32, blank=True, null=True)
+    govtype = models.CharField(db_column='govType',max_length=32, blank=True, null=True)
     govcode = models.CharField(db_column='govCode', max_length=32, blank=True, null=True)  # Field name made lowercase.
     idfronturl = models.CharField(db_column='IDFrontUrl', max_length=255, blank=True, null=True)  # Field name made lowercase.
     idbackurl = models.CharField(db_column='IDBackUrl', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    govcodeurl = models.CharField(db_column='govCodeUrl', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    idfront = models.CharField(db_column='IDFront', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    idback = models.CharField(db_column='IDBack', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    provepicture = models.CharField(db_column='provePicture', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    idcard = models.CharField(db_column='IDCard', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    interest = models.CharField(db_column='interest', max_length=255, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'gov_user'
 
 
@@ -418,20 +420,21 @@ class IndicatorValue(models.Model):
 
 
 class InstitutionUser(models.Model):
-    bossname = models.CharField(db_column='bossName', max_length=32, blank=True, null=True)  # Field name made lowercase.
+    realname = models.CharField(db_column='realName', max_length=32, blank=True, null=True)  # Field name made lowercase.
     idfronturl = models.CharField(db_column='IDFrontUrl', max_length=255, blank=True, null=True)  # Field name made lowercase.
     idbackurl = models.CharField(db_column='IDBackUrl', max_length=255, blank=True, null=True)  # Field name made lowercase.
     institutionname = models.CharField(db_column='institutionName', max_length=64, blank=True, null=True)  # Field name made lowercase.
-    type = models.CharField(max_length=32, blank=True, null=True)
+    institutionlevel = models.CharField(db_column='institutionLevel', max_length=64, blank=True, null=True)  # Field name made lowercase.
+    institutiontype = models.CharField(db_column='institutionType', max_length=64, blank=True, null=True)  # Field name made lowercase.
     institudecode = models.CharField(db_column='institudeCode', max_length=64, blank=True, null=True)  # Field name made lowercase.
-    institudecodeurl = models.CharField(db_column='institudeCodeUrl', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    institudeurl = models.CharField(db_column='institudeUrl', max_length=255, blank=True, null=True)  # Field name made lowercase.
     userid = models.ForeignKey('User', models.DO_NOTHING, db_column='userID', primary_key=True)  # Field name made lowercase.
     idfront = models.CharField(db_column='IDFront', max_length=255, blank=True, null=True)  # Field name made lowercase.
     idback = models.CharField(db_column='IDBack', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    registergraph = models.CharField(db_column='registerGraph', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    interest = models.CharField(db_column='interest', max_length=255, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'institution_user'
 
 
@@ -695,7 +698,11 @@ class TbUser(models.Model):
     class Meta:
         managed = False
         db_table = 'tb_user'
+class Topic(models.Model):
+    name = models.CharField(max_length=32)
 
+    class Meta:
+        db_table='topic'
 
 class Tool(models.Model):
     toolid = models.CharField(db_column='toolID', primary_key=True, max_length=36)  # Field name made lowercase.
@@ -711,12 +718,7 @@ class Tool(models.Model):
     class Meta:
         managed = False
         db_table = 'tool'
-class Topic(models.Model):
 
-    name = models.CharField(db_column='name',max_length=32)
-    class Meta:
-
-        db_table = 'topic'
 
 class Toolkit(models.Model):
     toolkitid = models.CharField(db_column='toolkitID', primary_key=True, max_length=36)  # Field name made lowercase.
