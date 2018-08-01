@@ -208,5 +208,6 @@ def jump(request):
     return render(request, 'foreground/jump.html')
 
 def logout(request):
+    logger.debug(request.session['user_id'] + '|/login/|退出')
     request.session.flush()
     return redirect("/login/")
