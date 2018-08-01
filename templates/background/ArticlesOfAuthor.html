@@ -412,7 +412,8 @@
       <section id="main-content">
           <section class="wrapper site-min-height">
           	<h3><i class="fa fa-angle-right"></i> 作者相关文章</h3>
-                <div class="row">
+                {% csrf_token %}
+                <div class="row authorID" id="{{ authorId }}">
 	                  <div class="col-md-12 mt" style="margin-left: 0px;margin-right: 0px;background-color: #5F9EA0;min-height: 200px">
                         <div class="row" style="margin-top: 10px;">
                             <div class="col-md-2">
@@ -420,29 +421,29 @@
                             </div>
                             <div class="col-md-10" style="padding-left: 30px">
                                 <div class="row">
-                                    <h3 style="color: white;">小明</h3>
+                                    <h3 style="color: white;" class="authorName">{{ authorName }}</h3>
                                 </div>
                                 <div class="row">
                                     <table id="infotb" style="color: white;">
                                         <tr>
                                             <td>
-                                                <b>虎扑论坛</b>
+                                                <b>{{ web }}</b>
                                                 <p>网站</p>
                                             </td>
                                             <td style="padding-left: 20px">
-                                                <b>篮球</b>
+                                                <b>{{ introduction }}</b>
                                                 <p>个人介绍</p>
                                             </td>
                                             <td style="padding-left: 20px">
-                                                <b>男</b>
+                                                <b>{{ sex }}</b>
                                                 <p>性别</p>
                                             </td>
                                             <td style="padding-left: 20px">
-                                                <b>22</b>
+                                                <b>{{ age }}</b>
                                                 <p>年龄</p>
                                             </td>
                                             <td style="padding-left: 20px;border-right: 0px">
-                                                <b>辽宁省</b>
+                                                <b>{{ address }}</b>
                                                 <p>地址</p>
                                             </td>
                                         </tr>
@@ -452,13 +453,13 @@
                                     <table id="authnumtb">
                                         <tr>
                                             <td>
-                                                关注数&nbsp;100
+                                                关注数&nbsp;{{ focusNum }}
                                             </td>
                                             <td>
-                                                粉丝数&nbsp;50
+                                                粉丝数&nbsp;{{ fansNumber }}
                                             </td>
                                             <td>
-                                                文章数&nbsp;200
+                                                文章数&nbsp;{{ filesNumber }}
                                             </td>
                                         </tr>
                                     </table>
@@ -467,285 +468,9 @@
                         </div>
 	                  </div><!-- /col-md-12 -->
                 </div><!-- row -->
-                <div class="container">
-                    <div class="row" style="padding-top: 20px;padding-bottom: 20px">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-4" style="padding-left: 0px">
-                                <img style="display: inline-block" class="xiaoimg" src="{% static 'backgroundfiles/assets/img/ui-zac.jpg' %}" alt="">
-                                <a style="font-size: 12px;color: #333;margin-left: 12px;line-height: 30px;">小明</a>
-                                <a style="font-size: 12px;color: #969696;margin-left: 8px;line-height: 30px;cursor: default;">
-                                    发布于：2018-05-11
-                                </a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <a href="/DouBanArticleStyle2/" class="tit">博格巴+姆巴佩破门！法国4-2克罗地亚夺冠，法国世界杯第二次封王</a>
-                            <a class="con">
-                                    在项目开发中，遇到这样一个问题，网页中有多组单选问题和复选项，甚至还有下拉列表或文本输入框……除了text文本输入框可以给它添加required属性外之外，其他都不能用html自带的属性来实现必选的功能。新手瞎折腾，大神见笑了~！欢迎指点更好的解决方法哦~！
-                            </a>
-                        </div>
-                        <div class="row bot" style="margin-top: 20px">
-                            <p class="tab original fl" style="color: #f96f85;display: inline-block">原创</p>
-                            <p class="read fl" style="display: inline-block">阅读&nbsp;455</p>
-                            <p class="comment fl" style="display: inline-block">评论&nbsp;2</p>
-                            <p class="collect fl" style="display: inline-block">收藏&nbsp;0</p>
-                        </div>
-                    </div>
-                    </div>
-                    <hr style="margin: 0px;height:2px;border: 0px;background-color: #ddd">
-                    <div class="row" style="padding-top: 20px;padding-bottom: 20px">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-4" style="padding-left: 0px">
-                                <img style="display: inline-block" class="xiaoimg" src="{% static 'backgroundfiles/assets/img/ui-zac.jpg' %}" alt="">
-                                <a style="font-size: 12px;color: #333;margin-left: 12px;line-height: 30px;">小明</a>
-                                <a style="font-size: 12px;color: #969696;margin-left: 8px;line-height: 30px;cursor: default;">
-                                    发布于：2018-05-11
-                                </a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <a href="/DouBanArticleStyle2/" class="tit">博格巴+姆巴佩破门！法国4-2克罗地亚夺冠，法国世界杯第二次封王</a>
-                            <a class="con">
-                                    在项目开发中，遇到这样一个问题，网页中有多组单选问题和复选项，甚至还有下拉列表或文本输入框……除了text文本输入框可以给它添加required属性外之外，其他都不能用html自带的属性来实现必选的功能。新手瞎折腾，大神见笑了~！欢迎指点更好的解决方法哦~！
-                            </a>
-                        </div>
-                        <div class="row bot" style="margin-top: 20px">
-                            <p class="tab original fl" style="color: #f96f85;display: inline-block">原创</p>
-                            <p class="read fl" style="display: inline-block">阅读&nbsp;455</p>
-                            <p class="comment fl" style="display: inline-block">评论&nbsp;2</p>
-                            <p class="collect fl" style="display: inline-block">收藏&nbsp;0</p>
-                        </div>
-                    </div>
-                    </div>
-                    <hr style="margin: 0px;height:2px;border: 0px;background-color: #ddd">
-                    <div class="row" style="padding-top: 20px;padding-bottom: 20px">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-4" style="padding-left: 0px">
-                                <img style="display: inline-block" class="xiaoimg" src="{% static 'backgroundfiles/assets/img/ui-zac.jpg' %}" alt="">
-                                <a style="font-size: 12px;color: #333;margin-left: 12px;line-height: 30px;">小明</a>
-                                <a style="font-size: 12px;color: #969696;margin-left: 8px;line-height: 30px;cursor: default;">
-                                    发布于：2018-05-11
-                                </a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <a href="/DouBanArticleStyle2/" class="tit">博格巴+姆巴佩破门！法国4-2克罗地亚夺冠，法国世界杯第二次封王</a>
-                            <a class="con">
-                                    在项目开发中，遇到这样一个问题，网页中有多组单选问题和复选项，甚至还有下拉列表或文本输入框……除了text文本输入框可以给它添加required属性外之外，其他都不能用html自带的属性来实现必选的功能。新手瞎折腾，大神见笑了~！欢迎指点更好的解决方法哦~！
-                            </a>
-                        </div>
-                        <div class="row bot" style="margin-top: 20px">
-                            <p class="tab original fl" style="color: #f96f85;display: inline-block">原创</p>
-                            <p class="read fl" style="display: inline-block">阅读&nbsp;455</p>
-                            <p class="comment fl" style="display: inline-block">评论&nbsp;2</p>
-                            <p class="collect fl" style="display: inline-block">收藏&nbsp;0</p>
-                        </div>
-                    </div>
-                    </div>
-                    <hr style="margin: 0px;height:2px;border: 0px;background-color: #ddd">
-                    <div class="row" style="padding-top: 20px;padding-bottom: 20px">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-4" style="padding-left: 0px">
-                                <img style="display: inline-block" class="xiaoimg" src="{% static 'backgroundfiles/assets/img/ui-zac.jpg' %}" alt="">
-                                <a style="font-size: 12px;color: #333;margin-left: 12px;line-height: 30px;">小明</a>
-                                <a style="font-size: 12px;color: #969696;margin-left: 8px;line-height: 30px;cursor: default;">
-                                    发布于：2018-05-11
-                                </a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <a href="/DouBanArticleStyle2/" class="tit">博格巴+姆巴佩破门！法国4-2克罗地亚夺冠，法国世界杯第二次封王</a>
-                            <a class="con">
-                                    在项目开发中，遇到这样一个问题，网页中有多组单选问题和复选项，甚至还有下拉列表或文本输入框……除了text文本输入框可以给它添加required属性外之外，其他都不能用html自带的属性来实现必选的功能。新手瞎折腾，大神见笑了~！欢迎指点更好的解决方法哦~！
-                            </a>
-                        </div>
-                        <div class="row bot" style="margin-top: 20px">
-                            <p class="tab original fl" style="color: #f96f85;display: inline-block">原创</p>
-                            <p class="read fl" style="display: inline-block">阅读&nbsp;455</p>
-                            <p class="comment fl" style="display: inline-block">评论&nbsp;2</p>
-                            <p class="collect fl" style="display: inline-block">收藏&nbsp;0</p>
-                        </div>
-                    </div>
-                    </div>
-                    <hr style="margin: 0px;height:2px;border: 0px;background-color: #ddd">
+                <div class="container" id="authorFiles">
                 </div>
-                
-                <div class="row" style="display: none">
-	                  <div class="col-md-12 mt">
-	                  	<div class="content-panel">
-	                          <table id="tbclick" class="table table-hover">
-	                  	  	  <h4><i class="fa fa-angle-right"></i> 文章</h4>
-	                  	  	  <hr>
-	                              <thead>
-	                              <tr>
-	                                  <th>#</th>
-	                                  <th>文章</th>
-	                                  <th>作者</th>
-	                                  <th>网站</th>
-	                              </tr>
-	                              </thead>
-	                              <tbody>
-	                              <tr>
-	                                  <td>1</td>
-	                                  <td>博格巴+姆巴佩破门！法国4-2克罗地亚夺冠，法国世界杯第二次封王</td>
-	                                  <td>小明</td>
-	                                  <td>新浪微博</td>
-	                              </tr>
-	                              <tr>
-	                                  <td>2</td>
-	                                  <td>博格巴姆巴佩破门，法国4-2克罗地亚夺得世界杯冠军</td>
-	                                  <td>小明</td>
-	                                  <td>新浪微博</td>
-	                              </tr>
-	                              <tr>
-	                                  <td>3</td>
-	                                  <td>博格巴姆巴佩破门，法国4-2克罗地亚夺得世界杯冠军</td>
-	                                  <td>小明</td>
-	                                  <td>新浪微博</td>
-                                  </tr>
-                                  <tr>
-	                                  <td>3</td>
-	                                  <td>博格巴姆巴佩破门，法国4-2克罗地亚夺得世界杯冠军</td>
-	                                  <td>小明</td>
-	                                  <td>新浪微博</td>
-                                  </tr>
-                                  <tr>
-	                                  <td>3</td>
-	                                  <td>博格巴姆巴佩破门，法国4-2克罗地亚夺得世界杯冠军</td>
-	                                  <td>小明</td>
-	                                  <td>新浪微博</td>
-                                  </tr>
-                                  <tr>
-	                                  <td>3</td>
-	                                  <td>博格巴姆巴佩破门，法国4-2克罗地亚夺得世界杯冠军</td>
-	                                  <td>小明</td>
-	                                  <td>新浪微博</td>
-                                  </tr>
-                                  <tr>
-	                                  <td>3</td>
-	                                  <td>博格巴姆巴佩破门，法国4-2克罗地亚夺得世界杯冠军</td>
-	                                  <td>小明</td>
-	                                  <td>新浪微博</td>
-                                  </tr>
-                                  <tr>
-	                                  <td>3</td>
-	                                  <td>博格巴姆巴佩破门，法国4-2克罗地亚夺得世界杯冠军</td>
-	                                  <td>小明</td>
-	                                  <td>新浪微博</td>
-                                  </tr>
-                                  <tr>
-	                                  <td>3</td>
-	                                  <td>博格巴姆巴佩破门，法国4-2克罗地亚夺得世界杯冠军</td>
-	                                  <td>小明</td>
-	                                  <td>新浪微博</td>
-	                              </tr>
-	                              </tbody>
-                              </table>
-                              <script>
-                                  $(document).ready(function(){
-                                      $("#tbclick tbody tr").click(function(){
-                                        $(location).attr('href', '/DouBanArticleStyle/');
-                                      });
-                                  });
-                              </script>
-	                  	  </div><!--/content-panel -->
-	                  </div><!-- /col-md-12 -->
-				</div><!-- row -->
-
-              <!-- <div class="row mt">
-                  <div class="col-md-12">
-                      <div class="content-panel">
-                          <table class="table table-striped table-advance table-hover">
-	                  	  	  <h4><i class="fa fa-angle-right"></i> Advanced Table</h4>
-	                  	  	  <hr>
-                              <thead>
-                              <tr>
-                                  <th><i class="fa fa-bullhorn"></i> Company</th>
-                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> Descrition</th>
-                                  <th><i class="fa fa-bookmark"></i> Profit</th>
-                                  <th><i class=" fa fa-edit"></i> Status</th>
-                                  <th></th>
-                              </tr>
-                              </thead>
-                              <tbody>
-                              <tr>
-                                  <td><a href="basic_table.html#">Company Ltd</a></td>
-                                  <td class="hidden-phone">Lorem Ipsum dolor</td>
-                                  <td>12000.00$ </td>
-                                  <td><span class="label label-info label-mini">Due</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="basic_table.html#">
-                                          Dashgum co
-                                      </a>
-                                  </td>
-                                  <td class="hidden-phone">Lorem Ipsum dolor</td>
-                                  <td>17900.00$ </td>
-                                  <td><span class="label label-warning label-mini">Due</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="basic_table.html#">
-                                          Another Co
-                                      </a>
-                                  </td>
-                                  <td class="hidden-phone">Lorem Ipsum dolor</td>
-                                  <td>14400.00$ </td>
-                                  <td><span class="label label-success label-mini">Paid</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="basic_table.html#">
-                                          Dashgum ext
-                                      </a>
-                                  </td>
-                                  <td class="hidden-phone">Lorem Ipsum dolor</td>
-                                  <td>22000.50$ </td>
-                                  <td><span class="label label-success label-mini">Paid</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td><a href="basic_table.html#">Total Ltd</a></td>
-                                  <td class="hidden-phone">Lorem Ipsum dolor</td>
-                                  <td>12120.00$ </td>
-                                  <td><span class="label label-warning label-mini">Due</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              </tbody>
-                          </table>
-                      </div><!-- /content-panel -->
-                 <!--  </div> --><!-- /col-md-12 -->
-             <!--  </div> --><!-- /row --> 
-			
-		</section><!--/wrapper -->
+          </section>
       </section><!-- /MAIN CONTENT -->
 
       <!--main content end-->
@@ -775,6 +500,7 @@
     <script src="{% static 'backgroundfiles/assets/js/common-scripts.js' %}"></script>
 
     <!--script for this page-->
+    <script src="{% static 'backgroundfiles/js/fileJs/Author&ArticleList.js' %}"></script>
     
   <script>
       //custom select box
@@ -784,6 +510,18 @@
       });
 
   </script>
-
+    <script>
+        window.onload = function(){
+            var id = $(".authorID").attr("id")
+            $.ajax({
+                url: "getAuthor_ArticleList/?id="+id,
+                type: 'GET',
+                dataType: 'json',
+                success: function(data){
+                    getAuthor_ArticleList(data.data);
+                },
+            })
+        }
+    </script>
   </body>
 </html>

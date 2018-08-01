@@ -46,7 +46,7 @@ urlpatterns = [
     path('SpiderMonitor/', bviews.SpiderMonitor),
     path('SpiderConfigure/', bviews.SpiderConfigure),
     path('Author/', bviews.Author),
-    path('ArticlesOfAuthor/', bviews.ArticlesOfAuthor),
+    path('ArticlesOfAuthor/', bviews.ArticlesOfAuthor),#作者详情
     path('ArticlesAndComments/', bviews.ArticlesAndComments),
     path('DataCleanStatistics/', bviews.DataCleanStatistics),
     path('DataCleanStrategies/', bviews.DataCleanStrategies),
@@ -82,7 +82,8 @@ urlpatterns = [
 
 
     path('author/getAuthors/', bviews.getAuthors), #/Author/作者信息ajax路径
-    path('articlelist/getArticleList/', bviews.getArticleList)
+    path('articlelist/getArticleList/', bviews.getArticleList), #/articleList/文章信息ajax路径
+    path('ArticlesOfAuthor/getAuthor_ArticleList/', bviews.getAuthor_ArticleList), #/ArticlesOfAuthor/获得作者所有文章信息
 
 
 

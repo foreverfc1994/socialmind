@@ -30,8 +30,24 @@ def SpiderConfigure(request):
     return render(request, 'background/SpiderConfigure.html')
 def Author(request):
     return render(request, 'background/Author.html')
-def ArticlesOfAuthor(request):
-    return render(request, 'background/ArticlesOfAuthor.html')
+def ArticlesOfAuthor(request):#作者详情
+    authorId = request.GET.get("id")
+    result = models.Author.objects.get(authorid=authorId)
+    authorID = result.authorid
+    name = if_is_None(result.name)
+    sex = if_is_None(result.sex, "未知")
+    age = str(if_is_None(result.age, "暂缺"))
+    fansNumber = str(if_is_None(result.fansnumber, 0))
+    address = if_is_None(result.address, "暂缺")
+    filesNumber = models.Article.objects.filter(authorid=authorID).count()
+    web = "暂缺"
+    if result.websiteid != None:
+        web = if_is_None(result.websiteid.websitename)
+    introduction = if_is_None(result.introduction, "暂缺")
+    focusNum = str(if_is_None(result.focusnumber, 0))
+    data = {"authorId": authorID, "authorName": name, "filesNumber": filesNumber, "fansNumber": fansNumber, "web": web,
+           "sex": sex, "age": age, "address": address, "introduction": introduction, "focusNum": focusNum}
+    return render(request, 'background/ArticlesOfAuthor.html', data)
 def ArticlesAndComments(request):
     return render(request, 'background/ArticlesAndComments.html')
 def DataCleanStatistics(request):
@@ -83,14 +99,17 @@ def ArticlePaticular(request):              #文章详情
         author = "暂缺"
         if authorid != "0":
             author = if_is_None(authorid.name, "暂缺")
+        authorID = if_is_None(authorid.authorid, "0")
         webName = if_is_None(allInformation.websiteid.websitename, "暂缺")
         webUrl = if_is_None(allInformation.websiteid.websiteurl, "暂缺")
         postTime = if_is_None(allInformation.posttime, "未知")
         content = if_is_None(allInformation.content, "暂缺")
+        content = content.replace("\ue5f1\u3000", "\n")
         likeNum = str(if_is_None(allInformation.likenumber, "0"))
         scanNum = str(if_is_None(allInformation.scannumber, "0"))
         resultDic = {"title": title, "author": author, "webName": webName, "webUrl": webUrl, "postTime": postTime, "content": content,
-                     "likeNum": likeNum, "scanNum": scanNum, "articleID": articleID}
+                     "likeNum": likeNum, "scanNum": scanNum, "articleID": articleID, "authorID": authorID}
+        print(resultDic)
     return render(request, 'background/ArticlePaticular.html', resultDic)
 
 def ArticlePaticularComments(request):
@@ -114,15 +133,14 @@ def ArticlePaticularComments(request):
 
 def usrManagement1(request,a):
 
-    if a==0:
-
-        return render(request, 'background/usrManagement.html',{'type0':1})
-    elif a==1:
-        return render(request, 'background/usrManagement.html',{'type1':1})
-    elif  a==2:
-        return render(request, 'background/usrManagement.html',{'type2':1})
-    elif  a==3:
-        return render(request, 'background/usrManagement.html',{'type3':1})
+    if a == 0:
+        return render(request, 'background/usrManagement.html', {'type0': 1})
+    elif a == 1:
+        return render(request, 'background/usrManagement.html', {'type1': 1})
+    elif a == 2:
+        return render(request, 'background/usrManagement.html', {'type2': 1})
+    elif a == 3:
+        return render(request, 'background/usrManagement.html', {'type3': 1})
     else:
         return render(request, 'background/usrManagement.html')
 
@@ -200,3 +218,25 @@ def getArticleList(request):
         dataList.append({"id": articleId, "title": title, "web": webName, "author": authorName, "type": webType, "readed": str(readed), "heat": heat})
     res = {"data": dataList}
     return HttpResponse(json.dumps(res))
+
+def getAuthor_ArticleList(request):
+    authorID = request.GET.get("id")
+    name = models.Author.objects.get(authorid=authorID).name
+    results = models.Article.objects.filter(authorid=authorID)
+    dataList = []
+    for result in results:
+        articleID = result.articleid
+        posttime = if_is_None(result.posttime, "未知")
+        title = result.title
+        content = result.content
+        if(len(content) >= 140):
+            content = content[:140]+"..."
+        content = content.replace("\u3000", "")
+        scannumber = str(if_is_None(result.scannumber, 0))
+        commentnumber = str(if_is_None(result.commentnumber, 0))
+        collectnumber = str(if_is_None(result.collectnumber, 0))
+        dataList.append({"articleID": articleID, "name": name, "posttime": posttime, "title": title, "content": content,
+                         "scanNum": scannumber, "commentNum": commentnumber, "collectNum": collectnumber})
+        print(dataList)
+    data = {"data": dataList}
+    return HttpResponse(json.dumps(data))

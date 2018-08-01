@@ -477,7 +477,7 @@ div.comment-item {
                             {% csrf_token %}
                             <h1>{{ title }}</h1>
                             <div>
-                                <p>本文作者：{{ author }}&nbsp;&nbsp;&nbsp;网站：{{ webName }}&nbsp;&nbsp;&nbsp;网址：{{ webUrl }}</p>
+                                <p>本文作者：<a href="/ArticlesOfAuthor/?id={{ authorID }}">{{ author }}</a>&nbsp;&nbsp;&nbsp;网站：{{ webName }}&nbsp;&nbsp;&nbsp;网址：{{ webUrl }}</p>
                                 <a href="https://www.douban.com/people/douban-time/" class="note-author">发布时间</a>
                                 <span class="pub-date">{{ postTime }}</span>
 
