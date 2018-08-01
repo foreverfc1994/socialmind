@@ -2,6 +2,7 @@ from visitor import models
 import uuid
 import os
 from time import strftime,gmtime
+from visitor.scripts import SysLog
 def saveImg(img, userid, i):
     file_path = os.path.join('static', 'upload', str(userid)+"_"+str(i)+'.jpg')
     print(file_path)

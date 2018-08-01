@@ -6,9 +6,12 @@ from visitor import forms
 from django.views.decorators.csrf import csrf_exempt
 from visitor.scripts.signin import *
 # Create your views here.
-
+# from visitor.scripts.SysLog import Logger
+import logging
+logger = logging.getLogger('visitor')
 def login(request):
     print(request.method)
+    # print(request.META)
     if request.session.get('is_login',None):
         return redirect('/person_index/')
     if request.method == 'POST':
@@ -22,48 +25,37 @@ def login(request):
             print(username, password, user_type)
             try:
                 user = models.User.objects.get(username=username)
-                if user.password == password:
-                   request.session['is_login'] = True
-                   request.session['user_id'] = user.pk
-                   request.session['user_name'] = user.username
-                   request.session['user_type'] = user_type
-                   if user_type == "个人用户":
-                       return redirect('person_index')
-                   if user_type == "企业用户":
-                       return redirect('com_index')
-                   if user_type == "政府用户":
-                       return redirect('gov_index')
-                   if user_type == "事业单位用户":
-                       return redirect('govcom_index')
-                   else:
-                       return redirect('/login/')
+                if user_type==user.usertype:
+                    if user.password == password:
+                        request.session['is_login'] = True
+                        request.session['user_id'] = user.pk
+                        request.session['user_name'] = user.username
+                        request.session['user_type'] = user_type
+                        # logger = Logger(username).getlogger()
+
+                        if user_type == "个人用户":
+                            logger.debug(user.pk+'|/person_index/|登录')
+                            return redirect('person_index')
+                        if user_type == "企业用户":
+                            logger.debug(user.pk+'|/com_index/|登录')
+                            return redirect('com_index')
+                        if user_type == "政府用户":
+                            logger.debug(user.pk+'|/gov_index/|登录')
+                            return redirect('gov_index')
+                        if user_type == "事业单位用户":
+                            logger.debug(user.pk+'|/govcom_index/|登录')
+                            return redirect('govcom_index')
+                        else:
+                            return redirect('/login/')
+                    else:
+                        message = '密码错误'
                 else:
-                    message = '密码错误'
+                    message = '请确认用户类型'
+
+
             except:
                 request.session.flush()
                 message = '无此用户'
-        # username = request.POST.get('username',None)
-        # password = request.POST.get('password',None)
-        # user_type = request.POST.get('user-type')
-        # if username and password:
-        #     username = username.strip()
-        #     try:
-        #         user = models.User.objects.get(username=username)
-        #         if user.password == password:
-        #             if user_type == "个人用户":
-        #                 return redirect('person_index')
-        #             if user_type == "企业用户":
-        #                 return redirect('com_index')
-        #             if user_type == "政府用户":
-        #                 return redirect('gov_index')
-        #             if user_type == "事业单位用户":
-        #                 return redirect('person_index')
-        #             else:
-        #                 return redirect('/login/')
-        #         else:
-        #             message ='密码错误'
-        #     except:
-        #         message = '无此用户'
         return render(request, 'foreground/login.html', locals())
     login_form = forms.loginForm()
     return render(request, 'foreground/login.html',locals())
@@ -86,10 +78,10 @@ def eventSearch(request):
     return render(request, 'foreground/eventSearch.html', {"role": role})
 
 def signin(request):
-    print(request.POST)
     if request.method == 'POST':
         userdata = request.POST
         print(type(userdata))
+        logger.debug('|/login/|注册')
         if userdata.get('user-type') == '0':
             personUser(userdata)
             return redirect('/jump/')
@@ -102,11 +94,9 @@ def signin(request):
                 return render(request, 'foreground/signin.html', {'message': error})
         elif userdata.get('user-type') == '2':
             try:
-                print(1)
                 govUser(request)
                 return redirect('/jump/')
             except Exception as e:
-                print(e)
                 error = 'error'
                 return render(request, 'foreground/signin.html', {'message': error})
         elif userdata.get('user-type') == '3':
@@ -114,7 +104,6 @@ def signin(request):
                 InstitutionUser(request)
                 return  redirect('/jump/')
             except Exception as e:
-                print(e)
                 error = 'error'
                 return render(request, 'foreground/signin.html', {'message': error})
         else:

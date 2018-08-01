@@ -11,10 +11,12 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import logging
+import django.utils.log
+import logging.handlers
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -26,7 +28,6 @@ SECRET_KEY = '8$k)lti6%vv!6a=ms58bi^g(j5f@=z8s58gn%9%24=2!hegh!)'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -72,7 +73,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'socialmind.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
@@ -86,7 +86,6 @@ DATABASES = {
         'PORT': '3306'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -106,7 +105,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
@@ -120,7 +118,6 @@ USE_L10N = True
 
 USE_TZ = False
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
@@ -128,3 +125,41 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+LOGGING = {
+    'version': 1,  # 标示配置模板版本，int 类型，目前只接收 `1`这个值。
+    'disable_existing_loggers': False,  # 这个没太看明白什么意思，了解的朋友麻烦说明下
+    'formatters': {
+        'standard': {
+            'format': '%(asctime)s %(funcName)s %(message)s %(name)s',
+        },
+    },
+    'filters': {
+        # 这里是定义过滤器，需要注意的是，由于 'filters' 是 logging.config.dictConfig 方法要求在配置字典中必须给订的 key ,所以即使不使用过滤器也需要明确给出一个空的结构。
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'standard'
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'formatter': 'standard',
+            'filename': 'log/socialmind.log',
+        },
+    },
+    'loggers': {
+        'visitor': {
+            'handlers': ['file', 'console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'manager': {
+            'handlers': ['file', 'console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    }
+}
