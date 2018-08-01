@@ -6,6 +6,9 @@ import json
 from manager.mysqlNullWash import if_is_None, webType_to_strType
 from django.views.decorators.csrf import csrf_exempt
 from visitor.scripts.signin import *
+from manager.scripts.sysscript import *
+import logging
+logger = logging.getLogger('manager')
 # Create your views here.
 # def login(request):
 #     print(request.method)
@@ -21,7 +24,7 @@ from visitor.scripts.signin import *
 def index(request):
     return render(request, 'background/index.html')
 def login(request):
-    return render(request, 'background/login.html')
+    return redirect('/logout/')
 def SpiderList(request):
     return render(request, 'background/SpiderList.html')
 def SpiderMonitor(request):
@@ -70,6 +73,9 @@ def usersVerify(request):
 def usrManagement(request):
     return render(request, 'background/usrManagement.html')
 def operateDiary(request):
+    logdata = [request.session['user_id'],request.session['user_role'],'/operateDiary/','获取系统日志','']
+    logger.debug(logdata)
+    readlog()
     return render(request, 'background/operateDiary.html')
 def DouBanArticleStyle(request):
     return render(request, 'background/DouBanArticleStyle.html')
@@ -89,8 +95,7 @@ def usrManagement1(request,a):
     else:
         return render(request, 'background/usrManagement.html')
 
-def test(request):
-    return render(request,'background/usrManagement1.html')
+
 def test(request):
     return render(request,'1.html')
 def yuandatashow(request):
@@ -141,6 +146,8 @@ def getAuthors(request):
         except:
             print(authorID+" was wrong")
     data = {"data": dataList}
+    logdata = [request.session['user_id'],request.session['user_role'],'/Author/','获取作者列表','']
+    logger.debug(logdata)
     return HttpResponse(json.dumps(data))
 
 def getArticleList(request):
@@ -162,4 +169,11 @@ def getArticleList(request):
             authorName = authorId.name
         dataList.append({"id": articleId, "title": title, "web": webName, "author": authorName, "type": webType, "readed": str(readed), "heat": heat})
     res = {"data": dataList}
+    logdata = [request.session['user_id'], request.session['user_role'], '/articlelist/', '获取文章列表', '']
+    logger.debug(logdata)
     return HttpResponse(json.dumps(res))
+
+def getlogs(request,logtype):
+    if logtype==1:
+        data = readlog()
+        return JsonResponse({'data':data})

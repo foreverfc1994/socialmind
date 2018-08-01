@@ -14,6 +14,8 @@ import os
 import logging
 import django.utils.log
 import logging.handlers
+import structlog
+from structlog import configure,processors,stdlib,threadlocal
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -132,6 +134,7 @@ LOGGING = {
     'formatters': {
         'standard': {
             'format': '%(asctime)s %(funcName)s %(message)s %(name)s',
+
         },
     },
     'filters': {
@@ -145,9 +148,14 @@ LOGGING = {
         },
         'file': {
             'level': 'DEBUG',
-            'class': 'logging.FileHandler',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
             'formatter': 'standard',
             'filename': 'log/socialmind.log',
+            'when': 'D',
+            'interval': 1,
+            'encoding':'utf-8',
+            'backupCount':7,
+
         },
     },
     'loggers': {

@@ -384,6 +384,10 @@
                                         <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">Show</span>
                                     </div>
                                     <!--<div class="panel-body">-->
+                                    <table id="syslog" class="display">
+
+
+                                    </table>
                                     <table class="table table-bordered" style="margin: 0%">
                                         <tr>
                                             <td>角色</td>
@@ -770,6 +774,20 @@
     //custom s elect box
 
     $(function () {
+        $.ajax({
+            url: '/operateDiary/getlogs/1',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                {#getTableLogData(data.data)#}
+                console.log(data)
+            },
+            error: function () {
+                alert('数据错误')
+            }
+
+
+        })
         var url = document.location.toString()
         var arrurl = url.split('/')
         var para = arrurl[4]
@@ -797,6 +815,10 @@
 
 
     });
+    $(function () {
+
+    })
+
 </script>
 </body>
 </html>

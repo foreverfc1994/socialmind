@@ -77,7 +77,7 @@ urlpatterns = [
     path('Eventshow/',bviews.eventshow),
     path('jianbao/',bviews.jianbao),
     path('qiantaimotaikuang',bviews.qiantaimotaikuang),
-
+    path('operateDiary/getlogs/<int:logtype>/',bviews.getlogs),
 
 
     path('author/getAuthors/', bviews.getAuthors), #/Author/作者信息ajax路径

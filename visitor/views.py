@@ -22,7 +22,6 @@ def login(request):
             username = login_form.cleaned_data['username']
             password = login_form.cleaned_data['password']
             user_type = login_form.cleaned_data['usertype']
-            print(username, password, user_type)
             try:
                 user = models.User.objects.get(username=username)
                 if user_type==user.usertype:
@@ -31,20 +30,29 @@ def login(request):
                         request.session['user_id'] = user.pk
                         request.session['user_name'] = user.username
                         request.session['user_type'] = user_type
+                        request.session['user_role'] = user.roleid.roleid
                         # logger = Logger(username).getlogger()
 
                         if user_type == "个人用户":
-                            logger.debug(user.pk+'|/person_index/|登录')
+                            logdata = [request.session['user_id'],request.session['user_role'],'/person_index/','登录','']
+                            logger.debug(logdata)
                             return redirect('person_index')
                         if user_type == "企业用户":
-                            logger.debug(user.pk+'|/com_index/|登录')
+                            logdata = [request.session['user_id'],request.session['user_role'], '/com_index/', '登录', '']
+                            logger.debug(logdata)
                             return redirect('com_index')
                         if user_type == "政府用户":
-                            logger.debug(user.pk+'|/gov_index/|登录')
+                            logdata = [request.session['user_id'],request.session['user_role'], '/gov_index/', '登录', '']
+                            logger.debug(logdata)
                             return redirect('gov_index')
                         if user_type == "事业单位用户":
-                            logger.debug(user.pk+'|/govcom_index/|登录')
+                            logdata = [request.session['user_id'],request.session['user_role'], '/govcom_index/', '登录', '']
+                            logger.debug(logdata)
                             return redirect('govcom_index')
+                        if user_type == '管理员':
+                            logdata = [request.session['user_id'],request.session['user_role'], '/bindex/', '登录', '']
+                            logger.debug(logdata)
+                            return redirect('index')
                         else:
                             return redirect('/login/')
                     else:
@@ -53,7 +61,8 @@ def login(request):
                     message = '请确认用户类型'
 
 
-            except:
+            except Exception as e:
+                print(e)
                 request.session.flush()
                 message = '无此用户'
         return render(request, 'foreground/login.html', locals())
@@ -81,7 +90,6 @@ def signin(request):
     if request.method == 'POST':
         userdata = request.POST
         print(type(userdata))
-        logger.debug('|/login/|注册')
         if userdata.get('user-type') == '0':
             personUser(userdata)
             return redirect('/jump/')
@@ -202,12 +210,16 @@ def checkuser(request):
     return JsonResponse({'msg':msg})
 
 def test(request):
+
     return render(request, 'foreground/com_index.html')
 
 def jump(request):
+    logdata = ['','', '/login/', '注册', '']
+    logger.debug(logdata)
     return render(request, 'foreground/jump.html')
 
 def logout(request):
-    logger.debug(request.session['user_id'] + '|/login/|退出')
+    logdata = [request.session['user_id'],request.session['user_role'],'/login/','退出','']
+    logger.debug(logdata)
     request.session.flush()
     return redirect("/login/")
