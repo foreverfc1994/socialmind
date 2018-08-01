@@ -18,6 +18,7 @@
     <!-- Custom styles for this template -->
     <link href="{% static 'backgroundfiles/assets/css/style.css' %}" rel="stylesheet">
     <link href="{% static 'backgroundfiles/assets/css/style-responsive.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'backgroundfiles/css/maruti-style.css' %}" />
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -26,64 +27,111 @@
     <![endif]-->
     <script src="{% static 'backgroundfiles/assets/js/jquery-3.3.1.min.js' %}"></script>
     <style>
-        .bot p {
-    margin-right: 10px;
-}
-.bot p, .artical-list .bot .edit {
-    font-size: 12px;
+        .image-caption {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 13px;
     color: #999;
-    padding: 0 6px;
-    height: 18px;
-    line-height: 18px;
 }
-        #authorinfotb tr td{
-            border-top: 0px solid #ddd;
-        }   
-        #infotb td{
-            text-align: center;
-        }
-        #infotb td{ border-right:1px solid white;padding-right: 20px;padding-top: 5px;
-        }
-        #authnumtb td{
-            padding-right: 15px;
-            color: white
-        }
-    img {
-    border-radius: 50%;
-}
-        .xiaoimg{
-            display: block;
-            width: 30px;
-            height: 30px;
-        }
-        .tit {
-    display: inline-block;
-    font-size: 20px;
-    color: #333;
-    font-weight: bold;
-    line-height: 36px;
-    margin-top: 12px;
-}
-.con {
-    display: block;
-    font-size: 14px;
-    color: #666;
-    line-height: 24px;
-    height: 48px;
-    margin-top: 12px;
-    overflow: hidden;
-    cursor: default;
-}
-.original {
-    color: #f96f85;
-    border: 1px solid #f96f85;
-}
-.tab {
-    margin-right: 14px;
-    font-size: 12px;
-    border-radius: 4px;
+div.comment-item {
+    margin-bottom: 1em;
+    word-break: break-word;
 }
     </style>
+    <!-- 豆瓣css -->
+    <style>
+.note-container h1 {
+    padding: 0 0 20px 0;
+    color: #111;
+    line-height: 1.4;
+}
+/* .note blockquote {
+    color: #7b7b7b;
+}
+.note p, .note blockquote, .note .DRE-unstyled {
+    margin: 0 0 20px 0;
+    line-height: 1.8;
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    word-wrap: break-word;
+} */
+blockquote {
+    padding-top: 0px;
+    margin-top: 30px;
+    background: url("https://img3.doubanio.com/f/sns/4e05379b65eac9cbef392f0343a6494c18db06ae/pics/sns/note/editor_icons/svg_blockquote1.svg") no-repeat 0 0;
+}
+#articlepanel h1 {
+    font-size: 26px;
+}
+#articlepanel h1 {
+    font-weight: bold;
+}
+.action-react {
+    display: inline-block;
+    margin-right: 10px;
+}
+.action-react .react-add:hover, .action-react .react-add:active {
+    border: 1px solid #f8c79d;
+}
+.action-react .react-add:link, .action-react .react-add:visited {
+    border: 1px solid #FAD5B5;
+}
+.action-react .react-add {
+    color: #CA6445;
+    background-color: #FBE9D9;
+    background-image: url("/f/shire/4da1c5c7e1d146d33008a6879dee93f45f5de79f/pics/actions/ic_action_like@2x.png");
+}
+.action-react .react-add, .action-react .react-cancel {
+    background-position: 5px center;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+}
+.action-btn, .action-react .react-add, .action-react .react-cancel {
+    display: inline-block;
+    vertical-align: middle;
+    height: 12px;
+    line-height: 1;
+    border-radius: 2px;
+    padding: 6px 9px 4px 24px;
+}
+.sharing-button {
+    display: inline-block;
+    vertical-align: middle;
+    height: 22px;
+    border: 1px solid #DAEDE4;
+    border-radius: 2px;
+    background-color: #EFF7ED;
+    color: #4F946E;
+    cursor: pointer;
+    font-size: 0;
+}
+a.lnk-sharing:link, a.lnk-sharing:visited {
+    border-color: #e3f1ed;
+    background-color: #f2f8f2;
+    color: #4f946e;
+}
+.sharing-douban .lnk-sharing {
+    height: 12px;
+    line-height: 1;
+}
+.update-item .pic, .comment-item .pic {
+    float: left;
+    margin-right: 20px;
+}
+.update-item .content, .comment-item .content {
+    overflow: hidden;
+    zoom: 1;
+}
+.op-lnks a:link, .op-lnks a:visited {
+    color: #bbb;
+}
+div.comment-item {
+    margin-bottom: 1em;
+    word-break: break-word;
+}
+    </style>
+    <script src="https://img3.doubanio.com/f/shire/f010949d3f23dd7c972ad7cb40b800bf70723c93/js/douban.js"></script>
+    <!-- <link href="{% static 'backgroundfiles/css/douban.css' %}" rel="stylesheet" type="text/css"> -->
   </head>
 
   <body>
@@ -301,7 +349,7 @@
                         <span>源数据展示模块</span>
                     </a>
                     <ul class="sub">
-                      <li><a  href="/Author/">作者管理</a></li>
+                      <li><a  href="/Author/">查看作者</a></li>
                       <li><a  href="/ArticlesOfAuthor/" style="color: #fff;">查看作者相关文章</a></li>
                       <script>
                             $(document).ready(function(){
@@ -326,7 +374,7 @@
                       </ul>
                   </li>
                   <li class="sub-menu">
-                    <a href="/topics/" >
+                    <a href="/topics/">
                         <i class="fa fa-book"></i>
                         <span>主题管理</span>
                     </a>
@@ -370,11 +418,15 @@
                       </a>
                   </li>-->
                   <li class="sub-menu">
-                    <a href="/usrCommentsSelect/">
+                    <a href="/usrCommentsSelect/" >
                         <i class="fa fa-th"></i>
                         <span>用户留言管理</span>
                     </a>
-                    <!--  -->
+                    <!-- <ul class="sub">
+                        <li><a  href="/usrCommentsSelect/">查看用户留言</a></li>
+                        <li><a  href="/usrCommentsCheck/">审核用户留言</a></li>
+                        <li><a  href="/usrCommentsDelete/">删除用户留言</a></li>
+                    </ul> -->
                   </li>
                 <li class="sub-menu">
                     <a href="/AssignAuthorities/" >
@@ -387,7 +439,10 @@
                         <i class=" fa fa-bar-chart-o"></i>
                         <span>用户管理</span>
                     </a>
-                    <!-- -->
+                    <!-- <ul class="sub">
+                        <li><a  href="/usersVerify/">新增用户审核</a></li>
+                        <li><a  href="/usrManagement/">用户管理</a></li>
+                    </ul> -->
                 </li>
                 <li class="sub-menu">
                     <a href="/operateDiary/" >
@@ -411,66 +466,48 @@
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper site-min-height">
-          	<h3><i class="fa fa-angle-right"></i> 作者相关文章</h3>
-                {% csrf_token %}
-                <div class="row authorID" id="{{ authorId }}">
-	                  <div class="col-md-12 mt" style="margin-left: 0px;margin-right: 0px;background-color: #5F9EA0;min-height: 200px">
-                        <div class="row" style="margin-top: 10px;">
-                            <div class="col-md-2">
-                                <img style="width: 100%" src="{% static 'backgroundfiles/assets/img/ui-zac.jpg' %}">
+          	<h3><i class="fa fa-angle-right"></i>  作者相关文章</h3>
+          	<div class="row mt">
+          		<div class="col-lg-12">
+          		<div id="articlepanel" class="panel panel-default">
+                        <!-- <div class="panel-heading">
+                        </div> -->
+                        <div class="panel-body">
+                            <div class="note-header note-header-container">
+                            {% csrf_token %}
+                            <h1>{{ title }}</h1>
+                            <div>
+                                <p>本文作者：<a href="/ArticlesOfAuthor/?id={{ authorID }}">{{ author }}</a>&nbsp;&nbsp;&nbsp;网站：{{ webName }}&nbsp;&nbsp;&nbsp;网址：{{ webUrl }}</p>
+                                <a href="https://www.douban.com/people/douban-time/" class="note-author">发布时间</a>
+                                <span class="pub-date">{{ postTime }}</span>
+
                             </div>
-                            <div class="col-md-10" style="padding-left: 30px">
-                                <div class="row">
-                                    <h3 style="color: white;" class="authorName">{{ authorName }}</h3>
+                            </div>
+                            <div id="note_673644060_full" >
+
+                                    <div id="{{ articleID }}" class="articleID">
+                                        {{ content }}
+                                    </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-9"></div>
+                                <div class="col-lg-3">
+                                    <div class="text-danger" style="margin-left: 75px;margin-right: 20px;display: inline-block">👍 点赞数{{ likeNum }}</div>
+                                    <div class="text-success" style="margin-right: 10px;display: inline-block">📌 转发量{{ scanNum }}</div>
                                 </div>
-                                <div class="row">
-                                    <table id="infotb" style="color: white;">
-                                        <tr>
-                                            <td>
-                                                <b>{{ web }}</b>
-                                                <p>网站</p>
-                                            </td>
-                                            <td style="padding-left: 20px">
-                                                <b>{{ introduction }}</b>
-                                                <p>个人介绍</p>
-                                            </td>
-                                            <td style="padding-left: 20px">
-                                                <b>{{ sex }}</b>
-                                                <p>性别</p>
-                                            </td>
-                                            <td style="padding-left: 20px">
-                                                <b>{{ age }}</b>
-                                                <p>年龄</p>
-                                            </td>
-                                            <td style="padding-left: 20px;border-right: 0px">
-                                                <b>{{ address }}</b>
-                                                <p>地址</p>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div class="row" style="margin-top: 30px">
-                                    <table id="authnumtb">
-                                        <tr>
-                                            <td>
-                                                关注数&nbsp;{{ focusNum }}
-                                            </td>
-                                            <td>
-                                                粉丝数&nbsp;{{ fansNumber }}
-                                            </td>
-                                            <td>
-                                                文章数&nbsp;{{ filesNumber }}
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
+                            </div>
+                            <hr style="margin-top: 30px;height:2px;border: 0px;background-color: #ddd">
+                            <div id="comments" class="">
                             </div>
                         </div>
-	                  </div><!-- /col-md-12 -->
-                </div><!-- row -->
-                <div class="container" id="authorFiles">
-                </div>
-          </section>
+                        <!-- <div class="panel-footer">
+                        </div> -->
+                    </div>
+          		</div>
+            </div>
+			
+		</section><!--/wrapper -->
       </section><!-- /MAIN CONTENT -->
 
       <!--main content end-->
@@ -502,26 +539,26 @@
     <!--script for this page-->
     <script src="{% static 'backgroundfiles/js/fileJs/Author&ArticleList.js' %}"></script>
     
-  <script>
-      //custom select box
+    <script>
+    //custom select box
 
-      $(function(){
+        $(function(){
           $('select.styled').customSelect();
-      });
+        });
 
-  </script>
+    </script>
     <script>
         window.onload = function(){
-            var id = $(".authorID").attr("id")
+            var articleID = $(".articleID").attr("id");
             $.ajax({
-                url: "getAuthor_ArticleList/?id="+id,
+                url: "getComments/?id="+articleID,
                 type: 'GET',
                 dataType: 'json',
                 success: function(data){
-                    getAuthor_ArticleList(data.data);
-                },
+                    getComments(data.data);
+                }
             })
         }
     </script>
-  </body>
+    </body>
 </html>
