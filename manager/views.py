@@ -73,8 +73,45 @@ def operateDiary(request):
     return render(request, 'background/operateDiary.html')
 def DouBanArticleStyle(request):
     return render(request, 'background/DouBanArticleStyle.html')
-def DouBanArticleStyle2(request):
-    return render(request, 'background/DouBanArticleStyle2.html')
+def ArticlePaticular(request):              #文章详情
+    articleID = request.GET.get("id")
+    allInformation = if_is_None(models.Article.objects.get(articleid=articleID), "0")
+    resultDic = {}
+    if allInformation != "0":
+        title = allInformation.title
+        authorid = if_is_None(allInformation.authorid, "0")
+        author = "暂缺"
+        if authorid != "0":
+            author = if_is_None(authorid.name, "暂缺")
+        webName = if_is_None(allInformation.websiteid.websitename, "暂缺")
+        webUrl = if_is_None(allInformation.websiteid.websiteurl, "暂缺")
+        postTime = if_is_None(allInformation.posttime, "未知")
+        content = if_is_None(allInformation.content, "暂缺")
+        likeNum = str(if_is_None(allInformation.likenumber, "0"))
+        scanNum = str(if_is_None(allInformation.scannumber, "0"))
+        resultDic = {"title": title, "author": author, "webName": webName, "webUrl": webUrl, "postTime": postTime, "content": content,
+                     "likeNum": likeNum, "scanNum": scanNum, "articleID": articleID}
+    return render(request, 'background/ArticlePaticular.html', resultDic)
+
+def ArticlePaticularComments(request):
+    articleID = request.GET.get("id")
+    comments = if_is_None(models.ArticleComment.objects.filter(articleid=articleID))
+    resultList = []
+    for comment in comments:
+        if comment.fathercommentid == None:
+            commentID = comment.article_commentid
+            commenterID = comment.authorid
+            commenterName = "暂缺"
+            if commenterID != None:
+                commenterName = commenterID.name
+            commentTime = if_is_None(comment.commenttime, "暂缺")
+            content = comment.content
+            content = content.replace("\ue5f1", "")
+            resultList.append({"commentID": commentID, "commenterID": commenterID, "commenterName": commenterName, "commentTime": commentTime,
+                               "contentt": content})
+    result = {"data": resultList}
+    return HttpResponse(json.dumps(result))
+
 def usrManagement1(request,a):
 
     if a==0:

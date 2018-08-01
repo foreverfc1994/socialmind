@@ -31,13 +31,11 @@ function getTableAuthorData(data){
             {"data": "filesNumber", "title": "文章数"},
             {"data": "fansNumber", "title": "粉丝数"},
             {"data": null, "title": "详情", "render": function aLink(data){
-                return "<a href='toAuthorParticular/?id="+data.authorId+"/'>详情</a>"
+                return "<a href='/toAuthorParticular/?id="+data.authorId+"'>详情</a>";
                 }
             },
-            {"data": null, "title": "操作", "width": "60px", "render": function botton(){
-                return "<button class=\"btn btn-success btn-xs\"><i class=\"fa fa-check\"></i></button>\n" +
-                    "<button class=\"btn btn-primary btn-xs\"><i class=\"fa fa-pencil\"></i></button>\n"+
-                    "<button class=\"btn btn-danger btn-xs\"><i class=\"fa fa-trash-o \"></i></button>"
+            {"data": null, "title": "操作", "width": "40px", "render": function botton(){
+                    return "<button class=\"btn btn-danger btn-xs\"><i class=\"fa fa-trash-o \"></i></button>"
                 },
             }
         ]
@@ -82,17 +80,42 @@ function getArticleListData(data){
             {"data": "readed", "title": "阅读量", "width": "8%"},
             {"data": "heat", "title": "热度", "width": "5%"},
             {"data": null, "title": "详情", "width": "5%", "render": function aLink(data){
-                return "<a href='toAuthorParticular/?id="+data.id+"/'>详情</a>"
+                return "<a href='/ArticlePaticular/?id="+data.id+"'>详情</a>";
                 }
             },
-            {"data": null, "title": "操作","width": "10%", "render": function botton(){
-                return "<button class=\"btn btn-success btn-xs\"><i class=\"fa fa-check\"></i></button>\n" +
-                    "<button class=\"btn btn-primary btn-xs\"><i class=\"fa fa-pencil\"></i></button>\n"+
-                    "<button class=\"btn btn-danger btn-xs\"><i class=\"fa fa-trash-o \"></i></button>"
+            {"data": null, "title": "操作","width": "5%", "render": function botton(){
+                    return "<button class=\"btn btn-danger btn-xs\"><i class=\"fa fa-trash-o \"></i></button>"
                 },
             }
         ]
     };
 
     var table=$('#table_id_example').DataTable(options);
+}
+
+function getComments(datas){
+    if(datas.length>0){
+        html = "";
+        for(i=0;i<datas.length;i++){
+            data = datas[i];
+            commentID = data.commentID;
+            commenterID = data.commenterID;
+            commenterName = data.commenterName;
+            commentTime = data.commentTime;
+            contentt = data.contentt;
+            html += "<div class=\"comment-item\" id=\""+commentID+"\">\n" +
+                "        <div class=\"pic\">\n" +
+                "             <a href=\"#\"><img src=\"/static/backgroundfiles/img/details_close.png\" width=\"48\" height=\"48\" class=\"\" alt=\"\"></a>\n" +
+                "        </div>\n" +
+                "        <div class=\"content report-comment\">\n" +
+                "            <div class=\"author\">\n" +
+                "                <span class=\"\">"+commentTime+"</span>\n" +
+                "                    <a href=\"#\" class=\"  \">"+commenterName+"</a> \n" +
+                "            </div>\n" +
+                "            <p class=\"\">"+contentt+"</p>\n" +
+                "        </div>\n" +
+                "    </div>\n"
+        }
+        $("#comments").append(html);
+    }
 }

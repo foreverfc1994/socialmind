@@ -1,0 +1,564 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+    <title>DASHGUM - Bootstrap Admin Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'backgroundfiles/assets/css/bootstrap.css' %}" rel="stylesheet">
+    <!--external css-->
+    <link href="{% static 'backgroundfiles/assets/font-awesome/css/font-awesome.css' %}" rel="stylesheet" />
+        
+    <!-- Custom styles for this template -->
+    <link href="{% static 'backgroundfiles/assets/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'backgroundfiles/assets/css/style-responsive.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'backgroundfiles/css/maruti-style.css' %}" />
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="{% static 'backgroundfiles/assets/js/jquery-3.3.1.min.js' %}"></script>
+    <style>
+        .image-caption {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 13px;
+    color: #999;
+}
+div.comment-item {
+    margin-bottom: 1em;
+    word-break: break-word;
+}
+    </style>
+    <!-- 豆瓣css -->
+    <style>
+.note-container h1 {
+    padding: 0 0 20px 0;
+    color: #111;
+    line-height: 1.4;
+}
+/* .note blockquote {
+    color: #7b7b7b;
+}
+.note p, .note blockquote, .note .DRE-unstyled {
+    margin: 0 0 20px 0;
+    line-height: 1.8;
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    word-wrap: break-word;
+} */
+blockquote {
+    padding-top: 0px;
+    margin-top: 30px;
+    background: url("https://img3.doubanio.com/f/sns/4e05379b65eac9cbef392f0343a6494c18db06ae/pics/sns/note/editor_icons/svg_blockquote1.svg") no-repeat 0 0;
+}
+#articlepanel h1 {
+    font-size: 26px;
+}
+#articlepanel h1 {
+    font-weight: bold;
+}
+.action-react {
+    display: inline-block;
+    margin-right: 10px;
+}
+.action-react .react-add:hover, .action-react .react-add:active {
+    border: 1px solid #f8c79d;
+}
+.action-react .react-add:link, .action-react .react-add:visited {
+    border: 1px solid #FAD5B5;
+}
+.action-react .react-add {
+    color: #CA6445;
+    background-color: #FBE9D9;
+    background-image: url("/f/shire/4da1c5c7e1d146d33008a6879dee93f45f5de79f/pics/actions/ic_action_like@2x.png");
+}
+.action-react .react-add, .action-react .react-cancel {
+    background-position: 5px center;
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+}
+.action-btn, .action-react .react-add, .action-react .react-cancel {
+    display: inline-block;
+    vertical-align: middle;
+    height: 12px;
+    line-height: 1;
+    border-radius: 2px;
+    padding: 6px 9px 4px 24px;
+}
+.sharing-button {
+    display: inline-block;
+    vertical-align: middle;
+    height: 22px;
+    border: 1px solid #DAEDE4;
+    border-radius: 2px;
+    background-color: #EFF7ED;
+    color: #4F946E;
+    cursor: pointer;
+    font-size: 0;
+}
+a.lnk-sharing:link, a.lnk-sharing:visited {
+    border-color: #e3f1ed;
+    background-color: #f2f8f2;
+    color: #4f946e;
+}
+.sharing-douban .lnk-sharing {
+    height: 12px;
+    line-height: 1;
+}
+.update-item .pic, .comment-item .pic {
+    float: left;
+    margin-right: 20px;
+}
+.update-item .content, .comment-item .content {
+    overflow: hidden;
+    zoom: 1;
+}
+.op-lnks a:link, .op-lnks a:visited {
+    color: #bbb;
+}
+div.comment-item {
+    margin-bottom: 1em;
+    word-break: break-word;
+}
+    </style>
+    <script src="https://img3.doubanio.com/f/shire/f010949d3f23dd7c972ad7cb40b800bf70723c93/js/douban.js"></script>
+    <!-- <link href="{% static 'backgroundfiles/css/douban.css' %}" rel="stylesheet" type="text/css"> -->
+  </head>
+
+  <body>
+
+  <section id="container" >
+      <!-- **********************************************************************************************************************************************************
+      TOP BAR CONTENT & NOTIFICATIONS
+      *********************************************************************************************************************************************************** -->
+      <!--header start-->
+      <header class="header black-bg">
+              <div class="sidebar-toggle-box">
+                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+              </div>
+            <!--logo start-->
+            <a href="/bindex/" class="logo"><b>SocialMind管理员</b></a>
+            <!--logo end-->
+            <div class="nav notify-row" id="top_menu">
+                <!--  notification start -->
+                <ul class="nav top-menu">
+                    <!-- settings start -->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
+                            <i class="fa fa-tasks"></i>
+                            个人中心
+                        </a>
+                    </li>
+                    <!-- inbox dropdown start-->
+                    <li id="header_inbox_bar" class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
+                            <i class="fa fa-envelope-o"></i>
+                            消息
+                            <span class="badge bg-theme">5</span>
+                        </a>
+                        <ul class="dropdown-menu extended inbox">
+                            <div class="notify-arrow notify-arrow-green"></div>
+                            <li>
+                                <p class="green">You have 5 new messages</p>
+                            </li>
+                            <li>
+                                <a href="/bindex/">
+                                    <span class="photo"><img alt="avatar" src="{% static 'backgroundfiles/assets/img/ui-zac.jpg' %}"></span>
+                                    <span class="subject">
+                                    <span class="from">Zac Snider</span>
+                                    <span class="time">Just now</span>
+                                    </span>
+                                    <span class="message">
+                                        Hi mate, how is everything?
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/bindex/">
+                                    <span class="photo"><img alt="avatar" src="{% static 'backgroundfiles/assets/img/ui-divya.jpg' %}"></span>
+                                    <span class="subject">
+                                    <span class="from">Divya Manian</span>
+                                    <span class="time">40 mins.</span>
+                                    </span>
+                                    <span class="message">
+                                     Hi, I need your help with this.
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/bindex/">
+                                    <span class="photo"><img alt="avatar" src="{% static 'backgroundfiles/assets/img/ui-danro.jpg' %}"></span>
+                                    <span class="subject">
+                                    <span class="from">Dan Rogers</span>
+                                    <span class="time">2 hrs.</span>
+                                    </span>
+                                    <span class="message">
+                                        Love your new Dashboard.
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/bindex/">
+                                    <span class="photo"><img alt="avatar" src="{% static 'backgroundfiles/assets/img/ui-sherman.jpg' %}"></span>
+                                    <span class="subject">
+                                    <span class="from">Dj Sherman</span>
+                                    <span class="time">4 hrs.</span>
+                                    </span>
+                                    <span class="message">
+                                        Please, answer asap.
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/bindex/">See all messages</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- inbox dropdown end -->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
+                            <i class="fa fa-cog"></i>
+                            设置
+                        </a>
+                        <ul class="dropdown-menu extended tasks-bar">
+                            <div class="notify-arrow notify-arrow-green"></div>
+                            <li>
+                                <p class="green">You have 4 pending tasks</p>
+                            </li>
+                            <li>
+                                <a href="/bindex/">
+                                    <div class="task-info">
+                                        <div class="desc">DashGum Admin Panel</div>
+                                        <div class="percent">40%</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                            <span class="sr-only">40% Complete (success)</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/bindex/">
+                                    <div class="task-info">
+                                        <div class="desc">Database Update</div>
+                                        <div class="percent">60%</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                            <span class="sr-only">60% Complete (warning)</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/bindex/">
+                                    <div class="task-info">
+                                        <div class="desc">Product Development</div>
+                                        <div class="percent">80%</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                            <span class="sr-only">80% Complete</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/bindex/">
+                                    <div class="task-info">
+                                        <div class="desc">Payments Sent</div>
+                                        <div class="percent">70%</div>
+                                    </div>
+                                    <div class="progress progress-striped">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+                                            <span class="sr-only">70% Complete (Important)</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="external">
+                                <a href="#">See All Tasks</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- settings end -->
+                    
+                </ul>
+                <!--  notification end -->
+            </div>
+            <div class="top-menu">
+            	<ul class="nav pull-right top-menu">
+                    <li>
+                        <form class="navbar-form navbar-right" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search here..." aria-describedby="basic-addon2" style="height: 28px;margin-top: 7px">
+                            <button type="submit" class="btn btn-default" style="height:28px;border: 1px solid #666666 !important;-webkit-border-radius: 4px;background-color: #ffd777;margin-right: 10px;margin-top: 7px;color: #666666;border-radius: 4px;">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                        </form>
+                    </li>
+                    <li><a class="logout" href="/login/">注销</a></li>
+            	</ul>
+            </div>
+        </header>
+      <!--header end-->
+      
+      <!-- **********************************************************************************************************************************************************
+      MAIN SIDEBAR MENU
+      *********************************************************************************************************************************************************** -->
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu" id="nav-accordion">
+              
+              	  <p class="centered"><a href="/bindex/"><img src="{% static 'backgroundfiles/assets/img/ny.jpg' %}" class="img-circle" width="60"></a></p>
+              	  <h5 class="centered"><a href="/bindex/" style="color: white">首页</a></h5>
+              	  	
+                  <!--<li class="mt">
+                      <a class="active" href="index.html">
+                          <i class="fa fa-dashboard"></i>
+                          <span>爬虫</span>
+                      </a>
+                  </li>-->
+                  <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-dashboard"></i>
+                        <span>爬虫</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="/SpiderList/">爬虫管理</a></li>
+                        <li><a  href="/SpiderMonitor/">爬虫监控</a></li>
+                        <li><a  href="/SpiderConfigure/">爬虫配置</a></li>
+                    </ul>
+                  </li>
+                <li class="sub-menu">
+                    <a href="javascript:;" class="active">
+                        <i class="fa fa-tasks"></i>
+                        <span>源数据展示模块</span>
+                    </a>
+                    <ul class="sub">
+                      <li><a  href="/Author/">查看作者</a></li>
+                      <li><a  href="/ArticlesOfAuthor/" style="color: #fff;">查看作者相关文章</a></li>
+                      <script>
+                            $(document).ready(function(){
+                                $("li:not([class])>a:not(a:contains('查看作者相关文章'))").hover(function(){
+                                    $("a:contains('查看作者相关文章')").removeAttr("style")
+                                });
+                            });
+                      </script>
+                      <li><a href="/articlelist/">文章管理</a></li>
+                  </ul>
+                </li>
+                  <li class="sub-menu">
+                      <a href="javascript:;">
+                          <i class="fa fa-desktop"></i>
+                          <span>数据清洗</span>
+                      </a>
+                      <ul class="sub">
+                          <!-- <li><a  href="/DataCleanStatistics/">清洗数据统计</a></li> -->
+                          <li><a  href="/DataCleanStrategies/">数据清洗策略配置</a></li>
+                          <li><a  href="/DataCleanLog/">数据清洗日志管理</a></li>
+                          <li><a  href="/washData/">数据清洗</a></li>
+                      </ul>
+                  </li>
+                  <li class="sub-menu">
+                    <a href="/topics/">
+                        <i class="fa fa-book"></i>
+                        <span>主题管理</span>
+                    </a>
+                  </li>
+                  <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-cogs"></i>
+                        <span>舆情对象管理</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a  href="/AddEventObject/">新增舆情对象</a></li>
+                        <li><a  href="/CreateEventObject/">舆情对象自动生成</a></li>
+                        <li><a  href="/ShowEventObject/">舆情对象展示</a></li>
+                    </ul>
+                  </li>
+                  <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-tasks"></i>
+                        <span>语义工具集</span>
+                    </a>
+                    <ul class="sub">
+                      <li><a  href="/semanticsTools/">新增语义工具</a></li>
+                      <li><a  href="/semanticsToolkits/">新增工具包</a></li>
+                      <li><a  href="/ShowToolkits/">工具包展示</a></li>
+                    </ul>
+                  </li>
+                  <!--<li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class="fa fa-th"></i>
+                          <span>系统操作管理</span>
+                      </a>
+                      <ul class="sub">
+                          <li><a  href="basic_table.html">系统用户评论管理</a></li>
+                          <li><a  href="responsive_table.html">系统用户操作管理</a></li>
+                      </ul>
+                  </li>
+                  <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class=" fa fa-bar-chart-o"></i>
+                          <span>用户管理</span>
+                      </a>
+                  </li>-->
+                  <li class="sub-menu">
+                    <a href="/usrCommentsSelect/" >
+                        <i class="fa fa-th"></i>
+                        <span>用户留言管理</span>
+                    </a>
+                    <!-- <ul class="sub">
+                        <li><a  href="/usrCommentsSelect/">查看用户留言</a></li>
+                        <li><a  href="/usrCommentsCheck/">审核用户留言</a></li>
+                        <li><a  href="/usrCommentsDelete/">删除用户留言</a></li>
+                    </ul> -->
+                  </li>
+                <li class="sub-menu">
+                    <a href="/AssignAuthorities/" >
+                        <i class=" fa fa-bar-chart-o"></i>
+                        <span>权限管理</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a href="/usrManagement/" >
+                        <i class=" fa fa-bar-chart-o"></i>
+                        <span>用户管理</span>
+                    </a>
+                    <!-- <ul class="sub">
+                        <li><a  href="/usersVerify/">新增用户审核</a></li>
+                        <li><a  href="/usrManagement/">用户管理</a></li>
+                    </ul> -->
+                </li>
+                <li class="sub-menu">
+                    <a href="/operateDiary/" >
+                        <i class=" fa fa-bar-chart-o"></i>
+                        <span>日志管理</span>
+                    </a>
+                    <!--<ul class="sub">
+                        <li><a  href="morris.html">操作日志</a></li>
+                    </ul>-->
+                </li>
+
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+      
+      <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper site-min-height">
+          	<h3><i class="fa fa-angle-right"></i>  作者相关文章</h3>
+          	<div class="row mt">
+          		<div class="col-lg-12">
+          		<div id="articlepanel" class="panel panel-default">
+                        <!-- <div class="panel-heading">
+                        </div> -->
+                        <div class="panel-body">
+                            <div class="note-header note-header-container">
+                            {% csrf_token %}
+                            <h1>{{ title }}</h1>
+                            <div>
+                                <p>本文作者：{{ author }}&nbsp;&nbsp;&nbsp;网站：{{ webName }}&nbsp;&nbsp;&nbsp;网址：{{ webUrl }}</p>
+                                <a href="https://www.douban.com/people/douban-time/" class="note-author">发布时间</a>
+                                <span class="pub-date">{{ postTime }}</span>
+
+                            </div>
+                            </div>
+                            <div id="note_673644060_full" >
+
+                                    <div id="{{ articleID }}" class="articleID">
+                                        {{ content }}
+                                    </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-9"></div>
+                                <div class="col-lg-3">
+                                    <div class="text-danger" style="margin-left: 75px;margin-right: 20px;display: inline-block">👍 点赞数{{ likeNum }}</div>
+                                    <div class="text-success" style="margin-right: 10px;display: inline-block">📌 转发量{{ scanNum }}</div>
+                                </div>
+                            </div>
+                            <hr style="margin-top: 30px;height:2px;border: 0px;background-color: #ddd">
+                            <div id="comments" class="">
+                            </div>
+                        </div>
+                        <!-- <div class="panel-footer">
+                        </div> -->
+                    </div>
+          		</div>
+            </div>
+			
+		</section><!--/wrapper -->
+      </section><!-- /MAIN CONTENT -->
+
+      <!--main content end-->
+      <!--footer start-->
+      <footer class="site-footer">
+          <div class="text-center">
+              2018 - <a href="http://www.xjtu.edu.cn" target="_blank" title="西安交通大学">西安交通大学</a> - <a href="http://www.xjtu.edu.cn" title="social mind" target="_blank">social mind舆情分析平台</a>
+              <a href="#" class="go-top">
+                  <i class="fa fa-angle-up"></i>
+              </a>
+          </div>
+      </footer>
+      <!--footer end-->
+  </section>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script>
+    <script src="{% static 'backgroundfiles/assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'backgroundfiles/assets/js/jquery-ui-1.9.2.custom.min.js' %}"></script>
+    <script src="{% static 'backgroundfiles/assets/js/jquery.ui.touch-punch.min.js' %}"></script>
+    <script class="include" type="text/javascript" src="{% static 'backgroundfiles/assets/js/jquery.dcjqaccordion.2.7.js' %}"></script>
+    <script src="{% static 'backgroundfiles/assets/js/jquery.scrollTo.min.js' %}"></script>
+    <script src="{% static 'backgroundfiles/assets/js/jquery.nicescroll.js' %}" type="text/javascript"></script>
+
+
+    <!--common script for all pages-->
+    <script src="{% static 'backgroundfiles/assets/js/common-scripts.js' %}"></script>
+
+    <!--script for this page-->
+    <script src="{% static 'backgroundfiles/js/fileJs/Author&ArticleList.js' %}"></script>
+    
+    <script>
+    //custom select box
+
+        $(function(){
+          $('select.styled').customSelect();
+        });
+
+    </script>
+    <script>
+        window.onload = function(){
+            var articleID = $(".articleID").attr("id");
+            $.ajax({
+                url: "getComments/?id="+articleID,
+                type: 'GET',
+                dataType: 'json',
+                success: function(data){
+                    getComments(data.data);
+                }
+            })
+        }
+    </script>
+    </body>
+</html>
