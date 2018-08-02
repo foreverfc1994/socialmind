@@ -43,3 +43,13 @@
 2018-08-01 17:08:14,485 operateDiary ['asdasdasdasdasda', '44aeffa9-524e-4af3-a845-2b743111da09', '/operateDiary/', '获取系统日志', ''] manager
 2018-08-01 17:08:17,877 operateDiary ['asdasdasdasdasda', '44aeffa9-524e-4af3-a845-2b743111da09', '/operateDiary/', '获取系统日志', ''] manager
 2018-08-01 17:08:37,738 operateDiary ['asdasdasdasdasda', '44aeffa9-524e-4af3-a845-2b743111da09', '/operateDiary/', '获取系统日志', ''] manager
+2018-08-02 12:06:05,121 logout ['asdasdasdasdasda', '44aeffa9-524e-4af3-a845-2b743111da09', '/login/', '退出', ''] visitor
+2018-08-02 12:06:21,848 login ['asdasdasdasdasda', '44aeffa9-524e-4af3-a845-2b743111da09', '/bindex/', '登录', ''] visitor
+2018-08-02 12:07:29,516 logout ['asdasdasdasdasda', '44aeffa9-524e-4af3-a845-2b743111da09', '/login/', '退出', ''] visitor
+2018-08-02 12:07:37,299 login ['asdasdasdasdasda', '44aeffa9-524e-4af3-a845-2b743111da09', '/bindex/', '登录', ''] visitor
+2018-08-02 12:09:01,634 logout ['asdasdasdasdasda', '44aeffa9-524e-4af3-a845-2b743111da09', '/login/', '退出', ''] visitor
+2018-08-02 12:09:10,510 login ['asdasdasdasdasda', '44aeffa9-524e-4af3-a845-2b743111da09', '/bindex/', '登录', ''] visitor
+2018-08-02 12:57:18,791 logout ['asdasdasdasdasda', '44aeffa9-524e-4af3-a845-2b743111da09', '/login/', '退出', ''] visitor
+2018-08-02 12:58:10,107 login ['111', '58a2eb7f-21ee-4d9c-83a9-cc599a236bcc', '/person_index/', '登录', ''] visitor
+2018-08-02 14:24:16,749 logout ['111', '58a2eb7f-21ee-4d9c-83a9-cc599a236bcc', '/login/', '退出', ''] visitor
+2018-08-02 14:24:26,660 login ['asdasdasdasdasda', '44aeffa9-524e-4af3-a845-2b743111da09', '/bindex/', '登录', ''] visitor
