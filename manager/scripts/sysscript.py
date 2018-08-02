@@ -28,5 +28,6 @@ def readlog():
         dic = {'logtime': logtime, 'logfunName': logfunName, 'userid': userid, 'role': role, 'askurl': askurl,
                'logfunLname': logfunLname, 'para': para, 'username': username}
         data.append(dic)
+    f.close()
     return data, len(logs)
 
