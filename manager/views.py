@@ -102,5 +102,7 @@ def qiantaimotaikuang(request):
 
 def getlogs(request,logtype):
     if logtype ==1:
-        data, count = readlog()
+        page = request.GET.get("page")
+        limit = request.GET.get("limit")
+        data, count = readlog(page, limit)
         return HttpResponse(json.dumps({"code": 0, "msg": "", "count": count, "data": data}))
