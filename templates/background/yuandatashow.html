@@ -373,6 +373,7 @@
         <section class="wrapper site-min-height">
             <h3><i class="fa fa-angle-right"></i> 源数据展示</h3>
 
+            <hr>
             <table id="table_id_example" class="display">
                 <thead>
                 <tr>
@@ -384,7 +385,7 @@
 
                 </tr>
                 </thead>
-                <tfoot>
+                <!-- <tfoot>
                 <tr>
                     <th>数据表名</th>
                     <th>数据库名</th>
@@ -393,7 +394,7 @@
                     <th>数据量</th>
 
                 </tr>
-                </tfoot>
+                </tfoot> -->
                 <tbody id="tbody">
                 </tbody>
             </table>
@@ -436,7 +437,68 @@
     //custom select box
 
     $(function () {
-        var data = ['sina_post', 'sina', '新浪', '新闻', '12462']
+        $.ajax({
+            url: '/yuandatashow/getyuandatas/',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data){
+                var tbody = document.getElementById('tbody')
+                datas = data.data
+                options = {
+                    "order": [0, "asc"],
+                    "bAutoWidth": false,
+                    "aLengthMenu": [[10,30,-1], [20, 30, "全部"]],
+                    "language": {
+                        "lengthMenu": " 每页_MENU_条记录",
+                        "zeroRecords": "没有找到记录",
+                        "info": "第_PAGE_页(共_PAGES_页)",
+                        "infoEmpty": "无记录",
+                        "infoFiltered": "(从_MAX_条记录过滤)",
+                        "oPaginate":{
+                            "sFirst": "首页",
+                            "sPrevious": "上页",
+                            "sNext": "下页",
+                            "sLast": "末页"
+                        },
+                        "sSearch": "搜索: ",
+                        "sLoadingRecords": "正在加载数据-请等待...",
+                    },
+                    data: datas,
+                    columns: [
+                        { data: 'tableName' },
+                        { data: 'schemaName' },
+                        { data: 'webSite' },
+                        { data: 'webSiteType' },
+                        { data: 'dataVolum' }
+                    ]
+                };
+                var table = $('#table_id_example').DataTable(options);
+                /* for (var i = 0; i < datas.length; i++) {
+                    eachrow = datas[i]
+                    var tr = document.createElement('tr')
+                    var td = document.createElement('td')
+                    td.innerHTML = eachrow.tableName
+                    tr.appendChild(td)
+                    var td = document.createElement('td')
+                    td.innerHTML = eachrow.schemaName
+                    tr.appendChild(td)
+                    var td = document.createElement('td')
+                    td.innerHTML = eachrow.webSite
+                    tr.appendChild(td)
+                    var td = document.createElement('td')
+                    td.innerHTML = eachrow.webSiteType
+                    tr.appendChild(td)
+                    var td = document.createElement('td')
+                    td.innerHTML = eachrow.dataVolum
+                    tr.appendChild(td)
+                    tbody.appendChild(tr)
+                } */
+            },
+            error: function(data){
+                alert("数据获取失败");
+            }
+        });
+        /*var data = ['sina_post', 'sina', '新浪', '新闻', '12462']
         var tbody = document.getElementById('tbody')
         for (var i = 0; i < 100; i++) {
             var tr = document.createElement('tr')
@@ -446,24 +508,23 @@
                 tr.appendChild(td)
             }
             tbody.appendChild(tr)
-        }
-
-        var table = $('#table_id_example').DataTable();
-        $('#table_id_example tfoot th').each(function () {
+        }*/
+        
+        /* $('#table_id_example tfoot th').each(function () {
 
             var title = $('#table_id_example thead th').eq($(this).index()).text();
             console.log(title)
             if (title == '数据表名' || title == '数据库名' || title == '网站' || title == '类型')
                 $(this).html('<input type="text" placeholder="Search ' + title + '" />');
-        });
-        table.columns().eq(0).each(function (colIdx) {
+        }); */
+        /* table.columns().eq(0).each(function (colIdx) {
             $('input', table.column(colIdx).footer()).on('keyup change', function () {
                 table
                     .column(colIdx)
                     .search(this.value)
                     .draw();
             });
-        });
+        }); */
 
         $('select.styled').customSelect();
     });
