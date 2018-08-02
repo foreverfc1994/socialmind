@@ -48,7 +48,10 @@ def ArticlePaticular(request):              #文章详情
         author = "暂缺"
         if authorid != "0":
             author = if_is_None(authorid.name, "暂缺")
-        authorID = if_is_None(authorid.authorid, "0")
+        try:
+            authorID = if_is_None(authorid.authorid, "0")
+        except:
+            authorID = ""
         webName = if_is_None(allInformation.websiteid.websitename, "暂缺")
         webUrl = if_is_None(allInformation.websiteid.websiteurl, "暂缺")
         postTime = if_is_None(allInformation.posttime, "未知")
