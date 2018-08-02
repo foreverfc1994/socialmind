@@ -146,8 +146,8 @@ def deleteArticle(request):
 
 def deleteAuthor(request):
     id = request.GET.get("id")
-    # try:
-    models.Author.objects.filter(authorid=id).delete()
-    return HttpResponse(json.dumps({"data": "succeed"}))
-    # except:
-    #     return HttpResponse(json.dumps({"data": "failed"}))
+    try:
+        models.Author.objects.filter(authorid=id).delete()
+        return HttpResponse(json.dumps({"data": "succeed"}))
+    except:
+        return HttpResponse(json.dumps({"data": "failed"}))
