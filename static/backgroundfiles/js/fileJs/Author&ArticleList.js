@@ -163,3 +163,11 @@ function getAuthor_ArticleList(datas){
         $("#authorFiles").append(html);
     }
 }
+
+function deleteAuthor(id){
+
+}
+
+function deleteArticle(id){
+
+}
