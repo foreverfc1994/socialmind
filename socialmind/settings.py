@@ -14,8 +14,8 @@ import os
 import logging
 import django.utils.log
 import logging.handlers
-import structlog
-from structlog import configure,processors,stdlib,threadlocal
+#import structlog
+# from structlog import configure,processors,stdlib,threadlocal
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -83,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'socialmind',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': '461834084',
         'HOST': 'localhost',
         'PORT': '3306'
     }

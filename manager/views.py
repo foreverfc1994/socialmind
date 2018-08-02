@@ -88,8 +88,6 @@ def SpiderConfigure(request):
     return render(request, 'background/SpiderConfigure.html')
 def Author(request):
     return render(request, 'background/Author.html')
-def ArticlesOfAuthor(request):
-    return render(request, 'background/ArticlesOfAuthor.html')
 def ArticlesAndComments(request):
     return render(request, 'background/ArticlesAndComments.html')
 def DataCleanStatistics(request):
