@@ -34,8 +34,8 @@ function getTableAuthorData(data){
                 return "<a href='/ArticlesOfAuthor/?id="+data.authorId+"'>详情</a>";
                 }
             },
-            {"data": null, "title": "操作", "width": "40px", "render": function botton(){
-                    return "<button class=\"btn btn-danger btn-xs\"><i class=\"fa fa-trash-o \"></i></button>"
+            {"data": null, "title": "操作", "width": "40px", "render": function botton(data){
+                    return "<button class=\"btn btn-danger btn-xs\" onclick='deleteAuthor(\""+data.authorId+"\")'><i class=\"fa fa-trash-o \"></i></button>"
                 },
             }
         ]
@@ -83,8 +83,8 @@ function getArticleListData(data){
                 return "<a href='/ArticlePaticular/?id="+data.id+"'>详情</a>";
                 }
             },
-            {"data": null, "title": "操作","width": "5%", "render": function botton(){
-                    return "<button class=\"btn btn-danger btn-xs\"><i class=\"fa fa-trash-o \"></i></button>"
+            {"data": null, "title": "操作","width": "5%", "render": function botton(data){
+                    return "<button class=\"btn btn-danger btn-xs\" onclick='deleteArticle(\""+data.id+"\")'><i class=\"fa fa-trash-o \"></i></button>"
                 },
             }
         ]
@@ -165,9 +165,47 @@ function getAuthor_ArticleList(datas){
 }
 
 function deleteAuthor(id){
-
+    ensure = confirm("确定删除该作者（该作者文章也会被删除）？");
+    if(ensure==true){
+        $.ajax({
+            url:'authorDelete/?id='+id,
+            type:'GET',
+            dataType:'json',
+            success: function(data){
+                if(data.data=="succeed"){
+                    alert("删除成功");
+                    location.reload();
+                }
+                else{
+                    alert("删除失败，请重试");
+                }
+            },
+            error: function(){
+                alert("网络错误，请重试");
+            },
+        })
+    }
 }
 
 function deleteArticle(id){
-
+ensure = confirm("确定删除该文章？");
+    if(ensure==true){
+        $.ajax({
+            url:'deleteArticle/?id='+id,
+            type:'GET',
+            dataType:'json',
+            success: function(data){
+                if(data.data=="succeed"){
+                    alert("删除成功");
+                    location.reload();
+                }
+                else{
+                    alert("删除失败，请重试");
+                }
+            },
+            error: function(){
+                alert("网络错误，请重试");
+            },
+        })
+    }
 }

@@ -85,7 +85,7 @@ urlpatterns = [
     path('ArticlesOfAuthor/getAuthor_ArticleList/', bAAview.getAuthor_ArticleList), #/ArticlesOfAuthor/获得作者所有文章信息
 
     path('articlelist/deleteArticle/', bAAview.deleteArticle), #/articlelist/删除文章
-    path('Author/authorDelete/', bAAview.deleteAuthor)
+    path('Author/authorDelete/', bAAview.deleteAuthor), #/Author/删除作者
 
 
 

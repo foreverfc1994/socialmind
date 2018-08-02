@@ -31,7 +31,7 @@ class Area(models.Model):
 class Article(models.Model):
     articleid = models.CharField(db_column='articleID', primary_key=True, max_length=36)  # Field name made lowercase.
     sourcearticleid = models.CharField(db_column='sourceArticleID', max_length=36, blank=True, null=True)  # Field name made lowercase.
-    authorid = models.ForeignKey('Author', models.DO_NOTHING, db_column='authorID', blank=True, null=True, on_delete=models.SET_NULL)  # Field name made lowercase.
+    authorid = models.ForeignKey('Author', db_column='authorID', blank=True, null=True, on_delete=models.SET_NULL)  # Field name made lowercase.
     title = models.CharField(max_length=1024, blank=True, null=True)
     keywords = models.CharField(db_column='keyWords', max_length=1024, blank=True, null=True)  # Field name made lowercase.
     content = models.TextField(blank=True, null=True)
