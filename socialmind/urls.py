@@ -18,36 +18,38 @@ from django.urls import path
 from visitor import views as vviews
 from manager import views as bviews
 from django.conf.urls import include
+from visitor.view import loginviews,indexview
+from manager.view import loginview as bloginview,ArticleandAuthorview as bAAview
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', vviews.login, name='first'),
+    path('', loginviews.login, name='first'),
     path('captcha',include('captcha.urls')),
-    path('logout/',vviews.logout),
-    path('com_index/', vviews.com_index, name='com_index'),
-    path('gov_index/', vviews.gov_index, name='gov_index'),
-    path('person_index/', vviews.person_index, name='person_index'),
-    path('govcom_index/', vviews.govcom_index, name='govcom_index'),
-    path('login/', vviews.login, name='login'),
-    path('signin/', vviews.signin, name='signin'),
+    path('logout/',loginviews.logout),
+    path('com_index/', indexview.com_index, name='com_index'),
+    path('gov_index/', indexview.gov_index, name='gov_index'),
+    path('person_index/', indexview.person_index, name='person_index'),
+    path('govcom_index/', indexview.govcom_index, name='govcom_index'),
+    path('login/', loginviews.login, name='login'),
+    path('signin/', loginviews.signin, name='signin'),
     path('get_address/', vviews.get_address),
-    path('checkuser/', vviews.checkuser),
+    path('checkuser/', loginviews.checkuser),
     path('events/', vviews.events),
     path('profile/', vviews.profile),
-    path('jump/',vviews.jump),
+    path('jump/',loginviews.jump),
     path('eventParticular/', vviews.eventparticular),
     path('fileParticular/', vviews.fileParticular),
     path('fileSearch/', vviews.fileSearch, name='fileSearch'),
     path('eventSearch/', vviews.eventSearch, name='eventSearch'),
     path('competitive_products/', vviews.competitive_products),
     # background url
-    path('bindex/', bviews.index, name='index'),
-    path('blogin/', bviews.login, name='login'),
+    path('bindex/', bloginview.index, name='index'),
+    path('blogin/', bloginview.login, name='login'),
     path('SpiderList/', bviews.SpiderList),
     path('SpiderMonitor/', bviews.SpiderMonitor),
     path('SpiderConfigure/', bviews.SpiderConfigure),
-    path('Author/', bviews.Author),
-    path('ArticlesOfAuthor/', bviews.ArticlesOfAuthor),#作者详情
-    path('ArticlesAndComments/', bviews.ArticlesAndComments),
+    path('Author/', bAAview.Author),
+    path('ArticlesOfAuthor/', bAAview.ArticlesOfAuthor),#作者详情
+    path('ArticlesAndComments/', bAAview.ArticlesAndComments),
     path('DataCleanStatistics/', bviews.DataCleanStatistics),
     path('DataCleanStrategies/', bviews.DataCleanStrategies),
     path('DataCleanLog/', bviews.DataCleanLog),
@@ -67,23 +69,20 @@ urlpatterns = [
     path('usrManagement/', bviews.usrManagement),
     path('operateDiary/', bviews.operateDiary),
     path('DouBanArticleStyle/', bviews.DouBanArticleStyle),
-    path('ArticlePaticular/', bviews.ArticlePaticular),
-    path('ArticlePaticular/getComments/', bviews.ArticlePaticularComments),
+    path('ArticlePaticular/', bAAview.ArticlePaticular),
+    path('ArticlePaticular/getComments/', bAAview.ArticlePaticularComments),
     path('usrManagement/<int:a>/', bviews.usrManagement1),
-    path('test/',bviews.test),
     path('yuandatashow/',bviews.yuandatashow),
     path('operate/<int:a>/', bviews.operate),
-    path('articlelist/',bviews.articleslsit),
+    path('articlelist/',bAAview.articleslsit),
     path('objectshow/',bviews.objectshow),
     path('Eventshow/',bviews.eventshow),
     path('jianbao/',bviews.jianbao),
     path('qiantaimotaikuang',bviews.qiantaimotaikuang),
     path('operateDiary/getlogs/<int:logtype>/',bviews.getlogs),
-
-
-    path('author/getAuthors/', bviews.getAuthors), #/Author/作者信息ajax路径
-    path('articlelist/getArticleList/', bviews.getArticleList), #/articleList/文章信息ajax路径
-    path('ArticlesOfAuthor/getAuthor_ArticleList/', bviews.getAuthor_ArticleList), #/ArticlesOfAuthor/获得作者所有文章信息
+    path('author/getAuthors/', bAAview.getAuthors), #/Author/作者信息ajax路径
+    path('articlelist/getArticleList/', bAAview.getArticleList), #/articleList/文章信息ajax路径
+    path('ArticlesOfAuthor/getAuthor_ArticleList/', bAAview.getAuthor_ArticleList), #/ArticlesOfAuthor/获得作者所有文章信息
 
 
 
