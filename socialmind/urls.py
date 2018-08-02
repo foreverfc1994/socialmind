@@ -67,7 +67,7 @@ urlpatterns = [
     path('AssignAuthorities/', bviews.AssignAuthorities),
     path('usersVerify/', bviews.usersVerify),
     path('usrManagement/', bviews.usrManagement),
-    path('operateDiary/', bviews.operateDiary),
+    path('operateDiary/', bviews.operateDiary),#日志管理
     path('DouBanArticleStyle/', bviews.DouBanArticleStyle),
     path('ArticlePaticular/', bAAview.ArticlePaticular),
     path('ArticlePaticular/getComments/', bAAview.ArticlePaticularComments),
