@@ -150,7 +150,7 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.handlers.TimedRotatingFileHandler',
             'formatter': 'standard',
-            'filename': 'log/socialmind.log',
+            'filename': os.path.join(BASE_DIR, 'log/socialmind.log'),
             'when': 'D',
             'interval': 1,
             'encoding':'utf-8',
