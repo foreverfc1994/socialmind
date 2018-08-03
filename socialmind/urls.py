@@ -20,6 +20,7 @@ from manager import views as bviews
 from django.conf.urls import include
 from visitor.view import loginviews,indexview
 from manager.view import loginview as bloginview,ArticleandAuthorview as bAAview
+from manager.view import DataTableShowView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', loginviews.login, name='first'),
@@ -67,12 +68,13 @@ urlpatterns = [
     path('AssignAuthorities/', bviews.AssignAuthorities),
     path('usersVerify/', bviews.usersVerify),
     path('usrManagement/', bviews.usrManagement),
-    path('operateDiary/', bviews.operateDiary),
+    path('operateDiary/', bviews.operateDiary),#日志管理
     path('DouBanArticleStyle/', bviews.DouBanArticleStyle),
     path('ArticlePaticular/', bAAview.ArticlePaticular),
     path('ArticlePaticular/getComments/', bAAview.ArticlePaticularComments),
     path('usrManagement/<int:a>/', bviews.usrManagement1),
     path('yuandatashow/',bviews.yuandatashow),
+    path('yuandatashow/getyuandatas/',DataTableShowView.yuandatashow),
     path('operate/<int:a>/', bviews.operate),
     path('articlelist/',bAAview.articleslsit),
     path('objectshow/',bviews.objectshow),

@@ -174,7 +174,6 @@ function deleteAuthor(id){
             success: function(data){
                 if(data.data=="succeed"){
                     alert("删除成功");
-                    location.reload();
                 }
                 else{
                     alert("删除失败，请重试");
@@ -197,7 +196,6 @@ ensure = confirm("确定删除该文章？");
             success: function(data){
                 if(data.data=="succeed"){
                     alert("删除成功");
-                    location.reload();
                 }
                 else{
                     alert("删除失败，请重试");

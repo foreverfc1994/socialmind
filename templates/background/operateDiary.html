@@ -2,28 +2,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="{% static 'assets0/layui/layui.js' %}"></script>
     <meta charset="utf-8">
+    <script src="{% static 'assets0/layui/layui.js' %}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <link rel="stylesheet" href="{% static 'assets0/layui/css/layui.css' %}" media="all">
     <link rel="stylesheet" href="//res.layui.com/layui/dist/css/layui.css?t=1531663423583" media="all">
-    <link rel="stylesheet" href="//res.layui.com/static/css/global.css?t=1531663423583-6" media="all">
+<!-- {#    <link rel="stylesheet" href="//res.layui.com/static/css/global.css?t=1531663423583-6" media="all">#} -->
     <title>DASHGUM - Bootstrap Admin Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="{% static 'assets0/layui/css/layui.css' %}" media="all">
     <link href="{% static 'backgroundfiles/assets/css/bootstrap.css' %}" rel="stylesheet">
     <!--external css-->
     <link href="{% static 'backgroundfiles/assets/font-awesome/css/font-awesome.css' %}" rel="stylesheet"/>
-<!-- {#    <link rel="stylesheet" href="//res.layui.com/layui/selector/css/layui.css?t=1531663423583" media="all">#}
-{#    <link rel="stylesheet" href="//res.layui.com/static/css/global.css?t=1531663423583-6" media="all">#} -->
+
     <!-- Custom styles for this template -->
     <link href="{% static 'backgroundfiles/assets/css/style.css' %}" rel="stylesheet">
     <link href="{% static 'backgroundfiles/assets/css/style-responsive.css' %}" rel="stylesheet">
-<!-- {#    <link rel="stylesheet" href="//res.layui.com/layui/selector/css/layui.css?t=1531663423583" media="all">#}
-{#    <link rel="stylesheet" href="//res.layui.com/static/css/global.css?t=1531663423583-6" media="all">#} -->
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -373,74 +371,9 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         系统日志表
-                                        <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">entries</span>
-                                        <select class="form-control"
-                                                style="float: right;width: 60px;height: 25px;font-size: 12px">
-                                            <option>10</option>
-                                            <option>25</option>
-                                            <option>50</option>
-                                            <option>100</option>
-                                        </select>
-                                        <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">Show</span>
                                     </div>
                                     <!--<div class="panel-body">-->
-                                    <table id="syslog" class="display">
-
-
-                                    </table>
-                                    <table class="table table-bordered" style="margin: 0%">
-                                        <tr>
-                                            <td>角色</td>
-                                            <td>姓名</td>
-                                            <td>IP</td>
-                                            <td>操作时间</td>
-                                            <td>方法逻辑名</td>
-                                            <td>方法名</td>
-                                            <td>请求路径</td>
-                                        </tr>
-                                        <tr>
-                                            <td>个人</td>
-                                            <td>张三</td>
-                                            <td>127.0.0.1</td>
-                                            <td>2017-10-23 04:46</td>
-                                            <td>用户信息删除</td>
-                                            <td>userInforDelete</td>
-                                            <td>http://127.0.0.1:8000/operateDiary/</td>
-                                        </tr>
-                                        <tr>
-                                            <td>政府</td>
-                                            <td>张三</td>
-                                            <td>127.0.0.1</td>
-                                            <td>2017-10-23 04:46</td>
-                                            <td>展示用户信息</td>
-                                            <td>userInforDisplay</td>
-                                            <td>http://127.0.0.1:8000/operateDiary/</td>
-                                        </tr>
-                                        <tr>
-                                            <td>管理员</td>
-                                            <td>张三</td>
-                                            <td>127.0.0.1</td>
-                                            <td>2017-10-23 04:46</td>
-                                            <td>用户信息更新</td>
-                                            <td>userInforModify</td>
-                                            <td>http://127.0.0.1:8000/operateDiary/</td>
-                                        </tr>
-                                    </table>
-                                    <!--</div>-->
-                                    <div class="panel-footer">
-                                        Search:
-                                        <input type="text" class="form-control" placeholder="Search for..."
-                                               style="width: 200px;height: 25px;display: inline-block">
-                                        <div class="btn-group btn-group-xs" role="group" aria-label="..."
-                                             style="float: right;">
-                                            <button type="button" class="btn btn-default">First</button>
-                                            <button type="button" class="btn btn-default">Previous</button>
-                                            <button type="button" class="btn btn-default">1</button>
-                                            <button type="button" class="btn btn-default">2</button>
-                                            <button type="button" class="btn btn-default">Next</button>
-                                            <button type="button" class="btn btn-default">Last</button>
-                                        </div>
-                                    </div>
+                                    <table id="syslog" class="display"></table>
                                 </div>
                             </div>
                         </div>
@@ -812,13 +745,30 @@
     layui.use('element', function () {
         var $ = layui.jquery
             , element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
-
-
     });
-    $(function () {
 
+</script>
+<script>
+    window.onload = function(){
+        layui.use('table', function(){
+        var table = layui.table;
+
+        table.render({
+        elem: '#syslog'
+        ,url:'/operateDiary/getlogs/1/'
+        ,cellMinWidth: 80
+        ,page: true
+        ,cols: [[
+           {field:'role', title: '角色', sort: true}
+          ,{field:'username', title: '用户名', sort: true}
+          ,{field:'logtime', title: '操作时间', sort: true}
+          ,{field:'logfunName', title: '方法名', sort: true}
+          ,{field:'logfunLname', title: '方法逻辑名', width: '30%', minWidth: 100, sort: true}
+          ,{field:'askurl', title: '请求路径', sort: true}
+        ]]
+        });
     })
-
+}
 </script>
 </body>
 </html>

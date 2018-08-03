@@ -49,7 +49,7 @@ def usersVerify(request):
     return render(request, 'background/usersVerify.html')
 def usrManagement(request):
     return render(request, 'background/usrManagement.html')
-def operateDiary(request):
+def operateDiary(request):  #日志管理
     return render(request, 'background/operateDiary.html')
 def DouBanArticleStyle(request):
     return render(request, 'background/DouBanArticleStyle.html')
@@ -102,5 +102,7 @@ def qiantaimotaikuang(request):
 
 def getlogs(request,logtype):
     if logtype ==1:
-        data = readlog()
-        return JsonResponse({'data':data})
+        page = request.GET.get("page")
+        limit = request.GET.get("limit")
+        data, count = readlog(page, limit)
+        return HttpResponse(json.dumps({"code": 0, "msg": "", "count": count, "data": data}))
