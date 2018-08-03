@@ -1,8 +1,8 @@
 #!/usr/bin/env python 
 # -*- coding:utf-8 -*-
 from django.shortcuts import render,redirect
-from visitor.models import User,Province,City,Area
-from visitor import models
+# from visitor.models import User,Province,City,Area
+# from visitor import models
 from django.http import JsonResponse, HttpResponse
 import json
 from manager.mysqlNullWash import if_is_None, webType_to_strType

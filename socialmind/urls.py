@@ -20,7 +20,7 @@ from manager import views as bviews
 from django.conf.urls import include
 from visitor.view import loginviews,indexview
 from manager.view import loginview as bloginview,ArticleandAuthorview as bAAview
-from manager.view import DataTableShowView
+from manager.view import DataTableShowView,ObjectShowview
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', loginviews.login, name='first'),
@@ -78,6 +78,8 @@ urlpatterns = [
     path('operate/<int:a>/', bviews.operate),
     path('articlelist/',bAAview.articleslsit),
     path('objectshow/',bviews.objectshow),
+    path('objectshow/event/',ObjectShowview.eventshow),
+    path('objectshow/object/',ObjectShowview.objectshow),
     path('Eventshow/',bviews.eventshow),
     path('jianbao/',bviews.jianbao),
     path('qiantaimotaikuang',bviews.qiantaimotaikuang),
