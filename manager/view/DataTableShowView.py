@@ -15,8 +15,10 @@ def yuandatashow(request):
     dataList = []
     print("┗|｀O′|┛ 嗷~~")
     # 打开数据库连接
-    db = pymysql.connect(host="localhost", user="root",
-                         password="461834084", db="linshitongji", port=3306)
+    # db = pymysql.connect(host="localhost", user="root",
+    #                      password="461834084", db="linshitongji", port=3306)
+    db = pymysql.connect(host="192.168.100.103", user="root",
+                         password="root", db="linshitongji", port=3306)
 
     # 使用cursor()方法获取操作游标
     cur = db.cursor()
