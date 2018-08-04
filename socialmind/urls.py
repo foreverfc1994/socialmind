@@ -18,7 +18,7 @@ from django.urls import path
 from visitor import views as vviews
 from manager import views as bviews
 from django.conf.urls import include
-from visitor.view import loginviews,indexview
+from visitor.view import loginviews,indexview,UserInfoManageview
 from manager.view import loginview as bloginview,ArticleandAuthorview as bAAview
 from manager.view import userManagement as umView
 from manager.view import DataTableShowView,ObjectShowview
@@ -36,7 +36,7 @@ urlpatterns = [
     path('get_address/', vviews.get_address),
     path('checkuser/', loginviews.checkuser),
     path('events/', vviews.events),
-    path('profile/', vviews.profile),
+    path('profile/', UserInfoManageview.profile),
     path('jump/',loginviews.jump),
     path('eventParticular/', vviews.eventparticular),
     path('fileParticular/', vviews.fileParticular),

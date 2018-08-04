@@ -31,6 +31,10 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style>
+    .imgsize{
+        width: 128px;
+        height: 128px;
+    }    
         table tr td input {
     border: 0px;
     width: 100%;
@@ -296,15 +300,15 @@
                                                         <li><strong>&nbsp;&nbsp;用户类型：</strong></li>
                                                         <li><strong>&nbsp;&nbsp;邮箱：</strong></li>
                                                         <li><strong>&nbsp;&nbsp;公司名称：</strong></li>
-                                                        <li><strong>&nbsp;&nbsp;‍法人代表名称：</strong></li>
-                                                        <li><strong>&nbsp;&nbsp;公司营业执照编号：</strong></li>
+                                                        <li><strong>&nbsp;&nbsp;‍经营范围：</strong></li>
+                                                        <li><strong>&nbsp;&nbsp;关注领域：</strong></li>
                                                     </ul>
                                                     <ul style="width: 40%; margin-left: 50%; text-align: left; line-height: 30px;">
                                                         <li>{{ role }}</li>
                                                         <li>{{ email }}</li>
-                                                        <li>{{ companyname }}</li>
-                                                        <li>{{ bossname }}</li>
-                                                        <li>{{ businessLicenceId }}</li>
+                                                        <li>{{ companyname }}{{companytype}}</li>
+                                                        <li>{{ businessscope }}</li>
+                                                        <li>{{ interest }}</li>
                                                     </ul>
                                                 {% elif request.session.user_type == "政府用户" %}
                                                     <div class="white-header">
@@ -564,7 +568,8 @@
             </div>
         </section>
     </div>
-
+    {% csrf_token %}
+    {% if request.session.user_type == "个人用户" %}
     <div class="modal fade" id="UsrInformation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          style="">
         <div class="modal-dialog modal-lg" role="document">
@@ -623,6 +628,214 @@
             </div>
         </div>
     </div>
+    {% elif request.session.user_type == "企业用户" %}
+    <div class="modal fade" id="UsrInformation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         style="">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">编辑资料</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="XiaoMing123form">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>用户名</td>
+                                <td><input id="Cusername" value="{{username}}"></td>
+                            </tr>
+                            <tr>
+                                <td>头像</td>
+                                <td><img src="{% static 'backgroundfiles/assets\img\ui-zac.jpg' %}"></td>
+                            </tr>
+                            <tr>
+                                <td>角色</td>
+                                <td>{{role}}</td>
+                            </tr>
+                            <tr>
+                                <td>邮箱</td>
+                                <td><input id="Cemail" value="{{email}}"></td>
+                            </tr>
+                            <tr>
+                                <td>公司名称</td>
+                                <td><input id="Ccompanyname" value="{{companyname}}"></td>
+                            </tr>
+                            <tr>
+                                <td>公司类型</td>
+                                <td><input id="Ccompanytype" value="{{companytype}}"></td>
+                            </tr>
+                            <tr>
+                                <td>身份证正面</td>
+                                <td><img class="imgsize" src="{% static 'upload/dd8e24ce-02f2-400d-aee3-88dff66d7d26_2.jpg' %}"></td>
+                                <!-- <td><input id="Cidfronturl" value="{{idfronturl}}"></td> -->
+                            </tr>
+                            <tr>
+                                <td>身份证背面</td>
+                                <td><input id="Cidbackurl" value="{{idbackurl}}"></td>
+                            </tr>
+                            <tr>
+                                <td>营业执照编号</td>
+                                <td><input id="CbusinessLicenceId" value="{{businessLicenceId}}"></td>
+                            </tr>
+                            <tr>
+                                <td>营业执照照片</td>
+                                <td><input id="CbussinessLicenceUrl" value="{{bussinessLicenceUrl}}"></td>
+                            </tr>
+                            <tr>
+                                <td>经营领域</td>
+                                <td><input id="Cbusinessscope" value="{{businessscope}}"></td>
+                            </tr>
+                            <tr>
+                                <td>关注方向</td>
+                                <td><input id="Cinterest" value="{{interest}}"></td>
+                            </tr>
+                            <tr>
+                                <td>公司地址</td>
+                                <td><input id="Caddress" value="{{address}}"></td>
+                            </tr>
+                            <tr>
+                                <td>登记机关</td>
+                                <td><input id="CregisterORG" value="{{registerORG}}"></td>
+                            </tr>
+                            <tr>
+                                <td>登记时间</td>
+                                <td><input id="Cregistertime" value="{{registertime}}"></td>
+                            </tr>
+                            <tr>
+                                <td>账号注册时间</td>
+                                <td><input id="Cregistranttime" value="{{registranttime}}"></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="subm('XiaoMing123form')">修改</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% elif request.session.user_type == "政府用户" %}
+    <div class="modal fade" id="UsrInformation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         style="">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">修改用户信息</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="XiaoMing123form">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>User ID</td>
+                                <td><input id="XiaoMing123UsrID" value="XiaoMing123"></td>
+                            </tr>
+                            <tr>
+                                <td>头像</td>
+                                <td><img src="{% static 'backgroundfiles/assets\img\ui-zac.jpg' %}"></td>
+                            </tr>
+                            <tr>
+                                <td>角色</td>
+                                <td><input id="XiaoMing123JueSe" value="个人用户"></td>
+                            </tr>
+                            <tr>
+                                <td>真实姓名</td>
+                                <td><input id="XiaoMing123Role" value="小明"></td>
+                            </tr>
+                            <tr>
+                                <td>性别</td>
+                                <td><input id="XiaoMing123Gender" value="男"></td>
+                            </tr>
+                            <tr>
+                                <td>年龄</td>
+                                <td><input id="XiaoMing123Age" value="22"></td>
+                            </tr>
+                            <tr>
+                                <td>手机</td>
+                                <td><input id="XiaoMing123Phone" value="13988886666"></td>
+                            </tr>
+                            <tr>
+                                <td>邮箱</td>
+                                <td><input id="XiaoMing123Mail" value="123@qq.com"></td>
+                            </tr>
+                            <tr>
+                                <td>职业</td>
+                                <td><input id="XiaoMing123Job" value="学生"></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="subm('XiaoMing123form')">修改</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% elif request.session.user_type == "事业单位用户" %}
+    <div class="modal fade" id="UsrInformation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         style="">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">修改用户信息</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="XiaoMing123form">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>User ID</td>
+                                <td><input id="XiaoMing123UsrID" value="XiaoMing123"></td>
+                            </tr>
+                            <tr>
+                                <td>头像</td>
+                                <td><img src="{% static 'backgroundfiles/assets\img\ui-zac.jpg' %}"></td>
+                            </tr>
+                            <tr>
+                                <td>角色</td>
+                                <td><input id="XiaoMing123JueSe" value="个人用户"></td>
+                            </tr>
+                            <tr>
+                                <td>真实姓名</td>
+                                <td><input id="XiaoMing123Role" value="小明"></td>
+                            </tr>
+                            <tr>
+                                <td>性别</td>
+                                <td><input id="XiaoMing123Gender" value="男"></td>
+                            </tr>
+                            <tr>
+                                <td>年龄</td>
+                                <td><input id="XiaoMing123Age" value="22"></td>
+                            </tr>
+                            <tr>
+                                <td>手机</td>
+                                <td><input id="XiaoMing123Phone" value="13988886666"></td>
+                            </tr>
+                            <tr>
+                                <td>邮箱</td>
+                                <td><input id="XiaoMing123Mail" value="123@qq.com"></td>
+                            </tr>
+                            <tr>
+                                <td>职业</td>
+                                <td><input id="XiaoMing123Job" value="学生"></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="subm('XiaoMing123form')">修改</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    
 
     <div class="layui-footer layui-bg-cyan" align="center">
         <!-- 底部固定区域 -->
