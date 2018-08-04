@@ -2,8 +2,9 @@ function getTableAuthorData(data){
     var item = 0;
     options = {
         "order": [0, "asc"],
+        stateSave: true,
         "bAutoWidth": false,
-        "aLengthMenu": [[10,30,-1], [20, 30, "全部"]],
+        "aLengthMenu": [[15,50, 100], [15, 50, 100]],
         "language": {
             "lengthMenu": " 每页_MENU_条记录",
             "zeroRecords": "没有找到记录",
@@ -50,7 +51,8 @@ function getArticleListData(data){
     options = {
         "order": [0, "asc"],
         "bAutoWidth": false,
-        "aLengthMenu": [[20,50,-1], [20, 50, "全部"]],
+        stateSave: true,
+        "aLengthMenu": [[15,50,-1], [15, 50, "全部"]],
         "language": {
             "lengthMenu": "&nbsp;  &nbsp;  &nbsp;  每页_MENU_条记录",
             "zeroRecords": "没有找到记录",

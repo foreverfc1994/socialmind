@@ -1,9 +1,10 @@
 from django.shortcuts import render,redirect
 from visitor.models import User,Province,City,Area
 from visitor import models
+import time
 from django.http import JsonResponse, HttpResponse
 import json
-from manager.mysqlNullWash import if_is_None, webType_to_strType
+from manager.mysqlNullWash import if_is_None, webType_to_strType, changeWebsite
 from django.views.decorators.csrf import csrf_exempt
 from visitor.scripts.signin import *
 from manager.scripts.sysscript import *
@@ -71,43 +72,46 @@ def ArticlesOfAuthor(request):#作者详情
     return render(request, 'background/ArticlesOfAuthor.html', data)
 def getAuthors(request):
     dataList = []
-    results = models.Author.objects.filter()
+    results = models.Author.objects.values("authorid", "name", "fansnumber", "websiteid")
+    files = models.Article.objects.values("authorid")
     for result in results:
         try:
-            authorID = result.authorid
-            name = if_is_None(result.name)
-            fansNumber = str(result.fansnumber)
+            authorID = result['authorid']
+            name = if_is_None(result['name'], "暂缺")
+            fansNumber = str(if_is_None(result['fansnumber'], 0))
             web = "暂缺"
-            filesNumber = models.Article.objects.filter(authorid=authorID).count()
-            if result.websiteid != None:
-                web = if_is_None(result.websiteid.websitename)
+            filesNumber = files.filter(authorid=authorID).count()
+            if result['websiteid'] != None:
+                web, webtype = changeWebsite(if_is_None(int(result['websiteid'])-1, 2))
             dic = {"authorId": authorID, "name": name, "filesNumber": filesNumber, "fansNumber": fansNumber, "web": web}
             dataList.append(dic)
         except:
-            print(authorID+" was wrong")
+            print(authorID+" was wrong.")
     data = {"data": dataList}
-    return HttpResponse(json.dumps(data))
+    return JsonResponse(data)
 
 def getArticleList(request):
     dataList = []
-    results = models.Article.objects.filter()
+    results = models.Article.objects.values("articleid", "authorid", "title", "scannumber", "websiteid")
+    authorInform = models.Author.objects.values("authorid", "name")
     for result in results:
-        articleId = result.articleid
-        authorId = if_is_None(result.authorid)
+        articleId = result['articleid']
+        authorId = if_is_None(result['authorid'])
         authorName = "暂缺"
-        title = if_is_None(result.title)
-        readed = if_is_None(result.scannumber, 0)#数据类型为int
+        title = if_is_None(result['title'])
+        readed = if_is_None(result['scannumber'], 0)
         if(readed >= 100):
             heat = "超热"
         else:
             heat = "不热"
-        webName = if_is_None(result.websiteid.websitename)
-        webType = webType_to_strType(if_is_None(result.websiteid.websitetypeid, "0"))
+        webName, webType = changeWebsite(if_is_None(int(result['websiteid'])-1, 2))
         if(authorId != ""):
-            authorName = authorId.name
+            authorName = authorInform.get(authorid=authorId)['name']
         dataList.append({"id": articleId, "title": title, "web": webName, "author": authorName, "type": webType, "readed": str(readed), "heat": heat})
     res = {"data": dataList}
-    return HttpResponse(json.dumps(res))
+    return JsonResponse(res)
+
+
 def getAuthor_ArticleList(request):
     authorID = request.GET.get("id")
     name = models.Author.objects.get(authorid=authorID).name
