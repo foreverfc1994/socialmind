@@ -743,6 +743,7 @@ class User(models.Model):
     address = models.CharField(max_length=255, blank=True, null=True)
     role = models.ForeignKey(Role, models.DO_NOTHING, db_column='role', blank=True, null=True, related_name='user_role')
     registranttime = models.CharField(db_column='registrantTime', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    photo = models.CharField(db_column='photo', max_length=255, blank=True, null=True)
 
     class Meta:
         managed = False
