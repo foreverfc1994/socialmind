@@ -1,3 +1,5 @@
+import datetime
+
 def if_is_None(data, default=""):
     if data == None:
         data = default
@@ -32,3 +34,19 @@ def changeWebsite(id):
             {'websitename': '网易博客', 'websitetypeid': '11'},
             ]
     return list[id]['websitename'], webType_to_strType(list[id]['websitetypeid'])
+
+def countAge(birth):
+    birthday = datetime.datetime.strptime(birth, "%Y-%m-%d")
+    now = datetime.datetime.now()
+    if (now - birthday).days < 0:
+        return "数据出错"
+    else:
+        if now.month > birthday.month:
+            return now.year - birthday.year
+        elif now.month < birthday.month:
+            return now.year - birthday.year - 1
+        elif now.month == birthday.month:
+            if now.day >= birthday.day:
+                return now.year - birthday.year
+            else:
+                return now.year - birthday.year - 1
