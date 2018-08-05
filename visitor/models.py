@@ -29,15 +29,15 @@ class Area(models.Model):
 
 
 class Article(models.Model):
-    articleid = models.CharField(db_column='articleID', primary_key=True, max_length=36)  # Field name made lowercase.
+    articleid = models.CharField(db_column='articleID', primary_key=True, db_index=True, max_length=36)  # Field name made lowercase.
     sourcearticleid = models.CharField(db_column='sourceArticleID', max_length=36, blank=True, null=True)  # Field name made lowercase.
-    authorid = models.ForeignKey('Author', db_column='authorID', blank=True, null=True, on_delete=models.SET_NULL)  # Field name made lowercase.
-    title = models.CharField(max_length=1024, blank=True, null=True)
+    authorid = models.ForeignKey('Author', db_column='authorID', db_index=True, blank=True, null=True, on_delete=models.SET_NULL)  # Field name made lowercase.
+    title = models.CharField(max_length=256, blank=True, db_index=True, null=True)
     keywords = models.CharField(db_column='keyWords', max_length=1024, blank=True, null=True)  # Field name made lowercase.
     content = models.TextField(blank=True, null=True)
     posttime = models.CharField(db_column='postTime', max_length=32, blank=True, null=True)  # Field name made lowercase.
     commentnumber = models.IntegerField(db_column='commentNumber', blank=True, null=True)  # Field name made lowercase.
-    scannumber = models.IntegerField(db_column='scanNumber', blank=True, null=True)  # Field name made lowercase.
+    scannumber = models.IntegerField(db_column='scanNumber', db_index=True, blank=True, null=True)  # Field name made lowercase.
     participationnumber = models.IntegerField(db_column='participationNumber', blank=True, null=True)  # Field name made lowercase.
     replynumber = models.IntegerField(db_column='replyNumber', blank=True, null=True)  # Field name made lowercase.
     likenumber = models.IntegerField(db_column='likeNumber', blank=True, null=True)  # Field name made lowercase.
@@ -48,7 +48,7 @@ class Article(models.Model):
     tramplenumber = models.IntegerField(db_column='trampleNumber', blank=True, null=True)  # Field name made lowercase.
     newsresource = models.CharField(db_column='newsResource', max_length=64, blank=True, null=True)  # Field name made lowercase.
     similardegree = models.FloatField(db_column='similarDegree', blank=True, null=True)  # Field name made lowercase.
-    websiteid = models.ForeignKey('Website', models.DO_NOTHING, db_column='websiteID', blank=True, null=True)  # Field name made lowercase.
+    websiteid = models.ForeignKey('Website', models.DO_NOTHING, db_index=True, db_column='websiteID', blank=True, null=True)  # Field name made lowercase.
     objectid = models.ForeignKey('Object', models.DO_NOTHING, db_column='objectID', blank=True, null=True)  # Field name made lowercase.
     sourceauthorid = models.CharField(db_column='sourceAuthorID', max_length=255, blank=True, null=True)  # Field name made lowercase.
 
@@ -97,8 +97,8 @@ class ArticleSimilar(models.Model):
 
 
 class Author(models.Model):
-    authorid = models.CharField(db_column='authorID', primary_key=True, max_length=36)  # Field name made lowercase.
-    name = models.CharField(max_length=64, blank=True, null=True)
+    authorid = models.CharField(db_column='authorID', primary_key=True, db_index=True, max_length=36)  # Field name made lowercase.
+    name = models.CharField(max_length=64, blank=True, db_index=True, null=True)
     sex = models.CharField(max_length=16, blank=True, null=True)
     birthday = models.CharField(max_length=32, blank=True, null=True)
     address = models.CharField(max_length=64, blank=True, null=True)
