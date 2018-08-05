@@ -80,20 +80,20 @@ def govermentList(request):
     if page == None or limit == None:
         return JsonResponse({"code": 0, "msg": "", "count": count, "data": data})
     else:
-        valueCompany = models.CompanyUser.objects.values("userid", "companyname", "companytype", "registertime")[start:end]
+        valueGov = models.GovUser.objects.values("userid", "govname", "govcode", "govtype")[start:end]
         valueCommen = models.User.objects.values("userid", "email", "registranttime", "username")
-        for item in valueCompany:
+        for item in valueGov:
             userid = item['userid']
-            companyname = if_is_None(item['companyname'], "无记录")
-            companytype = if_is_None(item['companytype'], "未知")
-            registertime = if_is_None(item['registertime'], "无数据")
+            govname = if_is_None(item['govname'], "无记录")
+            govcode = if_is_None(item['govcode'], "未知")
+            govType = if_is_None(item['govtype'], "无数据")
             commvalue = valueCommen.get(userid=userid)
             try:
                 email = if_is_None(commvalue['email'], "暂缺")
                 registranttime = if_is_None(commvalue['registranttime'], "这个嘛……")
                 username = if_is_None(commvalue['username'], "出错")
-                data.append({"userid": userid, "companyname": companyname, "companytype": companytype,
-                             "registertime": registertime, "email": email, "registrantTime": registranttime, "username": username})
+                data.append({"userid": userid, "govname": govname, "govcode": govcode,
+                             "govType": govType, "email": email, "registrantTime": registranttime, "username": username})
             except:
                 pass
     print(data)
@@ -110,20 +110,21 @@ def instituteList(request):
     if page == None or limit == None:
         return JsonResponse({"code": 0, "msg": "", "count": count, "data": data})
     else:
-        valueCompany = models.CompanyUser.objects.values("userid", "companyname", "companytype", "registertime")[start:end]
+        valueCompany = models.InstitutionUser.objects.values("userid", "institutionname", "institudecode", "institutionlevel", "institutiontype")[start:end]
         valueCommen = models.User.objects.values("userid", "email", "registranttime", "username")
         for item in valueCompany:
             userid = item['userid']
-            companyname = if_is_None(item['companyname'], "无记录")
-            companytype = if_is_None(item['companytype'], "未知")
-            registertime = if_is_None(item['registertime'], "无数据")
+            institutionname = if_is_None(item['institutionname'], "无记录")
+            institudecode = if_is_None(item['institudecode'], "未知")
+            institutionlevel = if_is_None(item['institutionlevel'], "无数据")
+            institutiontype = if_is_None(item['institutiontype'], "无记录")
             commvalue = valueCommen.get(userid=userid)
             try:
                 email = if_is_None(commvalue['email'], "暂缺")
                 registranttime = if_is_None(commvalue['registranttime'], "这个嘛……")
                 username = if_is_None(commvalue['username'], "出错")
-                data.append({"userid": userid, "companyname": companyname, "companytype": companytype,
-                             "registertime": registertime, "email": email, "registrantTime": registranttime, "username": username})
+                data.append({"userid": userid, "institutionname": institutionname, "institudecode": institudecode, "institutionlevel": institutionlevel,
+                             "institutiontype": institutiontype, "email": email, "registrantTime": registranttime, "username": username})
             except:
                 pass
     print(data)

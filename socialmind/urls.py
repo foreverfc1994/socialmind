@@ -71,8 +71,8 @@ urlpatterns = [
     path('usrManagement/', bviews.usrManagement),
     path('usrManagement/List/person/', umView.personList),#个人用户管理
     path('usrManagement/List/company/', umView.companyList),#企业用户管理
-    path('usrManagement/List/goverment/', umView.govermentList),#企业用户管理
-    path('usrManagement/List/institute/', umView.instituteList),#企业用户管理
+    path('usrManagement/List/goverment/', umView.govermentList),#政府用户管理
+    path('usrManagement/List/institute/', umView.instituteList),#事业单位用户管理
     path('operateDiary/', bviews.operateDiary),#日志管理
     path('DouBanArticleStyle/', bviews.DouBanArticleStyle),
     path('ArticlePaticular/', bAAview.ArticlePaticular),
