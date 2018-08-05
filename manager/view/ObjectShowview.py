@@ -27,7 +27,7 @@ def  eventshow(request):
     #     print(objectID+" "+articleNumber)
     # 打开数据库连接
     db = pymysql.connect(host="localhost", user="root",
-                         password="461834084", db="socialmind", port=3306)
+                         password="root", db="socialmind", port=3306)
     # 使用cursor()方法获取操作游标
     cur = db.cursor()
     # 1.查询操作

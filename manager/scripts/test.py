@@ -2,12 +2,13 @@ from __future__ import absolute_import
 from __future__ import unicode_literals
 import os
 import uuid
+import pymysql
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "socialmind.settings")  # NoQA
 from manager.scripts.dboperate import *
 import django
 django.setup()
 # os.environ.setdefault("DJANGO_SETTINGS_MODULE", "socialmind.settings")  # NoQA
-from visitor.models import Author,Website,Article
+from visitor.models import Author,Website,Article,Object,Event
 import time
 def insertauthor():
     db = dbconnect('blog163')
@@ -104,12 +105,35 @@ def selectarcticle():
     results = cur.fetchall()
     print(len(results))
     db.close()
-time_start = time.time()
-# insertauthor()
-selectarcticle()
-# insertarticle()
-# a = Article.objects.all()
+def insertevent():
+    db = pymysql.connect('localhost','root','root','entity',port=3306)
+    cur =db.cursor()
+    sql = 'select * from event'
+    cur.execute(sql)
+    results = cur.fetchall()
+    for result in results:
+        eventname = result[0]
+        starttime = result[3]
+        endtime = result[4]
+        newobject = Object()
+        id=uuid.uuid4()
+        newobject.objectid = id
+        newobject.name = eventname
+        newobject.addtime = '2018-08-05 19:50:41'
+        newobject.objecttype = '事件'
+        newobject.credibility = 'true'
+        newobject.save()
+        newevent = Event()
+        newevent.objectid = Object.objects.get(objectid=id)
+        newevent.eventbegintime = starttime
+        newevent.eventendtime = endtime
+        newevent.save()
 
+
+
+    db.close()
+time_start = time.time()
+insertevent()
 time_end = time.time()
 print(time_end-time_start)
 
