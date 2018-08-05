@@ -36,7 +36,7 @@ def personList(request):
                 data.append({"userid": userid, "realname": realname, "sex": sex, "age": age, "phoneNum": phoneNum,
                              "email": email, "job": job, "registrantTime": registranttime, "username": username})
             except:
-                pass
+                print(userid)
     return JsonResponse({"code": 0, "msg": "", "count": count, "data": data})
 
 
@@ -66,14 +66,13 @@ def companyList(request):
                              "registertime": registertime, "email": email, "registrantTime": registranttime, "username": username})
             except:
                 pass
-    print(data)
     return JsonResponse({"code": 0, "msg": "", "count": count, "data": data})
 
 
 def govermentList(request):
     page = int(request.GET.get("page"))
     limit = int(request.GET.get("limit"))
-    count = models.User.objects.values("usertype").filter(usertype="企业用户").count()
+    count = models.User.objects.values("usertype").filter(usertype="政府用户").count()
     start = (page-1)*limit
     end = limit*page
     data = []
@@ -96,14 +95,13 @@ def govermentList(request):
                              "govType": govType, "email": email, "registrantTime": registranttime, "username": username})
             except:
                 pass
-    print(data)
     return JsonResponse({"code": 0, "msg": "", "count": count, "data": data})
 
 
 def instituteList(request):
     page = int(request.GET.get("page"))
     limit = int(request.GET.get("limit"))
-    count = models.User.objects.values("usertype").filter(usertype="企业用户").count()
+    count = models.User.objects.values("usertype").filter(usertype="事业单位用户").count()
     start = (page-1)*limit
     end = limit*page
     data = []
@@ -127,5 +125,4 @@ def instituteList(request):
                              "institutiontype": institutiontype, "email": email, "registrantTime": registranttime, "username": username})
             except:
                 pass
-    print(data)
     return JsonResponse({"code": 0, "msg": "", "count": count, "data": data})
