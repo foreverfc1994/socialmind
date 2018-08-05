@@ -20,7 +20,7 @@ from manager import views as bviews
 from django.conf.urls import include
 from visitor.view import loginviews,indexview,UserInfoManageview
 from manager.view import loginview as bloginview,ArticleandAuthorview as bAAview
-from manager.view import userManagement as umView
+# from manager.view import userManagement as umView
 from manager.view import DataTableShowView,ObjectShowview
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -43,6 +43,8 @@ urlpatterns = [
     path('fileSearch/', vviews.fileSearch, name='fileSearch'),
     path('eventSearch/', vviews.eventSearch, name='eventSearch'),
     path('competitive_products/', vviews.competitive_products),
+    path('personalInfoForm/',UserInfoManageview.personalInfoForm),
+    path('ComUsrForm/<int:a>/',UserInfoManageview.ComUsrForm),
     # background url
     path('bindex/', bloginview.index, name='index'),
     path('blogin/', bloginview.login, name='login'),
@@ -69,10 +71,10 @@ urlpatterns = [
     path('AssignAuthorities/', bviews.AssignAuthorities),
     path('usersVerify/', bviews.usersVerify),
     path('usrManagement/', bviews.usrManagement),
-    path('usrManagement/List/person/', umView.personList),#个人用户管理
-    path('usrManagement/List/company/', umView.companyList),#企业用户管理
-    path('usrManagement/List/goverment/', umView.govermentList),#政府用户管理
-    path('usrManagement/List/institute/', umView.instituteList),#事业单位用户管理
+    # path('usrManagement/List/person/', umView.personList),#个人用户管理
+    # path('usrManagement/List/company/', umView.companyList),#企业用户管理
+    # path('usrManagement/List/goverment/', umView.govermentList),#政府用户管理
+    # path('usrManagement/List/institute/', umView.instituteList),#事业单位用户管理
     path('operateDiary/', bviews.operateDiary),#日志管理
     path('DouBanArticleStyle/', bviews.DouBanArticleStyle),
     path('ArticlePaticular/', bAAview.ArticlePaticular),
