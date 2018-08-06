@@ -1,5 +1,5 @@
-from django.shortcuts import render,redirect
-from visitor.models import User,Province,City,Area
+from django.shortcuts import render, redirect
+from visitor.models import Province, City, Area
 from visitor import models
 from django.http import JsonResponse
 from visitor import forms

@@ -70,6 +70,7 @@ def ArticlesOfAuthor(request):#作者详情
     data = {"authorId": authorID, "authorName": name, "filesNumber": filesNumber, "fansNumber": fansNumber, "web": web,
            "sex": sex, "age": age, "address": address, "introduction": introduction, "focusNum": focusNum}
     return render(request, 'background/ArticlesOfAuthor.html', data)
+
 def getAuthors(request):
     dataList = []
     results = models.Author.objects.values("authorid", "name", "fansnumber", "websiteid")

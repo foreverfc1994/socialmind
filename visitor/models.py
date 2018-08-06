@@ -87,8 +87,8 @@ class ArticleLabeled(models.Model):
 
 class ArticleSimilar(models.Model):
     articlesimilarid = models.CharField(db_column='articleSimilarID', primary_key=True, max_length=64)  # Field name made lowercase.
-    articleoneid = models.ForeignKey(Article, models.DO_NOTHING, db_column='articleOneID', blank=True, null=True, related_name='articleoneid')  # Field name made lowercase.
-    articletwoid = models.ForeignKey(Article, models.DO_NOTHING, db_column='articleTwoID', blank=True, null=True, related_name='articletwoid')  # Field name made lowercase.
+    articleoneid = models.ForeignKey(Article, models.DO_NOTHING, db_column='articleOneID', blank=True, null=True, related_name="articleoneid")  # Field name made lowercase.
+    articletwoid = models.ForeignKey(Article, models.DO_NOTHING, db_column='articleTwoID', blank=True, null=True, related_name="articletwoid")  # Field name made lowercase.
     similardegree = models.FloatField(db_column='similarDegree', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
@@ -572,8 +572,8 @@ class Keyword(models.Model):
 
 class KeywordRelatedDegree(models.Model):
     keyworddegreeid = models.CharField(db_column='keywordDegreeID', primary_key=True, max_length=64)  # Field name made lowercase.
-    keywordoneid = models.ForeignKey(Keyword, models.DO_NOTHING, db_column='keywordOneID', blank=True, null=True, related_name='keywordoneid')  # Field name made lowercase.
-    keywordtwoid = models.ForeignKey(Keyword, models.DO_NOTHING, db_column='keywordTwoID', blank=True, null=True, related_name='keywordtwoid')  # Field name made lowercase.
+    keywordoneid = models.ForeignKey(Keyword, models.DO_NOTHING, db_column='keywordOneID', blank=True, null=True, related_name="keywordoneid")  # Field name made lowercase.
+    keywordtwoid = models.ForeignKey(Keyword, models.DO_NOTHING, db_column='keywordTwoID', blank=True, null=True, related_name="keywordtwoid")  # Field name made lowercase.
     relateddegree = models.FloatField(db_column='relatedDegree', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
@@ -603,6 +603,7 @@ class Message(models.Model):
     messagecontent = models.TextField(db_column='messageContent', blank=True, null=True)  # Field name made lowercase.
     messagetime = models.CharField(db_column='messageTime', max_length=36, blank=True, null=True)  # Field name made lowercase.
     objectid = models.ForeignKey('Object', models.DO_NOTHING, db_column='objectID', blank=True, null=True)  # Field name made lowercase.
+    checked = models.CharField(max_length=1, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -860,12 +861,12 @@ class User(models.Model):
     username = models.CharField(db_column='userName', max_length=64, blank=True, null=True)  # Field name made lowercase.
     password = models.CharField(max_length=64, blank=True, null=True)
     email = models.CharField(max_length=32, blank=True, null=True)
-    roleid = models.ForeignKey(Role, models.DO_NOTHING, db_column='roleID', blank=True, null=True, related_name='userroleid')  # Field name made lowercase.
+    roleid = models.ForeignKey(Role, models.DO_NOTHING, db_column='roleID', blank=True, null=True, related_name="userroleid")  # Field name made lowercase.
     registrantid = models.CharField(db_column='registrantID', max_length=36, blank=True, null=True)  # Field name made lowercase.
     usertype = models.CharField(db_column='userType', max_length=32, blank=True, null=True)  # Field name made lowercase.
     isauthenticated = models.CharField(db_column='isAuthenticated', max_length=2, blank=True, null=True)  # Field name made lowercase.
     address = models.CharField(max_length=255, blank=True, null=True)
-    role = models.ForeignKey(Role, models.DO_NOTHING, db_column='role', blank=True, null=True, related_name='userrole')
+    role = models.ForeignKey(Role, models.DO_NOTHING, db_column='role', blank=True, null=True, related_name="userrole")
     registranttime = models.CharField(db_column='registrantTime', max_length=255, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:

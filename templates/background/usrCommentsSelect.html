@@ -8,6 +8,12 @@
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <script type="text/javascript" charset="utf8"
+            src="{% static 'backgroundfiles/DataTables-1.10.15/media/js/jquery.js' %}"></script>
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'backgroundfiles/DataTables-1.10.15/media/css/jquery.dataTables.css' %}">
+    <script type="text/javascript" charset="utf8"
+            src="{% static 'backgroundfiles/DataTables-1.10.15/media/js/jquery.dataTables.js' %}"></script>
     <script src="{% static 'assets0/layui/layui.js' %}"></script>
     <title>DASHGUM - Bootstrap Admin Template</title>
     <link rel="stylesheet" href="{% static 'assets0/layui/css/layui.css' %}" media="all">
@@ -359,116 +365,7 @@
                         <div class="row mt">
                             <div class="col-lg-12">
                                 <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        待审核用户评论 共25条
-                                        <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">entries</span>
-                                        <select class="form-control"
-                                                style="float: right;width: 60px;height: 25px;font-size: 12px">
-                                            <option>10</option>
-                                            <option>25</option>
-                                            <option>50</option>
-                                            <option>100</option>
-                                        </select>
-                                        <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">Show</span>
-                                        <button class="btn btn-success btn-xs" style="margin-right: 10px;float: right">
-                                            批量审核通过
-                                        </button>
-                                        <button class="btn btn-danger btn-xs" style="margin-right: 10px;float: right">
-                                            批量审核不通过
-                                        </button>
-                                    </div>
-                                    <!--<div class="panel-body">-->
-                                    <table class="table table-bordered" style="margin: 0%">
-                                        <tr>
-                                            <td  style="width: 9%">是否全选<input id='is_all0' type="checkbox"></td>
-                                            <td>序号</td>
-                                            <td>用户类型</td>
-                                            <td>用户名</td>
-                                            <td>事件名</td>
-                                            <td>评论内容</td>
-                                            <td style="width: 9%">审核</td>
-                                        </tr>
-                                        <tr>
-                                            <td><input class="qx" type="checkbox"></td>
-                                            <td>1</td>
-                                            <td>个人用户</td>
-                                            <td>小明</td>
-                                            <td>十九大胜利召开</td>
-                                            <td>改变了主要矛盾，厉害了我的国！</td>
-                                            <td>
-                                                <div style="margin-top: -3px;margin-bottom: -8px;"
-                                                     class="switch switch-square" data-on-label="通过"
-                                                     data-off-label="未通过"><input  type="checkbox" checked=""/></div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><input class="qx" type="checkbox"></td>
-                                            <td>2</td>
-                                            <td>个人用户</td>
-                                            <td>小明</td>
-                                            <td>十九大胜利召开</td>
-                                            <td>改变了主要矛盾，厉害了我的国！</td>
-                                            <td>
-                                                <div style="margin-top: -3px;margin-bottom: -8px;"
-                                                     class="switch switch-square" data-on-label="通过"
-                                                     data-off-label="未通过"><input  type="checkbox" checked=""/></div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><input class="qx" type="checkbox"></td>
-                                            <td>3</td>
-                                            <td>个人用户</td>
-                                            <td>小明</td>
-                                            <td>十九大胜利召开</td>
-                                            <td>改变了主要矛盾，厉害了我的国！</td>
-                                            <td>
-                                                <div style="margin-top: -3px;margin-bottom: -8px;"
-                                                     class="switch switch-square" data-on-label="通过"
-                                                     data-off-label="未通过"><input type="checkbox" checked=""/></div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><input class="qx" type="checkbox"></td>
-                                            <td>4</td>
-                                            <td>个人用户</td>
-                                            <td>小明</td>
-                                            <td>十九大胜利召开</td>
-                                            <td>改变了主要矛盾，厉害了我的国！</td>
-                                            <td>
-                                                <div style="margin-top: -3px;margin-bottom: -8px;"
-                                                     class="switch switch-square" data-on-label="通过"
-                                                     data-off-label="未通过"><input  type="checkbox" checked=""/></div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><input class="qx" type="checkbox"></td>
-                                            <td>5</td>
-                                            <td>个人用户</td>
-                                            <td>小明</td>
-                                            <td>十九大胜利召开</td>
-                                            <td>改变了主要矛盾，厉害了我的国！</td>
-                                            <td>
-                                                <div style="margin-top: -3px;margin-bottom: -8px;"
-                                                     class="switch switch-square" data-on-label="通过"
-                                                     data-off-label="未通过"><input  type="checkbox" checked=""/></div>
-                                            </td>
-                                        </tr>
-                                    </table>
-
-                                    <!--</div>-->
-                                    <div class="panel-footer">
-                                        Search:
-                                        <input type="text" class="form-control" placeholder="Search for..."
-                                               style="width: 200px;height: 25px;display: inline-block">
-                                        <div class="btn-group btn-group-xs" role="group" aria-label="..."
-                                             style="float: right;">
-                                            <button type="button" class="btn btn-default">First</button>
-                                            <button type="button" class="btn btn-default">Previous</button>
-                                            <button type="button" class="btn btn-default">1</button>
-                                            <button type="button" class="btn btn-default">Next</button>
-                                            <button type="button" class="btn btn-default">Last</button>
-                                        </div>
-                                    </div>
+                                    <table id="uncheckedTable"></table>
                                 </div>
                             </div>
                         </div>
@@ -476,104 +373,7 @@
                     <div id='11' class="layui-tab-item">
                         <div class="row mt">
                             <div class="col-lg-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        用户评论展示 共500条
-                                        <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">entries</span>
-                                        <select class="form-control"
-                                                style="float: right;width: 60px;height: 25px;font-size: 12px">
-                                            <option>10</option>
-                                            <option>25</option>
-                                            <option>50</option>
-                                            <option>100</option>
-                                        </select>
-                                        <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">Show</span>
-                                        <button class="btn btn-danger btn-xs" style="margin-right: 10px;float: right">
-                                            批量删除
-                                        </button>
-                                    </div>
-                                    <!--<div class="panel-body">-->
-                                    <table class="table table-bordered" style="margin: 0%">
-                                        <tr>
-                                            <td>全选<input id='is_all1' type="checkbox"></td>
-                                            <td>序号</td>
-                                            <td>用户类型</td>
-                                            <td>用户名</td>
-                                            <td>事件名</td>
-                                            <td>评论内容</td>
-                                            <td>操作</td>
-                                        </tr>
-                                        <tr>
-                                            <td><input class="qx1" type="checkbox"></td>
-                                            <td>1</td>
-                                            <td>政府用户</td>
-                                            <td>西安市政府</td>
-                                            <td>十九大胜利召开</td>
-                                            <td>中国进入了新时代！高举中国特色社会主义旗帜，坚决拥护和支持党的英明举措！</td>
-                                            <td>
-                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><input class="qx1" type="checkbox"></td>
-                                            <td>2</td>
-                                            <td>政府用户</td>
-                                            <td>西安市政府</td>
-                                            <td>十九大胜利召开</td>
-                                            <td>中国进入了新时代！高举中国特色社会主义旗帜，坚决拥护和支持党的英明举措！</td>
-                                            <td>
-                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><input class="qx1" type="checkbox"></td>
-                                            <td>3</td>
-                                            <td>政府用户</td>
-                                            <td>西安市政府</td>
-                                            <td>十九大胜利召开</td>
-                                            <td>中国进入了新时代！高举中国特色社会主义旗帜，坚决拥护和支持党的英明举措！</td>
-                                            <td>
-                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><input class="qx1" type="checkbox"></td>
-                                            <td>4</td>
-                                            <td>政府用户</td>
-                                            <td>西安市政府</td>
-                                            <td>十九大胜利召开</td>
-                                            <td>中国进入了新时代！高举中国特色社会主义旗帜，坚决拥护和支持党的英明举措！</td>
-                                            <td>
-                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><input class="qx1" type="checkbox"></td>
-                                            <td>4</td>
-                                            <td>政府用户</td>
-                                            <td>西安市政府</td>
-                                            <td>十九大胜利召开</td>
-                                            <td>中国进入了新时代！高举中国特色社会主义旗帜，坚决拥护和支持党的英明举措！</td>
-                                            <td>
-                                                <button type="button" class="btn btn-danger btn-xs">删除</button>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <!--</div>-->
-                                    <div class="panel-footer">
-                                        Search:
-                                        <input type="text" class="form-control" placeholder="Search for..."
-                                               style="width: 200px;height: 25px;display: inline-block">
-                                        <div class="btn-group btn-group-xs" role="group" aria-label="..."
-                                             style="float: right;">
-                                            <button type="button" class="btn btn-default">First</button>
-                                            <button type="button" class="btn btn-default">Previous</button>
-                                            <button type="button" class="btn btn-default">1</button>
-                                            <button type="button" class="btn btn-default">Next</button>
-                                            <button type="button" class="btn btn-default">Last</button>
-                                        </div>
-                                    </div>
-                                </div>
+                                <table id="commentsManage"></table>
                             </div>
                         </div>
                     </div>
@@ -597,7 +397,6 @@
 </section>
 
 <!-- js placed at the end of the document so the pages load faster -->
-<script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script>
 <script src="{% static 'backgroundfiles/assets/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'backgroundfiles/assets/js/jquery-ui-1.9.2.custom.min.js' %}"></script>
 <script src="{% static 'backgroundfiles/assets/js/jquery.ui.touch-punch.min.js' %}"></script>
@@ -633,7 +432,7 @@
 
 <script type="text/javascript"
         src="{% static 'backgroundfiles/assets/js/bootstrap-inputmask/bootstrap-inputmask.min.js' %}"></script>
-
+<script src="{% static 'backgroundfiles/js/fileJs/userCommentManage.js' %}"></script>
 
 <script>
     //custom select box
@@ -661,6 +460,11 @@
     });
 
 </script>
-
+<script>
+    window.onload = function(){
+        ajaxUncheckedData();
+        ajaxCommentsManageData();
+    }
+</script>
 </body>
 </html>

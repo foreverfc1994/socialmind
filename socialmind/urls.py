@@ -67,7 +67,8 @@ urlpatterns = [
     path('semanticsToolkits/', bviews.semanticsToolkits),
     path('ShowToolkits/', bviews.ShowToolkits),
     path('usrCommentsSelect/', bviews.usrCommentsSelect),#用户留言管理
-    path('usrCommentsSelect/commentCheck/', ucView.checkComments),
+    path('usrCommentsSelect/commentsCheck/', ucView.checkComments),
+    path('usrCommentsSelect/commentsManage/', ucView.manageComments),
     path('usrCommentsCheck/', bviews.usrCommentsCheck),
     path('usrCommentsDelete/', bviews.usrCommentsDelete),
     path('AssignAuthorities/', bviews.AssignAuthorities),
