@@ -70,7 +70,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">地址</label>
         <div class="layui-input-block">
-            <input type="text" name="IDcardfront" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+            <input type="text" name="address" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
@@ -186,7 +186,7 @@
             //几个参数需要注意一下
             type: "GET",//方法类型
             dataType: "json",//预期服务器返回的数据类型
-            url: "/ajaxInitComUsrForm/" ,//url
+            url: "/ajaxInitPersonUsrForm/" ,//url
             success: function (data) {
                 layui.use(['form', 'layedit', 'laydate'], function(){
                     var form = layui.form
@@ -194,18 +194,6 @@
                         ,layedit = layui.layedit
                         ,laydate = layui.laydate;
 //表单初始赋值
-                    form.val('qiyexiangguan', {
-                        "comName": data.data[0].companyname // "name": "value"
-                        ,"comType": data.data[0].companytype
-                        ,"comaddress": data.data[0].address
-                        ,"businessscope": data.data[0].businessscope
-                        ,"interest": data.data[0].interest
-                        ,"businessID": data.data[0].businessLicenceId
-                        ,"date": data.data[0].registertime
-                        ,"businesspic": data.data[0].bussinessLicenceUrl
-                        ,"isAu": data.data[0].isAu
-                        ,"registerORG":data.data[0].registerORG
-                    })
                     form.val('usrlogin', {
                         "username": data.data[0].username // "name": "value"
                         ,"password": data.data[0].psw
@@ -213,15 +201,14 @@
                     form.val('gerenxinxi', {
                         "realname": data.data[0].realname // "name": "value"
                         ,"usrimg": data.data[0].usrimg
+                        ,"gender": data.data[0].gender
+                        ,"birthday": data.data[0].birthday
+                        ,"job": data.data[0].career
+                        ,"hobby": data.data[0].hobby
+                        ,"phone": data.data[0].phone
                         ,"mail": data.data[0].email
-                        ,"IDcardNum": data.data[0].IDcard
-                        ,"IDcardfront": data.data[0].idfronturl
-                        ,"IDcardback": data.data[0].idbackurl
+                        ,"address": data.data[0].address
                         ,"registranttime": data.data[0].registranttime
-                        /* ,"like[write]": true //复选框选中状态
-                        ,"close": true //开关状态
-                        ,"IDcardNum": "女"
-                        ,"desc": "我爱 layui" */
                     })
                 })
 
