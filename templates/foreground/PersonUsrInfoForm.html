@@ -15,111 +15,79 @@
 </head>
 <body>
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-    <legend>企业相关</legend>
+    <legend>个人信息</legend>
 </fieldset>
-<form id="form1" class="layui-form" method="post" action="" lay-filter="qiyexiangguan">
+<form id="form3" class="layui-form" method="post" action="" lay-filter="gerenxinxi">
     {% csrf_token %}
     <div class="layui-form-item">
-        <label class="layui-form-label">企业名称</label>
+        <label class="layui-form-label">真实姓名</label>
         <div class="layui-input-block">
-            <input type="text" name="comName" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+            <input type="text" name="realname" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">企业类型</label>
+        <label class="layui-form-label">用户头像</label>
         <div class="layui-input-block">
-            <select name="comType" lay-filter="aihao">
-                <option value=""></option>
-                <option value="有限责任公司">有限责任公司</option>
-                <option value="股份有限公司">股份有限公司</option>
-                <option value="个人独资企业">个人独资企业</option>
-                <option value="合伙企业">合伙企业</option>
-                <option value="全民所有制企业">全民所有制企业</option>
-                <option value="集体所有制企业">集体所有制企业</option>
-            </select>
+            <input type="text" name="usrimg" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
         </div>
     </div>
-    <!-- <div id="">dsgfdsfdsdsfdsfd</div> -->
     <div class="layui-form-item">
-        <label class="layui-form-label">企业地址</label>
+        <label class="layui-form-label">性别</label>
         <div class="layui-input-block">
-            <input type="text" name="comaddress" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+            <input type="text" name="gender" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
         </div>
-        <!-- <div class="layui-input-inline">
-            <select id="province" name="province">
-                
-            </select>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">生日</label>
+        <div class="layui-input-block">
+            <input type="text" name="birthday" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
         </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">职业</label>
+        <div class="layui-input-block">
+            <input type="text" name="job" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">爱好</label>
+        <div class="layui-input-block">
+            <input type="text" name="hobby" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">手机</label>
+        <div class="layui-input-block">
+            <input type="text" name="phone" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">邮箱</label>
+        <div class="layui-input-block">
+            <input type="text" name="mail" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">地址</label>
+        <div class="layui-input-block">
+            <input type="text" name="IDcardfront" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">账号注册时间</label>
         <div class="layui-input-inline">
-            <select id="city" name="city">
-                <option value="">请选择市</option>
-                <option value="杭州">杭州</option>
-                <option value="宁波" disabled="">宁波</option>
-                <option value="温州">温州</option>
-                <option value="温州">台州</option>
-                <option value="温州">绍兴</option>
-            </select>
-        </div>
-        <div class="layui-input-inline">
-            <select id="country" name="country">
-                <option value="">请选择县/区</option>
-                <option value="西湖区">西湖区</option>
-                <option value="余杭区">余杭区</option>
-                <option value="拱墅区">临安市</option>
-            </select>
-        </div> -->
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">经营领域</label>
-        <div class="layui-input-block">
-            <input type="text" name="businessscope" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">关注领域</label>
-        <div class="layui-input-block">
-            <input type="text" name="interest" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">营业执照编码</label>
-        <div class="layui-input-block">
-            <input type="text" name="businessID" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">成立日期</label>
-        <div class="layui-input-inline">
-            <input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">营业执照照片</label>
-        <div class="layui-input-block">
-            <input type="text" name="businesspic" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">登记机关</label>
-        <div class="layui-input-block">
-            <input type="text" name="registerORG" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">是否认证</label>
-        <div class="layui-input-block">
-            <input readonly type="text" name="isAu" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+            <input readonly type="text" name="registranttime" id="datetime" lay-verify="datetime" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <a class="layui-btn" onclick="qiyeinfochange()">立即提交</a>
+            <a class="layui-btn" onclick="geren()">立即提交</a>
         </div>
     </div>
 </form>
 <script>
-    function qiyeinfochange(){
-        formsub1()
+    function geren(){
+        formsub3()
     }
 </script>
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
@@ -209,65 +177,6 @@
         }
     }
 </script>
-<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-    <legend>个人信息</legend>
-</fieldset>
-<form id="form3" class="layui-form" method="post" action="/ComUsrForm/3/" lay-filter="gerenxinxi">
-    {% csrf_token %}
-    <div class="layui-form-item">
-        <label class="layui-form-label">真实姓名</label>
-        <div class="layui-input-block">
-            <input type="text" name="realname" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">用户头像</label>
-        <div class="layui-input-block">
-            <input type="text" name="usrimg" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">邮箱</label>
-        <div class="layui-input-block">
-            <input type="text" name="mail" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">身份证号</label>
-        <div class="layui-input-block">
-            <input type="text" name="IDcardNum" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">身份证正面照</label>
-        <div class="layui-input-block">
-            <input type="text" name="IDcardfront" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">身份证背面照</label>
-        <div class="layui-input-block">
-            <input type="text" name="IDcardback" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">账号注册时间</label>
-        <div class="layui-input-inline">
-            <input readonly type="text" name="registranttime" id="datetime" lay-verify="datetime" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <div class="layui-input-block">
-            <a class="layui-btn" onclick="geren()">立即提交</a>
-        </div>
-    </div>
-</form>
-<script>
-    function geren(){
-        formsub3()
-    }
-</script>
-
 
 <script src="{% static 'assets0/layui/layui.js' %}"></script>
 <script src="{% static 'assets0/js/jquery.js' %}"></script>

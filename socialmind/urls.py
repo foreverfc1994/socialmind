@@ -43,7 +43,7 @@ urlpatterns = [
     path('fileSearch/', vviews.fileSearch, name='fileSearch'),
     path('eventSearch/', vviews.eventSearch, name='eventSearch'),
     path('competitive_products/', vviews.competitive_products),
-    path('personalInfoForm/',UserInfoManageview.personalInfoForm),
+    path('personalInfoForm/<int:a>/',UserInfoManageview.personalInfoForm),
     path('ComUsrForm/<int:a>/',UserInfoManageview.ComUsrForm),
     path('ajaxInitComUsrForm/',UserInfoManageview.ajaxInitComUsrForm),
     # background url

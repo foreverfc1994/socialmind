@@ -157,9 +157,16 @@ def ajaxInitComUsrForm(request):
     data = {"data": dataList}
     print(data)
     return HttpResponse(json.dumps(data))
-def personalInfoForm(request):
+def personalInfoForm(request,a):
     userid = request.session["user_id"]
-    return render(request, 'foreground/CompanyUsrInfoForm.html')
+    if(a == 1):
+        return render(request, 'foreground/PersonUsrInfoForm.html')
+    elif (a == 2):
+        return render(request, 'foreground/CompanyUsrInfoForm.html')
+    elif (a == 3):
+        return render(request, 'foreground/CompanyUsrInfoForm.html')
+    elif (a == 4):
+        return render(request, 'foreground/CompanyUsrInfoForm.html')
 
 def giveimgurl(url):
     # if(url[:7] == "static/"):

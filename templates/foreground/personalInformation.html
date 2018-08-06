@@ -571,6 +571,36 @@
     </div>
     {% csrf_token %}
     {% if request.session.user_type == "个人用户" %}
+    <script>
+            layui.use('layer', function(){ //独立版的layer无需执行这一句
+                var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+                var active = {
+                    setTop: function(){
+                        var that = this;
+                        //多窗口模式，层叠置顶
+                        layer.open({
+                            type: 2 //此处以iframe举例
+                            ,title: '编辑资料'
+                            ,area: ['1000px','800px']
+                            ,scrollbar: true
+                            ,shade: 0
+                            ,maxmin: true
+                            ,offset: [ '35px']
+                            ,content: '/personalInfoForm/1/'
+                            ,skin: 'layui-layer-lan'
+                            ,btn: ['关闭页面'] 
+                            ,yes: function(){
+                                layer.closeAll();
+                            }
+                        });
+                    }
+                }
+                $('#bianjiziliao').on('click', function(){
+                    var othis = $(this), method = othis.data('method');
+                    active[method] ? active[method].call(this, othis) : '';
+                });
+            });
+        </script>
         <div class="modal fade" id="UsrInformation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
              style="">
             <div class="modal-dialog modal-lg" role="document">
@@ -645,14 +675,10 @@
                             ,shade: 0
                             ,maxmin: true
                             ,offset: [ '35px']
-                            ,content: '/personalInfoForm/'
+                            ,content: '/personalInfoForm/2/'
                             ,skin: 'layui-layer-lan'
-                            ,btn: ['继续弹出', '全部关闭'] //只是为了演示
+                            ,btn: ['关闭页面'] 
                             ,yes: function(){
-                                /* $(that).click();  */
-                                alert("!!!")
-                            }
-                            ,btn2: function(){
                                 layer.closeAll();
                             }
                             /* ,zIndex: layer.zIndex //重点1
@@ -668,95 +694,6 @@
                 });
             });
         </script>
-
-        <div class="modal fade" id="UsrInformation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-             style="">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="exampleModalLabel">编辑资料</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form id="XiaoMing123form">
-                            <table class="table table-bordered">
-                                <tr>
-                                    <td>用户名</td>
-                                    <td><input id="Cusername" value="{{username}}"></td>
-                                </tr>
-                                <tr>
-                                    <td>头像</td>
-                                    <td><img src="{% static 'backgroundfiles/assets\img\ui-zac.jpg' %}"></td>
-                                </tr>
-                                <tr>
-                                    <td>角色</td>
-                                    <td>{{role}}</td>
-                                </tr>
-                                <tr>
-                                    <td>邮箱</td>
-                                    <td><input id="Cemail" value="{{email}}"></td>
-                                </tr>
-                                <tr>
-                                    <td>公司名称</td>
-                                    <td><input id="Ccompanyname" value="{{companyname}}"></td>
-                                </tr>
-                                <tr>
-                                    <td>公司类型</td>
-                                    <td><input id="Ccompanytype" value="{{companytype}}"></td>
-                                </tr>
-                                <tr>
-                                    <td>身份证正面</td>
-                                    <td><img class="imgsize" src="{{idfronturl}}"></td>
-                                </tr>
-                                <tr>
-                                    <td>身份证背面</td>
-                                    <td><img class="imgsize" src="{{idbackurl}}"></td>
-                                    <!-- <td><input id="Cidbackurl" value="{{idbackurl}}"></td> -->
-                                </tr>
-                                <tr>
-                                    <td>营业执照编号</td>
-                                    <td><input id="CbusinessLicenceId" value="{{businessLicenceId}}"></td>
-                                </tr>
-                                <tr>
-                                    <td>营业执照照片</td>
-                                    <td><img class="imgsize" src="{{bussinessLicenceUrl}}"></td>
-                                    <!-- <td><input id="CbussinessLicenceUrl" value="{{bussinessLicenceUrl}}"></td> -->
-                                </tr>
-                                <tr>
-                                    <td>经营领域</td>
-                                    <td><input id="Cbusinessscope" value="{{businessscope}}"></td>
-                                </tr>
-                                <tr>
-                                    <td>关注方向</td>
-                                    <td><input id="Cinterest" value="{{interest}}"></td>
-                                </tr>
-                                <tr>
-                                    <td>公司地址</td>
-                                    <td><input id="Caddress" value="{{address}}"></td>
-                                </tr>
-                                <tr>
-                                    <td>登记机关</td>
-                                    <td><input id="CregisterORG" value="{{registerORG}}"></td>
-                                </tr>
-                                <tr>
-                                    <td>登记时间</td>
-                                    <td><input id="Cregistertime" value="{{registertime}}"></td>
-                                </tr>
-                                <tr>
-                                    <td>账号注册时间</td>
-                                    <td><input id="Cregistranttime" value="{{registranttime}}"></td>
-                                </tr>
-                            </table>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" onclick="subm('XiaoMing123form')">修改</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     {% elif request.session.user_type == "政府用户" %}
         <div class="modal fade" id="UsrInformation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
              style="">
