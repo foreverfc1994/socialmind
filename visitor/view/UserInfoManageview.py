@@ -248,3 +248,157 @@ def profile(request):
                            "interest": interest})
     except:
         return render(request, 'foreground/login.html')
+
+def ajaxInitPersonUsrForm(request):
+    dataList = []
+    userid = request.session["user_id"]
+    role = request.session["user_type"]
+    # username = request.session["user_name"]
+    currentUser = models.User.objects.get(userid=userid)
+    username = currentUser.username
+    email = currentUser.email
+    psw = currentUser.password
+    IDcard = currentUser.registrantid
+    photo = currentUser.photo
+    personalized_data = models.CompanyUser.objects.get(userid=userid)
+    idfronturl = giveimgurl(personalized_data.idfronturl)
+    idbackurl = giveimgurl(personalized_data.idbackurl)
+    companyname = personalized_data.companyname
+    businessLicenceId = personalized_data.businesslicenceid
+    bussinessLicenceUrl = giveimgurl(str(personalized_data.businesslicenceurl))
+    businessscope = personalized_data.businessscope
+    companytype = personalized_data.companytype
+    interest = personalized_data.interest
+    realname = personalized_data.realname
+    # 登记机关
+    registerORG = personalized_data.registerorg
+    # 登记时间
+    registertime = personalized_data.registertime
+    address = currentUser.address
+    # 注册账号时间
+    registranttime = currentUser.registranttime
+    dataList.append({"username": username
+                        , "psw": psw
+                        , "role": role
+                        , "IDcard": IDcard
+                        , "email": email
+                        , "idfronturl": idfronturl
+                        , "idbackurl": idbackurl
+                        , "companyname": companyname
+                        , "businessLicenceId": businessLicenceId
+                        , "bussinessLicenceUrl": bussinessLicenceUrl
+                        , "businessscope": businessscope
+                        , "companytype": companytype
+                        , "interest": interest
+                        , "realname": realname
+                        , "registerORG": registerORG
+                        , "registertime": registertime
+                        , "address": address
+                        , "isAu": currentUser.isauthenticated
+                        , "registranttime": registranttime
+                        , "usrimg": photo
+                     })
+    data = {"data": dataList}
+    return HttpResponse(json.dumps(data))
+def ajaxInitInstitutionUsrForm(request):
+    dataList = []
+    userid = request.session["user_id"]
+    role = request.session["user_type"]
+    # username = request.session["user_name"]
+    currentUser = models.User.objects.get(userid=userid)
+    username = currentUser.username
+    email = currentUser.email
+    psw = currentUser.password
+    IDcard = currentUser.registrantid
+    photo = currentUser.photo
+    personalized_data = models.CompanyUser.objects.get(userid=userid)
+    idfronturl = giveimgurl(personalized_data.idfronturl)
+    idbackurl = giveimgurl(personalized_data.idbackurl)
+    companyname = personalized_data.companyname
+    businessLicenceId = personalized_data.businesslicenceid
+    bussinessLicenceUrl = giveimgurl(str(personalized_data.businesslicenceurl))
+    businessscope = personalized_data.businessscope
+    companytype = personalized_data.companytype
+    interest = personalized_data.interest
+    realname = personalized_data.realname
+    # 登记机关
+    registerORG = personalized_data.registerorg
+    # 登记时间
+    registertime = personalized_data.registertime
+    address = currentUser.address
+    # 注册账号时间
+    registranttime = currentUser.registranttime
+    dataList.append({"username": username
+                        , "psw": psw
+                        , "role": role
+                        , "IDcard": IDcard
+                        , "email": email
+                        , "idfronturl": idfronturl
+                        , "idbackurl": idbackurl
+                        , "companyname": companyname
+                        , "businessLicenceId": businessLicenceId
+                        , "bussinessLicenceUrl": bussinessLicenceUrl
+                        , "businessscope": businessscope
+                        , "companytype": companytype
+                        , "interest": interest
+                        , "realname": realname
+                        , "registerORG": registerORG
+                        , "registertime": registertime
+                        , "address": address
+                        , "isAu": currentUser.isauthenticated
+                        , "registranttime": registranttime
+                        , "usrimg": photo
+                     })
+    data = {"data": dataList}
+    return HttpResponse(json.dumps(data))
+def ajaxInitGovUsrForm(request):
+    dataList = []
+    userid = request.session["user_id"]
+    role = request.session["user_type"]
+    # username = request.session["user_name"]
+    currentUser = models.User.objects.get(userid=userid)
+    username = currentUser.username
+    email = currentUser.email
+    psw = currentUser.password
+    IDcard = currentUser.registrantid
+    photo = currentUser.photo
+    personalized_data = models.CompanyUser.objects.get(userid=userid)
+    idfronturl = giveimgurl(personalized_data.idfronturl)
+    idbackurl = giveimgurl(personalized_data.idbackurl)
+    companyname = personalized_data.companyname
+    businessLicenceId = personalized_data.businesslicenceid
+    bussinessLicenceUrl = giveimgurl(str(personalized_data.businesslicenceurl))
+    businessscope = personalized_data.businessscope
+    companytype = personalized_data.companytype
+    interest = personalized_data.interest
+    realname = personalized_data.realname
+    # 登记机关
+    registerORG = personalized_data.registerorg
+    # 登记时间
+    registertime = personalized_data.registertime
+    address = currentUser.address
+    # 注册账号时间
+    registranttime = currentUser.registranttime
+    dataList.append({"username": username
+                        , "psw": psw
+                        , "role": role
+                        , "IDcard": IDcard
+                        , "email": email
+                        , "idfronturl": idfronturl
+                        , "idbackurl": idbackurl
+                        , "companyname": companyname
+                        , "businessLicenceId": businessLicenceId
+                        , "bussinessLicenceUrl": bussinessLicenceUrl
+                        , "businessscope": businessscope
+                        , "companytype": companytype
+                        , "interest": interest
+                        , "realname": realname
+                        , "registerORG": registerORG
+                        , "registertime": registertime
+                        , "address": address
+                        , "isAu": currentUser.isauthenticated
+                        , "registranttime": registranttime
+                        , "usrimg": photo
+                     })
+    data = {"data": dataList}
+    return HttpResponse(json.dumps(data))
