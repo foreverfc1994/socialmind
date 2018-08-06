@@ -159,38 +159,7 @@ def ajaxInitComUsrForm(request):
     return HttpResponse(json.dumps(data))
 def personalInfoForm(request):
     userid = request.session["user_id"]
-    role = request.session["user_type"]
-    username = request.session["user_name"]
-    currentUser = models.User.objects.get(userid=userid)
-    email = currentUser.email
-    password = currentUser.password
-    IDcard = currentUser.registrantid
-    personalized_data = models.CompanyUser.objects.get(userid=userid)
-    idfronturl = giveimgurl(personalized_data.idfronturl)
-    idbackurl = giveimgurl(personalized_data.idbackurl)
-    companyname = personalized_data.companyname
-    businessLicenceId = personalized_data.businesslicenceid
-    bussinessLicenceUrl = giveimgurl(str(personalized_data.businesslicenceurl))
-    businessscope = personalized_data.businessscope
-    companytype = personalized_data.companytype
-    interest = personalized_data.interest
-    realname = personalized_data.realname
-    # 登记机关
-    registerORG = personalized_data.registerorg
-    # 登记时间
-    registertime = personalized_data.registertime
-    address = currentUser.address
-    # 注册账号时间
-    registranttime = currentUser.registranttime
-    print(idfronturl)
-    # return render(request, 'foreground/personalInfoForm.html',
-    #               {"userid": userid, "role": role, "username": username, "email": email, "password":password,
-    #                "companyname": companyname, "companytype": companytype, "idfronturl": idfronturl,
-    #                "idbackurl": idbackurl, "businessLicenceId": businessLicenceId,"IDcard":IDcard,
-    #                "bussinessLicenceUrl": bussinessLicenceUrl, "businessscope": businessscope,
-    #                "interest": interest, "realname": realname, "registerORG": registerORG,
-    #                "registertime": registertime, "address": address, "registranttime": registranttime})
-    return render(request, 'foreground/personalInfoForm.html')
+    return render(request, 'foreground/CompanyUsrInfoForm.html')
 
 def giveimgurl(url):
     # if(url[:7] == "static/"):
