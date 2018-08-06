@@ -21,7 +21,7 @@ from django.conf.urls import include
 from visitor.view import loginviews,indexview,UserInfoManageview
 from manager.view import loginview as bloginview,ArticleandAuthorview as bAAview
 from manager.view import userManagement as umView
-from manager.view import DataTableShowView,ObjectShowview
+from manager.view import DataTableShowView,ObjectShowview, userCommentsManage as ucView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', loginviews.login, name='first'),
@@ -66,7 +66,8 @@ urlpatterns = [
     path('semanticsTools/', bviews.semanticsTools),
     path('semanticsToolkits/', bviews.semanticsToolkits),
     path('ShowToolkits/', bviews.ShowToolkits),
-    path('usrCommentsSelect/', bviews.usrCommentsSelect),
+    path('usrCommentsSelect/', bviews.usrCommentsSelect),#用户留言管理
+    path('usrCommentsSelect/commentCheck/', ucView.checkComments),
     path('usrCommentsCheck/', bviews.usrCommentsCheck),
     path('usrCommentsDelete/', bviews.usrCommentsDelete),
     path('AssignAuthorities/', bviews.AssignAuthorities),

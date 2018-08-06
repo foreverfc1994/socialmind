@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
@@ -18,14 +19,10 @@
 
     <!-- Custom styles for this template -->
     <link href="{% static 'backgroundfiles/assets/css/style.css' %}" rel="stylesheet">
-    <link href="{% static 'backgroundfiles/assets/css/style-responsive.css' %}" rel="stylesheet">
+    <link href="{% static 'backgroundfiles/assets/css/style-responsive.css' %}" rel="stylesheet">{% blocktrans %}
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <script src="{% static 'backgroundfiles/assets/js/jquery-3.3.1.min.js' %}"></script>
 </head>
 
 <body>
@@ -33,7 +30,7 @@
 <section id="container">
     <!-- **********************************************************************************************************************************************************
     TOP BAR CONTENT & NOTIFICATIONS
-    *********************************************************************************************************************************************************** -->
+    *********************************************************************************************************************************************************** {% endblocktrans %}-->
     <!--header start-->
     <header class="header black-bg">
         <div class="sidebar-toggle-box">

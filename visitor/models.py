@@ -29,15 +29,15 @@ class Area(models.Model):
 
 
 class Article(models.Model):
-    articleid = models.CharField(db_column='articleID', primary_key=True, db_index=True, max_length=36)  # Field name made lowercase.
+    articleid = models.CharField(db_column='articleID', primary_key=True, max_length=36)  # Field name made lowercase.
     sourcearticleid = models.CharField(db_column='sourceArticleID', max_length=36, blank=True, null=True)  # Field name made lowercase.
-    authorid = models.ForeignKey('Author', db_column='authorID', db_index=True, blank=True, null=True, on_delete=models.SET_NULL)  # Field name made lowercase.
-    title = models.CharField(max_length=256, blank=True, db_index=True, null=True)
+    authorid = models.ForeignKey('Author', models.DO_NOTHING, db_column='authorID', blank=True, null=True)  # Field name made lowercase.
+    title = models.CharField(max_length=256, blank=True, null=True)
     keywords = models.CharField(db_column='keyWords', max_length=1024, blank=True, null=True)  # Field name made lowercase.
     content = models.TextField(blank=True, null=True)
     posttime = models.CharField(db_column='postTime', max_length=32, blank=True, null=True)  # Field name made lowercase.
     commentnumber = models.IntegerField(db_column='commentNumber', blank=True, null=True)  # Field name made lowercase.
-    scannumber = models.IntegerField(db_column='scanNumber', db_index=True, blank=True, null=True)  # Field name made lowercase.
+    scannumber = models.IntegerField(db_column='scanNumber', blank=True, null=True)  # Field name made lowercase.
     participationnumber = models.IntegerField(db_column='participationNumber', blank=True, null=True)  # Field name made lowercase.
     replynumber = models.IntegerField(db_column='replyNumber', blank=True, null=True)  # Field name made lowercase.
     likenumber = models.IntegerField(db_column='likeNumber', blank=True, null=True)  # Field name made lowercase.
@@ -48,7 +48,7 @@ class Article(models.Model):
     tramplenumber = models.IntegerField(db_column='trampleNumber', blank=True, null=True)  # Field name made lowercase.
     newsresource = models.CharField(db_column='newsResource', max_length=64, blank=True, null=True)  # Field name made lowercase.
     similardegree = models.FloatField(db_column='similarDegree', blank=True, null=True)  # Field name made lowercase.
-    websiteid = models.ForeignKey('Website', models.DO_NOTHING, db_index=True, db_column='websiteID', blank=True, null=True)  # Field name made lowercase.
+    websiteid = models.ForeignKey('Website', models.DO_NOTHING, db_column='websiteID', blank=True, null=True)  # Field name made lowercase.
     objectid = models.ForeignKey('Object', models.DO_NOTHING, db_column='objectID', blank=True, null=True)  # Field name made lowercase.
     sourceauthorid = models.CharField(db_column='sourceAuthorID', max_length=255, blank=True, null=True)  # Field name made lowercase.
 
@@ -87,8 +87,8 @@ class ArticleLabeled(models.Model):
 
 class ArticleSimilar(models.Model):
     articlesimilarid = models.CharField(db_column='articleSimilarID', primary_key=True, max_length=64)  # Field name made lowercase.
-    articleoneid = models.ForeignKey(Article, models.DO_NOTHING, db_column='articleOneID', blank=True, null=True, related_name='articleone')  # Field name made lowercase.
-    articletwoid = models.ForeignKey(Article, models.DO_NOTHING, db_column='articleTwoID', blank=True, null=True, related_name='articletwo')  # Field name made lowercase.
+    articleoneid = models.ForeignKey(Article, models.DO_NOTHING, db_column='articleOneID', blank=True, null=True, related_name='articleoneid')  # Field name made lowercase.
+    articletwoid = models.ForeignKey(Article, models.DO_NOTHING, db_column='articleTwoID', blank=True, null=True, related_name='articletwoid')  # Field name made lowercase.
     similardegree = models.FloatField(db_column='similarDegree', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
@@ -96,9 +96,75 @@ class ArticleSimilar(models.Model):
         db_table = 'article_similar'
 
 
+class AuthGroup(models.Model):
+    name = models.CharField(unique=True, max_length=80)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_group'
+
+
+class AuthGroupPermissions(models.Model):
+    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
+    permission = models.ForeignKey('AuthPermission', models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_group_permissions'
+        unique_together = (('group', 'permission'),)
+
+
+class AuthPermission(models.Model):
+    name = models.CharField(max_length=255)
+    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING)
+    codename = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_permission'
+        unique_together = (('content_type', 'codename'),)
+
+
+class AuthUser(models.Model):
+    password = models.CharField(max_length=128)
+    last_login = models.DateTimeField(blank=True, null=True)
+    is_superuser = models.IntegerField()
+    username = models.CharField(unique=True, max_length=150)
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=150)
+    email = models.CharField(max_length=254)
+    is_staff = models.IntegerField()
+    is_active = models.IntegerField()
+    date_joined = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'auth_user'
+
+
+class AuthUserGroups(models.Model):
+    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_user_groups'
+        unique_together = (('user', 'group'),)
+
+
+class AuthUserUserPermissions(models.Model):
+    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+    permission = models.ForeignKey(AuthPermission, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_user_user_permissions'
+        unique_together = (('user', 'permission'),)
+
+
 class Author(models.Model):
-    authorid = models.CharField(db_column='authorID', primary_key=True, db_index=True, max_length=36)  # Field name made lowercase.
-    name = models.CharField(max_length=64, blank=True, db_index=True, null=True)
+    authorid = models.CharField(db_column='authorID', primary_key=True, max_length=36)  # Field name made lowercase.
+    name = models.CharField(max_length=64, blank=True, null=True)
     sex = models.CharField(max_length=16, blank=True, null=True)
     birthday = models.CharField(max_length=32, blank=True, null=True)
     address = models.CharField(max_length=64, blank=True, null=True)
@@ -178,6 +244,17 @@ class BulletinStyleId(models.Model):
     class Meta:
         managed = False
         db_table = 'bulletin_style_id'
+
+
+class CaptchaCaptchastore(models.Model):
+    challenge = models.CharField(max_length=32)
+    response = models.CharField(max_length=32)
+    hashkey = models.CharField(unique=True, max_length=40)
+    expiration = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'captcha_captchastore'
 
 
 class City(models.Model):
@@ -272,20 +349,20 @@ class Comment(models.Model):
 
 class CompanyUser(models.Model):
     userid = models.ForeignKey('User', models.DO_NOTHING, db_column='userID', primary_key=True)  # Field name made lowercase.
-    realname = models.CharField(db_column='RealName', max_length=32, blank=True, null=True)  # Field name made lowercase.
     idfronturl = models.CharField(db_column='IDFrontUrl', max_length=255, blank=True, null=True)  # Field name made lowercase.
     companyname = models.CharField(db_column='companyName', max_length=64, blank=True, null=True)  # Field name made lowercase.
-    companytype = models.CharField(db_column='companyType', max_length=64, blank=True, null=True)  # Field name made lowercase.
     idbackurl = models.CharField(db_column='IDBackUrl', max_length=255, blank=True, null=True)  # Field name made lowercase.
     businesslicenceurl = models.CharField(db_column='businessLicenceUrl', max_length=255, blank=True, null=True)  # Field name made lowercase.
     businesslicenceid = models.CharField(db_column='businessLicenceId', max_length=64, blank=True, null=True)  # Field name made lowercase.
+    businessscope = models.CharField(db_column='businessScope', max_length=32, blank=True, null=True)  # Field name made lowercase.
+    companytype = models.CharField(db_column='companyType', max_length=64, blank=True, null=True)  # Field name made lowercase.
+    interest = models.CharField(max_length=32, blank=True, null=True)
+    realname = models.CharField(db_column='RealName', max_length=32, blank=True, null=True)  # Field name made lowercase.
+    registerorg = models.CharField(db_column='registerORG', max_length=32, blank=True, null=True)  # Field name made lowercase.
     registertime = models.CharField(db_column='registerTime', max_length=64, blank=True, null=True)  # Field name made lowercase.
-    registerorg = models.CharField(db_column='registerORG',max_length=32, blank=True, null=True)
-    businessscope = models.CharField(db_column='businessScope',max_length=32, blank=True, null=True)
-    interest = models.CharField(db_column='interest',max_length=32, blank=True, null=True)
 
     class Meta:
-        # managed = False
+        managed = False
         db_table = 'company_user'
 
 
@@ -334,6 +411,50 @@ class DataSource(models.Model):
     class Meta:
         managed = False
         db_table = 'data_source'
+
+
+class DjangoAdminLog(models.Model):
+    action_time = models.DateTimeField()
+    object_id = models.TextField(blank=True, null=True)
+    object_repr = models.CharField(max_length=200)
+    action_flag = models.PositiveSmallIntegerField()
+    change_message = models.TextField()
+    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING, blank=True, null=True)
+    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'django_admin_log'
+
+
+class DjangoContentType(models.Model):
+    app_label = models.CharField(max_length=100)
+    model = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'django_content_type'
+        unique_together = (('app_label', 'model'),)
+
+
+class DjangoMigrations(models.Model):
+    app = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    applied = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'django_migrations'
+
+
+class DjangoSession(models.Model):
+    session_key = models.CharField(primary_key=True, max_length=40)
+    session_data = models.TextField()
+    expire_date = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'django_session'
 
 
 class Entity(models.Model):
@@ -389,17 +510,17 @@ class EventSeedsBase(models.Model):
 
 class GovUser(models.Model):
     userid = models.ForeignKey('User', models.DO_NOTHING, db_column='userID', primary_key=True)  # Field name made lowercase.
-    realname = models.CharField(db_column='realName', max_length=32, blank=True, null=True)  # Field name made lowercase.
     govname = models.CharField(db_column='govName', max_length=64, blank=True, null=True)  # Field name made lowercase.
-    govtype = models.CharField(db_column='govType',max_length=32, blank=True, null=True)
     govcode = models.CharField(db_column='govCode', max_length=32, blank=True, null=True)  # Field name made lowercase.
     idfronturl = models.CharField(db_column='IDFrontUrl', max_length=255, blank=True, null=True)  # Field name made lowercase.
     idbackurl = models.CharField(db_column='IDBackUrl', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    govtype = models.CharField(db_column='govType', max_length=32, blank=True, null=True)  # Field name made lowercase.
     idcard = models.CharField(db_column='IDCard', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    interest = models.CharField(db_column='interest', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    interest = models.CharField(max_length=255, blank=True, null=True)
+    realname = models.CharField(db_column='realName', max_length=32, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        # managed = False
+        managed = False
         db_table = 'gov_user'
 
 
@@ -424,17 +545,17 @@ class InstitutionUser(models.Model):
     idfronturl = models.CharField(db_column='IDFrontUrl', max_length=255, blank=True, null=True)  # Field name made lowercase.
     idbackurl = models.CharField(db_column='IDBackUrl', max_length=255, blank=True, null=True)  # Field name made lowercase.
     institutionname = models.CharField(db_column='institutionName', max_length=64, blank=True, null=True)  # Field name made lowercase.
-    institutionlevel = models.CharField(db_column='institutionLevel', max_length=64, blank=True, null=True)  # Field name made lowercase.
-    institutiontype = models.CharField(db_column='institutionType', max_length=64, blank=True, null=True)  # Field name made lowercase.
     institudecode = models.CharField(db_column='institudeCode', max_length=64, blank=True, null=True)  # Field name made lowercase.
-    institudeurl = models.CharField(db_column='institudeUrl', max_length=255, blank=True, null=True)  # Field name made lowercase.
     userid = models.ForeignKey('User', models.DO_NOTHING, db_column='userID', primary_key=True)  # Field name made lowercase.
     idfront = models.CharField(db_column='IDFront', max_length=255, blank=True, null=True)  # Field name made lowercase.
     idback = models.CharField(db_column='IDBack', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    interest = models.CharField(db_column='interest', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    institudeurl = models.CharField(db_column='institudeUrl', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    institutionlevel = models.CharField(db_column='institutionLevel', max_length=64, blank=True, null=True)  # Field name made lowercase.
+    institutiontype = models.CharField(db_column='institutionType', max_length=64, blank=True, null=True)  # Field name made lowercase.
+    interest = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        # managed = False
+        managed = False
         db_table = 'institution_user'
 
 
@@ -451,8 +572,8 @@ class Keyword(models.Model):
 
 class KeywordRelatedDegree(models.Model):
     keyworddegreeid = models.CharField(db_column='keywordDegreeID', primary_key=True, max_length=64)  # Field name made lowercase.
-    keywordoneid = models.ForeignKey(Keyword, models.DO_NOTHING, db_column='keywordOneID', blank=True, null=True, related_name='keywordeone')  # Field name made lowercase.
-    keywordtwoid = models.ForeignKey(Keyword, models.DO_NOTHING, db_column='keywordTwoID', blank=True, null=True, related_name='keywordetwo')  # Field name made lowercase.
+    keywordoneid = models.ForeignKey(Keyword, models.DO_NOTHING, db_column='keywordOneID', blank=True, null=True, related_name='keywordoneid')  # Field name made lowercase.
+    keywordtwoid = models.ForeignKey(Keyword, models.DO_NOTHING, db_column='keywordTwoID', blank=True, null=True, related_name='keywordtwoid')  # Field name made lowercase.
     relateddegree = models.FloatField(db_column='relatedDegree', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
@@ -479,10 +600,9 @@ class Log(models.Model):
 
 class Message(models.Model):
     messageid = models.CharField(db_column='messageID', primary_key=True, max_length=36)  # Field name made lowercase.
-    messagetitle = models.TextField(db_column='messageTitle', blank=True, null=True)  # Field name made lowercase.
     messagecontent = models.TextField(db_column='messageContent', blank=True, null=True)  # Field name made lowercase.
     messagetime = models.CharField(db_column='messageTime', max_length=36, blank=True, null=True)  # Field name made lowercase.
-    adminid = models.ForeignKey(Admin, models.DO_NOTHING, db_column='adminID', blank=True, null=True)  # Field name made lowercase.
+    objectid = models.ForeignKey('Object', models.DO_NOTHING, db_column='objectID', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -698,11 +818,7 @@ class TbUser(models.Model):
     class Meta:
         managed = False
         db_table = 'tb_user'
-class Topic(models.Model):
-    name = models.CharField(max_length=32)
 
-    class Meta:
-        db_table='topic'
 
 class Tool(models.Model):
     toolid = models.CharField(db_column='toolID', primary_key=True, max_length=36)  # Field name made lowercase.
@@ -731,19 +847,26 @@ class Toolkit(models.Model):
         db_table = 'toolkit'
 
 
+class Topic(models.Model):
+    name = models.CharField(max_length=32)
+
+    class Meta:
+        managed = False
+        db_table = 'topic'
+
+
 class User(models.Model):
     userid = models.CharField(db_column='userID', primary_key=True, max_length=36)  # Field name made lowercase.
     username = models.CharField(db_column='userName', max_length=64, blank=True, null=True)  # Field name made lowercase.
     password = models.CharField(max_length=64, blank=True, null=True)
     email = models.CharField(max_length=32, blank=True, null=True)
-    roleid = models.ForeignKey(Role, models.DO_NOTHING, db_column='roleID', blank=True, null=True, related_name='user_roleid')  # Field name made lowercase.
+    roleid = models.ForeignKey(Role, models.DO_NOTHING, db_column='roleID', blank=True, null=True, related_name='userroleid')  # Field name made lowercase.
     registrantid = models.CharField(db_column='registrantID', max_length=36, blank=True, null=True)  # Field name made lowercase.
     usertype = models.CharField(db_column='userType', max_length=32, blank=True, null=True)  # Field name made lowercase.
     isauthenticated = models.CharField(db_column='isAuthenticated', max_length=2, blank=True, null=True)  # Field name made lowercase.
     address = models.CharField(max_length=255, blank=True, null=True)
-    role = models.ForeignKey(Role, models.DO_NOTHING, db_column='role', blank=True, null=True, related_name='user_role')
+    role = models.ForeignKey(Role, models.DO_NOTHING, db_column='role', blank=True, null=True, related_name='userrole')
     registranttime = models.CharField(db_column='registrantTime', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    photo = models.CharField(db_column='photo', max_length=255, blank=True, null=True)
 
     class Meta:
         managed = False
