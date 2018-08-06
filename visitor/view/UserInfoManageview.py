@@ -1,12 +1,70 @@
 from django.shortcuts import render,redirect
 from visitor.models import User,Province,City,Area
 from visitor import models
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from visitor import forms
 from django.views.decorators.csrf import csrf_exempt
 from visitor.scripts.signin import *
 import logging
+import json
 logger = logging.getLogger('visitor')
+
+def ComUsrForm(request,a):
+    if(a == 1):
+        print("this is 1")
+    elif(a == 2):
+        dataList = []
+        userdata = request.POST
+        usrname = userdata.get('username')
+        psw = userdata.get('password')
+        print(usrname+"+"+psw)
+        data = {"data": dataList}
+        return HttpResponse(json.dumps(data))
+    elif(a == 3):
+        print("this is 3")
+
+def personalInfoForm(request):
+    userid = request.session["user_id"]
+    role = request.session["user_type"]
+    username = request.session["user_name"]
+    currentUser = models.User.objects.get(userid=userid)
+    email = currentUser.email
+    password = currentUser.password
+    personalized_data = models.CompanyUser.objects.get(userid=userid)
+    idfronturl = giveimgurl(personalized_data.idfronturl)
+    idbackurl = giveimgurl(personalized_data.idbackurl)
+    companyname = personalized_data.companyname
+    businessLicenceId = personalized_data.businesslicenceid
+    bussinessLicenceUrl = giveimgurl(str(personalized_data.businesslicenceurl))
+    businessscope = personalized_data.businessscope
+    companytype = personalized_data.companytype
+    interest = personalized_data.interest
+    realname = personalized_data.realname
+    # 登记机关
+    registerORG = personalized_data.registerorg
+    # 登记时间
+    registertime = personalized_data.registertime
+    address = currentUser.address
+    # 注册账号时间
+    registranttime = currentUser.registranttime
+    print(idfronturl)
+    return render(request, 'foreground/personalInfoForm.html',
+                  {"userid": userid, "role": role, "username": username, "email": email, "password":password,
+                   "companyname": companyname, "companytype": companytype, "idfronturl": idfronturl,
+                   "idbackurl": idbackurl, "businessLicenceId": businessLicenceId,
+                   "bussinessLicenceUrl": bussinessLicenceUrl, "businessscope": businessscope,
+                   "interest": interest, "realname": realname, "registerORG": registerORG,
+                   "registertime": registertime, "address": address, "registranttime": registranttime})
+
+def giveimgurl(url):
+    if(url[:7] == "static/"):
+        newurl = "/static/upload/"
+        newurl += url[7:]
+
+        print(newurl)
+    else:
+        newurl = url
+    return newurl
 def profile(request):
     userid = request.session["user_id"]
     print("userid: "+userid)
@@ -30,11 +88,11 @@ def profile(request):
                            "career": career, "realname": realName, "birthday": birthday})
         elif(role == "企业用户"):
             personalized_data = models.CompanyUser.objects.get(userid=userid)
-            idfronturl = personalized_data.idfronturl
-            idbackurl = personalized_data.idbackurl
+            idfronturl = giveimgurl(personalized_data.idfronturl)
+            idbackurl = giveimgurl(personalized_data.idbackurl)
             companyname = personalized_data.companyname
             businessLicenceId = personalized_data.businesslicenceid
-            bussinessLicenceUrl = str(personalized_data.businesslicenceurl)
+            bussinessLicenceUrl = giveimgurl(str(personalized_data.businesslicenceurl))
             businessscope = personalized_data.businessscope
             companytype = personalized_data.companytype
             interest = personalized_data.interest
@@ -46,6 +104,7 @@ def profile(request):
             address = currentUser.address
             #注册账号时间
             registranttime = currentUser.registranttime
+            print(idfronturl)
             return render(request, 'foreground/personalInformation.html',
                           {"userid": userid, "role": role, "username": username, "email": email,
                            "companyname": companyname, "companytype": companytype, "idfronturl": idfronturl,
