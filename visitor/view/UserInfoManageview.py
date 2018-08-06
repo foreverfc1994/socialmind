@@ -266,10 +266,9 @@ def ajaxInitPersonUsrForm(request):
     personalized_data = models.PersonUser.objects.get(userid=userid)
     realname = personalized_data.realname
     gender = "暂缺"
-    print(personalized_data.sex)
-    if(personalized_data.sex == 1):
+    if(personalized_data.sex == "1"):
         gender = "男"
-    elif(personalized_data.sex == 2):
+    elif(personalized_data.sex == "2"):
         gender = "女"
     birthday = personalized_data.birthday
     phone = personalized_data.phonenumber
