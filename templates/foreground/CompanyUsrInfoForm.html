@@ -1,0 +1,494 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Form</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="{% static 'assets0/layui/css/layui.css' %}" media="all">
+</head>
+<body>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>企业相关</legend>
+</fieldset>
+<form id="form1" class="layui-form" method="post" action="" lay-filter="qiyexiangguan">
+    {% csrf_token %}
+    <div class="layui-form-item">
+        <label class="layui-form-label">企业名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="comName" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">企业类型</label>
+        <div class="layui-input-block">
+            <select name="comType" lay-filter="aihao">
+                <option value=""></option>
+                <option value="有限责任公司">有限责任公司</option>
+                <option value="股份有限公司">股份有限公司</option>
+                <option value="个人独资企业">个人独资企业</option>
+                <option value="合伙企业">合伙企业</option>
+                <option value="全民所有制企业">全民所有制企业</option>
+                <option value="集体所有制企业">集体所有制企业</option>
+            </select>
+        </div>
+    </div>
+    <!-- <div id="">dsgfdsfdsdsfdsfd</div> -->
+    <div class="layui-form-item">
+        <label class="layui-form-label">企业地址</label>
+        <div class="layui-input-block">
+            <input type="text" name="comaddress" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+        <!-- <div class="layui-input-inline">
+            <select id="province" name="province">
+                
+            </select>
+        </div>
+        <div class="layui-input-inline">
+            <select id="city" name="city">
+                <option value="">请选择市</option>
+                <option value="杭州">杭州</option>
+                <option value="宁波" disabled="">宁波</option>
+                <option value="温州">温州</option>
+                <option value="温州">台州</option>
+                <option value="温州">绍兴</option>
+            </select>
+        </div>
+        <div class="layui-input-inline">
+            <select id="country" name="country">
+                <option value="">请选择县/区</option>
+                <option value="西湖区">西湖区</option>
+                <option value="余杭区">余杭区</option>
+                <option value="拱墅区">临安市</option>
+            </select>
+        </div> -->
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">经营领域</label>
+        <div class="layui-input-block">
+            <input type="text" name="businessscope" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">关注领域</label>
+        <div class="layui-input-block">
+            <input type="text" name="interest" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">营业执照编码</label>
+        <div class="layui-input-block">
+            <input type="text" name="businessID" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">成立日期</label>
+        <div class="layui-input-inline">
+            <input type="text" name="date" id="date" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">营业执照照片</label>
+        <div class="layui-input-block">
+            <input type="text" name="businesspic" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">登记机关</label>
+        <div class="layui-input-block">
+            <input type="text" name="registerORG" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">是否认证</label>
+        <div class="layui-input-block">
+            <input readonly type="text" name="isAu" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <a class="layui-btn" onclick="qiyeinfochange()">立即提交</a>
+        </div>
+    </div>
+</form>
+<script>
+    function qiyeinfochange(){
+        formsub1()
+    }
+</script>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>用户登陆</legend>
+</fieldset>
+<form id="form2" class="layui-form" method="post" action="" lay-filter="usrlogin">
+    {% csrf_token %}
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-input-block">
+            <input readonly type="text" name="username" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">原始密码</label>
+        <div class="layui-input-block">
+            <input id="yuanmima" type="password" placeholder="请输入原密码" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">新密码</label>
+        <div class="layui-input-block">
+            <input id="newpassword" type="password" name="newpassword" placeholder="请输入新密码" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">确认密码</label>
+        <div class="layui-input-block">
+            <input id="newpassword2" type="password" name="newpassword2" placeholder="再次输入新密码" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item" style="display: none">
+        <label class="layui-form-label">数据库密码</label>
+        <div class="layui-input-block">
+            <input id="dbpsw" type="password" name="password" placeholder="再次输入新密码" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <a class="layui-btn" onclick="changepsw()">修改密码</a>
+        </div>
+    </div>
+</form>
+<script>
+    function changepsw(){
+        predecessor = $("#yuanmima").val()
+        newpassword = $("#newpassword").val()
+        newpassword2 = $("#newpassword2").val()
+        if(predecessor == ""){
+            $("#yuanmima").parent().parent().addClass("layui-bg-red")
+            $("#yuanmima").attr('placeholder','原始密码不得为空！')
+        }
+        else if(newpassword == ""){
+            $("#yuanmima").parent().parent().removeClass("layui-bg-red")
+            $("#yuanmima").attr('placeholder','请输入原密码')
+            $("#newpassword").parent().parent().addClass("layui-bg-red")
+            $("#newpassword").attr('placeholder','新密码不得为空！')
+        }
+        else if(newpassword2 == ""){
+            $("#newpassword").parent().parent().removeClass("layui-bg-red")
+            $("#newpassword").attr('placeholder','请输入新密码')
+            $("#newpassword2").parent().parent().addClass("layui-bg-red")
+            $("#newpassword2").attr('placeholder','确认新密码不得为空！')
+        }
+        else if($("#dbpsw").val() != $("#yuanmima").val()){
+            $("#yuanmima").parent().parent().removeClass("layui-bg-red")
+            $("#newpassword").parent().parent().removeClass("layui-bg-red")
+            $("#newpassword2").parent().parent().removeClass("layui-bg-red")
+            $("#yuanmima").val("")
+            $("#newpassword").val("")
+            $("#newpassword2").val("")
+            alert("原密码有误！")
+        }
+        else if($("#newpassword").val() != $("#newpassword2").val()){
+            $("#yuanmima").parent().parent().removeClass("layui-bg-red")
+            $("#newpassword").parent().parent().removeClass("layui-bg-red")
+            $("#newpassword2").parent().parent().removeClass("layui-bg-red")
+            $("#newpassword").val("")
+            $("#newpassword2").val("")
+            alert("两次密码输入不一致！")
+        }
+        else{
+            $("#yuanmima").parent().parent().removeClass("layui-bg-red")
+            $("#newpassword").parent().parent().removeClass("layui-bg-red")
+            $("#newpassword2").parent().parent().removeClass("layui-bg-red")
+            formsub2();
+        }
+    }
+</script>
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>个人信息</legend>
+</fieldset>
+<form id="form3" class="layui-form" method="post" action="/ComUsrForm/3/" lay-filter="gerenxinxi">
+    {% csrf_token %}
+    <div class="layui-form-item">
+        <label class="layui-form-label">真实姓名</label>
+        <div class="layui-input-block">
+            <input type="text" name="realname" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户头像</label>
+        <div class="layui-input-block">
+            <input type="text" name="usrimg" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">邮箱</label>
+        <div class="layui-input-block">
+            <input type="text" name="mail" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">身份证号</label>
+        <div class="layui-input-block">
+            <input type="text" name="IDcardNum" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">身份证正面照</label>
+        <div class="layui-input-block">
+            <input type="text" name="IDcardfront" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">身份证背面照</label>
+        <div class="layui-input-block">
+            <input type="text" name="IDcardback" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">账号注册时间</label>
+        <div class="layui-input-inline">
+            <input readonly type="text" name="registranttime" id="datetime" lay-verify="datetime" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <a class="layui-btn" onclick="geren()">立即提交</a>
+        </div>
+    </div>
+</form>
+<script>
+    function geren(){
+        formsub3()
+    }
+</script>
+
+
+<script src="{% static 'assets0/layui/layui.js' %}"></script>
+<script src="{% static 'assets0/js/jquery.js' %}"></script>
+<script>
+    $(function(){
+        $.ajax({
+            //几个参数需要注意一下
+            type: "GET",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "/ajaxInitComUsrForm/" ,//url
+            success: function (data) {
+                layui.use(['form', 'layedit', 'laydate'], function(){
+                    var form = layui.form
+                        ,layer = layui.layer
+                        ,layedit = layui.layedit
+                        ,laydate = layui.laydate;
+//表单初始赋值
+                    form.val('qiyexiangguan', {
+                        "comName": data.data[0].companyname // "name": "value"
+                        ,"comType": data.data[0].companytype
+                        ,"comaddress": data.data[0].address
+                        ,"businessscope": data.data[0].businessscope
+                        ,"interest": data.data[0].interest
+                        ,"businessID": data.data[0].businessLicenceId
+                        ,"date": data.data[0].registertime
+                        ,"businesspic": data.data[0].bussinessLicenceUrl
+                        ,"isAu": data.data[0].isAu
+                        ,"registerORG":data.data[0].registerORG
+                    })
+                    form.val('usrlogin', {
+                        "username": data.data[0].username // "name": "value"
+                        ,"password": data.data[0].psw
+                    })
+                    form.val('gerenxinxi', {
+                        "realname": data.data[0].realname // "name": "value"
+                        ,"usrimg": data.data[0].usrimg
+                        ,"mail": data.data[0].email
+                        ,"IDcardNum": data.data[0].IDcard
+                        ,"IDcardfront": data.data[0].idfronturl
+                        ,"IDcardback": data.data[0].idbackurl
+                        ,"registranttime": data.data[0].registranttime
+                        /* ,"like[write]": true //复选框选中状态
+                        ,"close": true //开关状态
+                        ,"IDcardNum": "女"
+                        ,"desc": "我爱 layui" */
+                    })
+                })
+
+            },
+            error : function() {
+                layer.msg('获取数据失败！')
+            }
+        });
+    })
+    function formsub1(){
+        $.ajax({
+            //几个参数需要注意一下
+            type: "POST",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "/ComUsrForm/1/" ,//url
+            data: $('#form1').serialize(),
+            success: function (data) {
+                layer.msg('成功')
+                layui.use(['form', 'layedit', 'laydate'], function(){
+                    var form = layui.form
+                        ,layer = layui.layer
+                        ,layedit = layui.layedit
+                        ,laydate = layui.laydate;
+                    form.val('qiyexiangguan', {
+                        "comName": data.data[0].companyname // "name": "value"
+                        ,"comType": data.data[0].companytype
+                        ,"comaddress": data.data[0].address
+                        ,"businessscope": data.data[0].businessscope
+                        ,"interest": data.data[0].interest
+                        ,"businessID": data.data[0].businessLicenceId
+                        ,"date": data.data[0].registertime
+                        ,"businesspic": data.data[0].bussinessLicenceUrl
+                        ,"isAu": data.data[0].isAu
+                        ,"registerORG": data.data[0].registerORG
+                    })
+                })
+            },
+            error : function(data) {
+                //alert(data.data[0].username);
+                layer.msg('数据获取失败！')
+            }
+        });
+    }
+    function formsub2(){
+        $.ajax({
+            //几个参数需要注意一下
+            type: "POST",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "/ComUsrForm/2/" ,//url
+            data: $('#form2').serialize(),
+            success: function (data) {
+                layer.msg('密码修改成功')
+                layui.use(['form', 'layedit', 'laydate'], function(){
+                    var form = layui.form
+                        ,layer = layui.layer
+                        ,layedit = layui.layedit
+                        ,laydate = layui.laydate;
+                    form.val('usrlogin', {
+                        "username": data.data[0].usrname // "name": "value"
+                        ,"password": data.data[0].psw
+                    })
+                })
+            },
+            error : function(data) {
+                layer.msg('数据获取失败！')
+            }
+        });
+    }
+    function formsub3(){
+        $.ajax({
+            //几个参数需要注意一下
+            type: "POST",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "/ComUsrForm/3/" ,//url
+            data: $('#form3').serialize(),
+            success: function (data) {
+                layer.msg('个人信息修改成功')
+                layui.use(['form', 'layedit', 'laydate'], function(){
+                    var form = layui.form
+                        ,layer = layui.layer
+                        ,layedit = layui.layedit
+                        ,laydate = layui.laydate;
+                    form.val('gerenxinxi', {
+                        "realname": data.data[0].realname // "name": "value"
+                        ,"usrimg": data.data[0].usrimg
+                        ,"mail": data.data[0].mail
+                        ,"IDcardNum": data.data[0].IDcardNum
+                        ,"IDcardfront": data.data[0].IDcardfront
+                        ,"IDcardback": data.data[0].IDcardback
+                        ,"registranttime": data.data[0].registranttime
+                    })
+                })
+            },
+            error : function(data) {
+                layer.msg('数据获取失败！')
+            }
+        });
+    }
+    layui.use(['form', 'layedit', 'laydate'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,layedit = layui.layedit
+            ,laydate = layui.laydate;
+
+        //日期
+        laydate.render({
+            elem: '#date'
+        });
+        laydate.render({
+            elem: '#date1'
+        });
+
+        //创建一个编辑器
+        var editIndex = layedit.build('LAY_demo_editor');
+
+        //监听指定开关
+        form.on('switch(switchTest)', function(data){
+            layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+                offset: '6px'
+            });
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
+    });
+</script>
+
+<!-- <script>
+    var adress = {}
+    $(document).ready(function(){
+        //alert($("#province").html())
+        //$("#province").hide()
+        $.ajax(
+            {
+                url: '/get_address/',
+                type: 'GET',
+                success: function (data) {
+                    alert("!!!")
+                    adress = data
+                    $("#province").empty()
+                    $("#province").hide()
+        $("#city").empty()
+        $("#country").empty()
+        for (var i in adress['data']) {
+            $("#province").append('<option value=' + i + '>' + i + '</option>');
+        }
+                },
+                error : function(data) {
+                alert("地址获取异常！");
+            }
+            }
+        )
+        var selectedprovince = ''
+        $("#province").change(function () {
+            $("#province option[value=\"\"]").remove()
+            var selected = $("#province").val()
+            selectedprovince = selected
+            if (selected) {
+                $("#city").show()
+                $("#city").empty()
+                var cities = adress['data'][selected]
+                for (var i in cities) {
+                    $("#city").append('<option value=' + i + '>' + i + '</option>');
+                }
+            }
+            else {
+                $("#city").empty()
+            }
+        })
+        $("#city").change(function () {
+            var selected = $("#city").val()
+            $("#country").show()
+            $("#country").empty()
+            var countries = adress['data'][selectedprovince][selected]
+            for (var i in countries) {
+                $("#country").append('<option value=' + countries[i] + '>' + countries[i] + '</option>');
+            }
+        })
+    })
+</script> -->
+</body>
