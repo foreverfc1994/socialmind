@@ -23,3 +23,6 @@
 2018-08-06 23:23:01,631 logout ['01b2e42a-9bb4-428c-8ae3-954c630313d6', '58a2eb7f-21ee-4d9c-83a9-cc599a236bcc', '/login/', '退出', ''] visitor
 2018-08-06 23:23:18,554 login ['dd8e24ce-02f2-400d-aee3-88dff66d7d26', '58a2eb7f-21ee-4d9c-83a9-cc599a236baa', '/com_index/', '登录', ''] visitor
 2018-08-06 23:23:40,714 logout ['dd8e24ce-02f2-400d-aee3-88dff66d7d26', '58a2eb7f-21ee-4d9c-83a9-cc599a236baa', '/login/', '退出', ''] visitor
+2018-08-06 23:53:26,187 login ['01b2e42a-9bb4-428c-8ae3-954c630313d6', '58a2eb7f-21ee-4d9c-83a9-cc599a236bcc', '/person_index/', '登录', ''] visitor
+2018-08-07 00:00:37,379 logout ['01b2e42a-9bb4-428c-8ae3-954c630313d6', '58a2eb7f-21ee-4d9c-83a9-cc599a236bcc', '/login/', '退出', ''] visitor
+2018-08-07 00:00:52,721 login ['01b2e42a-9bb4-428c-8ae3-954c630313d6', '58a2eb7f-21ee-4d9c-83a9-cc599a236bcc', '/person_index/', '登录', ''] visitor

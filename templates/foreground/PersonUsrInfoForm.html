@@ -186,7 +186,7 @@
             //几个参数需要注意一下
             type: "GET",//方法类型
             dataType: "json",//预期服务器返回的数据类型
-            url: "/ajaxInitComUsrForm/" ,//url
+            url: "/ajaxInitPersonUsrForm/" ,//url
             success: function (data) {
                 layui.use(['form', 'layedit', 'laydate'], function(){
                     var form = layui.form
@@ -201,14 +201,14 @@
                     form.val('gerenxinxi', {
                         "realname": data.data[0].realname // "name": "value"
                         ,"usrimg": data.data[0].usrimg
-                        ,"gender": data.data[0].email
-                        ,"birthday": data.data[0].IDcard
-                        ,"job": data.data[0].idfronturl
-                        ,"hobby": data.data[0].idbackurl
-                        ,"phone": data.data[0].registranttime
-                        ,"mail": data.data[0].IDcard
-                        ,"address": data.data[0].IDcard
-                        ,"registranttime": data.data[0].IDcard
+                        ,"gender": data.data[0].gender
+                        ,"birthday": data.data[0].birthday
+                        ,"job": data.data[0].career
+                        ,"hobby": data.data[0].hobby
+                        ,"phone": data.data[0].phone
+                        ,"mail": data.data[0].email
+                        ,"address": data.data[0].address
+                        ,"registranttime": data.data[0].registranttime
                     })
                 })
 

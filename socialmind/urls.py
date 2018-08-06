@@ -46,6 +46,9 @@ urlpatterns = [
     path('personalInfoForm/<int:a>/',UserInfoManageview.personalInfoForm),
     path('ComUsrForm/<int:a>/',UserInfoManageview.ComUsrForm),
     path('ajaxInitComUsrForm/',UserInfoManageview.ajaxInitComUsrForm),
+    path('ajaxInitPersonUsrForm/',UserInfoManageview.ajaxInitPersonUsrForm),
+    path('ajaxInitInstitutionUsrForm/',UserInfoManageview.ajaxInitInstitutionUsrForm),
+    path('ajaxInitGovUsrForm/',UserInfoManageview.ajaxInitGovUsrForm),
     # background url
     path('bindex/', bloginview.index, name='index'),
     path('blogin/', bloginview.login, name='login'),
