@@ -23,7 +23,6 @@ def checkComments(request):
                 pass
         except:
             print("messageid: "+messageid+" was wrong!")
-    print(data)
     return JsonResponse({"data": data})
 
 
@@ -48,5 +47,4 @@ def manageComments(request):
                 pass
         except:
             print("messageid: " + messageid + " was wrong!")
-    print(data)
     return JsonResponse({"data": data})
