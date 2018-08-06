@@ -25,7 +25,7 @@ def personList(request):
                 age = str(countAge(bt))
             except:
                 age = "未知"
-            sex = "男" if item['sex'] == 1 else "女"
+            sex = "男" if item['sex'] == "1" else "女"
             phoneNum = if_is_None(item['phonenumber'], "无数据")
             job = if_is_None(item['career'], "无数据")
             commvalue = valueCommen.get(userid=userid)
