@@ -87,6 +87,7 @@ urlpatterns = [
     path('usrManagement/List/company/', umView.companyList),#企业用户管理
     path('usrManagement/List/goverment/', umView.govermentList),#政府用户管理
     path('usrManagement/List/institute/', umView.instituteList),#事业单位用户管理
+    path('usrManagement/deleteUser/', umView.deleteUser),
     path('operateDiary/', bviews.operateDiary),#日志管理
     path('DouBanArticleStyle/', bviews.DouBanArticleStyle),
     path('ArticlePaticular/', bAAview.ArticlePaticular),

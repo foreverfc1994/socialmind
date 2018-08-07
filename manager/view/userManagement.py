@@ -94,3 +94,12 @@ def instituteList(request):
         except:
             print(userid+" was wrong")
     return JsonResponse({"data": data})
+
+
+def deleteUser(request):
+    userid = request.GET.get("userid")
+    try:
+        models.User.objects.get(userid=userid).delete()
+        return JsonResponse({"data": "success"})
+    except:
+        return JsonResponse({"data": "error"})
