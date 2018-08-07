@@ -265,7 +265,9 @@
                             <tbody>
                             <tr>
                                 <td id="selfPic" style="width: 30%">
-                                    <img src="{% static 'assets0/img/star.jpg' %}" style="width: 100%;">
+                                    {% csrf_token %}
+                                    <img src="{% static 'assets0/img/star.jpg' %}" style="width: 100%;display: none">
+                                    <img src="{{photo}}" style="width: 233px;height: 214.8px;margin-top: 31px;margin-bottom: 31px">
                                 </td>
                                 <td id="selfInformation" style="width: 40%; height: 200px; padding-left: 40px;">
                                     {% csrf_token %}
