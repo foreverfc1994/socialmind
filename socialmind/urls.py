@@ -69,6 +69,9 @@ urlpatterns = [
     path('usrCommentsSelect/', bviews.usrCommentsSelect),#用户留言管理
     path('usrCommentsSelect/commentsCheck/', ucView.checkComments),
     path('usrCommentsSelect/commentsManage/', ucView.manageComments),
+    path('usrCommentsSelect/commentsManage/pass/', ucView.commentPass),
+    path('usrCommentsSelect/commentsManage/noPass/', ucView.noPass),
+    path('usrCommentsSelect/commentsManage/deleteComment/', ucView.deleteComment),
     path('usrCommentsCheck/', bviews.usrCommentsCheck),
     path('usrCommentsDelete/', bviews.usrCommentsDelete),
     path('AssignAuthorities/', bviews.AssignAuthorities),

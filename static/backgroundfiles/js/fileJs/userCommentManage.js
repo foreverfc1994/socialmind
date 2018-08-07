@@ -65,7 +65,8 @@ function getUncheckedData(data){
             {"data": "objectname", "title": "事件名称"},
             {"data": "objectid", "visible": false},
             {"data": null, "title": "操作", "width": "100px", "render": function botton(data){
-                    return "<button class=\"btn btn-danger btn-xs\">通过</button><button class=\"btn btn-danger btn-xs\" style='margin-left: 5px;'>不通过</button>"
+                    return "<button class=\"btn btn-danger btn-xs\" onclick=\"passComment('"+data.messageid+"')\">通过</button>" +
+                        "<button class=\"btn btn-danger btn-xs\" style='margin-left: 5px;' onclick=\"noPass('"+data.messageid+"')\">不通过</button>"
                 },
             }
         ]
@@ -109,10 +110,79 @@ function getCommentsData(data){
             {"data": "objectname", "title": "事件名称"},
             {"data": "objectid", "visible": false},
             {"data": null, "title": "操作", "width": "100px", "render": function botton(data){
-                    return "<button class=\"btn btn-danger btn-xs\">删除</button>"
+                    return "<button class=\"btn btn-danger btn-xs\" onclick=\"deleteComment('"+data.messageid+"')\">删除</button>"
                 },
             }
         ]
     };
     var table=$('#commentsManage').DataTable(options);
+}
+
+function passComment(messageid){
+    con = confirm("确定通过该留言？");
+    if(con==true){
+        $.ajax({
+            url: 'commentsManage/pass/?messageid='+messageid,
+            type: 'GET',
+            dataType: 'json',
+            success: function(data){
+                if(data.data=="true"){
+                    alert("操作成功！");
+                    location.reload();
+                }
+                else{
+                    alert("未知错误");
+                }
+            },
+            error: function(){
+                alert("删除失败，请稍后重试");
+            }
+        })
+    }
+}
+
+function noPass(messageid){
+    con = confirm("确定不予通过？");
+    if(con==true){
+        $.ajax({
+            url: 'commentsManage/noPass/?messageid='+messageid,
+            type: 'GET',
+            dataType: 'json',
+            success: function(data){
+                if(data.data=="true"){
+                    alert("操作成功！");
+                    location.reload();
+                }
+                else{
+                    alert("未知错误");
+                }
+            },
+            error: function(){
+                alert("操作失败，请稍后重试");
+            }
+        })
+    }
+}
+
+function deleteComment(messageid){
+    conn = confirm("确定删除？");
+    if(conn==true){
+        $.ajax({
+            url: 'commentsManage/deleteComment/?messageid='+messageid,
+            type: 'GET',
+            dataType: 'json',
+            success: function(data){
+                if(data.data=="true"){
+                    alert("操作成功！");
+                    location.reload();
+                }
+                else{
+                    alert("未知错误");
+                }
+            },
+            error: function(){
+                alert("操作失败，请稍后重试");
+            }
+        })
+    }
 }

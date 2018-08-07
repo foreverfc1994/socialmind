@@ -27,7 +27,7 @@ def checkComments(request):
 
 
 def manageComments(request):
-    unchecked = models.Message.objects.filter()
+    unchecked = models.Message.objects.filter(checked="1")
     data = []
     for item in unchecked:
         try:
@@ -48,3 +48,33 @@ def manageComments(request):
         except:
             print("messageid: " + messageid + " was wrong!")
     return JsonResponse({"data": data})
+
+
+def commentPass(request):
+    messageid = request.GET.get("messageid")
+    try:
+        item = models.Message.objects.get(messageid=messageid)
+        item.checked = "1"
+        item.save()
+        return JsonResponse({"data": "true"})
+    except:
+        return JsonResponse({"data": "false"})
+
+def noPass(request):
+    messageid = request.GET.get("messageid")
+    try:
+        item = models.Message.objects.get(messageid=messageid)
+        item.delete()
+        item.save()
+        return JsonResponse({"data": "true"})
+    except:
+        return JsonResponse({"data": "false"})
+
+def deleteComment(request):
+    print("~")
+    messageid = request.GET.get("messageid")
+    try:
+        models.Message.objects.filter(messageid=messageid).delete()
+        return JsonResponse({"data": "true"})
+    except:
+        return JsonResponse({"data": "false"})
