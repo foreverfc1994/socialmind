@@ -20,7 +20,7 @@ from manager import views as bviews
 from django.conf.urls import include
 from visitor.view import loginviews,indexview,UserInfoManageview
 from manager.view import loginview as bloginview,ArticleandAuthorview as bAAview
-from manager.view import userManagement as umView
+from manager.view import userManagement as umView, washData
 from manager.view import DataTableShowView,ObjectShowview, userCommentsManage as ucView,SpiderView
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -65,6 +65,7 @@ urlpatterns = [
     path('DataCleanStrategies/', bviews.DataCleanStrategies),
     path('DataCleanLog/', bviews.DataCleanLog),
     path('washData/', bviews.washData),
+    path('washData/yuanshujubiao/',washData.yuanshujubiao),
     path('topics/', bviews.topics),
     path('AddEventObject/', bviews.AddEventObject),
     path('CreateEventObject/', bviews.CreateEventObject),
