@@ -24,8 +24,15 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="{% static 'backgroundfiles/assets/js/jquery-3.3.1.min.js' %}"></script>
+    
     <script src="{% static 'backgroundfiles/assets/js/echarts.js' %}"></script>
+    <script src="{% static 'backgroundfiles/assets/js/jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript" charset="utf8"
+            src="{% static 'backgroundfiles/DataTables-1.10.15/media/js/jquery.dataTables.js' %}"></script>
+    <!-- DataTables -->
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'backgroundfiles/DataTables-1.10.15/media/css/jquery.dataTables.css' %}">
+    
   </head>
 
   <body>
@@ -540,7 +547,6 @@
                             <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">Show</span>
                             <button class="btn btn-info btn-xs" style="margin-right: 10px;float: right"><span class="glyphicon glyphicon-circle-arrow-left"></span> 撤回</button>
                         </div>
-                        <!--<div class="panel-body">-->
                             <div style="color: #333;background-color: #f5f5f5;border-color: #ddd;padding: 10px 15px;border-bottom: 1px solid transparent;border-top-left-radius: 3px;border-top-right-radius: 3px;">
                                 <form class="form-inline">
                                     <label>数据清洗策略：</label>
@@ -678,6 +684,20 @@
                                     </div>
                                 </form>
                             </div>
+                            <div class="panel-body">
+                            <table id="yuanshujubiao" class="display">
+                                <thead>
+                                <tr>
+                                    <th>数据表名</th>
+                                    <th>数据库名</th>
+                                    <th>网站</th>
+                                    <th>类型</th>
+                                    <th>数据量</th>
+                                </tr>
+                                </thead>
+                                <tbody id="tbody">
+                                </tbody>
+                            </table>
                             <table id="tableshow" class="table table-bordered" style="display: none;margin: 0%">
                                 <thead><tr><th>时间</th><th>网站</th><th>网址</th><th>错误的item</th><th>错误详情</th></tr></thead>
                                 <tr><td>Gecko</td><td>Firefox 1.0</td><td>Win 98+ / OSX.2+</td><td>Win 95+</td><td>1.7</td></tr>
@@ -756,7 +776,7 @@
                                 });
                             }); 
                             </script>
-                        <!--</div>-->
+                        </div>
                         <div id="tableshowfooter" class="panel-footer" style="display: none;">
                             Search:
                             <input type="text" class="form-control" placeholder="Search for..." style="width: 200px;height: 25px;display: inline-block">
@@ -790,7 +810,7 @@
   </section>
 
     <!-- js placed at the end of the document so the pages load faster -->
-    <script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script>
+    <!-- <script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script> -->
     <script src="{% static 'backgroundfiles/assets/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'backgroundfiles/assets/js/jquery-ui-1.9.2.custom.min.js' %}"></script>
     <script src="{% static 'backgroundfiles/assets/js/jquery.ui.touch-punch.min.js' %}"></script>
@@ -806,10 +826,6 @@
     
   <script>
       //custom select box
-
-      $(function(){
-          $('select.styled').customSelect();
-      });
     function displaytable(btnthis){
         $("#tableshowname").empty()
         $("#tableshowname").append($(btnthis).html())
@@ -818,6 +834,55 @@
     }
 
   </script>
+  <script>
+    //custom select box
+
+    $(document).ready(function(){
+        $.ajax({
+            url: '/yuandatashow/getyuandatas/',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data){
+                var tbody = document.getElementById('tbody')
+                datas = data.data
+                options = {
+                    "order": [0, "asc"],
+                    "bAutoWidth": false,
+                    "aLengthMenu": [[10,30,-1], [20, 30, "全部"]],
+                    "language": {
+                        "lengthMenu": " 每页_MENU_条记录",
+                        "zeroRecords": "没有找到记录",
+                        "info": "第_PAGE_页(共_PAGES_页)",
+                        "infoEmpty": "无记录",
+                        "infoFiltered": "(从_MAX_条记录过滤)",
+                        "oPaginate":{
+                            "sFirst": "首页",
+                            "sPrevious": "上页",
+                            "sNext": "下页",
+                            "sLast": "末页"
+                        },
+                        "sSearch": "搜索: ",
+                        "sLoadingRecords": "正在加载数据-请等待...",
+                    },
+                    data: datas,
+                    columns: [
+                        { data: 'tableName' },
+                        { data: 'schemaName' },
+                        { data: 'webSite' },
+                        { data: 'webSiteType' },
+                        { data: 'dataVolum' }
+                    ]
+                };
+                var table = $('#yuanshujubiao').DataTable(options);
+            },
+            error: function(data){
+                alert("数据获取失败");
+            }
+        });
+        $('select.styled').customSelect();
+    });
+
+</script>
 
   </body>
 </html>
