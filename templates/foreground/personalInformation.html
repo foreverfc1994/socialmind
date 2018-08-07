@@ -695,6 +695,36 @@
             });
         </script>
     {% elif request.session.user_type == "政府用户" %}
+    <script>
+        layui.use('layer', function(){ //独立版的layer无需执行这一句
+            var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+            var active = {
+                setTop: function(){
+                    var that = this;
+                    //多窗口模式，层叠置顶
+                    layer.open({
+                        type: 2 //此处以iframe举例
+                        ,title: '编辑资料'
+                        ,area: ['1000px','800px']
+                        ,scrollbar: true
+                        ,shade: 0
+                        ,maxmin: true
+                        ,offset: [ '35px']
+                        ,content: '/personalInfoForm/3/'
+                        ,skin: 'layui-layer-lan'
+                        ,btn: ['关闭页面'] 
+                        ,yes: function(){
+                            layer.closeAll();
+                        }
+                    });
+                }
+            }
+            $('#bianjiziliao').on('click', function(){
+                var othis = $(this), method = othis.data('method');
+                active[method] ? active[method].call(this, othis) : '';
+            });
+        });
+    </script>
         <div class="modal fade" id="UsrInformation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
              style="">
             <div class="modal-dialog modal-lg" role="document">

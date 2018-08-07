@@ -6,10 +6,11 @@ from visitor import forms
 from django.views.decorators.csrf import csrf_exempt
 from visitor.scripts.signin import *
 import time
+import os
 import logging
 import json
 logger = logging.getLogger('visitor')
-
+@csrf_exempt
 def ComUsrForm(request,a):
     userid = request.session["user_id"]
     if(a == 1):
@@ -73,9 +74,12 @@ def ComUsrForm(request,a):
         return HttpResponse(json.dumps(data))
     elif(a == 3):
         dataList = []
+        print(request.POST)
         persondata = request.POST
         realname = persondata.get('realname')
-        usrimg = persondata.get('usrimg')
+        # usrimg = persondata.get('usrimg')
+        usrimg1 = request.FILES['usrimg1']
+
         mail = persondata.get('mail')
         IDcardNum = persondata.get('IDcardNum')
         IDcardfront = persondata.get('IDcardfront')
@@ -84,7 +88,7 @@ def ComUsrForm(request,a):
         Qiyexiangguan = models.CompanyUser.objects.get(userid=userid)
         Usr = models.User.objects.get(userid=userid)
         Qiyexiangguan.realname = realname
-        Usr.photo = usrimg
+        Usr.photo = saveImg(usrimg1, userid, "4")
         Usr.email = mail
         Usr.registrantid = IDcardNum
         Qiyexiangguan.idfronturl = IDcardfront
@@ -200,7 +204,7 @@ def ajaxInitComUsrForm(request):
     email = currentUser.email
     psw = currentUser.password
     IDcard = currentUser.registrantid
-    photo = currentUser.photo
+    photo = giveimgurl(currentUser.photo)
     personalized_data = models.CompanyUser.objects.get(userid=userid)
     idfronturl = giveimgurl(personalized_data.idfronturl)
     idbackurl = giveimgurl(personalized_data.idbackurl)
@@ -249,17 +253,17 @@ def personalInfoForm(request,a):
     elif (a == 2):
         return render(request, 'foreground/CompanyUsrInfoForm.html')
     elif (a == 3):
-        return render(request, 'foreground/CompanyUsrInfoForm.html')
+        return render(request, 'foreground/GovUsrInfoForm.html')
     elif (a == 4):
         return render(request, 'foreground/CompanyUsrInfoForm.html')
 
 def giveimgurl(url):
-    # if(url[:7] == "static/"):
-    #     newurl = "/static/upload/"
-    #     newurl += url[7:]
-    #     print(newurl)
-    # else:
-    newurl = url
+    if(url[:7] == "static/"):
+        newurl = "/static/upload/"
+        newurl += url[7:]
+        print(newurl)
+    else:
+        newurl = url
     return newurl
 def profile(request):
     userid = request.session["user_id"]
@@ -481,3 +485,13 @@ def ajaxInitGovUsrForm(request):
                      })
     data = {"data": dataList}
     return HttpResponse(json.dumps(data))
+
+def saveImg(img, userid, i):
+    file_path = os.path.join('static', 'upload', str(userid)+"_"+str(i)+'.jpg')
+    print(file_path)
+    f = open(file_path, 'wb')
+    print("mark")
+    for chunk in img.chunks():
+        f.write(chunk)
+    f.close()
+    return "static/"+str(userid)+"_"+str(i)+'.jpg'

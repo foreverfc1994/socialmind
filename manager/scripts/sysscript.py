@@ -18,8 +18,6 @@ def readlog(page, limit):
             end = (page)*limit
         else:
             end = len(logs)
-        print(start)
-        print(end)
         for i in range(start, end, 1):
             log = logs[i]
             logdata = log.split(' ')
@@ -27,6 +25,7 @@ def readlog(page, limit):
             logfunName = logdata[-1].replace('\n', '') + '/views/' + logdata[2]
             message = log.split('[')[-1].split(']')[0].split(', ')
             userid = message[0].replace('\'', '')
+            print(userid)
             try:
                 username = models.User.objects.get(userid=userid).username
             except:
