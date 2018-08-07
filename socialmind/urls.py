@@ -21,7 +21,7 @@ from django.conf.urls import include
 from visitor.view import loginviews,indexview,UserInfoManageview
 from manager.view import loginview as bloginview,ArticleandAuthorview as bAAview
 from manager.view import userManagement as umView
-from manager.view import DataTableShowView,ObjectShowview, userCommentsManage as ucView
+from manager.view import DataTableShowView,ObjectShowview, userCommentsManage as ucView,SpiderView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', loginviews.login, name='first'),
@@ -110,6 +110,7 @@ urlpatterns = [
 
     path('articlelist/deleteArticle/', bAAview.deleteArticle), #/articlelist/删除文章
     path('Author/authorDelete/', bAAview.deleteAuthor), #/Author/删除作者
+    path('getspiderlist/',SpiderView.getspiderlist)  #获取爬虫列表
 
 
 
