@@ -104,6 +104,91 @@ def ComUsrForm(request,a):
                          })
         data = {"data": dataList}
         return HttpResponse(json.dumps(data))
+def PersonUsrForm(request,a):
+    userid = request.session["user_id"]
+    if (a == 2):
+        dataList = []
+        usrdata = request.POST
+        currentUser = models.User.objects.get(userid=userid)
+        currentUser.username = usrdata.get('username')
+        currentUser.password = usrdata.get('newpassword')
+        currentUser.save()
+        currentUser = models.User.objects.get(userid=userid)
+        dataList.append({'username':currentUser.username,
+                         'password':currentUser.password})
+        data = {"data": dataList}
+        return HttpResponse(json.dumps(data))
+    elif (a == 3):
+        dataList = []
+        usrdata = request.POST
+        currentUser = models.User.objects.get(userid=userid)
+        deepinfo = models.PersonUser.objects.get(userid=userid)
+        deepinfo.realname = usrdata.get('realname')
+        currentUser.photo= usrdata.get('usrimg')
+        deepinfo.sex = usrdata.get('gender')
+        deepinfo.birthday = usrdata.get('birthday')
+        deepinfo.career = usrdata.get('job')
+        deepinfo.hobby = usrdata.get('hobby')
+        deepinfo.phonenumber = usrdata.get('phone')
+        currentUser.email = usrdata.get('mail')
+        currentUser.address = usrdata.get('address')
+        currentUser.registranttime = usrdata.get('registranttime')
+        currentUser.save()
+        deepinfo.save()
+        currentUser = models.User.objects.get(userid=userid)
+        deepinfo = models.PersonUser.objects.get(userid=userid)
+        dataList.append({'realname': deepinfo.realname,
+                         'usrimg': currentUser.photo,
+                         'gender': deepinfo.sex,
+                         'birthday': deepinfo.birthday,
+                         'career': deepinfo.career,
+                         'hobby': deepinfo.hobby,
+                         'phone': deepinfo.phonenumber,
+                         'email': currentUser.email,
+                         'address': currentUser.address,
+                         'registranttime': currentUser.registranttime})
+        data = {"data": dataList}
+        return HttpResponse(json.dumps(data))
+def InstituUsrForm(request,a):
+    userid = request.session["user_id"]
+    if (a == 1):
+        dataList = []
+        usrdata = request.POST
+        currentUser = models.User.objects.get(userid=userid)
+        currentUser.username = usrdata.get('username')
+        currentUser.password = usrdata.get('password')
+        currentUser.save()
+        currentUser = models.User.objects.get(userid=userid)
+        dataList.append({'username': currentUser.username,
+                         'password': currentUser.password})
+        data = {"data": dataList}
+        return HttpResponse(json.dumps(data))
+def GovUsrForm(request,a):
+    userid = request.session["user_id"]
+    if (a == 2):
+        dataList = []
+        usrdata = request.POST
+        currentUser = models.User.objects.get(userid=userid)
+        currentUser.username = usrdata.get('username')
+        currentUser.password = usrdata.get('password')
+        currentUser.save()
+        currentUser = models.User.objects.get(userid=userid)
+        dataList.append({'username': currentUser.username,
+                         'password': currentUser.password})
+        data = {"data": dataList}
+        return HttpResponse(json.dumps(data))
+    elif (a == 3):
+        dataList = []
+        usrdata = request.POST
+        currentUser = models.User.objects.get(userid=userid)
+        currentUser.username = usrdata.get('username')
+        currentUser.password = usrdata.get('password')
+        currentUser.save()
+        currentUser = models.User.objects.get(userid=userid)
+        dataList.append({'username': currentUser.username,
+                         'password': currentUser.password})
+        data = {"data": dataList}
+        return HttpResponse(json.dumps(data))
 
 def ajaxInitComUsrForm(request):
     dataList = []

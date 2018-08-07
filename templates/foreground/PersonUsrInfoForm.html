@@ -159,7 +159,8 @@
             $("#yuanmima").val("")
             $("#newpassword").val("")
             $("#newpassword2").val("")
-            alert("原密码有误！")
+            /* alert("原密码有误！") */
+            layer.msg('原密码有误！')
         }
         else if($("#newpassword").val() != $("#newpassword2").val()){
             $("#yuanmima").parent().parent().removeClass("layui-bg-red")
@@ -167,7 +168,8 @@
             $("#newpassword2").parent().parent().removeClass("layui-bg-red")
             $("#newpassword").val("")
             $("#newpassword2").val("")
-            alert("两次密码输入不一致！")
+            layer.msg('两次密码输入不一致！')
+            /* alert("两次密码输入不一致！") */
         }
         else{
             $("#yuanmima").parent().parent().removeClass("layui-bg-red")
@@ -218,46 +220,12 @@
             }
         });
     })
-    function formsub1(){
-        $.ajax({
-            //几个参数需要注意一下
-            type: "POST",//方法类型
-            dataType: "json",//预期服务器返回的数据类型
-            url: "/ComUsrForm/1/" ,//url
-            data: $('#form1').serialize(),
-            success: function (data) {
-                layer.msg('成功')
-                layui.use(['form', 'layedit', 'laydate'], function(){
-                    var form = layui.form
-                        ,layer = layui.layer
-                        ,layedit = layui.layedit
-                        ,laydate = layui.laydate;
-                    form.val('qiyexiangguan', {
-                        "comName": data.data[0].companyname // "name": "value"
-                        ,"comType": data.data[0].companytype
-                        ,"comaddress": data.data[0].address
-                        ,"businessscope": data.data[0].businessscope
-                        ,"interest": data.data[0].interest
-                        ,"businessID": data.data[0].businessLicenceId
-                        ,"date": data.data[0].registertime
-                        ,"businesspic": data.data[0].bussinessLicenceUrl
-                        ,"isAu": data.data[0].isAu
-                        ,"registerORG": data.data[0].registerORG
-                    })
-                })
-            },
-            error : function(data) {
-                //alert(data.data[0].username);
-                layer.msg('数据获取失败！')
-            }
-        });
-    }
     function formsub2(){
         $.ajax({
             //几个参数需要注意一下
             type: "POST",//方法类型
             dataType: "json",//预期服务器返回的数据类型
-            url: "/ComUsrForm/2/" ,//url
+            url: "/PersonUsrForm/2/" ,//url
             data: $('#form2').serialize(),
             success: function (data) {
                 layer.msg('密码修改成功')
@@ -267,8 +235,8 @@
                         ,layedit = layui.layedit
                         ,laydate = layui.laydate;
                     form.val('usrlogin', {
-                        "username": data.data[0].usrname // "name": "value"
-                        ,"password": data.data[0].psw
+                        "username": data.data[0].username // "name": "value"
+                        ,"password": data.data[0].password
                     })
                 })
             },
@@ -282,7 +250,7 @@
             //几个参数需要注意一下
             type: "POST",//方法类型
             dataType: "json",//预期服务器返回的数据类型
-            url: "/ComUsrForm/3/" ,//url
+            url: "/PersonUsrForm/3/" ,//url
             data: $('#form3').serialize(),
             success: function (data) {
                 layer.msg('个人信息修改成功')
@@ -294,10 +262,13 @@
                     form.val('gerenxinxi', {
                         "realname": data.data[0].realname // "name": "value"
                         ,"usrimg": data.data[0].usrimg
-                        ,"mail": data.data[0].mail
-                        ,"IDcardNum": data.data[0].IDcardNum
-                        ,"IDcardfront": data.data[0].IDcardfront
-                        ,"IDcardback": data.data[0].IDcardback
+                        ,"gender": data.data[0].gender
+                        ,"birthday": data.data[0].birthday
+                        ,"job": data.data[0].career
+                        ,"hobby": data.data[0].hobby
+                        ,"phone": data.data[0].phone
+                        ,"mail": data.data[0].email
+                        ,"address": data.data[0].address
                         ,"registranttime": data.data[0].registranttime
                     })
                 })
