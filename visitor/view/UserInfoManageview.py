@@ -6,10 +6,11 @@ from visitor import forms
 from django.views.decorators.csrf import csrf_exempt
 from visitor.scripts.signin import *
 import time
+import os
 import logging
 import json
 logger = logging.getLogger('visitor')
-
+@csrf_exempt
 def ComUsrForm(request,a):
     userid = request.session["user_id"]
     if(a == 1):
@@ -73,9 +74,12 @@ def ComUsrForm(request,a):
         return HttpResponse(json.dumps(data))
     elif(a == 3):
         dataList = []
+        print(request.POST)
         persondata = request.POST
         realname = persondata.get('realname')
-        usrimg = persondata.get('usrimg')
+        # usrimg = persondata.get('usrimg')
+        usrimg1 = request.FILES['usrimg1']
+
         mail = persondata.get('mail')
         IDcardNum = persondata.get('IDcardNum')
         IDcardfront = persondata.get('IDcardfront')
@@ -84,7 +88,7 @@ def ComUsrForm(request,a):
         Qiyexiangguan = models.CompanyUser.objects.get(userid=userid)
         Usr = models.User.objects.get(userid=userid)
         Qiyexiangguan.realname = realname
-        Usr.photo = usrimg
+        Usr.photo = saveImg(usrimg1, userid, "4")
         Usr.email = mail
         Usr.registrantid = IDcardNum
         Qiyexiangguan.idfronturl = IDcardfront
@@ -104,6 +108,91 @@ def ComUsrForm(request,a):
                          })
         data = {"data": dataList}
         return HttpResponse(json.dumps(data))
+def PersonUsrForm(request,a):
+    userid = request.session["user_id"]
+    if (a == 2):
+        dataList = []
+        usrdata = request.POST
+        currentUser = models.User.objects.get(userid=userid)
+        currentUser.username = usrdata.get('username')
+        currentUser.password = usrdata.get('newpassword')
+        currentUser.save()
+        currentUser = models.User.objects.get(userid=userid)
+        dataList.append({'username':currentUser.username,
+                         'password':currentUser.password})
+        data = {"data": dataList}
+        return HttpResponse(json.dumps(data))
+    elif (a == 3):
+        dataList = []
+        usrdata = request.POST
+        currentUser = models.User.objects.get(userid=userid)
+        deepinfo = models.PersonUser.objects.get(userid=userid)
+        deepinfo.realname = usrdata.get('realname')
+        currentUser.photo= usrdata.get('usrimg')
+        deepinfo.sex = usrdata.get('gender')
+        deepinfo.birthday = usrdata.get('birthday')
+        deepinfo.career = usrdata.get('job')
+        deepinfo.hobby = usrdata.get('hobby')
+        deepinfo.phonenumber = usrdata.get('phone')
+        currentUser.email = usrdata.get('mail')
+        currentUser.address = usrdata.get('address')
+        currentUser.registranttime = usrdata.get('registranttime')
+        currentUser.save()
+        deepinfo.save()
+        currentUser = models.User.objects.get(userid=userid)
+        deepinfo = models.PersonUser.objects.get(userid=userid)
+        dataList.append({'realname': deepinfo.realname,
+                         'usrimg': currentUser.photo,
+                         'gender': deepinfo.sex,
+                         'birthday': deepinfo.birthday,
+                         'career': deepinfo.career,
+                         'hobby': deepinfo.hobby,
+                         'phone': deepinfo.phonenumber,
+                         'email': currentUser.email,
+                         'address': currentUser.address,
+                         'registranttime': currentUser.registranttime})
+        data = {"data": dataList}
+        return HttpResponse(json.dumps(data))
+def InstituUsrForm(request,a):
+    userid = request.session["user_id"]
+    if (a == 1):
+        dataList = []
+        usrdata = request.POST
+        currentUser = models.User.objects.get(userid=userid)
+        currentUser.username = usrdata.get('username')
+        currentUser.password = usrdata.get('password')
+        currentUser.save()
+        currentUser = models.User.objects.get(userid=userid)
+        dataList.append({'username': currentUser.username,
+                         'password': currentUser.password})
+        data = {"data": dataList}
+        return HttpResponse(json.dumps(data))
+def GovUsrForm(request,a):
+    userid = request.session["user_id"]
+    if (a == 2):
+        dataList = []
+        usrdata = request.POST
+        currentUser = models.User.objects.get(userid=userid)
+        currentUser.username = usrdata.get('username')
+        currentUser.password = usrdata.get('password')
+        currentUser.save()
+        currentUser = models.User.objects.get(userid=userid)
+        dataList.append({'username': currentUser.username,
+                         'password': currentUser.password})
+        data = {"data": dataList}
+        return HttpResponse(json.dumps(data))
+    elif (a == 3):
+        dataList = []
+        usrdata = request.POST
+        currentUser = models.User.objects.get(userid=userid)
+        currentUser.username = usrdata.get('username')
+        currentUser.password = usrdata.get('password')
+        currentUser.save()
+        currentUser = models.User.objects.get(userid=userid)
+        dataList.append({'username': currentUser.username,
+                         'password': currentUser.password})
+        data = {"data": dataList}
+        return HttpResponse(json.dumps(data))
 
 def ajaxInitComUsrForm(request):
     dataList = []
@@ -115,7 +204,7 @@ def ajaxInitComUsrForm(request):
     email = currentUser.email
     psw = currentUser.password
     IDcard = currentUser.registrantid
-    photo = currentUser.photo
+    photo = giveimgurl(currentUser.photo)
     personalized_data = models.CompanyUser.objects.get(userid=userid)
     idfronturl = giveimgurl(personalized_data.idfronturl)
     idbackurl = giveimgurl(personalized_data.idbackurl)
@@ -164,17 +253,17 @@ def personalInfoForm(request,a):
     elif (a == 2):
         return render(request, 'foreground/CompanyUsrInfoForm.html')
     elif (a == 3):
-        return render(request, 'foreground/CompanyUsrInfoForm.html')
+        return render(request, 'foreground/GovUsrInfoForm.html')
     elif (a == 4):
         return render(request, 'foreground/CompanyUsrInfoForm.html')
 
 def giveimgurl(url):
-    # if(url[:7] == "static/"):
-    #     newurl = "/static/upload/"
-    #     newurl += url[7:]
-    #     print(newurl)
-    # else:
-    newurl = url
+    if(url[:7] == "static/"):
+        newurl = "/static/upload/"
+        newurl += url[7:]
+        print(newurl)
+    else:
+        newurl = url
     return newurl
 def profile(request):
     userid = request.session["user_id"]
@@ -396,3 +485,13 @@ def ajaxInitGovUsrForm(request):
                      })
     data = {"data": dataList}
     return HttpResponse(json.dumps(data))
+
+def saveImg(img, userid, i):
+    file_path = os.path.join('static', 'upload', str(userid)+"_"+str(i)+'.jpg')
+    print(file_path)
+    f = open(file_path, 'wb')
+    print("mark")
+    for chunk in img.chunks():
+        f.write(chunk)
+    f.close()
+    return "static/"+str(userid)+"_"+str(i)+'.jpg'
