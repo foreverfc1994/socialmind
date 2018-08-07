@@ -12,7 +12,13 @@
     <link rel="stylesheet" href="//res.layui.com/layui/dist/css/layui.css?t=1531663423583" media="all">
 <!-- {#    <link rel="stylesheet" href="//res.layui.com/static/css/global.css?t=1531663423583-6" media="all">#} -->
     <title>DASHGUM - Bootstrap Admin Template</title>
-
+    <script type="text/javascript" charset="utf8"
+            src="{% static 'backgroundfiles/DataTables-1.10.15/media/js/jquery.js' %}"></script>
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'backgroundfiles/DataTables-1.10.15/media/css/jquery.dataTables.css' %}">
+    <script type="text/javascript" charset="utf8"
+            src="{% static 'backgroundfiles/DataTables-1.10.15/media/js/jquery.dataTables.js' %}"></script>
+    <script src="{% static 'assets0/layui/layui.js' %}"></script>
     <!-- Bootstrap core CSS -->
     <link href="{% static 'backgroundfiles/assets/css/bootstrap.css' %}" rel="stylesheet">
     <!--external css-->
@@ -27,7 +33,6 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="{% static 'backgroundfiles/assets/js/jquery-3.3.1.min.js' %}"></script>
     <style>
         table tr td input {
             border: 0px;
@@ -389,7 +394,7 @@
             <h3><i class="fa fa-angle-right"></i> 用户管理</h3>
             <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
                 <ul class="layui-tab-title">
-                    <li id ='3' >个人用户</li>
+                    <li id ='3'>个人用户</li>
                     <li id ='0'>企业用户</li>
                     <li id ='2'>事业单位用户</li>
                     <li id ='1'>政府机构用户</li>
@@ -403,38 +408,9 @@
                             <div class="col-lg-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <!--<label for="jiaose">筛选:</label><input id="jiaose" style="margin-left: 5px;height: 25px;width: 13%;display: inline-block" type="text" class="form-control" placeholder="请输入筛选条件">-->
                                         个人用户
-                                        <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">条</span>
-                                        <select class="form-control"
-                                                style="float: right;width: 60px;height: 25px;font-size: 12px">
-                                            <option>10</option>
-                                            <option>25</option>
-                                            <option>50</option>
-                                            <option>100</option>
-                                        </select>
-                                        <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">每页：</span>
                                     </div>
-                                    <!--<div class="panel-body">-->
                                     <table id="personUser" class="display"></table>
-                                    <script type="text/html" id="deleteButton0">
-                                      <a class="layui-btn layui-btn-danger layui-btn-xs">删除</a>
-                                    </script>
-                                    <div class="panel-footer">
-                                        查找:
-                                        <input type="text" class="form-control" placeholder="查找……"
-                                               style="width: 200px;height: 25px;display: inline-block">
-                                        <div class="btn-group btn-group-xs" role="group" aria-label="..."
-                                             style="float: right;">
-                                            <button type="button" class="btn btn-default">首页</button>
-                                            <button type="button" class="btn btn-default">上一页</button>
-                                            <button type="button" class="btn btn-default">1</button>
-                                            <button type="button" class="btn btn-default">2</button>
-                                            <button type="button" class="btn btn-default">下一页</button>
-                                            <button type="button" class="btn btn-default">末页</button>
-                                        </div>
-                                        <!--<button class="btn btn-success btn-sm" style="margin-left: 10px;background-color: #41cac0;border-color:#41cac0;width: 6%"> 确认 </button>-->
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -446,36 +422,9 @@
                                     <div class="panel-heading">
                                         <!--<label for="jiaose">筛选:</label><input id="jiaose" style="margin-left: 5px;height: 25px;width: 13%;display: inline-block" type="text" class="form-control" placeholder="请输入筛选条件">-->
                                         企业用户
-                                        <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">条</span>
-                                        <select class="form-control"
-                                                style="float: right;width: 60px;height: 25px;font-size: 12px">
-                                            <option>10</option>
-                                            <option>25</option>
-                                            <option>50</option>
-                                            <option>100</option>
-                                        </select>
-                                        <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">每页</span>
                                     </div>
                                     <!--<div class="panel-body">-->
                                     <table id="comUser" class="display"></table>
-                                    <script type="text/html" id="deleteButton1">
-                                      <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-                                    </script>
-                                    <div class="panel-footer">
-                                        查找:
-                                        <input type="text" class="form-control" placeholder="查找……"
-                                               style="width: 200px;height: 25px;display: inline-block">
-                                        <div class="btn-group btn-group-xs" role="group" aria-label="..."
-                                             style="float: right;">
-                                            <button type="button" class="btn btn-default">首页</button>
-                                            <button type="button" class="btn btn-default">上一页</button>
-                                            <button type="button" class="btn btn-default">1</button>
-                                            <button type="button" class="btn btn-default">2</button>
-                                            <button type="button" class="btn btn-default">下一页</button>
-                                            <button type="button" class="btn btn-default">末页</button>
-                                        </div>
-                                        <!--<button class="btn btn-success btn-sm" style="margin-left: 10px;background-color: #41cac0;border-color:#41cac0;width: 6%"> 确认 </button>-->
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -487,36 +436,9 @@
                                     <div class="panel-heading">
                                         <!--<label for="jiaose">筛选:</label><input id="jiaose" style="margin-left: 5px;height: 25px;width: 13%;display: inline-block" type="text" class="form-control" placeholder="请输入筛选条件">-->
                                         事业单位用户
-                                        <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">条</span>
-                                        <select class="form-control"
-                                                style="float: right;width: 60px;height: 25px;font-size: 12px">
-                                            <option>10</option>
-                                            <option>25</option>
-                                            <option>50</option>
-                                            <option>100</option>
-                                        </select>
-                                        <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">每页</span>
                                     </div>
                                     <!--<div class="panel-body">-->
                                     <table id="institutionUser" class="display"></table>
-                                    <script type="text/html" id="deleteButton2">
-                                      <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-                                    </script>
-                                    <div class="panel-footer">
-                                        查找:
-                                        <input type="text" class="form-control" placeholder="查找……"
-                                               style="width: 200px;height: 25px;display: inline-block">
-                                        <div class="btn-group btn-group-xs" role="group" aria-label="..."
-                                             style="float: right;">
-                                            <button type="button" class="btn btn-default">首页</button>
-                                            <button type="button" class="btn btn-default">上一页</button>
-                                            <button type="button" class="btn btn-default">1</button>
-                                            <button type="button" class="btn btn-default">2</button>
-                                            <button type="button" class="btn btn-default">下一页</button>
-                                            <button type="button" class="btn btn-default">末页</button>
-                                        </div>
-                                        <!--<button class="btn btn-success btn-sm" style="margin-left: 10px;background-color: #41cac0;border-color:#41cac0;width: 6%"> 确认 </button>-->
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -528,36 +450,9 @@
                                     <div class="panel-heading">
                                         <!--<label for="jiaose">筛选:</label><input id="jiaose" style="margin-left: 5px;height: 25px;width: 13%;display: inline-block" type="text" class="form-control" placeholder="请输入筛选条件">-->
                                         政府用户
-                                        <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">条</span>
-                                        <select class="form-control"
-                                                style="float: right;width: 60px;height: 25px;font-size: 12px">
-                                            <option>10</option>
-                                            <option>25</option>
-                                            <option>50</option>
-                                            <option>100</option>
-                                        </select>
-                                        <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">每页</span>
                                     </div>
                                     <!--<div class="panel-body">-->
                                     <table id="govUser" class="display"></table>
-                                    <script type="text/html" id="deleteButton3">
-                                      <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-                                    </script>
-                                    <div class="panel-footer">
-                                        查找:
-                                        <input type="text" class="form-control" placeholder="查找……"
-                                               style="width: 200px;height: 25px;display: inline-block">
-                                        <div class="btn-group btn-group-xs" role="group" aria-label="..."
-                                             style="float: right;">
-                                            <button type="button" class="btn btn-default">首页</button>
-                                            <button type="button" class="btn btn-default">上一页</button>
-                                            <button type="button" class="btn btn-default">1</button>
-                                            <button type="button" class="btn btn-default">2</button>
-                                            <button type="button" class="btn btn-default">下一页</button>
-                                            <button type="button" class="btn btn-default">末页</button>
-                                        </div>
-                                        <!--<button class="btn btn-success btn-sm" style="margin-left: 10px;background-color: #41cac0;border-color:#41cac0;width: 6%"> 确认 </button>-->
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -645,7 +540,6 @@
 </section>
 
 <!-- js placed at the end of the document so the pages load faster -->
-<script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script>
 <script src="{% static 'backgroundfiles/assets/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'backgroundfiles/assets/js/jquery-ui-1.9.2.custom.min.js' %}"></script>
 <script src="{% static 'backgroundfiles/assets/js/jquery.ui.touch-punch.min.js' %}"></script>

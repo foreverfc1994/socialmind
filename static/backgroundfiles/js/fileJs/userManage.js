@@ -1,90 +1,203 @@
 function personUserIndex(){
-    layui.use('table', function(){
-        var table = layui.table;
-        table.render({
-        elem: '#personUser'
-        ,url:'List/person/'
-        ,cellMinWidth: 80
-        ,page: true
-        ,cols: [[
-           {field:'userid', title: '用户id', sort: true}
-          ,{field:'username', title: '用户名', sort: true}
-          ,{field:'realname', title: '真实姓名', sort: true}
-          ,{field:'sex', title: '性别', sort: true}
-          ,{field:'age', title: '年龄', sort: true}
-          ,{field:'phoneNum', title: '手机号', minWidth: 100, sort: true}
-          ,{field:'email', title: '邮箱', sort: true}
-          ,{field:'job', title: '职业', sort: true}
-          ,{field:'registrantTime', title: '注册时间', sort: true}
-          ,{fixed:'right', title: '管理', sort: true, align: 'center', toolbar: '#deleteButton0'}
-        ]]
-        });
+    $.ajax({
+        url: 'List/person/',
+        type: 'GET',
+        dataType: 'json',
+        success: function(data){
+            personUserTable(data.data)
+        },
+        error: function(){alert("未知错误，请重试！");}
     })
 }
-function companyUserIndex(){
-    layui.use('table', function(){
-        var table = layui.table;
-        table.render({
-        elem: '#comUser'
-        ,url:'List/company/'
-        ,cellMinWidth: 80
-        ,page: true
-        ,cols: [[
-           {field:'userid', title: '用户id', minWidth: 150, sort: true}
-          ,{field:'username', title: '用户名',minWidth: 150, sort: true}
-          ,{field:'companyname', title: '公司名称', minWidth: 150, sort: true}
-          ,{field:'companytype', title: '公司类型', minWidth: 150, sort: true}
-          ,{field:'email', title: '邮箱', minWidth: 200, sort: true}
-          ,{field:'registertime', title: '公司登记注册时间', minWidth: 200, sort: true}
-          ,{field:'registrantTime', title: '账号注册时间', minWidth: 180, sort: true}
-          ,{fixed:'right', title: '管理', align: 'center', toolbar: '#deleteButton1'}
-        ]]
-        });
-    })
+function personUserTable(data){
+    options = {
+        "order": [0, "asc"],
+        stateSave: true,
+        "bAutoWidth": false,
+        "aLengthMenu": [[15,50, 100], [15, 50, 100]],
+        "language": {
+            "lengthMenu": " 每页_MENU_条记录",
+            "zeroRecords": "没有找到记录",
+            "info": "第_PAGE_页(共_PAGES_页)",
+            "infoEmpty": "无记录",
+            "infoFiltered": "(从_MAX_条记录过滤)",
+            "oPaginate":{
+                "sFirst": "首页",
+                "sPrevious": "上页",
+                "sNext": "下页",
+                "sLast": "末页"
+            },
+            "sSearch": "搜索: ",
+            "sLoadingRecords": "正在加载数据-请等待...",
+        },
+        "data": data,
+        "columns": [
+            {"data": "userid", "title": "用户id"},
+            {"data": "username", "title": "用户名"},
+            {"data": "realname", "title": "真实姓名"},
+            {"data": "sex", "title": "性别"},
+            {"data": "age", "title": "年龄"},
+            {"data": "phoneNum", "title": "手机号码"},
+            {"data": "email", "title": "邮箱"},
+            {"data": "job", "title": "工作"},
+            {"data": "registrantTime", "title": "注册日期"},
+            {"data": null, "title": "操作", "width": "40px", "render": function botton(data){
+                    return "<button class=\"btn btn-danger btn-xs\">删除</button>"
+                },
+            }
+        ]
+    };
+    var table=$('#personUser').DataTable(options);
 }
 
-function instituteUserIndex(){
-    layui.use('table', function(){
-        var table = layui.table;
-        table.render({
-        elem: '#institutionUser'
-        ,url:'List/institute/'
-        ,cellMinWidth: 80
-        ,page: true
-        ,cols: [[
-           {field:'userid', title: '用户id', minWidth: 150, sort: true}
-          ,{field:'username', title: '用户名',minWidth: 130, sort: true}
-          ,{field:'institutionname', title: '机构名称', minWidth: 130, sort: true}
-          ,{field:'institudecode', title: '机构代码', minWidth: 130, sort: true}
-          ,{field:'institutionlevel', title: '机构级别', minWidth: 150, sort: true}
-          ,{field:'institutiontype', title: '机构类型', minWidth: 150, sort: true}
-          ,{field:'email', title: '邮箱', minWidth: 180, sort: true}
-          ,{field:'registrantTime', title: '账号注册时间', minWidth: 150, sort: true}
-          ,{fixed:'right', title: '管理', align: 'center', toolbar: '#deleteButton2'}
-        ]]
-        });
+function companyUserIndex(){
+    $.ajax({
+        url: 'List/company/',
+        type: 'GET',
+        dataType: 'json',
+        success: function(data){
+            companyUserTable(data.data)
+        },
+        error: function(){alert("未知错误，请重试");}
     })
+}
+function companyUserTable(data){
+    options = {
+        "order": [0, "asc"],
+        stateSave: true,
+        "bAutoWidth": false,
+        "aLengthMenu": [[15,50, 100], [15, 50, 100]],
+        "language": {
+            "lengthMenu": " 每页_MENU_条记录",
+            "zeroRecords": "没有找到记录",
+            "info": "第_PAGE_页(共_PAGES_页)",
+            "infoEmpty": "无记录",
+            "infoFiltered": "(从_MAX_条记录过滤)",
+            "oPaginate":{
+                "sFirst": "首页",
+                "sPrevious": "上页",
+                "sNext": "下页",
+                "sLast": "末页"
+            },
+            "sSearch": "搜索: ",
+            "sLoadingRecords": "正在加载数据-请等待...",
+        },
+        "data": data,
+        "columns": [
+            {"data": "userid", "title": "用户id"},
+            {"data": "username", "title": "用户名"},
+            {"data": "companyname", "title": "公司名称"},
+            {"data": "companytype", "title": "公司类别"},
+            {"data": "registertime", "title": "公司注册日期"},
+            {"data": "email", "title": "邮箱"},
+            {"data": "registrantTime", "title": "账号注册日期"},
+            {"data": null, "title": "操作", "width": "40px", "render": function botton(data){
+                    return "<button class=\"btn btn-danger btn-xs\">删除</button>"
+                },
+            }
+        ]
+    };
+    var table=$('#comUser').DataTable(options);
 }
 
 function govermentUserIndex(){
-    layui.use('table', function(){
-        var table = layui.table;
-        table.render({
-        elem: '#govUser'
-        ,url:'List/goverment/'
-        ,cellMinWidth: 80
-        ,page: true
-        ,cols: [[
-           {field:'userid', title: '用户id', minWidth: 180, sort: true}
-          ,{field:'username', title: '用户名', minWidth: 180, sort: true}
-          ,{field:'govname', title: '政府机构名', minWidth: 180, sort: true}
-          ,{field:'govcode', title: '政府机构代码', minWidth: 180, sort: true}
-          ,{field:'govType', title: '政府机构类型', minWidth: 100, sort: true}
-          ,{field:'email', title: '邮箱', minWidth: 180, sort: true}
-          ,{field:'registrantTime', title: '账号注册时间', minWidth: 180, sort: true}
-          ,{fixed:'right', title: '管理', align: 'center', toolbar: '#deleteButton3'}
-        ]]
-        });
+    $.ajax({
+        url: 'List/goverment/',
+        type: 'GET',
+        dataType: 'json',
+        success: function(data){
+            govermentUserTable(data.data)
+        },
+        error: function(){alert("未知错误");}
     })
+}
+function govermentUserTable(data){
+    options = {
+        "order": [0, "asc"],
+        stateSave: true,
+        "bAutoWidth": false,
+        "aLengthMenu": [[15,50, 100], [15, 50, 100]],
+        "language": {
+            "lengthMenu": " 每页_MENU_条记录",
+            "zeroRecords": "没有找到记录",
+            "info": "第_PAGE_页(共_PAGES_页)",
+            "infoEmpty": "无记录",
+            "infoFiltered": "(从_MAX_条记录过滤)",
+            "oPaginate":{
+                "sFirst": "首页",
+                "sPrevious": "上页",
+                "sNext": "下页",
+                "sLast": "末页"
+            },
+            "sSearch": "搜索: ",
+            "sLoadingRecords": "正在加载数据-请等待...",
+        },
+        "data": data,
+        "columns": [
+            {"data": "userid", "title": "用户id"},
+            {"data": "username", "title": "用户名"},
+            {"data": "govname", "title": "政府机构名称"},
+            {"data": "govcode", "title": "机构代码"},
+            {"data": "govType", "title": "政府机构类型"},
+            {"data": "email", "title": "邮箱"},
+            {"data": "registrantTime", "title": "账号注册日期"},
+            {"data": null, "title": "操作", "width": "40px", "render": function botton(data){
+                    return "<button class=\"btn btn-danger btn-xs\">删除</button>"
+                },
+            }
+        ]
+    };
+    var table=$('#govUser').DataTable(options);
+}
+
+function instituteUserIndex(){
+    $.ajax({
+        url: 'List/institute/',
+        type: 'GET',
+        dataType: 'json',
+        success: function(data){
+            instituteUserTable(data.data)
+        },
+        error: function(){alert("未知错误");}
+    })
+}
+function instituteUserTable(data){
+    options = {
+        "order": [0, "asc"],
+        stateSave: true,
+        "bAutoWidth": false,
+        "aLengthMenu": [[15,50, 100], [15, 50, 100]],
+        "language": {
+            "lengthMenu": " 每页_MENU_条记录",
+            "zeroRecords": "没有找到记录",
+            "info": "第_PAGE_页(共_PAGES_页)",
+            "infoEmpty": "无记录",
+            "infoFiltered": "(从_MAX_条记录过滤)",
+            "oPaginate":{
+                "sFirst": "首页",
+                "sPrevious": "上页",
+                "sNext": "下页",
+                "sLast": "末页"
+            },
+            "sSearch": "搜索: ",
+            "sLoadingRecords": "正在加载数据-请等待...",
+        },
+        "data": data,
+        "columns": [
+            {"data": "userid", "title": "用户id"},
+            {"data": "username", "title": "用户名"},
+            {"data": "institutionname", "title": "机构名称"},
+            {"data": "institudecode", "title": "机构代码"},
+            {"data": "institutionlevel", "title": "机构级别"},
+            {"data": "institutiontype", "title": "机构类型"},
+            {"data": "email", "title": "邮箱"},
+            {"data": "registrantTime", "title": "账号注册日期"},
+            {"data": null, "title": "操作", "width": "40px", "render": function botton(data){
+                    return "<button class=\"btn btn-danger btn-xs\">删除</button>"
+                },
+            }
+        ]
+    };
+    var table=$('#institutionUser').DataTable(options);
 }
 
