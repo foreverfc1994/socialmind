@@ -15,39 +15,46 @@ def yuanshujubiao(request):
     dataList = []
     print("┗|｀O′|┛ 嗷~~")
     # 打开数据库连接
-    # db = pymysql.connect(host="localhost", user="root",
-    #                      password="461834084", db="linshitongji", port=3306)
-    db = pymysql.connect(host="192.168.100.103", user="root",
-                         password="root", db="linshitongji", port=3306)
+    db = pymysql.connect(host="localhost", user="root",
+                         password="461834084", db="mop", port=3306)
+    # db = pymysql.connect(host="192.168.100.103", user="root",
+    #                      password="root", db="linshitongji", port=3306)
 
     # 使用cursor()方法获取操作游标
     cur = db.cursor()
 
     # 1.查询操作
     # 编写sql 查询语句  user 对应我的表名
-    # sql = "select * from datatables"
-    # sql2 = "select * from website_schema"
-    sql ="select TABLE_NAME,SCHEMA_NAME,WebSite,WebsiteType,NUM_ROWS from datatables,website_schema where SCHEMA_NAME=SchemaName"
+    # sql ="select TABLE_NAME,SCHEMA_NAME,WebSite,WebsiteType,NUM_ROWS from datatables,website_schema where SCHEMA_NAME=SchemaName"
+    sql = "select * from author"
+    sql2 = "SHOW COLUMNS FROM author"
     try:
+        cur.execute(sql2)  # 执行sql语句
+        results = cur.fetchall()  # 获取查询的所有记录
+        columns = []
+        for row in results:
+            columns.append(row[0])
+        print(columns)
+        linshidiction = {}
+        for row in columns:
+            linshidiction[row] = row
+        dataList.append(linshidiction)
+        # print(dataList)
         cur.execute(sql)  # 执行sql语句
         results = cur.fetchall()  # 获取查询的所有记录
-        print("tableName", "schemaName", "webSite", "webSiteType", "dataVolum")
-        # 遍历结果
+
         for row in results:
-            tableName = row[0]
-            schemaName = row[1]
-            webSite = row[2]
-            webSiteType = row[3]
-            dataVolum = row[4]
-            print(tableName, schemaName, webSite, webSiteType, dataVolum)
-            dataList.append({"tableName":tableName,
-                             "schemaName":schemaName,
-                             "webSite":webSite,
-                             "webSiteType":webSiteType,
-                             "dataVolum":dataVolum})
+            i = 0
+            diction = {}
+            for col in row:
+                diction[columns[i]] = col
+                i = i+1
+            # print(diction)
+            dataList.append(diction)
     except Exception as e:
         raise e
     finally:
         db.close()  # 关闭连接
     data = {"data": dataList}
+    print(data)
     return HttpResponse(json.dumps(data))

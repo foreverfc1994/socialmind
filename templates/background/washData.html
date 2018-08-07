@@ -839,15 +839,34 @@
 
     $(document).ready(function(){
         $.ajax({
-            url: '/yuandatashow/getyuandatas/',
+            url: '/washData/yuanshujubiao/',
             type: 'GET',
             dataType: 'json',
             success: function(data){
                 var tbody = document.getElementById('tbody')
                 datas = data.data
+                console.log(datas)
+                // console.log(typeof(datas))
+                var column = []
+                console.log(datas[0])
+                var j = 0
+                for(var i in datas[0]){
+                   
+                   console.log(i)
+                   var dic = {data:i}
+                //    console.log(dic)
+                //    console.log(typeof(dic))
+                   column.push(dic)
+                }
+                // for(var i in column){
+                //     console.log(column[i])
+                // }
+                // alert([column[1]])
+                // console.log(column)    
                 options = {
                     "order": [0, "asc"],
                     "bAutoWidth": false,
+
                     "aLengthMenu": [[10,30,-1], [20, 30, "全部"]],
                     "language": {
                         "lengthMenu": " 每页_MENU_条记录",
@@ -865,13 +884,14 @@
                         "sLoadingRecords": "正在加载数据-请等待...",
                     },
                     data: datas,
-                    columns: [
-                        { data: 'tableName' },
-                        { data: 'schemaName' },
-                        { data: 'webSite' },
-                        { data: 'webSiteType' },
-                        { data: 'dataVolum' }
-                    ]
+                    columns:column
+                    //  [
+                    //     { data: 'tableName' },
+                    //     { data: 'schemaName' },
+                    //     { data: 'webSite' },
+                    //     { data: 'webSiteType' },
+                    //     { data: 'dataVolum' }
+                    // ]
                 };
                 var table = $('#yuanshujubiao').DataTable(options);
             },
