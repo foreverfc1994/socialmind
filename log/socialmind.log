@@ -38,3 +38,11 @@
 2018-08-07 14:15:22,591 login ['01b2e42a-9bb4-428c-8ae3-954c630313d6', '58a2eb7f-21ee-4d9c-83a9-cc599a236bcc', '/person_index/', '登录', ''] visitor
 2018-08-07 14:25:27,124 logout ['01b2e42a-9bb4-428c-8ae3-954c630313d6', '58a2eb7f-21ee-4d9c-83a9-cc599a236bcc', '/login/', '退出', ''] visitor
 2018-08-07 14:25:51,311 login ['dd8e24ce-02f2-400d-aee3-88dff66d7d26', '58a2eb7f-21ee-4d9c-83a9-cc599a236baa', '/com_index/', '登录', ''] visitor
+2018-08-07 14:30:00,351 logout ['dd8e24ce-02f2-400d-aee3-88dff66d7d26', '58a2eb7f-21ee-4d9c-83a9-cc599a236baa', '/login/', '退出', ''] visitor
+2018-08-07 14:30:35,986 login ['dd8e24ce-02f2-400d-aee3-88dff66d7d26', '58a2eb7f-21ee-4d9c-83a9-cc599a236baa', '/com_index/', '登录', ''] visitor
+2018-08-07 14:42:37,621 logout ['dd8e24ce-02f2-400d-aee3-88dff66d7d26', '58a2eb7f-21ee-4d9c-83a9-cc599a236baa', '/login/', '退出', ''] visitor
+2018-08-07 14:44:17,542 login ['cbb9a9fc-9143-42b0-ad6d-8e6c80ee646e', '58a2eb7f-21ee-4d9c-83a9-cc599a236baa', '/gov_index/', '登录', ''] visitor
+2018-08-07 15:01:35,877 logout ['cbb9a9fc-9143-42b0-ad6d-8e6c80ee646e', '58a2eb7f-21ee-4d9c-83a9-cc599a236baa', '/login/', '退出', ''] visitor
+2018-08-07 15:01:58,257 login ['01b2e42a-9bb4-428c-8ae3-954c630313d6', '58a2eb7f-21ee-4d9c-83a9-cc599a236bcc', '/person_index/', '登录', ''] visitor
+2018-08-07 15:03:03,503 logout ['01b2e42a-9bb4-428c-8ae3-954c630313d6', '58a2eb7f-21ee-4d9c-83a9-cc599a236bcc', '/login/', '退出', ''] visitor
+2018-08-07 15:04:40,443 login ['dd8e24ce-02f2-400d-aee3-88dff66d7d26', '58a2eb7f-21ee-4d9c-83a9-cc599a236baa', '/com_index/', '登录', ''] visitor

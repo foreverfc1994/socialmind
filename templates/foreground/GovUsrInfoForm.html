@@ -12,12 +12,6 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" href="{% static 'assets0/layui/css/layui.css' %}" media="all">
-    <style>
-        img{
-            width: 120px;
-            height: 120px;
-        }
-    </style>
 </head>
 <body>
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
@@ -102,17 +96,9 @@
     <div class="layui-form-item">
         <label class="layui-form-label">营业执照照片</label>
         <div class="layui-input-block">
-            <img id="businesspic" src="" />
             <input type="text" name="businesspic" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
-            <input type="file" name="businesspic1" id="123456789">
-            <a onclick="hahahahahaha()">1111!!!</a>
         </div>
     </div>
-    <script>
-        function hahahahahaha(){
-            alert($("#123456789").val())
-        }
-    </script>
     <div class="layui-form-item">
         <label class="layui-form-label">登记机关</label>
         <div class="layui-input-block">
@@ -228,7 +214,7 @@
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
     <legend>个人信息</legend>
 </fieldset>
-<form id="form3" class="layui-form" enctype="multipart/form-data" method="post" action="/ComUsrForm/3/" lay-filter="gerenxinxi">
+<form id="form3" class="layui-form" method="post" action="/ComUsrForm/3/" lay-filter="gerenxinxi">
     {% csrf_token %}
     <div class="layui-form-item">
         <label class="layui-form-label">真实姓名</label>
@@ -239,9 +225,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">用户头像</label>
         <div class="layui-input-block">
-            <img id="usrphotopic" src="" />
             <input type="text" name="usrimg" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
-            <input type="file" name="usrimg1" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input" autofocus required="true">
         </div>
     </div>
     <div class="layui-form-item">
@@ -259,14 +243,12 @@
     <div class="layui-form-item">
         <label class="layui-form-label">身份证正面照</label>
         <div class="layui-input-block">
-            <img id="IDfrontpic" src="" />
             <input type="text" name="IDcardfront" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">身份证背面照</label>
         <div class="layui-input-block">
-            <img id="IDbackpic" src="" />
             <input type="text" name="IDcardback" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
         </div>
     </div>
@@ -278,7 +260,6 @@
     </div>
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button type="submit" class="layui-btn">提交</button>
             <a class="layui-btn" onclick="geren()">立即提交</a>
         </div>
     </div>
@@ -300,10 +281,6 @@
             dataType: "json",//预期服务器返回的数据类型
             url: "/ajaxInitComUsrForm/" ,//url
             success: function (data) {
-                $("#businesspic").attr("src",data.data[0].bussinessLicenceUrl);
-                $("#usrphotopic").attr("src",data.data[0].usrimg);
-                $("#IDfrontpic").attr("src",data.data[0].idfronturl);
-                $("#IDbackpic").attr("src",data.data[0].idbackurl);
                 layui.use(['form', 'layedit', 'laydate'], function(){
                     var form = layui.form
                         ,layer = layui.layer
@@ -407,16 +384,12 @@
         });
     }
     function formsub3(){
-        var form = $('#form3');
-        var formdata = new FormData(form[0]);
         $.ajax({
             //几个参数需要注意一下
             type: "POST",//方法类型
             dataType: "json",//预期服务器返回的数据类型
             url: "/ComUsrForm/3/" ,//url
-            data: formdata,
-            processData:false,
-            contentType:false,
+            data: $('#form3').serialize(),
             success: function (data) {
                 layer.msg('个人信息修改成功')
                 layui.use(['form', 'layedit', 'laydate'], function(){
