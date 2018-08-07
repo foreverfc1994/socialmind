@@ -45,7 +45,13 @@ urlpatterns = [
     path('competitive_products/', vviews.competitive_products),
     path('personalInfoForm/<int:a>/',UserInfoManageview.personalInfoForm),
     path('ComUsrForm/<int:a>/',UserInfoManageview.ComUsrForm),
+    path('PersonUsrForm/<int:a>/',UserInfoManageview.PersonUsrForm),
+    path('InstituUsrForm/<int:a>/',UserInfoManageview.InstituUsrForm),
+    path('GovUsrForm/<int:a>/',UserInfoManageview.GovUsrForm),
     path('ajaxInitComUsrForm/',UserInfoManageview.ajaxInitComUsrForm),
+    path('ajaxInitPersonUsrForm/',UserInfoManageview.ajaxInitPersonUsrForm),
+    path('ajaxInitInstitutionUsrForm/',UserInfoManageview.ajaxInitInstitutionUsrForm),
+    path('ajaxInitGovUsrForm/',UserInfoManageview.ajaxInitGovUsrForm),
     # background url
     path('bindex/', bloginview.index, name='index'),
     path('blogin/', bloginview.login, name='login'),
