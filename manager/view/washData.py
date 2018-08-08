@@ -13,6 +13,7 @@ import pymysql  # 导入 pymysql
 @csrf_exempt
 def yuanshujubiao(request):
     wangzhan = request.POST
+    # print(wangzhan)
     tablename = {}
     for i in wangzhan:
         tablename = json.loads(i)
@@ -30,7 +31,7 @@ def yuanshujubiao(request):
     # 1.查询操作
     # 编写sql 查询语句  user 对应我的表名
     # sql ="select TABLE_NAME,SCHEMA_NAME,WebSite,WebsiteType,NUM_ROWS from datatables,website_schema where SCHEMA_NAME=SchemaName"
-    sql = "select * from "+tablename['tablename']
+    sql = "select * from "+tablename['tablename']+" limit 10"
     sql2 = "SHOW COLUMNS FROM "+tablename['tablename']
     try:
         cur.execute(sql2)  # 执行sql语句
@@ -43,7 +44,6 @@ def yuanshujubiao(request):
         for row in columns:
             linshidiction[row] = row
         dataList.append(linshidiction)
-        # print(dataList)
         cur.execute(sql)  # 执行sql语句
         results = cur.fetchall()  # 获取查询的所有记录
 
@@ -55,13 +55,23 @@ def yuanshujubiao(request):
                 i = i+1
             # print(diction)
             dataList.append(diction)
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!"+str(len(dataList)))
     except Exception as e:
         raise e
     finally:
         db.close()  # 关闭连接
     data = {"data": dataList}
     # print(data)
+    # print(type(HttpResponse(json.dumps(data))))
+    #     # print(type(json.dumps(data)))
+    #     # print(type(data))
+    #     # print(len(data))
     return HttpResponse(json.dumps(data))
+
+
+
+
+
 @csrf_exempt
 def xuanzewangzhan(request):
     dataList = []
@@ -93,5 +103,25 @@ def findtablenames(val):
 @csrf_exempt
 def test(request):
     dataList = []
+    wangzhan = request.POST
+    tablename = {}
+    for i in wangzhan:
+        tablename = json.loads(i)
+    print(tablename)
+    fenyedudb(tablename['sitename'],tablename['tablename'],tablename['page'],tablename['len'],)
     data = {"data": dataList}
     return HttpResponse(json.dumps(data))
+def fenyedudb(sitename,tablename,page,len):
+    db = pymysql.connect(host="localhost", user="root",
+                         password="461834084", db=sitename, port=3306)
+    cur = db.cursor()
+    sql = "select * from "+tablename+" limit "+str(int(page)*int(len))+","+len
+    # print(sql)
+    try:
+        cur.execute(sql)  # 执行sql语句
+        results = cur.fetchall()  # 获取查询的所有记录
+        return results
+    except Exception as e:
+        raise e
+    finally:
+        db.close()  # 关闭连接

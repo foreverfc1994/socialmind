@@ -12,6 +12,7 @@ import json
 logger = logging.getLogger('visitor')
 @csrf_exempt
 def ComUsrForm(request,a):
+    print(request.POST)
     userid = request.session["user_id"]
     if(a == 1):
         dataList = []
