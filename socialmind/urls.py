@@ -109,7 +109,16 @@ urlpatterns = [
 
     path('articlelist/deleteArticle/', bAAview.deleteArticle), #/articlelist/删除文章
     path('Author/authorDelete/', bAAview.deleteAuthor), #/Author/删除作者
-    path('getspiderlist/',SpiderView.getspiderlist)  #获取爬虫列表
+    path('getspiderlist/',SpiderView.getspiderlist) , #获取爬虫列表
+    path('runspider/',SpiderView.runspider),
+    path('stopspider/',SpiderView.stopspider),
+    path('getspiderconfig/',SpiderView.getspiderconfig),
+    path('getspiderconfigbyid/',SpiderView.getspiderconfigbyid),
+    path('changeconfig/',SpiderView.changeconfig),
+    path('delconfig/',SpiderView.delconfig),
+    path('addconfig/',SpiderView.addconfig),
+    path('addspider/',SpiderView.addspider),
+
 
 
 
