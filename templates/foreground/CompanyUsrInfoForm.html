@@ -103,16 +103,9 @@
         <label class="layui-form-label">营业执照照片</label>
         <div class="layui-input-block">
             <img id="businesspic" src="" />
-            <input type="text" name="businesspic" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
-            <input type="file" name="businesspic1" id="123456789">
-            <a onclick="hahahahahaha()">1111!!!</a>
+            <input style="display: none" type="text" name="businesspic" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
         </div>
     </div>
-    <script>
-        function hahahahahaha(){
-            alert($("#123456789").val())
-        }
-    </script>
     <div class="layui-form-item">
         <label class="layui-form-label">登记机关</label>
         <div class="layui-input-block">
@@ -239,11 +232,55 @@
     <div class="layui-form-item">
         <label class="layui-form-label">用户头像</label>
         <div class="layui-input-block">
-            <img id="usrphotopic" src="" />
-            <input type="text" name="usrimg" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
-            <input type="file" name="usrimg1" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input" autofocus required="true">
+            <img onclick="datou()" class="img" id="usrphotopic" src="" />
+            <input style="display: none" type="text" name="usrimg" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+            <input onchange="xmTanUploadImg(this)" accept="image/*" style="display: none" id="adddatou" type="file" name="usrimg1" lay-verify="title" autocomplete="off" placeholder="请输入标题"  class="a" autofocus required="true">
         </div>
     </div>
+    <script>
+        function datou(){
+            $("#adddatou").click()
+        }
+        //判断浏览器是否支持FileReader接口
+        if (typeof FileReader == 'undefined') {
+            document.getElementById("xmTanDiv").InnerHTML = "<h1>当前浏览器不支持FileReader接口</h1>";
+            //使选择控件不可操作
+            document.getElementById("xdaTanFileImg").setAttribute("disabled", "disabled");
+        }
+
+        //选择图片，马上预览
+        function xmTanUploadImg(obj) {
+            var file = obj.files[0];
+            
+            console.log(obj);console.log(file);
+            console.log("file.size = " + file.size);  //file.size 单位为byte
+
+            var reader = new FileReader();
+
+            //读取文件过程方法
+            reader.onloadstart = function (e) {
+                console.log("开始读取....");
+            }
+            reader.onprogress = function (e) {
+                console.log("正在读取中....");
+            }
+            reader.onabort = function (e) {
+                console.log("中断读取....");
+            }
+            reader.onerror = function (e) {
+                console.log("读取异常....");
+            }
+            reader.onload = function (e) {
+                console.log("成功读取....");
+
+                var img = document.getElementById("usrphotopic");
+                img.src = e.target.result;
+                //或者 img.src = this.result;  //e.target == this
+            }
+
+            reader.readAsDataURL(file)
+        }
+    </script>
     <div class="layui-form-item">
         <label class="layui-form-label">邮箱</label>
         <div class="layui-input-block">
@@ -260,14 +297,14 @@
         <label class="layui-form-label">身份证正面照</label>
         <div class="layui-input-block">
             <img id="IDfrontpic" src="" />
-            <input type="text" name="IDcardfront" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+            <input style="display: none" type="text" name="IDcardfront" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">身份证背面照</label>
         <div class="layui-input-block">
             <img id="IDbackpic" src="" />
-            <input type="text" name="IDcardback" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+            <input style="display: none" type="text" name="IDcardback" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
         </div>
     </div>
     <div class="layui-form-item">
@@ -278,7 +315,6 @@
     </div>
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button type="submit" class="layui-btn">提交</button>
             <a class="layui-btn" onclick="geren()">立即提交</a>
         </div>
     </div>
@@ -419,6 +455,7 @@
             contentType:false,
             success: function (data) {
                 layer.msg('个人信息修改成功')
+                /* $("#usrphotopic").attr("src",data.data[0].usrimg); */
                 layui.use(['form', 'layedit', 'laydate'], function(){
                     var form = layui.form
                         ,layer = layui.layer

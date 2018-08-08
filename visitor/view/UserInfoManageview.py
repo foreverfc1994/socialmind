@@ -273,6 +273,7 @@ def profile(request):
     username = request.session["user_name"]
     currentUser = models.User.objects.get(userid=userid)
     email = currentUser.email
+    photo = giveimgurl(currentUser.photo)
     try:
         if(role == "个人用户"):
             personalized_data = models.PersonUser.objects.get(userid=userid)
@@ -284,7 +285,7 @@ def profile(request):
             realName = personalized_data.realname
             return render(request, 'foreground/personalInformation.html',
                           {"userid": userid, "role": role, "username": username, "email": email,
-                           "sex": sex, "phoneNumber": phoneNumber, "hobby": hobby,
+                           "sex": sex, "phoneNumber": phoneNumber, "hobby": hobby,"photo":photo,
                            "career": career, "realname": realName, "birthday": birthday})
         elif(role == "企业用户"):
             personalized_data = models.CompanyUser.objects.get(userid=userid)
@@ -308,7 +309,7 @@ def profile(request):
             return render(request, 'foreground/personalInformation.html',
                           {"userid": userid, "role": role, "username": username, "email": email,
                            "companyname": companyname, "companytype": companytype, "idfronturl": idfronturl,
-                           "idbackurl": idbackurl, "businessLicenceId": businessLicenceId,
+                           "idbackurl": idbackurl, "businessLicenceId": businessLicenceId,"photo":photo,
                            "bussinessLicenceUrl": bussinessLicenceUrl,"businessscope":businessscope,
                            "interest":interest,"realname":realname,"registerORG":registerORG,
                            "registertime":registertime,"address":address,"registranttime":registranttime})
@@ -321,7 +322,7 @@ def profile(request):
             govtype = gov_User.govtype
             interest = gov_User.interest
             return render(request, 'foreground/personalInformation.html',
-                          {"userid": userid, "role": role, "username": username, "email": email,
+                          {"userid": userid, "role": role, "username": username, "email": email,"photo":photo,
                            "govname": govname, "govcode": govcode, "govtype": govtype, "interest": interest})
         elif(role == "事业单位用户"):
             institu_User = models.InstitutionUser.objects.get(userid=userid)
@@ -332,7 +333,7 @@ def profile(request):
             interest = institu_User.interest
             return render(request, 'foreground/personalInformation.html',
                           {"userid": userid, "role": role, "username": username, "email": email,
-                           "institutionname": institutionname, "institutecode": institutecode,
+                           "institutionname": institutionname, "institutecode": institutecode,"photo":photo,
                            "institutionlevel": institutionlevel, "institutiontype": institutiontype,
                            "interest": interest})
     except:

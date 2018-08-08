@@ -71,10 +71,10 @@ def noPass(request):
         return JsonResponse({"data": "false"})
 
 def deleteComment(request):
-    print("~")
     messageid = request.GET.get("messageid")
     try:
-        models.Message.objects.filter(messageid=messageid).delete()
+        models.Message.objects.get(messageid=messageid).delete()
+        print("~")
         return JsonResponse({"data": "true"})
     except:
         return JsonResponse({"data": "false"})

@@ -20,7 +20,7 @@ from manager import views as bviews
 from django.conf.urls import include
 from visitor.view import loginviews,indexview,UserInfoManageview
 from manager.view import loginview as bloginview,ArticleandAuthorview as bAAview
-from manager.view import userManagement as umView
+from manager.view import userManagement as umView, washData
 from manager.view import DataTableShowView,ObjectShowview, userCommentsManage as ucView,SpiderView
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -65,6 +65,9 @@ urlpatterns = [
     path('DataCleanStrategies/', bviews.DataCleanStrategies),
     path('DataCleanLog/', bviews.DataCleanLog),
     path('washData/', bviews.washData),
+    path('washData/yuanshujubiao/',washData.yuanshujubiao),
+    path('washData/xuanzewangzhan/',washData.xuanzewangzhan),
+    path('washData/test/',washData.test),
     path('topics/', bviews.topics),
     path('AddEventObject/', bviews.AddEventObject),
     path('CreateEventObject/', bviews.CreateEventObject),
@@ -87,6 +90,7 @@ urlpatterns = [
     path('usrManagement/List/company/', umView.companyList),#企业用户管理
     path('usrManagement/List/goverment/', umView.govermentList),#政府用户管理
     path('usrManagement/List/institute/', umView.instituteList),#事业单位用户管理
+    path('usrManagement/deleteUser/', umView.deleteUser),
     path('operateDiary/', bviews.operateDiary),#日志管理
     path('DouBanArticleStyle/', bviews.DouBanArticleStyle),
     path('ArticlePaticular/', bAAview.ArticlePaticular),

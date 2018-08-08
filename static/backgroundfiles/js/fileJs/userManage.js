@@ -42,7 +42,7 @@ function personUserTable(data){
             {"data": "job", "title": "工作"},
             {"data": "registrantTime", "title": "注册日期"},
             {"data": null, "title": "操作", "width": "40px", "render": function botton(data){
-                    return "<button class=\"btn btn-danger btn-xs\">删除</button>"
+                    return "<button class=\"btn btn-danger btn-xs\" onclick=\"deleteUser('"+data.userid+"')\">删除</button>"
                 },
             }
         ]
@@ -92,7 +92,7 @@ function companyUserTable(data){
             {"data": "email", "title": "邮箱"},
             {"data": "registrantTime", "title": "账号注册日期"},
             {"data": null, "title": "操作", "width": "40px", "render": function botton(data){
-                    return "<button class=\"btn btn-danger btn-xs\">删除</button>"
+                    return "<button class=\"btn btn-danger btn-xs\" onclick=\"deleteUser('"+data.userid+"')\">删除</button>"
                 },
             }
         ]
@@ -142,7 +142,7 @@ function govermentUserTable(data){
             {"data": "email", "title": "邮箱"},
             {"data": "registrantTime", "title": "账号注册日期"},
             {"data": null, "title": "操作", "width": "40px", "render": function botton(data){
-                    return "<button class=\"btn btn-danger btn-xs\">删除</button>"
+                    return "<button class=\"btn btn-danger btn-xs\" onclick=\"deleteUser('"+data.userid+"')\">删除</button>"
                 },
             }
         ]
@@ -193,7 +193,7 @@ function instituteUserTable(data){
             {"data": "email", "title": "邮箱"},
             {"data": "registrantTime", "title": "账号注册日期"},
             {"data": null, "title": "操作", "width": "40px", "render": function botton(data){
-                    return "<button class=\"btn btn-danger btn-xs\">删除</button>"
+                    return "<button class=\"btn btn-danger btn-xs\" onclick=\"deleteUser('"+data.userid+"')\">删除</button>"
                 },
             }
         ]
@@ -201,3 +201,25 @@ function instituteUserTable(data){
     var table=$('#institutionUser').DataTable(options);
 }
 
+function deleteUser(userid){
+    con = confirm("确定删除该用户？");
+    if(con==true){
+        $.ajax({
+            url: 'deleteUser/?userid='+userid,
+            type: 'GET',
+            dataType: 'json',
+            success: function(data){
+                if(data.data=='success'){
+                    alert("删除成功!");
+                    location.reload();
+                }
+                else{
+                    alert("删除失败");
+                }
+            },
+            error: function(data){
+                alert("删除失败，请稍后重试");
+            }
+        })
+    }
+}

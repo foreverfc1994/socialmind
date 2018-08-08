@@ -336,7 +336,7 @@ class ClickEvent(models.Model):
 
 class Comment(models.Model):
     commentid = models.CharField(db_column='commentID', primary_key=True, max_length=36)  # Field name made lowercase.
-    userid = models.ForeignKey('User', models.DO_NOTHING, db_column='userID', blank=True, null=True)  # Field name made lowercase.
+    userid = models.ForeignKey('User', db_column='userID', blank=True, null=True, on_delete=models.CASCADE)  # Field name made lowercase.
     commentcontent = models.CharField(db_column='commentContent', max_length=255, blank=True, null=True)  # Field name made lowercase.
     fathercommentid = models.ForeignKey('self', models.DO_NOTHING, db_column='fathercommentID', blank=True, null=True)  # Field name made lowercase.
     commenttime = models.CharField(db_column='commentTime', max_length=32, blank=True, null=True)  # Field name made lowercase.
