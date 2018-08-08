@@ -90,3 +90,8 @@ def findtablenames(val):
         raise e
     finally:
         db.close()  # 关闭连接
+@csrf_exempt
+def test(request):
+    dataList = []
+    data = {"data": dataList}
+    return HttpResponse(json.dumps(data))
