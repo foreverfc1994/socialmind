@@ -701,7 +701,7 @@
                         <div class="panel-body">
                             <table id="yuanshujubiao" class="display" style="display: none">
                                 <thead>
-                                    <tr id="theadtr"></tr>
+                                <tr id="theadtr"></tr>
                                 </thead>
                                 <tbody id="tbody">
                                 </tbody>
@@ -825,7 +825,13 @@
         alert(a)
     }
     //custom select box
-    function displaytable(btnthis){      
+    var flg = 0
+    var table
+    function secondclick(btnthis){
+        table.destroy();
+        displaytable(btnthis)
+    }
+    function displaytable(btnthis){
         $("#tableshowname").empty()
         $("#tableshowname").append($(btnthis).html())
         var sitename = $('#sitename').val()
@@ -840,6 +846,7 @@
             success: function(data){
                 //console.log(data)
                 //var tbody = document.getElementById('tbody')
+                //$('#yuanshujubiao').empty();
                 datas = data.data
                 console.log(datas)
                 // console.log(typeof(datas))
@@ -847,10 +854,11 @@
                 console.log(datas[0])
                 var j = 0
                 for(var i in datas[0]){
-                    console.log(i)
+
                     var dic = {'data':i}
                     column.push(dic)
                     $("#theadtr").append("<th>"+i+"</th>")
+                    console.log(i)
                 }
                 datas.splice(0,1)
                 //column.push({mData: "fewsf"})
@@ -892,9 +900,13 @@
                     // ]
                 };
                 console.log("123")
-                var table = $('#yuanshujubiao').DataTable(options);
+                table = $('#yuanshujubiao').DataTable(options);
+                //table.destroy();
                 options={}
                 console.log("3456")
+
+                $("#datatablenames button").removeAttr("onclick")
+                $("#datatablenames button").attr("onclick","secondclick(this);");
                 $('#yuanshujubiao_paginate').on('click', function() {
                     //alert(table.page()) /* 从0算当前页数 */
                     //alert(table.page.len()) /* 每页多少条数据，-1代表全部 */
@@ -905,6 +917,7 @@
                         data: '{"sitename": "'+sitename+'", "tablename": "'+tablename+'",'+'"page": "'+table.page()+'", "len": "'+table.page.len()+'"}',
                         success: function(data){
                             alert("Yes!")
+                            table.destroy();
                         },
                         error: function(data){
                             alert("数据获取失败");
@@ -930,6 +943,6 @@
     aria-controls="yuanshujubiao" d
     ata-dt-idx="1" 
     tabindex="0">1</a> -->
-    
+
 </body>
 </html>
