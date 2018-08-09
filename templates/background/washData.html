@@ -911,13 +911,13 @@
                     //alert(table.page()) /* 从0算当前页数 */
                     //alert(table.page.len()) /* 每页多少条数据，-1代表全部 */
                     $.ajax({
-                        url: '/washData/test/',
+                        url: '/washData/DIYfenye/',
                         type: 'POST',
                         dataType: 'json',
                         data: '{"sitename": "'+sitename+'", "tablename": "'+tablename+'",'+'"page": "'+table.page()+'", "len": "'+table.page.len()+'"}',
                         success: function(data){
                             alert("Yes!")
-                            table.destroy();
+                            //table.destroy();
                         },
                         error: function(data){
                             alert("数据获取失败");

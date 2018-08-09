@@ -55,7 +55,6 @@ def yuanshujubiao(request):
                 i = i+1
             # print(diction)
             dataList.append(diction)
-        print("!!!!!!!!!!!!!!!!!!!!!!!!!"+str(len(dataList)))
     except Exception as e:
         raise e
     finally:
@@ -101,7 +100,7 @@ def findtablenames(val):
     finally:
         db.close()  # 关闭连接
 @csrf_exempt
-def test(request):
+def DIYfenye(request):
     dataList = []
     wangzhan = request.POST
     tablename = {}
