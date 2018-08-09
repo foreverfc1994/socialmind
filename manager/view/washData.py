@@ -31,7 +31,7 @@ def yuanshujubiao(request):
     # 1.查询操作
     # 编写sql 查询语句  user 对应我的表名
     # sql ="select TABLE_NAME,SCHEMA_NAME,WebSite,WebsiteType,NUM_ROWS from datatables,website_schema where SCHEMA_NAME=SchemaName"
-    sql = "select * from "+tablename['tablename']+" limit 10"
+    sql = "select * from "+tablename['tablename']+" limit 50"
     sql2 = "SHOW COLUMNS FROM "+tablename['tablename']
     try:
         cur.execute(sql2)  # 执行sql语句
@@ -107,19 +107,39 @@ def DIYfenye(request):
     for i in wangzhan:
         tablename = json.loads(i)
     print(tablename)
-    fenyedudb(tablename['sitename'],tablename['tablename'],tablename['page'],tablename['len'],)
+    dataList = fenyedudb(tablename['sitename'],tablename['tablename'],tablename['page'],tablename['len'],)
     data = {"data": dataList}
+    print(data)
     return HttpResponse(json.dumps(data))
 def fenyedudb(sitename,tablename,page,len):
     db = pymysql.connect(host="localhost", user="root",
                          password="461834084", db=sitename, port=3306)
     cur = db.cursor()
-    sql = "select * from "+tablename+" limit "+str(int(page)*int(len))+","+len
+    sql = "select * from "+tablename+" limit "+str(int(page)*int(len))+","+str(int(len)*5)
+    sql2 = "SHOW COLUMNS FROM " + tablename
     # print(sql)
     try:
+        dataList = []
+        cur.execute(sql2)  # 执行sql语句
+        results = cur.fetchall()  # 获取查询的所有记录
+        columns = []
+        for row in results:
+            columns.append(row[0])
+        # print(columns)
+        linshidiction = {}
+        for row in columns:
+            linshidiction[row] = row
+        dataList.append(linshidiction)
         cur.execute(sql)  # 执行sql语句
         results = cur.fetchall()  # 获取查询的所有记录
-        return results
+        for row in results:
+            i = 0
+            diction = {}
+            for col in row:
+                diction[columns[i]] = col
+                i = i + 1
+            dataList.append(diction)
+        return dataList
     except Exception as e:
         raise e
     finally:

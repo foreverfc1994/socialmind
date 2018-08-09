@@ -821,12 +821,117 @@
 <!--script for this page-->
 
 <script>
-    function chuantable(a){
-        alert(a)
-    }
-    //custom select box
-    var flg = 0
     var table
+    var pagenum = 0
+    function fenyeajax(){
+        var sitename = $('#sitename').val()
+        var tablename = $("#tableshowname").html()
+        $.ajax({
+            url: '/washData/DIYfenye/',
+            type: 'POST',
+            dataType: 'json',
+            data: '{"sitename": "'+sitename+'", "tablename": "'+tablename+'",'+'"page": "'+(pagenum-2)+'", "len": "'+table.page.len()+'"}',
+            success: function(data){
+                //alert("Yes!")
+                table.destroy();
+                $("#theadtr").empty()
+                $("#tbody").empty()
+                datas = []
+                datas = data.data
+                var column = []
+                console.log(datas[0])
+                var j = 0
+                for(var i in datas[0]){
+
+                    var dic = {'data':i}
+                    column.push(dic)
+                    $("#theadtr").append("<th>"+i+"</th>")
+                    console.log(i)
+                }
+                datas.splice(0,1)
+                options = {
+                    "order": [0, "asc"],
+                    "bAutoWidth": false,
+                    "pagingType": "full",
+                    "displayStart": 20,
+                    "aLengthMenu": [[10,30,-1], [10, 30, "全部"]],
+                    "language": {
+                        "lengthMenu": " 每页_MENU_条记录",
+                        "zeroRecords": "没有找到记录",
+                        "info": "第"+(pagenum+1)+"页",
+                        "infoEmpty": "无记录",
+                        "infoFiltered": "(从_MAX_条记录过滤)",
+                        "oPaginate":{
+                            "sFirst": "首页",
+                            "sPrevious": "上页",
+                            "sNext": "下页",
+                            "sLast": "末页"
+                        },
+                        "sSearch": "搜索: ",
+                        "sLoadingRecords": "正在加载数据-请等待...",
+                    },
+                    scrollX:true,
+                    destroy:true,
+                    processing: true,
+                    data: datas,
+                    columns:column
+                };
+                //alert("123")
+                table = $('#yuanshujubiao').DataTable(options);
+                //table.page(pagenum+1)
+                //alert("456")
+            },
+            error: function(data){
+                alert("数据获取失败");
+            }
+        })/* ajax */
+    }
+    $(function(){
+        $("#yuanshujubiao").on('page.dt', function () {
+            //alert(table.page())//返回翻页完的页码，从0开始,仅第一次有效
+            //alert(table.page.len())//返回每页多少条
+            if(pagenum <=1){
+                if(Number(table.page()) == 3){//ajax,并置相对起始页为3
+                    pagenum = Number(table.page())
+                    //alert(pagenum)
+                    fenyeajax()
+                }
+                else if(Number(table.page()) == 4){}//先不管
+                else if(Number(table.page()) <= 2){
+                    pagenum = Number(table.page())
+                    //alert(pagenum)
+                }
+
+            }
+            else if(pagenum == 2){
+                if(Number(table.page()) == 3){//ajax,并置相对起始页为3
+                    pagenum = Number(table.page())
+                    //alert(pagenum)
+                    fenyeajax()
+                }
+                else if(Number(table.page()) == 4){}//先不管
+                else if(Number(table.page()) <= 1){
+                    pagenum = Number(table.page())
+                    //alert(pagenum)
+                }
+            }
+            else if(pagenum >= 3){//ajax,并置相对起始页为3
+                if(Number(table.page()) == 1){//ajax,并置相对起始页为3
+                    pagenum = pagenum-1
+                    //alert("传给服务器的是第"+(pagenum-2)+"页")
+                    fenyeajax()
+                }
+                if(Number(table.page()) == 3){//ajax,并置相对起始页为3
+                    pagenum = pagenum+1
+                    //alert(pagenum)
+                    fenyeajax()
+                }
+                if(Number(table.page()) == 0){}//ajax,并置相对起始页为3
+                if(Number(table.page()) == 4){}//ajax,并置相对起始页为3
+            }
+        })
+    })/* $(function() */
+    //custom select box
     function secondclick(btnthis){
         table.destroy();
         displaytable(btnthis)
@@ -870,11 +975,12 @@
                 options = {
                     "order": [0, "asc"],
                     "bAutoWidth": false,
+                    "pagingType": "full",
                     "aLengthMenu": [[10,30,-1], [10, 30, "全部"]],
                     "language": {
                         "lengthMenu": " 每页_MENU_条记录",
                         "zeroRecords": "没有找到记录",
-                        "info": "第_PAGE_页(共_PAGES_页)",
+                        "info": "第_PAGE_页",/* 第_PAGE_页(共_PAGES_页) */
                         "infoEmpty": "无记录",
                         "infoFiltered": "(从_MAX_条记录过滤)",
                         "oPaginate":{
@@ -902,28 +1008,47 @@
                 console.log("123")
                 table = $('#yuanshujubiao').DataTable(options);
                 //table.destroy();
-                options={}
+                //options={}
                 console.log("3456")
-
                 $("#datatablenames button").removeAttr("onclick")
                 $("#datatablenames button").attr("onclick","secondclick(this);");
-                $('#yuanshujubiao_paginate').on('click', function() {
-                    //alert(table.page()) /* 从0算当前页数 */
-                    //alert(table.page.len()) /* 每页多少条数据，-1代表全部 */
-                    $.ajax({
-                        url: '/washData/DIYfenye/',
-                        type: 'POST',
-                        dataType: 'json',
-                        data: '{"sitename": "'+sitename+'", "tablename": "'+tablename+'",'+'"page": "'+table.page()+'", "len": "'+table.page.len()+'"}',
-                        success: function(data){
-                            alert("Yes!")
-                            //table.destroy();
-                        },
-                        error: function(data){
-                            alert("数据获取失败");
+                /* $('#yuanshujubiao_paginate').on('click', function niming() { */
+                //alert(table.page()) /* 从0算当前页数 */
+                //alert(table.page.len()) /* 每页多少条数据，-1代表全部 */
+                /* $.ajax({
+                    url: '/washData/DIYfenye/',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: '{"sitename": "'+sitename+'", "tablename": "'+tablename+'",'+'"page": "'+table.page()+'", "len": "'+table.page.len()+'"}',
+                    success: function(data){
+                        alert("Yes!")
+                        table.destroy();
+                        $("#theadtr").empty()
+                        $("#tbody").empty()
+                        datas = []
+                        datas = data.data
+                        var column = []
+                        console.log(datas[0])
+                        var j = 0
+                        for(var i in datas[0]){
+
+                            var dic = {'data':i}
+                            column.push(dic)
+                            $("#theadtr").append("<th>"+i+"</th>")
+                            console.log(i)
                         }
-                    })/* ajax */
-                })/* $('#yuanshujubiao_paginate').on('click', function() */
+                        datas.splice(0,1)
+                        alert("123")
+                        table = $('#yuanshujubiao').DataTable(options);
+                        alert("456")
+                        $('#yuanshujubiao_paginate').unbind('click')
+                        $('#yuanshujubiao_paginate').on('click', niming())
+                    },
+                    error: function(data){
+                        alert("数据获取失败");
+                    } */
+                //})/* ajax */
+                //})/* $('#yuanshujubiao_paginate').on('click', function() */
             },
             error: function(data){
                 alert("数据获取失败");
