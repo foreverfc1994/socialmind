@@ -1012,6 +1012,9 @@
                 console.log("3456")
                 $("#datatablenames button").removeAttr("onclick")
                 $("#datatablenames button").attr("onclick","secondclick(this);");
+                /* <tbody id="tbody"><tr role="row" class="odd"></tbody> */
+                $('#yuanshujubiao tbody').on('click','td', function () {clickcell(this)} );
+                /* $(".add #tbody tr td").on('click',clickcell()) */
                 /* $('#yuanshujubiao_paginate').on('click', function niming() { */
                 //alert(table.page()) /* 从0算当前页数 */
                 //alert(table.page.len()) /* 每页多少条数据，-1代表全部 */
@@ -1058,16 +1061,29 @@
         // $('#yuanshujubiao').dataTable().fnClearTable();
         // $('#yuanshujubiao').dataTable().fnDestroy()
     }
+    function clickcell(thiscell){
+        var index = $(thiscell).parents("tr").find("td").index($(thiscell));//获取当前td在tr种得索引,起始为0
+        alert($(thiscell).text());
+        alert("当前td所在列"+index)
+        /* for (i=0;i<table.column(4).data().length;i++){
+            alert(i)
+        } */
+        a = table.columns(7).data().eq( 0 )
+        /* b=JSON.stringify(a)
+        for (x in b)
+        alert(b[x]) */
+        clock = 0
+        for( i in a){
+            clock++
+            if(clock >= 50){
+                break
+            }
+            alert(a[i])
+        }
+    }
 
 </script>
-<!-- <a class="paginate_button next"
- aria-controls="yuanshujubiao" 
- data-dt-idx="7" tabindex="0"
- id="yuanshujubiao_next">下页</a> -->
-<!--  <a class="paginate_button " 
-    aria-controls="yuanshujubiao" d
-    ata-dt-idx="1" 
-    tabindex="0">1</a> -->
+
 
 </body>
 </html>
