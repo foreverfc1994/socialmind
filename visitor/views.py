@@ -7,6 +7,8 @@ from django.views.decorators.csrf import csrf_exempt
 from visitor.scripts.signin import *
 # Create your views here.
 # from visitor.scripts.SysLog import Logger
+import random
+from manager.mysqlNullWash import if_is_None
 import logging
 logger = logging.getLogger('visitor')
 # def login(request):
@@ -182,3 +184,128 @@ def checkuser(request):
 #     logger.debug(logdata)
 #     request.session.flush()
 #     return redirect("/login/")
+
+def getEventsData(request):
+    userid = request.session['user_id']
+    func = request.GET.get("func")
+    data = []
+    if func == "企业相关":
+        user = models.CompanyUser.objects.get(userid=userid)
+        interests = user.businessscope
+        lis = interests.split(',')
+        for li in lis:
+            results = models.Event.objects.filter(keyword__contains=li)
+            if len(results) != 0:
+                for result in results:
+                    objectid = result.pk
+                    object = models.Object.objects.get(objectid=objectid)
+                    name = object.name
+                    starttime = result.eventbegintime
+                    newsNum = models.Article.objects.filter(objectid=objectid).count()
+                    heatIndex = if_is_None(models.IndicatorValue.objects.filter(objectid=objectid, indexname="热度"), "暂缺")
+                    if heatIndex != "暂缺" and len(heatIndex) > 0:
+                        heatIndex = heatIndex[0].indicatorvalue
+                        if int(heatIndex) >= 40:
+                            heatIndex = "⭐热点事件"
+                        else:
+                            heatIndex = "一般事件"
+                    else:
+                        heatIndex = "数据暂缺"
+                    data.append({"name": name, "heatIndex": heatIndex, "newsNum": str(newsNum), "begintime": starttime, "objectid": objectid})
+        print(data)
+        return JsonResponse({"data": data})
+
+    if func == "当地新闻":
+        coordinate = models.User.objects.get(userid=userid).address
+        province = coordinate.split("省")[0]
+        if province != coordinate:
+            city = coordinate.split("省")[1].split("市")[0]
+        else:
+            city = coordinate.split("市")[0]
+        lis = [province, city]
+        data = []
+        for li in lis:
+            results = models.Event.objects.filter(keyword__contains=li)
+            if len(results) != 0:
+                for result in results:
+                    objectid = result.pk
+                    object = models.Object.objects.get(objectid=objectid)
+                    name = object.name
+                    starttime = result.eventbegintime
+                    newsNum = models.Article.objects.filter(objectid=objectid).count()
+                    heatIndex = if_is_None(models.IndicatorValue.objects.filter(objectid=objectid, indexname="热度"), "暂缺")
+                    if heatIndex != "暂缺" and len(heatIndex) > 0:
+                        heatIndex = heatIndex[0].indicatorvalue
+                        if int(heatIndex) >= 40:
+                            heatIndex = "⭐热点事件"
+                        else:
+                            heatIndex = "一般事件"
+                    else:
+                        heatIndex = "数据暂缺"
+                    data.append({"name": name, "heatIndex": heatIndex, "newsNum": str(newsNum), "begintime": starttime, "objectid": objectid})
+        print(data)
+        return JsonResponse({"data": data})
+
+    if func == "敏感信息":
+        data = []
+        informs = models.IndicatorValue.objects.filter(indexname="敏感度")
+        for inform in informs:
+            if int(inform.indicatorvalue) >= 40 :
+                objectid = inform.objectid.pk
+                event = models.Event.objects.get(objectid=objectid)
+                name = inform.objectid.name
+                newsNum = models.Article.objects.filter(objectid=objectid).count()
+                starttime = event.eventbegintime
+                heatIndex = if_is_None(models.IndicatorValue.objects.filter(objectid=objectid, indexname="热度"), "暂缺")
+                if heatIndex != "暂缺" and len(heatIndex) > 0:
+                    heatIndex = heatIndex[0].indicatorvalue
+                    if int(heatIndex) >= 40:
+                        heatIndex = "⭐热点事件"
+                    else:
+                        heatIndex = "一般事件"
+                else:
+                    heatIndex = "数据暂缺"
+                data.append({"name": name, "heatIndex": heatIndex, "newsNum": str(newsNum), "begintime": starttime, "objectid": objectid})
+        return JsonResponse({"data": data})
+
+    if func=="领域相关":
+        user = models.CompanyUser.objects.get(userid=userid)
+        interests = user.interest
+        lis = interests.split(',')
+        for li in lis:
+            results = models.Event.objects.filter(keyword__contains=li)
+            if len(results) != 0:
+                for result in results:
+                    objectid = result.pk
+                    object = models.Object.objects.get(objectid=objectid)
+                    name = object.name
+                    starttime = result.eventbegintime
+                    newsNum = models.Article.objects.filter(objectid=objectid).count()
+                    heatIndex = if_is_None(models.IndicatorValue.objects.filter(objectid=objectid, indexname="热度"),
+                                           "暂缺")
+                    if heatIndex != "暂缺" and len(heatIndex) > 0:
+                        heatIndex = heatIndex[0].indicatorvalue
+                        if int(heatIndex) >= 40:
+                            heatIndex = "⭐热点事件"
+                        else:
+                            heatIndex = "一般事件"
+                    else:
+                        heatIndex = "数据暂缺"
+                    data.append({"name": name, "heatIndex": heatIndex, "newsNum": str(newsNum), "begintime": starttime,
+                                 "objectid": objectid})
+        print(data)
+        return JsonResponse({"data": data})
+
+def getArticles(request):
+    objectid = request.GET.get("objectid")
+    res = models.Object.objects.get(objectid=objectid)
+    print(res.name)
+    files = models.Article.objects.filter(objectid=objectid)[:5]
+    dataList = []
+    for file in files:
+        fileTitle = file.title
+        fileStar = if_is_None(file.likenumber, str(random.randint(0, 1000)))
+        wroteTime = file.posttime
+        id = file.articleid
+        dataList.append({"fileTitle": fileTitle, "fileStar": fileStar, "wroteTime": wroteTime, "id": id})
+    return JsonResponse({"data": dataList})

@@ -2549,9 +2549,10 @@ label {
     display: block;
     background: #ffffff;
     width: 80%;
-    margin-left: 5%;
+    margin-left: 10%;
     padding-bottom: 15px;
     text-align: center;
+    min-height: 600px;
 }
 .eventTable table tr th{
     text-align: center;

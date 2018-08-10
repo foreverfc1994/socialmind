@@ -16,9 +16,9 @@ function personUserTable(data){
         "bAutoWidth": false,
         "aLengthMenu": [[15,50, 100], [15, 50, 100]],
         "language": {
-            "lengthMenu": " 每页_MENU_条记录",
+            "lengthMenu": "&nbsp; &nbsp; &nbsp;每页_MENU_条记录",
             "zeroRecords": "没有找到记录",
-            "info": "第_PAGE_页(共_PAGES_页)",
+            "info": "&nbsp; &nbsp; &nbsp;第_PAGE_页(共_PAGES_页)",
             "infoEmpty": "无记录",
             "infoFiltered": "(从_MAX_条记录过滤)",
             "oPaginate":{

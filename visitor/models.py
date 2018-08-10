@@ -336,7 +336,7 @@ class ClickEvent(models.Model):
 
 class Comment(models.Model):
     commentid = models.CharField(db_column='commentID', primary_key=True, max_length=36)  # Field name made lowercase.
-    userid = models.ForeignKey('User', db_column='userID', blank=True, null=True, on_delete=models.CASCADE)  # Field name made lowercase.
+    userid = models.ForeignKey('User', models.DO_NOTHING, db_column='userID', blank=True, null=True)  # Field name made lowercase.
     commentcontent = models.CharField(db_column='commentContent', max_length=255, blank=True, null=True)  # Field name made lowercase.
     fathercommentid = models.ForeignKey('self', models.DO_NOTHING, db_column='fathercommentID', blank=True, null=True)  # Field name made lowercase.
     commenttime = models.CharField(db_column='commentTime', max_length=32, blank=True, null=True)  # Field name made lowercase.
@@ -458,9 +458,10 @@ class DjangoSession(models.Model):
 
 
 class Entity(models.Model):
-    objectid = models.ForeignKey('Object', models.DO_NOTHING, db_column='objectID', primary_key=True)  # Field name made lowercase.
-    objecttypeid = models.CharField(db_column='objectTypeID', max_length=36, blank=True, null=True)  # Field name made lowercase.
-    introduction = models.CharField(max_length=255, blank=True, null=True)
+    objectid = models.CharField(db_column='objectID', max_length=64, blank=True, null=True)  # Field name made lowercase.
+    name = models.CharField(max_length=512, blank=True, null=True)
+    type = models.CharField(max_length=512, blank=True, null=True)
+    articlelist = models.TextField(blank=True, null=True)
 
     class Meta:
         managed = False
@@ -475,6 +476,7 @@ class Event(models.Model):
     introduction = models.CharField(max_length=1024, blank=True, null=True)
     eventbeaintime = models.CharField(db_column='eventBeainTime', max_length=255, blank=True, null=True)  # Field name made lowercase.
     eventovertime = models.CharField(db_column='eventOverTime', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    keyword = models.CharField(max_length=256, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -621,6 +623,32 @@ class MessageUser(models.Model):
         db_table = 'message_user'
 
 
+class News(models.Model):
+    article_key = models.CharField(primary_key=True, max_length=45)
+    article_id = models.BigIntegerField(unique=True)
+    url = models.CharField(max_length=200, blank=True, null=True)
+    path_text = models.CharField(max_length=100, blank=True, null=True)
+    path_href = models.TextField(blank=True, null=True)
+    keywords = models.CharField(max_length=100, blank=True, null=True)
+    title = models.CharField(max_length=100, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    source = models.CharField(max_length=45, blank=True, null=True)
+    author = models.CharField(max_length=45, blank=True, null=True)
+    editor = models.CharField(max_length=45, blank=True, null=True)
+    date_time = models.DateTimeField(blank=True, null=True)
+    content = models.TextField(blank=True, null=True)
+    picture_url = models.TextField(blank=True, null=True)
+    join_count = models.IntegerField(blank=True, null=True)
+    reply_count = models.IntegerField(blank=True, null=True)
+    comment_ids = models.TextField(blank=True, null=True)
+    b_picture = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'news'
+        unique_together = (('article_key', 'article_id'),)
+
+
 class Notice(models.Model):
     noticeid = models.CharField(db_column='noticeID', primary_key=True, max_length=36)  # Field name made lowercase.
     noticetitle = models.TextField(db_column='noticeTitle', blank=True, null=True)  # Field name made lowercase.
@@ -752,6 +780,16 @@ class RolePermission(models.Model):
         db_table = 'role_permission'
 
 
+class Similaraa(models.Model):
+    articleid = models.CharField(db_column='articleID', primary_key=True, max_length=64)  # Field name made lowercase.
+    similararticle = models.TextField(blank=True, null=True)
+    keywords = models.CharField(max_length=512, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'similaraa'
+
+
 class SpiderConfig(models.Model):
     spiderconfigid = models.CharField(db_column='spiderConfigID', primary_key=True, max_length=36)  # Field name made lowercase.
     configtime = models.CharField(db_column='configTime', max_length=32, blank=True, null=True)  # Field name made lowercase.
@@ -868,7 +906,7 @@ class User(models.Model):
     address = models.CharField(max_length=255, blank=True, null=True)
     role = models.ForeignKey(Role, models.DO_NOTHING, db_column='role', blank=True, null=True, related_name="userrole")
     registranttime = models.CharField(db_column='registrantTime', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    photo = models.CharField(db_column='photo', max_length=255, blank=True, null=True)
+    photo = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = False

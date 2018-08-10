@@ -36,6 +36,8 @@ urlpatterns = [
     path('get_address/', vviews.get_address),
     path('checkuser/', loginviews.checkuser),
     path('events/', vviews.events),
+    path('events/getData/', vviews.getEventsData),
+    path('events/getArticle/', vviews.getArticles),
     path('profile/', UserInfoManageview.profile),
     path('jump/',loginviews.jump),
     path('eventParticular/', vviews.eventparticular),
