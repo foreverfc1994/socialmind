@@ -143,36 +143,38 @@ def tongji(request):
     return HttpResponse(json.dumps(data))
 @csrf_exempt
 def washaction(request):
+    print(request.POST)
     dataList = []
-    # wangzhan = request.POST
-    # tablename = {}
-    # for i in wangzhan:
-    #     print(i)
-    #     tablename = json.loads(i)
-    # print(tablename)
-    # db = pymysql.connect(host="localhost", user="root",
-    #                      password="461834084", db=tablename['sitename'], port=3306)
-    # cur = db.cursor()
-    # sql = "select " + tablename['columnname'] + ",count(*) as num from " + tablename['tablename'] + " group by " + \
-    #       tablename['columnname'] + " ORDER BY num DESC LIMIT 10"
-    # try:
-    #
-    #     cur.execute(sql)  # 执行sql语句
-    #     results = cur.fetchall()  # 获取查询的所有记录
-    #     for row in results:
-    #         i = 0
-    #         diction = {}
-    #         for col in row:
-    #             if i == 0:
-    #                 diction['name'] = col
-    #             elif i == 1:
-    #                 diction['value'] = col
-    #             i = i + 1
-    #         dataList.append(diction)
-    # except Exception as e:
-    #     raise e
-    # finally:
-    #     db.close()  # 关闭连接
+    washform = request.POST
+    # print(washform)
+    actiontype = washform.get('formtype')
+    if actiontype == 'tihuan':
+        tihuanbefore = washform.get('tihuanval1')
+        tihuanafter = washform.get('tihuanval2')
+        db = pymysql.connect(host="localhost", user="root",
+                             password="461834084", db=tablename['sitename'], port=3306)
+        cur = db.cursor()
+        sql = "select " + tablename['columnname'] + ",count(*) as num from " + tablename['tablename'] + " group by " + \
+              tablename['columnname'] + " ORDER BY num DESC LIMIT 10"
+        try:
+
+            cur.execute(sql)  # 执行sql语句
+            results = cur.fetchall()  # 获取查询的所有记录
+            for row in results:
+                i = 0
+                diction = {}
+                for col in row:
+                    if i == 0:
+                        diction['name'] = col
+                    elif i == 1:
+                        diction['value'] = col
+                    i = i + 1
+                dataList.append(diction)
+        except Exception as e:
+            raise e
+        finally:
+            db.close()  # 关闭连接
+
     data = {"data": dataList}
     print(data)
     return HttpResponse(json.dumps(data))
