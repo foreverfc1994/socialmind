@@ -71,6 +71,7 @@ urlpatterns = [
     path('washData/xuanzewangzhan/',washData.xuanzewangzhan),
     path('washData/DIYfenye/',washData.DIYfenye),
     path('washData/tongji/',washData.tongji),
+    path('washData/washaction/',washData.washaction),
     path('topics/', bviews.topics),
     path('AddEventObject/', bviews.AddEventObject),
     path('CreateEventObject/', bviews.CreateEventObject),
