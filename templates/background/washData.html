@@ -456,6 +456,7 @@
                                 </div>
                             </div>
                             <script>
+                                var flgifsecond = 0
                                 function sitenamech(){
                                     //alert($("#sitename").val())
                                     $.ajax({
@@ -467,9 +468,17 @@
                                         success: function(data){
                                             datas =data.data
                                             $("#datatablenames").empty();
-                                            for(i in datas[0]){
-                                                $("#datatablenames").append('<button onclick="displaytable(this)" style="width: 100%" type="button" class="list-group-item">'+i+'</button>');
+                                            if(flgifsecond == 0){
+                                                for(i in datas[0]){
+                                                    $("#datatablenames").append('<button onclick="displaytable(this)" style="width: 100%" type="button" class="list-group-item">'+i+'</button>');
+                                                }
                                             }
+                                            else if(flgifsecond == 1){
+                                                for(i in datas[0]){
+                                                    $("#datatablenames").append('<button onclick="secondclick(this)" style="width: 100%" type="button" class="list-group-item">'+i+'</button>');
+                                                }
+                                            }
+                                            flgifsecond = 1
                                         },
                                         error: function(data){
                                             alert("数据获取失败");
@@ -565,55 +574,91 @@
                             <form class="form-inline">
                                 <label>数据清洗策略：</label>
                                 <select id="celuexuanze" class="form-control">
-                                    <option>缺失值</option>
-                                    <option>一致性 </option>
-                                    <option>字符串错误 </option>
-                                    <option>统一时间格式 </option>
-                                    <option>合并两列  </option>
-                                    <option>拆分为多列 </option>
+                                    <option value="">请选择清洗策略：</option>
+                                    <option value="替换">替换</option>
+                                    <option value="缺失值">缺失值</option>
+                                    <option value="一致性">一致性 </option>
+                                    <option value="字符串错误">字符串错误 </option>
+                                    <option value="统一时间格式">统一时间格式 </option>
+                                    <option value="合并两列">合并两列  </option>
+                                    <option value="拆分为多列">拆分为多列 </option>
                                 </select>
                                 <script>
                                     $(document).ready(function(){
+                                        //$("#test option:selected").val()
                                         $("#celuexuanze").change(function(){
-                                            if(0 == $("#celuexuanze").get(0).selectedIndex){
-                                                for(i=1;i<=6;i++){
+                                            if('缺失值' == $("#celuexuanze option:selected").val()){
+                                                for(i=1;i<=7;i++){
                                                     $("#formg"+i).hide()
                                                 }
                                                 $("#formg1").show()
                                             }
-                                            else if(1 == $("#celuexuanze").get(0).selectedIndex){
-                                                for(i=1;i<=6;i++){
+                                            else if('一致性' == $("#celuexuanze option:selected").val()){
+                                                for(i=1;i<=7;i++){
                                                     $("#formg"+i).hide()
                                                 }
                                                 $("#formg2").show()
                                             }
-                                            else if(2 == $("#celuexuanze").get(0).selectedIndex){
-                                                for(i=1;i<=6;i++){
+                                            else if('字符串错误' == $("#celuexuanze option:selected").val()){
+                                                for(i=1;i<=7;i++){
                                                     $("#formg"+i).hide()
                                                 }
                                                 $("#formg3").show()
                                             }
-                                            else if(3 == $("#celuexuanze").get(0).selectedIndex){
-                                                for(i=1;i<=6;i++){
+                                            else if('统一时间格式' == $("#celuexuanze option:selected").val()){
+                                                for(i=1;i<=7;i++){
                                                     $("#formg"+i).hide()
                                                 }
                                                 $("#formg4").show()
                                             }
-                                            else if(4 == $("#celuexuanze").get(0).selectedIndex){
-                                                for(i=1;i<=6;i++){
+                                            else if('合并两列' == $("#celuexuanze option:selected").val()){
+                                                for(i=1;i<=7;i++){
                                                     $("#formg"+i).hide()
                                                 }
                                                 $("#formg5").show()
                                             }
-                                            else if(5 == $("#celuexuanze").get(0).selectedIndex){
-                                                for(i=1;i<=6;i++){
+                                            else if('拆分为多列' == $("#celuexuanze option:selected").val()){
+                                                for(i=1;i<=7;i++){
                                                     $("#formg"+i).hide()
                                                 }
                                                 $("#formg6").show()
                                             }
+                                            else if("替换" == $("#celuexuanze option:selected").val()){
+                                                for(i=1;i<=7;i++){
+                                                    $("#formg"+i).hide()
+                                                }
+                                                $("#formg7").show()
+                                            }
                                         });
                                     });
                                 </script>
+                                <div id="formg7" class="form-group" style="display: none">
+                                    <form id="formtihuan" method="post" action="">
+                                        {% csrf_token %}
+                                        <label for="tihaunval1">替换</label>
+                                        <input id="tihaunval1" name="tihaunval1" placeholder="该列被替换的值" class="form-control">
+                                        <label for="tihaunval2">替换为</label>
+                                        <input id="tihuanval2" name="tihaunval2" placeholder="替换值       " class="form-control">
+                                        <button onclick="washsumit('formtihuan')" type="button" class="btn btn-success btn-sm">执行</button>
+                                    </form>
+                                    <script>
+                                        function washsumit(formid){
+                                            //alert(formid)
+                                            $.ajax({
+                                                type: "POST",//方法类型
+                                                dataType: "json",//预期服务器返回的数据类型
+                                                url: "/ComUsrForm/1/" ,//url
+                                                data: $('#'+formid).serialize(),
+                                                success: function (data) {
+                                                    alert("yes")
+                                                },
+                                                error : function(data) {
+                                                    alert('数据获取失败！')
+                                                }
+                                            });
+                                        }
+                                    </script>
+                                </div>
                                 <div id="formg1" class="form-group" style="display: none">
                                     <label for="exampleInputName2">缺失值</label>
                                     <select id="queshizhisel" class="form-control" >
@@ -1015,7 +1060,7 @@
             url: '/washData/tongji/',
             type: 'POST',
             dataType: 'json',
-            data: '{"sitename": "'+sitename+'", "tablename": "'+tablename+'",'+'"celltext": "'+celltext+'", "columnname": "'+columnname+'"}',
+            data: '{"sitename": "'+sitename+'", "tablename": "'+tablename+'",'+'"celltext": "'+1+'", "columnname": "'+columnname+'"}',
             success: function(data){
                 //alert("yes")
                 datas = data.data

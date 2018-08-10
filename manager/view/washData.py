@@ -113,6 +113,7 @@ def tongji(request):
     wangzhan = request.POST
     tablename = {}
     for i in wangzhan:
+        print(i)
         tablename = json.loads(i)
     print(tablename)
     db = pymysql.connect(host="localhost", user="root",
@@ -120,6 +121,7 @@ def tongji(request):
     cur = db.cursor()
     sql = "select "+tablename['columnname']+",count(*) as num from "+tablename['tablename']+" group by "+tablename['columnname']+" ORDER BY num DESC LIMIT 10"
     try:
+
         cur.execute(sql)  # 执行sql语句
         results = cur.fetchall()  # 获取查询的所有记录
         for row in results:
