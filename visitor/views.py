@@ -268,7 +268,7 @@ def getEventsData(request):
                 data.append({"name": name, "heatIndex": heatIndex, "newsNum": str(newsNum), "begintime": starttime, "objectid": objectid})
         return JsonResponse({"data": data})
 
-    if func=="领域相关":
+    if func == "领域相关":
         user = models.CompanyUser.objects.get(userid=userid)
         interests = user.interest
         lis = interests.split(',')
