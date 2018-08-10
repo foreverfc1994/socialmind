@@ -38,6 +38,57 @@
     {#    <link href="{% static 'assets0/layui/css/layui.css' %}">#}
     <script src="{% static 'assets0/layui/layui.js' %}"></script>
     <link rel="stylesheet" href="//res.layui.com/layui/dist/css/layui.css?t=1531663423583" media="all">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+
+    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-*.min.js"></script>
+    <style>
+        .sq_list li.f_input #em {
+            margin-left: 195px;
+            line-height: 32px;
+            color: #666;
+            font-size: 13px;
+        }
+
+        #uploadImg {
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+            width: 104px;
+            height: 32px;
+        }
+
+        #file {
+            cursor: pointer;
+            position: absolute;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 104px;
+            height: 32px;
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+
+        #uploadImg a {
+            cursor: pointer;
+            background: #0e2d43;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 104px;
+            height: 32px;
+            text-align: center;
+            line-height: 32px;
+            color: white;
+            font-size: 14px;
+            font-weight: normal;
+        }
+    </style>
 </head>
 
 <body>
@@ -392,11 +443,18 @@
                         <table id="table_id_example" class="display">
                             <thead>
                             <tr>
-                                <th>数据表名</th>
-                                <th>数据库名</th>
-                                <th>网站</th>
-                                <th>类型</th>
-                                <th>数据量</th>
+                                <th>爬虫ID</th>
+                                <th>序号</th>
+                                <th>爬虫名称</th>
+                                <th>爬虫路径</th>
+                                <th>添加时间</th>
+                                <th>网站名称</th>
+                                <th>运行命令</th>
+                                <th>爬虫配置</th>
+                                {#                                <th>爬虫状态</th>#}
+                                <th>节点</th>
+
+                                <th>操作</th>
 
                             </tr>
                             </thead>
@@ -413,142 +471,10 @@
                             <tbody id="tbody">
                             </tbody>
                         </table>
-                        <div class="panel-heading">
 
-                            爬虫列表
-                            <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">entries</span>
-
-                            <select class="form-control" style="float: right;width: 60px;height: 25px;font-size: 12px">
-                                <option>10</option>
-                                <option>25</option>
-                                <option>50</option>
-                                <option>100</option>
-                            </select>
-                            <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">Show</span>
-                        </div>
                         <!--<div class="panel-body">-->
-                        <table id="spiderlisttable" class="table table-bordered table-hover" style="margin: 0%">
-                            <!-- <tr><td>爬虫名称</td><td>网站名</td><td>网站URL</td><td>运行时间</td><td>爬取数据量</td><td>出错数据量</td><td>爬虫状态</td><td>操作</td></tr>   -->
-                            <tr>
-                                <td>爬虫名称</td>
-                                <td>网站名</td>
-                                <td>网站URL</td>
-                                <td>文件路徑</td>
-                                <td>运行时间</td>
-                                <td>爬取数据量</td>
-                                <td>出错数据量</td>
-                                <td>爬虫状态</td>
-                                <td>操作</td>
-                            </tr>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Internet Explorer 4.0</td>
-                                <td>Win 95+</td>
-                                <td>D:\spider\peopleSpider</td>
-                                <td>4</td>
-                                <td>Trident</td>
-                                <td>Trident</td>
-                                <td>运行中</td>
-                                <td style="width: 180px;">
-                                    <div class="btn-group" role="group" aria-label="...">
-                                        <button type="button" class="btn btn-info active">开启</button>
-                                        <button type="button" class="btn btn-info">停止</button>
-                                        <button type="button" class="btn btn-danger">删除</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Internet Explorer 4.0</td>
-                                <td>Win 95+</td>
-                                <td>D:\spider\peopleSpider</td>
-                                <td>4</td>
-                                <td>Trident</td>
-                                <td>Trident</td>
-                                <td>运行中</td>
-                                <td style="width: 180px;">
-                                    <div class="btn-group" role="group" aria-label="...">
-                                        <button type="button" class="btn btn-info active">开启</button>
-                                        <button type="button" class="btn btn-info">停止</button>
-                                        <button type="button" class="btn btn-danger">删除</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Internet Explorer 4.0</td>
-                                <td>Win 95+</td>
-                                <td>D:\spider\peopleSpider</td>
-                                <td>4</td>
-                                <td>Trident</td>
-                                <td>Trident</td>
-                                <td>运行中</td>
-                                <td style="width: 180px;">
-                                    <div class="btn-group" role="group" aria-label="...">
-                                        <button type="button" class="btn btn-info active">开启</button>
-                                        <button type="button" class="btn btn-info">停止</button>
-                                        <button type="button" class="btn btn-danger">删除</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Internet Explorer 4.0</td>
-                                <td>Win 95+</td>
-                                <td>D:\spider\peopleSpider</td>
-                                <td>4</td>
-                                <td>Trident</td>
-                                <td>Trident</td>
-                                <td>停止</td>
-                                <td style="width: 180px;">
-                                    <div class="btn-group" role="group" aria-label="...">
-                                        <button type="button" class="btn btn-info">开启</button>
-                                        <button type="button" class="btn btn-info active">停止</button>
-                                        <button type="button" class="btn btn-danger">删除</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Internet Explorer 4.0</td>
-                                <td>Win 95+</td>
-                                <td>D:\spider\peopleSpider</td>
-                                <td>4</td>
-                                <td>Trident</td>
-                                <td>Trident</td>
-                                <td>停止</td>
-                                <td style="width: 180px;">
-                                    <div class="btn-group" role="group" aria-label="...">
-                                        <button type="button" class="btn btn-info">开启</button>
-                                        <button type="button" class="btn btn-info active">停止</button>
-                                        <button type="button" class="btn btn-danger">删除</button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                        <!--</div>-->
-                        <script>
-                            $(document).ready(function () {
-                                $("#spiderlisttable tr td").click(function () {
-                                    if ($(this).html().indexOf("div") == -1) {//没有出现“div”
-                                        $(location).attr('href', '/SpiderConfigure/');
-                                    }
 
-                                });
-                            });
-                        </script>
-                        <div class="panel-footer">
-                            Search:
-                            <input type="text" class="form-control" placeholder="Search for..."
-                                   style="width: 200px;height: 25px;display: inline-block">
-                            <div class="btn-group btn-group-xs" role="group" aria-label="..." style="float: right;">
-                                <button type="button" class="btn btn-default">First</button>
-                                <button type="button" class="btn btn-default">Previous</button>
-                                <button type="button" class="btn btn-default">1</button>
-                                <button type="button" class="btn btn-default">Next</button>
-                                <button type="button" class="btn btn-default">Last</button>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -562,7 +488,7 @@
                             <h4 class="modal-title" id="myModalLabel">增加爬虫</h4>
                         </div>
                         <div class="modal-body">
-                            <form action="">
+                            <form id="addform" action="/addspider/">
                                 <div class="form-group">
                                     <label for="spider-name" class="control-label">爬虫名字</label>
                                     <input type="text" class="form-control" id="spider-name">
@@ -571,28 +497,39 @@
                                     <label for="website" class="control-label">网站</label>
                                     <input type="text" class="form-control" id="website">
                                 </div>
-                                <div class="layui-upload">
-                                    <button type="button" class="layui-btn layui-btn-normal" id="test8">选择文件</button>
+                                <div class="form-group">
+                                    <label for="website" class="control-label">本地文件路径</label>
+                                    <input type="file" id="path" >
+
+{#                                <div class="layui-upload">#}
+{#                                    <button type="button" class="layui-btn layui-btn-normal" id="test8">选择文件</button>#}
                                     {#                                    <button type="button" class="layui-btn" id="test9">开始上传</button>#}
-                                </div>
+{#                                </div>#}
                                 <br>
                                 <div class="form-group">
                                     <label for="config" class="control-label">爬虫配置</label>
 
 
-                                    <select class="selectpicker">
-                                        <option>配置1</option>
-                                        <option>配置2</option>
-                                        <option>配置3</option>
-                                        <option>配置4</option>
-                                        <option>配置5</option>
-                                        <option>配置6</option>
-                                        <option>配置7</option>
+                                    <select id='selectpicker' class="selectpicker" data-style="btn-info">
+
+                                    </select>
+                                    <label for="config" class="control-label">节点</label>
+                                    <select id='selectpicker' class="selectpicker" data-style="btn-info">
+                                        <option>VM01</option>
+                                        <option>VM02</option>
+                                        <option>VM03</option>
+                                        <option>VM04</option>
+                                        <option>VM05</option>
+                                        <option>VM06</option>
+                                        <option>VM07</option>
+                                        <option>VM08</option>
+
+
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="jianjie" class="control-label">简介</label>
-                                    <textarea class="form-control" id="jianjie"></textarea>
+                                    <label for="jianjie" class="control-label">运行指令</label>
+                                    <input type="text" class="form-control" id="command">
                                 </div>
                             </form>
                         </div>
@@ -641,15 +578,31 @@
     //custom select box
 
     $(function () {
+
+        $.ajax({
+            url: '/getspiderconfig/',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                datas = data.data
+                var select = $("#selectpicker")
+                for (i in datas) {
+                    select.append('<option value="' + datas[i]['configname'] + '">' +
+                        datas[i]['configname'] + '</option>')
+                }
+            }
+        })
         $.ajax({
             url: '/getspiderlist/',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
+                var item = 0
                 datas = data.data
                 options = {
                     "order": [0, "asc"],
-                    "bAutoWidth": false,
+                    "bAutoWidth": true,
+                    "bProcessing": true,
                     "aLengthMenu": [[10, 30, -1], [20, 30, "全部"]],
                     "language": {
                         "lengthMenu": " 每页_MENU_条记录",
@@ -668,13 +621,50 @@
                     },
                     data: datas,
                     columns: [
-                        {data: 'tableName'},
-                        {data: 'schemaName'},
-                        {data: 'webSite'},
-                        {data: 'webSiteType'},
-                        {data: 'dataVolum'}
+                        {data: 'spiderid', 'visible': false},
+                        {#{"data": "serialNum", "render": function(){#}
+                        {#        item++;#}
+                        {#        return item;#}
+                        {
+                            data: null, "render": function () {
+                                item++;
+                                return item;
+                            }
+                        },
+                        {data: 'spidername'},
+
+                        {data: 'spiderpath'},
+                        {data: 'addtime'},
+                        {data: 'website'},
+                        {data: 'runcommand'},
+                        {data: 'spiderconfigid'},
+                        {#{data: 'spiderstate'},#}
+                        {data: 'vimname'},
+
+                        {
+                            data: null, 'width': '180px', 'render': function button(data) {
+                                {#console.log(data.spiderstate)#}
+                                if (data.spiderstate == '暂停') {
+
+                                    return '<div class="btn-group" role="group" aria-label="...">\n' +
+                                        '                                        <button id = "' + data.spiderid + '_run" type="button" class="btn btn-info" onclick = \'runspider("' + data.spiderid + '")\'>开启</button>\n' +
+                                        '                                        <button id = "' + data.spiderid + '_stop" type="button" class="btn btn-info" disabled="disabled" onclick = \'stopspider("' + data.spiderid + '")\'>停止</button>\n' +
+                                        '                                        <button type="button" class="btn btn-danger" onclick = \'delspider("' + data.spiderid + '")\'>删除</button>\n' +
+                                        '                                    </div>'
+                                }
+                                else {
+                                    return '<div class="btn-group" role="group" aria-label="...">\n' +
+                                        '                                        <button id = "' + data.spiderid + '_run" type="button" class="btn btn-info" disabled="disabled" onclick = \'runspider("' + data.spiderid + '")\'>开启</button>\n' +
+                                        '                                        <button id = "' + data.spiderid + '_stop" type="button" class="btn btn-info" onclick = \'stopspider("' + data.spiderid + '")\'>停止</button>\n' +
+                                        '                                        <button type="button" class="btn btn-danger" onclick = \'delspider("' + data.spiderid + '")\'>删除</button>\n' +
+                                        '                                    </div>'
+                                }
+
+                            }
+                        },
                     ]
                 };
+
                 var table = $('#table_id_example').DataTable(options);
 
             },
@@ -689,6 +679,7 @@
 </script>
 <script>
     function addspider() {
+
         $('#myModal').modal(
             {
                 backdrop: 'static'
@@ -697,6 +688,10 @@
     }
 
     function subspider() {
+        var form  = $("#addform")
+        var formdata = new FormData(form[0])
+        console.log(formdata)
+
         $('#myModal').modal('hide')
     }
 
@@ -717,6 +712,60 @@
 
     function addconfig() {
         document.location.href = '/SpiderConfigure/'
+    }
+
+    function runspider(id) {
+
+        {#layer.msg(id +'run'+'#'+id+'_stop')#}
+        $('#' + id + '_stop').removeAttr('disabled', 'disabled')
+        $('#' + id + '_run').attr('disabled', 'disabled')
+        $.ajax({
+            url: '/runspider/',
+            type: 'POST',
+            dataType: 'json',
+            data: {'id': id},
+            success: function (data) {
+                layer.msg('启动成功')
+            },
+            error: function (data) {
+                layer.msg('启动失败')
+            }
+
+        })
+        {#layer.msg('11111')#}
+    }
+
+    function stopspider(id) {
+        {#layer.msg(id +'stop')#}
+        $('#' + id + '_run').removeAttr('disabled', 'disabled')
+        $('#' + id + '_stop').attr('disabled', 'disabled')
+        $.ajax({
+            url: '/stopspider/',
+            type: 'POST',
+            dataType: 'json',
+            data: {'id': id},
+            success: function (data) {
+                layer.msg('停止成功')
+            },
+            error: function (data) {
+                layer.msg('停止失败')
+            }
+        })
+    }
+
+    function delspider(id) {
+        $.ajax({
+            url: '',
+            type: 'POST',
+            dataType: 'json',
+            data: {'id': id},
+            success: function (data) {
+                layer.msg('停止成功')
+            },
+            error: function (data) {
+                layer.msg('停止失败')
+            }
+        })
     }
 </script>
 </body>

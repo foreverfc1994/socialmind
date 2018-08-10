@@ -51,6 +51,7 @@ function getArticleListData(data){
     options = {
         "order": [0, "asc"],
         "bAutoWidth": false,
+        "bProcessing":true,
         stateSave: true,
         "aLengthMenu": [[15,50,-1], [15, 50, "全部"]],
         "language": {

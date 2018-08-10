@@ -444,7 +444,9 @@
     }
     function formsub3(){
         var form = $('#form3');
+        console.log(form)
         var formdata = new FormData(form[0]);
+        console.log(formdata)
         $.ajax({
             //几个参数需要注意一下
             type: "POST",//方法类型

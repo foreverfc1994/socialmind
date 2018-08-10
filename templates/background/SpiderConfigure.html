@@ -1,7 +1,7 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -9,12 +9,22 @@
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
     <title>DASHGUM - Bootstrap Admin Template</title>
+    <link href="{% static 'backgroundfiles/DataTables-1.10.15/media/css/dataTables.bootstrap.css' %}">
+    <script type="text/javascript" charset="utf8"
+            src="{% static 'backgroundfiles/DataTables-1.10.15/media/js/jquery.js' %}"></script>
 
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'backgroundfiles/DataTables-1.10.15/media/css/jquery.dataTables.css' %}">
+
+    <!-- jQuery -->
+    <!-- DataTables -->
+    <script type="text/javascript" charset="utf8"
+            src="{% static 'backgroundfiles/DataTables-1.10.15/media/js/jquery.dataTables.js' %}"></script>
     <!-- Bootstrap core CSS -->
     <link href="{% static 'backgroundfiles/assets/css/bootstrap.css' %}" rel="stylesheet">
     <!--external css-->
-    <link href="{% static 'backgroundfiles/assets/font-awesome/css/font-awesome.css' %}" rel="stylesheet" />
-        
+    <link href="{% static 'backgroundfiles/assets/font-awesome/css/font-awesome.css' %}" rel="stylesheet"/>
+
     <!-- Custom styles for this template -->
     <link href="{% static 'backgroundfiles/assets/css/style.css' %}" rel="stylesheet">
     <link href="{% static 'backgroundfiles/assets/css/style-responsive.css' %}" rel="stylesheet">
@@ -24,314 +34,326 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="{% static 'backgroundfiles/assets/js/jquery-3.3.1.min.js' %}"></script>
-  </head>
+    {#    <script src="{% static 'backgroundfiles/assets/js/jquery-3.3.1.min.js' %}"></script>#}
+    <script src="{% static 'backgroundfiles/js/layer/layer.js' %}"></script>
+</head>
 
-  <body>
+<body>
 
-  <section id="container" >
-      <!-- **********************************************************************************************************************************************************
-      TOP BAR CONTENT & NOTIFICATIONS
-      *********************************************************************************************************************************************************** -->
-      <!--header start-->
-      <header class="header black-bg">
-              <div class="sidebar-toggle-box">
-                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-              </div>
-            <!--logo start-->
-            <a href="/bindex/" class="logo"><b>SocialMind管理员</b></a>
-            <!--logo end-->
-            <div class="nav notify-row" id="top_menu">
-                <!--  notification start -->
-                <ul class="nav top-menu">
-                    <!-- settings start -->
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
-                            <i class="fa fa-tasks"></i>
-                            个人中心
-                        </a>
-                    </li>
-                    <!-- inbox dropdown start-->
-                    <li id="header_inbox_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
-                            <i class="fa fa-envelope-o"></i>
-                            消息
-                            <span class="badge bg-theme">5</span>
-                        </a>
-                        <ul class="dropdown-menu extended inbox">
-                            <div class="notify-arrow notify-arrow-green"></div>
-                            <li>
-                                <p class="green">You have 5 new messages</p>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <span class="photo"><img alt="avatar" src="{% static 'backgroundfiles/assets/img/ui-zac.jpg' %}"></span>
-                                    <span class="subject">
+<section id="container">
+    <!-- **********************************************************************************************************************************************************
+    TOP BAR CONTENT & NOTIFICATIONS
+    *********************************************************************************************************************************************************** -->
+    <!--header start-->
+    <header class="header black-bg">
+        <div class="sidebar-toggle-box">
+            <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+        </div>
+        <!--logo start-->
+        <a href="/bindex/" class="logo"><b>SocialMind管理员</b></a>
+        <!--logo end-->
+        <div class="nav notify-row" id="top_menu">
+            <!--  notification start -->
+            <ul class="nav top-menu">
+                <!-- settings start -->
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
+                        <i class="fa fa-tasks"></i>
+                        个人中心
+                    </a>
+                </li>
+                <!-- inbox dropdown start-->
+                <li id="header_inbox_bar" class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
+                        <i class="fa fa-envelope-o"></i>
+                        消息
+                        <span class="badge bg-theme">5</span>
+                    </a>
+                    <ul class="dropdown-menu extended inbox">
+                        <div class="notify-arrow notify-arrow-green"></div>
+                        <li>
+                            <p class="green">You have 5 new messages</p>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <span class="photo"><img alt="avatar"
+                                                         src="{% static 'backgroundfiles/assets/img/ui-zac.jpg' %}"></span>
+                                <span class="subject">
                                     <span class="from">Zac Snider</span>
                                     <span class="time">Just now</span>
                                     </span>
-                                    <span class="message">
+                                <span class="message">
                                         Hi mate, how is everything?
                                     </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <span class="photo"><img alt="avatar" src="{% static 'backgroundfiles/assets/img/ui-divya.jpg' %}"></span>
-                                    <span class="subject">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <span class="photo"><img alt="avatar"
+                                                         src="{% static 'backgroundfiles/assets/img/ui-divya.jpg' %}"></span>
+                                <span class="subject">
                                     <span class="from">Divya Manian</span>
                                     <span class="time">40 mins.</span>
                                     </span>
-                                    <span class="message">
+                                <span class="message">
                                      Hi, I need your help with this.
                                     </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <span class="photo"><img alt="avatar" src="{% static 'backgroundfiles/assets/img/ui-danro.jpg' %}"></span>
-                                    <span class="subject">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <span class="photo"><img alt="avatar"
+                                                         src="{% static 'backgroundfiles/assets/img/ui-danro.jpg' %}"></span>
+                                <span class="subject">
                                     <span class="from">Dan Rogers</span>
                                     <span class="time">2 hrs.</span>
                                     </span>
-                                    <span class="message">
+                                <span class="message">
                                         Love your new Dashboard.
                                     </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <span class="photo"><img alt="avatar" src="{% static 'backgroundfiles/assets/img/ui-sherman.jpg' %}"></span>
-                                    <span class="subject">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <span class="photo"><img alt="avatar"
+                                                         src="{% static 'backgroundfiles/assets/img/ui-sherman.jpg' %}"></span>
+                                <span class="subject">
                                     <span class="from">Dj Sherman</span>
                                     <span class="time">4 hrs.</span>
                                     </span>
-                                    <span class="message">
+                                <span class="message">
                                         Please, answer asap.
                                     </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">See all messages</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- inbox dropdown end -->
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
-                            <i class="fa fa-cog"></i>
-                            设置
-                        </a>
-                        <ul class="dropdown-menu extended tasks-bar">
-                            <div class="notify-arrow notify-arrow-green"></div>
-                            <li>
-                                <p class="green">You have 4 pending tasks</p>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <div class="task-info">
-                                        <div class="desc">DashGum Admin Panel</div>
-                                        <div class="percent">40%</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">See all messages</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- inbox dropdown end -->
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
+                        <i class="fa fa-cog"></i>
+                        设置
+                    </a>
+                    <ul class="dropdown-menu extended tasks-bar">
+                        <div class="notify-arrow notify-arrow-green"></div>
+                        <li>
+                            <p class="green">You have 4 pending tasks</p>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <div class="task-info">
+                                    <div class="desc">DashGum Admin Panel</div>
+                                    <div class="percent">40%</div>
+                                </div>
+                                <div class="progress progress-striped">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                        <span class="sr-only">40% Complete (success)</span>
                                     </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                            <span class="sr-only">40% Complete (success)</span>
-                                        </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <div class="task-info">
+                                    <div class="desc">Database Update</div>
+                                    <div class="percent">60%</div>
+                                </div>
+                                <div class="progress progress-striped">
+                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                        <span class="sr-only">60% Complete (warning)</span>
                                     </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <div class="task-info">
-                                        <div class="desc">Database Update</div>
-                                        <div class="percent">60%</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <div class="task-info">
+                                    <div class="desc">Product Development</div>
+                                    <div class="percent">80%</div>
+                                </div>
+                                <div class="progress progress-striped">
+                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                        <span class="sr-only">80% Complete</span>
                                     </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                            <span class="sr-only">60% Complete (warning)</span>
-                                        </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <div class="task-info">
+                                    <div class="desc">Payments Sent</div>
+                                    <div class="percent">70%</div>
+                                </div>
+                                <div class="progress progress-striped">
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+                                        <span class="sr-only">70% Complete (Important)</span>
                                     </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <div class="task-info">
-                                        <div class="desc">Product Development</div>
-                                        <div class="percent">80%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                            <span class="sr-only">80% Complete</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <div class="task-info">
-                                        <div class="desc">Payments Sent</div>
-                                        <div class="percent">70%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-                                            <span class="sr-only">70% Complete (Important)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="external">
-                                <a href="#">See All Tasks</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- settings end -->
-                    
-                </ul>
-                <!--  notification end -->
-            </div>
-            <div class="top-menu">
-            	<ul class="nav pull-right top-menu">
-                    <li>
-                        <form class="navbar-form navbar-right" role="search">
+                                </div>
+                            </a>
+                        </li>
+                        <li class="external">
+                            <a href="#">See All Tasks</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- settings end -->
+
+            </ul>
+            <!--  notification end -->
+        </div>
+        <div class="top-menu">
+            <ul class="nav pull-right top-menu">
+                <li>
+                    <form class="navbar-form navbar-right" role="search">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search here..." aria-describedby="basic-addon2" style="height: 28px;margin-top: 7px">
-                            <button type="submit" class="btn btn-default" style="height:28px;border: 1px solid #666666 !important;-webkit-border-radius: 4px;background-color: #ffd777;margin-right: 10px;margin-top: 7px;color: #666666;border-radius: 4px;">
+                            <input type="text" class="form-control" placeholder="Search here..."
+                                   aria-describedby="basic-addon2" style="height: 28px;margin-top: 7px">
+                            <button type="submit" class="btn btn-default"
+                                    style="height:28px;border: 1px solid #666666 !important;-webkit-border-radius: 4px;background-color: #ffd777;margin-right: 10px;margin-top: 7px;color: #666666;border-radius: 4px;">
                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                             </button>
                         </div>
-                        </form>
-                    </li>
-                    <li><a class="logout" href="/login/">注销</a></li>
-            	</ul>
-            </div>
-        </header>
-      <!--header end-->
-      
-      <!-- **********************************************************************************************************************************************************
-      MAIN SIDEBAR MENU
-      *********************************************************************************************************************************************************** -->
-      <!--sidebar start-->
-      <aside>
-          <div id="sidebar"  class="nav-collapse ">
-              <!-- sidebar menu start-->
-              <ul class="sidebar-menu" id="nav-accordion">
-              
-              	  <p class="centered"><a href="/bindex/"><img src="{% static 'backgroundfiles/assets/img/ny.jpg' %}" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered"><a href="/bindex/" style="color: white">首页</a></h5>
-              	  	
-                  <!--<li class="mt">
-                      <a class="active" href="index.html">
-                          <i class="fa fa-dashboard"></i>
-                          <span>爬虫</span>
-                      </a>
-                  </li>-->
-                  <li class="sub-menu">
+                    </form>
+                </li>
+                <li><a class="logout" href="/login/">注销</a></li>
+            </ul>
+        </div>
+    </header>
+    <!--header end-->
+
+    <!-- **********************************************************************************************************************************************************
+    MAIN SIDEBAR MENU
+    *********************************************************************************************************************************************************** -->
+    <!--sidebar start-->
+    <aside>
+        <div id="sidebar" class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+
+                <p class="centered"><a href="/bindex/"><img src="{% static 'backgroundfiles/assets/img/ny.jpg' %}"
+                                                            class="img-circle" width="60"></a></p>
+                <h5 class="centered"><a href="/bindex/" style="color: white">首页</a></h5>
+
+                <!--<li class="mt">
+                    <a class="active" href="index.html">
+                        <i class="fa fa-dashboard"></i>
+                        <span>爬虫</span>
+                    </a>
+                </li>-->
+                <li class="sub-menu">
                     <a href="javascript:;" class="active">
                         <i class="fa fa-dashboard"></i>
                         <span>爬虫</span>
                     </a>
                     <ul class="sub">
                         <li><a href="/SpiderList/">爬虫管理</a></li>
-                        <li><a  href="/SpiderMonitor/">爬虫监控</a></li>
-                        <li><a  href="/SpiderConfigure/" style="color: #fff;">爬虫配置</a></li>
+                        <li><a href="/SpiderMonitor/">爬虫监控</a></li>
+                        <li><a href="/SpiderConfigure/" style="color: #fff;">爬虫配置</a></li>
                         <script>
-                            $(document).ready(function(){
-                                $("li:not([class])>a:not(a:contains('爬虫配置'))").hover(function(){
+                            $(document).ready(function () {
+                                $("li:not([class])>a:not(a:contains('爬虫配置'))").hover(function () {
                                     $("a:contains('爬虫配置')").removeAttr("style")
                                 });
                             });
                         </script>
                     </ul>
-                  </li>
+                </li>
                 <li class="sub-menu">
-                    <a href="javascript:;" >
+                    <a href="javascript:;">
                         <i class="fa fa-tasks"></i>
                         <span>源数据展示模块</span>
                     </a>
                     <ul class="sub">
-                      <li><a  href="/Author/">作者管理</a></li>
-                      <li><a  href="/ArticlesOfAuthor/">查看作者相关文章</a></li>
-                      <li><a href="/articlelist/">文章管理</a></li>
-                  </ul>
+                        <li><a href="/Author/">作者管理</a></li>
+                        <li><a href="/ArticlesOfAuthor/">查看作者相关文章</a></li>
+                        <li><a href="/articlelist/">文章管理</a></li>
+                    </ul>
                 </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-desktop"></i>
-                          <span>数据清洗</span>
-                      </a>
-                      <ul class="sub">
-                          <!-- <li><a  href="/DataCleanStatistics/">清洗数据统计</a></li> -->
-                          <li><a  href="/DataCleanStrategies/">数据清洗策略配置</a></li>
-                          <li><a  href="/DataCleanLog/">数据清洗日志管理</a></li>
-                          <li><a  href="/washData/">数据清洗</a></li>
-                      </ul>
-                  </li>
-                  <li class="sub-menu">
-                    <a href="/topics/" >
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-desktop"></i>
+                        <span>数据清洗</span>
+                    </a>
+                    <ul class="sub">
+                        <!-- <li><a  href="/DataCleanStatistics/">清洗数据统计</a></li> -->
+                        <li><a href="/DataCleanStrategies/">数据清洗策略配置</a></li>
+                        <li><a href="/DataCleanLog/">数据清洗日志管理</a></li>
+                        <li><a href="/washData/">数据清洗</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="/topics/">
                         <i class="fa fa-book"></i>
                         <span>主题管理</span>
                     </a>
-                  </li>
-                  <li class="sub-menu">
-                    <a href="javascript:;" >
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
                         <i class="fa fa-cogs"></i>
                         <span>舆情对象管理</span>
                     </a>
                     <ul class="sub">
-                        <li><a  href="/AddEventObject/">新增舆情对象</a></li>
-                        <li><a  href="/CreateEventObject/">舆情对象自动生成</a></li>
-                        <li><a  href="/ShowEventObject/">舆情对象展示</a></li>
+                        <li><a href="/AddEventObject/">新增舆情对象</a></li>
+                        <li><a href="/CreateEventObject/">舆情对象自动生成</a></li>
+                        <li><a href="/ShowEventObject/">舆情对象展示</a></li>
                     </ul>
-                  </li>
-                  <li class="sub-menu">
-                    <a href="javascript:;" >
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
                         <i class="fa fa-tasks"></i>
                         <span>语义工具集</span>
                     </a>
                     <ul class="sub">
-                      <li><a  href="/semanticsTools/">新增语义工具</a></li>
-                      <li><a  href="/semanticsToolkits/">新增工具包</a></li>
-                      <li><a  href="/ShowToolkits/">工具包展示</a></li>
+                        <li><a href="/semanticsTools/">新增语义工具</a></li>
+                        <li><a href="/semanticsToolkits/">新增工具包</a></li>
+                        <li><a href="/ShowToolkits/">工具包展示</a></li>
                     </ul>
-                  </li>
-                  <!--<li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-th"></i>
-                          <span>系统操作管理</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="basic_table.html">系统用户评论管理</a></li>
-                          <li><a  href="responsive_table.html">系统用户操作管理</a></li>
-                      </ul>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class=" fa fa-bar-chart-o"></i>
-                          <span>用户管理</span>
-                      </a>
-                  </li>-->
-                  <li class="sub-menu">
-                    <a href="/usrCommentsSelect/" >
+                </li>
+                <!--<li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-th"></i>
+                        <span>系统操作管理</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a  href="basic_table.html">系统用户评论管理</a></li>
+                        <li><a  href="responsive_table.html">系统用户操作管理</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class=" fa fa-bar-chart-o"></i>
+                        <span>用户管理</span>
+                    </a>
+                </li>-->
+                <li class="sub-menu">
+                    <a href="/usrCommentsSelect/">
                         <i class="fa fa-th"></i>
                         <span>用户留言管理</span>
                     </a>
                     <!--  -->
-                  </li>
+                </li>
                 <li class="sub-menu">
-                    <a href="/AssignAuthorities/" >
+                    <a href="/AssignAuthorities/">
                         <i class=" fa fa-bar-chart-o"></i>
                         <span>权限管理</span>
                     </a>
                 </li>
                 <li class="sub-menu">
-                    <a href="/usrManagement/" >
+                    <a href="/usrManagement/">
                         <i class=" fa fa-bar-chart-o"></i>
                         <span>用户管理</span>
                     </a>
                     <!-- -->
                 </li>
                 <li class="sub-menu">
-                    <a href="/operateDiary/" >
+                    <a href="/operateDiary/">
                         <i class=" fa fa-bar-chart-o"></i>
                         <span>日志管理</span>
                     </a>
@@ -340,169 +362,452 @@
                     </ul>-->
                 </li>
 
-              </ul>
-              <!-- sidebar menu end-->
-          </div>
-      </aside>
-      <!--sidebar end-->
-      
-      <!-- **********************************************************************************************************************************************************
-      MAIN CONTENT
-      *********************************************************************************************************************************************************** -->
-      <!--main content start-->
-      <section id="main-content">
-          <section class="wrapper site-min-height">
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+    <!--sidebar end-->
+
+    <!-- **********************************************************************************************************************************************************
+    MAIN CONTENT
+    *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper site-min-height">
             <h3><i class="fa fa-angle-right"></i> 爬虫配置</h3>
             <div class="row mt">
-          		<div class="col-lg-12">
+                <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <!--<label for="jiaose">筛选:</label><input id="jiaose" style="margin-left: 5px;height: 25px;width: 13%;display: inline-block" type="text" class="form-control" placeholder="请输入筛选条件">-->
                             增加爬虫配置
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" id='configform'>
+
+                                <div class="form-group">
+                                    <label for="inputPassword" class="col-sm-2 control-label">配置名称</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="name" name='name' placeholder="">
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label for="inputPassword" class="col-sm-2 control-label">是否ROBOTS风格</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                        <input type="text" class="form-control" id="rebot" name='rebot'
+                                               placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPassword" class="col-sm-2 control-label">最大下载响应（字节）</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                        <input type="text" class="form-control" id="md" name='md' placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPassword" class="col-sm-2 control-label">下载超时时间(秒)</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                        <input type="text" class="form-control" id="dt" name='dt' placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPassword" class="col-sm-2 control-label">DNS超时处理时间（秒）</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                        <input type="text" class="form-control" id="dnst" name='dnst' placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPassword" class="col-sm-2 control-label">最大深度</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                        <input type="text" class="form-control" id="mdeep" name='mdeep'
+                                               placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPassword" class="col-sm-2 control-label">单个IP并发请求最大值</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                        <input type="text" class="form-control" id="ipm" name='ipm' placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPassword" class="col-sm-2 control-label">单个网站并发请求最大值</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                        <input type="text" class="form-control" id="wm" name='wm' placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPassword" class="col-sm-2 control-label">同时处理item的最大值</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                        <input type="text" class="form-control" id="mp" name='mp' placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPassword" class="col-sm-2 control-label">是否收集最大深度数据</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                        <input type="text" class="form-control" id="cd" name='cd' placeholder="">
                                     </div>
                                 </div>
                             </form>
                         </div>
                         <div class="panel-footer" style="height: 40px;">
-                            <button class="btn btn-success btn-sm" style="float: right;margin-top: -5px; margin-left: 10px;background-color: #41cac0;border-color:#41cac0;"> 增加配置 </button>
+                            <button class="btn btn-success btn-sm"
+                                    style="float: right;margin-top: -5px; margin-left: 10px;background-color: #41cac0;border-color:#41cac0;" onclick="addconfig()">
+                                增加配置
+                            </button>
+
                         </div>
                     </div>
-          		</div>
-          	</div>
-          	<div class="row mt">
-          		<div class="col-lg-12">
-          		<div class="panel panel-default">
+                </div>
+            </div>
+            <div class="row mt">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
                             爬虫配置列表
-                            <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">entries</span>
-                            <select class="form-control" style="float: right;width: 60px;height: 25px;font-size: 12px">
-                                <option>10</option>
-                                <option>25</option>
-                                <option>50</option>
-                                <option>100</option>
-                            </select>
-                            <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">Show</span>
+
                         </div>
                         <!--<div class="panel-body">-->
-                            <table class="table table-bordered" style="margin: 0%">
-                                <tr><td>爬虫名称</td><td>是否ROBOTS风格</td><td>最大下载响应（字节）</td><td>下载超时时间（秒）</td><td>DNS超时处理时间（秒）</td><td>最大深度</td><td>单个IP并发请求最大值</td><td>同时处理item的最大值</td><td>是否收集最大深度数据</td><td>操作</td></tr> 
-                                <tr><td>Trident</td><td>是</td><td>120B</td><td>120</td><td>60</td><td>500</td><td>50</td><td>1000</td><td>是</td><td><button type="button" class="btn btn-info">修改</button></td></tr> 
-                                <tr><td>Trident</td><td>是</td><td>120B</td><td>120</td><td>60</td><td>500</td><td>50</td><td>1000</td><td>是</td><td><button type="button" class="btn btn-info">修改</button></td></tr>   
-                                <tr><td>Trident</td><td>是</td><td>120B</td><td>120</td><td>60</td><td>500</td><td>50</td><td>1000</td><td>是</td><td><button type="button" class="btn btn-info">修改</button></td></tr> 
-                                <tr><td>Trident</td><td>是</td><td>120B</td><td>120</td><td>60</td><td>500</td><td>50</td><td>1000</td><td>是</td><td><button type="button" class="btn btn-info">修改</button></td></tr> 
-                                <tr><td>Trident</td><td>是</td><td>120B</td><td>120</td><td>60</td><td>500</td><td>50</td><td>1000</td><td>是</td><td><button type="button" class="btn btn-info">修改</button></td></tr>         
-                            </table>
+                        <table id="table_id_example" class="display">
+                            <thead>
+                            <tr>
+                                <th>配置ID</th>
+                                <th>配置序号</th>
+                                <th>配置名称</th>
+                                <th>是否ROBOTS风格</th>
+                                <th>最大下载响应</th>
+                                <th>下载超时时间</th>
+                                <th>DNS超时处理时间</th>
+                                <th>最大深度</th>
+                                <th>单个IP并发请求最大值</th>
+
+                                <th>单个网站并发请求最大值</th>
+                                <th>同时处理item的最大值</th>
+                                <th>是否收集最大深度数据</th>
+
+                                <th>操作</th>
+
+                            </tr>
+                            </thead>
+                            <!-- <tfoot>
+                            <tr>
+                                <th>数据表名</th>
+                                <th>数据库名</th>
+                                <th>网站</th>
+                                <th>类型</th>
+                                <th>数据量</th>
+
+                            </tr>
+                            </tfoot> -->
+                            <tbody id="tbody">
+                            </tbody>
+                        </table>
                         <!--</div>-->
-                        <div class="panel-footer">
-                            Search:
-                            <input type="text" class="form-control" placeholder="Search for..." style="width: 200px;height: 25px;display: inline-block">
-                            <div class="btn-group btn-group-xs" role="group" aria-label="..." style="float: right;">
-                                <button type="button" class="btn btn-default">First</button>
-                                <button type="button" class="btn btn-default">Previous</button>
-                                <button type="button" class="btn btn-default">1</button>
-                                <button type="button" class="btn btn-default">Next</button>
-                                <button type="button" class="btn btn-default">Last</button>
-                            </div>
+
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">增加爬虫</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" id='xiugaiform'>
+                                <div style="display:none" class="form-group">
+                                    <label for="inputPassword" class="col-sm-2 control-label">id</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="mid" name='mid' placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword" class="col-sm-2 control-label">配置名称</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="mname" name='mname' placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword" class="col-sm-2 control-label">是否ROBOTS风格</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="mrebot" name='mrebot'
+                                               placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword" class="col-sm-2 control-label">最大下载响应（字节）</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="mmd" name='mmd' placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword" class="col-sm-2 control-label">下载超时时间(秒)</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="mdt" name='mdt' placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword" class="col-sm-2 control-label">DNS超时处理时间（秒）</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="mdnst" name='mdnst' placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword" class="col-sm-2 control-label">最大深度</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="mmdeep" name='mmdeep'
+                                               placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword" class="col-sm-2 control-label">单个IP并发请求最大值</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="mipm" name='mipm' placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword" class="col-sm-2 control-label">单个网站并发请求最大值</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="mwm" name='mwm' placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword" class="col-sm-2 control-label">同时处理item的最大值</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="mmp" name='mmp' placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword" class="col-sm-2 control-label">是否收集最大深度数据</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="mcd" name='mcd' placeholder="">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary" onclick="subxiugai()">确定</button>
                         </div>
                     </div>
-          		</div>
-          		</div>
-          	</div>
-			
-		</section><!--/wrapper -->
-      </section><!-- /MAIN CONTENT -->
+                </div>
+            </div>
+        </section><!--/wrapper -->
+    </section><!-- /MAIN CONTENT -->
 
-      <!--main content end-->
-      <!--footer start-->
-      <footer class="site-footer">
-          <div class="text-center">
-              2018 - <a href="http://www.xjtu.edu.cn" target="_blank" title="西安交通大学">西安交通大学</a> - <a href="http://www.xjtu.edu.cn" title="social mind" target="_blank">social mind舆情分析平台</a>
-              <a href="#" class="go-top">
-                  <i class="fa fa-angle-up"></i>
-              </a>
-          </div>
-      </footer>
-      <!--footer end-->
-  </section>
+    <!--main content end-->
+    <!--footer start-->
+    <footer class="site-footer">
+        <div class="text-center">
+            2018 - <a href="http://www.xjtu.edu.cn" target="_blank" title="西安交通大学">西安交通大学</a> - <a
+                href="http://www.xjtu.edu.cn" title="social mind" target="_blank">social mind舆情分析平台</a>
+            <a href="#" class="go-top">
+                <i class="fa fa-angle-up"></i>
+            </a>
+        </div>
+    </footer>
+    <!--footer end-->
+</section>
 
-    <!-- js placed at the end of the document so the pages load faster -->
-    <script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script>
-    <script src="{% static 'backgroundfiles/assets/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'backgroundfiles/assets/js/jquery-ui-1.9.2.custom.min.js' %}"></script>
-    <script src="{% static 'backgroundfiles/assets/js/jquery.ui.touch-punch.min.js' %}"></script>
-    <script class="include" type="text/javascript" src="{% static 'backgroundfiles/assets/js/jquery.dcjqaccordion.2.7.js' %}"></script>
-    <script src="{% static 'backgroundfiles/assets/js/jquery.scrollTo.min.js' %}"></script>
-    <script src="{% static 'backgroundfiles/assets/js/jquery.nicescroll.js' %}" type="text/javascript"></script>
+<!-- js placed at the end of the document so the pages load faster -->
+{#    <script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script>#}
+<script src="{% static 'backgroundfiles/assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'backgroundfiles/assets/js/jquery-ui-1.9.2.custom.min.js' %}"></script>
+<script src="{% static 'backgroundfiles/assets/js/jquery.ui.touch-punch.min.js' %}"></script>
+<script class="include" type="text/javascript"
+        src="{% static 'backgroundfiles/assets/js/jquery.dcjqaccordion.2.7.js' %}"></script>
+<script src="{% static 'backgroundfiles/assets/js/jquery.scrollTo.min.js' %}"></script>
+<script src="{% static 'backgroundfiles/assets/js/jquery.nicescroll.js' %}" type="text/javascript"></script>
 
 
-    <!--common script for all pages-->
-    <script src="{% static 'backgroundfiles/assets/js/common-scripts.js' %}"></script>
+<!--common script for all pages-->
+<script src="{% static 'backgroundfiles/assets/js/common-scripts.js' %}"></script>
 
-    <!--script for this page-->
-    
-  <script>
-      //custom select box
+<!--script for this page-->
 
-      $(function(){
-          $('select.styled').customSelect();
-      });
+<script>
+    //custom select box
 
-  </script>
+    $(function () {
+        loadconfig()
+    });
 
-  </body>
+</script>
+
+</body>
+<script>
+    function loadconfig() {
+        $.ajax({
+            url: '/getspiderconfig/',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                var item = 0
+                datas = data.data
+                options = {
+                    "order": [0, "asc"],
+                    "bAutoWidth": true,
+                    "bProcessing": true,
+                    "aLengthMenu": [[10, 30, -1], [20, 30, "全部"]],
+                    "language": {
+                        "lengthMenu": " 每页_MENU_条记录",
+                        "zeroRecords": "没有找到记录",
+                        "info": "第_PAGE_页(共_PAGES_页)",
+                        "infoEmpty": "无记录",
+                        "infoFiltered": "(从_MAX_条记录过滤)",
+                        "oPaginate": {
+                            "sFirst": "首页",
+                            "sPrevious": "上页",
+                            "sNext": "下页",
+                            "sLast": "末页"
+                        },
+                        "sSearch": "搜索: ",
+                        "sLoadingRecords": "正在加载数据-请等待...",
+                    },
+                    data: datas,
+                    columns: [
+                        {data: 'configid', 'visible': false},
+                        {#{"data": "serialNum", "render": function(){#}
+                        {#        item++;#}
+                        {#        return item;#}
+                        {
+                            data: null, "render": function () {
+                                item++;
+                                return item;
+                            }
+                        },
+                        {data: 'configname'},
+                        {#{data: 'configname'},#}
+
+                        {data: 'isrobot'},
+                        {data: 'maxdownload'},
+                        {data: 'downloadtimeout'},
+                        {data: 'dnstimeout'},
+                        {data: 'maxdeep'},
+                        {#{data: 'spiderstate'},#}
+                        {data: 'ipmax'},
+                        {data: 'webmax'},
+                        {data: 'dealmax'},
+                        {data: 'isdeep'},
+
+                        {
+                            data: null, 'width': '180px', 'render': function button(data) {
+                                {#console.log(data.spiderstate)#}
+                                return '<div class="btn-group" role="group" aria-label="...">\n' +
+                                    '                                        <button id = "' + data.configid + '_run" type="button" class="btn btn-info" onclick = \'xiugai("' + data.configid + '")\'>修改</button>\n' +
+                                    '                                        <button type="button" class="btn btn-danger" onclick = \'delconfig("' + data.configid + '")\'>删除</button>\n' +
+                                    '                                    </div>'
+
+                            }
+                        },
+                    ]
+                };
+                console.log(12545)
+
+                var table = $('#table_id_example').DataTable(options);
+
+            },
+            error: function (data) {
+                alert("数据获取失败");
+            }
+        });
+
+    }
+
+    function xiugai(id) {
+        console.log(id)
+        $.ajax({
+            url: '/getspiderconfigbyid/',
+            type: 'POST',
+            dataType: 'json',
+            data: {'data': id},
+            success: function (data) {
+                $("#mname").attr('value', data.data['configname'])
+                $("#mrebot").attr('value', data.data['isrobot'])
+                $("#mmd").attr('value', data.data['maxdownload'])
+                $("#mdt").attr('value', data.data['downloadtimeout'])
+                $("#mmdeep").attr('value', data.data['maxdeep'])
+                $("#mipm").attr('value', data.data['ipmax'])
+                $("#mwm").attr('value', data.data['webmax'])
+                $("#mmp").attr('value', data.data['dealmax'])
+                $("#mcd").attr('value', data.data['isdeep'])
+                $("#mdnst").attr('value', data.data['dnstimeout'])
+                $("#mid").attr('value', data.data['configid'])
+                $('#myModal').modal(
+                    {
+                        backdrop: 'static'
+                    }
+                )
+
+            },
+            error: function (data) {
+                layer.msg('数据错误')
+            }
+        })
+
+    }
+
+    function subxiugai() {
+        var form = $("#xiugaiform")
+        $('#myModal').modal('hide')
+        $.ajax({
+            url: '/changeconfig/',
+            type: 'POST',
+            dataType: 'json',
+            data: form.serialize(),
+            success: function (data) {
+                layer.msg('修改成功')
+                {#loadconfig()#}
+            },
+            error: function (data) {
+                layer.msg('修改失败')
+            }
+        })
+
+        window.location.reload()
+        {#$('#table_id_example').dataTable().fnClearTable();#}
+        {#$('#table_id_example').dataTable().fnDestroy()#}
+        {#loadconfig()#}
+    }
+
+    function delconfig(id) {
+        $.ajax({
+            url: '/delconfig/',
+            type: 'POST',
+            dataType: 'json',
+            data: {"data": id},
+            success: function (data) {
+                window.location.reload()
+                {#loadconfig()#}
+            },
+            error: function (data) {
+                layer.msg('删除失败')
+            }
+        })
+    }
+    function addconfig() {
+        var form = $("#configform")
+        $.ajax({
+            url: '/addconfig/',
+            type: 'POST',
+            dataType: 'json',
+            data: form.serialize(),
+            success: function (data) {
+                layer.msg('添加成功')
+                reset()
+                {#loadconfig()#}
+            },
+            error: function (data) {
+                layer.msg('添加失败')
+            }
+        })
+    }
+    function reset() {
+      document.getElementById("configform").reset();
+
+    }
+</script>
 </html>

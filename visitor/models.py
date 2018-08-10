@@ -835,15 +835,32 @@ class SpiderInfo(models.Model):
     spidername = models.CharField(db_column='spiderName', max_length=64, blank=True, null=True)  # Field name made lowercase.
     addtime = models.CharField(db_column='addTime', max_length=32, blank=True, null=True)  # Field name made lowercase.
     spidersourcepath = models.CharField(db_column='spiderSourcePath', max_length=64, blank=True, null=True)  # Field name made lowercase.
-    filename = models.CharField(db_column='fileName', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    # filename = models.CharField(db_column='fileName', max_length=255, blank=True, null=True)  # Field name made lowercase.
     websiteid = models.ForeignKey('Website', models.DO_NOTHING, db_column='websiteID', blank=True, null=True)  # Field name made lowercase.
-    fileid = models.CharField(db_column='fileID', max_length=36, blank=True, null=True)  # Field name made lowercase.
+    # RunCommand = models.CharField(db_column='runcommend', max_length=128, blank=True, null=True)  # Field name made lowercase.
+    RunCommand = models.CharField(db_column='runcommand', max_length=128, blank=True, null=True)  # Field name made lowercase.
     spiderstate = models.CharField(db_column='spiderState', max_length=32, blank=True, null=True)  # Field name made lowercase.
     spiderconfigid = models.ForeignKey(SpiderConfig, models.DO_NOTHING, db_column='spiderConfigID', blank=True, null=True)  # Field name made lowercase.
+    vimname = models.CharField(max_length=16, blank=True, null=True)
+    spiderrunname = models.CharField(max_length=32,blank=True,null=True)
+    class Meta:
+        db_table = 'spider_info'
+
+class NewSpiderConfig(models.Model):
+    spiderconfigid = models.CharField(max_length=64,primary_key=True)
+    spiderconfigname = models.CharField(max_length=32,blank=True,null=True)
+    isrobot = models.CharField(max_length=4,blank=True,null=True)
+    maxdownbytes = models.CharField(max_length=32,blank=True,null=True)
+    downloadtimeout = models.CharField(max_length=32,blank=True,null=True)
+    dnstimeout = models.CharField(max_length=32,blank=True,null=True)
+    maxdeep = models.CharField(max_length=32,blank=True,null=True)
+    ipconcurrentrequest = models.CharField(max_length=32,blank=True,null=True)
+    siteconcurrentrequest = models.CharField(max_length=32,blank=True,null=True)
+    maxconcurrentprocessing = models.CharField(max_length=32,blank=True,null=True)
+    iscollectdeepdata = models.CharField(max_length=32,blank=True,null=True)
 
     class Meta:
-        managed = False
-        db_table = 'spider_info'
+        db_table = 'spiderconfig'
 
 
 class TbUser(models.Model):
@@ -853,9 +870,8 @@ class TbUser(models.Model):
     u_telphone = models.CharField(max_length=30, blank=True, null=True)
     u_mail = models.CharField(max_length=30, blank=True, null=True)
     u_sex = models.TextField(blank=True, null=True)  # This field type is a guess.
-
     class Meta:
-        managed = False
+        # managed = False
         db_table = 'tb_user'
 
 

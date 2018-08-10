@@ -20,7 +20,7 @@ from manager import views as bviews
 from django.conf.urls import include
 from visitor.view import loginviews,indexview,UserInfoManageview
 from manager.view import loginview as bloginview,ArticleandAuthorview as bAAview
-from manager.view import userManagement as umView
+from manager.view import userManagement as umView, washData
 from manager.view import DataTableShowView,ObjectShowview, userCommentsManage as ucView,SpiderView
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -67,6 +67,10 @@ urlpatterns = [
     path('DataCleanStrategies/', bviews.DataCleanStrategies),
     path('DataCleanLog/', bviews.DataCleanLog),
     path('washData/', bviews.washData),
+    path('washData/yuanshujubiao/',washData.yuanshujubiao),
+    path('washData/xuanzewangzhan/',washData.xuanzewangzhan),
+    path('washData/DIYfenye/',washData.DIYfenye),
+    path('washData/tongji/',washData.tongji),
     path('topics/', bviews.topics),
     path('AddEventObject/', bviews.AddEventObject),
     path('CreateEventObject/', bviews.CreateEventObject),
@@ -112,7 +116,16 @@ urlpatterns = [
 
     path('articlelist/deleteArticle/', bAAview.deleteArticle), #/articlelist/删除文章
     path('Author/authorDelete/', bAAview.deleteAuthor), #/Author/删除作者
-    path('getspiderlist/',SpiderView.getspiderlist)  #获取爬虫列表
+    path('getspiderlist/',SpiderView.getspiderlist) , #获取爬虫列表
+    path('runspider/',SpiderView.runspider),
+    path('stopspider/',SpiderView.stopspider),
+    path('getspiderconfig/',SpiderView.getspiderconfig),
+    path('getspiderconfigbyid/',SpiderView.getspiderconfigbyid),
+    path('changeconfig/',SpiderView.changeconfig),
+    path('delconfig/',SpiderView.delconfig),
+    path('addconfig/',SpiderView.addconfig),
+    path('addspider/',SpiderView.addspider),
+
 
 
 
