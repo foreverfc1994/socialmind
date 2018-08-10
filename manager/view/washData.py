@@ -111,6 +111,18 @@ def DIYfenye(request):
     data = {"data": dataList}
     print(data)
     return HttpResponse(json.dumps(data))
+@csrf_exempt
+def tongji(request):
+    dataList = []
+    wangzhan = request.POST
+    tablename = {}
+    for i in wangzhan:
+        tablename = json.loads(i)
+    print(tablename)
+    dataList = fenyedudb(tablename['sitename'],tablename['tablename'],tablename['page'],tablename['len'],)
+    data = {"data": dataList}
+    print(data)
+    return HttpResponse(json.dumps(data))
 def fenyedudb(sitename,tablename,page,len):
     db = pymysql.connect(host="localhost", user="root",
                          password="461834084", db=sitename, port=3306)

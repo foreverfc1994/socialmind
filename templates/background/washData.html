@@ -705,6 +705,9 @@
                                 </thead>
                                 <tbody id="tbody">
                                 </tbody>
+                                <tfoot>
+                                    <tr id="tfoottr"></tr>
+                                </tfoot>
                             </table>
                             <!-- <table id="tableshow" class="table table-bordered" style="display: none;margin: 0%">
                                 <thead><tr><th>时间</th><th>网站</th><th>网址</th><th>错误的item</th><th>错误详情</th></tr></thead>
@@ -719,71 +722,6 @@
                                 <tr><td>Trident</td><td>Internet</td><td>Win 95+</td><td>Win 95+</td><td>6</td></tr>
                                 <tr><td>Trident</td><td>Internet</td><td>Win XP SP2+</td><td>Win 95+</td><td>7</td></tr>
                             </table> -->
-                            <script>
-                                $(document).ready(function(){
-                                    $("#tableshow tr td").click(function(){
-                                        var tdindex = $(this).index()+1;
-                                        $("#tableshow tr td").removeClass('success');
-                                        $("#tableshow tr th").removeClass('success');
-                                        $("#tableshow tr td:nth-child("+tdindex+")").addClass('success');
-                                        $("#tableshow tr th:nth-child("+tdindex+")").addClass('success');
-                                        option = {
-                                            title : {
-                                                text: '字段出现频数占比图',
-                                                subtext: '仅包含出现频数前十的字段',
-                                                x:'center'
-                                            },
-                                            tooltip : {
-                                                trigger: 'item',
-                                                formatter: "{a} <br/>{b} : {c} ({d}%)"
-                                            },
-                                            legend: {
-                                                x : 'center',
-                                                y : 'bottom',
-                                                data:['Firefox 1.0','IE Mobile','PSP browser','Win 95+','Opera 9.5','Internet','Win','All others','Win XP SP2+','PHP']
-                                            },
-                                            toolbox: {
-                                                show : true,
-                                                feature : {
-                                                    mark : {show: true},
-                                                    dataView : {show: true, readOnly: false},
-                                                    magicType : {
-                                                        show: true,
-                                                        type: ['pie', 'funnel']
-                                                    },
-                                                    restore : {show: true},
-                                                    saveAsImage : {show: true}
-                                                }
-                                            },
-                                            calculable : true,
-                                            series : [
-                                                {
-                                                    name:'字段',
-                                                    type:'pie',
-                                                    radius : [30, 110],
-                                                    //center : ['75%', '50%'],
-                                                    //roseType : 'area',
-                                                    data:[
-                                                        {value:10, name:'Firefox 1.0'},
-                                                        {value:5, name:'IE Mobile'},
-                                                        {value:15, name:'PSP browser'},
-                                                        {value:25, name:'Win 95+'},
-                                                        {value:20, name:'Opera 9.5'},
-                                                        {value:35, name:'Internet'},
-                                                        {value:30, name:'Win'},
-                                                        {value:40, name:'All others'},
-                                                        {value:17, name:'Win XP SP2+'},
-                                                        {value:9, name:'PHP'},
-                                                    ]
-                                                }
-                                            ]
-                                        };
-                                        var myChart = echarts.init(document.getElementById('mypiechart'));
-                                        myChart.clear();
-                                        myChart.setOption(option);
-                                    });
-                                });
-                            </script>
                         </div>
                     </div>
                 </div>
@@ -835,6 +773,7 @@
                 //alert("Yes!")
                 table.destroy();
                 $("#theadtr").empty()
+                $("#tfoottr").empty()
                 $("#tbody").empty()
                 datas = []
                 datas = data.data
@@ -846,6 +785,7 @@
                     var dic = {'data':i}
                     column.push(dic)
                     $("#theadtr").append("<th>"+i+"</th>")
+                    $("#tfoottr").append("<th>"+i+"</th>")
                     console.log(i)
                 }
                 datas.splice(0,1)
@@ -942,6 +882,7 @@
         var sitename = $('#sitename').val()
         var tablename = $(btnthis).html()
         $("#theadtr").empty()
+        $("#tfoottr").empty()
         $("#tbody").empty()
         $.ajax({
             url: '/washData/yuanshujubiao/',
@@ -963,6 +904,7 @@
                     var dic = {'data':i}
                     column.push(dic)
                     $("#theadtr").append("<th>"+i+"</th>")
+                    $("#tfoottr").append("<th>"+i+"</th>")
                     console.log(i)
                 }
                 datas.splice(0,1)
@@ -1012,7 +954,6 @@
                 console.log("3456")
                 $("#datatablenames button").removeAttr("onclick")
                 $("#datatablenames button").attr("onclick","secondclick(this);");
-                /* <tbody id="tbody"><tr role="row" class="odd"></tbody> */
                 $('#yuanshujubiao tbody').on('click','td', function () {clickcell(this)} );
                 /* $(".add #tbody tr td").on('click',clickcell()) */
                 /* $('#yuanshujubiao_paginate').on('click', function niming() { */
@@ -1063,24 +1004,102 @@
     }
     function clickcell(thiscell){
         var index = $(thiscell).parents("tr").find("td").index($(thiscell));//获取当前td在tr种得索引,起始为0
-        alert($(thiscell).text());
-        alert("当前td所在列"+index)
+        //alert($(thiscell).text());
+        //alert($(thiscell).parent().parent().parent().find('thead tr th:eq('+index+')').text())
+        celltext = $(thiscell).text()
+        columnname = $(thiscell).parent().parent().parent().find('thead tr th:eq('+index+')').text()
+        huahua()
+        $.ajax({
+            url: '/washData/tongji/',
+            type: 'POST',
+            dataType: 'json',
+            data: '{"celltext": "'+celltext+'", "columnname": "'+columnname+'"}',
+            success: function(data){
+                alert("yes")
+            },
+            error: function(data){
+
+            }
+        })
+
         /* for (i=0;i<table.column(4).data().length;i++){
             alert(i)
         } */
-        a = table.columns(7).data().eq( 0 )
+        //a = table.columns(7).data().eq( 0 )
         /* b=JSON.stringify(a)
         for (x in b)
         alert(b[x]) */
-        clock = 0
+        /* clock = 0
         for( i in a){
             clock++
             if(clock >= 50){
                 break
             }
             alert(a[i])
-        }
+        } */
     }
+    function huahua(){
+        /*var tdindex = $(this).index()+1;
+        $("#tableshow tr td").removeClass('success');
+        $("#tableshow tr th").removeClass('success');
+        $("#tableshow tr td:nth-child("+tdindex+")").addClass('success');
+        $("#tableshow tr th:nth-child("+tdindex+")").addClass('success'); */
+        option = {
+            title : {
+                text: '字段出现频数占比图',
+                subtext: '仅包含出现频数前十的字段',
+                x:'center'
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                x : 'center',
+                y : 'bottom',
+                data:['Firefox 1.0','IE Mobile','PSP browser','Win 95+','Opera 9.5','Internet','Win','All others','Win XP SP2+','PHP']
+            },
+            toolbox: {
+                show : true,
+                feature : {
+                    mark : {show: true},
+                    dataView : {show: true, readOnly: false},
+                    magicType : {
+                        show: true,
+                        type: ['pie', 'funnel']
+                    },
+                    restore : {show: true},
+                    saveAsImage : {show: true}
+                }
+            },
+            calculable : true,
+            series : [
+                {
+                    name:'字段',
+                    type:'pie',
+                    radius : [30, 110],
+                    //center : ['75%', '50%'],
+                    //roseType : 'area',
+                    data:[
+                        {value:10, name:'Firefox 1.0'},
+                        {value:5, name:'IE Mobile'},
+                        {value:15, name:'PSP browser'},
+                        {value:25, name:'Win 95+'},
+                        {value:20, name:'Opera 9.5'},
+                        {value:35, name:'Internet'},
+                        {value:30, name:'Win'},
+                        {value:40, name:'All others'},
+                        {value:17, name:'Win XP SP2+'},
+                        {value:9, name:'PHP'},
+                    ]
+                }
+            ]
+        };
+        var myChart = echarts.init(document.getElementById('mypiechart'));
+        myChart.clear();
+        myChart.setOption(option);
+    }
+
 
 </script>
 
