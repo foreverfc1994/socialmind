@@ -67,10 +67,6 @@ def yuanshujubiao(request):
     #     # print(len(data))
     return HttpResponse(json.dumps(data))
 
-
-
-
-
 @csrf_exempt
 def xuanzewangzhan(request):
     dataList = []
@@ -119,7 +115,27 @@ def tongji(request):
     for i in wangzhan:
         tablename = json.loads(i)
     print(tablename)
-    dataList = fenyedudb(tablename['sitename'],tablename['tablename'],tablename['page'],tablename['len'],)
+    db = pymysql.connect(host="localhost", user="root",
+                         password="461834084", db=tablename['sitename'], port=3306)
+    cur = db.cursor()
+    sql = "select "+tablename['columnname']+",count(*) as num from "+tablename['tablename']+" group by "+tablename['columnname']+" ORDER BY num DESC LIMIT 10"
+    try:
+        cur.execute(sql)  # 执行sql语句
+        results = cur.fetchall()  # 获取查询的所有记录
+        for row in results:
+            i=0
+            diction = {}
+            for col in row:
+                if i == 0:
+                    diction['name'] = col
+                elif i == 1:
+                    diction['value'] = col
+                i = i+1
+            dataList.append(diction)
+    except Exception as e:
+        raise e
+    finally:
+        db.close()  # 关闭连接
     data = {"data": dataList}
     print(data)
     return HttpResponse(json.dumps(data))

@@ -706,7 +706,7 @@
                                 <tbody id="tbody">
                                 </tbody>
                                 <tfoot>
-                                    <tr id="tfoottr"></tr>
+                                <tr id="tfoottr"></tr>
                                 </tfoot>
                             </table>
                             <!-- <table id="tableshow" class="table table-bordered" style="display: none;margin: 0%">
@@ -827,6 +827,7 @@
         })/* ajax */
     }
     $(function(){
+        $('#yuanshujubiao tbody').on('click','td', function () {clickcell(this)} );
         $("#yuanshujubiao").on('page.dt', function () {
             //alert(table.page())//返回翻页完的页码，从0开始,仅第一次有效
             //alert(table.page.len())//返回每页多少条
@@ -954,7 +955,7 @@
                 console.log("3456")
                 $("#datatablenames button").removeAttr("onclick")
                 $("#datatablenames button").attr("onclick","secondclick(this);");
-                $('#yuanshujubiao tbody').on('click','td', function () {clickcell(this)} );
+
                 /* $(".add #tbody tr td").on('click',clickcell()) */
                 /* $('#yuanshujubiao_paginate').on('click', function niming() { */
                 //alert(table.page()) /* 从0算当前页数 */
@@ -1008,14 +1009,22 @@
         //alert($(thiscell).parent().parent().parent().find('thead tr th:eq('+index+')').text())
         celltext = $(thiscell).text()
         columnname = $(thiscell).parent().parent().parent().find('thead tr th:eq('+index+')').text()
-        huahua()
+        var sitename = $('#sitename').val()
+        var tablename = $("#tableshowname").html()
         $.ajax({
             url: '/washData/tongji/',
             type: 'POST',
             dataType: 'json',
-            data: '{"celltext": "'+celltext+'", "columnname": "'+columnname+'"}',
+            data: '{"sitename": "'+sitename+'", "tablename": "'+tablename+'",'+'"celltext": "'+celltext+'", "columnname": "'+columnname+'"}',
             success: function(data){
-                alert("yes")
+                //alert("yes")
+                datas = data.data
+                /* for(i in datas){
+                    alert(datas[i].value)
+                    alert(datas[i].name)
+                    break
+                } */
+                huahua(datas,columnname)
             },
             error: function(data){
 
@@ -1038,26 +1047,32 @@
             alert(a[i])
         } */
     }
-    function huahua(){
+    function huahua(getdatas,columnname){
         /*var tdindex = $(this).index()+1;
         $("#tableshow tr td").removeClass('success');
         $("#tableshow tr th").removeClass('success');
         $("#tableshow tr td:nth-child("+tdindex+")").addClass('success');
         $("#tableshow tr th:nth-child("+tdindex+")").addClass('success'); */
+        namesinlegend = []
+        for(i in getdatas){
+            /* alert(getdatas[i].value)
+            alert(getdatas[i].name) */
+            namesinlegend.push(getdatas[i].name)
+        }
         option = {
             title : {
-                text: '字段出现频数占比图',
+                text: columnname+'列的字段出现频数占比图',
                 subtext: '仅包含出现频数前十的字段',
                 x:'center'
             },
             tooltip : {
                 trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
+                formatter: "{b} :<br/> {c} ({d}%)"
             },
             legend: {
                 x : 'center',
                 y : 'bottom',
-                data:['Firefox 1.0','IE Mobile','PSP browser','Win 95+','Opera 9.5','Internet','Win','All others','Win XP SP2+','PHP']
+                data:namesinlegend
             },
             toolbox: {
                 show : true,
@@ -1075,23 +1090,12 @@
             calculable : true,
             series : [
                 {
-                    name:'字段',
+                    //name:'字段',
                     type:'pie',
                     radius : [30, 110],
                     //center : ['75%', '50%'],
                     //roseType : 'area',
-                    data:[
-                        {value:10, name:'Firefox 1.0'},
-                        {value:5, name:'IE Mobile'},
-                        {value:15, name:'PSP browser'},
-                        {value:25, name:'Win 95+'},
-                        {value:20, name:'Opera 9.5'},
-                        {value:35, name:'Internet'},
-                        {value:30, name:'Win'},
-                        {value:40, name:'All others'},
-                        {value:17, name:'Win XP SP2+'},
-                        {value:9, name:'PHP'},
-                    ]
+                    data:getdatas
                 }
             ]
         };
