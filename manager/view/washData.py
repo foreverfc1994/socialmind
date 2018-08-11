@@ -119,11 +119,12 @@ def tongji(request):
     db = pymysql.connect(host="localhost", user="root",
                          password="461834084", db=tablename['sitename'], port=3306)
     cur = db.cursor()
-    sql = "select "+tablename['columnname']+",count(*) as num from "+tablename['tablename']+" group by "+tablename['columnname']+" ORDER BY num DESC LIMIT 10"
+    sql = "select "+tablename['columnname']+",count(*) as numnumnumnumnum from "+tablename['tablename']+" group by "+tablename['columnname']+" ORDER BY numnumnumnumnum DESC LIMIT 10"
     try:
 
         cur.execute(sql)  # 执行sql语句
         results = cur.fetchall()  # 获取查询的所有记录
+        print(results)
         for row in results:
             i=0
             diction = {}
@@ -139,7 +140,7 @@ def tongji(request):
     finally:
         db.close()  # 关闭连接
     data = {"data": dataList}
-    print(data)
+    # print(data)
     return HttpResponse(json.dumps(data))
 @csrf_exempt
 def washaction(request):
@@ -170,6 +171,7 @@ def washaction(request):
             cur.execute(sql)  #
             cur.execute(sql2)  #
             a = cur.execute(sql3)  #
+            db.commit()
             cur.execute(sql4)
             db.commit()
             if a == 1:
@@ -177,8 +179,201 @@ def washaction(request):
             else:
                 print("no "+str(a))
         except Exception as e:
+            # Rollback in case there is any error
+            db.rollback()
             raise e
         finally:
+            db.close()  # 关闭连接
+    elif actiontype == 'queshizhi':
+        tianzhongzhi = washform.get('tianzhongzhi')
+        db = pymysql.connect(host="localhost", user="root",
+                             password="461834084", db=sitename, port=3306)
+        cur = db.cursor()
+        sql = "DROP TABLE IF EXISTS " + "beifen_" + tablename + adminname + chehuiStack
+        sql2 = "create table " + "beifen_" + tablename + adminname + chehuiStack + " like " + tablename
+        sql3 = "insert into " + "beifen_" + tablename + adminname + chehuiStack + " select * from " + tablename
+        if tianzhongzhi == 'null':
+            sql4 = "UPDATE " + tablename + " SET " + columnname + "='" + "null" + "' WHERE " + columnname + "=''"
+            db = pymysql.connect(host="localhost", user="root",
+                                 password="461834084", db=sitename, port=3306)
+            cur = db.cursor()
+            try:
+                cur.execute(sql)
+                cur.execute(sql2)
+                cur.execute(sql3)
+                db.commit()
+                cur.execute(sql4)  # 执行sql语句
+                db.commit()
+            except:
+                # Rollback in case there is any error
+                db.rollback()
+            db.close()  # 关闭连接
+        elif tianzhongzhi == 'avg':
+            sql5 = "select avg("+columnname+") from "+tablename
+            db = pymysql.connect(host="localhost", user="root",
+                                 password="461834084", db=sitename, port=3306)
+            cur = db.cursor()
+            cur.execute(sql5)  # 执行sql语句
+            results = cur.fetchall()  # 获取查询的所有记录
+            for row in results:
+                print(row)
+                average = row[0]
+            sql4 = "UPDATE " + tablename + " SET " + columnname + "='" + str(average) + "' WHERE " + columnname + "=''"
+            cur = db.cursor()
+            try:
+                cur.execute(sql)
+                cur.execute(sql2)
+                cur.execute(sql3)
+                db.commit()
+                cur.execute(sql4)  # 执行sql语句
+                db.commit()
+            except:
+                # Rollback in case there is any error
+                db.rollback()
+            db.close()  # 关闭连接
+        elif tianzhongzhi == 'max':
+            sql5 = "select max(" + columnname + ") from " + tablename
+            db = pymysql.connect(host="localhost", user="root",
+                                 password="461834084", db=sitename, port=3306)
+            cur = db.cursor()
+            cur.execute(sql5)  # 执行sql语句
+            results = cur.fetchall()  # 获取查询的所有记录
+            for row in results:
+                print(row)
+                max = row[0]
+            sql4 = "UPDATE " + tablename + " SET " + columnname + "='" + str(max) + "' WHERE " + columnname + "=''"
+            cur = db.cursor()
+            try:
+                cur.execute(sql)
+                cur.execute(sql2)
+                cur.execute(sql3)
+                db.commit()
+                cur.execute(sql4)  # 执行sql语句
+                db.commit()
+            except:
+                # Rollback in case there is any error
+                db.rollback()
+            db.close()  # 关闭连接
+        elif tianzhongzhi == 'min':
+            sql5 = "select min(" + columnname + ") from " + tablename
+            db = pymysql.connect(host="localhost", user="root",
+                                 password="461834084", db=sitename, port=3306)
+            cur = db.cursor()
+            cur.execute(sql5)  # 执行sql语句
+            results = cur.fetchall()  # 获取查询的所有记录
+            for row in results:
+                print(row)
+                min = row[0]
+            sql4 = "UPDATE " + tablename + " SET " + columnname + "='" + str(min) + "' WHERE " + columnname + "=''"
+            cur = db.cursor()
+            try:
+                cur.execute(sql)
+                cur.execute(sql2)
+                cur.execute(sql3)
+                db.commit()
+                cur.execute(sql4)  # 执行sql语句
+                db.commit()
+            except:
+                # Rollback in case there is any error
+                db.rollback()
+            db.close()  # 关闭连接
+        elif tianzhongzhi == 'mid':
+            sql7 = "DROP TABLE IF EXISTS "+"beifen_linshi_" + tablename + adminname + chehuiStack
+            sql6 = "create table "+"beifen_linshi_" + tablename + adminname + chehuiStack+" as SELECT (@i:=@i+1) AS i,"+columnname+" AS data FROM "+tablename+",(select   @i:=0) as it ORDER BY "+columnname
+            db = pymysql.connect(host="localhost", user="root",
+                                 password="461834084", db=sitename, port=3306)
+            cur = db.cursor()
+            print(sql6)
+            try:
+                cur.execute(sql7)
+                cur.execute(sql6)
+            except:
+                # Rollback in case there is any error
+                db.rollback()
+            cur.execute("select count(*) from "+"beifen_linshi_" + tablename + adminname + chehuiStack)
+            results = cur.fetchall()  # 获取查询的所有记录
+            midid = 0
+            print(results[0][0])
+            total = int(results[0][0])
+            if total%2 == 1:
+                total = total+1
+                midid = total/2
+            elif total%2 == 0:
+                midid = total/2
+            cur.execute("select data from "+"beifen_linshi_" + tablename + adminname + chehuiStack+" where i="+str(midid))
+            results = cur.fetchall()  # 获取查询的所有记录
+            for row in results:
+                print(row)
+                mid = row[0]
+            cur.execute(sql7)
+            sql4 = "UPDATE " + tablename + " SET " + columnname + "='" + str(mid) + "' WHERE " + columnname + "=''"
+            cur = db.cursor()
+            try:
+                cur.execute(sql)
+                cur.execute(sql2)
+                cur.execute(sql3)
+                db.commit()
+                cur.execute(sql4)  # 执行sql语句
+                db.commit()
+            except:
+                # Rollback in case there is any error
+                db.rollback()
+            db.close()  # 关闭连接
+        elif tianzhongzhi == 'frequent':
+            sql5 = "select " + columnname + ",count(*) as numnumnumnumnum from " + tablename + " group by " + columnname + " ORDER BY numnumnumnumnum DESC LIMIT 1"
+            db = pymysql.connect(host="localhost", user="root",
+                                 password="461834084", db=sitename, port=3306)
+            cur = db.cursor()
+            cur.execute(sql5)  # 执行sql语句
+            results = cur.fetchall()  # 获取查询的所有记录
+            for row in results:
+                # print(row)
+                zuipinfanzhi = row[0]
+            sql4 = "UPDATE " + tablename + " SET " + columnname + "='" + zuipinfanzhi + "' WHERE " + columnname + "=''"
+            cur = db.cursor()
+            try:
+                cur.execute(sql)
+                cur.execute(sql2)
+                cur.execute(sql3)
+                db.commit()
+                cur.execute(sql4)  # 执行sql语句
+                db.commit()
+            except:
+                # Rollback in case there is any error
+                db.rollback()
+            db.close()  # 关闭连接
+        elif tianzhongzhi == 'inputval':
+            inputval = washform.get('inputval')
+            sql4 = "UPDATE " + tablename + " SET " + columnname + "='" + "null" + "' WHERE " + columnname + "=''"
+            db = pymysql.connect(host="localhost", user="root",
+                                 password="461834084", db=sitename, port=3306)
+            cur = db.cursor()
+            try:
+                cur.execute(sql)
+                cur.execute(sql2)
+                cur.execute(sql3)
+                db.commit()
+                cur.execute(sql4)  # 执行sql语句
+                db.commit()
+            except:
+                # Rollback in case there is any error
+                db.rollback()
+            db.close()  # 关闭连接
+        elif tianzhongzhi == 'delthiscol':
+            sql4 = "UPDATE " + tablename + " SET " + columnname + "='" + "null" + "' WHERE " + columnname + "=''"
+            db = pymysql.connect(host="localhost", user="root",
+                                 password="461834084", db=sitename, port=3306)
+            cur = db.cursor()
+            try:
+                cur.execute(sql)
+                cur.execute(sql2)
+                cur.execute(sql3)
+                db.commit()
+                cur.execute(sql4)  # 执行sql语句
+                db.commit()
+            except:
+                # Rollback in case there is any error
+                db.rollback()
             db.close()  # 关闭连接
     data = {"data": dataList}
     print(data)
@@ -216,6 +411,8 @@ def rollback(request):
             print("no " + str(a))
         cur.execute(sql4)
     except Exception as e:
+        # Rollback in case there is any error
+        db.rollback()
         raise e
     finally:
         db.close()  # 关闭连接
