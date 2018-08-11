@@ -8,7 +8,7 @@ from visitor.scripts.signin import *
 # Create your views here.
 # from visitor.scripts.SysLog import Logger
 import random
-from manager.mysqlNullWash import if_is_None
+from manager.mysqlNullWash import if_is_None, webType_to_strType
 import logging
 logger = logging.getLogger('visitor')
 # def login(request):
@@ -83,11 +83,85 @@ logger = logging.getLogger('visitor')
 #     return render(request, 'foreground/signin.html')
 def fileSearch(request):
     role = request.session["user_type"]
-    return render(request, 'foreground/ArticleSearch.html', {"role": role})
+    objectid = if_is_None(request.GET.get("objectid"), "")
+    if objectid != "":
+        name = if_is_None(models.Object.objects.get(objectid=objectid).name, "")
+    else:
+        name = ""
+    return render(request, 'foreground/ArticleSearch.html', {"role": role, "objectid": objectid, "name": name})
+
+def getAllFile(request):
+    page = int(request.GET.get("page"))
+    objectid = request.GET.get("objectid")
+    if objectid == "":
+        print("objectid:" + objectid)
+        articles = models.Article.objects.values("articleid", "authorid", "title", "content", "posttime", "websiteid")[page*20: (page+1)*20]
+    else:
+        articles = models.Article.objects.filter(objectid=objectid).values("articleid", "authorid", "title", "content", "posttime", "websiteid")[page*20: (page+1)*20]
+    data = []
+    for article in articles:
+        articleid = article['articleid']
+        authorid = article['authorid']
+        authorname = "暂缺"
+        title = article['title']
+        content = article['content']
+        if len(content) > 20:
+            content = content[0:20]+"..."
+        posttime = if_is_None(article['posttime'][0:10], "暂缺")
+        websiteid = article['websiteid']
+
+        if authorid != None:
+            try:
+                authorname = if_is_None(models.Author.objects.get(authorid=authorid).name)
+            except:
+                pass
+
+        if websiteid != None:
+            webname = if_is_None(models.Website.objects.get(websiteid=websiteid).websitename, "暂缺")
+            webtype = webType_to_strType(if_is_None(models.Website.objects.get(websiteid=websiteid).websitetypeid, "0"))
+        else:
+            webname = "暂缺"
+            webtype = "暂缺"
+        data.append({"articleid": articleid, "authorname": authorname, "title": title, "content": content, "posttime": posttime,
+                     "webname": webname, "webtype": webtype})
+    print(data)
+    return JsonResponse({"data": data})
+
+
+
 def eventSearch(request):
     role = request.session["user_type"]
     return render(request, 'foreground/eventSearch.html', {"role": role})
-#
+
+def getEventList(request):
+    page = int(request.GET.get("page"))
+    keyword = request.GET.get("keyword")
+    if keyword == "undefined":
+        print("~")
+        keyword = ""
+    items = models.Object.objects.filter(objecttype="事件").filter(name__contains=keyword).values \
+                  ("objectid", "name", "introduction", "collectnumber", "likenumber", "commentnumber")[page*20: (page+1)*20]
+    data = []
+    for item in items:
+        objectid = item['objectid']
+        title = item['name']
+        introduction = if_is_None(item['introduction'], "简介暂缺")
+        collectNum = if_is_None(item['collectnumber'], "0")
+        likeNum = if_is_None(item['likenumber'])
+        commentNum = if_is_None(item['commentnumber'])
+        try:
+            starttime = if_is_None(models.Event.objects.get(objectid=objectid).eventbeaintime, "暂缺")
+        except:
+            starttime = "暂缺"
+        try:
+            heatIndex = models.IndicatorValue.objects.get(indexname="热度", objectid=objectid).indicatorvalue
+        except:
+            heatIndex = "暂缺"
+        data.append({"objectid": objectid, "title": title, "introduction": introduction, "collectNum": collectNum,
+                     "likeNum": likeNum, "commentNum": commentNum, "heatIndex": heatIndex, "starttime": starttime})
+    print(data)
+    return JsonResponse({"data": data})
+
 # def signin(request):
 #     if request.method == 'POST':
 #         userdata = request.POST
@@ -215,7 +289,7 @@ def getEventsData(request):
         print(data)
         return JsonResponse({"data": data})
 
-    if func == "当地新闻":
+    elif func == "当地新闻":
         coordinate = models.User.objects.get(userid=userid).address
         province = coordinate.split("省")[0]
         if province != coordinate:
@@ -246,7 +320,7 @@ def getEventsData(request):
         print(data)
         return JsonResponse({"data": data})
 
-    if func == "敏感信息":
+    elif func == "敏感信息":
         data = []
         informs = models.IndicatorValue.objects.filter(indexname="敏感度")
         for inform in informs:
@@ -268,7 +342,7 @@ def getEventsData(request):
                 data.append({"name": name, "heatIndex": heatIndex, "newsNum": str(newsNum), "begintime": starttime, "objectid": objectid})
         return JsonResponse({"data": data})
 
-    if func == "领域相关":
+    elif func == "领域相关":
         user = models.CompanyUser.objects.get(userid=userid)
         interests = user.interest
         lis = interests.split(',')
@@ -295,6 +369,35 @@ def getEventsData(request):
                                  "objectid": objectid})
         print(data)
         return JsonResponse({"data": data})
+
+    elif func == "行业信息":
+        user = models.CompanyUser.objects.get(userid=userid)
+        interests = user.businessscope
+        lis = interests.split(',')
+        for li in lis:
+            results = models.Event.objects.filter(keyword__contains=li)
+            if len(results) != 0:
+                for result in results:
+                    objectid = result.pk
+                    object = models.Object.objects.get(objectid=objectid)
+                    name = object.name
+                    starttime = result.eventbegintime
+                    newsNum = models.Article.objects.filter(objectid=objectid).count()
+                    heatIndex = if_is_None(models.IndicatorValue.objects.filter(objectid=objectid, indexname="热度"), "暂缺")
+                    if heatIndex != "暂缺" and len(heatIndex) > 0:
+                        heatIndex = heatIndex[0].indicatorvalue
+                        if int(heatIndex) >= 40:
+                            heatIndex = "⭐热点事件"
+                        else:
+                            heatIndex = "一般事件"
+                    else:
+                        heatIndex = "数据暂缺"
+                    data.append({"name": name, "heatIndex": heatIndex, "newsNum": str(newsNum), "begintime": starttime, "objectid": objectid})
+        print(data)
+        return JsonResponse({"data": data})
+
+    else:
+        return JsonResponse({"data": [{"name": "name", "heatIndex": "热度", "newsNum": "信息数", "begintime": "开始时间", "objectid": "对象id"}]})
 
 def getArticles(request):
     objectid = request.GET.get("objectid")
