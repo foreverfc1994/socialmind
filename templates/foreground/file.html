@@ -252,42 +252,23 @@
                             <div class="row mb">
                                 <div class="col-lg-12">
                                     <div class="content-panel" style="padding-bottom: 15px;">
-                                        <h2 class="centered" style="float: left; width: 100%;"> &nbsp; &nbsp;此处为文章名称</h2><br>
+                                        {% csrf_token %}
+                                        <h2 class="centered" style="float: left; width: 100%;"> &nbsp; &nbsp;{{ title }}</h2><br>
                                         <div class="eventDetials">
-                                            <span class="margin-15">开始时间：2018-01-01</span>
-                                            <span class="margin-15">结束时间：2018-10-10</span>
+                                            <span class="margin-15">发表时间：{{ posttime }}</span>
+                                            <span class="margin-15">文章来源：{{ webSource }}</span>
                                         </div>
                                         <div class="eventAbstract">
                                             <div style="padding: 20px;" id="abstract">
-                                            &nbsp; &nbsp; &nbsp; &nbsp; 此处为事件介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介
-                                                绍介绍介绍介绍介绍介绍介绍介绍
-                                            介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍
-                                            介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍绍介绍介绍介绍介绍介绍介绍介绍
-                                            介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍
-                                            介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍绍介绍介绍介绍介绍介绍介绍介绍
-                                            介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍
-                                            介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍。
+                                            &nbsp; &nbsp; &nbsp; &nbsp; {{ introduction }}
                                             </div>
                                         </div>
                                         <div class="eventFiles">
-                                            &nbsp; &nbsp; &nbsp; &nbsp; 此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文
-                                            此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文
-                                            此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文
-                                            此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文
-                                            此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文
-                                            此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文
-                                            此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文
-                                            此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文
-                                            此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文
-                                            此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文
-                                            此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文
-                                            此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文
-                                            此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文
-                                            此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文
+                                            &nbsp; &nbsp; &nbsp; &nbsp; {{ content }}
                                         </div>
                                         <div id="eventData" class="eventData">
-                                            <button class="btn btn-warning eventButton">📂 收藏量：22</button>
-                                            <button class="btn btn-warning eventButton">👍 点赞数：22</button>
+                                            <button class="btn btn-warning eventButton">📂 收藏量：{{ collectNum }}</button>
+                                            <button class="btn btn-warning eventButton">👍 点赞数：{{ likeNum }}</button>
                                             <button class="btn btn-warning eventButton">😊 判真数：22</button>
                                             <button class="btn btn-warning eventButton">🤬 判假数：22</button>
                                         </div>

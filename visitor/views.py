@@ -8,7 +8,7 @@ from visitor.scripts.signin import *
 # Create your views here.
 # from visitor.scripts.SysLog import Logger
 import random
-from manager.mysqlNullWash import if_is_None, webType_to_strType
+from manager.mysqlNullWash import if_is_None, webType_to_strType, changeWebsite
 import logging
 logger = logging.getLogger('visitor')
 # def login(request):
@@ -126,7 +126,6 @@ def getAllFile(request):
             webtype = "暂缺"
         data.append({"articleid": articleid, "authorname": authorname, "title": title, "content": content, "posttime": posttime,
                      "webname": webname, "webtype": webtype})
-    print(data)
     return JsonResponse({"data": data})
 
 
@@ -228,11 +227,35 @@ def events(request):
 
 def eventparticular(request):
     role = request.session["user_type"]
-    return render(request, 'foreground/particular.html', {"role": role})
+    objectid = request.GET.get("objectid")
+    event = models.Object.objects.get(objectid=objectid)
+    title = event.name
+    introduction = if_is_None(event.introduction, "")
+    trueNum = if_is_None(event.truenumber, "0")
+    flaseNum = if_is_None(event.falsenumber, "0")
+    likeNum = if_is_None(event.likenumber, "0")
+    collectNum = if_is_None(event.collectnumber, "0")
+    begintime = if_is_None(models.Event.objects.get(objectid=objectid).eventbegintime, "暂缺")
+    endtime = if_is_None(models.Event.objects.get(objectid=objectid).eventendtime, "暂缺")
+    data = {"role": role, "objectid": objectid, "title": title, "introduction": introduction, "trueNum": trueNum, "falseNum": flaseNum,
+            "likeNum": likeNum, "collectNum": collectNum, "begintime": begintime, "endtime": endtime}
+    return render(request, 'foreground/particular.html', data)
 
 def fileParticular(request):
     role = request.session["user_type"]
-    return render(request, 'foreground/file.html', {"role": role})
+    articleid = request.GET.get("articleid")
+    article = models.Article.objects.get(articleid=articleid)
+    title = article.name
+    posttime = if_is_None(article.posttime, "暂缺")
+    introduction = if_is_None(article.keywords)
+    content = article.content
+    commentNum = if_is_None(article.commentnumber, "0")
+    collectNum = if_is_None(article.collectnumber, "0")
+    likeNum = if_is_None(article.likenumber, "0")
+    webSource = if_is_None(article.websiteid.websitename, "暂缺")
+    data = {"role": role, "articleid": articleid, "title": title, "posttime": posttime, "introduction": introduction, "content": content,
+            "commentNum": commentNum, "collectNum": collectNum, "likeNum": likeNum, "webSource": webSource}
+    return render(request, 'foreground/file.html', data)
 
 @csrf_exempt
 def checkuser(request):
