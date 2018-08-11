@@ -8,19 +8,22 @@ function pickType(num){
         }
     }
 }
-
-function getFiles(objectid, page){
+function articleSearch(){
+    var searchKeyword = $("#fileSearchInput").val();
+    getFiles("", 0, searchKeyword);
+}
+function getFiles(objectid, page, keyword){
     $.ajax({
-        url: 'getAllFile/?objectid='+objectid+'&page='+page.toString(),
+        url: 'getAllFile/?objectid='+objectid+'&page='+page.toString()+"&keyword="+keyword,
         type: 'GET',
         dataType: 'json',
         success: function(data){
-            addHtml(data.data, page);
+            addHtml(data.data, page, keyword);
         }
     })
 }
 
-function addHtml(dataList, page){
+function addHtml(dataList, page, keyword){
     html = "";
     for(i=0; i<dataList.length; i++){
         data = dataList[i];
@@ -47,7 +50,7 @@ function addHtml(dataList, page){
             "                                </a>"
     };
     if(dataList.length == 20){
-        html+="<a onclick='getFiles(\"\", "+(page+1).toString()+")' class=\"list-group-item\" id='moreItems' style='cursor: pointer;'>\n" +
+        html+="<a onclick='getFiles(\"\", "+(page+1).toString()+","+keyword+")' class=\"list-group-item\" id='moreItems' style='cursor: pointer;'>\n" +
         "       <p class=\"list-group-item-text\">\n" +
         "             点击加载更多。\n" +
         "       </p>\n" +

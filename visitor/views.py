@@ -93,11 +93,13 @@ def fileSearch(request):
 def getAllFile(request):
     page = int(request.GET.get("page"))
     objectid = request.GET.get("objectid")
+    keyword = request.GET.get("keyword")
+    if keyword == "undefined":
+        keyword = ""
     if objectid == "":
-        print("objectid:" + objectid)
-        articles = models.Article.objects.values("articleid", "authorid", "title", "content", "posttime", "websiteid")[page*20: (page+1)*20]
+        articles = models.Article.objects.filter(content__contains=keyword).values("articleid", "authorid", "title", "content", "posttime", "websiteid")[page*20: (page+1)*20]
     else:
-        articles = models.Article.objects.filter(objectid=objectid).values("articleid", "authorid", "title", "content", "posttime", "websiteid")[page*20: (page+1)*20]
+        articles = models.Article.objects.filter(objectid=objectid, content__contains=keyword).values("articleid", "authorid", "title", "content", "posttime", "websiteid")[page*20: (page+1)*20]
     data = []
     for article in articles:
         articleid = article['articleid']
@@ -137,7 +139,6 @@ def getEventList(request):
     page = int(request.GET.get("page"))
     keyword = request.GET.get("keyword")
     if keyword == "undefined":
-        print("~")
         keyword = ""
     items = models.Object.objects.filter(objecttype="事件").filter(name__contains=keyword).values \
                   ("objectid", "name", "introduction", "collectnumber", "likenumber", "commentnumber")[page*20: (page+1)*20]
@@ -159,7 +160,6 @@ def getEventList(request):
             heatIndex = "暂缺"
         data.append({"objectid": objectid, "title": title, "introduction": introduction, "collectNum": collectNum,
                      "likeNum": likeNum, "commentNum": commentNum, "heatIndex": heatIndex, "starttime": starttime})
-    print(data)
     return JsonResponse({"data": data})
 
 # def signin(request):
