@@ -113,6 +113,7 @@ def tongji(request):
     wangzhan = request.POST
     tablename = {}
     for i in wangzhan:
+        print(i)
         tablename = json.loads(i)
     print(tablename)
     db = pymysql.connect(host="localhost", user="root",
@@ -120,6 +121,7 @@ def tongji(request):
     cur = db.cursor()
     sql = "select "+tablename['columnname']+",count(*) as num from "+tablename['tablename']+" group by "+tablename['columnname']+" ORDER BY num DESC LIMIT 10"
     try:
+
         cur.execute(sql)  # 执行sql语句
         results = cur.fetchall()  # 获取查询的所有记录
         for row in results:
@@ -132,6 +134,87 @@ def tongji(request):
                     diction['value'] = col
                 i = i+1
             dataList.append(diction)
+    except Exception as e:
+        raise e
+    finally:
+        db.close()  # 关闭连接
+    data = {"data": dataList}
+    print(data)
+    return HttpResponse(json.dumps(data))
+@csrf_exempt
+def washaction(request):
+    print(request.POST)
+    dataList = []
+    washform = request.POST
+    # print(washform)
+    actiontype = washform.get('formtype')
+    columnname = washform.get('columnname')
+    sitename = washform.get('sitename')
+    tablename = washform.get('tablename')
+    chehuiStack = washform.get('chehuiStack')
+    adminname = washform.get('adminname')
+    if actiontype == 'tihuan':
+        tihuanbefore = washform.get('tihuanval1')
+        tihuanafter = washform.get('tihuanval2')
+        db = pymysql.connect(host="localhost", user="root",
+                             password="461834084", db=sitename, port=3306)
+        cur = db.cursor()
+        sql = "DROP TABLE IF EXISTS "+"beifen_"+tablename+adminname+chehuiStack
+        sql2 = "create table "+"beifen_"+tablename+adminname+chehuiStack+" like "+tablename
+        sql3 = "insert into "+"beifen_"+tablename+adminname+chehuiStack+" select * from "+tablename
+        sql4 = "UPDATE "+tablename+" SET "+columnname+"='"+tihuanafter+"' WHERE "+columnname+"='"+tihuanbefore+"'"
+        # print(sql+";"+sql2+";"+sql3+";")
+        # sql5 = sql+";"+sql2+";"+sql3+";"
+        try:
+            # print(sql4)
+            cur.execute(sql)  #
+            cur.execute(sql2)  #
+            a = cur.execute(sql3)  #
+            cur.execute(sql4)
+            db.commit()
+            if a == 1:
+                print("yes"+str(a))
+            else:
+                print("no "+str(a))
+        except Exception as e:
+            raise e
+        finally:
+            db.close()  # 关闭连接
+    data = {"data": dataList}
+    print(data)
+    return HttpResponse(json.dumps(data))
+@csrf_exempt
+def rollback(request):
+    print(request.POST)
+    dataList = []
+    wangzhan = request.POST
+
+    linshi = {}
+    for i in wangzhan:
+        linshi = json.loads(i)
+    sitename = linshi['sitename']
+    tablename = linshi['tablename']
+    chehuiStack = linshi['chehuiStack']
+    # columnname = linshi['columnname']
+    adminname = linshi['adminname']
+    db = pymysql.connect(host="localhost", user="root",
+                         password="461834084", db=sitename, port=3306)
+    cur = db.cursor()
+    sql = "DROP TABLE IF EXISTS " + tablename
+    sql2 = "create table " + tablename + " like " + "beifen_" + tablename + adminname + chehuiStack
+    sql3 = "insert into " + tablename + " select * from " + "beifen_" + tablename + adminname + chehuiStack
+    sql4 = "drop table "+"beifen_" + tablename + adminname + chehuiStack
+    try:
+        # print(sql4)
+        cur.execute(sql)  #
+        cur.execute(sql2)  #
+        a = cur.execute(sql3)  #
+        db.commit()
+        if a == 1:
+            print("yes" + str(a))
+        else:
+            print("no " + str(a))
+        cur.execute(sql4)
     except Exception as e:
         raise e
     finally:
