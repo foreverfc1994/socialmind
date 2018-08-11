@@ -148,33 +148,38 @@ def washaction(request):
     washform = request.POST
     # print(washform)
     actiontype = washform.get('formtype')
+    columnname = washform.get('columnname')
+    sitename = washform.get('sitename')
+    tablename = washform.get('tablename')
+    chehuiStack = washform.get('chehuiStack')
+    adminname = washform.get('adminname')
     if actiontype == 'tihuan':
         tihuanbefore = washform.get('tihuanval1')
         tihuanafter = washform.get('tihuanval2')
         db = pymysql.connect(host="localhost", user="root",
-                             password="461834084", db=tablename['sitename'], port=3306)
+                             password="461834084", db=sitename, port=3306)
         cur = db.cursor()
-        sql = "select " + tablename['columnname'] + ",count(*) as num from " + tablename['tablename'] + " group by " + \
-              tablename['columnname'] + " ORDER BY num DESC LIMIT 10"
+        sql = "DROP TABLE IF EXISTS "+"beifen_"+tablename+adminname+chehuiStack
+        sql2 = "create table "+"beifen_"+tablename+adminname+chehuiStack+" like "+tablename
+        sql3 = "insert into "+"beifen_"+tablename+adminname+chehuiStack+" select * from "+tablename
+        sql4 = "UPDATE "+tablename+" SET "+columnname+"='"+tihuanafter+"' WHERE "+columnname+"='"+tihuanbefore+"'"
+        # print(sql+";"+sql2+";"+sql3+";")
+        # sql5 = sql+";"+sql2+";"+sql3+";"
         try:
-
-            cur.execute(sql)  # 执行sql语句
-            results = cur.fetchall()  # 获取查询的所有记录
-            for row in results:
-                i = 0
-                diction = {}
-                for col in row:
-                    if i == 0:
-                        diction['name'] = col
-                    elif i == 1:
-                        diction['value'] = col
-                    i = i + 1
-                dataList.append(diction)
+            # print(sql4)
+            cur.execute(sql)  #
+            cur.execute(sql2)  #
+            a = cur.execute(sql3)  #
+            cur.execute(sql4)
+            db.commit()
+            if a == 1:
+                print("yes"+str(a))
+            else:
+                print("no "+str(a))
         except Exception as e:
             raise e
         finally:
             db.close()  # 关闭连接
-
     data = {"data": dataList}
     print(data)
     return HttpResponse(json.dumps(data))
