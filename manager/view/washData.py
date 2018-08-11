@@ -183,6 +183,45 @@ def washaction(request):
     data = {"data": dataList}
     print(data)
     return HttpResponse(json.dumps(data))
+@csrf_exempt
+def rollback(request):
+    print(request.POST)
+    dataList = []
+    wangzhan = request.POST
+
+    linshi = {}
+    for i in wangzhan:
+        linshi = json.loads(i)
+    sitename = linshi['sitename']
+    tablename = linshi['tablename']
+    chehuiStack = linshi['chehuiStack']
+    # columnname = linshi['columnname']
+    adminname = linshi['adminname']
+    db = pymysql.connect(host="localhost", user="root",
+                         password="461834084", db=sitename, port=3306)
+    cur = db.cursor()
+    sql = "DROP TABLE IF EXISTS " + tablename
+    sql2 = "create table " + tablename + " like " + "beifen_" + tablename + adminname + chehuiStack
+    sql3 = "insert into " + tablename + " select * from " + "beifen_" + tablename + adminname + chehuiStack
+    sql4 = "drop table "+"beifen_" + tablename + adminname + chehuiStack
+    try:
+        # print(sql4)
+        cur.execute(sql)  #
+        cur.execute(sql2)  #
+        a = cur.execute(sql3)  #
+        db.commit()
+        if a == 1:
+            print("yes" + str(a))
+        else:
+            print("no " + str(a))
+        cur.execute(sql4)
+    except Exception as e:
+        raise e
+    finally:
+        db.close()  # 关闭连接
+    data = {"data": dataList}
+    print(data)
+    return HttpResponse(json.dumps(data))
 def fenyedudb(sitename,tablename,page,len):
     db = pymysql.connect(host="localhost", user="root",
                          password="461834084", db=sitename, port=3306)

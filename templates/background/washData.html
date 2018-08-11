@@ -568,7 +568,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <label id="tableshowname">数据源表</label>
-                            <button id="rollback" onclick="rollback(this)" class="btn btn-info btn-xs" style="margin-right: 10px;float: right"><span class="glyphicon glyphicon-circle-arrow-left"></span> 撤回</button>
+                            <button id="rollback" onclick="rollback(this)" class="btn btn-info btn-xs" style="display: none;margin-right: 10px;float: right"><span class="glyphicon glyphicon-circle-arrow-left"></span> 撤回</button>
                         </div>
                         <div id="beginwash" style="display: none;color: #333;background-color: #f5f5f5;border-color: #ddd;padding: 10px 15px;border-bottom: 1px solid transparent;border-top-left-radius: 3px;border-top-right-radius: 3px;">
                             <form class="form-inline">
@@ -643,10 +643,12 @@
                                         <input id="tihuanval1" type="text" name="tihuanval1" placeholder="该列被替换的值" class="form-control">
                                         <label for="tihuanval2">替换为</label>
                                         <input id="tihuanval2" type="text" name="tihuanval2" placeholder="替换值       " class="form-control">
-                                        <button onclick="washsumit('formtihuan')" type="button" class="btn btn-success btn-sm">执行</button>
+                                        <button onclick="washsumit('formtihuan',this)" type="button" class="btn btn-success btn-sm">执行</button>
                                     </form>
                                 </div>
                                 <div id="formg1" class="form-group" style="display: none">
+                                        <form style="display: none"></form>
+                                    <form id="formqueshizhi" method="POST" action="">
                                     <label for="exampleInputName2">缺失值</label>
                                     <select id="queshizhisel" class="form-control" >
                                         <option>填充null</option>
@@ -672,6 +674,8 @@
                                             });
                                         });
                                     </script>
+                                    </form>
+                                    <button onclick="washsumit('formqueshizhi',this)" type="button" class="btn btn-success btn-sm">执行</button>
                                 </div>
                                 <div id="formg2" class="form-group" style="display: none">
                                     <label for="exampleInputName2">一致性</label>
@@ -1085,10 +1089,10 @@
             alert(a[i])
         } */
     }
-    function washsumit(formid){
+    function washsumit(formid,thisbtn){
         var sitename = $('#sitename').val()
         var tablename = $("#tableshowname").html()
-        $(this).attr('disabled',"true");
+        $(thisbtn).hide();
         $.ajax({
             type: "POST",//方法类型
             dataType: "json",//预期服务器返回的数据类型
@@ -1097,8 +1101,9 @@
             success: function (data) {
                 if(chehuiStack < 0) chehuiStack = 0;
                 chehuiStack = chehuiStack + 1
-                alert("yes")
-                $(this).removeAttr('disabled');
+                alert("修改成功")
+                $("#rollback").show()
+                $(thisbtn).show();
             },
             error : function(data) {
                 alert('数据获取失败！')
@@ -1106,16 +1111,20 @@
         });
     }
     function rollback(thisbtn){
+        var sitename = $('#sitename').val()
+        var tablename = $("#tableshowname").html()
+        $(thisbtn).hide();
         $.ajax({
             type: "POST",//方法类型
             dataType: "json",//预期服务器返回的数据类型
-            url: "/washData/washaction/" ,//url
-            data: $('#'+formid).serialize()+"&columnname="+columnname+"&sitename="+sitename+"&tablename="+tablename+"&chehuiStack="+chehuiStack+"&adminname="+adminname,
+            url: "/washData/rollback/" ,//url
+            data: '{"sitename": "'+sitename+'", "tablename": "'+tablename+'",'+'"chehuiStack": "'+(chehuiStack-1)+'", "adminname": "'+adminname+'"}',
             success: function (data) {
-                if(chehuiStack < 0) chehuiStack = 0;
-                chehuiStack = chehuiStack + 1
+                chehuiStack = chehuiStack-1
                 alert("yes")
-                $(this).removeAttr('disabled');
+                if(chehuiStack <= 0){
+                    $("#rollback").hide()
+                }
             },
             error : function(data) {
                 alert('数据获取失败！')
