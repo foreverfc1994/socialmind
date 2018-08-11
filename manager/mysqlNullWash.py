@@ -6,7 +6,7 @@ def if_is_None(data, default=""):
     return data
 
 def webType_to_strType(typeNum):
-    dic = {"0": "", "9": "政府公告", "10": "新闻", "11": "博文", "12": "帖子", "13": "网络聊天"}
+    dic = {"0": "未知", "9": "政府公告", "10": "新闻", "11": "博文", "12": "帖子", "13": "网络聊天"}
     return dic[typeNum]
 
 def changeWebsite(id):

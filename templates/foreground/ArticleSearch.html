@@ -24,7 +24,6 @@
     <script src="{% static 'assets0/js/chart-master/Chart.js' %}"></script>
     <script src="{% static 'assets0/js/echarts.js' %}"></script>
     <script src="{% static 'assets0/js/wordcloud2.js' %}"></script>
-    <script src="{% static 'assets0/js/fileJs/com_index.js' %}" type="text/javascript"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -258,23 +257,23 @@
                             <h2 style="margin-top: 50px;text-align: center">全网文章搜索</h2>
                             <br>
 
-                            <input class="form-control panel-input" id="fileSearchInput" type="text"
+                            <input class="form-control panel-input" id="fileSearchInput" type="text" placeholder="{{ name }}"
                             >
                             &nbsp&nbsp
-                            <button class="btn btn-warning searhButton">查找</button>
+                            <button class="btn btn-warning searhButton" onclick="articleSearch()">查找</button>
 
                             <br><br><br>
                             <div class="row" style="margin-right: 80px;margin-left: 80px">
                                 <table class="mt">
                                     <tr id="typeSelect">
-                                        <td class="active" style="text-align: center"><a href=" " onclick="pickType(0);">热点</a></td>
-                                        <td class style="text-align: center"><a href="javascript:void(0);" onclick="pickType(1);">教育</a></td>
-                                        <td class style="text-align: center"><a href="javascript:void(0);" onclick="pickType(2);">明星</a></td>
-                                        <td class style="text-align: center"><a href="javascript:void(0);" onclick="pickType(3);">股票</a></td>
-                                        <td class style="text-align: center"><a href="javascript:void(0);" onclick="pickType(4);">娱乐</a></td>
-                                        <td class style="text-align: center"><a href="javascript:void(0);" onclick="pickType(5);">人物</a></td>
-                                        <td class style="text-align: center"><a href="javascript:void(0);" onclick="pickType(6);">汽车</a></td>
-                                        <td class style="text-align: center"><a href="javascript:void(0);" onclick="pickType(7);">手机</a></td>
+                                        <td class="active" style="text-align: center"><a href=" " onclick="pickType(0);">全部</a></td>
+                                        <td class style="text-align: center"><a href="javascript:void(0);" onclick="pickType(1);">热点</a></td>
+                                        <td class style="text-align: center"><a href="javascript:void(0);" onclick="pickType(2);">教育</a></td>
+                                        <td class style="text-align: center"><a href="javascript:void(0);" onclick="pickType(3);">明星</a></td>
+                                        <td class style="text-align: center"><a href="javascript:void(0);" onclick="pickType(4);">股票</a></td>
+                                        <td class style="text-align: center"><a href="javascript:void(0);" onclick="pickType(5);">娱乐</a></td>
+                                        <td class style="text-align: center"><a href="javascript:void(0);" onclick="pickType(6);">人物</a></td>
+                                        <td class style="text-align: center"><a href="javascript:void(0);" onclick="pickType(7);">汽车</a></td>
                                         <td class style="text-align: center"><a href="javascript:void(0);" onclick="pickType(8);">景区</a></td>
                                         <td class style="text-align: center"><a href="javascript:void(0);" onclick="pickType(9);">电脑</a></td>
                                         <td class style="text-align: center"><a href="javascript:void(0);" onclick="pickType(10);">家电</a></td>
@@ -287,427 +286,11 @@
 
                             <br>
                             <br>
-                            <div style="margin-left: 80px;margin-right: 80px" class="list-group">
-                                <a href="/fileParticular/" class="list-group-item"
-                                >
-                                    <div class="row">
-                                        <div class="col-lg-7">
-                                            <h3 class="list-group-item-heading">习近平访问中东非洲五国并出席金砖国家领导人会晤</h3>
-
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <table>
-                                                <tr>
-                                                    <td style="width: 25%;">时间：2018-5-17</td>
-                                                    <td style="width: 25%;">作者：xxxxxx</td>
-                                                    <td style="width: 25%;">网站：天涯论坛</td>
-                                                    <td style="width: 25%;">类型：帖子</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        {#                                        <div class="col-lg-4">#}
-                                        {#                                            <span class="layui-badge layui-bg-blue">点赞 1</span>#}
-                                        {#                                            <span class="layui-badge layui-bg-blue">评论 2</span>#}
-                                        {#                                            <span class="layui-badge layui-bg-blue">收藏 3</span>#}
-                                        {#                                        </div>#}
-                                    </div>
-
-
-                                    <p class="list-group-item-text">
-                                        习近平同塞内加尔总统萨勒举行会谈。
-                                    </p>
-                                </a>
-                                <a href="/fileParticular/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-7">
-                                            <h3 class="list-group-item-heading">习近平访问中东非洲五国并出席金砖国家领导人会晤</h3>
-
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <table>
-                                                <tr>
-                                                    <td style="width: 25%;">时间：2018-5-17</td>
-                                                    <td style="width: 25%;">作者：xxxxxx</td>
-                                                    <td style="width: 25%;">网站：天涯论坛</td>
-                                                    <td style="width: 25%;">类型：帖子</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <p class="list-group-item-text">
-                                        习近平同塞内加尔总统萨勒举行会谈。
-                                    </p>
-                                </a>
-                                <a href="/fileParticular/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-7">
-                                            <h3 class="list-group-item-heading">共和国农机工业“长子”成长记</h3>
-
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <table>
-                                                <tr>
-                                                    <td style="width: 25%;">时间：2018-5-17</td>
-                                                    <td style="width: 25%;">作者：xxxxxx</td>
-                                                    <td style="width: 25%;">网站：天涯论坛</td>
-                                                    <td style="width: 25%;">类型：帖子</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
-                                    <p class="list-group-item-text">
-                                        东方红拖拉机，60年前中国人自己制造 在改革开放中浴火重生 在世界100多个国家打响名号
-                                    </p>
-                                </a>
-                                <a href="/fileParticular/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-7">
-                                            <h3 class="list-group-item-heading">宁夏红寺堡：农产品“触网”“远嫁”助农民增收</h3>
-
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <table>
-                                                <tr>
-                                                    <td style="width: 25%;">时间：2018-5-17</td>
-                                                    <td style="width: 25%;">作者：xxxxxx</td>
-                                                    <td style="width: 25%;">网站：天涯论坛</td>
-                                                    <td style="width: 25%;">类型：帖子</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
-
-                                    <p class="list-group-item-text">
-                                        电商真可以，隔着几百公里，也能帮我找到买鸡人。
-                                    </p>
-                                </a>
-                                <a href="/fileParticular/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-7">
-                                            <h3 class="list-group-item-heading">综述：欧盟重罚谷歌背后的理念分歧</h3>
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <table>
-                                                <tr>
-                                                    <td style="width: 25%;">时间：2018-5-17</td>
-                                                    <td style="width: 25%;">作者：xxxxxx</td>
-                                                    <td style="width: 25%;">网站：天涯论坛</td>
-                                                    <td style="width: 25%;">类型：帖子</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
-
-                                    <p class="list-group-item-text">
-                                        欧盟委员会近日宣布对谷歌处以４３．４亿欧元罚款
-                                    </p>
-                                </a>
-                                <a href="/fileParticular/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-7">
-                                            <h3 class="list-group-item-heading">西安市疾控中心提醒市民 热浪来袭预防中暑发生</h3>
-
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <table>
-                                                <tr>
-                                                    <td style="width: 25%;">时间：2018-5-17</td>
-                                                    <td style="width: 25%;">作者：xxxxxx</td>
-                                                    <td style="width: 25%;">网站：天涯论坛</td>
-                                                    <td style="width: 25%;">类型：帖子</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
-                                    <p class="list-group-item-text">西安市疾控中心提醒市民 热浪来袭预防中暑发生</p>
-                                </a>
-                                <a href="/fileParticular/" class="list-group-item"
-                                >
-                                    <div class="row">
-                                        <div class="col-lg-7">
-                                            <h3 class="list-group-item-heading">习近平访问中东非洲五国并出席金砖国家领导人会晤</h3>
-
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <table>
-                                                <tr>
-                                                    <td style="width: 25%;">时间：2018-5-17</td>
-                                                    <td style="width: 25%;">作者：xxxxxx</td>
-                                                    <td style="width: 25%;">网站：天涯论坛</td>
-                                                    <td style="width: 25%;">类型：帖子</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        {#                                        <div class="col-lg-4">#}
-                                        {#                                            <span class="layui-badge layui-bg-blue">点赞 1</span>#}
-                                        {#                                            <span class="layui-badge layui-bg-blue">评论 2</span>#}
-                                        {#                                            <span class="layui-badge layui-bg-blue">收藏 3</span>#}
-                                        {#                                        </div>#}
-                                    </div>
-
-
-                                    <p class="list-group-item-text">
-                                        习近平同塞内加尔总统萨勒举行会谈。
-                                    </p>
-                                </a>
-                                <a href="/fileParticular/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-7">
-                                            <h3 class="list-group-item-heading">习近平访问中东非洲五国并出席金砖国家领导人会晤</h3>
-
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <table>
-                                                <tr>
-                                                    <td style="width: 25%;">时间：2018-5-17</td>
-                                                    <td style="width: 25%;">作者：xxxxxx</td>
-                                                    <td style="width: 25%;">网站：天涯论坛</td>
-                                                    <td style="width: 25%;">类型：帖子</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <p class="list-group-item-text">
-                                        习近平同塞内加尔总统萨勒举行会谈。
-                                    </p>
-                                </a>
-                                <a href="/fileParticular/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-7">
-                                            <h3 class="list-group-item-heading">共和国农机工业“长子”成长记</h3>
-
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <table>
-                                                <tr>
-                                                    <td style="width: 25%;">时间：2018-5-17</td>
-                                                    <td style="width: 25%;">作者：xxxxxx</td>
-                                                    <td style="width: 25%;">网站：天涯论坛</td>
-                                                    <td style="width: 25%;">类型：帖子</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
-                                    <p class="list-group-item-text">
-                                        东方红拖拉机，60年前中国人自己制造 在改革开放中浴火重生 在世界100多个国家打响名号
-                                    </p>
-                                </a>
-                                <a href="/fileParticular/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-7">
-                                            <h3 class="list-group-item-heading">宁夏红寺堡：农产品“触网”“远嫁”助农民增收</h3>
-
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <table>
-                                                <tr>
-                                                    <td style="width: 25%;">时间：2018-5-17</td>
-                                                    <td style="width: 25%;">作者：xxxxxx</td>
-                                                    <td style="width: 25%;">网站：天涯论坛</td>
-                                                    <td style="width: 25%;">类型：帖子</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
-
-                                    <p class="list-group-item-text">
-                                        电商真可以，隔着几百公里，也能帮我找到买鸡人。
-                                    </p>
-                                </a>
-                                <a href="/fileParticular/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-7">
-                                            <h3 class="list-group-item-heading">综述：欧盟重罚谷歌背后的理念分歧</h3>
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <table>
-                                                <tr>
-                                                    <td style="width: 25%;">时间：2018-5-17</td>
-                                                    <td style="width: 25%;">作者：xxxxxx</td>
-                                                    <td style="width: 25%;">网站：天涯论坛</td>
-                                                    <td style="width: 25%;">类型：帖子</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
-
-                                    <p class="list-group-item-text">
-                                        欧盟委员会近日宣布对谷歌处以４３．４亿欧元罚款
-                                    </p>
-                                </a>
-                                <a href="/fileParticular/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-7">
-                                            <h3 class="list-group-item-heading">西安市疾控中心提醒市民 热浪来袭预防中暑发生</h3>
-
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <table>
-                                                <tr>
-                                                    <td style="width: 25%;">时间：2018-05-17</td>
-                                                    <td style="width: 25%;">作者：xxxxxxxxxx</td>
-                                                    <td style="width: 25%;">网站：天涯论坛xxx</td>
-                                                    <td style="width: 25%;">类型：帖子xxxxxxx</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
-                                    <p class="list-group-item-text">西安市疾控中心提醒市民 热浪来袭预防中暑发生</p>
-                                </a>
-                                <a href="/fileParticular/" class="list-group-item"
-                                >
-                                    <div class="row">
-                                        <div class="col-lg-7">
-                                            <h3 class="list-group-item-heading">习近平访问中东非洲五国并出席金砖国家领导人会晤</h3>
-
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <table>
-                                                <tr>
-                                                    <td style="width: 25%;">时间：2018-05-17</td>
-                                                    <td style="width: 25%;">作者：xxxxxxxxxx</td>
-                                                    <td style="width: 25%;">网站：天涯论坛xxx</td>
-                                                    <td style="width: 25%;">类型：帖子xxxxxxx</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        {#                                        <div class="col-lg-4">#}
-                                        {#                                            <span class="layui-badge layui-bg-blue">点赞 1</span>#}
-                                        {#                                            <span class="layui-badge layui-bg-blue">评论 2</span>#}
-                                        {#                                            <span class="layui-badge layui-bg-blue">收藏 3</span>#}
-                                        {#                                        </div>#}
-                                    </div>
-
-
-                                    <p class="list-group-item-text">
-                                        习近平同塞内加尔总统萨勒举行会谈。
-                                    </p>
-                                </a>
-                                <a href="/fileParticular/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-7">
-                                            <h3 class="list-group-item-heading">习近平访问中东非洲五国并出席金砖国家领导人会晤</h3>
-
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <table>
-                                                <tr>
-                                                    <td style="width: 25%;">时间：2018-05-17</td>
-                                                    <td style="width: 25%;">作者：xxxxxxxxxx</td>
-                                                    <td style="width: 25%;">网站：天涯论坛xxx</td>
-                                                    <td style="width: 25%;">类型：帖子xxxxxxx</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <p class="list-group-item-text">
-                                        习近平同塞内加尔总统萨勒举行会谈。
-                                    </p>
-                                </a>
-                                <a href="/fileParticular/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-7">
-                                            <h3 class="list-group-item-heading">共和国农机工业“长子”成长记</h3>
-
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <table>
-                                                <tr>
-                                                    <td style="width: 25%;">时间：2018-05-17</td>
-                                                    <td style="width: 25%;">作者：xxxxxxxxxx</td>
-                                                    <td style="width: 25%;">网站：天涯论坛xxx</td>
-                                                    <td style="width: 25%;">类型：帖子xxxxxxx</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
-                                    <p class="list-group-item-text">
-                                        东方红拖拉机，60年前中国人自己制造 在改革开放中浴火重生 在世界100多个国家打响名号
-                                    </p>
-                                </a>
-                                <a href="/fileParticular/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-7">
-                                            <h3 class="list-group-item-heading">宁夏红寺堡：农产品“触网”“远嫁”助农民增收</h3>
-
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <table>
-                                                <tr>
-                                                    <td style="width: 25%;">时间：2018-05-17</td>
-                                                    <td style="width: 25%;">作者：xxxxxxxxxx</td>
-                                                    <td style="width: 25%;">网站：天涯论坛xxx</td>
-                                                    <td style="width: 25%;">类型：帖子xxxxxxx</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
-
-                                    <p class="list-group-item-text">
-                                        电商真可以，隔着几百公里，也能帮我找到买鸡人。
-                                    </p>
-                                </a>
-                                <a href="/fileParticular/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-7">
-                                            <h3 class="list-group-item-heading">综述：欧盟重罚谷歌背后的理念分歧</h3>
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <table>
-                                                <tr>
-                                                    <td style="width: 25%;">时间：2018-05-17</td>
-                                                    <td style="width: 25%;">作者：xxxxxxxxxx</td>
-                                                    <td style="width: 25%;">网站：天涯论坛xxx</td>
-                                                    <td style="width: 25%;">类型：帖子xxxxxxx</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
-
-                                    <p class="list-group-item-text">
-                                        欧盟委员会近日宣布对谷歌处以４３．４亿欧元罚款
-                                    </p>
-                                </a>
-                                <a href="/fileParticular/" class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-lg-7">
-                                            <h3 class="list-group-item-heading">西安市疾控中心提醒市民 热浪来袭预防中暑发生</h3>
-
-                                        </div>
-                                        <div class="col-lg-5">
-                                            <table>
-                                                <tr>
-                                                    <td style="width: 25%;">时间：2018-05-17</td>
-                                                    <td style="width: 25%;">作者：xxxxxxxxxx</td>
-                                                    <td style="width: 25%;">网站：天涯论坛xxx</td>
-                                                    <td style="width: 25%;">类型：帖子xxxxxxx</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-
-                                    <p class="list-group-item-text">西安市疾控中心提醒市民 热浪来袭预防中暑发生</p>
-                                </a>
+                            <div style="margin-left: 80px;margin-right: 80px" class="list-group" id="results">
                             </div>
-
                         </div>
-
-
                     </div>
                 </div>
-
-
             </div>
         </section>
     </div>
@@ -721,20 +304,11 @@
 <script src="{% static 'assets0/js/jquery-1.8.3.min.js' %}"></script>
 <script src="{% static 'assets0/js/bootstrap.min.js' %}"></script>
 <script src="//res.layui.com/layui/src/layui.js?t=1531663423583" charset="utf-8"></script>
-<script>
-    function pickType(num) {
-        var tds = document.getElementById("typeSelect").getElementsByTagName("td");
-        tds[num].className = "active";
-        for (i = 0; i < 14; i++) {
-            if (i != num) {
-                td = tds[i];
-                $(td).removeClass();
-            }
-        }
-    }
-     layui.use('element', function () {
-        var element = layui.element;
+<script src="{% static 'assets0/js/fileJs/fileSearch.js' %}"></script>
 
-    });
+<script>
+    window.onload = function(){
+        getFiles("{{ objectid }}", 0);
+    }
 </script>
 </body>
