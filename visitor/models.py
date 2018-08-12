@@ -606,6 +606,7 @@ class Message(models.Model):
     messagetime = models.CharField(db_column='messageTime', max_length=36, blank=True, null=True)  # Field name made lowercase.
     objectid = models.ForeignKey('Object', models.DO_NOTHING, db_column='objectID', blank=True, null=True)  # Field name made lowercase.
     checked = models.CharField(max_length=1, blank=True, null=True)
+    userid = models.CharField(db_column='userid', max_length=36, blank=True)
 
     class Meta:
         managed = False

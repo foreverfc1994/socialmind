@@ -41,6 +41,7 @@ urlpatterns = [
     path('profile/', UserInfoManageview.profile),
     path('jump/',loginviews.jump),
     path('eventParticular/', vviews.eventparticular),
+    path('eventParticular/getComments/', vviews.getEventComments),
     path('fileParticular/', vviews.fileParticular),
     path('fileSearch/', vviews.fileSearch, name='fileSearch'),
     path('fileSearch/getAllFile/', vviews.getAllFile, name='fileSearch'),

@@ -288,51 +288,7 @@
                                     <input type="text"  class="form-control" placeholder="输入您要评论的内容：">
                                 </div>
                                 <button type="button" class="btn btn-warning" style="height: 44px; width: 80px; margin-left: 5%;">🖊 评论</button>
-                                <div class="comments" id="commentsDiv">
-                                    <div id="112233" class="commentBlock">
-                                        <table>
-                                            <tr>
-                                                <td class="commentsImgTd">
-                                                    <div class="commentsImgDiv">
-                                                        <img src="{% static 'assets0/img/product.jpg' %}" class="commentsImg">
-                                                    </div>
-                                                </td>
-                                                <td class="commentsCommentTd">
-                                                    <ul>
-                                                        <p class="comment"><b class="commenterName">用户名称：</b>(这是一则有声音的评论)升职！加薪！升职！加薪！
-                                                        升职！加薪！升职！加薪！升职！加薪！升职！加薪！升职！加薪！升职！加薪！升职！加薪！升职！加薪！
-                                                        升职！加薪！升职！加薪！升职！加薪！升职！加薪！升职！加薪！升职！加薪！升职！加薪！升职！加薪！
-                                                        升职！加薪！升职！加薪！</p>
-                                                    </ul>
-                                                    <ul>
-                                                        <span class="fl grayText">2018-01-02</span>
-                                                        <span class="fr cursorPoint"><a href="javascript:void(0)" class="grayText">👍&nbsp;赞:&nbsp;&nbsp;2212&nbsp;&nbsp;</a></span>
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                    <div id="112232" class="commentBlock">
-                                        <table>
-                                            <tr>
-                                                <td class="commentsImgTd">
-                                                    <div class="commentsImgDiv">
-                                                        <img src="{% static 'assets0/img/product.jpg' %}" class="commentsImg">
-                                                    </div>
-                                                </td>
-                                                <td class="commentsCommentTd">
-                                                    <ul>
-                                                        <p class="comment"><b class="commenterName">用户名称：</b>(这是一则有声音的评论)升职！加薪！</p>
-                                                    </ul>
-                                                    <ul>
-                                                        <span class="fl grayText">2018-01-02</span>
-                                                        <span class="fr cursorPoint"><a href="javascript:void(0)" class="grayText">👍&nbsp;赞:&nbsp;&nbsp;2212&nbsp;&nbsp;</a></span>
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
+                                <div class="comments" id="commentsDiv"></div>
                             </div>
                             <div id="choiceFunc" class="eventData">
                                 <button class="btn btn-theme04 event3Buttons" id="change0" value="open0" onclick="changePage(this.value)">事件指数</button>
@@ -774,6 +730,7 @@ document.write(unescape("%3Cspan id='cnzz_stat_icon_30088308'%3E%3C/span%3E%3Csc
 </script>
 <script>
     window.onload = function(){
+        loadComments("{{ objectid }}");
         eventTrendStatistic();//事件走势统计
         heatIndexBoom();//热度爆发统计
         mediaLivenessIndex();//媒体活跃度

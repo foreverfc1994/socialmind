@@ -240,12 +240,25 @@ def eventparticular(request):
     data = {"role": role, "objectid": objectid, "title": title, "introduction": introduction, "trueNum": trueNum, "falseNum": flaseNum,
             "likeNum": likeNum, "collectNum": collectNum, "begintime": begintime, "endtime": endtime}
     return render(request, 'foreground/particular.html', data)
+def getEventComments(request):
+    objectid = request.GET.get("objectid")
+    data = []
+    comments = models.Message.objects.filter(objectid=objectid, checked="1")
+    if(len(comments)>0):
+        for comment in comments:
+            content = comment.messagecontent
+            messageTime = if_is_None(comment.messagetime)
+            userid = comment.userid
+            username = if_is_None(models.User.objects.get(userid=userid).username, "未知用户")
+            data.append({"content": content, "messageTime": messageTime, "username": username})
+    return JsonResponse({"data": data})
+
 
 def fileParticular(request):
     role = request.session["user_type"]
     articleid = request.GET.get("articleid")
     article = models.Article.objects.get(articleid=articleid)
-    title = article.name
+    title = article.title
     posttime = if_is_None(article.posttime, "暂缺")
     introduction = if_is_None(article.keywords)
     content = article.content
