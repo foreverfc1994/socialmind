@@ -650,35 +650,45 @@
                                 <div id="formg1" class="form-group" style="display: none">
                                     <form style="display: none"></form>
                                     <form id="formqueshizhi" method="POST" action="">
-                                    {% csrf_token %}
-                                    <input name="formtype" type="text" style="display: none" value="queshizhi">
-                                    <label for="exampleInputName2">缺失值</label>
-                                    <select id="queshizhisel" name="tianzhongzhi" class="form-control" >
-                                        <option>选择填充值：</option>
-                                        <option value="null">填充null</option>
-                                        <option value="avg">填充均值 </option>
-                                        <option value="max">填充最大值 </option>
-                                        <option value="min">填充最小值 </option>
-                                        <option value="mid">填充中值  </option>
-                                        <option value="frequent">填充最频繁值 </option>
-                                        <option value="inputval">填充指定值</option>
-                                        <option value="delthiscol">删除该列 </option>
-                                    </select>
-                                    <input id="addval" name="inputval" value="" placeholder="填充指定值" class="form-control" style="display: none">
-                                    <script>
-                                        $(document).ready(function(){
-                                            $("#queshizhisel").change(function(){
-                                                /* alert($("#queshizhisel").get(0).selectedIndex); */
-                                                if(7 == $("#queshizhisel").get(0).selectedIndex){
-                                                    $("#addval").show()
-                                                }
-                                                else{
-                                                    $("#addval").hide()
-                                                }
+                                        {% csrf_token %}
+                                        <input name="formtype" type="text" style="display: none" value="queshizhi">
+                                        <label for="exampleInputName2">缺失值</label>
+                                        <select id="queshizhisel" name="tianzhongzhi" class="form-control" >
+                                            <option value="">选择填充值：</option>
+                                            <option value="null">填充null</option>
+                                            <option value="avg">填充均值 </option>
+                                            <option value="max">填充最大值 </option>
+                                            <option value="min">填充最小值 </option>
+                                            <option value="mid">填充中值  </option>
+                                            <option value="frequent">填充最频繁值 </option>
+                                            <option value="inputval">填充指定值</option>
+                                            <option value="delthiscol">删除该列 </option>
+                                        </select>
+                                        <input id="addval" name="inputval" value="" placeholder="填充指定值" class="form-control" style="display: none">
+                                        <script>
+                                            $(document).ready(function(){
+                                                $("#queshizhisel").change(function(){
+                                                    /* alert($("#queshizhisel").get(0).selectedIndex); */
+                                                    if('' == $("#queshizhisel option:selected").val()){
+                                                        $("#geiniyigeid").removeAttr("onclick")
+                                                    }
+                                                    else{
+                                                        $("#geiniyigeid").removeAttr("onclick")
+                                                        $("#geiniyigeid").attr("onclick","washsumit('formqueshizhi',this)");
+                                                        if(7 == $("#queshizhisel").get(0).selectedIndex){
+                                                            $("#addval").show()
+                                                        }
+                                                        else if('' == $("#queshizhisel option:selected").val()){
+                                                            $("#geiniyigeid").removeAttr("onclick")
+                                                        }
+                                                        else{
+                                                            $("#addval").hide()
+                                                        }
+                                                    }
+                                                });
                                             });
-                                        });
-                                    </script>
-                                    <button onclick="washsumit('formqueshizhi',this)" type="button" class="btn btn-success btn-sm">执行</button>
+                                        </script>
+                                        <button id="geiniyigeid" type="button" class="btn btn-success btn-sm">执行</button>
                                     </form>
                                 </div>
                                 <div id="formg2" class="form-group" style="display: none">
@@ -1106,11 +1116,16 @@
             url: "/washData/washaction/" ,//url
             data: $('#'+formid).serialize()+"&columnname="+columnname+"&sitename="+sitename+"&tablename="+tablename+"&chehuiStack="+chehuiStack+"&adminname="+adminname,
             success: function (data) {
-                if(chehuiStack < 0) chehuiStack = 0;
-                chehuiStack = chehuiStack + 1
-                alert("修改成功")
-                $("#rollback").show()
-                $(thisbtn).show();
+                if(data.data == 'success'){
+                    if(chehuiStack < 0) chehuiStack = 0;
+                    chehuiStack = chehuiStack + 1
+                    alert("修改成功")
+                    $("#rollback").show()
+                    $(thisbtn).show();
+                }
+                else if(data.data == 'error'){
+                    alert("修改失败")
+                }
             },
             error : function(data) {
                 alert('数据获取失败！')
@@ -1128,7 +1143,7 @@
             data: '{"sitename": "'+sitename+'", "tablename": "'+tablename+'",'+'"chehuiStack": "'+(chehuiStack-1)+'", "adminname": "'+adminname+'"}',
             success: function (data) {
                 chehuiStack = chehuiStack-1
-                alert("yes")
+                alert("撤回成功")
                 if(chehuiStack>0){
                     $("#rollback").show()
                 }
