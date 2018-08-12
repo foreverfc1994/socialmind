@@ -568,10 +568,11 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <label id="tableshowname">数据源表</label>
+                            <!-- <button onclick="showStack()">查看撤回栈</button> -->
                             <button id="rollback" onclick="rollback(this)" class="btn btn-info btn-xs" style="display: none;margin-right: 10px;float: right"><span class="glyphicon glyphicon-circle-arrow-left"></span> 撤回</button>
                         </div>
                         <div id="beginwash" style="display: none;color: #333;background-color: #f5f5f5;border-color: #ddd;padding: 10px 15px;border-bottom: 1px solid transparent;border-top-left-radius: 3px;border-top-right-radius: 3px;">
-                            <form class="form-inline">
+                            <div class="form-inline">
                                 <label id="beginwashfirstid"></label>
                                 <table border="1" style="margin-bottom: -8px;margin-top: 0px;margin-left: 5px;margin-right: 5px; width: 1px;height: 25px;display: inline-block"><tr><td></td></tr></table>
                                 <label>数据清洗策略：</label>
@@ -647,25 +648,28 @@
                                     </form>
                                 </div>
                                 <div id="formg1" class="form-group" style="display: none">
-                                        <form style="display: none"></form>
+                                    <form style="display: none"></form>
                                     <form id="formqueshizhi" method="POST" action="">
+                                    {% csrf_token %}
+                                    <input name="formtype" type="text" style="display: none" value="queshizhi">
                                     <label for="exampleInputName2">缺失值</label>
-                                    <select id="queshizhisel" class="form-control" >
-                                        <option>填充null</option>
-                                        <option>填充均值 </option>
-                                        <option>填充最大值 </option>
-                                        <option>填充最小值 </option>
-                                        <option>填充中值  </option>
-                                        <option>填充最频繁值 </option>
-                                        <option>填充指定值</option>
-                                        <option>删除该列 </option>
+                                    <select id="queshizhisel" name="tianzhongzhi" class="form-control" >
+                                        <option>选择填充值：</option>
+                                        <option value="null">填充null</option>
+                                        <option value="avg">填充均值 </option>
+                                        <option value="max">填充最大值 </option>
+                                        <option value="min">填充最小值 </option>
+                                        <option value="mid">填充中值  </option>
+                                        <option value="frequent">填充最频繁值 </option>
+                                        <option value="inputval">填充指定值</option>
+                                        <option value="delthiscol">删除该列 </option>
                                     </select>
-                                    <input id="addval" placeholder="填充指定值" class="form-control" style="display: none">
+                                    <input id="addval" name="inputval" value="" placeholder="填充指定值" class="form-control" style="display: none">
                                     <script>
                                         $(document).ready(function(){
                                             $("#queshizhisel").change(function(){
                                                 /* alert($("#queshizhisel").get(0).selectedIndex); */
-                                                if(6 == $("#queshizhisel").get(0).selectedIndex){
+                                                if(7 == $("#queshizhisel").get(0).selectedIndex){
                                                     $("#addval").show()
                                                 }
                                                 else{
@@ -674,8 +678,8 @@
                                             });
                                         });
                                     </script>
-                                    </form>
                                     <button onclick="washsumit('formqueshizhi',this)" type="button" class="btn btn-success btn-sm">执行</button>
+                                    </form>
                                 </div>
                                 <div id="formg2" class="form-group" style="display: none">
                                     <label for="exampleInputName2">一致性</label>
@@ -732,7 +736,7 @@
                                         <option>按包含不同关键字拆分 </option>
                                     </select>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                         <div class="panel-body">
                             <table id="yuanshujubiao" class="display" style="display: none">
@@ -800,6 +804,9 @@
     var columnname = ""
     var chehuiStack = 0
     var adminname = "LRX"
+    function showStack(){
+        alert(chehuiStack)
+    }
     function fenyeajax(){
         var sitename = $('#sitename').val()
         var tablename = $("#tableshowname").html()
@@ -953,7 +960,7 @@
                 //     console.log(column[i])
                 // }
                 // alert([column[1]])
-                // console.log(column)    
+                // console.log(column)
                 options = {
                     "order": [0, "asc"],
                     "bAutoWidth": false,
@@ -1122,8 +1129,8 @@
             success: function (data) {
                 chehuiStack = chehuiStack-1
                 alert("yes")
-                if(chehuiStack <= 0){
-                    $("#rollback").hide()
+                if(chehuiStack>0){
+                    $("#rollback").show()
                 }
             },
             error : function(data) {
