@@ -1,4 +1,4 @@
-function pickType(num){
+function pickType(num, keyword){
     var tds = document.getElementById("typeSelect").getElementsByTagName("td");
     tds[num].className = "active";
     for(i=0; i<14; i++){
@@ -7,6 +7,7 @@ function pickType(num){
             $(td).removeClass();
         }
     }
+    getFiles("", 0, keyword);
 }
 function articleSearch(){
     var searchKeyword = $("#fileSearchInput").val();
@@ -50,7 +51,7 @@ function addHtml(dataList, page, keyword){
             "                                </a>"
     };
     if(dataList.length == 20){
-        html+="<a onclick='getFiles(\"\", "+(page+1).toString()+","+keyword+")' class=\"list-group-item\" id='moreItems' style='cursor: pointer;'>\n" +
+        html+="<a onclick=\"getFiles('', "+(page+1).toString()+",'"+keyword+"')\" class=\"list-group-item\" id='moreItems' style='cursor: pointer;'>\n" +
         "       <p class=\"list-group-item-text\">\n" +
         "             点击加载更多。\n" +
         "       </p>\n" +

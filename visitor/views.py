@@ -112,7 +112,6 @@ def getAllFile(request):
             content = content[0:20]+"..."
         posttime = if_is_None(article['posttime'][0:10], "暂缺")
         websiteid = article['websiteid']
-
         if authorid != None:
             try:
                 authorname = if_is_None(models.Author.objects.get(authorid=authorid).name)
@@ -138,7 +137,7 @@ def eventSearch(request):
 def getEventList(request):
     page = int(request.GET.get("page"))
     keyword = request.GET.get("keyword")
-    if keyword == "undefined":
+    if keyword == "undefined" or keyword == None:
         keyword = ""
     items = models.Object.objects.filter(objecttype="事件").filter(name__contains=keyword).values \
                   ("objectid", "name", "introduction", "collectnumber", "likenumber", "commentnumber")[page*20: (page+1)*20]
