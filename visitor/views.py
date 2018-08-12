@@ -5,6 +5,7 @@ from django.http import JsonResponse
 from visitor import forms
 from django.views.decorators.csrf import csrf_exempt
 from visitor.scripts.signin import *
+import datetime
 # Create your views here.
 # from visitor.scripts.SysLog import Logger
 import random
@@ -270,6 +271,26 @@ def fileParticular(request):
             "commentNum": commentNum, "collectNum": collectNum, "likeNum": likeNum, "webSource": webSource}
     return render(request, 'foreground/file.html', data)
 
+def getArticleParticular(request):
+    articleid = request.GET.get('articleid')
+    data = []
+    results = models.Comment.objects.filter(articleid=articleid, checked="1")
+    print(results)
+    for result in results:
+        name = if_is_None(result.userid.username, "未知用户")
+        content_row = result.commentcontent
+        if result.fathercommentid == None:
+            content = content_row
+        else:
+            content = ""
+        commentTime = if_is_None(result.commenttime, "未知")
+        data.append({"username": name, "content": content, "commentTime": commentTime})
+    print(data)
+    return JsonResponse({"data": data})
+
+
+
+
 @csrf_exempt
 def checkuser(request):
     username = request.POST.get('user')
@@ -448,3 +469,20 @@ def getArticles(request):
         id = file.articleid
         dataList.append({"fileTitle": fileTitle, "fileStar": fileStar, "wroteTime": wroteTime, "id": id})
     return JsonResponse({"data": dataList})
+
+
+def addComments(request):
+    userid = request.session["user_id"]
+    type = request.GET.get("type")
+    comment = request.GET.get("comment")
+    id = request.GET.get("id")
+    time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    if type == "event":
+        try:
+            object = models.Object.objects.get(objectid=id)
+            res = models.Message.objects.create(messageid=uuid.uuid4(), messagecontent=comment, messagetime=time,
+                                                  objectid=object, checked="0", userid=userid)
+            res.save()
+            return JsonResponse({"data": "succeed"})
+        except:
+            return JsonResponse({"data": "failed"})

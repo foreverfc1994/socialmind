@@ -285,9 +285,9 @@
                             </div>
                             <div class="eventComments"><br>
                                 <div style="float: left; margin-left: 25%; width: 40%;">
-                                    <input type="text"  class="form-control" placeholder="输入您要评论的内容：">
+                                    <input type="text"  class="form-control" placeholder="输入您要评论的内容：" id="commentInput">
                                 </div>
-                                <button type="button" class="btn btn-warning" style="height: 44px; width: 80px; margin-left: 5%;">🖊 评论</button>
+                                <button type="button" class="btn btn-warning" style="height: 44px; width: 80px; margin-left: 5%;" onclick="addComments('{{ objectid }}')">🖊 评论</button>
                                 <div class="comments" id="commentsDiv"></div>
                             </div>
                             <div id="choiceFunc" class="eventData">
