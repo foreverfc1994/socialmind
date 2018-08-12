@@ -230,7 +230,7 @@ def eventparticular(request):
     objectid = request.GET.get("objectid")
     event = models.Object.objects.get(objectid=objectid)
     title = event.name
-    introduction = if_is_None(event.introduction, "")
+    introduction = if_is_None(models.Event.objects.get(objectid=objectid).introduction, "")
     trueNum = if_is_None(event.truenumber, "0")
     flaseNum = if_is_None(event.falsenumber, "0")
     likeNum = if_is_None(event.likenumber, "0")
@@ -240,6 +240,7 @@ def eventparticular(request):
     data = {"role": role, "objectid": objectid, "title": title, "introduction": introduction, "trueNum": trueNum, "falseNum": flaseNum,
             "likeNum": likeNum, "collectNum": collectNum, "begintime": begintime, "endtime": endtime}
     return render(request, 'foreground/particular.html', data)
+
 def getEventComments(request):
     objectid = request.GET.get("objectid")
     data = []
@@ -253,6 +254,27 @@ def getEventComments(request):
             data.append({"content": content, "messageTime": messageTime, "username": username})
     return JsonResponse({"data": data})
 
+def getCorrelationFiles(request):
+    objectid = request.GET.get("objectid")
+    page = int(request.GET.get("page"))
+    files = models.Article.objects.filter(objectid=objectid)[page*10: (page+1)*10]
+    data = []
+    for file in files:
+        title = file.title
+        posttime = if_is_None(file.posttime, "暂缺")
+        content = file.content
+        if len(content) >= 140:
+            content = content[:140]+"..."
+        articleid = file.articleid
+        likeNum = if_is_None(file.likenumber, "0")
+        commentNum = if_is_None(file.commentnumber, "0")
+        collectNum = if_is_None(file.collectnumber, "0")
+        webSource = if_is_None(file.websiteid.websitename, "暂缺")
+        data.append({"articleid": articleid, "title": title, "posttime": posttime, "content": content, "likeNum": likeNum,
+                     "commentNum": commentNum, "collectNum": collectNum, "webSource": webSource})
+    return JsonResponse({"data": data})
+
+
 
 def fileParticular(request):
     role = request.session["user_type"]
@@ -260,7 +282,7 @@ def fileParticular(request):
     article = models.Article.objects.get(articleid=articleid)
     title = article.title
     posttime = if_is_None(article.posttime, "暂缺")
-    introduction = if_is_None(article.keywords)
+    introduction = if_is_None(article.keywords, "暂无")
     content = article.content
     commentNum = if_is_None(article.commentnumber, "0")
     collectNum = if_is_None(article.collectnumber, "0")
