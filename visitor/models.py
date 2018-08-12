@@ -340,7 +340,8 @@ class Comment(models.Model):
     commentcontent = models.CharField(db_column='commentContent', max_length=255, blank=True, null=True)  # Field name made lowercase.
     fathercommentid = models.ForeignKey('self', models.DO_NOTHING, db_column='fathercommentID', blank=True, null=True)  # Field name made lowercase.
     commenttime = models.CharField(db_column='commentTime', max_length=32, blank=True, null=True)  # Field name made lowercase.
-    objectid = models.ForeignKey('Object', models.DO_NOTHING, db_column='objectID', blank=True, null=True)  # Field name made lowercase.
+    articleid = models.ForeignKey('Article', models.DO_NOTHING, db_column='articleID', blank=True, null=True)  # Field name made lowercase.
+    checked = models.CharField(db_column='checked', blank=True, null=True, max_length=1)
 
     class Meta:
         managed = False
@@ -604,8 +605,9 @@ class Message(models.Model):
     messageid = models.CharField(db_column='messageID', primary_key=True, max_length=36)  # Field name made lowercase.
     messagecontent = models.TextField(db_column='messageContent', blank=True, null=True)  # Field name made lowercase.
     messagetime = models.CharField(db_column='messageTime', max_length=36, blank=True, null=True)  # Field name made lowercase.
-    objectid = models.ForeignKey('Object', models.DO_NOTHING, db_column='objectID', blank=True, null=True)  # Field name made lowercase.
+    objectid = models.ForeignKey('Object', models.DO_NOTHING, db_column='objectid', blank=True, null=True)  # Field name made lowercase.
     checked = models.CharField(max_length=1, blank=True, null=True)
+    userid = models.CharField(db_column='userid', max_length=36, blank=True)
 
     class Meta:
         managed = False

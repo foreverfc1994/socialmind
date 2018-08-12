@@ -5,6 +5,7 @@ from django.http import JsonResponse
 from visitor import forms
 from django.views.decorators.csrf import csrf_exempt
 from visitor.scripts.signin import *
+import datetime
 # Create your views here.
 # from visitor.scripts.SysLog import Logger
 import random
@@ -111,7 +112,6 @@ def getAllFile(request):
             content = content[0:20]+"..."
         posttime = if_is_None(article['posttime'][0:10], "暂缺")
         websiteid = article['websiteid']
-
         if authorid != None:
             try:
                 authorname = if_is_None(models.Author.objects.get(authorid=authorid).name)
@@ -137,7 +137,7 @@ def eventSearch(request):
 def getEventList(request):
     page = int(request.GET.get("page"))
     keyword = request.GET.get("keyword")
-    if keyword == "undefined":
+    if keyword == "undefined" or keyword == None:
         keyword = ""
     items = models.Object.objects.filter(objecttype="事件").filter(name__contains=keyword).values \
                   ("objectid", "name", "introduction", "collectnumber", "likenumber", "commentnumber")[page*20: (page+1)*20]
@@ -240,12 +240,25 @@ def eventparticular(request):
     data = {"role": role, "objectid": objectid, "title": title, "introduction": introduction, "trueNum": trueNum, "falseNum": flaseNum,
             "likeNum": likeNum, "collectNum": collectNum, "begintime": begintime, "endtime": endtime}
     return render(request, 'foreground/particular.html', data)
+def getEventComments(request):
+    objectid = request.GET.get("objectid")
+    data = []
+    comments = models.Message.objects.filter(objectid=objectid, checked="1")
+    if(len(comments)>0):
+        for comment in comments:
+            content = comment.messagecontent
+            messageTime = if_is_None(comment.messagetime)
+            userid = comment.userid
+            username = if_is_None(models.User.objects.get(userid=userid).username, "未知用户")
+            data.append({"content": content, "messageTime": messageTime, "username": username})
+    return JsonResponse({"data": data})
+
 
 def fileParticular(request):
     role = request.session["user_type"]
     articleid = request.GET.get("articleid")
     article = models.Article.objects.get(articleid=articleid)
-    title = article.name
+    title = article.title
     posttime = if_is_None(article.posttime, "暂缺")
     introduction = if_is_None(article.keywords)
     content = article.content
@@ -256,6 +269,26 @@ def fileParticular(request):
     data = {"role": role, "articleid": articleid, "title": title, "posttime": posttime, "introduction": introduction, "content": content,
             "commentNum": commentNum, "collectNum": collectNum, "likeNum": likeNum, "webSource": webSource}
     return render(request, 'foreground/file.html', data)
+
+def getArticleParticular(request):
+    articleid = request.GET.get('articleid')
+    data = []
+    results = models.Comment.objects.filter(articleid=articleid, checked="1")
+    print(results)
+    for result in results:
+        name = if_is_None(result.userid.username, "未知用户")
+        content_row = result.commentcontent
+        if result.fathercommentid == None:
+            content = content_row
+        else:
+            content = ""
+        commentTime = if_is_None(result.commenttime, "未知")
+        data.append({"username": name, "content": content, "commentTime": commentTime})
+    print(data)
+    return JsonResponse({"data": data})
+
+
+
 
 @csrf_exempt
 def checkuser(request):
@@ -435,3 +468,20 @@ def getArticles(request):
         id = file.articleid
         dataList.append({"fileTitle": fileTitle, "fileStar": fileStar, "wroteTime": wroteTime, "id": id})
     return JsonResponse({"data": dataList})
+
+
+def addComments(request):
+    userid = request.session["user_id"]
+    type = request.GET.get("type")
+    comment = request.GET.get("comment")
+    id = request.GET.get("id")
+    time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    if type == "event":
+        try:
+            object = models.Object.objects.get(objectid=id)
+            res = models.Message.objects.create(messageid=uuid.uuid4(), messagecontent=comment, messagetime=time,
+                                                  objectid=object, checked="0", userid=userid)
+            res.save()
+            return JsonResponse({"data": "succeed"})
+        except:
+            return JsonResponse({"data": "failed"})

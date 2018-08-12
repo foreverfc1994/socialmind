@@ -1,4 +1,4 @@
-function pickType(num){
+function pickType(num, keyword){
     var tds = document.getElementById("typeSelect").getElementsByTagName("td");
     tds[num].className = "active";
     for(i=0; i<14; i++){
@@ -7,6 +7,7 @@ function pickType(num){
             $(td).removeClass();
         }
     }
+    eventList(0, keyword);
 }
 
 function eventSearch(){
@@ -24,9 +25,6 @@ function eventList(page, keyword){
                 keyword="";
             }
             eventLoad(data.data, page, keyword);
-        },
-        error: function(){
-            alert("未知错误，请刷新或重试");
         }
     })
 }
@@ -59,11 +57,24 @@ function eventLoad(dataList, page, keyword){
             "                                </a>"
     };
     if(dataList.length == 20){
-        html+="<a onclick='eventList("+(page+1).toString()+","+keyword+")' class=\"list-group-item\" id='moreItems' style='cursor: pointer;'>\n" +
+        html+="<a onclick=\"eventList("+(page+1).toString()+",'"+keyword+"')\" class=\"list-group-item\" id='moreItems' style='cursor: pointer;'>\n" +
         "       <p class=\"list-group-item-text\">\n" +
         "             点击加载更多。\n" +
         "       </p>\n" +
         "  </a>"
+    }
+    if(dataList.length == 0){
+        html = "<a href=\"/eventParticular/?objectid="+data.objectid+"\" class=\"list-group-item\">\n" +
+            "                                    <div class=\"row\">\n" +
+            "                                        <div class=\"col-lg-7\">\n" +
+            "                                            <h3 class=\"list-group-item-heading\" style='text: center'>无更多内容</h3>\n" +
+            "\n" +
+            "                                        </div>\n" +
+            "                                    </div>\n" +
+            "                                    <p class=\"list-group-item-text\">\n" +
+            "                                        请搜索其他内容\n" +
+            "                                    </p>\n" +
+            "                                </a>"
     }
     if(page == 0){
         $("#results").children().remove();

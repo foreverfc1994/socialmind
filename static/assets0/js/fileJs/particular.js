@@ -1,3 +1,69 @@
+function loadComments(objectid){
+    $.ajax({
+        url: 'getComments/?objectid='+objectid,
+        type: 'GET',
+        dataType: 'json',
+        success: function(data){
+            loadComment(data.data);
+        }
+    })
+}
+
+function loadComment(dataList){
+    html = "";
+    num = dataList.length;
+    if(num != 0){
+        for(i=0;i<num;i++){
+            data = dataList[i]
+            html += "<div class=\"commentBlock\">\n" +
+                "        <table>\n" +
+                "            <tr>\n" +
+                "                <td class=\"commentsImgTd\">\n" +
+                "                   <div class=\"commentsImgDiv\">\n" +
+                "                        <img src=\"/static/assets0/img/product.jpg\" class=\"commentsImg\">\n" +
+                "                   </div>\n" +
+                "                </td>\n" +
+                "                <td class=\"commentsCommentTd\">\n" +
+                "                    <ul>\n" +
+                "                         <p class=\"comment\"><b class=\"commenterName\">"+data.username+"：</b>"+data.content+"</p>\n" +
+                "                    </ul>\n" +
+                "                    <ul>\n" +
+                "                          <span class=\"fl grayText\">"+data.messageTime+"</span>\n" +
+                "                          <span class=\"fr cursorPoint\"><a href=\"javascript:void(0)\" class=\"grayText\">👍&nbsp;赞:&nbsp;&nbsp;2212&nbsp;&nbsp;</a></span>\n" +
+                "                    </ul>\n" +
+                "                </td>\n" +
+                "            </tr>\n" +
+                "         </table>\n" +
+                "     </div>"
+        }
+    }
+    $("#commentsDiv").children().remove();
+    $("#commentsDiv").append(html);
+}
+
+function addComments(objectid){
+    var searchWord = $("#commentInput").val();
+    $.ajax({
+        url:'/addComment/?id='+objectid+'&type=event&comment='+searchWord,
+        type: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            if(data.data=="succeed"){
+                document.getElementById("commentInput").value = "";
+                alert("评论成功，请等待审核");
+            }
+            else{
+                alert("未知错误，请重试");
+            }
+        },
+        error: function(){
+            alert("评论失败，可能是远程计算机没有响应");
+        }
+    })
+}
+
+
+
 function eventHeatIndex(){//事件热度
     option = {
     tooltip : {
