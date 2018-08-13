@@ -727,28 +727,38 @@
                                 <div id="formg4" class="form-group" style="display: none">
                                         <form style="display: none"></form>
                                         <form id="formshijiangeshi" method="post" action="">
+                                                <input name="formtype" type="text" style="display: none" value="shijiangeshi">
                                     <label for="shijiangeshisel">统一时间格式</label>
-                                    <select id="shijiangeshisel" class="form-control" >
-                                        <option valueshijiangeshisel="">请选择时间字段格式：</option>
-                                        <option value="-">xxxx-xx-xx xx:xx:xx</option>
-                                        <option value="/">xxxx/xx/xx xx:xx:xx </option>
+                                    <select id="shijiangeshisel" name="shijiangeshisel" class="form-control" >
+                                        <option value="">请选择时间字段格式：</option>
+                                        <option value="/">YYYY/MM/DD</option>
+                                        <option value="-">YYYY-MM-DD</option>
+                                        <option value=".">YYYY.MM.DD</option>
+                                        <option value="1:">xx:xx</option>
+                                        <option value="2:">xx:xx:xx</option>
+                                        <option value="/2:">YYYY/MM/DD xx:xx:xx</option>
+                                        <option value="-2:">YYYY-MM-DD xx:xx:xx</option>
+                                        <option value=".2:">YYYY.MM.DD xx:xx:xx</option>
+                                        <option value="/1:">YYYY/MM/DD xx:xx</option>
+                                        <option value="-1:">YYYY-MM-DD xx:xx</option>
+                                        <option value=".1:">YYYY.MM.DD xx:xx</option>
                                     </select>
                                     <script>
                                         $(document).ready(function(){
                                                 $("#shijiangeshisel").change(function(){
                                                     /* alert($("#queshizhisel").get(0).selectedIndex); */
                                                     if('' == $("#shijiangeshisel option:selected").val()){
-                                                        $("#geiniyigeid").removeAttr("onclick")
+                                                        $("#geiniyigeid2").removeAttr("onclick")
                                                     }
                                                     else{
-                                                        $("#geiniyigeid").removeAttr("onclick")
-                                                        $("#geiniyigeid").attr("onclick","washsumit('formshijiangeshi',this)");
+                                                        $("#geiniyigeid2").removeAttr("onclick")
+                                                        $("#geiniyigeid2").attr("onclick","washsumit('formshijiangeshi',this)");
                                                     }
                                                 });
                                             });
-                                    </script>
+                                    </script>                             
+                                    <button id="geiniyigeid2" type="button" class="btn btn-success btn-sm">执行</button>
                                     </form>
-                                    <button id="geiniyigeid" type="button" class="btn btn-success btn-sm">执行</button>
                                 </div>
                                 <div id="formg5" class="form-group" style="display: none">
                                     <label for="exampleInputName2">合并两列</label>

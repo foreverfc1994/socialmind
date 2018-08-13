@@ -10,6 +10,7 @@ from django.views.decorators.csrf import csrf_exempt
 from visitor.scripts.signin import *
 from manager.scripts.sysscript import *
 import pymysql  # 导入 pymysql
+import re
 @csrf_exempt
 def yuanshujubiao(request):
     wangzhan = request.POST
@@ -176,10 +177,6 @@ def washaction(request):
             cur.execute(sql4)
             db.commit()
             data = {"data": "success"}
-            if a == 1:
-                print("yes"+str(a))
-            else:
-                print("no "+str(a))
         except Exception as e:
             # Rollback in case there is any error
             db.rollback()
@@ -298,10 +295,10 @@ def washaction(request):
             try:
                 cur.execute(sql7)
                 cur.execute(sql6)
-            # except:
-            #     # Rollback in case there is any error
-            #     db.rollback()
-            #     data = {"data": "error"}
+                # except:
+                #     # Rollback in case there is any error
+                #     db.rollback()
+                #     data = {"data": "error"}
                 cur.execute("select count(*) from "+"beifen_linshi_" + tablename + adminname + chehuiStack)
                 results = cur.fetchall()  # 获取查询的所有记录
                 midid = 0
@@ -394,8 +391,102 @@ def washaction(request):
                 db.rollback()
                 data = {"data":"error"}
             db.close()  # 关闭连接
+    if actiontype == 'shijiangeshi':
+        shijiangeshi = washform.get('shijiangeshisel')
+        sql = "DROP TABLE IF EXISTS " + "beifen_" + tablename + adminname + chehuiStack
+        sql2 = "create table " + "beifen_" + tablename + adminname + chehuiStack + " like " + tablename
+        sql3 = "insert into " + "beifen_" + tablename + adminname + chehuiStack + " select * from " + tablename
+        sql4 = "select "+columnname+" from "+tablename+" where "+columnname+"<> ''"
+        db = pymysql.connect(host="localhost", user="root",
+                             password="461834084", db=sitename, port=3306)
+        cur = db.cursor()
+        try:
+            # print(sql4)
+            cur.execute(sql)  #
+            cur.execute(sql2)  #
+            cur.execute(sql3)  #
+            db.commit()
+            cur.execute(sql4)
+            results = cur.fetchall()  # 获取查询的所有记录
+            for row in results:
+                newrow = ''
+                if ((shijiangeshi == '/') or (shijiangeshi == '-') or (shijiangeshi == '.')):
+                    dateinrow = re.finditer(r'[1-9][0-9]*[\D][0-9]{1,2}[\D][0-9]{1,2}', row[0])
+                    linshirow = row[0]
+                    for i in dateinrow:
+                        str = re.sub(r'[\D]', shijiangeshi, i.group())
+                        newrow = re.sub(i.group(), str, linshirow)
+                        linshirow = newrow
+                    print(newrow)
+                elif shijiangeshi == '1:':
+                    timeinrow = re.finditer(r'[012][0-9][\D][0-6][0-9]', row[0])
+                    linshirow = row[0]
+                    for i in timeinrow:
+                        str = re.sub(r'[\D]', ":", i.group())
+                        newrow = re.sub(i.group(), str, linshirow)
+                        linshirow = newrow
+                    print(newrow)
+                elif shijiangeshi == '2:':
+                    longtimeinrow = re.finditer(r'[012][0-9][\D][0-6][0-9][\D][0-6][0-9]', row[0])
+                    linshirow = row[0]
+                    for i in longtimeinrow:
+                        str = re.sub(r'[\D]', ":", i.group())
+                        newrow = re.sub(i.group(), str, linshirow)
+                        linshirow = newrow
+                    print(newrow)
+                elif shijiangeshi == '/2:':
+                    newrow = rediyfun('/', 2, row[0])
+                elif shijiangeshi == '-2:':
+                    newrow = rediyfun('-', 2, row[0])
+                elif shijiangeshi == '.2:':
+                    newrow = rediyfun('.', 2, row[0])
+                elif shijiangeshi == '/1:':
+                    newrow = rediyfun('/', 1, row[0])
+                elif shijiangeshi == '-1:':
+                    newrow = rediyfun('-', 1, row[0])
+                elif shijiangeshi == '.1:':
+                    newrow = rediyfun('.', 1, row[0])
+
+
+
+            # db.commit()
+            data = {"data": "success"}
+        except Exception as e:
+            # Rollback in case there is any error
+            db.rollback()
+            data = {"data": "error"}
+            raise e
+        finally:
+            db.close()  # 关闭连接
     # print(data)
     return HttpResponse(json.dumps(data))
+def rediyfun(fuhao,num,row):
+    newrow = ''
+    str = ''
+    if num == 2:
+        datetimeinrow = re.finditer(
+            r'[1-9][0-9]*[\D][0-9]{1,2}[\D][0-9]{1,2}[\D][012][0-9][\D][0-6][0-9][\D][0-6][0-9]',
+            row)
+        for i in datetimeinrow:
+            # print("kasihi "+i.group())
+            str = re.sub(r'[\D]', ":", i.group())
+            str = re.sub(r'[\D]', " ", str, 3)
+            str = re.sub(r'[\D]', fuhao, str, 2)
+            newrow = re.sub(i.group(), str, row)
+            row = newrow
+        print(newrow)
+    elif num == 1:
+        datetimeinrow = re.finditer(
+            r'[1-9][0-9]*[\D][0-9]{1,2}[\D][0-9]{1,2}[\D][012][0-9][\D][0-6][0-9]',
+            row)
+        for i in datetimeinrow:
+            str = re.sub(r'[\D]', ":", i.group())
+            str = re.sub(r'[\D]', " ", str, 3)
+            str = re.sub(r'[\D]', fuhao, str, 2)
+            newrow = re.sub(i.group(), str, row)
+            row = newrow
+        print(newrow)
+    return newrow
 @csrf_exempt
 def rollback(request):
     print(request.POST)
