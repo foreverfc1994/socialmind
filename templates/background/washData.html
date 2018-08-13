@@ -722,13 +722,33 @@
                                             });
                                         });
                                     </script>
+                                    <button id="geiniyigeid" type="button" class="btn btn-success btn-sm">执行</button>
                                 </div>
                                 <div id="formg4" class="form-group" style="display: none">
-                                    <label for="exampleInputName2">统一时间格式</label>
-                                    <select id="queshizhisel" class="form-control" >
-                                        <option>xxxx-xx-xx xx:xx:xx</option>
-                                        <option>xxxx/xx/xx xx:xx:xx </option>
+                                        <form style="display: none"></form>
+                                        <form id="formshijiangeshi" method="post" action="">
+                                    <label for="shijiangeshisel">统一时间格式</label>
+                                    <select id="shijiangeshisel" class="form-control" >
+                                        <option valueshijiangeshisel="">请选择时间字段格式：</option>
+                                        <option value="-">xxxx-xx-xx xx:xx:xx</option>
+                                        <option value="/">xxxx/xx/xx xx:xx:xx </option>
                                     </select>
+                                    <script>
+                                        $(document).ready(function(){
+                                                $("#shijiangeshisel").change(function(){
+                                                    /* alert($("#queshizhisel").get(0).selectedIndex); */
+                                                    if('' == $("#shijiangeshisel option:selected").val()){
+                                                        $("#geiniyigeid").removeAttr("onclick")
+                                                    }
+                                                    else{
+                                                        $("#geiniyigeid").removeAttr("onclick")
+                                                        $("#geiniyigeid").attr("onclick","washsumit('formshijiangeshi',this)");
+                                                    }
+                                                });
+                                            });
+                                    </script>
+                                    </form>
+                                    <button id="geiniyigeid" type="button" class="btn btn-success btn-sm">执行</button>
                                 </div>
                                 <div id="formg5" class="form-group" style="display: none">
                                     <label for="exampleInputName2">合并两列</label>
