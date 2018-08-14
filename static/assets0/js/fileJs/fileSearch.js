@@ -1,30 +1,34 @@
-function pickType(num, keyword){
+var fileType = "";
+var keyword = "";
+
+function pickType(num, fileTypee){
+    fileType = fileTypee;
     var tds = document.getElementById("typeSelect").getElementsByTagName("td");
     tds[num].className = "active";
     for(i=0; i<14; i++){
-        if(i != num){
+        if(i !== num){
             td = tds[i];
             $(td).removeClass();
         }
     }
-    getFiles("", 0, keyword);
+    getFiles("", 0);
 }
 function articleSearch(){
-    var searchKeyword = $("#fileSearchInput").val();
-    getFiles("", 0, searchKeyword);
+    keyword = $("#fileSearchInput").val();
+    getFiles("", 0);
 }
-function getFiles(objectid, page, keyword){
+function getFiles(objectid, page){
     $.ajax({
-        url: 'getAllFile/?objectid='+objectid+'&page='+page.toString()+"&keyword="+keyword,
+        url: 'getAllFile/?objectid='+objectid+'&page='+page.toString()+"&keyword="+keyword+"&fileType="+fileType,
         type: 'GET',
         dataType: 'json',
         success: function(data){
-            addHtml(data.data, page, keyword);
+            addHtml(data.data, objectid, page);
         }
     })
 }
 
-function addHtml(dataList, page, keyword){
+function addHtml(dataList, objectid, page){
     html = "";
     for(i=0; i<dataList.length; i++){
         data = dataList[i];
@@ -51,7 +55,7 @@ function addHtml(dataList, page, keyword){
             "                                </a>"
     };
     if(dataList.length == 20){
-        html+="<a onclick=\"getFiles('', "+(page+1).toString()+",'"+keyword+"')\" class=\"list-group-item\" id='moreItems' style='cursor: pointer;'>\n" +
+        html+="<a onclick=\"getFiles('"+objectid+"', "+(page+1).toString()+",'"+keyword+"', '"+fileType+"')\" class=\"list-group-item\" id='moreItems' style='cursor: pointer;'>\n" +
         "       <p class=\"list-group-item-text\">\n" +
         "             点击加载更多。\n" +
         "       </p>\n" +

@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from visitor.models import Province, City, Area
 from visitor import models
+from django.db.models import Q
 from django.http import JsonResponse
 from visitor import forms
 from django.views.decorators.csrf import csrf_exempt
 from visitor.scripts.signin import *
 import datetime
+import time
 # Create your views here.
 # from visitor.scripts.SysLog import Logger
 import random
@@ -95,12 +97,16 @@ def getAllFile(request):
     page = int(request.GET.get("page"))
     objectid = request.GET.get("objectid")
     keyword = request.GET.get("keyword")
-    if keyword == "undefined":
-        keyword = ""
-    if objectid == "":
-        articles = models.Article.objects.filter(content__contains=keyword).values("articleid", "authorid", "title", "content", "posttime", "websiteid")[page*20: (page+1)*20]
-    else:
-        articles = models.Article.objects.filter(objectid=objectid, content__contains=keyword).values("articleid", "authorid", "title", "content", "posttime", "websiteid")[page*20: (page+1)*20]
+    fileType = request.GET.get("fileType")
+    sql = Q()
+    sql.connector = 'OR'
+    if objectid != "":
+        sql.add(Q(objectid=objectid), 'AND')
+    if keyword != "":
+        sql.add(Q(content__contains=keyword)|Q(title__contains=keyword), 'AND')
+    if fileType != "":
+        sql.add(Q(keywords__contains=fileType), 'AND')
+    articles = models.Article.objects.filter(sql).values("articleid", "authorid", "title", "content", "posttime", "websiteid")[page*20: (page+1)*20]
     data = []
     for article in articles:
         articleid = article['articleid']
@@ -117,11 +123,11 @@ def getAllFile(request):
                 authorname = if_is_None(models.Author.objects.get(authorid=authorid).name)
             except:
                 pass
-
-        if websiteid != None:
-            webname = if_is_None(models.Website.objects.get(websiteid=websiteid).websitename, "暂缺")
-            webtype = webType_to_strType(if_is_None(models.Website.objects.get(websiteid=websiteid).websitetypeid, "0"))
-        else:
+        try:
+            webObj = models.Website.objects.get(websiteid=websiteid)
+            webname = webObj.websitename
+            webtype = webType_to_strType(webObj.websitetypeid)
+        except:
             webname = "暂缺"
             webtype = "暂缺"
         data.append({"articleid": articleid, "authorname": authorname, "title": title, "content": content, "posttime": posttime,
@@ -288,15 +294,37 @@ def fileParticular(request):
     collectNum = if_is_None(article.collectnumber, "0")
     likeNum = if_is_None(article.likenumber, "0")
     webSource = if_is_None(article.websiteid.websitename, "暂缺")
+    objectid = if_is_None(article.objectid.pk, "")
     data = {"role": role, "articleid": articleid, "title": title, "posttime": posttime, "introduction": introduction, "content": content,
-            "commentNum": commentNum, "collectNum": collectNum, "likeNum": likeNum, "webSource": webSource}
+            "commentNum": commentNum, "collectNum": collectNum, "likeNum": likeNum, "webSource": webSource, "objectid": objectid}
     return render(request, 'foreground/file.html', data)
+
+def getCorrelatFiles(request):
+    objectid = request.GET.get("objectid")
+    page = int(request.GET.get("page"))
+    files = models.Article.objects.filter(objectid=objectid)[page * 10: (page + 1) * 10]
+    data = []
+    for file in files:
+        title = file.title
+        posttime = if_is_None(file.posttime, "暂缺")
+        content = file.content
+        if len(content) >= 140:
+            content = content[:140] + "..."
+        articleid = file.articleid
+        likeNum = if_is_None(file.likenumber, "0")
+        commentNum = if_is_None(file.commentnumber, "0")
+        collectNum = if_is_None(file.collectnumber, "0")
+        webSource = if_is_None(file.websiteid.websitename, "暂缺")
+        data.append(
+            {"articleid": articleid, "title": title, "posttime": posttime, "content": content, "likeNum": likeNum,
+             "commentNum": commentNum, "collectNum": collectNum, "webSource": webSource})
+    return JsonResponse({"data": data})
 
 def getArticleParticular(request):
     articleid = request.GET.get('articleid')
     data = []
     results = models.Comment.objects.filter(articleid=articleid, checked="1")
-    print(results)
+    # print(results)
     for result in results:
         name = if_is_None(result.userid.username, "未知用户")
         content_row = result.commentcontent
@@ -306,7 +334,7 @@ def getArticleParticular(request):
             content = ""
         commentTime = if_is_None(result.commenttime, "未知")
         data.append({"username": name, "content": content, "commentTime": commentTime})
-    print(data)
+    # print(data)
     return JsonResponse({"data": data})
 
 
@@ -364,7 +392,7 @@ def getEventsData(request):
                     else:
                         heatIndex = "数据暂缺"
                     data.append({"name": name, "heatIndex": heatIndex, "newsNum": str(newsNum), "begintime": starttime, "objectid": objectid})
-        print(data)
+        # print(data)
         return JsonResponse({"data": data})
 
     elif func == "当地新闻":
@@ -395,7 +423,7 @@ def getEventsData(request):
                     else:
                         heatIndex = "数据暂缺"
                     data.append({"name": name, "heatIndex": heatIndex, "newsNum": str(newsNum), "begintime": starttime, "objectid": objectid})
-        print(data)
+        # print(data)
         return JsonResponse({"data": data})
 
     elif func == "敏感信息":
@@ -445,7 +473,7 @@ def getEventsData(request):
                         heatIndex = "数据暂缺"
                     data.append({"name": name, "heatIndex": heatIndex, "newsNum": str(newsNum), "begintime": starttime,
                                  "objectid": objectid})
-        print(data)
+        # print(data)
         return JsonResponse({"data": data})
 
     elif func == "行业信息":
@@ -471,7 +499,7 @@ def getEventsData(request):
                     else:
                         heatIndex = "数据暂缺"
                     data.append({"name": name, "heatIndex": heatIndex, "newsNum": str(newsNum), "begintime": starttime, "objectid": objectid})
-        print(data)
+        # print(data)
         return JsonResponse({"data": data})
 
     else:
@@ -480,7 +508,6 @@ def getEventsData(request):
 def getArticles(request):
     objectid = request.GET.get("objectid")
     res = models.Object.objects.get(objectid=objectid)
-    print(res.name)
     files = models.Article.objects.filter(objectid=objectid)[:5]
     dataList = []
     for file in files:

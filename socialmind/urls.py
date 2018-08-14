@@ -44,6 +44,7 @@ urlpatterns = [
     path('eventParticular/getCorrelationFiles/', vviews.getCorrelationFiles),
     path('eventParticular/getComments/', vviews.getEventComments),
     path('fileParticular/', vviews.fileParticular),
+    path('fileParticular/getCorrelationFiles/', vviews.getCorrelatFiles),
     path('fileParticular/getComments/', vviews.getArticleParticular),
     path('fileSearch/', vviews.fileSearch, name='fileSearch'),
     path('fileSearch/getAllFile/', vviews.getAllFile, name='fileSearch'),
