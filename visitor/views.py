@@ -233,8 +233,14 @@ def events(request):
 
 def eventparticular(request):
     role = request.session["user_type"]
+    userid = request.session["user_id"]
     objectid = request.GET.get("objectid")
     event = models.Object.objects.get(objectid=objectid)
+
+    historyDic = {"operaid": uuid.uuid4(), "userid": models.User.objects.get(userid=userid), "operatype": "object", "objectid": event,
+                  "operatime": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "type": "1"}
+    models.UserOpera.objects.create(**historyDic).save()
+
     title = event.name
     introduction = if_is_None(models.Event.objects.get(objectid=objectid).introduction, "")
     trueNum = if_is_None(event.truenumber, "0")
@@ -284,8 +290,15 @@ def getCorrelationFiles(request):
 
 def fileParticular(request):
     role = request.session["user_type"]
+    userid = request.session["user_id"]
     articleid = request.GET.get("articleid")
     article = models.Article.objects.get(articleid=articleid)
+
+    historyDic = {"operaid": uuid.uuid4(), "userid": models.User.objects.get(userid=userid), "type": "浏览", "operatype": "article",
+                  "articleid": article,
+                  "operatime": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+    models.UserOpera.objects.create(**historyDic).save()
+
     title = article.title
     posttime = if_is_None(article.posttime, "暂缺")
     introduction = if_is_None(article.keywords, "暂无")
@@ -294,7 +307,10 @@ def fileParticular(request):
     collectNum = if_is_None(article.collectnumber, "0")
     likeNum = if_is_None(article.likenumber, "0")
     webSource = if_is_None(article.websiteid.websitename, "暂缺")
-    objectid = if_is_None(article.objectid.pk, "")
+    try:
+        objectid = article.objectid.pk
+    except:
+        objectid = ""
     data = {"role": role, "articleid": articleid, "title": title, "posttime": posttime, "introduction": introduction, "content": content,
             "commentNum": commentNum, "collectNum": collectNum, "likeNum": likeNum, "webSource": webSource, "objectid": objectid}
     return render(request, 'foreground/file.html', data)
@@ -338,6 +354,12 @@ def getArticleParticular(request):
     return JsonResponse({"data": data})
 
 
+def addOperation(request):
+    type = request.GET.get("type")
+    num = int(request.GET.get("num"))
+    operaList = ["收藏", "点赞", "判真", "判假"]
+    if type == "article":
+        articleid = request.GET.get("articleid")
 
 
 @csrf_exempt

@@ -104,3 +104,22 @@ function addCorrelatFiles(dataList, page, objectid){
         $("#moreCorrelationFiles").replaceWith(html);
     }
 }
+
+function operations(articleid, num){
+    $.ajax({
+        url: '/addOperation/?type=article&articleid='+articleid+'&num='+num,
+        type: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            if(data.data == "true"){
+                document.getElementById('');
+            }
+            if (data.data !== "true") {
+                alert("操作失败，请重试");
+            }
+        },
+        error: function(){
+            alert("未知错误，请重试");
+        }
+    })
+}

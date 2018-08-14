@@ -340,8 +340,8 @@ class Comment(models.Model):
     commentcontent = models.CharField(db_column='commentContent', max_length=255, blank=True, null=True)  # Field name made lowercase.
     fathercommentid = models.ForeignKey('self', models.DO_NOTHING, db_column='fathercommentID', blank=True, null=True)  # Field name made lowercase.
     commenttime = models.CharField(db_column='commentTime', max_length=32, blank=True, null=True)  # Field name made lowercase.
-    articleid = models.ForeignKey('Article', models.DO_NOTHING, db_column='articleID', blank=True, null=True)  # Field name made lowercase.
-    checked = models.CharField(db_column='checked', blank=True, null=True, max_length=1)
+    articleid = models.ForeignKey(Article, models.DO_NOTHING, db_column='articleid', blank=True, null=True)
+    checked = models.CharField(max_length=1, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -575,8 +575,8 @@ class Keyword(models.Model):
 
 class KeywordRelatedDegree(models.Model):
     keyworddegreeid = models.CharField(db_column='keywordDegreeID', primary_key=True, max_length=64)  # Field name made lowercase.
-    keywordoneid = models.ForeignKey(Keyword, models.DO_NOTHING, db_column='keywordOneID', blank=True, null=True, related_name="keywordoneid")  # Field name made lowercase.
-    keywordtwoid = models.ForeignKey(Keyword, models.DO_NOTHING, db_column='keywordTwoID', blank=True, null=True, related_name="keywordtwoid")  # Field name made lowercase.
+    keywordoneid = models.ForeignKey(Keyword, models.DO_NOTHING, db_column='keywordOneID', blank=True, null=True, related_name='keywordoneid')  # Field name made lowercase.
+    keywordtwoid = models.ForeignKey(Keyword, models.DO_NOTHING, db_column='keywordTwoID', blank=True, null=True, related_name='keywordtwoid')  # Field name made lowercase.
     relateddegree = models.FloatField(db_column='relatedDegree', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
@@ -605,9 +605,9 @@ class Message(models.Model):
     messageid = models.CharField(db_column='messageID', primary_key=True, max_length=36)  # Field name made lowercase.
     messagecontent = models.TextField(db_column='messageContent', blank=True, null=True)  # Field name made lowercase.
     messagetime = models.CharField(db_column='messageTime', max_length=36, blank=True, null=True)  # Field name made lowercase.
-    objectid = models.ForeignKey('Object', models.DO_NOTHING, db_column='objectid', blank=True, null=True)  # Field name made lowercase.
+    objectid = models.ForeignKey('Object', models.DO_NOTHING, db_column='objectID', blank=True, null=True)  # Field name made lowercase.
     checked = models.CharField(max_length=1, blank=True, null=True)
-    userid = models.CharField(db_column='userid', max_length=36, blank=True)
+    userid = models.CharField(max_length=36, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -837,32 +837,15 @@ class SpiderInfo(models.Model):
     spidername = models.CharField(db_column='spiderName', max_length=64, blank=True, null=True)  # Field name made lowercase.
     addtime = models.CharField(db_column='addTime', max_length=32, blank=True, null=True)  # Field name made lowercase.
     spidersourcepath = models.CharField(db_column='spiderSourcePath', max_length=64, blank=True, null=True)  # Field name made lowercase.
-    # filename = models.CharField(db_column='fileName', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    filename = models.CharField(db_column='fileName', max_length=255, blank=True, null=True)  # Field name made lowercase.
     websiteid = models.ForeignKey('Website', models.DO_NOTHING, db_column='websiteID', blank=True, null=True)  # Field name made lowercase.
-    # RunCommand = models.CharField(db_column='runcommend', max_length=128, blank=True, null=True)  # Field name made lowercase.
-    RunCommand = models.CharField(db_column='runcommand', max_length=128, blank=True, null=True)  # Field name made lowercase.
+    fileid = models.CharField(db_column='fileID', max_length=36, blank=True, null=True)  # Field name made lowercase.
     spiderstate = models.CharField(db_column='spiderState', max_length=32, blank=True, null=True)  # Field name made lowercase.
     spiderconfigid = models.ForeignKey(SpiderConfig, models.DO_NOTHING, db_column='spiderConfigID', blank=True, null=True)  # Field name made lowercase.
-    vimname = models.CharField(max_length=16, blank=True, null=True)
-    spiderrunname = models.CharField(max_length=32,blank=True,null=True)
+
     class Meta:
+        managed = False
         db_table = 'spider_info'
-
-class NewSpiderConfig(models.Model):
-    spiderconfigid = models.CharField(max_length=64,primary_key=True)
-    spiderconfigname = models.CharField(max_length=32,blank=True,null=True)
-    isrobot = models.CharField(max_length=4,blank=True,null=True)
-    maxdownbytes = models.CharField(max_length=32,blank=True,null=True)
-    downloadtimeout = models.CharField(max_length=32,blank=True,null=True)
-    dnstimeout = models.CharField(max_length=32,blank=True,null=True)
-    maxdeep = models.CharField(max_length=32,blank=True,null=True)
-    ipconcurrentrequest = models.CharField(max_length=32,blank=True,null=True)
-    siteconcurrentrequest = models.CharField(max_length=32,blank=True,null=True)
-    maxconcurrentprocessing = models.CharField(max_length=32,blank=True,null=True)
-    iscollectdeepdata = models.CharField(max_length=32,blank=True,null=True)
-
-    class Meta:
-        db_table = 'spiderconfig'
 
 
 class TbUser(models.Model):
@@ -872,8 +855,9 @@ class TbUser(models.Model):
     u_telphone = models.CharField(max_length=30, blank=True, null=True)
     u_mail = models.CharField(max_length=30, blank=True, null=True)
     u_sex = models.TextField(blank=True, null=True)  # This field type is a guess.
+
     class Meta:
-        # managed = False
+        managed = False
         db_table = 'tb_user'
 
 
@@ -917,12 +901,12 @@ class User(models.Model):
     username = models.CharField(db_column='userName', max_length=64, blank=True, null=True)  # Field name made lowercase.
     password = models.CharField(max_length=64, blank=True, null=True)
     email = models.CharField(max_length=32, blank=True, null=True)
-    roleid = models.ForeignKey(Role, models.DO_NOTHING, db_column='roleID', blank=True, null=True, related_name="userroleid")  # Field name made lowercase.
+    roleid = models.ForeignKey(Role, models.DO_NOTHING, db_column='roleID', blank=True, null=True, related_name='userRoleId')  # Field name made lowercase.
     registrantid = models.CharField(db_column='registrantID', max_length=36, blank=True, null=True)  # Field name made lowercase.
     usertype = models.CharField(db_column='userType', max_length=32, blank=True, null=True)  # Field name made lowercase.
     isauthenticated = models.CharField(db_column='isAuthenticated', max_length=2, blank=True, null=True)  # Field name made lowercase.
     address = models.CharField(max_length=255, blank=True, null=True)
-    role = models.ForeignKey(Role, models.DO_NOTHING, db_column='role', blank=True, null=True, related_name="userrole")
+    role = models.ForeignKey(Role, models.DO_NOTHING, db_column='role', blank=True, null=True, related_name='userRole')
     registranttime = models.CharField(db_column='registrantTime', max_length=255, blank=True, null=True)  # Field name made lowercase.
     photo = models.CharField(max_length=255, blank=True, null=True)
 
@@ -937,6 +921,9 @@ class UserOpera(models.Model):
     objectid = models.ForeignKey(Object, models.DO_NOTHING, db_column='objectID', blank=True, null=True)  # Field name made lowercase.
     operatype = models.CharField(db_column='operaType', max_length=36, blank=True, null=True)  # Field name made lowercase.
     operatime = models.CharField(db_column='operaTime', max_length=36, blank=True, null=True)  # Field name made lowercase.
+    type = models.CharField(max_length=8, blank=True, null=True)
+    articleid = models.ForeignKey(Article, models.DO_NOTHING, db_column='articleID', blank=True, null=True)  # Field name made lowercase.
+    messageid = models.ForeignKey(Message, models.DO_NOTHING, db_column='messageID', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False

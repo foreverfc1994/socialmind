@@ -321,4 +321,11 @@
         eventList(0, "");
     }
 </script>
+<script>
+    $("#fileSearchInput").bind('keypress', function (event) {
+        if (event.keyCode == "13") {
+            articleSearch();
+        }
+    });
+</script>
 </html>

@@ -267,10 +267,10 @@
                                             &nbsp; &nbsp; &nbsp; &nbsp; {{ content }}
                                         </div>
                                         <div id="eventData" class="eventData">
-                                            <button class="btn btn-warning eventButton">📂 收藏量：{{ collectNum }}</button>
-                                            <button class="btn btn-warning eventButton">👍 点赞数：{{ likeNum }}</button>
-                                            <button class="btn btn-warning eventButton">😊 判真数：22</button>
-                                            <button class="btn btn-warning eventButton">🤬 判假数：22</button>
+                                            <button class="btn btn-warning eventButton" onclick="operations({{ articleid }}, 0)" id="collectButton">📂 收藏量：{{ collectNum }}</button>
+                                            <button class="btn btn-warning eventButton" onclick="operations({{ articleid }}, 1)" id="likeButton">👍 点赞数：{{ likeNum }}</button>
+                                            <button class="btn btn-warning eventButton" onclick="operations({{ articleid }}, 2)" id="isTrueButton">😊 判真数：22</button>
+                                            <button class="btn btn-warning eventButton" onclick="operations({{ articleid }}, 3)" id="isFalseButton">🤬 判假数：22</button>
                                         </div>
                                         <div class="eventComments"><br>
                                             <div class="comments" id="commentsDiv">
