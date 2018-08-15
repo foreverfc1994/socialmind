@@ -218,10 +218,11 @@ def washaction(request):
             try:
                 cur.execute(sql5)  # 执行sql语句
                 results = cur.fetchall()  # 获取查询的所有记录
+                average = ''
                 for row in results:
                     print(row)
                     average = row[0]
-                sql4 = "UPDATE " + tablename + " SET " + columnname + "='" + str(average) + "' WHERE " + columnname + "=''"
+                sql4 = "UPDATE " + tablename + " SET " + columnname + "='" + average + "' WHERE " + columnname + "=''"
                 cur = db.cursor()
                 cur.execute(sql)
                 cur.execute(sql2)
@@ -242,10 +243,11 @@ def washaction(request):
             cur = db.cursor()
             cur.execute(sql5)  # 执行sql语句
             results = cur.fetchall()  # 获取查询的所有记录
+            max = ''
             for row in results:
                 print(row)
                 max = row[0]
-            sql4 = "UPDATE " + tablename + " SET " + columnname + "='" + str(max) + "' WHERE " + columnname + "=''"
+            sql4 = "UPDATE " + tablename + " SET " + columnname + "='" + max + "' WHERE " + columnname + "=''"
             cur = db.cursor()
             try:
                 cur.execute(sql)
@@ -261,16 +263,18 @@ def washaction(request):
                 data = {"data": "error"}
             db.close()  # 关闭连接
         elif tianzhongzhi == 'min':
-            sql5 = "select min(" + columnname + ") from " + tablename
+            sql5 = "select min(" + columnname + ") from " + tablename + " where "+columnname+"<>''"
+            # print(sql5)
             db = pymysql.connect(host="localhost", user="root",
                                  password="461834084", db=sitename, port=3306)
             cur = db.cursor()
             cur.execute(sql5)  # 执行sql语句
             results = cur.fetchall()  # 获取查询的所有记录
+            min = ''
             for row in results:
                 print(row)
                 min = row[0]
-            sql4 = "UPDATE " + tablename + " SET " + columnname + "='" + str(min) + "' WHERE " + columnname + "=''"
+            sql4 = "UPDATE " + tablename + " SET " + columnname + "='" + min + "' WHERE " + columnname + "=''"
             cur = db.cursor()
             try:
                 cur.execute(sql)
@@ -396,7 +400,6 @@ def washaction(request):
         sql = "DROP TABLE IF EXISTS " + "beifen_" + tablename + adminname + chehuiStack
         sql2 = "create table " + "beifen_" + tablename + adminname + chehuiStack + " like " + tablename
         sql3 = "insert into " + "beifen_" + tablename + adminname + chehuiStack + " select * from " + tablename
-        sql4 = "select "+columnname+" from "+tablename+" where "+columnname+"<> ''"
         db = pymysql.connect(host="localhost", user="root",
                              password="461834084", db=sitename, port=3306)
         cur = db.cursor()
@@ -406,6 +409,22 @@ def washaction(request):
             cur.execute(sql2)  #
             cur.execute(sql3)  #
             db.commit()
+            cur.execute('desc '+tablename)
+            results = cur.fetchall()  # 获取查询的所有记录
+            primarykey = []
+            primarykeybit = []
+            t=0
+            for i in results:
+                if i[3] == 'PRI':
+                    primarykey.append(i[0])
+                    primarykeybit.append(t)
+                t = t + 1
+            sql4 = "select "+columnname
+            for i in primarykey:
+                sql4 = sql4 + ","+i
+                print(i)
+            sql4 = sql4 + " from " + tablename + " where " + columnname + "<> ''"
+            print(sql4)
             cur.execute(sql4)
             results = cur.fetchall()  # 获取查询的所有记录
             for row in results:
@@ -446,15 +465,154 @@ def washaction(request):
                     newrow = rediyfun('-', 1, row[0])
                 elif shijiangeshi == '.1:':
                     newrow = rediyfun('.', 1, row[0])
-
-
-
-            # db.commit()
+                sql5 = "update "+ tablename +" set "+columnname+"='"+newrow+"' where "+primarykey[0]+"="+row[primarykeybit[0]]+""
+                t=0
+                for i in primarykey:
+                    if t > 0:
+                        sql5 = sql5+" and "+i+"="+row[primarykeybit[t]]
+                    t = t+1
+                print(sql5)
+                if newrow != '':
+                    cur.execute(sql5)  #
+            db.commit()
             data = {"data": "success"}
         except Exception as e:
             # Rollback in case there is any error
             db.rollback()
             data = {"data": "error"}
+            raise e
+        finally:
+            db.close()  # 关闭连接
+    elif actiontype == 'updatearow':
+        # tianzhongzhi = washform.get('tianzhongzhi')
+        db = pymysql.connect(host="localhost", user="root",
+                             password="461834084", db=sitename, port=3306)
+        cur = db.cursor()
+        sql = "DROP TABLE IF EXISTS " + "beifen_" + tablename + adminname + chehuiStack
+        sql2 = "create table " + "beifen_" + tablename + adminname + chehuiStack + " like " + tablename
+        sql3 = "insert into " + "beifen_" + tablename + adminname + chehuiStack + " select * from " + tablename
+        cur.execute('desc ' + tablename)
+        results = cur.fetchall()  # 获取查询的所有记录
+        primarykey = []
+        primarykeybit = []
+        t = 0
+        flgzhixing = 1
+        for i in results:
+            if i[3] == 'PRI':
+                primarykey.append(i[0])
+                primarykeybit.append(t)
+            t = t + 1
+        formlist = []
+        formstructurelist = []
+        for i in washform:
+            # 如果i为未修改字段
+            # if re.match('_LRXLRXLRXLRXLRXLRX', i) == None:
+                # if (i != 'formtype') and (i != 'columnname') and (i != 'sitename') and (i != 'tablename') and (
+                #         i != 'chehuiStack') and (i != 'adminname'):
+                #     flg1 = 0
+                #     for j in primarykey:
+                #         if i == j:
+                #             flg1 = 1
+                #             break
+                #     if flg1 == 0:
+                #         formstructurelist.append(i)
+                #         formlist.append(washform.get(i))
+                        # print(i+"+"+washform.get(i))
+            if re.match('_LRXLRXLRXLRXLRXLRX', i) != None:
+                washformgetxiugai = re.sub(r'_LRXLRXLRXLRXLRXLRX', "", i)
+                for z in primarykey:
+                    if washformgetxiugai == z:
+                        print("不能修改主码")
+                        flgzhixing = 0
+                        break
+                formstructurelist.append(washformgetxiugai)
+                formlist.append(washform.get(washformgetxiugai))
+        if flgzhixing == 1:
+            sql4 = "UPDATE " + tablename + " SET " + formstructurelist[0] + "='" + formlist[0] + "'"
+            t = 0
+            for i in formstructurelist:
+                if i != formstructurelist[0]:
+                    sql4 = sql4 + "," + i + "='" + formlist[t] + "'"
+                t = t + 1
+            sql4 = sql4 + " where " + primarykey[0] + "=" + washform.get(primarykey[0])
+            for i in primarykey:
+                if i != primarykey[0]:
+                    sql4 = sql4 + " and " + i + "=" + washform.get(i)
+            print(sql4)
+            try:
+                cur.execute(sql)
+                cur.execute(sql2)
+                cur.execute(sql3)
+                db.commit()
+                cur.execute(sql4)  # 执行sql语句
+                db.commit()
+                data = {"data": "success"}
+            except:
+                # Rollback in case there is any error
+                db.rollback()
+                data = {"data": "error"}
+            db.close()  # 关闭连接
+        else:
+            data = {"data": "nopk"}
+    elif actiontype == 'zifuchuangeshi':
+        selectvalue = washform.get('zifuchuansel')
+        sql = "DROP TABLE IF EXISTS " + "beifen_" + tablename + adminname + chehuiStack
+        sql2 = "create table " + "beifen_" + tablename + adminname + chehuiStack + " like " + tablename
+        sql3 = "insert into " + "beifen_" + tablename + adminname + chehuiStack + " select * from " + tablename
+        db = pymysql.connect(host="localhost", user="root",
+                             password="461834084", db=sitename, port=3306)
+        cur = db.cursor()
+        try:
+            cur.execute(sql)  #
+            cur.execute(sql2)  #
+            cur.execute(sql3)  #
+            db.commit()
+            cur.execute('desc ' + tablename)
+            results = cur.fetchall()  # 获取查询的所有记录
+            primarykey = []
+            primarykeybit = []
+            t = 0
+            for i in results:
+                if i[3] == 'PRI':
+                    primarykey.append(i[0])
+                    primarykeybit.append(t)
+                t = t + 1
+            sql4 = "select " + columnname
+            for i in primarykey:
+                sql4 = sql4 + "," + i
+                print(i)
+            sql4 = sql4 + " from " + tablename + " where " + columnname + "<> ''"
+            print(sql4)
+            cur.execute(sql4)
+            results = cur.fetchall()  # 获取查询的所有记录
+            for row in results:
+                newrow = ''
+                if selectvalue == 'delkongge':
+                    strinrow = re.finditer(r'[ ][^ ]+[ ]', row[0])
+                    linshirow = row[0]
+                    for i in strinrow:
+                        str = re.sub(r'[ ]', '', i.group())
+                        newrow = re.sub(i.group(), str, linshirow)
+                        linshirow = newrow
+                elif selectvalue == 'exchangekongge':
+                    newrow = re.sub(r'[ ]', '&nbsp', row[0])
+                if newrow != '':
+                    newrow = re.sub(r"[']", '"', newrow)
+                    print(newrow)
+                    sql5 = "update " + tablename + " set " + columnname + "='" + newrow + "' where " + primarykey[
+                        0] + "=" + row[primarykeybit[0]] + ""
+                    t = 0
+                    for i in primarykey:
+                        if t > 0:
+                            sql5 = sql5 + " and " + i + "=" + row[primarykeybit[t]]
+                        t = t + 1
+                    print(sql5)
+                    cur.execute(sql5)  #
+            db.commit()
+            data = {"data": "success"}
+        except Exception as e:
+            data = {"data": "error"}
+            db.rollback()
             raise e
         finally:
             db.close()  # 关闭连接
