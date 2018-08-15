@@ -266,12 +266,7 @@
                                         <div class="eventFiles">
                                             &nbsp; &nbsp; &nbsp; &nbsp; {{ content }}
                                         </div>
-                                        <div id="eventData" class="eventData">
-                                            <button class="btn btn-warning eventButton" onclick="operations({{ articleid }}, 0)" id="collectButton">📂 收藏量：{{ collectNum }}</button>
-                                            <button class="btn btn-warning eventButton" onclick="operations({{ articleid }}, 1)" id="likeButton">👍 点赞数：{{ likeNum }}</button>
-                                            <button class="btn btn-warning eventButton" onclick="operations({{ articleid }}, 2)" id="isTrueButton">😊 判真数：22</button>
-                                            <button class="btn btn-warning eventButton" onclick="operations({{ articleid }}, 3)" id="isFalseButton">🤬 判假数：22</button>
-                                        </div>
+                                        <div id="eventData" class="eventData"></div>
                                         <div class="eventComments"><br>
                                             <div class="comments" id="commentsDiv">
                                             </div>
@@ -305,11 +300,18 @@
         <script type="text/javascript" src="{% static 'assets0/js/gritter-conf.js'%}"></script>
         <script src="{% static 'assets0/js/fileJs/file.js' %}"></script>
     </body>
-
+<script>
+</script>
 <script>
     window.onload = function(){
         loadCommentsList("{{ articleid }}");
         loadCorrelatFiles("{{ objectid }}", 0);
+        loadOpear("{{ articleid }}");
+    }
+</script>
+<script>
+    window.onbeforeunload = function(){
+        alert("~");
     }
 </script>
 </html>

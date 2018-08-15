@@ -91,6 +91,8 @@ def fileSearch(request):
         name = if_is_None(models.Object.objects.get(objectid=objectid).name, "")
     else:
         name = ""
+    operats = []
+
     return render(request, 'foreground/ArticleSearch.html', {"role": role, "objectid": objectid, "name": name})
 
 def getAllFile(request):
@@ -237,9 +239,15 @@ def eventparticular(request):
     objectid = request.GET.get("objectid")
     event = models.Object.objects.get(objectid=objectid)
 
-    historyDic = {"operaid": uuid.uuid4(), "userid": models.User.objects.get(userid=userid), "operatype": "object", "objectid": event,
-                  "operatime": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "type": "1"}
-    models.UserOpera.objects.create(**historyDic).save()
+    judge = models.UserOpera.objects.filter(userid=userid, type="浏览", operatype="object", objectid=objectid)
+    judgeCount = judge.count()
+    if judgeCount == 0:
+        historyDic = {"operaid": uuid.uuid4(), "userid": models.User.objects.get(userid=userid), "type": "浏览", "operatype": "object",
+                      "objectid": event,
+                      "operatime": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+        models.UserOpera.objects.create(**historyDic).save()
+    else:
+        judge.update(operatime=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
     title = event.name
     introduction = if_is_None(models.Event.objects.get(objectid=objectid).introduction, "")
@@ -294,10 +302,16 @@ def fileParticular(request):
     articleid = request.GET.get("articleid")
     article = models.Article.objects.get(articleid=articleid)
 
-    historyDic = {"operaid": uuid.uuid4(), "userid": models.User.objects.get(userid=userid), "type": "浏览", "operatype": "article",
-                  "articleid": article,
-                  "operatime": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
-    models.UserOpera.objects.create(**historyDic).save()
+    judge = models.UserOpera.objects.filter(userid=userid, type="浏览", operatype="article", articleid=article)
+    judgeCount = judge.count()
+    if judgeCount == 0:
+        historyDic = {"operaid": uuid.uuid4(), "userid": models.User.objects.get(userid=userid), "type": "浏览", "operatype": "article",
+                      "articleid": article,
+                      "operatime": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+        models.UserOpera.objects.create(**historyDic).save()
+    else:
+        judge.update(operatime=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+
 
     title = article.title
     posttime = if_is_None(article.posttime, "暂缺")
@@ -311,9 +325,44 @@ def fileParticular(request):
         objectid = article.objectid.pk
     except:
         objectid = ""
-    data = {"role": role, "articleid": articleid, "title": title, "posttime": posttime, "introduction": introduction, "content": content,
-            "commentNum": commentNum, "collectNum": collectNum, "likeNum": likeNum, "webSource": webSource, "objectid": objectid}
+    data = {"role": role, "articleid": articleid, "title": title, "posttime": posttime,
+            "introduction": introduction, "content": content, "commentNum": commentNum,
+            "collectNum": collectNum, "likeNum": likeNum, "webSource": webSource, "objectid": objectid}
     return render(request, 'foreground/file.html', data)
+
+def getOperaData(request):
+    userid = request.session["user_id"]
+    articleid = request.GET.get("articleid")
+    operaData = {}
+    collect = models.UserOpera.objects.filter(type="收藏", articleid=articleid)
+    collectedNum = collect.count()
+    collected = collect.filter(userid=userid).count()
+    if collected == 0:
+        operaData.update({"collected": "false", "collectNum": collectedNum})
+    else:
+        operaData.update({"collected": "true", "collectNum": collectedNum})
+    like = models.UserOpera.objects.filter(type="点赞", articleid=articleid)
+    likeNum = like.count()
+    liked = like.filter(userid=userid).count()
+    if liked == 0:
+        operaData.update({"liked": "false", "likeNum": likeNum})
+    else:
+        operaData.update({"liked": "true", "likeNum": likeNum})
+    isTrue = models.UserOpera.objects.filter(type="判真", articleid=articleid)
+    isFalse = models.UserOpera.objects.filter(type="判假", articleid=articleid)
+    isTrueNum = isTrue.count()
+    isFalseNum = isFalse.count()
+    if isTrue.filter(userid=userid).count() != 0:
+        operaData.update({"isTrue": "true", "isTrueNum": isTrueNum})
+        operaData.update({"isFalse": "false", "isFalseNum": isFalseNum})
+    elif isFalse.filter(userid=userid).count() != 0:
+        operaData.update({"isTrue": "false", "isTrueNum": isTrueNum})
+        operaData.update({"isFalse": "true", "isFalseNum": isFalseNum})
+    else:
+        operaData.update({"isTrue": "false", "isTrueNum": isTrueNum})
+        operaData.update({"isFalse": "false", "isFalseNum": isFalseNum})
+    print(operaData)
+    return JsonResponse({"data": operaData})
 
 def getCorrelatFiles(request):
     objectid = request.GET.get("objectid")
@@ -355,12 +404,59 @@ def getArticleParticular(request):
 
 
 def addOperation(request):
+    userid = request.session['user_id']
+    type = request.GET.get("type")
+    num = int(request.GET.get("num"))
+    operaList = ["收藏", "点赞", "判真", "判假"]
+    operaType = operaList[num]
+    if type == "article":
+        articleid = request.GET.get("articleid")
+        if num <= 1:
+            createDic = {"operaid": str(uuid.uuid4()),
+                         "userid": models.User.objects.get(userid=userid),
+                         "operatype": type,
+                         "type": operaType,
+                         "articleid": models.Article.objects.get(articleid=articleid),
+                         "operatime": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                         }
+            models.UserOpera.objects.create(**createDic).save()
+        else:
+            try:
+                find = models.UserOpera.objects.get(Q(userid=userid), Q(operatype="article"), Q(articleid=articleid), Q(type="判真")|Q(type="判假"))
+                print("aha")
+                find.type = operaType
+                find.operatime = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                find.save()
+            except:
+                print("heng~")
+                createDic = {"operaid": str(uuid.uuid4()),
+                             "userid": models.User.objects.get(userid=userid),
+                             "operatype": type,
+                             "type": operaType,
+                             "articleid": models.Article.objects.get(articleid=articleid),
+                             "operatime": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                             }
+                models.UserOpera.objects.create(**createDic).save()
+        return JsonResponse({"data": "true"})
+def subOperation(request):
+    userid = request.session['user_id']
     type = request.GET.get("type")
     num = int(request.GET.get("num"))
     operaList = ["收藏", "点赞", "判真", "判假"]
     if type == "article":
-        articleid = request.GET.get("articleid")
-
+        if num <= 1:
+            articleid = request.GET.get("articleid")
+            models.UserOpera.objects.get(userid=userid, operatype="article", type=operaList[num], articleid=articleid).delete()
+        else:
+            articleid = request.GET.get("articleid")
+            find = models.UserOpera.objects.get(Q(userid=userid), Q(operatype="article"), Q(articleid=articleid), Q(type="判真")|Q(type="判假"))
+            if find.type == operaList[num]:
+                find.delete()
+            else:
+                find.operatime = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                find.type = operaList[num]
+                find.save()
+    return JsonResponse({"data": "succeed"})
 
 @csrf_exempt
 def checkuser(request):

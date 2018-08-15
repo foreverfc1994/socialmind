@@ -2369,6 +2369,8 @@ label {
 }
 .eventButton{
     width: 19.5%;
+    margin-right: 0.2%;
+    margin-left: 0.2%;
     height: 30px;
 }
 .event3Buttons{

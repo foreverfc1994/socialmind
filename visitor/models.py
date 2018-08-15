@@ -923,7 +923,6 @@ class UserOpera(models.Model):
     operatime = models.CharField(db_column='operaTime', max_length=36, blank=True, null=True)  # Field name made lowercase.
     type = models.CharField(max_length=8, blank=True, null=True)
     articleid = models.ForeignKey(Article, models.DO_NOTHING, db_column='articleID', blank=True, null=True)  # Field name made lowercase.
-    messageid = models.ForeignKey(Message, models.DO_NOTHING, db_column='messageID', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
