@@ -580,11 +580,11 @@
                                     <option value="">请选择清洗策略：</option>
                                     <option value="替换">替换</option>
                                     <option value="缺失值">缺失值</option>
-                                    <option value="一致性">一致性 </option>
+                                    <!-- <option value="一致性">一致性 </option> -->
                                     <option value="字符串错误">字符串错误 </option>
                                     <option value="统一时间格式">统一时间格式 </option>
-                                    <option value="合并两列">合并两列  </option>
-                                    <option value="拆分为多列">拆分为多列 </option>
+                                    <!-- <option value="合并两列">合并两列  </option> -->
+                                    <!-- <option value="拆分为多列">拆分为多列 </option> -->
                                 </select>
                                 <script>
                                     $(document).ready(function(){
@@ -699,11 +699,14 @@
                                     </select>
                                 </div>
                                 <div id="formg3" class="form-group" style="display: none">
+                                    <form id="formzifuchuangeshi">
+                                    <input name="formtype" type="text" style="display: none" value="zifuchuangeshi">
                                     <label for="exampleInputName2">字符串错误</label>
-                                    <select id="zifuchuansel" class="form-control" >
-                                        <option>删除字符串左右的空格</option>
-                                        <option>将字符串中间的空格改为& nbsp</option>
-                                        <option>将指定子字符串修改为某特定字符串</option>
+                                    <select id="zifuchuansel" name="zifuchuansel" class="form-control" >
+                                        <option value="">选择字符串格式：</option>
+                                        <option value="delkongge">删除字符串左右的空格</option>
+                                        <option value="exchangekongge">将字符串中间的空格改为& nbsp</option>
+                                        <!-- <option>将指定子字符串修改为某特定字符串</option> -->
                                     </select>
                                     <input id="addzhidingzizi" placeholder="指定子字符串" class="form-control" style="display: none">
                                     <input id="addtedingzi" placeholder="修改为特定字符串" class="form-control" style="display: none">
@@ -711,7 +714,14 @@
                                         $(document).ready(function(){
                                             $("#zifuchuansel").change(function(){
                                                 /* alert($("#queshizhisel").get(0).selectedIndex); */
-                                                if(2 == $("#zifuchuansel").get(0).selectedIndex){
+                                                if('' == $("#zifuchuansel option:selected").val()){
+                                                        $("#geiniyigeid3").removeAttr("onclick")
+                                                }
+                                                else{
+                                                    $("#geiniyigeid3").removeAttr("onclick")
+                                                    $("#geiniyigeid3").attr("onclick","washsumit('formzifuchuangeshi',this)");
+                                                }
+                                                if(3 == $("#zifuchuansel").get(0).selectedIndex){
                                                     $("#addzhidingzizi").show()
                                                     $("#addtedingzi").show()
                                                 }
@@ -722,29 +732,30 @@
                                             });
                                         });
                                     </script>
-                                    <button id="geiniyigeid" type="button" class="btn btn-success btn-sm">执行</button>
+                                    <button id="geiniyigeid3" type="button" class="btn btn-success btn-sm">执行</button>
+                                    </form>
                                 </div>
                                 <div id="formg4" class="form-group" style="display: none">
-                                        <form style="display: none"></form>
-                                        <form id="formshijiangeshi" method="post" action="">
-                                                <input name="formtype" type="text" style="display: none" value="shijiangeshi">
-                                    <label for="shijiangeshisel">统一时间格式</label>
-                                    <select id="shijiangeshisel" name="shijiangeshisel" class="form-control" >
-                                        <option value="">请选择时间字段格式：</option>
-                                        <option value="/">YYYY/MM/DD</option>
-                                        <option value="-">YYYY-MM-DD</option>
-                                        <option value=".">YYYY.MM.DD</option>
-                                        <option value="1:">xx:xx</option>
-                                        <option value="2:">xx:xx:xx</option>
-                                        <option value="/2:">YYYY/MM/DD xx:xx:xx</option>
-                                        <option value="-2:">YYYY-MM-DD xx:xx:xx</option>
-                                        <option value=".2:">YYYY.MM.DD xx:xx:xx</option>
-                                        <option value="/1:">YYYY/MM/DD xx:xx</option>
-                                        <option value="-1:">YYYY-MM-DD xx:xx</option>
-                                        <option value=".1:">YYYY.MM.DD xx:xx</option>
-                                    </select>
-                                    <script>
-                                        $(document).ready(function(){
+                                    <form style="display: none"></form>
+                                    <form id="formshijiangeshi" method="post" action="">
+                                        <input name="formtype" type="text" style="display: none" value="shijiangeshi">
+                                        <label for="shijiangeshisel">统一时间格式</label>
+                                        <select id="shijiangeshisel" name="shijiangeshisel" class="form-control" >
+                                            <option value="">请选择时间字段格式：</option>
+                                            <option value="/">YYYY/MM/DD</option>
+                                            <option value="-">YYYY-MM-DD</option>
+                                            <option value=".">YYYY.MM.DD</option>
+                                            <option value="1:">xx:xx</option>
+                                            <option value="2:">xx:xx:xx</option>
+                                            <option value="/2:">YYYY/MM/DD xx:xx:xx</option>
+                                            <option value="-2:">YYYY-MM-DD xx:xx:xx</option>
+                                            <option value=".2:">YYYY.MM.DD xx:xx:xx</option>
+                                            <option value="/1:">YYYY/MM/DD xx:xx</option>
+                                            <option value="-1:">YYYY-MM-DD xx:xx</option>
+                                            <option value=".1:">YYYY.MM.DD xx:xx</option>
+                                        </select>
+                                        <script>
+                                            $(document).ready(function(){
                                                 $("#shijiangeshisel").change(function(){
                                                     /* alert($("#queshizhisel").get(0).selectedIndex); */
                                                     if('' == $("#shijiangeshisel option:selected").val()){
@@ -756,8 +767,8 @@
                                                     }
                                                 });
                                             });
-                                    </script>                             
-                                    <button id="geiniyigeid2" type="button" class="btn btn-success btn-sm">执行</button>
+                                        </script>
+                                        <button id="geiniyigeid2" type="button" class="btn btn-success btn-sm">执行</button>
                                     </form>
                                 </div>
                                 <div id="formg5" class="form-group" style="display: none">
@@ -811,6 +822,25 @@
     </section><!-- /MAIN CONTENT -->
 
     <!--main content end-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="exampleModalform">
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button onclick="zhugexiugai('exampleModalform')" type="button" class="btn btn-primary">确定提交</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!--footer start-->
     <footer class="site-footer">
         <div class="text-center">
@@ -1022,10 +1052,11 @@
                         "sLoadingRecords": "正在加载数据-请等待...",
                     },
                     scrollX:true,
+                    autoFill: true,
                     destroy:true,
                     processing: true,
                     data: datas,
-                    columns:column
+                    columns:column,
                     //  [
                     //     { data: 'tableName' },
                     //     { data: 'schemaName' },
@@ -1091,6 +1122,13 @@
     }
     function clickcell(thiscell){
         var index = $(thiscell).parents("tr").find("td").index($(thiscell));//获取当前td在tr种得索引,起始为0
+        $("#exampleModalform").empty()
+        /* $("#exampleModalform").append('{% csrf_token %}') */
+        $("#exampleModalform").append('<input name="formtype" type="text" style="display: none" value="updatearow">')
+        $(thiscell).parent().parent().parent().find('thead tr').children('th').each(function(j){  // 遍历 tr 的各个 td
+            $("#exampleModalform").append('<div class="form-group"><label for="recipient-name" class="control-label">'+$(this).text()+':</label><input id="'+$(thiscell).parent().children('td').eq(j).text()+'" name="'+$(this).text()+'" type="text" class="form-control" value="'+$(thiscell).parent().children('td').eq(j).text()+'"></div>')
+        });
+        $('#exampleModal').modal()
         //alert($(thiscell).text());
         //alert($(thiscell).parent().parent().parent().find('thead tr th:eq('+index+')').text())
         celltext = $(thiscell).text()
@@ -1239,7 +1277,45 @@
         myChart.clear();
         myChart.setOption(option);
     }
-
+    function zhugexiugai(formid){
+        var sitename = $('#sitename').val()
+        var tablename = $("#tableshowname").html()
+        var bianhuadestr = "formtype=updatearow"
+        var flgt = 0
+        $("#"+formid).children("div").each(function(i){
+            if ($(this).find("input").val() != $(this).find("input").attr('id')){
+                flgt = 1
+                //alert($(this).find("input").attr('name'))
+                bianhuadestr += "&_LRXLRXLRXLRXLRXLRX"+$(this).find("input").attr('name')+"="+$(this).find("input").val()
+            }
+        })
+        if(flgt == 1){
+            $.ajax({
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "/washData/washaction/" ,//url
+                data: $('#'+formid).serialize()+bianhuadestr+"&columnname="+columnname+"&sitename="+sitename+"&tablename="+tablename+"&chehuiStack="+chehuiStack+"&adminname="+adminname,
+                success: function (data) {
+                    if(data.data == 'success'){
+                        if(chehuiStack < 0) chehuiStack = 0;
+                        chehuiStack = chehuiStack + 1
+                        alert("修改成功")
+                        $("#rollback").show()
+                        $(thisbtn).show();
+                    }
+                    else if(data.data == 'nopk'){
+                        alert("不能修改主码")
+                    }
+                    else{
+                        alert("修改失败")
+                    }
+                },
+                error : function(data) {
+                    alert('数据获取失败！')
+                }
+            });
+        }
+    }
 
 </script>
 
