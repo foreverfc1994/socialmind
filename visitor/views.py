@@ -274,6 +274,41 @@ def getEventComments(request):
             data.append({"content": content, "messageTime": messageTime, "username": username})
     return JsonResponse({"data": data})
 
+def getEventOpera(request):
+    userid = request.session["user_id"]
+    objectid = request.GET.get("objectid")
+    operaData = {}
+    collect = models.UserOpera.objects.filter(type="收藏", objectid=objectid)
+    collectedNum = collect.count()
+    collected = collect.filter(userid=userid).count()
+    if collected == 0:
+        operaData.update({"collected": "false", "collectNum": collectedNum})
+    else:
+        operaData.update({"collected": "true", "collectNum": collectedNum})
+    like = models.UserOpera.objects.filter(type="点赞", objectid=objectid)
+    likeNum = like.count()
+    liked = like.filter(userid=userid).count()
+    if liked == 0:
+        operaData.update({"liked": "false", "likeNum": likeNum})
+    else:
+        operaData.update({"liked": "true", "likeNum": likeNum})
+    isTrue = models.UserOpera.objects.filter(type="判真", objectid=objectid)
+    isFalse = models.UserOpera.objects.filter(type="判假", objectid=objectid)
+    isTrueNum = isTrue.count()
+    isFalseNum = isFalse.count()
+    if isTrue.filter(userid=userid).count() != 0:
+        operaData.update({"isTrue": "true", "isTrueNum": isTrueNum})
+        operaData.update({"isFalse": "false", "isFalseNum": isFalseNum})
+    elif isFalse.filter(userid=userid).count() != 0:
+        operaData.update({"isTrue": "false", "isTrueNum": isTrueNum})
+        operaData.update({"isFalse": "true", "isFalseNum": isFalseNum})
+    else:
+        operaData.update({"isTrue": "false", "isTrueNum": isTrueNum})
+        operaData.update({"isFalse": "false", "isFalseNum": isFalseNum})
+    print(operaData)
+    return JsonResponse({"data": operaData})
+
+
 def getCorrelationFiles(request):
     objectid = request.GET.get("objectid")
     page = int(request.GET.get("page"))
@@ -389,7 +424,6 @@ def getArticleParticular(request):
     articleid = request.GET.get('articleid')
     data = []
     results = models.Comment.objects.filter(articleid=articleid, checked="1")
-    # print(results)
     for result in results:
         name = if_is_None(result.userid.username, "未知用户")
         content_row = result.commentcontent
@@ -399,63 +433,67 @@ def getArticleParticular(request):
             content = ""
         commentTime = if_is_None(result.commenttime, "未知")
         data.append({"username": name, "content": content, "commentTime": commentTime})
-    # print(data)
+    #print(data)
     return JsonResponse({"data": data})
 
 
 def addOperation(request):
-    userid = request.session['user_id']
-    type = request.GET.get("type")
-    num = int(request.GET.get("num"))
-    operaList = ["收藏", "点赞", "判真", "判假"]
-    operaType = operaList[num]
-    if type == "article":
-        articleid = request.GET.get("articleid")
+    try:
+        userid = request.session['user_id']
+        operatype = request.GET.get("type")
+        num = int(request.GET.get("num"))
+        operaList = ["收藏", "点赞", "判真", "判假"]
+        type = operaList[num]
+        # 新建条目
+        createDic = {"operaid": str(uuid.uuid4()),
+                     "userid": models.User.objects.get(userid=userid),
+                     "operatype": operatype,
+                     "type": type,
+                     "operatime": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                     }
+        # 判真/判假时若出现已经判断的情况则覆盖
+        sql = Q(userid=userid)
+        sql.add(Q(operatype=operatype), 'AND')
+        sql.add(Q(type="判真")|Q(type="判假"), 'AND')
+        if operatype == "article":
+            articleid = request.GET.get("articleid")
+            createDic.update({"articleid": models.Article.objects.get(articleid=articleid)})
+            sql.add(Q(articleid=articleid), 'AND')
+        elif operatype == "object":
+            objectid = request.GET.get("objectid")
+            createDic.update({"objectid": models.Object.objects.get(objectid=objectid)})
+            sql.add(Q(objectid=objectid), 'AND')
         if num <= 1:
-            createDic = {"operaid": str(uuid.uuid4()),
-                         "userid": models.User.objects.get(userid=userid),
-                         "operatype": type,
-                         "type": operaType,
-                         "articleid": models.Article.objects.get(articleid=articleid),
-                         "operatime": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                         }
             models.UserOpera.objects.create(**createDic).save()
         else:
             try:
-                find = models.UserOpera.objects.get(Q(userid=userid), Q(operatype="article"), Q(articleid=articleid), Q(type="判真")|Q(type="判假"))
-                print("aha")
-                find.type = operaType
+                find = models.UserOpera.objects.get(sql)
+                find.type = type
                 find.operatime = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 find.save()
             except:
-                print("heng~")
-                createDic = {"operaid": str(uuid.uuid4()),
-                             "userid": models.User.objects.get(userid=userid),
-                             "operatype": type,
-                             "type": operaType,
-                             "articleid": models.Article.objects.get(articleid=articleid),
-                             "operatime": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                             }
                 models.UserOpera.objects.create(**createDic).save()
         return JsonResponse({"data": "true"})
+    except:
+        return JsonResponse({"data": "false"})
+
 def subOperation(request):
     userid = request.session['user_id']
-    type = request.GET.get("type")
+    operatype = request.GET.get("type")
     num = int(request.GET.get("num"))
     operaList = ["收藏", "点赞", "判真", "判假"]
-    if type == "article":
-        if num <= 1:
-            articleid = request.GET.get("articleid")
-            models.UserOpera.objects.get(userid=userid, operatype="article", type=operaList[num], articleid=articleid).delete()
-        else:
-            articleid = request.GET.get("articleid")
-            find = models.UserOpera.objects.get(Q(userid=userid), Q(operatype="article"), Q(articleid=articleid), Q(type="判真")|Q(type="判假"))
-            if find.type == operaList[num]:
-                find.delete()
-            else:
-                find.operatime = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                find.type = operaList[num]
-                find.save()
+    type = operaList[num]
+    sql = Q(operatype=operatype)
+    sql.add(Q(userid=userid), 'AND')
+    sql.add(Q(type=type), 'AND')
+    if operatype == "article":
+        articleid = request.GET.get('articleid')
+        sql.add(Q(articleid=articleid), 'AND')
+    elif operatype == "object":
+        objectid = request.GET.get('objectid')
+        sql.add(Q(objectid=objectid), 'AND')
+    models.UserOpera.objects.get(sql).delete()
+
     return JsonResponse({"data": "succeed"})
 
 @csrf_exempt

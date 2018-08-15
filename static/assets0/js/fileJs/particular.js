@@ -1,4 +1,4 @@
-function loadComments(objectid){
+function loadEventComments(objectid){
     $.ajax({
         url: 'getComments/?objectid='+objectid,
         type: 'GET',
@@ -10,11 +10,11 @@ function loadComments(objectid){
 }
 
 function loadComment(dataList){
-    html = "";
-    num = dataList.length;
+    var html = "";
+    var num = dataList.length;
     if(num != 0){
         for(i=0;i<num;i++){
-            data = dataList[i]
+            var data = dataList[i];
             html += "<div class=\"commentBlock\">\n" +
                 "        <table>\n" +
                 "            <tr>\n" +
@@ -122,7 +122,112 @@ function addCorrelationFiles(dataList, page, objectid){
     }
 }
 
+function loadEventOpear(objectid){
+    $.ajax({
+        url: 'getOperaData/?objectid='+objectid,
+        type: 'GET',
+        dataType: 'json',
+        success: function(res){
+            var data = res.data;
+            var html = "";
+            if(data.collected == "false"){
+                html += "<button class=\"btn btn-warning eventButton\" onclick=\"eventOperations('"+objectid+"', 0)\" id=\"collectButton\">📂 收藏量：<span>"+data.collectNum+"</span></button>";
+            }
+            else{
+                html += "<button class=\"btn btn-warning eventButton active\" onclick=\"resetEventButton('"+objectid+"', 0)\" id=\"collectButton\">📂 收藏量：<span>"+data.collectNum+"</span></button>";
+            }
+            if(data.liked == "false"){
+                html += "<button class=\"btn btn-warning eventButton\" onclick=\"eventOperations('"+objectid+"', 1)\" id=\"likeButton\">👍 点赞数：<span>"+data.likeNum+"</span></button>";
+            }
+            else{
+                html += "<button class=\"btn btn-warning eventButton active\" onclick=\"resetEventButton('"+objectid+"', 1)\" id=\"likeButton\">👍 点赞数：<span>"+data.likeNum+"</span></button>";
+            }
+            if(data.isTrue == "true"){
+                html += "<button class=\"btn btn-warning eventButton active\" onclick=\"resetEventButton('"+objectid+"', 2)\" id=\"isTrueButton\">😊 判真数：<span>"+data.isTrueNum+"</span></button>";
+                html += "<button class=\"btn btn-warning eventButton\" onclick=\"eventOperations('"+objectid+"', 3)\" id=\"isFalseButton\">🤬 判假数：<span>"+data.isFalseNum+"</span></button>";
+            }
+            else if(data.isFalse == "true"){
+                html += "<button class=\"btn btn-warning eventButton\" onclick=\"eventOperations('"+objectid+"', 2)\" id=\"isTrueButton\">😊 判真数：<span>"+data.isTrueNum+"</span></button>";
+                html += "<button class=\"btn btn-warning eventButton active\" onclick=\"resetEventButton('"+objectid+"', 3)\" id=\"isFalseButton\">🤬 判假数：<span>"+data.isFalseNum+"</span></button>";
+            }
+            else{
+                html += "<button class=\"btn btn-warning eventButton\" onclick=\"eventOperations('"+objectid+"', 2)\" id=\"isTrueButton\">😊 判真数：<span>"+data.isTrueNum+"</span></button>";
+                html += "<button class=\"btn btn-warning eventButton\" onclick=\"eventOperations('"+objectid+"', 3)\" id=\"isFalseButton\">🤬 判假数：<span>"+data.isFalseNum+"</span></button>";
+            }
+            $("#eventData").append(html);
+        }
+    });
+}
+function eventOperations(objectid, num){
+    $.ajax({
+        url: '/addOperation/?type=object&objectid='+objectid+'&num='+num,
+        type: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            if(data.data == "true"){
+                changeButton(num, objectid);
+            }
+            else{
+                alert("操作失败，请重试");
+            }
+        },
+        error: function(){
+            alert("未知错误，请重试");
+        }
+    })
+}
+function resetEventButton(objectid, num){
+    $.ajax({
+            url: '/subOperation/?type=object&objectid='+objectid+'&num='+num,
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                if(data.data == "succeed"){
+                    var bt = document.getElementById("eventData").getElementsByTagName("button")[num];
+                    $(bt).removeClass("active");
+                    $(bt).removeAttr("onclick");
+                    $(bt).attr("onclick", "eventOperations('"+objectid+"', "+num+");");
+                    var number = $(bt).find("span").text();
+                    var subNumber = parseInt(number)-1;
+                    $(bt).find("span").text(subNumber);
+                    number = null;
+                    subNumber = null;
+                }
+                if(data.data !== "succeed"){
+                    alert("操作失败，请重试");
+                }
+            },
+            error: function(){
+                alert("未知错误，请重试");
+            }
+    })
+}
 
+function changeButton(num, objectid){
+    var bts = document.getElementById("eventData").getElementsByTagName("button");
+    var bt = bts[num];
+    if(num >= 2){
+        var anthor = bts[5-num];
+        if(anthor.className == "btn btn-warning eventButton active"){
+            $(anthor).removeClass("active");
+            $(anthor).removeAttr("onclick");
+            $(anthor).attr("onclick", "eventOperations('"+objectid+"', "+(5-num)+");");
+            var nnumber = $(anthor).find("span").text();
+            var ssubNumber = parseInt(nnumber)-1;
+            $(anthor).find("span").text(ssubNumber);
+            nnumber = null;
+            ssubNumber = null;
+        }
+    }
+    $(bt).addClass("active");
+    $(bt).removeAttr("onclick");
+    $(bt).attr("onclick", "resetEventButton('"+objectid+"', "+num+");");
+    var number = $(bt).find("span").text();
+    var subNumber = parseInt(number)+1;
+    $(bt).find("span").text(subNumber);
+    number = null;
+    subNumber = null;
+}
 
 
 function eventHeatIndex(){//事件热度

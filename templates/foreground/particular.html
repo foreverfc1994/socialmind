@@ -277,12 +277,7 @@
                                     {% endif %}
                                 </div>
                             </div>
-                            <div id="eventData" class="eventData">
-                                <button class="btn btn-warning eventButton">📂 收藏量：{{ collectNum }}</button>
-                                <button class="btn btn-warning eventButton">👍 点赞数：{{ likeNum }}</button>
-                                <button class="btn btn-warning eventButton">😊 判真数：{{ trueNum }}</button>
-                                <button class="btn btn-warning eventButton">🤬 判假数：{{ falseNum }}</button>
-                            </div>
+                            <div id="eventData" class="eventData"></div>
                             <div class="eventComments"><br>
                                 <div style="float: left; margin-left: 25%; width: 40%;">
                                     <input type="text"  class="form-control" placeholder="输入您要评论的内容：" id="commentInput">
@@ -589,6 +584,19 @@ document.write(unescape("%3Cspan id='cnzz_stat_icon_30088308'%3E%3C/span%3E%3Csc
 	});
 </script>
 <script>
+    window.onload = function(){
+        loadEventOpear("{{ objectid }}");
+        loadEventComments("{{ objectid }}");
+        loadCorrelationFiles("{{ objectid }}", 0);
+        eventTrendStatistic();//事件走势统计
+        heatIndexBoom();//热度爆发统计
+        mediaLivenessIndex();//媒体活跃度
+        emotionTrend();//情绪走势统计
+        eventJudgeRatio();//事件正负面评价比例
+        emotionRatio();//事件情绪占比
+    };
+</script>
+<script>
     eventHeatIndex();//事件热度
     eventSensitiveIndex();//事件敏感度
     eventPolarityEvent();//事件极性
@@ -599,17 +607,5 @@ document.write(unescape("%3Cspan id='cnzz_stat_icon_30088308'%3E%3C/span%3E%3Csc
     informSource();//信息来源
     informTrans();//信息传播过程
     informNet();//信息传播网络
-</script>
-<script>
-    window.onload = function(){
-        loadComments("{{ objectid }}");
-        loadCorrelationFiles("{{ objectid }}", 0);
-        eventTrendStatistic();//事件走势统计
-        heatIndexBoom();//热度爆发统计
-        mediaLivenessIndex();//媒体活跃度
-        emotionTrend();//情绪走势统计
-        eventJudgeRatio();//事件正负面评价比例
-        emotionRatio();//事件情绪占比
-    };
 </script>
 </html>

@@ -14,7 +14,7 @@ function loadComments(dataList){
     var num = dataList.length;
     if(num != 0){
         for(i=0;i<num;i++){
-            data = dataList[i]
+            var data = dataList[i];
             html += "<div class=\"commentBlock\">\n" +
                 "        <table>\n" +
                 "            <tr>\n" +
@@ -28,7 +28,7 @@ function loadComments(dataList){
                 "                         <p class=\"comment\"><b class=\"commenterName\">"+data.username+"：</b>"+data.content+"</p>\n" +
                 "                    </ul>\n" +
                 "                    <ul>\n" +
-                "                          <span class=\"fl grayText\">"+data.messageTime+"</span>\n" +
+                "                          <span class=\"fl grayText\">"+data.commentTime+"</span>\n" +
                 "                          <span class=\"fr cursorPoint\"><a href=\"javascript:void(0)\" class=\"grayText\">👍&nbsp;赞:&nbsp;&nbsp;2212&nbsp;&nbsp;</a></span>\n" +
                 "                    </ul>\n" +
                 "                </td>\n" +
@@ -114,7 +114,7 @@ function operations(articleid, num){
             if(data.data == "true"){
                 changeButton(num, articleid);
             }
-            if (data.data !== "true") {
+            else{
                 alert("操作失败，请重试");
             }
         },
