@@ -3221,7 +3221,8 @@
                 dataType: "json",//预期服务器返回的数据类型
                 url: "/bindex/bindexContent/" ,//url
                 success:function(data){
-
+                    numofnewusrs = data.data[0]
+                    alert(numofnewusrs)
                 },
                 error:function(data){
                     alert("获取数据失败！")
