@@ -965,73 +965,65 @@
                                     </div>
                                     <div id="yonghuzhanbipiechart" style="width: 100%;height: 400px;"></div>
                                     <script>
-                                        var myChart = echarts.init(document.getElementById('yonghuzhanbipiechart'));
-                                        option = {
-                                            title : {
-                                                text: '系统用户统计图',
-                                                x:'center'
-                                            },
-                                            tooltip : {
-                                                trigger: 'item',
-                                                formatter: "{a} <br/>{b} : {c} ({d}%)"
-                                            },
-                                            legend: [
-                                                {
-                                                    orient: 'vertical',
-                                                    left: 'left',
-                                                    data: ['企业用户数','个人用户数','事业用户数','政府用户数']
+                                        function xitongyonghutongji(list1,list2){
+                                            var myChart = echarts.init(document.getElementById('yonghuzhanbipiechart'));
+                                            option = {
+                                                title : {
+                                                    text: '系统用户统计图',
+                                                    x:'center'
                                                 },
-                                                {
-                                                    orient: 'vertical',
-                                                    right: 'right',
-                                                    data: ['新增企业用户数','新增个人用户数','新增事业用户数','新增政府用户数']
+                                                tooltip : {
+                                                    trigger: 'item',
+                                                    formatter: "{a} <br/>{b} : {c} ({d}%)"
                                                 },
-                                            ],
-                                            calculable : true,
-                                            series : [
-                                                {
-                                                    name:'半径模式',
-                                                    type:'pie',
-                                                    radius : [20, 110],
-                                                    center : ['25%', '50%'],
-                                                    data:[
-                                                        {value:20, name:'企业用户数'},
-                                                        {value:35, name:'政府用户数'},
-                                                        {value:30, name:'事业用户数'},
-                                                        {value:40, name:'个人用户数'}
-                                                    ]
-                                                },
-                                                {
-                                                    name:'面积模式',
-                                                    type:'pie',
-                                                    radius : [30, 110],
-                                                    center : ['75%', '50%'],
-                                                    data:[
-                                                        {value:10, name:'新增企业用户数'},
-                                                        {value:5, name:'新增政府用户数'},
-                                                        {value:15, name:'新增事业用户数'},
-                                                        {value:25, name:'新增个人用户数'}
-                                                    ]
+                                                legend: [
+                                                    {
+                                                        orient: 'vertical',
+                                                        left: 'left',
+                                                        data: ['企业用户数','个人用户数','事业用户数','政府用户数']
+                                                    },
+                                                    {
+                                                        orient: 'vertical',
+                                                        right: 'right',
+                                                        data: ['新增企业用户数','新增个人用户数','新增事业用户数','新增政府用户数']
+                                                    },
+                                                ],
+                                                calculable : true,
+                                                series : [
+                                                    {
+                                                        name:'半径模式',
+                                                        type:'pie',
+                                                        radius : [20, 110],
+                                                        center : ['25%', '50%'],
+                                                        data:list1
+                                                    },
+                                                    {
+                                                        name:'面积模式',
+                                                        type:'pie',
+                                                        radius : [30, 110],
+                                                        center : ['75%', '50%'],
+                                                        data:list2
+                                                    }
+                                                ]
+                                            };
+                                            myChart.setOption(option);
+                                            myChart.on('click', function (params) {
+                                                if(params.dataIndex==0){
+                                                    window.location.href='/usrManagement/0/';
                                                 }
-                                            ]
-                                        };
-                                        myChart.setOption(option);
-                                        myChart.on('click', function (params) {
-                                            if(params.dataIndex==0){
-                                                window.location.href='/usrManagement/0/';
-                                            }
-                                            else if(params.dataIndex==1){
-                                                window.location.href='/usrManagement/1/';
-                                            }
-                                            else if(params.dataIndex==2){
-                                                window.location.href='/usrManagement/2/';
-                                            }
-                                            else if(params.dataIndex==3){
-                                                window.location.href='/usrManagement/3/';
-                                            }
+                                                else if(params.dataIndex==1){
+                                                    window.location.href='/usrManagement/1/';
+                                                }
+                                                else if(params.dataIndex==2){
+                                                    window.location.href='/usrManagement/2/';
+                                                }
+                                                else if(params.dataIndex==3){
+                                                    window.location.href='/usrManagement/3/';
+                                                }
 
 
-                                        });
+                                            });
+                                        }
                                     </script>
                                     <hr style="height:2px;border: 0px;background-color: #ddd">
                                     <!-- <table class="table">
@@ -1046,7 +1038,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">321 总留言量</h3>
+                                                    <h3 id="zongliuyanliang" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -1056,7 +1048,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">255 昨日留言量</h3>
+                                                    <h3 id="zuoriliuyanliang" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -1098,193 +1090,75 @@
                                     </div>
                                     <div id="dianjilianglinechart" style="width: 100%;height: 400px;"></div>
                                     <script>
-                                        var myChart = echarts.init(document.getElementById('dianjilianglinechart'));
-                                        /* option = {
-            title: {
-                x:'left',
-                text: '点击量与日志量统计图'
-            },
-            tooltip: {
-                trigger: 'axis'
-            },
-            legend: {
-                x:'right',
-                data:['个人新增用户','政府新增用户','事业新增用户','企业新增用户','全部新增用户']
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap: false,
-                data: ['周一','周二','周三','周四','周五','周六','周日']
-            },
-            yAxis: {
-                type: 'value'
-            },
-            series: [
-                {
-                    name:'个人新增用户',
-                    type:'line',
-                    smooth:true,
-                    stack: '总量',
-                    data:[120, 132, 101, 134, 90, 230, 210]
-                },
-                {
-                    name:'政府新增用户',
-                    type:'line',
-                    smooth:true,
-                    stack: '总量',
-                    data:[220, 182, 191, 234, 290, 330, 310]
-                },
-                {
-                    name:'事业新增用户',
-                    type:'line',
-                    smooth:true,
-                    stack: '总量',
-                    data:[150, 232, 201, 154, 190, 330, 410]
-                },
-                {
-                    name:'企业新增用户',
-                    type:'line',
-                    smooth:true,
-                    stack: '总量',
-                    data:[320, 332, 301, 334, 390, 330, 320]
-                },
-                {
-                    name:'全部新增用户',
-                    type:'line',
-                    smooth:true,
-                    stack: '总量',
-                    data:[820, 932, 901, 934, 1290, 1330, 1320]
-                }
-            ]
-        }; */
-                                        option = {
-                                            title: {
-                                                text: '点击量与日志量统计图',
-                                            },
-                                            tooltip: {
-                                                trigger: 'axis',
-                                                axisPointer: {
-                                                    type: 'cross'
-                                                }
-                                            },
-                                            legend: {
-                                                //x:'right',
-                                                data:['用户留言量','日志生成量']
-                                            },
-                                            xAxis:  {
-                                                type: 'category',
-                                                boundaryGap: false,
-                                                data: ['00:00', '01:15', '02:30', '03:45', '05:00', '06:15', '07:30', '08:45', '10:00', '11:15', '12:30', '13:45', '15:00', '16:15', '17:30', '18:45', '20:00', '21:15', '22:30', '23:45']
-                                            },
-                                            yAxis: {
-                                                type: 'value',
-                                                axisLabel: {
-                                                    formatter: '{value} W'
+                                        function liuyanliangyurizhiliang(list1,liuyanlianglist){
+                                            var myChart = echarts.init(document.getElementById('dianjilianglinechart'));
+                                            option = {
+                                                title: {
+                                                    text: '点击量与日志量统计图',
                                                 },
-                                                axisPointer: {
-                                                    snap: true
-                                                }
-                                            },
-                                            /* visualMap: {
-                                                show: false,
-                                                dimension: 0,
-                                                pieces: [{
-                                                    lte: 6,
-                                                    color: 'green'
-                                                }, {
-                                                    gt: 6,
-                                                    lte: 8,
-                                                    color: 'red'
-                                                }, {
-                                                    gt: 8,
-                                                    lte: 14,
-                                                    color: 'green'
-                                                }, {
-                                                    gt: 14,
-                                                    lte: 17,
-                                                    color: 'red'
-                                                }, {
-                                                    gt: 17,
-                                                    color: 'green'
-                                                }]
-                                            }, */
-                                            dataZoom: [
-                                                {
-                                                    type: 'slider',
-                                                    show: true,
-                                                    start: 0,
-                                                    end: 100,
-                                                    handleSize: 8
-                                                },
-                                                {
-                                                    type: 'inside',
-                                                    start: 0,
-                                                    end: 100
-                                                }
-                                            ],
-                                            series: [
-                                                {
-                                                    name:'日志生成量',
-                                                    type:'line',
-                                                    smooth: true,
-                                                    /* itemStyle : {
-                                                    normal : {
-                                                        lineStyle:{
-                                                            color:'blue'
-                                                        }
+                                                tooltip: {
+                                                    trigger: 'axis',
+                                                    axisPointer: {
+                                                        type: 'cross'
                                                     }
-                                                    }, */
-                                                    data: [360, 380, 390, 400, 500, 600, 750, 800, 700, 600, 500, 480, 450, 400, 460, 500, 550, 500, 400, 390],
-                                                    /* markArea: {
-                                                        data: [ [{
-                                                            name: '早高峰',
-                                                            xAxis: '07:30'
-                                                        }, {
-                                                            xAxis: '10:00'
-                                                        }], [{
-                                                            name: '晚高峰',
-                                                            xAxis: '18:45'
-                                                        }, {
-                                                            xAxis: '21:15'
-                                                        }] ]
-                                                    } */
                                                 },
-                                                {
-                                                    name:'用户留言量',
-                                                    type:'line',
-                                                    smooth: true,
-                                                    data: [300, 280, 250, 260, 270, 300, 550, 500, 400, 390, 380, 390, 400, 500, 600, 750, 800, 700, 600, 400],
-                                                    /* markArea: {
-                                                        data: [ [{
-                                                            name: '早高峰',
-                                                            xAxis: '06:15'
-                                                        }, {
-                                                            xAxis: '08:45'
-                                                        }], [{
-                                                            name: '晚高峰',
-                                                            xAxis: '17:30'
-                                                        }, {
-                                                            xAxis: '21:15'
-                                                        }] ]
-                                                    } */
+                                                legend: {
+                                                    //x:'right',
+                                                    data:['用户留言量','日志生成量']
+                                                },
+                                                xAxis:  {
+                                                    type: 'category',
+                                                    boundaryGap: false,
+                                                    data: list1
+                                                },
+                                                yAxis: {
+                                                    type: 'value',
+                                                    axisLabel: {
+                                                        formatter: '{value} W'
+                                                    },
+                                                    axisPointer: {
+                                                        snap: true
+                                                    }
+                                                },
+                                                dataZoom: [
+                                                    {
+                                                        type: 'slider',
+                                                        show: true,
+                                                        start: 0,
+                                                        end: 100,
+                                                        handleSize: 8
+                                                    },
+                                                    {
+                                                        type: 'inside',
+                                                        start: 0,
+                                                        end: 100
+                                                    }
+                                                ],
+                                                series: [
+                                                    {
+                                                        name:'日志生成量',
+                                                        type:'line',
+                                                        smooth: true,
+                                                        data: [360, 380, 390, 400, 500, 600, 750, 800, 700, 600, 500, 480, 450, 400, 460, 500, 550, 500, 400, 390],
+                                                    },
+                                                    {
+                                                        name:'用户留言量',
+                                                        type:'line',
+                                                        smooth: true,
+                                                        data: liuyanlianglist,
+                                                    }
+                                                ]
+                                            };
+                                            myChart.setOption(option);
+                                            myChart.on('click', function (params) {
+                                                if(params.seriesName=='系统点击量'){
+                                                    window.location.href='/operateDiary/';
                                                 }
-                                            ]
-                                        };
-                                        myChart.setOption(option);
-                                        myChart.on('click', function (params) {
-                                            if(params.seriesName=='系统点击量'){
-                                                window.location.href='/operateDiary/';
-                                            }
-                                            else if(params.seriesName=='日志生成量'){
-                                                window.location.href='/operateDiary/';
-                                            }
-                                        });
+                                                else if(params.seriesName=='日志生成量'){
+                                                    window.location.href='/operateDiary/';
+                                                }
+                                            });
+                                        }
                                     </script>
                                 </div>
                             </div>
@@ -3198,83 +3072,120 @@
 </script>
 <script>
     $(document).ready(function () {
-        scrollflg = 0
+        flg1 = 0
+        flg2 = 0
+        flg3 = 0
+        flg4 = 0
+        flg5 = 0
+        flg6 = 0
+        flg7 = 0
+        flg8 = 0
+        flg9 = 0
+        flg10 = 0
+        flg11 = 0
+        flg12 = 0
+        flg13 = 0
         $.ajax({
-                type: "POST",//方法类型
-                dataType: "json",//预期服务器返回的数据类型
-                url: "/bindex/bindexContent/0/" ,//url
-                success:function(data){
-                    numofnewusrs = data.data[0].numofnewusrs
-                    numofuncheckedcomments = data.data[2]
-                    $("#numofnewusrs").empty()
-                    $("#numofuncheckedcomments").empty()
-                    $("#numofnewusrs").append(numofnewusrs+" 新增用户")
-                    $(".numofnewusrs").append(numofnewusrs+" 新增用户数")
-                    $(".numofnewcusrs").append(data.data[0].numofcusrs+" 新增企业用户数")
-                    $(".numofnewgusrs").append(data.data[0].numofgusrs+" 新增政府用户数")
-                    $(".numofnewiusrs").append(data.data[0].numofiusrs+" 新增事业单位用户数")
-                    $(".numofnewpusrs").append(data.data[0].numofpusrs+" 新增个人用户数")
-                    $("#numofuncheckedcomments").append(numofuncheckedcomments+" 待审核留言")
-                    $(".zongyonghushu").append(data.data[1].numofusrs+" 总用户数")
-                    $(".zonggerenyonghushu").append(data.data[1].numofpusrs+" 总个人用户数")
-                    $(".zongqiyeyonghushu").append(data.data[1].numofcusrs+" 总企业用户数")
-                    $(".zongzhengfuyonghushu").append(data.data[1].numofgusrs+" 总政府用户数")
-                    $(".zongshiyeyonghushu").append(data.data[1].numofiusrs+" 总事业单位用户数")
-                },
-                error:function(data){
-                    alert("获取数据失败！")
-                }
+            type: "POST",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "/bindex/bindexContent/0/" ,//url
+            success:function(data){
+                numofnewusrs = data.data[0].numofnewusrs
+                numofuncheckedcomments = data.data[2]
+                $("#numofnewusrs").empty()
+                $("#numofuncheckedcomments").empty()
+                $("#numofnewusrs").append(numofnewusrs+" 新增用户")
+                $(".numofnewusrs").append(numofnewusrs+" 新增用户数")
+                $(".numofnewcusrs").append(data.data[0].numofcusrs+" 新增企业用户数")
+                $(".numofnewgusrs").append(data.data[0].numofgusrs+" 新增政府用户数")
+                $(".numofnewiusrs").append(data.data[0].numofiusrs+" 新增事业单位用户数")
+                $(".numofnewpusrs").append(data.data[0].numofpusrs+" 新增个人用户数")
+                $("#numofuncheckedcomments").append(numofuncheckedcomments+" 待审核留言")
+            },
+            error:function(data){
+                alert("获取数据失败！")
+            }
         })
         $(window).scroll(function(){
-        //下面这句主要是获取网页的总高度，主要是考虑兼容性所以把Ie支持的documentElement也写了，这个方法至少支持IE8
-        var htmlHeight=document.body.scrollHeight||document.documentElement.scrollHeight;
-        //clientHeight是网页在浏览器中的可视高度，
-        var clientHeight=document.body.clientHeight||document.documentElement.clientHeight;
-        //scrollTop是浏览器滚动条的top位置，
-        var scrollTop=document.body.scrollTop||document.documentElement.scrollTop;
-        //通过判断滚动条的top位置与可视网页之和与整个网页的高度是否相等来决定是否加载内容；
-        if(scrollflg<scrollTop){
-            if((scrollTop>40)&&(scrollTop<550)){
-                scrollflg = 550
-                alert(44)}
-            else if((scrollTop > 550)&&(scrollTop<1070)){
-                scrollflg = 1070
-                alert(575)}
-            else if((scrollTop > 1070)&&(scrollTop<1630)){
-                scrollflg = 1630
-                alert(1080)}
-            else if((scrollTop > 1630)&&(scrollTop<2060)){
-                scrollflg = 2060
+            //下面这句主要是获取网页的总高度，主要是考虑兼容性所以把Ie支持的documentElement也写了，这个方法至少支持IE8
+            var htmlHeight=document.body.scrollHeight||document.documentElement.scrollHeight;
+            //clientHeight是网页在浏览器中的可视高度，
+            var clientHeight=document.body.clientHeight||document.documentElement.clientHeight;
+            //scrollTop是浏览器滚动条的top位置，
+            var scrollTop=document.body.scrollTop||document.documentElement.scrollTop;
+            //通过判断滚动条的top位置与可视网页之和与整个网页的高度是否相等来决定是否加载内容；
+
+            if((flg1 == 0)&&(scrollTop>40)&&(scrollTop<550)){
+                flg1 = 550
+                //alert(44)
+            }
+            else if((flg2 == 0)&&(scrollTop > 550)&&(scrollTop<1070)){
+                flg2 = 1070
+                $.ajax({
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/bindex/bindexContent/2/" ,//url
+                    success:function(data){
+                        $(".zongyonghushu").append(data.data[0].zongusrs+" 总用户数")
+                        $(".zonggerenyonghushu").append(data.data[2][0].value+" 总个人用户数")
+                        $(".zongqiyeyonghushu").append(data.data[2][1].value+" 总企业用户数")
+                        $(".zongzhengfuyonghushu").append(data.data[2][2].value+" 总政府用户数")
+                        $(".zongshiyeyonghushu").append(data.data[2][3].value+" 总事业单位用户数")
+                        xitongyonghutongji(data.data[2],data.data[3])
+                    },
+                    error:function(data){
+                        alert("获取数据失败！")
+                    }
+                });
+            }
+            else if((flg3 == 0)&&(scrollTop > 1070)&&(scrollTop<1630)){
+                flg3 = 1630
+                $.ajax({
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/bindex/bindexContent/3/" ,//url
+                    success:function(data){
+                        liuyanliangyurizhiliang(data.data[0],data.data[1])
+                        $("#zongliuyanliang").append(data.data[2]+" 总留言量")
+                        $("#zuoriliuyanliang").append(data.data[3]+" 昨日留言量")
+                    },
+                    error:function(data){
+                        alert("获取数据失败！")
+                    }
+                });
+            }
+            else if((flg4 == 0)&&(scrollTop > 1630)&&(scrollTop<2060)){
+                flg4 = 2060
                 alert(1656)}
-            else if((scrollTop > 2060)&&(scrollTop<2640)){
-                scrollflg = 2640
+            else if((flg5 == 0)&&(scrollTop > 2060)&&(scrollTop<2640)){
+                flg5 = 2640
                 alert(2088)}
-            else if((scrollTop > 2640)&&(scrollTop<3030)){
-                scrollflg = 3030
+            else if((flg6 == 0)&&(scrollTop > 2640)&&(scrollTop<3030)){
+                flg6 = 3030
                 alert(2664)}
-            else if((scrollTop > 3030)&&(scrollTop<3490)){
-                scrollflg = 3490
+            else if((flg7 == 0)&&(scrollTop > 3030)&&(scrollTop<3490)){
+                flg7 = 3490
                 alert(3050)}
-            else if((scrollTop > 3490)&&(scrollTop<4020)){
-                scrollflg = 4020
+            else if((flg8 == 0)&&(scrollTop > 3490)&&(scrollTop<4020)){
+                flg8 = 4020
                 alert(3500)}
-            else if((scrollTop > 4020)&&(scrollTop<4350)){
-                scrollflg = 4350
+            else if((flg9 == 0)&&(scrollTop > 4020)&&(scrollTop<4350)){
+                flg9 = 4350
                 alert(4032)}
-            else if((scrollTop > 4350)&&(scrollTop<4690)){
-                scrollflg = 4690
+            else if((flg10 == 0)&&(scrollTop > 4350)&&(scrollTop<4690)){
+                flg10 = 4690
                 alert(4360)}
-            else if((scrollTop > 4690)&&(scrollTop<5170)){
-                scrollflg = 5170
+            else if((flg11 == 0)&&(scrollTop > 4690)&&(scrollTop<5170)){
+                flg11 = 5170
                 alert(4700)}
-            else if((scrollTop > 5170)&&(scrollTop<5750)){
-                scrollflg = 5750
+            else if((flg12 == 0)&&(scrollTop > 5170)&&(scrollTop<5750)){
+                flg12 = 5750
                 alert(5180)}
-            else if(scrollTop > 5750){
-                scrollflg = 7070
+            else if((flg13 == 0)&&scrollTop > 5750){
+                flg13 = 1
                 alert(5760)}
-        }
-    })
+
+        })
     });
 </script>
 
