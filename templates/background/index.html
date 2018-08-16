@@ -3180,7 +3180,18 @@
                 alert(4700)}
             else if((flg12 == 0)&&(scrollTop > 5170)&&(scrollTop<5750)){
                 flg12 = 5750
-                alert(5180)}
+                $.ajax({
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/bindex/bindexContent/12/" ,//url
+                    success:function(data){
+                        alert("@@@")
+                    },
+                    error:function(data){
+                        alert("获取数据失败！")
+                    }
+                });
+            }
             else if((flg13 == 0)&&scrollTop > 5750){
                 flg13 = 1
                 alert(5760)}

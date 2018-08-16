@@ -3,7 +3,7 @@ from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from manager.scripts.sysscript import *
 import pymysql  # 导入 pymysql
-from visitor.models import User,Event,Message
+from visitor.models import User,Event,Message,Object
 import time,datetime
 import json
 
@@ -154,4 +154,44 @@ def bindexContent(request,a):
         # print(countzongliuyanliang,countzuoriliuyanliang)
         data = {"data": dataList}
         return HttpResponse(json.dumps(data))
-
+    elif a == 12:
+        dataList = []
+        Objects = Object.objects.all()
+        todaystr = time.strftime("%Y-%m-%d %H:%M:%S",time.localtime())
+        yesterdaydate = datetime.datetime.strptime(todaystr, "%Y-%m-%d %H:%M:%S")-datetime.timedelta(days=1)
+        yesterdaystr = yesterdaydate.strftime("%Y-%m-%d %H:%M:%S")
+        yesterdayshijianchuo = time.mktime(time.strptime(yesterdaystr,"%Y-%m-%d %H:%M:%S"))
+        lastweekdate = datetime.datetime.strptime(todaystr, "%Y-%m-%d %H:%M:%S") - datetime.timedelta(days=7)
+        lastweekstr = lastweekdate.strftime("%Y-%m-%d %H:%M:%S")
+        lastweekshijianchuo = time.mktime(time.strptime(lastweekstr, "%Y-%m-%d %H:%M:%S"))
+        # print(yesterdayshijianchuo)
+        shijiancount = 0
+        shiticount = 0
+        zuorixinzengshijiancount = 0
+        zuorixinznegshiticount = 0
+        lastweekxinzengshijiancount = 0
+        lastweekxinzengshiticount = 0
+        for i in Objects:
+            if i.objecttype == "事件":
+                shijiancount = shijiancount + 1
+                if i.addtime:
+                    adddate = datetime.datetime.strptime(i.addtime, "%Y-%m-%d %H:%M:%S")
+                    adddatestr = adddate.strftime("%Y-%m-%d %H:%M:%S")
+                    adddatestrshijianchuo = time.mktime(time.strptime(adddatestr, "%Y-%m-%d %H:%M:%S"))
+                    if adddatestrshijianchuo >= yesterdayshijianchuo:
+                        zuorixinzengshijiancount = zuorixinzengshijiancount + 1
+                    if adddatestrshijianchuo >= lastweekshijianchuo:
+                        lastweekxinzengshijiancount = lastweekxinzengshijiancount + 1
+            elif i.objecttype == "实体":
+                shiticount = shiticount + 1
+                if i.addtime:
+                    adddate = datetime.datetime.strptime(i.addtime, "%Y-%m-%d %H:%M:%S")
+                    adddatestr = adddate.strftime("%Y-%m-%d %H:%M:%S")
+                    adddatestrshijianchuo = time.mktime(time.strptime(adddatestr, "%Y-%m-%d %H:%M:%S"))
+                    if adddatestrshijianchuo >= yesterdayshijianchuo:
+                        zuorixinznegshiticount = zuorixinznegshiticount + 1
+                    if adddatestrshijianchuo >= lastweekshijianchuo:
+                        lastweekxinzengshiticount = lastweekxinzengshiticount + 1
+        print(shijiancount,shiticount,zuorixinzengshijiancount,zuorixinznegshiticount,lastweekxinzengshijiancount,lastweekxinzengshiticount)
+        data = {"data": dataList}
+        return HttpResponse(json.dumps(data))
