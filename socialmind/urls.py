@@ -67,7 +67,7 @@ urlpatterns = [
     path('ajaxInitGovUsrForm/',UserInfoManageview.ajaxInitGovUsrForm),
     # background url
     path('bindex/', bloginview.index, name='index'),
-    path('bindex/bindexContent/', bloginview.bindexContent),
+    path('bindex/bindexContent/<int:a>/', bloginview.bindexContent),
     path('blogin/', bloginview.login, name='login'),
     path('SpiderList/', bviews.SpiderList),
     path('SpiderMonitor/', bviews.SpiderMonitor),
