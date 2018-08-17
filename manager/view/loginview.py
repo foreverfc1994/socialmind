@@ -266,3 +266,8 @@ def bindexContent(request,a):
         dataList.append(province_shitilist)
         data = {"data": dataList}
         return HttpResponse(json.dumps(data))
+@csrf_exempt
+def provinceyuqing(request):
+    dataList = []
+    data = {"data": dataList}
+    return HttpResponse(json.dumps(data))

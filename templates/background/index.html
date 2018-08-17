@@ -2188,12 +2188,12 @@
                                                             url: "/bindex/bindexprovinceyuqing/" ,//url
                                                             success: function(data){
                                                                 alert("!!!")
+                                                                redrawprovince(params.data.name);
                                                             },
                                                             error: function(data){
                                                                 alert("数据获取失败！")
                                                             }
                                                         })
-                                                        redrawprovince(params.data.name);
                                                     });
                                                 }
                                             </script>
