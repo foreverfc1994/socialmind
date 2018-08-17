@@ -2186,9 +2186,9 @@
                                                             type: "POST",//方法类型
                                                             dataType: "json",//预期服务器返回的数据类型
                                                             url: "/bindex/bindexprovinceyuqing/" ,//url
+                                                            data: "provincename="+params.data.name,
                                                             success: function(data){
-                                                                alert("!!!")
-                                                                redrawprovince(params.data.name);
+                                                                redrawprovince(params.data.name,data.data[0],data.data[1],data.data[2]);
                                                             },
                                                             error: function(data){
                                                                 alert("数据获取失败！")
@@ -2305,7 +2305,7 @@
                                                     ]
                                                 };
                                                 myChart.setOption(option);
-                                                function redrawprovince(t){
+                                                function redrawprovince(t,list1,list2,list3){
                                                     var myChart = echarts.init(document.getElementById('xinzengshijianshulinechart'));
                                                     option = {
                                                         tooltip: {
@@ -2327,7 +2327,7 @@
                                                         xAxis: {
                                                             type: 'category',
                                                             boundaryGap: false,
-                                                            data: ['一','二','三','四','五','六','日']
+                                                            data: list1
                                                         },
                                                         yAxis: {
                                                             type: 'value'
@@ -2336,13 +2336,13 @@
                                                             {
                                                                 type: 'slider',
                                                                 show: true,
-                                                                start: 50,
+                                                                start: 0,
                                                                 end: 100,
                                                                 handleSize: 8
                                                             },
                                                             {
                                                                 type: 'inside',
-                                                                start: 50,
+                                                                start: 0,
                                                                 end: 100
                                                             }
                                                         ],
@@ -2351,7 +2351,7 @@
                                                                 name:'新增事件数',
                                                                 type:'line',
                                                                 smooth: true,
-                                                                data:[120, 132, 101, 134, 90, 230, 210]
+                                                                data:list2
                                                             },
                                                             {
                                                                 name:'新增实体数',
@@ -2365,7 +2365,7 @@
                                                                         }
                                                                     }
                                                                 },
-                                                                data:[80, 100, 144, 90, 170, 144, 240]
+                                                                data:list3
                                                             },
                                                         ]
                                                     };
@@ -3169,7 +3169,18 @@
                 alert(3500)}
             else if((flg9 == 0)&&(scrollTop > 4020)&&(scrollTop<4350)){
                 flg9 = 4350
-                alert(4032)}
+                $.ajax({
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/bindex/bindexContent/9/" ,//url
+                    success:function(data){
+                        
+                    },
+                    error:function(data){
+                        alert("获取数据失败！")
+                    }
+                });
+            }
             else if((flg10 == 0)&&(scrollTop > 4350)&&(scrollTop<4690)){
                 flg10 = 4690
                 alert(4360)}

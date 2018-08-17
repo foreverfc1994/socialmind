@@ -269,5 +269,36 @@ def bindexContent(request,a):
 @csrf_exempt
 def provinceyuqing(request):
     dataList = []
+    provinceinfo = request.POST
+    provincename = provinceinfo.get('provincename')
+    # print(provincename)
+    datelist = []
+    today = datetime.date.today()
+    today = today - datetime.timedelta(days=6)
+    datelist.append(today.strftime("%m.%d"))
+    for i in [1, 2, 3, 4, 5, 6]:
+        yesterday = today + datetime.timedelta(days=1)
+        datelist.append(yesterday.strftime("%m.%d"))
+        today = yesterday
+    dataList.append(datelist)
+    neweventcount = [0,0,0,0,0,0,0]
+    newentitycount = [0,0,0,0,0,0,0]
+    Objects = Object.objects.all()
+    for i in Objects:
+        if i.place == provincename:
+            if i.addtime:
+                addtime = datetime.datetime.strptime(i.addtime, "%Y-%m-%d %H:%M:%S")
+                addtimestr = addtime.strftime("%m.%d")
+                for index in range(len(datelist)):
+                    # print(datelist[index], addtimestr)
+                    if datelist[index] == addtimestr:
+                        if i.objecttype == '事件':
+                            neweventcount[index] = neweventcount[index] + 1
+                        elif i.objecttype == '实体':
+                            newentitycount[index] = newentitycount[index] + 1
+    # print(neweventcount)
+    # print(newentitycount)
+    dataList.append(neweventcount)
+    dataList.append(newentitycount)
     data = {"data": dataList}
     return HttpResponse(json.dumps(data))

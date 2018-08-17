@@ -158,6 +158,16 @@ LOGGING = {
             'backupCount':7,
 
         },
+        'datawash': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'formatter': 'standard',
+            'filename': os.path.join(BASE_DIR, 'log/datawash.log'),
+            'when': 'D',
+            'interval': 1,
+            'encoding':'utf-8',
+            'backupCount':7,
+        },
     },
     'loggers': {
         'visitor': {
@@ -167,6 +177,11 @@ LOGGING = {
         },
         'manager': {
             'handlers': ['file', 'console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'wash': {
+            'handlers': ['datawash', 'console'],
             'level': 'DEBUG',
             'propagate': True,
         },

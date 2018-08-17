@@ -5,12 +5,15 @@ from django.shortcuts import render,redirect
 # from visitor import models
 from django.http import JsonResponse, HttpResponse
 import json
+import string
 from manager.mysqlNullWash import if_is_None, webType_to_strType
 from django.views.decorators.csrf import csrf_exempt
 from visitor.scripts.signin import *
 from manager.scripts.sysscript import *
 import pymysql  # 导入 pymysql
 import re
+import logging
+logger = logging.getLogger('wash')
 @csrf_exempt
 def yuanshujubiao(request):
     wangzhan = request.POST
@@ -174,8 +177,11 @@ def washaction(request):
             cur.execute(sql2)  #
             a = cur.execute(sql3)  #
             db.commit()
-            cur.execute(sql4)
+            a = cur.execute(sql4)
             db.commit()
+            print(a)
+            logdata = [sitename, tablename, 'LRX', a, '替换', sql4]
+            logger.debug(logdata)
             data = {"data": "success"}
         except Exception as e:
             # Rollback in case there is any error
@@ -202,13 +208,16 @@ def washaction(request):
                 cur.execute(sql2)
                 cur.execute(sql3)
                 db.commit()
-                cur.execute(sql4)  # 执行sql语句
+                a = cur.execute(sql4)  # 执行sql语句
                 db.commit()
+                logdata = [sitename, tablename, 'LRX', a, '缺失值', sql4]
+                logger.debug(logdata)
                 data = {"data": "success"}
-            except:
+            except Exception as e:
                 # Rollback in case there is any error
                 db.rollback()
                 data = {"data": "error"}
+                raise e
             db.close()  # 关闭连接
         elif tianzhongzhi == 'avg':
             sql5 = "select avg("+columnname+") from "+tablename
@@ -222,19 +231,23 @@ def washaction(request):
                 for row in results:
                     print(row)
                     average = row[0]
+                average = "%.0f"%average
                 sql4 = "UPDATE " + tablename + " SET " + columnname + "='" + average + "' WHERE " + columnname + "=''"
                 cur = db.cursor()
                 cur.execute(sql)
                 cur.execute(sql2)
                 cur.execute(sql3)
                 db.commit()
-                cur.execute(sql4)  # 执行sql语句
+                numofchanges = cur.execute(sql4)  # 执行sql语句
                 db.commit()
+                logdata = [sitename, tablename, 'LRX', numofchanges, '缺失值', sql4]
+                logger.debug(logdata)
                 data = {"data": "success"}
-            except:
+            except Exception as e:
                 # Rollback in case there is any error
                 db.rollback()
                 data = {"data": "error"}
+                raise e
             db.close()  # 关闭连接
         elif tianzhongzhi == 'max':
             sql5 = "select max(" + columnname + ") from " + tablename
@@ -254,13 +267,16 @@ def washaction(request):
                 cur.execute(sql2)
                 cur.execute(sql3)
                 db.commit()
-                cur.execute(sql4)  # 执行sql语句
+                a = cur.execute(sql4)  # 执行sql语句
                 db.commit()
+                logdata = [sitename, tablename, 'LRX', a, '缺失值', sql4]
+                logger.debug(logdata)
                 data = {"data": "success"}
-            except:
+            except Exception as e:
                 # Rollback in case there is any error
                 db.rollback()
                 data = {"data": "error"}
+                raise e
             db.close()  # 关闭连接
         elif tianzhongzhi == 'min':
             sql5 = "select min(" + columnname + ") from " + tablename + " where "+columnname+"<>''"
@@ -281,13 +297,16 @@ def washaction(request):
                 cur.execute(sql2)
                 cur.execute(sql3)
                 db.commit()
-                cur.execute(sql4)  # 执行sql语句
+                a = cur.execute(sql4)  # 执行sql语句
                 db.commit()
+                logdata = [sitename, tablename, 'LRX', a, '缺失值', sql4]
+                logger.debug(logdata)
                 data = {"data": "success"}
-            except:
+            except Exception as e:
                 # Rollback in case there is any error
                 db.rollback()
                 data = {"data": "error"}
+                raise e
             db.close()  # 关闭连接
         elif tianzhongzhi == 'mid':
             sql7 = "DROP TABLE IF EXISTS "+"beifen_linshi_" + tablename + adminname + chehuiStack
@@ -313,33 +332,38 @@ def washaction(request):
                     midid = total/2
                 elif total%2 == 0:
                     midid = total/2
-                cur.execute("select data from "+"beifen_linshi_" + tablename + adminname + chehuiStack+" where i="+str(midid))
+                cur.execute("select data from "+"beifen_linshi_" + tablename + adminname + chehuiStack+" where i="+"%.0f"%midid)
+                # print("select data from "+"beifen_linshi_" + tablename + adminname + chehuiStack+" where i="+"%.0f"%midid)
                 results = cur.fetchall()  # 获取查询的所有记录
                 for row in results:
                     print(row)
                     mid = row[0]
                 cur.execute(sql7)
-                sql4 = "UPDATE " + tablename + " SET " + columnname + "='" + str(mid) + "' WHERE " + columnname + "=''"
+                sql4 = "UPDATE " + tablename + " SET " + columnname + "='" + mid + "' WHERE " + columnname + "=''"
                 cur = db.cursor()
                 cur.execute(sql)
                 cur.execute(sql2)
                 cur.execute(sql3)
                 db.commit()
-                cur.execute(sql4)  # 执行sql语句
+                a = cur.execute(sql4)  # 执行sql语句
                 db.commit()
+                logdata = [sitename, tablename, 'LRX', a, '缺失值', sql4]
+                logger.debug(logdata)
                 data = {"data": "success"}
-            except:
+            except Exception as e:
                 # Rollback in case there is any error
                 db.rollback()
                 data = {"data": "error"}
+                raise e
             db.close()  # 关闭连接
         elif tianzhongzhi == 'frequent':
-            sql5 = "select " + columnname + ",count(*) as numnumnumnumnum from " + tablename + " group by " + columnname + " ORDER BY numnumnumnumnum DESC LIMIT 1"
+            sql5 = "select " + columnname + ",count(*) as numnumnumnumnum from " + tablename + " where "+columnname+"<>'' group by " + columnname + " ORDER BY numnumnumnumnum DESC LIMIT 1"
             db = pymysql.connect(host="localhost", user="root",
                                  password="461834084", db=sitename, port=3306)
             cur = db.cursor()
             cur.execute(sql5)  # 执行sql语句
             results = cur.fetchall()  # 获取查询的所有记录
+            print(sql5)
             for row in results:
                 # print(row)
                 zuipinfanzhi = row[0]
@@ -350,13 +374,16 @@ def washaction(request):
                 cur.execute(sql2)
                 cur.execute(sql3)
                 db.commit()
-                cur.execute(sql4)  # 执行sql语句
+                a = cur.execute(sql4)  # 执行sql语句
                 db.commit()
+                logdata = [sitename, tablename, 'LRX', a, '缺失值', sql4]
+                logger.debug(logdata)
                 data = {"data": "success"}
-            except:
+            except Exception as e:
                 # Rollback in case there is any error
                 db.rollback()
                 data = {"data": "error"}
+                raise e
             db.close()  # 关闭连接
         elif tianzhongzhi == 'inputval':
             inputval = washform.get('inputval')
@@ -369,13 +396,16 @@ def washaction(request):
                 cur.execute(sql2)
                 cur.execute(sql3)
                 db.commit()
-                cur.execute(sql4)  # 执行sql语句
+                a = cur.execute(sql4)  # 执行sql语句
                 db.commit()
+                logdata = [sitename, tablename, 'LRX', a, '缺失值', sql4]
+                logger.debug(logdata)
                 data = {"data": "success"}
-            except:
+            except Exception as e:
                 # Rollback in case there is any error
                 db.rollback()
                 data = {"data": "error"}
+                raise e
             db.close()  # 关闭连接
         elif tianzhongzhi == 'delthiscol':
             sql4 = "alter table "+tablename+" drop column "+columnname
@@ -387,13 +417,16 @@ def washaction(request):
                 cur.execute(sql2)
                 cur.execute(sql3)
                 db.commit()
-                cur.execute(sql4)  # 执行sql语句
+                a = cur.execute(sql4)  # 执行sql语句
                 db.commit()
+                logdata = [sitename, tablename, 'LRX', a, '缺失值', sql4]
+                logger.debug(logdata)
                 data = {"data": "success"}
-            except:
+            except Exception as e:
                 # Rollback in case there is any error
                 db.rollback()
                 data = {"data":"error"}
+                raise e
             db.close()  # 关闭连接
     if actiontype == 'shijiangeshi':
         shijiangeshi = washform.get('shijiangeshisel')
@@ -473,7 +506,9 @@ def washaction(request):
                     t = t+1
                 print(sql5)
                 if newrow != '':
-                    cur.execute(sql5)  #
+                    a = cur.execute(sql5)  #
+                    logdata = [sitename, tablename, 'LRX', a, '统一时间格式', sql5]
+                    logger.debug(logdata)
             db.commit()
             data = {"data": "success"}
         except Exception as e:
@@ -544,8 +579,10 @@ def washaction(request):
                 cur.execute(sql2)
                 cur.execute(sql3)
                 db.commit()
-                cur.execute(sql4)  # 执行sql语句
+                a = cur.execute(sql4)  # 执行sql语句
                 db.commit()
+                logdata = [sitename, tablename, 'LRX', a, '逐条修改', sql4]
+                logger.debug(logdata)
                 data = {"data": "success"}
             except:
                 # Rollback in case there is any error
@@ -598,7 +635,7 @@ def washaction(request):
                     newrow = re.sub(r'[ ]', '&nbsp', row[0])
                 if newrow != '':
                     newrow = re.sub(r"[']", '"', newrow)
-                    print(newrow)
+                    # print(newrow)
                     sql5 = "update " + tablename + " set " + columnname + "='" + newrow + "' where " + primarykey[
                         0] + "=" + row[primarykeybit[0]] + ""
                     t = 0
@@ -606,8 +643,10 @@ def washaction(request):
                         if t > 0:
                             sql5 = sql5 + " and " + i + "=" + row[primarykeybit[t]]
                         t = t + 1
-                    print(sql5)
-                    cur.execute(sql5)  #
+                    # print(sql5)
+                    a = cur.execute(sql5)  #
+                    logdata = [sitename, tablename, 'LRX', a, '统一字符串格式', sql5]
+                    logger.debug(logdata)
             db.commit()
             data = {"data": "success"}
         except Exception as e:
@@ -677,6 +716,8 @@ def rollback(request):
         else:
             print("no " + str(a))
         cur.execute(sql4)
+        logdata = [sitename, tablename, 'LRX', a, '撤回', sql3]
+        logger.debug(logdata)
     except Exception as e:
         # Rollback in case there is any error
         db.rollback()
