@@ -6,6 +6,7 @@ import pymysql  # 导入 pymysql
 from visitor.models import User,Event,Message,Object
 import time,datetime
 import json
+import re
 
 def index(request):
     return render(request, 'background/index.html')
@@ -152,6 +153,21 @@ def bindexContent(request,a):
         dataList.append(countzongliuyanliang)
         dataList.append(countzuoriliuyanliang)
         # print(countzongliuyanliang,countzuoriliuyanliang)
+        data = {"data": dataList}
+        return HttpResponse(json.dumps(data))
+    elif a == 9:
+        dataList = []
+        try:
+            f = open('log/datawash.log', 'r', encoding='UTF-8')
+            for line in f:
+                # print(line)
+                pattern = re.search(r'\[[\s\S]*\] wash',line)
+                # print(type(pattern))
+                pattern = re.sub(r' wash$',"",pattern.group())
+                # print(pattern,type(pattern))
+            f.close()
+        except Exception as e:
+            raise e
         data = {"data": dataList}
         return HttpResponse(json.dumps(data))
     elif a == 12:
