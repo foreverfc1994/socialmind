@@ -2048,7 +2048,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">213 总事件数</h3>
+                                                    <h3 id="zongshijianshu" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -2058,7 +2058,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">12 昨日新增事件数</h3>
+                                                    <h3 id="zuorixinzengshijianshu" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -2068,7 +2068,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">100 最近一周新增事件数</h3>
+                                                    <h3 id="zuijinyizhouxinzengshijianshu" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -2078,7 +2078,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">100 平均每周新增事件数</h3>
+                                                    <h3 id="pingjunmeizhouxinzengshijianshu" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -2090,7 +2090,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">132 总实体数</h3>
+                                                    <h3 id="zongshitishu" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -2100,7 +2100,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">21 昨日新增实体数</h3>
+                                                    <h3 id="zuorixinzengshitishu" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -2110,7 +2110,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">101 最近一周新增实体数</h3>
+                                                    <h3 id="zuijinyizhouxinzengshitishu" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -2120,7 +2120,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">101 平均每周新增实体数</h3>
+                                                    <h3 id="pingjunmeizhouxinzengshitishu" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -2134,70 +2134,68 @@
                                                 function randomData() {
                                                     return Math.round(Math.random()*200);
                                                 }
-                                                var mydata = [
-                                                    {name: '北京',value: randomData() },{name: '天津',value: randomData() },
-                                                    {name: '上海',value: randomData() },{name: '重庆',value: randomData() },
-                                                    {name: '河北',value: randomData() },{name: '河南',value: randomData() },
-                                                    {name: '云南',value: randomData() },{name: '辽宁',value: randomData() },
-                                                    {name: '黑龙江',value: randomData() },{name: '湖南',value: randomData() },
-                                                    {name: '安徽',value: randomData() },{name: '山东',value: randomData() },
-                                                    {name: '新疆',value: randomData() },{name: '江苏',value: randomData() },
-                                                    {name: '浙江',value: randomData() },{name: '江西',value: randomData() },
-                                                    {name: '湖北',value: randomData() },{name: '广西',value: randomData() },
-                                                    {name: '甘肃',value: randomData() },{name: '山西',value: randomData() },
-                                                    {name: '内蒙古',value: randomData() },{name: '陕西',value: randomData() },
-                                                    {name: '吉林',value: randomData() },{name: '福建',value: randomData() },
-                                                    {name: '贵州',value: randomData() },{name: '广东',value: randomData() },
-                                                    {name: '青海',value: randomData() },{name: '西藏',value: randomData() },
-                                                    {name: '四川',value: randomData() },{name: '宁夏',value: randomData() },
-                                                    {name: '海南',value: randomData() },{name: '台湾',value: randomData() },
-                                                    {name: '香港',value: randomData() },{name: '澳门',value: randomData() }
-                                                ];
-                                                var optionSensitive = {
-                                                    backgroundColor: '#FFFFFF',
-                                                    title: {
-                                                        text: '舆情事件统计'
-                                                    },
-                                                    tooltip : {
-                                                        trigger: 'item',
-                                                        formatter: '{b}<br/>最近一周新增事件数：{c}<br/>最近一周新增实体数：'+randomData()
-                                                        //    b为省份，c为数据
-                                                    },
-                                                    visualMap: {
-                                                        show : true,
-                                                        x: 'left',
-                                                        y: 'bottom',
-                                                        text: ['正面', '负面'],
-                                                        calculable: true,
-                                                        splitList: [
-                                                            {start: 500, end:600},{start: 400, end: 500},
-                                                            {start: 300, end: 400},{start: 200, end: 300},
-                                                            {start: 100, end: 200},{start: 0, end: 100},
-                                                        ],
-                                                        color: ['#00FF00', '#90EE90', '#ADFF2F','#FFFFE0', '#FFA07A', '#FF0000']
-                                                    },
-                                                    series: [{
-                                                        name: '随机数据',
-                                                        type: 'map',
-                                                        mapType: 'china',
-                                                        roam: false,
-                                                        label: {
-                                                            normal: {
-                                                                show: false
-                                                            },
-                                                            emphasis: {
-                                                                show: false
-                                                            }
+                                                function yuqingshijiantongjimap(list,maxval){
+                                                    var mydata = list
+                                                    var optionSensitive = {
+                                                        backgroundColor: '#FFFFFF',
+                                                        title: {
+                                                            text: '舆情事件统计'
                                                         },
-                                                        data:mydata
-                                                    }]
-                                                };
-                                                var chartSensitive = echarts.init(document.getElementById('xinzengshitishulinechart'));
-                                                chartSensitive.setOption(optionSensitive);
-                                                chartSensitive.on('click', function (params) {
-                                                    //alert(params.data.name)
-                                                    redrawprovince(params.data.name);
-                                                });
+                                                        tooltip : {
+                                                            trigger: 'item',
+                                                            //formatter: '{b}<br/>总事件数：{c}<br/>总实体数：'
+                                                            formatter: '{b}<br/>总舆情对象数：{c}'
+                                                            //    b为省份，c为数据
+                                                        },
+                                                        visualMap: {
+                                                            show : true,
+                                                            min: 0,
+                                                            max: maxval,
+                                                            x: 'left',
+                                                            y: 'bottom',
+                                                            text: ['多', '少'],
+                                                            calculable: true,
+                                                            splitList: [
+                                                                {start: 500, end:600},{start: 400, end: 500},
+                                                                {start: 300, end: 400},{start: 200, end: 300},
+                                                                {start: 100, end: 200},{start: 0, end: 100},
+                                                            ],
+                                                            color: ['#FF0000', '#FFA07A', '#FFFFE0','#ADFF2F', '#90EE90', '#00FF00']
+                                                        },
+                                                        series: [{
+                                                            name: '舆情事件统计',
+                                                            type: 'map',
+                                                            mapType: 'china',
+                                                            roam: false,
+                                                            label: {
+                                                                normal: {
+                                                                    show: false
+                                                                },
+                                                                emphasis: {
+                                                                    show: false
+                                                                }
+                                                            },
+                                                            data:mydata
+                                                        }]
+                                                    };
+                                                    var chartSensitive = echarts.init(document.getElementById('xinzengshitishulinechart'));
+                                                    chartSensitive.setOption(optionSensitive);
+                                                    chartSensitive.on('click', function (params) {
+                                                        //alert(params.data.name)
+                                                        $.ajax({
+                                                            type: "POST",//方法类型
+                                                            dataType: "json",//预期服务器返回的数据类型
+                                                            url: "/bindex/bindexprovinceyuqing/" ,//url
+                                                            success: function(data){
+                                                                alert("!!!")
+                                                            },
+                                                            error: function(data){
+                                                                alert("数据获取失败！")
+                                                            }
+                                                        })
+                                                        redrawprovince(params.data.name);
+                                                    });
+                                                }
                                             </script>
                                         </div>
                                         <div class="col-lg-6">
@@ -3185,7 +3183,15 @@
                     dataType: "json",//预期服务器返回的数据类型
                     url: "/bindex/bindexContent/12/" ,//url
                     success:function(data){
-                        alert("@@@")
+                        $("#zongshijianshu").append(data.data[0][0]+" 总事件数")
+                        $("#zuorixinzengshijianshu").append(data.data[0][2]+" 昨日新增事件数")
+                        $("#zuijinyizhouxinzengshijianshu").append(data.data[0][4]+" 最近一周新增事件数")
+                        $("#pingjunmeizhouxinzengshijianshu").append(data.data[0][4]+" 平均每周新增事件数")
+                        $("#zongshitishu").append(data.data[0][1]+" 总实体数")
+                        $("#zuorixinzengshitishu").append(data.data[0][3]+" 昨日新增实体数")
+                        $("#zuijinyizhouxinzengshitishu").append(data.data[0][5]+" 最近一周新增实体数")
+                        $("#pingjunmeizhouxinzengshitishu").append(data.data[0][5]+" 平均每周新增实体数")
+                        yuqingshijiantongjimap(data.data[1],data.data[2])
                     },
                     error:function(data){
                         alert("获取数据失败！")
