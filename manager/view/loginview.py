@@ -211,6 +211,37 @@ def bindexContent(request,a):
             f.close()
         except Exception as e:
             raise e
+        db = pymysql.connect(host="localhost", user="root",
+                             password="461834084", db="linshitongji", port=3306)
+        cur = db.cursor()
+        sql = "select TABLE_NAME,SCHEMA_NAME,WebSite,WebsiteType,NUM_ROWS,TABLE_TYPE,NUM_COLUMNS from datatables,website_schema where SCHEMA_NAME=SchemaName"
+        diylist = []
+        try:
+            cur.execute(sql)  # 执行sql语句
+            results = cur.fetchall()  # 获取查询的所有记录
+            print("tableName", "schemaName", "webSite", "webSiteType", "dataVolum")
+            # 遍历结果
+            for row in results:
+                tableName = row[0]
+                schemaName = row[1]
+                webSite = row[2]
+                webSiteType = row[3]
+                dataVolum = row[4]
+                tableType = row[5]
+                colnumber = row[6]
+                print(tableName, schemaName, webSite, webSiteType, dataVolum, tableType)
+                diylist.append({"tableName": tableName,
+                                "schemaName": schemaName,
+                                "webSite": webSite,
+                                "webSiteType": webSiteType,
+                                "dataVolum": dataVolum,
+                                "tableType": tableType,
+                                "colnumber": colnumber})
+            dataList.append(diylist)
+        except Exception as e:
+            raise e
+        finally:
+            db.close()  # 关闭连接
         data = {"data": dataList}
         return HttpResponse(json.dumps(data))
     elif a == 12:
@@ -359,5 +390,10 @@ def provinceyuqing(request):
     # print(newentitycount)
     dataList.append(neweventcount)
     dataList.append(newentitycount)
+    data = {"data": dataList}
+    return HttpResponse(json.dumps(data))
+@csrf_exempt
+def searchcolnames(request):
+    dataList = []
     data = {"data": dataList}
     return HttpResponse(json.dumps(data))

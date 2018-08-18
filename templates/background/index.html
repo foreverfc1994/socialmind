@@ -24,7 +24,7 @@
     <script src="{% static 'assets0/js/echarts.js' %}"></script>
     <script src="{% static 'assets0/js/china.js' %}"></script>
     <script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script>
-<script src="{% static 'backgroundfiles/assets/js/jquery-1.8.3.min.js' %}"></script>
+    <script src="{% static 'backgroundfiles/assets/js/jquery-1.8.3.min.js' %}"></script>
     <script type="text/javascript" charset="utf8"
             src="{% static 'backgroundfiles/DataTables-1.10.15/media/js/jquery.dataTables.js' %}"></script>
     <!-- DataTables -->
@@ -1879,92 +1879,87 @@
                                         </div>
                                     </div>
                                     <table class="table">
-                                        <thead><tr><th style="border-bottom: 0px">&emsp;&emsp;&emsp;&emsp;&emsp;</th><th style="border-bottom: 0px">&emsp;&emsp;&emsp;&emsp;&emsp;</th><th style="border-bottom: 0px">&emsp;&emsp;&emsp;&emsp;&emsp;</th>
-                                            <th style="width: 7%;padding: 0px;border-bottom: 0px"><a>尚未清洗的表</a></th>
-                                            <th style="width: 7%;padding: 0px;border-bottom: 0px"><a>正在清洗的表</a></th>
+                                        <thead><tr><th style="border-bottom: 0px">&emsp;&emsp;&emsp;&emsp;&emsp;</th><th style="border-bottom: 0px">&emsp;&emsp;&emsp;&emsp;&emsp;</th><th style="border-bottom: 0px">&emsp;&emsp;&emsp;&emsp;&emsp;</th><th style="border-bottom: 0px">&emsp;&emsp;&emsp;&emsp;&emsp;</th>
+                                            <!-- <th style="width: 7%;padding: 0px;border-bottom: 0px"><a>尚未清洗的表</a></th> -->
+                                            <th style="width: 7%;padding: 0px;border-bottom: 0px"><a>所有数据表</a></th>
                                             <th style="width: 7%;padding: 0px;border-bottom: 0px"><a>已经清洗的表</a></th>
                                         </tr></thead>
                                     </table>
-                                    <table id="yuanshujubiaotable" class="display">
+                                    <!-- <table id="yuanshujubiaotable" class="display">
                                         <thead>
                                         <tr id="theadtr"><th>网站名</th><th>数据表名</th><th>表类型</th><th style="width: 8%">列数</th><th>清洗待解决问题</th><th>数据量</th><th>新增数据量</th></tr>
                                         </thead>
                                         <tbody id="tbody">
-                                                <tr><td>TTTT</td><td>Crasd</td><td>关系表</td><td><a href="javascript:void(0);" onclick="showandhide(this)" class="btn btn-link" style="padding: 0px 0px;border: 0px;margin-bottom: 0px">10  <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></td><td>数据类型不一致</td><td>10000</td><td>5000</td></tr>
-                                                <tr style="display: none"><td colspan="7">
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <table class="table">
-                                                                <thead>
-                                                                <tr><th>列名1</th><th>列名2</th><th>列名3</th><th>列名4</th><th>列名5</th><th>列名6</th><th>列名7</th><th>列名8</th><th>列名9</th><th>列名10</th></tr>
-                                                                </thead>
-                                                            </table>
-                                                        </div>
-                                                    </div></td>
-                                                </tr>
+                                        <tr><td>TTTT</td><td>Crasd</td><td>关系表</td><td><a href="javascript:void(0);" onclick="showandhide(this)" class="btn btn-link" style="padding: 0px 0px;border: 0px;margin-bottom: 0px">10  <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></td><td>数据类型不一致</td><td>10000</td><td>5000</td></tr>
+                                        <tr style="display: none"><td colspan="7">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <table class="table">
+                                                        <thead>
+                                                        <tr><th>列名1</th><th>列名2</th><th>列名3</th><th>列名4</th><th>列名5</th><th>列名6</th><th>列名7</th><th>列名8</th><th>列名9</th><th>列名10</th></tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                            </div></td>
+                                        </tr>
                                         </tbody>
                                         <tfoot>
                                         <tr id="tfoottr"><th>网站名</th><th>数据表名</th><th>表类型</th><th style="width: 8%">列数</th><th>清洗待解决问题</th><th>数据量</th><th>新增数据量</th></tr>
                                         </tfoot>
-                                    </table>
-                                    <!-- <table id="yuanshujubiaotable" class="table table-bordered table-hover">
-                                        <thead>
-                                        <tr><th>网站名</th><th>数据表名</th><th>表类型</th><th style="width: 8%">列数</th><th>清洗待解决问题</th><th>数据量</th><th>新增数据量</th></tr>
-                                        </thead>
-                                        <tr><td>TTTT</td><td>Crasd</td><td>关系表</td><td><a href="javascript:void(0);" onclick="showandhide(this)" class="btn btn-link" style="padding: 0px 0px;border: 0px;margin-bottom: 0px">10  <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></td><td>数据类型不一致</td><td>10000</td><td>5000</td></tr>
-                                        <tr style="display: none"><td colspan="7">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <table class="table">
-                                                        <thead>
-                                                        <tr><th>列名1</th><th>列名2</th><th>列名3</th><th>列名4</th><th>列名5</th><th>列名6</th><th>列名7</th><th>列名8</th><th>列名9</th><th>列名10</th></tr>
-                                                        </thead>
-                                                    </table>
-                                                </div>
-                                            </div></td>
-                                        </tr>
-                                        <tr><td>TTTT</td><td>Crasd</td><td>关系表</td><td><a href="javascript:void(0);" onclick="showandhide(this)" class="btn btn-link" style="padding: 0px 0px;border: 0px;margin-bottom: 0px">10  <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></td><td>数据类型不一致</td><td>10000</td><td>5000</td></tr>
-                                        <tr style="display: none"><td colspan="7">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <table class="table">
-                                                        <thead>
-                                                        <tr><th>列名1</th><th>列名2</th><th>列名3</th><th>列名4</th><th>列名5</th><th>列名6</th><th>列名7</th><th>列名8</th><th>列名9</th><th>列名10</th></tr>
-                                                        </thead>
-                                                    </table>
-                                                </div>
-                                            </div></td>
-                                        </tr>
-                                        <tr><td>TTTT</td><td>Crasd</td><td>关系表</td><td><a href="javascript:void(0);" onclick="showandhide(this)" class="btn btn-link" style="padding: 0px 0px;border: 0px;margin-bottom: 0px">10  <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></td><td>数据类型不一致</td><td>10000</td><td>5000</td></tr>
-                                        <tr style="display: none"><td colspan="7">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <table class="table">
-                                                        <thead>
-                                                        <tr><th>列名1</th><th>列名2</th><th>列名3</th><th>列名4</th><th>列名5</th><th>列名6</th><th>列名7</th><th>列名8</th><th>列名9</th><th>列名10</th></tr>
-                                                        </thead>
-                                                    </table>
-                                                </div>
-                                            </div></td>
-                                        </tr>
-                                        <tr><td>TTTT</td><td>Crasd</td><td>关系表</td><td><a href="javascript:void(0);" onclick="showandhide(this)" class="btn btn-link" style="padding: 0px 0px;border: 0px;margin-bottom: 0px">10  <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></td><td>数据类型不一致</td><td>10000</td><td>5000</td></tr>
-                                        <tr style="display: none"><td colspan="7">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <table class="table">
-                                                        <thead>
-                                                        <tr><th>列名1</th><th>列名2</th><th>列名3</th><th>列名4</th><th>列名5</th><th>列名6</th><th>列名7</th><th>列名8</th><th>列名9</th><th>列名10</th></tr>
-                                                        </thead>
-                                                    </table>
-                                                </div>
-                                            </div></td>
-                                        </tr>
                                     </table> -->
-                                    <script>
-                                        function showandhide(thisa){
-                                            $(thisa).parent().parent().next().toggle()
-                                        }
-                                    </script>
+                                    <table id="yuanshujubiaotable" class="table table-bordered table-hover">
+                                        <!-- <thead>
+                                        <tr><th>网站名</th><th>数据表名</th><th>表类型</th><th style="width: 8%">列数</th><th>清洗待解决问题</th><th>数据量</th><th>新增数据量</th></tr>
+                                        </thead> -->
+                                        <!-- <tr><td>TTTT</td><td>Crasd</td><td>关系表</td><td><a href="javascript:void(0);" onclick="showandhide(this)" class="btn btn-link" style="padding: 0px 0px;border: 0px;margin-bottom: 0px">10  <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></td><td>数据类型不一致</td><td>10000</td><td>5000</td></tr>
+                                        <tr style="display: none"><td colspan="7">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <table class="table">
+                                                        <thead>
+                                                        <tr><th>列名1</th><th>列名2</th><th>列名3</th><th>列名4</th><th>列名5</th><th>列名6</th><th>列名7</th><th>列名8</th><th>列名9</th><th>列名10</th></tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                            </div></td>
+                                        </tr> -->
+                                        <!-- <tr><td>TTTT</td><td>Crasd</td><td>关系表</td><td><a href="javascript:void(0);" onclick="showandhide(this)" class="btn btn-link" style="padding: 0px 0px;border: 0px;margin-bottom: 0px">10  <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></td><td>数据类型不一致</td><td>10000</td><td>5000</td></tr>
+                                        <tr style="display: none"><td colspan="7">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <table class="table">
+                                                        <thead>
+                                                        <tr><th>列名1</th><th>列名2</th><th>列名3</th><th>列名4</th><th>列名5</th><th>列名6</th><th>列名7</th><th>列名8</th><th>列名9</th><th>列名10</th></tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                            </div></td>
+                                        </tr>
+                                        <tr><td>TTTT</td><td>Crasd</td><td>关系表</td><td><a href="javascript:void(0);" onclick="showandhide(this)" class="btn btn-link" style="padding: 0px 0px;border: 0px;margin-bottom: 0px">10  <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></td><td>数据类型不一致</td><td>10000</td><td>5000</td></tr>
+                                        <tr style="display: none"><td colspan="7">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <table class="table">
+                                                        <thead>
+                                                        <tr><th>列名1</th><th>列名2</th><th>列名3</th><th>列名4</th><th>列名5</th><th>列名6</th><th>列名7</th><th>列名8</th><th>列名9</th><th>列名10</th></tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                            </div></td>
+                                        </tr>
+                                        <tr><td>TTTT</td><td>Crasd</td><td>关系表</td><td><a href="javascript:void(0);" onclick="showandhide(this)" class="btn btn-link" style="padding: 0px 0px;border: 0px;margin-bottom: 0px">10  <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></td><td>数据类型不一致</td><td>10000</td><td>5000</td></tr>
+                                        <tr style="display: none"><td colspan="7">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <table class="table">
+                                                        <thead>
+                                                        <tr><th>列名1</th><th>列名2</th><th>列名3</th><th>列名4</th><th>列名5</th><th>列名6</th><th>列名7</th><th>列名8</th><th>列名9</th><th>列名10</th></tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                            </div></td>
+                                        </tr> -->
+                                    </table>
                                     <hr style="height:2px;border: 0px;background-color: #ddd">
                                     <div class="row">
                                         <div class="col-lg-10"><h5>最近清洗数据</h5></div>
@@ -3205,7 +3200,14 @@
                         $("#washsum").append(data.data[0][1]+" 清洗总量")
                         $("#washfrequence").append(data.data[0][2]+" 上周清洗次数")
                         $("#lastwashtime").append(data.data[0][3]+" 上次清洗")
-                        var table = $('#yuanshujubiaotable').DataTable();
+                        rowlist = data.data[1]
+                        /* alert(rowlist.length) */
+                        $("#yuanshujubiaotable").empty()
+                        $("#yuanshujubiaotable").append('                        <thead><tr><th>网站名</th><th>数据表名</th><th>表类型</th><th style="width: 8%">列数</th><th>清洗待解决问题</th><th>数据量</th><th>新增数据量</th></tr></thead>')
+                        for(i=0;i<rowlist.length;i++){
+                            $("#yuanshujubiaotable").append('<tr><td>'+rowlist[i].webSite+'</td><td>'+rowlist[i].tableName+'</td><td>'+rowlist[i].tableType+'</td><td><a href="javascript:void(0);" onclick="showandhide(this)" class="btn btn-link" style="padding: 0px 0px;border: 0px;margin-bottom: 0px">'+rowlist[i].colnumber+'<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></td><td>'+'未知'+'</td><td>'+rowlist[i].dataVolum+'</td><td>'+'0'+'</td></tr>')
+                            $("#yuanshujubiaotable").append('<tr style="display: none"><td colspan="7"><div class="row"><div class="col-lg-12"><table class="table"><thead><tr><th>列名1</th><th>列名2</th><th>列名3</th><th>列名4</th><th>列名5</th><th>列名6</th><th>列名7</th><th>列名8</th><th>列名9</th><th>列名10</th></tr></thead></table></div></div></td></tr>')
+                        }
                     },
                     error:function(data){
                         alert("获取数据失败！")
@@ -3246,6 +3248,27 @@
 
         })
     });
+    function showandhide(thisa){
+        var i = 0;
+        var linshi = new Array();
+        $(thisa).parent().parent().children('td').each(function(i){
+            /* alert($(this).text()); */
+            linshi[i] = $(this).text()
+            i = i + 1
+        });
+        /* alert(linshi[0]) */
+        $.ajax({
+            type: "POST",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "/bindex/searchcolnames/" ,//url
+            data: "webSite="+linshi[0]+"&tableName="+linshi[1],
+            success: function(data){},
+            error: function(data){
+                alert("获取数据失败！")
+            }
+        })
+        $(thisa).parent().parent().next().toggle()
+    }
 </script>
 
 </body>

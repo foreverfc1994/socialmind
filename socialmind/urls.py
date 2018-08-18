@@ -144,9 +144,7 @@ urlpatterns = [
     path('queryspider/',SpiderView.queryspider),
     path('queryspiderspeed/',SpiderView.queryspiderspeed),
     path('queryerror/',SpiderView.queryerror),
-    path('queryspidernum/',SpiderView.queryspidernum),
-    path('errorlog/',SpiderView.geterrorlog),
-    path('spiderlog/',SpiderView.getspiderlog)
+    path('queryspidernum/',SpiderView.queryspidernum)
 
 
 
