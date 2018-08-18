@@ -115,7 +115,7 @@ def jump(request):
     return render(request, 'foreground/jump.html')
 
 def logout(request):
-    logdata = [request.session['user_id'],request.session['user_role'],'/login/','退出','']
+    logdata = [request.session['user_id'],request.session['user_role'], '/login/', '退出', '']
     logger.debug(logdata)
     request.session.flush()
     return redirect("/login/")

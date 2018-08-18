@@ -262,95 +262,28 @@
                 <div class="row mb">
                     <div class="col-lg-12">
                         <div class="content-panel" style="padding-bottom: 15px;">
-                            <h2 class="centered" style="float: left; width: 100%;"> &nbsp; &nbsp;此处为事件名称</h2><br>
+                            {% csrf_token %}
+                            <h2 class="centered" style="float: left; width: 100%;"> &nbsp; &nbsp;{{ title }}</h2><br>
                             <div class="eventDetials">
-                                <span class="margin-15">开始时间：2018-01-01</span>
-                                <span class="margin-15">结束时间：2018-10-10</span>
+                                <span class="margin-15">开始时间：{{ begintime }}</span>
+                                <span class="margin-15">结束时间：{{ endtime }}</span>
                             </div>
                             <div class="eventAbstract">
                                 <div style="padding: 20px;" id="abstract">
-                                    &nbsp; &nbsp; &nbsp; &nbsp; <strong>此处为事件简介</strong>介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介
-                                    绍介绍介绍介绍介绍介绍介绍介绍
-                                介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍
-                                介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍绍介绍介绍介绍介绍介绍介绍介绍
-                                介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍
-                                介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍绍介绍介绍介绍介绍介绍介绍介绍
-                                介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍
-                                介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍。
+                                    &nbsp; &nbsp; &nbsp; &nbsp; <strong>事件简介：</strong>{% if introduction != "" %}
+                                    {{ introduction }}
+                                    {% else %}
+                                    暂无事件简介
+                                    {% endif %}
                                 </div>
                             </div>
-{#                                <div class="eventFiles">#}
-{#                                    &nbsp; &nbsp; &nbsp; &nbsp; 此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文#}
-{#                                    此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文#}
-{#                                    此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文#}
-{#                                    此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文#}
-{#                                    此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文#}
-{#                                    此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文#}
-{#                                    此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文#}
-{#                                    此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文#}
-{#                                    此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文#}
-{#                                    此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文#}
-{#                                    此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文#}
-{#                                    此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文#}
-{#                                    此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文#}
-{#                                    此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文此处为正文#}
-{#                                </div>#}
-                            <div id="eventData" class="eventData">
-                                <button class="btn btn-warning eventButton">📂 收藏量：22</button>
-                                <button class="btn btn-warning eventButton">👍 点赞数：22</button>
-                                <button class="btn btn-warning eventButton">😊 判真数：22</button>
-                                <button class="btn btn-warning eventButton">🤬 判假数：22</button>
-                            </div>
+                            <div id="eventData" class="eventData"></div>
                             <div class="eventComments"><br>
                                 <div style="float: left; margin-left: 25%; width: 40%;">
-                                    <input type="text"  class="form-control" placeholder="输入您要评论的内容：">
+                                    <input type="text"  class="form-control" placeholder="输入您要评论的内容：" id="commentInput">
                                 </div>
-                                <button type="button" class="btn btn-warning" style="height: 44px; width: 80px; margin-left: 5%;">🖊 评论</button>
-                                <div class="comments" id="commentsDiv">
-                                    <div id="112233" class="commentBlock">
-                                        <table>
-                                            <tr>
-                                                <td class="commentsImgTd">
-                                                    <div class="commentsImgDiv">
-                                                        <img src="{% static 'assets0/img/product.jpg' %}" class="commentsImg">
-                                                    </div>
-                                                </td>
-                                                <td class="commentsCommentTd">
-                                                    <ul>
-                                                        <p class="comment"><b class="commenterName">用户名称：</b>(这是一则有声音的评论)升职！加薪！升职！加薪！
-                                                        升职！加薪！升职！加薪！升职！加薪！升职！加薪！升职！加薪！升职！加薪！升职！加薪！升职！加薪！
-                                                        升职！加薪！升职！加薪！升职！加薪！升职！加薪！升职！加薪！升职！加薪！升职！加薪！升职！加薪！
-                                                        升职！加薪！升职！加薪！</p>
-                                                    </ul>
-                                                    <ul>
-                                                        <span class="fl grayText">2018-01-02</span>
-                                                        <span class="fr cursorPoint"><a href="javascript:void(0)" class="grayText">👍&nbsp;赞:&nbsp;&nbsp;2212&nbsp;&nbsp;</a></span>
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                    <div id="112232" class="commentBlock">
-                                        <table>
-                                            <tr>
-                                                <td class="commentsImgTd">
-                                                    <div class="commentsImgDiv">
-                                                        <img src="{% static 'assets0/img/product.jpg' %}" class="commentsImg">
-                                                    </div>
-                                                </td>
-                                                <td class="commentsCommentTd">
-                                                    <ul>
-                                                        <p class="comment"><b class="commenterName">用户名称：</b>(这是一则有声音的评论)升职！加薪！</p>
-                                                    </ul>
-                                                    <ul>
-                                                        <span class="fl grayText">2018-01-02</span>
-                                                        <span class="fr cursorPoint"><a href="javascript:void(0)" class="grayText">👍&nbsp;赞:&nbsp;&nbsp;2212&nbsp;&nbsp;</a></span>
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
+                                <button type="button" class="btn btn-warning" style="height: 44px; width: 80px; margin-left: 5%;" onclick="addComments('{{ objectid }}')">🖊 评论</button>
+                                <div class="comments" id="commentsDiv"></div>
                             </div>
                             <div id="choiceFunc" class="eventData">
                                 <button class="btn btn-theme04 event3Buttons" id="change0" value="open0" onclick="changePage(this.value)">事件指数</button>
@@ -587,137 +520,9 @@
                         </div>
                     </div>
                 </div>
+                <div id="correlationFiles">
+                </div>
 
-                <div class="row">
-                    <a href="/fileParticular/">
-                        <div class="col-lg-12">
-                            <div class="content-panel">
-                                <h4 style="float: left">相关文章1</h4>
-                                <div class="funcInIndex">
-                                    <button type="button" class="btn btn-warning" style="font-size: 10px;">点赞 1</button>
-                                    <button type="button" class="btn btn-warning" style="font-size: 10px;">评论 2</button>
-                                    <button type="button" class="btn btn-warning" style="font-size: 10px; margin-right: 15px;">收藏 3</button>
-                                </div>
-                                <div class="panel-body mt" style="padding-left: 10px;">
-                                    <div id="recommendx" class="recommend_news">
-                                        <p>
-                                            时间： 2017-10-20 &nbsp; &nbsp; &nbsp; 事件分类： 个人事件
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="panel-body" style="padding-left: 10px; height: 100px;">
-                                    <p class="to-much-p">测试测试测试测试测试测试测试测试测试测试测试测试测试测试
-                                    试测试测试测试测试测试测试测试测试测试试测试测试测试测试测试测试测试测试测试
-                                    试测试测试测试测试测试测试测试测试测试试测试测试测试测试测试测试测试测试测试</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="row">
-                    <a href="#">
-                        <div class="col-lg-12">
-                            <div class="content-panel">
-                                <h4 style="float: left">相关文章2</h4>
-                                <div class="funcInIndex">
-                                    <button type="button" class="btn btn-warning" style="font-size: 10px;">点赞 1</button>
-                                    <button type="button" class="btn btn-warning" style="font-size: 10px;">评论 2</button>
-                                    <button type="button" class="btn btn-warning" style="font-size: 10px; margin-right: 15px;">收藏 3</button>
-                                </div>
-                                <div class="panel-body mt" style="padding-left: 10px;">
-                                    <div id="recommendx" class="recommend_news">
-                                        <p>
-                                            时间： 2017-10-20 &nbsp; &nbsp; &nbsp; 事件分类： 个人事件
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="panel-body" style="padding-left: 10px; height: 100px;">
-                                    <p class="to-much-p">测试测试测试测试测试测试测试测试测试测试测试测试测试测试
-                                    试测试测试测试测试测试测试测试测试测试试测试测试测试测试测试测试测试测试测试
-                                    试测试测试测试测试测试测试测试测试测试试测试测试测试测试测试测试测试测试测试</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="row">
-                    <a href="#">
-                        <div class="col-lg-12">
-                            <div class="content-panel">
-                                <h4 style="float: left">相关文章3</h4>
-                                <div class="funcInIndex">
-                                    <button type="button" class="btn btn-warning" style="font-size: 10px;">点赞 1</button>
-                                    <button type="button" class="btn btn-warning" style="font-size: 10px;">评论 2</button>
-                                    <button type="button" class="btn btn-warning" style="font-size: 10px; margin-right: 15px;">收藏 3</button>
-                                </div>
-                                <div class="panel-body mt" style="padding-left: 10px;">
-                                    <div id="recommendx" class="recommend_news">
-                                        <p>
-                                            时间： 2017-10-20 &nbsp; &nbsp; &nbsp; 事件分类： 个人事件
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="panel-body" style="padding-left: 10px; height: 100px;">
-                                    <p class="to-much-p">测试测试测试测试测试测试测试测试测试测试测试测试测试测试
-                                    试测试测试测试测试测试测试测试测试测试试测试测试测试测试测试测试测试测试测试
-                                    试测试测试测试测试测试测试测试测试测试试测试测试测试测试测试测试测试测试测试</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="row">
-                    <a href="#">
-                        <div class="col-lg-12">
-                            <div class="content-panel">
-                                <h4 style="float: left">相关文章4</h4>
-                                <div class="funcInIndex">
-                                    <button type="button" class="btn btn-warning" style="font-size: 10px;">点赞 1</button>
-                                    <button type="button" class="btn btn-warning" style="font-size: 10px;">评论 2</button>
-                                    <button type="button" class="btn btn-warning" style="font-size: 10px; margin-right: 15px;">收藏 3</button>
-                                </div>
-                                <div class="panel-body mt" style="padding-left: 10px;">
-                                    <div id="recommendx" class="recommend_news">
-                                        <p>
-                                            时间： 2017-10-20 &nbsp; &nbsp; &nbsp; 事件分类： 个人事件
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="panel-body" style="padding-left: 10px; height: 100px;">
-                                    <p class="to-much-p">测试测试测试测试测试测试测试测试测试测试测试测试测试测试
-                                    试测试测试测试测试测试测试测试测试测试试测试测试测试测试测试测试测试测试测试
-                                    试测试测试测试测试测试测试测试测试测试试测试测试测试测试测试测试测试测试测试</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="row">
-                    <a href="#">
-                        <div class="col-lg-12">
-                            <div class="content-panel">
-                                <h4 style="float: left">相关文章5</h4>
-                                <div class="funcInIndex">
-                                    <button type="button" class="btn btn-warning" style="font-size: 10px;">点赞 1</button>
-                                    <button type="button" class="btn btn-warning" style="font-size: 10px;">评论 2</button>
-                                    <button type="button" class="btn btn-warning" style="font-size: 10px; margin-right: 15px;">收藏 3</button>
-                                </div>
-                                <div class="panel-body mt" style="padding-left: 10px;">
-                                    <div id="recommendx" class="recommend_news">
-                                        <p>
-                                            时间： 2017-10-20 &nbsp; &nbsp; &nbsp; 事件分类： 个人事件
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="panel-body" style="padding-left: 10px; height: 100px;">
-                                    <p class="to-much-p">测试测试测试测试测试测试测试测试测试测试测试测试测试测试
-                                    试测试测试测试测试测试测试测试测试测试试测试测试测试测试测试测试测试测试测试
-                                    试测试测试测试测试测试测试测试测试测试试测试测试测试测试测试测试测试测试测试</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
             </div>
         </div>
     </div>
@@ -779,6 +584,19 @@ document.write(unescape("%3Cspan id='cnzz_stat_icon_30088308'%3E%3C/span%3E%3Csc
 	});
 </script>
 <script>
+    window.onload = function(){
+        loadEventOpear("{{ objectid }}");
+        loadEventComments("{{ objectid }}");
+        loadCorrelationFiles("{{ objectid }}", 0);
+        eventTrendStatistic();//事件走势统计
+        heatIndexBoom();//热度爆发统计
+        mediaLivenessIndex();//媒体活跃度
+        emotionTrend();//情绪走势统计
+        eventJudgeRatio();//事件正负面评价比例
+        emotionRatio();//事件情绪占比
+    };
+</script>
+<script>
     eventHeatIndex();//事件热度
     eventSensitiveIndex();//事件敏感度
     eventPolarityEvent();//事件极性
@@ -789,15 +607,5 @@ document.write(unescape("%3Cspan id='cnzz_stat_icon_30088308'%3E%3C/span%3E%3Csc
     informSource();//信息来源
     informTrans();//信息传播过程
     informNet();//信息传播网络
-</script>
-<script>
-    window.onload = function(){
-        eventTrendStatistic();//事件走势统计
-        heatIndexBoom();//热度爆发统计
-        mediaLivenessIndex();//媒体活跃度
-        emotionTrend();//情绪走势统计
-        eventJudgeRatio();//事件正负面评价比例
-        emotionRatio();//事件情绪占比
-    };
 </script>
 </html>

@@ -84,7 +84,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'socialmind',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': '461834084',
         'HOST': 'localhost',
         'PORT': '3306'
     }
@@ -131,7 +131,7 @@ STATICFILES_DIRS = [
 
 LOGGING = {
     'version': 1,  # 标示配置模板版本，int 类型，目前只接收 `1`这个值。
-    'disable_existing_loggers': False,
+    'disable_existing_loggers': False,  # 这个没太看明白什么意思，了解的朋友麻烦说明下
     'formatters': {
         'standard': {
             'format': '%(asctime)s %(funcName)s %(message)s %(name)s',
@@ -158,7 +158,16 @@ LOGGING = {
             'backupCount':7,
 
         },
-
+        'datawash': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'formatter': 'standard',
+            'filename': os.path.join(BASE_DIR, 'log/datawash.log'),
+            'when': 'D',
+            'interval': 1,
+            'encoding':'utf-8',
+            'backupCount':7,
+        },
     },
     'loggers': {
         'visitor': {
@@ -171,6 +180,10 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': True,
         },
-
+        'wash': {
+            'handlers': ['datawash', 'console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
     }
 }
