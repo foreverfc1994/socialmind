@@ -23,6 +23,13 @@
     <link href="{% static 'backgroundfiles/assets/css/style-responsive.css' %}" rel="stylesheet">
     <script src="{% static 'assets0/js/echarts.js' %}"></script>
     <script src="{% static 'assets0/js/china.js' %}"></script>
+    <script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script>
+<script src="{% static 'backgroundfiles/assets/js/jquery-1.8.3.min.js' %}"></script>
+    <script type="text/javascript" charset="utf8"
+            src="{% static 'backgroundfiles/DataTables-1.10.15/media/js/jquery.dataTables.js' %}"></script>
+    <!-- DataTables -->
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'backgroundfiles/DataTables-1.10.15/media/css/jquery.dataTables.css' %}">
 
     <!-- <link rel="stylesheet" href="css/maruti-media.css" class="skin-color" /> -->
     <style>
@@ -1825,7 +1832,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">123 总清洗次数</h3>
+                                                    <h3 id="totalwashtimes"class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -1835,7 +1842,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">454456 清洗总量</h3>
+                                                    <h3 id="washsum" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -1845,7 +1852,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">1次/周 数据清洗频率</h3>
+                                                    <h3 id="washfrequence" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -1865,20 +1872,42 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">2018-7-21 8:30 上次清洗</h3>
+                                                    <h3 id="lastwashtime" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <table class="table">
-                                        <thead><tr><th style="border-bottom: 0px">总清洗次数 10</th><th style="border-bottom: 0px">总清洗数据量 10</th><th style="border-bottom: 0px">数据清洗频率 10</th>
-                                            <th style="width: 12%;padding: 0px;border-bottom: 0px"><a>尚未清洗的表</a></th>
-                                            <th style="width: 12%;padding: 0px;border-bottom: 0px"><a>正在清洗的表</a></th>
-                                            <th style="width: 12%;padding: 0px;border-bottom: 0px"><a>已经清洗的表</a></th>
+                                        <thead><tr><th style="border-bottom: 0px">&emsp;&emsp;&emsp;&emsp;&emsp;</th><th style="border-bottom: 0px">&emsp;&emsp;&emsp;&emsp;&emsp;</th><th style="border-bottom: 0px">&emsp;&emsp;&emsp;&emsp;&emsp;</th>
+                                            <th style="width: 7%;padding: 0px;border-bottom: 0px"><a>尚未清洗的表</a></th>
+                                            <th style="width: 7%;padding: 0px;border-bottom: 0px"><a>正在清洗的表</a></th>
+                                            <th style="width: 7%;padding: 0px;border-bottom: 0px"><a>已经清洗的表</a></th>
                                         </tr></thead>
                                     </table>
-                                    <table id="yuanshujubiaotable" class="table table-bordered table-hover">
+                                    <table id="yuanshujubiaotable" class="display">
+                                        <thead>
+                                        <tr id="theadtr"><th>网站名</th><th>数据表名</th><th>表类型</th><th style="width: 8%">列数</th><th>清洗待解决问题</th><th>数据量</th><th>新增数据量</th></tr>
+                                        </thead>
+                                        <tbody id="tbody">
+                                                <tr><td>TTTT</td><td>Crasd</td><td>关系表</td><td><a href="javascript:void(0);" onclick="showandhide(this)" class="btn btn-link" style="padding: 0px 0px;border: 0px;margin-bottom: 0px">10  <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></td><td>数据类型不一致</td><td>10000</td><td>5000</td></tr>
+                                                <tr style="display: none"><td colspan="7">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <table class="table">
+                                                                <thead>
+                                                                <tr><th>列名1</th><th>列名2</th><th>列名3</th><th>列名4</th><th>列名5</th><th>列名6</th><th>列名7</th><th>列名8</th><th>列名9</th><th>列名10</th></tr>
+                                                                </thead>
+                                                            </table>
+                                                        </div>
+                                                    </div></td>
+                                                </tr>
+                                        </tbody>
+                                        <tfoot>
+                                        <tr id="tfoottr"><th>网站名</th><th>数据表名</th><th>表类型</th><th style="width: 8%">列数</th><th>清洗待解决问题</th><th>数据量</th><th>新增数据量</th></tr>
+                                        </tfoot>
+                                    </table>
+                                    <!-- <table id="yuanshujubiaotable" class="table table-bordered table-hover">
                                         <thead>
                                         <tr><th>网站名</th><th>数据表名</th><th>表类型</th><th style="width: 8%">列数</th><th>清洗待解决问题</th><th>数据量</th><th>新增数据量</th></tr>
                                         </thead>
@@ -1930,7 +1959,7 @@
                                                 </div>
                                             </div></td>
                                         </tr>
-                                    </table>
+                                    </table> -->
                                     <script>
                                         function showandhide(thisa){
                                             $(thisa).parent().parent().next().toggle()
@@ -3016,8 +3045,6 @@
 </section>
 
 <!-- js placed at the end of the document so the pages load faster -->
-<script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script>
-<script src="{% static 'backgroundfiles/assets/js/jquery-1.8.3.min.js' %}"></script>
 <script src="{% static 'backgroundfiles/assets/js/bootstrap.min.js' %}"></script>
 <script class="include" type="text/javascript" src="{% static 'backgroundfiles/assets/js/jquery.dcjqaccordion.2.7.js' %}"></script>
 <script src="{% static 'backgroundfiles/assets/js/jquery.scrollTo.min.js' %}"></script>
@@ -3174,7 +3201,11 @@
                     dataType: "json",//预期服务器返回的数据类型
                     url: "/bindex/bindexContent/9/" ,//url
                     success:function(data){
-                        
+                        $("#totalwashtimes").append(data.data[0][0]+" 总清洗次数")
+                        $("#washsum").append(data.data[0][1]+" 清洗总量")
+                        $("#washfrequence").append(data.data[0][2]+" 上周清洗次数")
+                        $("#lastwashtime").append(data.data[0][3]+" 上次清洗")
+                        var table = $('#yuanshujubiaotable').DataTable();
                     },
                     error:function(data){
                         alert("获取数据失败！")

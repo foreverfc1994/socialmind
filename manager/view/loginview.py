@@ -157,14 +157,57 @@ def bindexContent(request,a):
         return HttpResponse(json.dumps(data))
     elif a == 9:
         dataList = []
+        totalwashtimes = 0
+        totalwashitems = 0
+        washfrequence = 0
+        lastwashtime = ''
+        today = datetime.date.today()
+        today = today - datetime.timedelta(days=6)
+        shangzhou = today.strftime("%Y-%m-%d %H:%M:%S")
+        shangzhou = time.mktime(time.strptime(shangzhou, "%Y-%m-%d %H:%M:%S"))
         try:
             f = open('log/datawash.log', 'r', encoding='UTF-8')
+            pattern1 = ''
             for line in f:
                 # print(line)
                 pattern = re.search(r'\[[\s\S]*\] wash',line)
                 # print(type(pattern))
-                pattern = re.sub(r' wash$',"",pattern.group())
+                ms = re.sub(r' wash$',"",pattern.group())
                 # print(pattern,type(pattern))
+                ms = ms[1: -1]
+                index = []
+                for i, ch in enumerate(ms):
+                    if ch == ',' and len(index) < 5:
+                        index.append(i)
+                # print(ms)
+                ls = []
+                ls.append(ms[1: index[0] - 1])
+                ls.append(ms[index[0] + 3: index[1] - 1])
+                ls.append(ms[index[1] + 3:index[2] - 1])
+                ls.append(ms[index[2] + 2: index[3]])
+                ls.append(ms[index[3] + 3: index[4] - 1])
+                ls.append(ms[index[4] + 3: -1])
+                # print(ls,type(ls))
+                pattern = re.search(r'^[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2} [0-9]{2,2}:[0-9]{2,2}:[0-9]{2,2}', line).group()
+                if pattern != pattern1:
+                    if ls[4] != "撤回":
+                        totalwashtimes = totalwashtimes + 1
+                        thistime = time.mktime(time.strptime(pattern, "%Y-%m-%d %H:%M:%S"))
+                        if shangzhou < thistime:
+                            washfrequence = washfrequence + 1
+                    else:
+                        totalwashtimes = totalwashtimes - 1
+                        thistime = time.mktime(time.strptime(pattern, "%Y-%m-%d %H:%M:%S"))
+                        if shangzhou < thistime:
+                            washfrequence = washfrequence - 1
+                pattern1 = pattern
+                if ls[4] != "撤回":
+                    totalwashitems = totalwashitems + int(ls[3])
+                else:
+                    totalwashitems = totalwashitems - int(ls[3])
+                lastwashtime = pattern
+            # print(totalwashtimes,totalwashitems,washfrequence,lastwashtime)
+            dataList.append([totalwashtimes,totalwashitems,washfrequence,lastwashtime])
             f.close()
         except Exception as e:
             raise e

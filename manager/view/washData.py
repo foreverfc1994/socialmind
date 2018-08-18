@@ -17,9 +17,10 @@ logger = logging.getLogger('wash')
 @csrf_exempt
 def yuanshujubiao(request):
     wangzhan = request.POST
-    # print(wangzhan)
+    # print("wangzhan",wangzhan)
     tablename = {}
     for i in wangzhan:
+        # print(i)
         tablename = json.loads(i)
     dataList = []
     print("┗|｀O′|┛ 嗷~~")
