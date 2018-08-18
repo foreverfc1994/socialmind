@@ -26,7 +26,7 @@ def login(request):
                         request.session['user_id'] = user.pk
                         request.session['user_name'] = user.username
                         request.session['user_type'] = user_type
-                        request.session['user_role'] = user.roleid.roleid
+                        request.session['user_role'] = user.roleid.rolename
                         # logger = Logger(username).getlogger()
 
                         if user_type == "个人用户":

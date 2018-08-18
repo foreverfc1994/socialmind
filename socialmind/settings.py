@@ -14,7 +14,8 @@ import os
 import logging
 import django.utils.log
 import logging.handlers
-#import structlog
+
+# import structlog
 # from structlog import configure,processors,stdlib,threadlocal
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -84,7 +85,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'socialmind',
         'USER': 'root',
-        'PASSWORD': '461834084',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': '3306'
     }
@@ -154,8 +155,8 @@ LOGGING = {
             'filename': os.path.join(BASE_DIR, 'log/socialmind.log'),
             'when': 'D',
             'interval': 1,
-            'encoding':'utf-8',
-            'backupCount':7,
+            'encoding': 'utf-8',
+            'backupCount': 7,
 
         },
         'datawash': {
@@ -165,8 +166,18 @@ LOGGING = {
             'filename': os.path.join(BASE_DIR, 'log/datawash.log'),
             'when': 'D',
             'interval': 1,
-            'encoding':'utf-8',
-            'backupCount':7,
+            'encoding': 'utf-8',
+            'backupCount': 7,
+        },
+        'spiderlog': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'formatter': 'standard',
+            'filename': os.path.join(BASE_DIR, 'log/spider.log'),
+            'when': 'D',
+            'interval': 1,
+            'encoding': 'utf-8',
+            'backupCount': 7,
         },
     },
     'loggers': {
@@ -182,6 +193,11 @@ LOGGING = {
         },
         'wash': {
             'handlers': ['datawash', 'console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'spider': {
+            'handlers': ['spiderlog', 'console'],
             'level': 'DEBUG',
             'propagate': True,
         },

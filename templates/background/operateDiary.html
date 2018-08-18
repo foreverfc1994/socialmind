@@ -10,7 +10,7 @@
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <link rel="stylesheet" href="{% static 'assets0/layui/css/layui.css' %}" media="all">
     <link rel="stylesheet" href="//res.layui.com/layui/dist/css/layui.css?t=1531663423583" media="all">
-<!-- {#    <link rel="stylesheet" href="//res.layui.com/static/css/global.css?t=1531663423583-6" media="all">#} -->
+    <!-- {#    <link rel="stylesheet" href="//res.layui.com/static/css/global.css?t=1531663423583-6" media="all">#} -->
     <title>DASHGUM - Bootstrap Admin Template</title>
 
     <!-- Bootstrap core CSS -->
@@ -28,6 +28,14 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="{% static 'backgroundfiles/assets/js/jquery-3.3.1.min.js' %}"></script>
+    <link href="{% static 'backgroundfiles/DataTables-1.10.15/media/css/dataTables.bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'backgroundfiles/DataTables-1.10.15/media/css/jquery.dataTables.css' %}">
+
+    <!-- jQuery -->
+    <!-- DataTables -->
+    <script type="text/javascript" charset="utf8"
+            src="{% static 'backgroundfiles/DataTables-1.10.15/media/js/jquery.dataTables.js' %}"></script>
 </head>
 
 <body>
@@ -328,9 +336,9 @@
                     </a>
                 </li>
                 <li class="sub-menu">
-                    <a href="/usrManagement/">                         
-                        <i class=" fa fa-bar-chart-o"></i>                         
-                        <span>用户管理</span>                     
+                    <a href="/usrManagement/">
+                        <i class=" fa fa-bar-chart-o"></i>
+                        <span>用户管理</span>
                     </a>
                 </li>
                 <li class="sub-menu">
@@ -365,7 +373,7 @@
 
                 </ul>
                 <div class="layui-tab-content" style="height: 100px;">
-                    <div id ='sys' class="layui-tab-item">
+                    <div id='sys' class="layui-tab-item">
                         <div class="row mt">
                             <div class="col-lg-12">
                                 <div class="panel panel-default">
@@ -378,7 +386,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id ='wash' class="layui-tab-item">
+                    <div id='wash' class="layui-tab-item">
                         <div class="row mt">
                             <div class="col-lg-12">
                                 <div class="panel panel-default">
@@ -470,204 +478,63 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         爬虫日志表
-                                        <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">entries</span>
-                                        <select class="form-control"
-                                                style="float: right;width: 60px;height: 25px;font-size: 12px">
-                                            <option>10</option>
-                                            <option>25</option>
-                                            <option>50</option>
-                                            <option>100</option>
-                                        </select>
-                                        <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">Show</span>
-                                    </div>
-                                    <!--<div class="panel-body">-->
-                                    <table class="table table-bordered" style="margin: 0%">
-                                        <tr>
-                                            <td>日志ID</td>
-                                            <td>爬虫名</td>
-                                            <td>网站</td>
-                                            <td>URL</td>
-                                            <td>爬虫策略</td>
-                                            <td>开始时间</td>
-                                            <td>结束时间</td>
-                                            <td>数据库</td>
-                                            <td>表名</td>
-                                            <td>数据量</td>
-                                            <td>出错比</td>
-                                        </tr>
-                                        <tr>
-                                            <td>001</td>
-                                            <td>jingbaospider</td>
-                                            <td>京报网</td>
-                                            <td>http://www.bjd.com.cn/</td>
-                                            <td>策略1</td>
-                                            <td>2017-10-23 04:46</td>
-                                            <td>2017-10-23 11:46</td>
-                                            <td>jingbao</td>
-                                            <td>news</td>
-                                            <td>4564</td>
-                                            <td>1124/4564</td>
-                                        </tr>
-                                        <tr>
-                                            <td>001</td>
-                                            <td>jingbaospider</td>
-                                            <td>京报网</td>
-                                            <td>http://www.bjd.com.cn/</td>
-                                            <td>策略1</td>
-                                            <td>2017-10-23 04:46</td>
-                                            <td>2017-10-23 11:46</td>
-                                            <td>jingbao</td>
-                                            <td>news</td>
-                                            <td>4564</td>
-                                            <td>1124/4564</td>
-                                        </tr>
-                                        <tr>
-                                            <td>001</td>
-                                            <td>jingbaospider</td>
-                                            <td>京报网</td>
-                                            <td>http://www.bjd.com.cn/</td>
-                                            <td>策略1</td>
-                                            <td>2017-10-23 04:46</td>
-                                            <td>2017-10-23 11:46</td>
-                                            <td>jingbao</td>
-                                            <td>news</td>
-                                            <td>4564</td>
-                                            <td>1124/4564</td>
-                                        </tr>
-                                        <tr>
-                                            <td>001</td>
-                                            <td>jingbaospider</td>
-                                            <td>京报网</td>
-                                            <td>http://www.bjd.com.cn/</td>
-                                            <td>策略1</td>
-                                            <td>2017-10-23 04:46</td>
-                                            <td>2017-10-23 11:46</td>
-                                            <td>jingbao</td>
-                                            <td>news</td>
-                                            <td>4564</td>
-                                            <td>1124/4564</td>
-                                        </tr>
 
-                                    </table>
-                                    <!--</div>-->
-                                    <div class="panel-footer">
-                                        Search:
-                                        <input type="text" class="form-control" placeholder="Search for..."
-                                               style="width: 200px;height: 25px;display: inline-block">
-                                        <div class="btn-group btn-group-xs" role="group" aria-label="..."
-                                             style="float: right;">
-                                            <button type="button" class="btn btn-default">First</button>
-                                            <button type="button" class="btn btn-default">Previous</button>
-                                            <button type="button" class="btn btn-default">1</button>
-                                            <button type="button" class="btn btn-default">2</button>
-                                            <button type="button" class="btn btn-default">Next</button>
-                                            <button type="button" class="btn btn-default">Last</button>
-                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <table id="tablespider" class="display">
+                                            <thead>
+                                            <tr>
+                                                <th>序号</th>
+                                                <th>用户ID</th>
+                                                <th>角色</th>
+                                                <th>时间</th>
+
+                                                <th>方法名</th>
+                                                <th>方法逻辑名</th>
+                                                <th>参数</th>
+
+                                            </tr>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                     </div>
-                     <div id='error' class="layui-tab-item">
+                    <div id='error' class="layui-tab-item">
                         <div class="row mt">
                             <div class="col-lg-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         爬虫出错日志表
-                                        <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">entries</span>
-                                        <select class="form-control"
-                                                style="float: right;width: 60px;height: 25px;font-size: 12px">
-                                            <option>10</option>
-                                            <option>25</option>
-                                            <option>50</option>
-                                            <option>100</option>
-                                        </select>
-                                        <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">Show</span>
+
                                     </div>
-                                    <!--<div class="panel-body">-->
-                                    <table class="table table-bordered" style="margin: 0%">
-                                        <tr>
-                                            <td>日志ID</td>
-                                            <td>爬虫名</td>
-                                            <td>网站</td>
-                                            <td>URL</td>
-                                            <td>爬虫策略</td>
-                                            <td>开始时间</td>
-                                            <td>出错时间</td>
-                                            <td>出错详情</td>
+                                    <div class="panel-body">
+                                        <table id="table_id_example" class="display">
+                                            <thead>
+                                            <tr>
+                                                <th>序号</th>
+                                                <th>爬虫名称</th>
+                                                <th>出错时间</th>
+                                                <th>出错详情</th>
 
-                                        </tr>
-                                        <tr>
-                                            <td>001</td>
-                                            <td>jingbaospider</td>
-                                            <td>京报网</td>
-                                            <td>http://www.bjd.com.cn/</td>
-                                            <td>策略1</td>
-                                            <td>2017-10-23 04:46</td>
-                                            <td>2017-10-23 11:46</td>
-                                            <td>403</td>
+                                            </tr>
+                                            <tbody id="tbody">
+                                            </tbody>
+                                        </table>
 
-                                        </tr>
-                                        <tr>
-                                            <td>001</td>
-                                            <td>jingbaospider</td>
-                                            <td>京报网</td>
-                                            <td>http://www.bjd.com.cn/</td>
-                                            <td>策略1</td>
-                                            <td>2017-10-23 04:46</td>
-                                            <td>2017-10-23 11:46</td>
-                                            <td>403</td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>001</td>
-                                            <td>jingbaospider</td>
-                                            <td>京报网</td>
-                                            <td>http://www.bjd.com.cn/</td>
-                                            <td>策略1</td>
-                                            <td>2017-10-23 04:46</td>
-                                            <td>2017-10-23 11:46</td>
-                                            <td>403</td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>001</td>
-                                            <td>jingbaospider</td>
-                                            <td>京报网</td>
-                                            <td>http://www.bjd.com.cn/</td>
-                                            <td>策略1</td>
-                                            <td>2017-10-23 04:46</td>
-                                            <td>2017-10-23 11:46</td>
-                                            <td>403</td>
-
-                                        </tr>
-
-                                    </table>
-                                    <!--</div>-->
-                                    <div class="panel-footer">
-                                        Search:
-                                        <input type="text" class="form-control" placeholder="Search for..."
-                                               style="width: 200px;height: 25px;display: inline-block">
-                                        <div class="btn-group btn-group-xs" role="group" aria-label="..."
-                                             style="float: right;">
-                                            <button type="button" class="btn btn-default">首页</button>
-                                            <button type="button" class="btn btn-default">上一页</button>
-                                            <button type="button" class="btn btn-default">1</button>
-                                            <button type="button" class="btn btn-default">2</button>
-                                            <button type="button" class="btn btn-default">下一页</button>
-                                            <button type="button" class="btn btn-default">末页</button>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
                 </div>
             </div>
-
-
-
 
         </section><!--/wrapper -->
     </section><!-- /MAIN CONTENT -->
@@ -687,7 +554,7 @@
 </section>
 
 <!-- js placed at the end of the document so the pages load faster -->
-<script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script>
+{#<script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script>#}
 <script src="{% static 'backgroundfiles/assets/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'backgroundfiles/assets/js/jquery-ui-1.9.2.custom.min.js' %}"></script>
 <script src="{% static 'backgroundfiles/assets/js/jquery.ui.touch-punch.min.js' %}"></script>
@@ -699,7 +566,7 @@
 
 <!--common script for all pages-->
 <script src="{% static 'backgroundfiles/assets/js/common-scripts.js' %}"></script>
-
+<script src="{% static 'assets0/js/logjs/logjs.js' %}"></script>
 <!--script for this page-->
 
 <script>
@@ -723,20 +590,19 @@
         var url = document.location.toString()
         var arrurl = url.split('/')
         var para = arrurl[4]
-        if(para==3)
-    {
-        $("#error0").addClass('layui-this');
+        if (para == 3) {
+            $("#error0").addClass('layui-this');
             $("#error").addClass('layui-show');
-    }
-    else {
-        $("#sys0").addClass('layui-this');
+        }
+        else {
+            $("#sys0").addClass('layui-this');
             $("#sys").addClass('layui-show');
-    }
+        }
         layui.use('element', function () {
             var $ = layui.jquery
                 , element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
         });
-        $('select.styled').customSelect();
+
     });
 
 </script>
@@ -748,25 +614,87 @@
 
 </script>
 <script>
-    window.onload = function(){
-        layui.use('table', function(){
-        var table = layui.table;
+    window.onload = function () {
+        layui.use('table', function () {
+            var table = layui.table;
 
-        table.render({
-        elem: '#syslog'
-        ,url:'/operateDiary/getlogs/1/'
-        ,cellMinWidth: 80
-        ,page: true
-        ,cols: [[
-           {field:'role', title: '角色', sort: true}
-          ,{field:'username', title: '用户名', sort: true}
-          ,{field:'logtime', title: '操作时间', sort: true}
-          ,{field:'logfunName', title: '方法名', sort: true}
-          ,{field:'logfunLname', title: '方法逻辑名', width: '30%', minWidth: 100, sort: true}
-          ,{field:'askurl', title: '请求路径', sort: true}
-        ]]
+            table.render({
+                elem: '#syslog'
+                , url: '/operateDiary/getlogs/1/'
+                , cellMinWidth: 80
+                , page: true
+                , cols: [[
+                    {field: 'role', title: '角色', sort: true}
+                    , {field: 'username', title: '用户名', sort: true}
+                    , {field: 'logtime', title: '操作时间', sort: true}
+                    , {field: 'logfunName', title: '方法名', sort: true}
+                    , {field: 'logfunLname', title: '方法逻辑名', width: '30%', minWidth: 100, sort: true}
+                    , {field: 'askurl', title: '请求路径', sort: true}
+                ]]
+            });
         });
-    })
+        errorlog();
+        spiderlog()
+
+
+    }
+</script>
+<script>
+    function spiderlog() {
+    $.ajax({
+            url: '/spiderlog/',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                var item = 0;
+                datas = data.data;
+                console.log(datas)
+                options = {
+                    "order": [0, "asc"],
+                    "bAutoWidth": false,
+                    "bProcessing": true,
+                    "aLengthMenu": [[10, 30, -1], [20, 30, "全部"]],
+                    "language": {
+                        "lengthMenu": " 每页_MENU_条记录",
+                        "zeroRecords": "没有找到记录",
+                        "info": "第_PAGE_页(共_PAGES_页)",
+                        "infoEmpty": "无记录",
+                        "infoFiltered": "(从_MAX_条记录过滤)",
+                        "oPaginate": {
+                            "sFirst": "首页",
+                            "sPrevious": "上页",
+                            "sNext": "下页",
+                            "sLast": "末页"
+                        },
+                        "sSearch": "搜索: ",
+                        "sLoadingRecords": "正在加载数据-请等待...",
+                    },
+                    data: datas,
+                    columns: [
+                        {
+                            data: null, "render": function () {
+                                item++;
+                                return item;
+                            }
+                        },
+                        {data: 'user'},
+
+                        {data: 'role'},
+                        {data: 'time'},
+                        {data: 'funname'},
+                        {data: 'fun'},
+                        {data: 'para'},
+
+                    ]
+                };
+
+                var table = $('#tablespider').DataTable(options);
+
+            },
+            error: function (data) {
+                alert("数据获取失败");
+            }
+        });
 }
 </script>
 </body>

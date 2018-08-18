@@ -11,7 +11,8 @@ from visitor.scripts.signin import *
 from manager.scripts.sysscript import *
 from manager.scripts import SSHconnect,ELK
 import uuid
-
+import logging
+logger = logging.getLogger('spider')
 def getspiderlist(request):
     spiders = models.SpiderInfo.objects.all()
     datalist =[]
@@ -29,6 +30,8 @@ def getspiderlist(request):
         dic['spiderstate'] = spider.spiderstate
         dic['vimname'] = spider.vimname
         datalist.append(dic)
+    logdata = [request.session['user_id'], request.session['user_role'], '', '获取爬虫列表', []]
+    logger.debug(logdata)
     return JsonResponse({'data':datalist})
 @csrf_exempt
 def runspider(request):
@@ -45,6 +48,8 @@ def runspider(request):
     session.sshclose()
     spider.spiderstate = '运行'
     spider.save()
+    logdata = [request.session['user_id'], request.session['user_role'], '', '运行爬虫', [spiderid]]
+    logger.debug(logdata)
     return JsonResponse({'data':'sucess'})
 def getPID(session,name):
     stdin, stdout, stderr = session.session.exec_command(
@@ -68,6 +73,8 @@ def stopspider(request):
     session.sshclose()
     spider.spiderstate = '暂停'
     spider.save()
+    logdata = [request.session['user_id'], request.session['user_role'], '', '停止爬虫', [spiderid]]
+    logger.debug(logdata)
     return JsonResponse({'data': 'sucess'})
 
 def getspiderconfig(request):
@@ -87,6 +94,8 @@ def getspiderconfig(request):
         dic['dealmax'] = config.maxconcurrentprocessing
         dic['isdeep'] = config.iscollectdeepdata
         datalist.append(dic)
+    logdata = [request.session['user_id'], request.session['user_role'], '', '获取爬虫配置列表', []]
+    logger.debug(logdata)
     return JsonResponse({'data':datalist})
 @csrf_exempt
 def getspiderconfigbyid(request):
@@ -104,6 +113,8 @@ def getspiderconfigbyid(request):
     dic['webmax'] = config.siteconcurrentrequest
     dic['dealmax'] = config.maxconcurrentprocessing
     dic['isdeep'] = config.iscollectdeepdata
+    logdata = [request.session['user_id'], request.session['user_role'], '', '获取爬虫配置列表', [id]]
+    logger.debug(logdata)
     return JsonResponse({'data':dic})
 @csrf_exempt
 def changeconfig(request):
@@ -121,6 +132,8 @@ def changeconfig(request):
     config.maxconcurrentprocessing = data['mmp']
     config.iscollectdeepdata = data['mcd']
     config.save()
+    logdata = [request.session['user_id'], request.session['user_role'], '', '修改爬虫配置', [id]]
+    logger.debug(logdata)
     return JsonResponse({'data':1})
 
 
@@ -130,6 +143,8 @@ def delconfig(request):
     id = request.POST.get('data')
     print(id)
     config = models.NewSpiderConfig.objects.get(spiderconfigid=id).delete()
+    logdata = [request.session['user_id'], request.session['user_role'], '', '删除爬虫配置', [id]]
+    logger.debug(logdata)
     return JsonResponse({'data': 1})
 @csrf_exempt
 def addconfig(request):
@@ -147,6 +162,8 @@ def addconfig(request):
     config.maxconcurrentprocessing = data['mp']
     config.iscollectdeepdata = data['cd']
     config.save()
+    logdata = [request.session['user_id'], request.session['user_role'], '', '添加爬虫配置', []]
+    logger.debug(logdata)
     return JsonResponse({'data': 1})
 
 @csrf_exempt
@@ -177,6 +194,8 @@ def addspider(request):
     spider.spiderstate='暂停'
     savefile(file)
     spider.save()
+    logdata = [request.session['user_id'], request.session['user_role'], '', '添加爬虫', []]
+    logger.debug(logdata)
     return JsonResponse({'data': 'sucess'})
     # file  = request.FILES['path']
 
@@ -216,6 +235,8 @@ def savefile(file):
 def delspider(request):
     id = request.POST.get('id')
     models.SpiderInfo.objects.get(spiderid=id).delete()
+    logdata = [request.session['user_id'], request.session['user_role'], '', '删除爬虫', [id]]
+    logger.debug(logdata)
     return JsonResponse({'data':1})
 
 @csrf_exempt
@@ -229,7 +250,9 @@ def queryspider(request):
         dic['item'] = itemspeed
         dic['time'] = timelist
         # print(dic)
-
+    website = request.POST.get('web')
+    logdata = [request.session['user_id'], request.session['user_role'], '', '查询爬虫速率', [website,type]]
+    logger.debug(logdata)
     return JsonResponse({'data':dic})
 
 
@@ -244,6 +267,8 @@ def queryspiderspeed(request):
         interval = 30
 
     data = ELK.getspiderspeed(interval)
+    logdata = [request.session['user_id'], request.session['user_role'], '', '查询爬虫速率', [jg]]
+    logger.debug(logdata)
     return JsonResponse({'data':data})
     pass
 @csrf_exempt
@@ -257,6 +282,8 @@ def queryerror(request):
     dic['bad']=bad
     dic['all']=all
     # print(dic)
+    logdata = [request.session['user_id'], request.session['user_role'], '', '查询爬虫错误数据', [web,time]]
+    logger.debug(logdata)
     return JsonResponse(dic)
 
 @csrf_exempt
@@ -317,5 +344,15 @@ def queryspidernum(request):
     dic['sum'] = sumlist
     print(len(dic['time']))
 
-
+    logdata = [request.session['user_id'], request.session['user_role'], '', '查询爬虫数据量', [web, interval]]
+    logger.debug(logdata)
     return JsonResponse(dic)
+
+def geterrorlog(request):
+    data = ELK.geterrorlog()
+
+    return JsonResponse({'data':data})
+    pass
+def getspiderlog(request):
+    data = readspiderlog()
+    return JsonResponse({'data':data})

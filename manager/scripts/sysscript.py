@@ -43,4 +43,32 @@ def readlog(page, limit):
             data.append(dic)
     f.close()
     return data, len(logs)
+def readspiderlog():
+    f = open(r'log/spider.log', encoding='utf-8')
+    logs = f.readlines()
+    data = []
+    for log in logs:
+        logdata = log.split(' ')
+        logtime = logdata[0] + ' ' + logdata[1]
+        logfunName = logdata[-1].replace('\n', '') + logdata[2]
+
+        a = str(logdata).replace('\"', '').replace(',,', '|')
+        message = a.split(', [')[-1].split(']\',')[0].replace('\'', '').replace(' ', '').split("|")
+        loguser = message[0]
+        logrole = message[1]
+        logfun = message[3]
+        try:
+           logpara = str(message[4:]).split('],')[0][2:].replace('\']','').replace('\'','')
+        except:
+            logpara = message[4]
+        dic = {}
+        dic['user'] = loguser
+        dic['role'] = logrole
+        dic['time'] = logtime
+        dic['funname'] = logfunName
+        dic['fun'] = logfun
+        dic['para'] = logpara
+        data.append(dic)
+    f.close()
+    return data
 

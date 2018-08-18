@@ -341,3 +341,41 @@ def geterrorinfo(web,interval):
     if interval == '一年':
         timelist,badlist,alllist=queryerrorbymonth(spidername, '2017-05-22', 365)
         return timelist, badlist, alllist
+
+def geterrorlog():
+    es = Elasticsearch([{'host': '192.168.100.201', 'port': 9200}])
+    # print(spidername,gte,interval)
+    body = {
+        "query": {
+            "bool": {
+                "must": [
+                    {
+                        "match": {
+                            "log_level": 'ERROR'
+                        }
+                    },
+
+                ]
+            }
+            # "regexp": {
+            #     "source": '(.)+bbs'
+            # }
+
+        },
+        # "from": 0,
+        "size": 500,
+        "sort": {"log_time": {"order": "desc"}}
+        # "aggs": {}
+    }
+
+    a = es.search(index='2018spiderlogs', body=body, _source='log_time,message,source')
+    errorlist = a['hits']['hits']
+    data = []
+    for error in errorlist:
+        dic = {}
+        dic['spidername'] = error['_source']['source'].split('/')[-2]
+        dic['errortime'] = error['_source']['log_time'].split('.')[0].replace('T',' ')
+        dic['errorinfo'] = error['_source']['message']
+        data.append(dic)
+    return data
+
