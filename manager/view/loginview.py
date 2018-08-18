@@ -395,5 +395,33 @@ def provinceyuqing(request):
 @csrf_exempt
 def searchcolnames(request):
     dataList = []
+    aaa = request.POST
+    webSite = aaa.get('webSite')
+    tableName = aaa.get('tableName')
+
+    # print(webSite,tableName)
+    db = pymysql.connect(host="localhost", user="root",
+                         password="461834084", db="linshitongji", port=3306)
+    cur = db.cursor()
+    sql = "select SchemaName from website_schema where WebSite='"+webSite+"'"
+    try:
+        cur.execute(sql)  # 执行sql语句
+        results = cur.fetchall()  # 获取查询的所有记录
+        schemaName = ''
+        for row in results:
+            schemaName = row[0]
+        print(schemaName)
+        sql2 = "desc " + schemaName + "." + tableName
+        cur.execute(sql2)
+        results = cur.fetchall()  # 获取查询的所有记录
+        colnamelist = []
+        for i in results:
+            print(i[0])
+            colnamelist.append(i[0])
+        dataList.append(colnamelist)
+    except Exception as e:
+        raise e
+    finally:
+        db.close()  # 关闭连接
     data = {"data": dataList}
     return HttpResponse(json.dumps(data))
