@@ -1,7 +1,7 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -13,8 +13,8 @@
     <!-- Bootstrap core CSS -->
     <link href="{% static 'backgroundfiles/assets/css/bootstrap.css' %}" rel="stylesheet">
     <!--external css-->
-    <link href="{% static 'backgroundfiles/assets/font-awesome/css/font-awesome.css' %}" rel="stylesheet" />
-        
+    <link href="{% static 'backgroundfiles/assets/font-awesome/css/font-awesome.css' %}" rel="stylesheet"/>
+
     <!-- Custom styles for this template -->
     <link href="{% static 'backgroundfiles/assets/css/style.css' %}" rel="stylesheet">
     <link href="{% static 'backgroundfiles/assets/css/style-responsive.css' %}" rel="stylesheet">
@@ -26,313 +26,345 @@
     <![endif]-->
     <script src="{% static 'backgroundfiles/assets/js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'backgroundfiles/assets/js/Chart.bundle.js' %}"></script>
-  </head>
+    <script src="{% static 'backgroundfiles/js/layer/layer.js' %}"></script>
+    <script src="{% static 'backgroundfiles/js/echarts.min.js' %}"></script>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'backgroundfiles/DataTables-1.10.15/media/css/jquery.dataTables.css' %}">
 
-  <body>
+    <!-- jQuery -->
+    <!-- DataTables -->
+    <script src="{% static 'assets0/layui/layui.js' %}"></script>
+    <link href="{% static 'assets0/layui/css/layui.css' %}">
+    <link rel="stylesheet" href="//res.layui.com/layui/dist/css/layui.css" media="all">
+    <script type="text/javascript" charset="utf8"
 
-  <section id="container" >
-      <!-- **********************************************************************************************************************************************************
-      TOP BAR CONTENT & NOTIFICATIONS
-      *********************************************************************************************************************************************************** -->
-      <!--header start-->
-      <header class="header black-bg">
-              <div class="sidebar-toggle-box">
-                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
-              </div>
-            <!--logo start-->
-            <a href="/bindex/" class="logo"><b>SocialMind管理员</b></a>
-            <!--logo end-->
-            <div class="nav notify-row" id="top_menu">
-                <!--  notification start -->
-                <ul class="nav top-menu">
-                    <!-- settings start -->
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
-                            <i class="fa fa-tasks"></i>
-                            个人中心
-                        </a>
-                    </li>
-                    <!-- inbox dropdown start-->
-                    <li id="header_inbox_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
-                            <i class="fa fa-envelope-o"></i>
-                            消息
-                            <span class="badge bg-theme">5</span>
-                        </a>
-                        <ul class="dropdown-menu extended inbox">
-                            <div class="notify-arrow notify-arrow-green"></div>
-                            <li>
-                                <p class="green">You have 5 new messages</p>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <span class="photo"><img alt="avatar" src="{% static 'backgroundfiles/assets/img/ui-zac.jpg' %}"></span>
-                                    <span class="subject">
+            src="{% static 'backgroundfiles/DataTables-1.10.15/media/js/jquery.dataTables.js' %}"></script>
+    <!-- Bootstrap core CSS -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+
+    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-*.min.js"></script>
+</head>
+
+<body>
+
+<section id="container">
+    <!-- **********************************************************************************************************************************************************
+    TOP BAR CONTENT & NOTIFICATIONS
+    *********************************************************************************************************************************************************** -->
+    <!--header start-->
+    <header class="header black-bg">
+        <div class="sidebar-toggle-box">
+            <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+        </div>
+        <!--logo start-->
+        <a href="/bindex/" class="logo"><b>SocialMind管理员</b></a>
+        <!--logo end-->
+        <div class="nav notify-row" id="top_menu">
+            <!--  notification start -->
+            <ul class="nav top-menu">
+                <!-- settings start -->
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
+                        <i class="fa fa-tasks"></i>
+                        个人中心
+                    </a>
+                </li>
+                <!-- inbox dropdown start-->
+                <li id="header_inbox_bar" class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
+                        <i class="fa fa-envelope-o"></i>
+                        消息
+                        <span class="badge bg-theme">5</span>
+                    </a>
+                    <ul class="dropdown-menu extended inbox">
+                        <div class="notify-arrow notify-arrow-green"></div>
+                        <li>
+                            <p class="green">You have 5 new messages</p>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <span class="photo"><img alt="avatar"
+                                                         src="{% static 'backgroundfiles/assets/img/ui-zac.jpg' %}"></span>
+                                <span class="subject">
                                     <span class="from">Zac Snider</span>
                                     <span class="time">Just now</span>
                                     </span>
-                                    <span class="message">
+                                <span class="message">
                                         Hi mate, how is everything?
                                     </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <span class="photo"><img alt="avatar" src="{% static 'backgroundfiles/assets/img/ui-divya.jpg' %}"></span>
-                                    <span class="subject">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <span class="photo"><img alt="avatar"
+                                                         src="{% static 'backgroundfiles/assets/img/ui-divya.jpg' %}"></span>
+                                <span class="subject">
                                     <span class="from">Divya Manian</span>
                                     <span class="time">40 mins.</span>
                                     </span>
-                                    <span class="message">
+                                <span class="message">
                                      Hi, I need your help with this.
                                     </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <span class="photo"><img alt="avatar" src="{% static 'backgroundfiles/assets/img/ui-danro.jpg' %}"></span>
-                                    <span class="subject">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <span class="photo"><img alt="avatar"
+                                                         src="{% static 'backgroundfiles/assets/img/ui-danro.jpg' %}"></span>
+                                <span class="subject">
                                     <span class="from">Dan Rogers</span>
                                     <span class="time">2 hrs.</span>
                                     </span>
-                                    <span class="message">
+                                <span class="message">
                                         Love your new Dashboard.
                                     </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <span class="photo"><img alt="avatar" src="{% static 'backgroundfiles/assets/img/ui-sherman.jpg' %}"></span>
-                                    <span class="subject">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <span class="photo"><img alt="avatar"
+                                                         src="{% static 'backgroundfiles/assets/img/ui-sherman.jpg' %}"></span>
+                                <span class="subject">
                                     <span class="from">Dj Sherman</span>
                                     <span class="time">4 hrs.</span>
                                     </span>
-                                    <span class="message">
+                                <span class="message">
                                         Please, answer asap.
                                     </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">See all messages</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- inbox dropdown end -->
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
-                            <i class="fa fa-cog"></i>
-                            设置
-                        </a>
-                        <ul class="dropdown-menu extended tasks-bar">
-                            <div class="notify-arrow notify-arrow-green"></div>
-                            <li>
-                                <p class="green">You have 4 pending tasks</p>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <div class="task-info">
-                                        <div class="desc">DashGum Admin Panel</div>
-                                        <div class="percent">40%</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">See all messages</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- inbox dropdown end -->
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="/bindex/">
+                        <i class="fa fa-cog"></i>
+                        设置
+                    </a>
+                    <ul class="dropdown-menu extended tasks-bar">
+                        <div class="notify-arrow notify-arrow-green"></div>
+                        <li>
+                            <p class="green">You have 4 pending tasks</p>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <div class="task-info">
+                                    <div class="desc">DashGum Admin Panel</div>
+                                    <div class="percent">40%</div>
+                                </div>
+                                <div class="progress progress-striped">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                        <span class="sr-only">40% Complete (success)</span>
                                     </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                            <span class="sr-only">40% Complete (success)</span>
-                                        </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <div class="task-info">
+                                    <div class="desc">Database Update</div>
+                                    <div class="percent">60%</div>
+                                </div>
+                                <div class="progress progress-striped">
+                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                        <span class="sr-only">60% Complete (warning)</span>
                                     </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <div class="task-info">
-                                        <div class="desc">Database Update</div>
-                                        <div class="percent">60%</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <div class="task-info">
+                                    <div class="desc">Product Development</div>
+                                    <div class="percent">80%</div>
+                                </div>
+                                <div class="progress progress-striped">
+                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                        <span class="sr-only">80% Complete</span>
                                     </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                            <span class="sr-only">60% Complete (warning)</span>
-                                        </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/bindex/">
+                                <div class="task-info">
+                                    <div class="desc">Payments Sent</div>
+                                    <div class="percent">70%</div>
+                                </div>
+                                <div class="progress progress-striped">
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70"
+                                         aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+                                        <span class="sr-only">70% Complete (Important)</span>
                                     </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <div class="task-info">
-                                        <div class="desc">Product Development</div>
-                                        <div class="percent">80%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                            <span class="sr-only">80% Complete</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/bindex/">
-                                    <div class="task-info">
-                                        <div class="desc">Payments Sent</div>
-                                        <div class="percent">70%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-                                            <span class="sr-only">70% Complete (Important)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="external">
-                                <a href="#">See All Tasks</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- settings end -->
-                    
-                </ul>
-                <!--  notification end -->
-            </div>
-            <div class="top-menu">
-            	<ul class="nav pull-right top-menu">
-                    <li>
-                        <form class="navbar-form navbar-right" role="search">
+                                </div>
+                            </a>
+                        </li>
+                        <li class="external">
+                            <a href="#">See All Tasks</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- settings end -->
+
+            </ul>
+            <!--  notification end -->
+        </div>
+        <div class="top-menu">
+            <ul class="nav pull-right top-menu">
+                <li>
+                    <form class="navbar-form navbar-right" role="search">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search here..." aria-describedby="basic-addon2" style="height: 28px;margin-top: 7px">
-                            <button type="submit" class="btn btn-default" style="height:28px;border: 1px solid #666666 !important;-webkit-border-radius: 4px;background-color: #ffd777;margin-right: 10px;margin-top: 7px;color: #666666;border-radius: 4px;">
+                            <input type="text" class="form-control" placeholder="Search here..."
+                                   aria-describedby="basic-addon2" style="height: 28px;margin-top: 7px">
+                            <button type="submit" class="btn btn-default"
+                                    style="height:28px;border: 1px solid #666666 !important;-webkit-border-radius: 4px;background-color: #ffd777;margin-right: 10px;margin-top: 7px;color: #666666;border-radius: 4px;">
                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                             </button>
                         </div>
-                        </form>
-                    </li>
-                    <li><a class="logout" href="/login/">注销</a></li>
-            	</ul>
-            </div>
-        </header>
-      <!--header end-->
-      
-      <!-- **********************************************************************************************************************************************************
-      MAIN SIDEBAR MENU
-      *********************************************************************************************************************************************************** -->
-      <!--sidebar start-->
-      <aside>
-          <div id="sidebar"  class="nav-collapse ">
-              <!-- sidebar menu start-->
-              <ul class="sidebar-menu" id="nav-accordion">
-              
-              	  <p class="centered"><a href="/bindex/"><img src="{% static 'backgroundfiles/assets/img/ny.jpg' %}" class="img-circle" width="60"></a></p>
-              	  <h5 class="centered"><a href="/bindex/" style="color: white">首页</a></h5>
-              	  	
-                  <!--<li class="mt">
-                      <a class="active" href="index.html">
-                          <i class="fa fa-dashboard"></i>
-                          <span>爬虫</span>
-                      </a>
-                  </li>-->
-                  <li class="sub-menu">
+                    </form>
+                </li>
+                <li><a class="logout" href="/login/">注销</a></li>
+            </ul>
+        </div>
+    </header>
+    <!--header end-->
+
+    <!-- **********************************************************************************************************************************************************
+    MAIN SIDEBAR MENU
+    *********************************************************************************************************************************************************** -->
+    <!--sidebar start-->
+    <aside>
+        <div id="sidebar" class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+
+                <p class="centered"><a href="/bindex/"><img src="{% static 'backgroundfiles/assets/img/ny.jpg' %}"
+                                                            class="img-circle" width="60"></a></p>
+                <h5 class="centered"><a href="/bindex/" style="color: white">首页</a></h5>
+
+                <!--<li class="mt">
+                    <a class="active" href="index.html">
+                        <i class="fa fa-dashboard"></i>
+                        <span>爬虫</span>
+                    </a>
+                </li>-->
+                <li class="sub-menu">
                     <a href="javascript:;" class="active">
                         <i class="fa fa-dashboard"></i>
                         <span>爬虫</span>
                     </a>
                     <ul class="sub">
                         <li><a href="/SpiderList/">爬虫管理</a></li>
-                        <li><a  href="/SpiderMonitor/" style="color: #fff;">爬虫监控</a></li>
+                        <li><a href="/SpiderMonitor/" style="color: #fff;">爬虫监控</a></li>
                         <script>
-                            $(document).ready(function(){
-                                $("li:not([class])>a:not(a:contains('爬虫监控'))").hover(function(){
+                            $(document).ready(function () {
+                                $("li:not([class])>a:not(a:contains('爬虫监控'))").hover(function () {
                                     $("a:contains('爬虫监控')").removeAttr("style")
                                 });
                             });
                         </script>
-                        <li><a  href="/SpiderConfigure/">爬虫配置</a></li>
+                        <li><a href="/SpiderConfigure/">爬虫配置</a></li>
                     </ul>
-                  </li>
+                </li>
                 <li class="sub-menu">
-                    <a href="javascript:;" >
+                    <a href="javascript:;">
                         <i class="fa fa-tasks"></i>
                         <span>源数据展示模块</span>
                     </a>
                     <ul class="sub">
-                      <li><a  href="/Author/">作者管理</a></li>
-                      <li><a  href="/ArticlesOfAuthor/">查看作者相关文章</a></li>
-                      <li><a href="/articlelist/">文章管理</a></li>
-                  </ul>
+                        <li><a href="/Author/">作者管理</a></li>
+                        <li><a href="/ArticlesOfAuthor/">查看作者相关文章</a></li>
+                        <li><a href="/articlelist/">文章管理</a></li>
+                    </ul>
                 </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-desktop"></i>
-                          <span>数据清洗</span>
-                      </a>
-                      <ul class="sub">
-                          <!-- <li><a  href="/DataCleanStatistics/">清洗数据统计</a></li> -->
-                          <li><a  href="/DataCleanStrategies/">数据清洗策略配置</a></li>
-                          <li><a  href="/DataCleanLog/">数据清洗日志管理</a></li>
-                          <li><a  href="/washData/">数据清洗</a></li>
-                      </ul>
-                  </li>
-                  <li class="sub-menu">
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-desktop"></i>
+                        <span>数据清洗</span>
+                    </a>
+                    <ul class="sub">
+                        <!-- <li><a  href="/DataCleanStatistics/">清洗数据统计</a></li> -->
+                        <li><a href="/DataCleanStrategies/">数据清洗策略配置</a></li>
+                        <li><a href="/DataCleanLog/">数据清洗日志管理</a></li>
+                        <li><a href="/washData/">数据清洗</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
                     <a href="/topics/">
                         <i class="fa fa-book"></i>
                         <span>主题管理</span>
                     </a>
-                  </li>
-                  <li class="sub-menu">
-                    <a href="javascript:;" >
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
                         <i class="fa fa-cogs"></i>
                         <span>舆情对象管理</span>
                     </a>
                     <ul class="sub">
-                        <li><a  href="/AddEventObject/">新增舆情对象</a></li>
-                        <li><a  href="/CreateEventObject/">舆情对象自动生成</a></li>
-                        <li><a  href="/ShowEventObject/">舆情对象展示</a></li>
+                        <li><a href="/AddEventObject/">新增舆情对象</a></li>
+                        <li><a href="/CreateEventObject/">舆情对象自动生成</a></li>
+                        <li><a href="/ShowEventObject/">舆情对象展示</a></li>
                     </ul>
-                  </li>
-                  <li class="sub-menu">
-                    <a href="javascript:;" >
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
                         <i class="fa fa-tasks"></i>
                         <span>语义工具集</span>
                     </a>
                     <ul class="sub">
-                      <li><a  href="/semanticsTools/">新增语义工具</a></li>
-                      <li><a  href="/semanticsToolkits/">新增工具包</a></li>
-                      <li><a  href="/ShowToolkits/">工具包展示</a></li>
+                        <li><a href="/semanticsTools/">新增语义工具</a></li>
+                        <li><a href="/semanticsToolkits/">新增工具包</a></li>
+                        <li><a href="/ShowToolkits/">工具包展示</a></li>
                     </ul>
-                  </li>
-                  <!--<li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-th"></i>
-                          <span>系统操作管理</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="basic_table.html">系统用户评论管理</a></li>
-                          <li><a  href="responsive_table.html">系统用户操作管理</a></li>
-                      </ul>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class=" fa fa-bar-chart-o"></i>
-                          <span>用户管理</span>
-                      </a>
-                  </li>-->
-                  <li class="sub-menu">
-                    <a href="/usrCommentsSelect/" >
+                </li>
+                <!--<li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-th"></i>
+                        <span>系统操作管理</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a  href="basic_table.html">系统用户评论管理</a></li>
+                        <li><a  href="responsive_table.html">系统用户操作管理</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class=" fa fa-bar-chart-o"></i>
+                        <span>用户管理</span>
+                    </a>
+                </li>-->
+                <li class="sub-menu">
+                    <a href="/usrCommentsSelect/">
                         <i class="fa fa-th"></i>
                         <span>用户留言管理</span>
                     </a>
                     <!--  -->
-                  </li>
+                </li>
                 <li class="sub-menu">
-                    <a href="/AssignAuthorities/" >
+                    <a href="/AssignAuthorities/">
                         <i class=" fa fa-bar-chart-o"></i>
                         <span>权限管理</span>
                     </a>
                 </li>
                 <li class="sub-menu">
-                    <a href="/usrManagement/" >
+                    <a href="/usrManagement/">
                         <i class=" fa fa-bar-chart-o"></i>
                         <span>用户管理</span>
                     </a>
                     <!-- -->
                 </li>
                 <li class="sub-menu">
-                    <a href="/operateDiary/" >
+                    <a href="/operateDiary/">
                         <i class=" fa fa-bar-chart-o"></i>
                         <span>日志管理</span>
                     </a>
@@ -341,135 +373,179 @@
                     </ul>-->
                 </li>
 
-              </ul>
-              <!-- sidebar menu end-->
-          </div>
-      </aside>
-      <!--sidebar end-->
-      
-      <!-- **********************************************************************************************************************************************************
-      MAIN CONTENT
-      *********************************************************************************************************************************************************** -->
-      <!--main content start-->
-      <section id="main-content">
-          <section class="wrapper site-min-height">
-          	<h3><i class="fa fa-angle-right"></i> 爬虫监控</h3>
-          	<!-- <div class="row mt">
-          		<div class="col-lg-12">
-                    <div class="panel panel-default"> -->
-                    <!-- Default panel contents -->
-                        <!-- <div class="panel-heading">
-                            爬虫速率
-                            <select class="form-control" style="float: right;width: 70px;height: 25px;font-size: 12px">
-                                <option>今天</option>
-                                <option>最近</option>
-                                <option>一周</option>
-                                <option>一月</option>
-                            </select>
-                            <select class="form-control" style="float: right;width: 90px;height: 25px;font-size: 12px;margin-right: 5px">
-                                <option>新华网</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div> -->
-                      
-                        <!-- Table -->
-                        <!-- <textarea readonly style="overflow: hidden;resize: none;width: 100%;height: 350px;border: none;outline: none">
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+    <!--sidebar end-->
 
-                        </textarea>
-                    </div>
-                </div>
-            </div> -->
+    <!-- **********************************************************************************************************************************************************
+    MAIN CONTENT
+    *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper site-min-height">
+            <h3><i class="fa fa-angle-right"></i> 爬虫监控</h3>
             <div class="row mt">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <!-- Default panel contents -->
-                        <div class="panel-heading">爬虫速率</div>
-                        <!-- Table -->
-                        <table class="table" id="pachongsulvTB">
-                            <tr><td>爬虫名称</td><td>最高速率</td><td>最低速率</td><td>平均速率</td><td>日间平均速率</td><td>夜间平均速率</td><td>最快速率网站</td><td>最慢速率网站</td></tr>
-                            <tr><td>Trident</td><td>Trident</td><td>Internet</td><td>Win 95+</td><td>4</td><td>X</td><td>4</td><td>X</td></tr>
-                            <tr><td>Trident</td><td>Trident</td><td>Internet</td><td>Win 95+</td><td>4</td><td>X</td><td>4</td><td>X</td></tr>
-                            <tr><td>Trident</td><td>Trident</td><td>Internet</td><td>Win 95+</td><td>4</td><td>X</td><td>4</td><td>X</td></tr>
-                            <tr><td>Trident</td><td>Trident</td><td>Internet</td><td>Win 95+</td><td>4</td><td>X</td><td>4</td><td>X</td></tr>
-                            <tr><td>Trident</td><td>Trident</td><td>Internet</td><td>Win 95+</td><td>4</td><td>X</td><td>4</td><td>X</td></tr>
-                        </table>
+                        <div class="panel-heading" style="height: 50px">
+
+                            爬虫速率
+                            <div style="float: right">
+                                <select id='selectpicker' class="selectpicker" data-style="btn-info" name="vm"
+                                        style="float: right" onchange="webchange()">
+                                    <option>天涯BBS</option>
+                                    <option>猫扑论坛</option>
+                                    <option>人民网论坛</option>
+                                    <option>新华网论坛</option>
+                                    <option>豆瓣小组</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <br>
+
+                        <div id="weekspeed" style="width: 100%;height:400px;"></div>
                     </div>
                 </div>
-            </div> 
+            </div>
             <div class="row mt">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <div class="panel panel-default">
-                    <!-- Default panel contents -->
-                        <div class="panel-heading">
-                            爬虫出错比
-                            <select class="form-control" style="float: right;width: 70px;height: 25px;font-size: 12px">
-                                <option>今天</option>
-                                <option>最近</option>
-                                <option>一周</option>
-                                <option>一月</option>
-                            </select>
-                            <select class="form-control" style="float: right;width: 90px;height: 25px;font-size: 12px;margin-right: 5px">
-                                <option>Trident</option>
-                                <option>Trident</option>
-                                <option>Trident</option>
-                                <option>Trident</option>
-                                <option>Trident</option>
-                            </select>
+                        <!-- Default panel contents -->
+                        <div class="panel-heading" style="height: 50px">
+
+                            爬虫速率
+                            <div style="float: right">
+                                <select id='selectpicker1' class="selectpicker" data-style="btn-info" name="vm"
+                                        style="float: right" onchange="intervalchange()">
+                                    <option>今日</option>
+                                    <option>一周</option>
+                                    <option>一月</option>
+
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="panel-body">
+                            <div id="111">
+                                <table id="table_id_example">
+                                    <thead id='speedthead'>
+                                    <tr>
+                                        <th>序号</th>
+                                        <th>爬虫名称</th>
+                                        <th>最高page速率</th>
+                                        <th>最高item速率</th>
+                                        <th>最低page速率</th>
+                                        <th>最低item速率</th>
+                                        <th>平均page速率</th>
+                                        <th>平均item数据</th>
+                                        <th>日间page速率</th>
+                                        <th>日间item速率</th>
+                                        <th>夜间page速率</th>
+                                        <th>夜间item速率</th>
+
+
+                                    </tr>
+                                    </thead>
+                                    <tbody id="speedtbody">
+
+                                    </tbody>
+                                </table>
+
+                            </div>
                         </div>
 
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading">
+                            爬虫出错比
+                            <div style="float: right">
+                                <div style="float: right">
+                                    <select id='errorweb' class="selectpicker" data-style="btn-info" name="vm"
+                                            style="float: right">
+                                        <option>天涯BBS</option>
+                                        <option>猫扑论坛</option>
+                                        <option>人民网论坛</option>
+                                        <option>新华网论坛</option>
+                                        <option>豆瓣小组</option>
+                                    </select>
+                                    &nbsp;&nbsp;
+                                    <select id='errortime' class="selectpicker" data-style="btn-info" name="vm"
+                                            style="float: right">
+                                        <option>一周</option>
+                                        <option>一月</option>
+                                        <option>一年</option>
+
+                                    </select>
+                                    <button class="layui-btn layui-btn-normal" onclick="errorchart()">确定</button>
+                                </div>
+
+
+                            </div>
+                            <br>
+                            <br>
+                        </div>
+                        <div class="panel-body">
+                            <div id="errorchart" style="width: 100%;height:500px;">
+
+                            </div>
+                        </div>
                         <!-- Table -->
-                        <canvas id="pachongchucuobi"></canvas>
-                        <script type="text/javascript">
-                            // 设置参数
-                            var data = {
-                               labels: [
-                                   "正常",
-                                   "出错"
-                               ],
-                               datasets: [
-                                   {
-                                       data: [400, 100],
-                                       backgroundColor: [
-                                           "#FF6384",
-                                           "#36A2EB",
-                                           "#FFCE56"
-                                       ],
-                                       hoverBackgroundColor: [
-                                           "#FF6384",
-                                           "#36A2EB",
-                                           "#FFCE56"
-                                       ]
-                                   }]
-                           };
-                           
-                           
-                               // Get the context of the canvas element we want to select
-                                   var ctx = document.getElementById("pachongchucuobi").getContext("2d");
-                                   var myBarChart = new Chart(ctx, {
-                                                                       type: 'pie',
-                                                                       data: data,
-                                                                       // options: options
-                                                               });
-                           </script>
+
                         <!-- <textarea readonly style="overflow: hidden;resize: none;width: 100%;height: 300px;border: none;outline: none">
 
                         </textarea> -->
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <div class="panel panel-default">
-                    <!-- Default panel contents -->
+                        <!-- Default panel contents -->
                         <div class="panel-heading">
                             各网站爬取数据量
-                            <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">平均量 0</span>
-                            <select class="form-control" style="float: right;width: 110px;height: 25px;font-size: 12px">
-                                <option>最近一周</option>
-                                <option>最近一月</option>
-                                <option>今天</option>
-                            </select>
+                            <div style="float: right">
+                                <div style="float: right">
+                                    <select id='numweb' class="selectpicker" data-style="btn-info" name="vm"
+                                            style="float: right">
+                                        <option>天涯BBS</option>
+                                        <option>猫扑论坛</option>
+                                        <option>人民网论坛</option>
+                                        <option>新华网论坛</option>
+                                        <option>豆瓣小组</option>
+                                    </select>
+                                    &nbsp;&nbsp;
+                                    <select id='numtime' class="selectpicker" data-style="btn-info" name="vm"
+                                            style="float: right">
+                                        <option>一周</option>
+                                        <option>一月</option>
+                                        <option>一年</option>
+
+                                    </select>
+                                    <button class="layui-btn layui-btn-normal" onclick="setlinedata()">确定</button>
+                                </div>
+
+
+                            </div>
+                            <br>
+                            <br>
+                        </div>
+                        <div class="panel-body">
+                            <div style="width: 100%;height: 400px">
+                                <div class="col-lg-7">
+                                    <div id="linenum" style="width: 100%;height: 390px"></div>
+                                </div>
+                                <div class="col-lg-5">
+                                    <div id="pienum" style="width: 100%;height: 390px"></div>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Table -->
@@ -481,209 +557,158 @@
                             <tr><td>Trident</td><td>localhost</td><td>127.0.0.1</td><td>0</td><td>04:46</td><td>2017-10-23</td></tr>
                             <tr><td>Trident</td><td>localhost</td><td>127.0.0.1</td><td>0</td><td>04:46</td><td>2017-10-23</td></tr>
                         </table> -->
-                        <div style="position: relative;width: 100%;">
-                                <canvas id="myChart"></canvas>
-                                </div>
-                                <script type="text/javascript">
-                                /* var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']; */
-                                var data = {
-                                        labels: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],  //x轴
-                                        datasets: [  //y轴
-                                            {
-                                            label: "人民网",  //曲线名称
-                                            fillColor: "rgba(250,250,255,255)",
-                                            strokeColor: "rgba(0,0,0,1)",
-                                            lineTension: 0,  //去掉变光滑
-                                            pointColor: "rgba(220,220,220,255)",
-                                            pointStrokeColor: "#fff",
-                                            pointHighlightFill: "#fff",
-                                            pointHighlightStroke: "rgba(220,220,220,1)",
-                                            data: [65, 59, 80, 81, 56, 55, 40]  //y轴数值
-                                            },
-                                            {
-                                                label: "新浪网",//曲线名称
-                                                fill: true, //曲线下阴影
-                                                lineTension: 0,  //去掉变光滑
-                                                backgroundColor: "rgba(75,192,192,0.4)",//最后一位是透明度
-                                                borderColor: "rgba(75,192,192,0.4)",
-                                                borderCapStyle: 'square',//不知道什么卵用,butt,round,square
-                                                borderDash: [4],//夹数值变虚线，数值越大越稀疏
-                                                //borderDashOffset: 0.0,//不知道什么乱用
-                                                borderJoinStyle: 'miter',//不知道什么乱用，"bevel" || "round" || "miter"
-                                                pointBorderColor: "rgba(75,192,192,1)",//结点颜色
-                                                pointBackgroundColor: "#fff",
-                                                pointBorderWidth: 5,
-                                                pointHoverRadius: 5,//光标覆盖时半径
-                                                pointHoverBackgroundColor: "rgba(75,192,192,1)",
-                                                pointHoverBorderColor: "rgba(220,220,220,1)",
-                                                pointHoverBorderWidth: 2,//光标覆盖时结点外边圈的厚度
-                                                pointRadius: 1,//结点空心大小？
-                                                pointHitRadius: 10,//不知道有什么卵用
-                                                data: [50, 70, 60, 31, 92, 78, 13],//y轴数值
-                                                spanGaps: false,//不知道有什么卵用
-                                            }
-                                        ]
-                                    };    
-                                var config = {
-                                    type: 'line',
-                                    data: data,
-                                    options: {
-                                        responsive: true,
-                                        title: {
-                                            display: false,
-                                            text: 'Chart.js Line Chart'
-                                        },
-                                        
-                                    }
-                                };
-                        
-                                //window.onload = function() {
-                                    var ctx = document.getElementById('myChart').getContext('2d');
-                                    var myLinechart = new Chart(ctx, config);
-                                //};
-                        
-                                </script>
-                    </div>
-                </div>
-            </div> 
-            <div class="row mt">
-                <div class="col-lg-6">
-                    <div class="panel panel-default">
-                    <!-- Default panel contents -->
-                        <div class="panel-heading">
-                            各网站爬取耗时统计
-                            <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">平均耗时 0s</span>
-                            <select class="form-control" style="float: right;width: 110px;height: 25px;font-size: 12px">
-                                <option>最近一周</option>
-                                <option>最近一月</option>
-                                <option>今天</option>
-                            </select>
-                        </div>
 
-                        <!-- Table -->
-                        <table class="table" id="pachongsulvTB">
-                            <tr><td>爬虫名称</td><td>网站名称</td><td>URL</td><td>耗时</td><td>爬取时间</td><td>爬取日期</td></tr>
-                            <tr><td>Trident</td><td>localhost</td><td>127.0.0.1</td><td>0</td><td>04:46</td><td>2017-10-23</td></tr>
-                            <tr><td>Trident</td><td>localhost</td><td>127.0.0.1</td><td>0</td><td>04:46</td><td>2017-10-23</td></tr>
-                            <tr><td>Trident</td><td>localhost</td><td>127.0.0.1</td><td>0</td><td>04:46</td><td>2017-10-23</td></tr>
-                            <tr><td>Trident</td><td>localhost</td><td>127.0.0.1</td><td>0</td><td>04:46</td><td>2017-10-23</td></tr>
-                            <tr><td>Trident</td><td>localhost</td><td>127.0.0.1</td><td>0</td><td>04:46</td><td>2017-10-23</td></tr>
-                        </table>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="panel panel-default">
-                    <!-- Default panel contents -->
-                        <div class="panel-heading">
-                            系统爬虫状态统计
-                            <select class="form-control" style="float: right;width: 110px;height: 25px;font-size: 12px">
-                                <option>最近一周</option>
-                                <option>最近一月</option>
-                                <option>今天</option>
-                            </select>
-                            <select class="form-control" style="float: right;width: 130px;height: 25px;font-size: 12px;margin-right: 5px">
-                                <option>最近新增爬虫</option>
-                                <option>长时间未运行</option>
-                            </select>
-                        </div>
 
-                        <!-- Table -->
-                        <table class="table" id="pachongsulvTB">
-                            <tr><td>爬虫名称</td><td>开启时间</td><td>关闭时间</td><td>爬取时长</td><td>状态</td></tr>
-                            <tr><td>Trident</td><td>2017-10-23 04:46</td><td>2017-10-23 04:46</td><td>0</td><td>开启</td></tr>
-                            <tr><td>Trident</td><td>2017-10-23 04:46</td><td>2017-10-23 04:46</td><td>0</td><td>关闭</td></tr>
-                            <tr><td>Trident</td><td>2017-10-23 04:46</td><td>2017-10-23 04:46</td><td>0</td><td>关闭</td></tr>
-                            <tr><td>Trident</td><td>2017-10-23 04:46</td><td>2017-10-23 04:46</td><td>0</td><td>关闭</td></tr>
-                            <tr><td>Trident</td><td>2017-10-23 04:46</td><td>2017-10-23 04:46</td><td>0</td><td>关闭</td></tr>
-                        </table>
-                    </div>
-                </div>
-            </div> 
-            <div class="row mt" style="display: none">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            爬虫日志
-                            <span style="float: right;font-size: 12px;margin-left: 10px;margin-top: 3px">entries</span>
-                            <select class="form-control" style="float: right;width: 60px;height: 25px;font-size: 12px">
-                                <option>10</option>
-                                <option>25</option>
-                                <option>50</option>
-                                <option>100</option>
-                            </select>
-                            <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">Show</span>
-                        </div>
-                        <!--<div class="panel-body">-->
-                            <table class="table table-bordered" style="margin: 0%">
-                                <tr><td>时间</td><td>网站</td><td>网址</td><td>错误的item</td><td>错误详情</td></tr>
-                                <tr><td>Gecko</td><td>Firefox 1.0</td><td>Win 98+ / OSX.2+</td><td>Win 95+</td><td>1.7</td></tr>
-                                <tr><td>Misc</td><td>IE Mobile</td><td>Win 95+</td><td>Windows Mobile 6</td><td>-</td></tr>
-                                <tr><td>Misc</td><td>PSP browser</td><td>Win</td><td>PHP</td><td>-</td></tr>
-                                <tr><td>Other browsers</td><td>Win 95+</td><td>All others</td><td>-</td><td>-</td></tr>
-                                <tr><td>Presto</td><td>Opera 9.5</td><td>Win 88+ / OSX.3+</td><td>Win 95+</td><td>-</td></tr>
-                                <tr><td>Trident</td><td>Internet</td><td>Win 95+</td><td>Win 95+</td><td>4</td></tr>
-                                <tr><td>Trident</td><td>Internet</td><td>Win 95+</td><td>Win 95+</td><td>5</td></tr>
-                                <tr><td>Trident</td><td>Internet</td><td>Win 95+</td><td>Win 95+</td><td>5.5</td></tr>
-                                <tr><td>Trident</td><td>Internet</td><td>Win 95+</td><td>Win 95+</td><td>6</td></tr>
-                                <tr><td>Trident</td><td>Internet</td><td>Win XP SP2+</td><td>Win 95+</td><td>7</td></tr>
-                            </table>
-                        <!--</div>-->
-                        <div class="panel-footer">
-                            Search:
-                            <input type="text" class="form-control" placeholder="Search for..." style="width: 200px;height: 25px;display: inline-block">
-                            <div class="btn-group btn-group-xs" role="group" aria-label="..." style="float: right;">
-                                <button type="button" class="btn btn-default">First</button>
-                                <button type="button" class="btn btn-default">Previous</button>
-                                <button type="button" class="btn btn-default">1</button>
-                                <button type="button" class="btn btn-default">2</button>
-                                <button type="button" class="btn btn-default">Next</button>
-                                <button type="button" class="btn btn-default">Last</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
 
-			
-		</section><!--/wrapper -->
-      </section><!-- /MAIN CONTENT -->
-
-      <!--main content end-->
-      <!--footer start-->
-      <footer class="site-footer">
-          <div class="text-center">
-              2018 - <a href="http://www.xjtu.edu.cn" target="_blank" title="西安交通大学">西安交通大学</a> - <a href="http://www.xjtu.edu.cn" title="social mind" target="_blank">social mind舆情分析平台</a>
-              <a href="#" class="go-top">
-                  <i class="fa fa-angle-up"></i>
-              </a>
-          </div>
-      </footer>
-      <!--footer end-->
-  </section>
-
-    <!-- js placed at the end of the document so the pages load faster -->
-    <script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script>
-    <script src="{% static 'backgroundfiles/assets/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'backgroundfiles/assets/js/jquery-ui-1.9.2.custom.min.js' %}"></script>
-    <script src="{% static 'backgroundfiles/assets/js/jquery.ui.touch-punch.min.js' %}"></script>
-    <script class="include" type="text/javascript" src="{% static 'backgroundfiles/assets/js/jquery.dcjqaccordion.2.7.js' %}"></script>
-    <script src="{% static 'backgroundfiles/assets/js/jquery.scrollTo.min.js' %}"></script>
-    <script src="{% static 'backgroundfiles/assets/js/jquery.nicescroll.js' %}" type="text/javascript"></script>
 
 
-    <!--common script for all pages-->
-    <script src="{% static 'backgroundfiles/assets/js/common-scripts.js' %}"></script>
+        </section><!--/wrapper -->
+    </section><!-- /MAIN CONTENT -->
 
-    <!--script for this page-->
-    
-  <script>
-      //custom select box
+    <!--main content end-->
+    <!--footer start-->
+    <footer class="site-footer">
+        <div class="text-center">
+            2018 - <a href="http://www.xjtu.edu.cn" target="_blank" title="西安交通大学">西安交通大学</a> - <a
+                href="http://www.xjtu.edu.cn" title="social mind" target="_blank">social mind舆情分析平台</a>
+            <a href="#" class="go-top">
+                <i class="fa fa-angle-up"></i>
+            </a>
+        </div>
+    </footer>
+    <!--footer end-->
+</section>
 
-      $(function(){
-          $('select.styled').customSelect();
-      });
+<!-- js placed at the end of the document so the pages load faster -->
+{#<script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script>#}
+<script src="{% static 'backgroundfiles/assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'backgroundfiles/assets/js/jquery-ui-1.9.2.custom.min.js' %}"></script>
+<script src="{% static 'backgroundfiles/assets/js/jquery.ui.touch-punch.min.js' %}"></script>
+<script class="include" type="text/javascript"
+        src="{% static 'backgroundfiles/assets/js/jquery.dcjqaccordion.2.7.js' %}"></script>
+<script src="{% static 'backgroundfiles/assets/js/jquery.scrollTo.min.js' %}"></script>
+<script src="{% static 'backgroundfiles/assets/js/jquery.nicescroll.js' %}" type="text/javascript"></script>
+<script src="{% static 'assets0/js/spiderjs/smjs.js' %}"></script>
 
-  </script>
+<!--common script for all pages-->
+<script src="{% static 'backgroundfiles/assets/js/common-scripts.js' %}"></script>
 
-  </body>
+<!--script for this page-->
+
+
+<script>
+    $(function () {
+        errorchart()
+        var web = $("#selectpicker").selectpicker('val')
+        setspeedchart(web)
+        var i = $("#selectpicker1").selectpicker('val')
+        setspeeddata(i)
+        setlinedata()
+        setpiechart()
+
+
+    });
+    var table
+
+    function webchange() {
+        var web = $("#selectpicker").selectpicker('val')
+        setspeedchart(web)
+        layer.msg(web)
+    }
+
+    function intervalchange() {
+        var i = $("#selectpicker1").selectpicker('val')
+
+        table.destroy()
+        {#console.log(table)#}
+        {# table.clear()#}
+
+        setspeeddata(i)
+
+
+        {#layer.msg(i)#}
+    }
+
+    function setspeeddata(interval) {
+        {#$('#speedthead').hide()#}
+        $('#speedtbody').empty()
+
+        $.ajax({
+            url: '/queryspiderspeed/',
+            type: 'POST',
+            dataType: 'json',
+            data: {'data': interval},
+            success: function (data) {
+                var item = 0
+                datas = data.data
+                options = {
+                    "order": [0, "asc"],
+                    "bAutoWidth": true,
+                    "bProcessing": true,
+                    "Processing": true,
+                    "aLengthMenu": [[10, 30, -1], [20, 30, "全部"]],
+                    "language": {
+                        "lengthMenu": " 每页_MENU_条记录",
+                        "zeroRecords": "没有找到记录",
+                        "info": "第_PAGE_页(共_PAGES_页)",
+                        "infoEmpty": "无记录",
+                        "infoFiltered": "(从_MAX_条记录过滤)",
+                        "oPaginate": {
+                            "sFirst": "首页",
+                            "sPrevious": "上页",
+                            "sNext": "下页",
+                            "sLast": "末页"
+                        },
+                        "sSearch": "搜索: ",
+                        "sLoadingRecords": "正在加载数据-请等待...",
+                    },
+                    data: datas,
+                    destory: true,
+                    processing: true,
+
+                    columns: [
+                        // {data: 'spiderid', 'visible': false},
+
+                        {
+                            data: null, "render": function () {
+                                item++;
+                                return item;
+                            }
+                        },
+                        {data: 'name'},
+
+                        {data: 'highpage'},
+                        {data: 'highitem'},
+                        {data: 'lowpage'},
+                        {data: 'lowitem'},
+                        {data: 'avgpage'},
+
+                        {data: 'avgitem'},
+                        {data: 'daypage'},
+                        {data: 'dayitem'},
+                        {data: 'nightpage'},
+                        {data: 'nightitem'},
+
+
+                    ]
+                };
+
+                table = $('#table_id_example').DataTable(options);
+                $('#speedthead').show()
+
+
+            },
+            error: function (data) {
+                alert("数据获取失败");
+            }
+        });
+    }
+    function setpiechart() {
+
+}
+</script>
+</body>
 </html>

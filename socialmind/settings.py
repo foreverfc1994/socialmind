@@ -131,7 +131,7 @@ STATICFILES_DIRS = [
 
 LOGGING = {
     'version': 1,  # 标示配置模板版本，int 类型，目前只接收 `1`这个值。
-    'disable_existing_loggers': False,  # 这个没太看明白什么意思，了解的朋友麻烦说明下
+    'disable_existing_loggers': False,
     'formatters': {
         'standard': {
             'format': '%(asctime)s %(funcName)s %(message)s %(name)s',
@@ -158,6 +158,7 @@ LOGGING = {
             'backupCount':7,
 
         },
+
     },
     'loggers': {
         'visitor': {
@@ -170,5 +171,6 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': True,
         },
+
     }
 }
