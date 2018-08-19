@@ -121,6 +121,7 @@ urlpatterns = [
     path('objectshow/',bviews.objectshow),
     path('objectshow/event/',ObjectShowview.eventshow),
     path('objectshow/object/',ObjectShowview.objectshow),
+    path('objectshow/entity/',ObjectShowview.entitydata),
     path('Eventshow/',bviews.eventshow),
     path('jianbao/',bviews.jianbao),
     path('qiantaimotaikuang',bviews.qiantaimotaikuang),
@@ -144,7 +145,11 @@ urlpatterns = [
     path('queryspider/',SpiderView.queryspider),
     path('queryspiderspeed/',SpiderView.queryspiderspeed),
     path('queryerror/',SpiderView.queryerror),
-    path('queryspidernum/',SpiderView.queryspidernum)
+    path('queryspidernum/',SpiderView.queryspidernum),
+    path('errorlog/',SpiderView.geterrorlog),
+    path('spiderlog/',SpiderView.getspiderlog),
+    path('delentity/',ObjectShowview.delentity)
+
 
 
 

@@ -1253,16 +1253,7 @@
                                                     name:'帖子',
                                                     type:'bar',
                                                     data:[862, 1018, 964, 1026, 1679],
-                                                    /* markLine : {
-                                                        lineStyle: {
-                                                            normal: {
-                                                                type: 'dashed'
-                                                            }
-                                                        },
-                                                        data : [
-                                                            [{type : 'min'}, {type : 'max'}]
-                                                        ]
-                                                    } */
+
                                                 },
                                                 {
                                                     name:'新闻',
@@ -1273,46 +1264,7 @@
                                                 },
                                             ]
                                         };
-                                        /* option2 = {
-                                            title: {
-                                                text: '新增数据来源统计',
-                                                //subtext: '虚构数据',
-                                                left: 'center'
-                                            },
-                                            tooltip : {
-                                                trigger: 'item',
-                                                formatter: "{a} <br/>{b} : {c} ({d}%)"
-                                            },
-                                            legend: {
-                                                //orient: 'vertical',
-                                                //top: 'middle',
-                                                bottom: 10,
-                                                //show:false,
-                                                data: ['博客', '评论','作者','帖子','新闻']
-                                            },
-                                            series : [
-                                                {
-                                                    type: 'pie',
-                                                    radius : '65%',
-                                                    center: ['50%', '50%'],
-                                                    selectedMode: 'single',
-                                                    data:[
-                                                        {value:535, name: '博客'},
-                                                        {value:510, name: '评论'},
-                                                        {value:735, name: '作者'},
-                                                        {value:634, name: '帖子'},
-                                                        {value:735, name: '新闻'}
-                                                    ],
-                                                    itemStyle: {
-                                                        emphasis: {
-                                                            shadowBlur: 10,
-                                                            shadowOffsetX: 0,
-                                                            shadowColor: 'rgba(0, 0, 0, 0.5)'
-                                                        }
-                                                    }
-                                                }
-                                            ]
-                                        }; */
+
                                         option2 = {
                                             title: {
                                                 text: '新增数据来源统计',
@@ -1327,11 +1279,11 @@
                                                 /* orient: 'vertical',
                                                 x: 'left', */
                                                 bottom: 10,
-                                                data:['博客','帖子','新闻','邮件营销','联盟广告','视频广告','百度','谷歌','必应','其他']
+                                                data:['博客','论坛','其他']
                                             },
                                             series: [
                                                 {
-                                                    name:'访问来源',
+                                                    name:'网站类型',
                                                     type:'pie',
                                                     selectedMode: 'single',
                                                     radius: [0, '30%'],
@@ -1347,10 +1299,12 @@
                                                         }
                                                     },
                                                     data:[
-                                                        {value:335, name:'博客', selected:true},
-                                                        {value:679, name:'帖子'},
-                                                        {value:102, name:'其他'},
-                                                        {value:1446, name:'新闻'},
+
+                                                        {value:35561, name:'论坛'},
+                                                        {value:60331, name:'新闻'},
+
+                                                        {value:12323, name:'其他'},
+
                                                     ]
                                                 },
                                                 {
@@ -1358,14 +1312,30 @@
                                                     type:'pie',
                                                     radius: ['40%', '55%'],
                                                     data:[
-                                                        {value:335, name:'博客'},
-                                                        {value:310, name:'贴吧1'},
-                                                        {value:234, name:'贴吧2'},
-                                                        {value:135, name:'贴吧3'},
-                                                        {value:102, name:'其他'},
-                                                        {value:1048, name:'新浪网'},
-                                                        {value:251, name:'人民网'},
-                                                        {value:147, name:'中国日报网'},
+                                                        {value:5410, name:'网易博客'},
+                                                        {value:2932, name:'兵马俑论坛'},
+                                                        {value:9771, name:'华商论坛'},
+                                                        {value:11230, name:'人民网论坛'},
+                                                        {value:2807, name:'天涯论坛'},
+                                                        {value:3411, name:'猫扑论坛'},
+                                                        {value:5090, name:'北青网'},
+                                                        {value:1041, name:'东方新闻'},
+                                                        {value:6018, name:'光明日报'},
+                                                        {value:243, name:'华商网'},
+                                                        {value:273, name:'京报网'},
+                                                        {value:8634, name:'人民网'},
+                                                        {value:3809, name:'三秦网'},
+                                                        {value:10913, name:'新浪新闻'},
+                                                        {value:33, name:'搜狐网'},
+                                                        {value:15920, name:'中国科技网'},
+                                                        {value:1319, name:'陕西日报'},
+                                                        {value:87, name:'腾讯新闻'},
+                                                        {value:312, name:'网易新闻'},
+                                                        {value:377, name:'新华网'},
+                                                        {value:6262, name:'凤凰网'},
+                                                        {value:251, name:'八通网'},
+                                                        {value:11048, name:'凯迪网'},
+                                                        {value:1024, name:'西祠胡同'},
                                                     ]
                                                 }
                                             ]
