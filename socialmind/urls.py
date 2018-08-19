@@ -21,13 +21,14 @@ from django.conf.urls import include
 from visitor.view import loginviews,indexview,UserInfoManageview
 from manager.view import loginview as bloginview,ArticleandAuthorview as bAAview
 from manager.view import userManagement as umView, washData
-from manager.view import DataTableShowView,ObjectShowview, userCommentsManage as ucView,SpiderView
+from manager.view import DataTableShowView,ObjectShowview, userCommentsManage as ucView,SpiderView,washlog
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', loginviews.login, name='first'),
     path('captcha',include('captcha.urls')),
     path('logout/',loginviews.logout),
     path('com_index/', indexview.com_index, name='com_index'),
+    path('loadOrganizationData/emotionTrend/', indexview.index_emotionTrend),
     path('gov_index/', indexview.gov_index, name='gov_index'),
     path('person_index/', indexview.person_index, name='person_index'),
     path('govcom_index/', indexview.govcom_index, name='govcom_index'),
@@ -151,7 +152,8 @@ urlpatterns = [
     path('queryspidernum/',SpiderView.queryspidernum),
     path('errorlog/',SpiderView.geterrorlog),
     path('spiderlog/',SpiderView.getspiderlog),
-    path('delentity/',ObjectShowview.delentity)
+    path('delentity/',ObjectShowview.delentity),
+    path('washlog/',washlog.washlog)
 
 
 

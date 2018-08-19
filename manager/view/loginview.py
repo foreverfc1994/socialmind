@@ -11,6 +11,7 @@ import re
 def index(request):
     return render(request, 'background/index.html')
 def login(request):
+    # request.session.flush()
     return redirect('/logout/')
 @csrf_exempt
 def bindexContent(request,a):
@@ -153,6 +154,72 @@ def bindexContent(request,a):
         dataList.append(countzongliuyanliang)
         dataList.append(countzuoriliuyanliang)
         # print(countzongliuyanliang,countzuoriliuyanliang)
+        zongrizhiliang = 0
+        yesterdayrizhiliang = 0
+        logdatelist = [0,0,0,0,0,0,0]
+        yesterdayshijianchuo = (datetime.date.today() - datetime.timedelta(days=1)).strftime("%Y-%m-%d")
+        yesterdayshijianchuo = time.mktime(time.strptime(yesterdayshijianchuo,"%Y-%m-%d"))
+        try:
+            f = open('log/datawash.log', 'r', encoding='UTF-8')
+            pattern1 = ''
+            for line in f:
+                zongrizhiliang = zongrizhiliang + 1
+                pattern = re.search(r'^[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2} [0-9]{2,2}:[0-9]{2,2}:[0-9]{2,2}', line).group()
+                patternshijianchuo = datetime.datetime.strptime(pattern, "%Y-%m-%d %H:%M:%S").strftime("%Y-%m-%d")
+                patternshijianchuo = time.mktime(time.strptime(patternshijianchuo,"%Y-%m-%d"))
+                # print(type(yesterdayshijianchuo),type(patternshijianchuo))
+                if yesterdayshijianchuo<=patternshijianchuo:
+                    yesterdayrizhiliang = yesterdayrizhiliang + 1
+                for index in range(len(datelist)):
+                    strzhuandatetime = datetime.datetime.strptime(pattern, "%Y-%m-%d %H:%M:%S")
+                    datetimezhuanstr = strzhuandatetime.strftime("%m.%d")
+                    if datetimezhuanstr == datelist[index]:
+                        logdatelist[index] = logdatelist[index] + 1
+            f.close()
+        except Exception as e:
+            raise e
+        try:
+            f = open('log/socialmind.log', 'r', encoding='UTF-8')
+            pattern1 = ''
+            for line in f:
+                zongrizhiliang = zongrizhiliang + 1
+                pattern = re.search(r'^[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2} [0-9]{2,2}:[0-9]{2,2}:[0-9]{2,2}', line).group()
+                patternshijianchuo = datetime.datetime.strptime(pattern, "%Y-%m-%d %H:%M:%S").strftime("%Y-%m-%d")
+                patternshijianchuo = time.mktime(time.strptime(patternshijianchuo,"%Y-%m-%d"))
+                # print(type(yesterdayshijianchuo),type(patternshijianchuo))
+                if yesterdayshijianchuo<=patternshijianchuo:
+                    yesterdayrizhiliang = yesterdayrizhiliang + 1
+                for index in range(len(datelist)):
+                    strzhuandatetime = datetime.datetime.strptime(pattern, "%Y-%m-%d %H:%M:%S")
+                    datetimezhuanstr = strzhuandatetime.strftime("%m.%d")
+                    if datetimezhuanstr == datelist[index]:
+                        logdatelist[index] = logdatelist[index] + 1
+            f.close()
+        except Exception as e:
+            raise e
+        try:
+            f = open('log/spider.log', 'r', encoding='UTF-8')
+            pattern1 = ''
+            for line in f:
+                zongrizhiliang = zongrizhiliang + 1
+                pattern = re.search(r'^[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2} [0-9]{2,2}:[0-9]{2,2}:[0-9]{2,2}', line).group()
+                patternshijianchuo = datetime.datetime.strptime(pattern, "%Y-%m-%d %H:%M:%S").strftime("%Y-%m-%d")
+                patternshijianchuo = time.mktime(time.strptime(patternshijianchuo,"%Y-%m-%d"))
+                # print(type(yesterdayshijianchuo),type(patternshijianchuo))
+                if yesterdayshijianchuo<=patternshijianchuo:
+                    yesterdayrizhiliang = yesterdayrizhiliang + 1
+                for index in range(len(datelist)):
+                    strzhuandatetime = datetime.datetime.strptime(pattern, "%Y-%m-%d %H:%M:%S")
+                    datetimezhuanstr = strzhuandatetime.strftime("%m.%d")
+                    if datetimezhuanstr == datelist[index]:
+                        logdatelist[index] = logdatelist[index] + 1
+            f.close()
+        except Exception as e:
+            raise e
+        # print(zongrizhiliang,yesterdayrizhiliang,logdatelist)
+        dataList.append(zongrizhiliang)
+        dataList.append(yesterdayrizhiliang)
+        dataList.append(logdatelist)
         data = {"data": dataList}
         return HttpResponse(json.dumps(data))
     elif a == 9:

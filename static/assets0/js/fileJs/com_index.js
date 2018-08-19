@@ -106,6 +106,14 @@ function emotionCompose(){
 }
 
 function eventChange(){
+    $.ajax({
+        url: 'loadOrganizationData/emotionTrend/',
+        type: 'GET',
+        dataType: 'json',
+        success: function(data){
+            var dataList = data.data;
+        }
+    });
     esIOption = {
         tooltip: {
             type: 'showTip',

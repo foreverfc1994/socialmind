@@ -204,7 +204,7 @@
         <ul class="layui-nav layui-layout-right layui-bg-cyan">
             <li class="layui-nav-item">
                 <a href="javascript:;">
-                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                    <img src="/static/upload/test.jpg" class="layui-nav-img">
                     {{request.session.user_type}}
                 </a>
                 <dl class="layui-nav-child">
@@ -271,9 +271,9 @@
                                         敏感度指数
                                     </div>
                                     <div id="sI" style="height: 200px; width: 40%; margin-left: 40%;">
-                                        <div id="sI1" style="height: 40%; width: 100%;"></div>
+                                        <div id="sI1" style="width: 100%; height: {{ sensitiveIndext }}"></div>
                                         <div id="sI2"
-                                             style="height: 60%; width: 100%; background-color: #DAA520;"></div>
+                                             style="width: 100%; background-color: #DAA520; height: {{ sensitiveIndexb }}"></div>
                                     </div>
                                 </td>
                                 <td style="width: 50%">
@@ -281,14 +281,17 @@
                                         <div class="pic" style="position: center; width: 240px; height: 240px;">
                                             <canvas id="serverstatus10" height="120px" width="120px"></canvas>
                                             <script>
+                                                var fullNum = {{ relatedEventsNum }};
+                                                var heatEventsNum = {{ heatEventsNum }};
+                                                var sensitiveEventsNum = {{ sensitiveEventsNum }};
                                                 var config = {
                                                     type: 'doughnut',
                                                     data: {
                                                         datasets: [{
                                                             data: [
-                                                                70,
-                                                                300,
-                                                                1225
+                                                                sensitiveEventsNum,
+                                                                heatEventsNum,
+                                                                fullNum-heatEventsNum-sensitiveEventsNum
                                                             ],
                                                             backgroundColor: [
                                                                 "#FFA500",
@@ -332,9 +335,9 @@
                                         热度指数
                                     </div>
                                     <div style="height: 200px; width: 40%; margin-left: 20%;">
-                                        <div id="hI1" style="height: 10%; width: 100%;"></div>
+                                        <div id="hI1" style="height: {{heatIndext}}; width: 100%;"></div>
                                         <div id="hI2"
-                                             style="height: 90%; width: 100%; background-color: #DAA520;"></div>
+                                             style="height: {{ heatIndexb }}; width: 100%; background-color: #DAA520;"></div>
                                     </div>
                                 </td>
                             </table>
