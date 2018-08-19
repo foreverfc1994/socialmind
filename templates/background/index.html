@@ -1065,7 +1065,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">854 总日志量</h3>
+                                                    <h3 id="zongrizhiliang" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -1075,7 +1075,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">645 昨日日志量</h3>
+                                                    <h3 id="zuoririzhiliang" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -1097,7 +1097,7 @@
                                     </div>
                                     <div id="dianjilianglinechart" style="width: 100%;height: 400px;"></div>
                                     <script>
-                                        function liuyanliangyurizhiliang(list1,liuyanlianglist){
+                                        function liuyanliangyurizhiliang(list1,liuyanlianglist,rizhilianglist){
                                             var myChart = echarts.init(document.getElementById('dianjilianglinechart'));
                                             option = {
                                                 title: {
@@ -1146,7 +1146,7 @@
                                                         name:'日志生成量',
                                                         type:'line',
                                                         smooth: true,
-                                                        data: [360, 380, 390, 400, 500, 600, 750, 800, 700, 600, 500, 480, 450, 400, 460, 500, 550, 500, 400, 390],
+                                                        data: rizhilianglist,
                                                     },
                                                     {
                                                         name:'用户留言量',
@@ -3190,9 +3190,11 @@
                     dataType: "json",//预期服务器返回的数据类型
                     url: "/bindex/bindexContent/3/" ,//url
                     success:function(data){
-                        liuyanliangyurizhiliang(data.data[0],data.data[1])
+                        liuyanliangyurizhiliang(data.data[0],data.data[1],data.data[6])
                         $("#zongliuyanliang").append(data.data[2]+" 总留言量")
                         $("#zuoriliuyanliang").append(data.data[3]+" 昨日留言量")
+                        $("#zongrizhiliang").append(data.data[4]+" 总日志量")
+                        $("#zuoririzhiliang").append(data.data[5]+" 昨日日志量")
                     },
                     error:function(data){
                         alert("获取数据失败！")

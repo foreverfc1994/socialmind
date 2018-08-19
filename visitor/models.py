@@ -845,6 +845,7 @@ class SpiderInfo(models.Model):
     spiderconfigid = models.ForeignKey(SpiderConfig, models.DO_NOTHING, db_column='spiderConfigID', blank=True, null=True)  # Field name made lowercase.
     vimname = models.CharField(max_length=16, blank=True, null=True)
     spiderrunname = models.CharField(max_length=32,blank=True,null=True)
+    # spiderrunname1 = models.CharField(max_length=32,blank=True,null=True)
     class Meta:
         db_table = 'spider_info'
 
