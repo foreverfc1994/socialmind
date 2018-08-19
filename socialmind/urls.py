@@ -21,7 +21,7 @@ from django.conf.urls import include
 from visitor.view import loginviews,indexview,UserInfoManageview
 from manager.view import loginview as bloginview,ArticleandAuthorview as bAAview
 from manager.view import userManagement as umView, washData
-from manager.view import DataTableShowView,ObjectShowview, userCommentsManage as ucView,SpiderView
+from manager.view import DataTableShowView,ObjectShowview, userCommentsManage as ucView,SpiderView,washlog
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', loginviews.login, name='first'),
@@ -150,7 +150,8 @@ urlpatterns = [
     path('queryspidernum/',SpiderView.queryspidernum),
     path('errorlog/',SpiderView.geterrorlog),
     path('spiderlog/',SpiderView.getspiderlog),
-    path('delentity/',ObjectShowview.delentity)
+    path('delentity/',ObjectShowview.delentity),
+    path('washlog/',washlog.washlog)
 
 
 

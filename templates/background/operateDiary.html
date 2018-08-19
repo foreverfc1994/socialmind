@@ -403,7 +403,23 @@
                                         <span style="float: right;font-size: 12px;margin-right: 10px;margin-top: 3px">Show</span>
                                     </div>
                                     <!--<div class="panel-body">-->
-                                    <table class="table table-bordered" style="margin: 0%">
+                                            <table id="tablewash" class="display">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>序号</th>
+                                                        <th>数据库名</th>
+                                                        <th>表名</th>
+                                                        <th>操作人</th>
+                                                        <th>操作类型</th>
+                                                        <th>时间</th>
+                                                        <th>方法名</th>
+                                                        <th>操作详情</th>
+                                                    </tr>
+                                                    <tbody>
+                                                    </tbody>
+                                                </table>
+
+                                    <!-- <table class="table table-bordered" style="margin: 0%">
                                         <tr>
                                             <td>角色</td>
                                             <td>姓名</td>
@@ -452,7 +468,7 @@
                                             <td>follow</td>
                                             <td>54564</td>
                                         </tr>
-                                    </table>
+                                    </table> -->
                                     <!--</div>-->
                                     <div class="panel-footer">
                                         Search:
@@ -634,6 +650,7 @@
             });
         });
         errorlog();
+        washlog();
         spiderlog()
 
 
@@ -696,6 +713,56 @@
             }
         });
 }
+    function washlog(){
+        $.ajax({
+            url: '/washlog/',
+            type: 'POST',
+            dataType: 'json',
+            success: function(data){
+                options = {
+                    "order": [0, "asc"],
+                    "bAutoWidth": false,
+                    "bProcessing": true,
+                    "aLengthMenu": [[10, 30, -1], [10, 30, "全部"]],
+                    "language": {
+                        "lengthMenu": " 每页_MENU_条记录",
+                        "zeroRecords": "没有找到记录",
+                        "info": "第_PAGE_页(共_PAGES_页)",
+                        "infoEmpty": "无记录",
+                        "infoFiltered": "(从_MAX_条记录过滤)",
+                        "oPaginate": {
+                            "sFirst": "首页",
+                            "sPrevious": "上页",
+                            "sNext": "下页",
+                            "sLast": "末页"
+                        },
+                        "sSearch": "搜索: ",
+                        "sLoadingRecords": "正在加载数据-请等待...",
+                    },
+                    data: datas,
+                    columns: [
+                        {
+                            data: null, "render": function () {
+                                item++;
+                                return item;
+                            }
+                        },
+                        {data: 'schemaname'},
+                        {data: 'tablename'},
+                        {data: 'adminname'},
+                        {data: 'optype'},
+                        {data: 'time'},
+                        {data: 'funcname'},
+                        {data: 'opdetial'}
+                    ]
+                };
+                var table = $('#tablewash').DataTable(options);
+            },
+            error: function(data){
+                alert("数据获取失败");
+            }
+        })
+    }
 </script>
 </body>
 </html>
