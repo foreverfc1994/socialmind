@@ -1253,16 +1253,7 @@
                                                     name:'帖子',
                                                     type:'bar',
                                                     data:[862, 1018, 964, 1026, 1679],
-                                                    /* markLine : {
-                                                        lineStyle: {
-                                                            normal: {
-                                                                type: 'dashed'
-                                                            }
-                                                        },
-                                                        data : [
-                                                            [{type : 'min'}, {type : 'max'}]
-                                                        ]
-                                                    } */
+
                                                 },
                                                 {
                                                     name:'新闻',
@@ -1273,46 +1264,7 @@
                                                 },
                                             ]
                                         };
-                                        /* option2 = {
-                                            title: {
-                                                text: '新增数据来源统计',
-                                                //subtext: '虚构数据',
-                                                left: 'center'
-                                            },
-                                            tooltip : {
-                                                trigger: 'item',
-                                                formatter: "{a} <br/>{b} : {c} ({d}%)"
-                                            },
-                                            legend: {
-                                                //orient: 'vertical',
-                                                //top: 'middle',
-                                                bottom: 10,
-                                                //show:false,
-                                                data: ['博客', '评论','作者','帖子','新闻']
-                                            },
-                                            series : [
-                                                {
-                                                    type: 'pie',
-                                                    radius : '65%',
-                                                    center: ['50%', '50%'],
-                                                    selectedMode: 'single',
-                                                    data:[
-                                                        {value:535, name: '博客'},
-                                                        {value:510, name: '评论'},
-                                                        {value:735, name: '作者'},
-                                                        {value:634, name: '帖子'},
-                                                        {value:735, name: '新闻'}
-                                                    ],
-                                                    itemStyle: {
-                                                        emphasis: {
-                                                            shadowBlur: 10,
-                                                            shadowOffsetX: 0,
-                                                            shadowColor: 'rgba(0, 0, 0, 0.5)'
-                                                        }
-                                                    }
-                                                }
-                                            ]
-                                        }; */
+
                                         option2 = {
                                             title: {
                                                 text: '新增数据来源统计',
@@ -1327,11 +1279,11 @@
                                                 /* orient: 'vertical',
                                                 x: 'left', */
                                                 bottom: 10,
-                                                data:['博客','帖子','新闻','邮件营销','联盟广告','视频广告','百度','谷歌','必应','其他']
+                                                data:['博客','论坛','其他']
                                             },
                                             series: [
                                                 {
-                                                    name:'访问来源',
+                                                    name:'网站类型',
                                                     type:'pie',
                                                     selectedMode: 'single',
                                                     radius: [0, '30%'],
@@ -1347,10 +1299,12 @@
                                                         }
                                                     },
                                                     data:[
-                                                        {value:335, name:'博客', selected:true},
-                                                        {value:679, name:'帖子'},
-                                                        {value:102, name:'其他'},
-                                                        {value:1446, name:'新闻'},
+
+                                                        {value:35561, name:'论坛'},
+                                                        {value:60331, name:'新闻'},
+
+                                                        {value:12323, name:'其他'},
+
                                                     ]
                                                 },
                                                 {
@@ -1358,14 +1312,30 @@
                                                     type:'pie',
                                                     radius: ['40%', '55%'],
                                                     data:[
-                                                        {value:335, name:'博客'},
-                                                        {value:310, name:'贴吧1'},
-                                                        {value:234, name:'贴吧2'},
-                                                        {value:135, name:'贴吧3'},
-                                                        {value:102, name:'其他'},
-                                                        {value:1048, name:'新浪网'},
-                                                        {value:251, name:'人民网'},
-                                                        {value:147, name:'中国日报网'},
+                                                        {value:5410, name:'网易博客'},
+                                                        {value:2932, name:'兵马俑论坛'},
+                                                        {value:9771, name:'华商论坛'},
+                                                        {value:11230, name:'人民网论坛'},
+                                                        {value:2807, name:'天涯论坛'},
+                                                        {value:3411, name:'猫扑论坛'},
+                                                        {value:5090, name:'北青网'},
+                                                        {value:1041, name:'东方新闻'},
+                                                        {value:6018, name:'光明日报'},
+                                                        {value:243, name:'华商网'},
+                                                        {value:273, name:'京报网'},
+                                                        {value:8634, name:'人民网'},
+                                                        {value:3809, name:'三秦网'},
+                                                        {value:10913, name:'新浪新闻'},
+                                                        {value:33, name:'搜狐网'},
+                                                        {value:15920, name:'中国科技网'},
+                                                        {value:1319, name:'陕西日报'},
+                                                        {value:87, name:'腾讯新闻'},
+                                                        {value:312, name:'网易新闻'},
+                                                        {value:377, name:'新华网'},
+                                                        {value:6262, name:'凤凰网'},
+                                                        {value:251, name:'八通网'},
+                                                        {value:11048, name:'凯迪网'},
+                                                        {value:1024, name:'西祠胡同'},
                                                     ]
                                                 }
                                             ]
@@ -1961,52 +1931,63 @@
                                         </tr> -->
                                     </table>
                                     <div style="text-align: right">
-                                    <nav aria-label="Page navigation">
+                                        <nav aria-label="Page navigation">
                                             <ul class="pagination" style="margin-top: 0px;margin-bottom: 0px">
-                                              <li>
-                                                <a href="javascript:diyfeye('p');" aria-label="Previous">
-                                                  <span aria-hidden="true">&laquo;</span>
-                                                </a>
-                                              </li>
-                                              <li><a href="javascript:diyfeye(1);">1</a></li>
-                                              <li><a href="javascript:diyfeye(2);">2</a></li>
-                                              <li><a href="javascript:diyfeye(3);">3</a></li>
-                                              <li><a href="javascript:diyfeye(4);">4</a></li>
-                                              <li><a href="javascript:diyfeye(5);">5</a></li>
-                                              <li><a href="javascript:diyfeye(6);">6</a></li>
-                                              <li><a href="javascript:diyfeye(7);">7</a></li>
-                                              <li><a href="javascript:diyfeye(8);">8</a></li>
-                                              <li><a href="javascript:diyfeye(9);">9</a></li>
-                                              <li><a href="javascript:diyfeye(10);">10</a></li>
-                                              <li><a href="javascript:diyfeye(11);">11</a></li>
-                                              <li><a href="javascript:diyfeye(12);">12</a></li>
-                                              <li><a href="javascript:diyfeye(13);">13</a></li>
-                                              <li><a href="javascript:diyfeye(14);">14</a></li>
-                                              <li><a href="javascript:diyfeye(15);">15</a></li>
-                                              <li><a href="javascript:diyfeye(16);">16</a></li>
-                                              <li><a href="javascript:diyfeye(17);">17</a></li>
-                                              <li><a href="javascript:diyfeye(18);">18</a></li>
-                                              <li><a href="javascript:diyfeye(19);">19</a></li>
-                                              <li>
-                                                <a href="javascript:diyfeye('n');" aria-label="Next">
-                                                  <span aria-hidden="true">&raquo;</span>
-                                                </a>
-                                              </li>
+                                                <li>
+                                                    <a href="javascript:diyfeye('p');" aria-label="Previous">
+                                                        <span aria-hidden="true">&laquo;</span>
+                                                    </a>
+                                                </li>
+                                                <li><a href="javascript:diyfeye(1);">1</a></li>
+                                                <li><a href="javascript:diyfeye(2);">2</a></li>
+                                                <li><a href="javascript:diyfeye(3);">3</a></li>
+                                                <li><a href="javascript:diyfeye(4);">4</a></li>
+                                                <li><a href="javascript:diyfeye(5);">5</a></li>
+                                                <li><a href="javascript:diyfeye(6);">6</a></li>
+                                                <li><a href="javascript:diyfeye(7);">7</a></li>
+                                                <li><a href="javascript:diyfeye(8);">8</a></li>
+                                                <li><a href="javascript:diyfeye(9);">9</a></li>
+                                                <li><a href="javascript:diyfeye(10);">10</a></li>
+                                                <li><a href="javascript:diyfeye(11);">11</a></li>
+                                                <li><a href="javascript:diyfeye(12);">12</a></li>
+                                                <li><a href="javascript:diyfeye(13);">13</a></li>
+                                                <li><a href="javascript:diyfeye(14);">14</a></li>
+                                                <li><a href="javascript:diyfeye(15);">15</a></li>
+                                                <li><a href="javascript:diyfeye(16);">16</a></li>
+                                                <li><a href="javascript:diyfeye(17);">17</a></li>
+                                                <li><a href="javascript:diyfeye(18);">18</a></li>
+                                                <li><a href="javascript:diyfeye(19);">19</a></li>
+                                                <li>
+                                                    <a href="javascript:diyfeye('n');" aria-label="Next">
+                                                        <span aria-hidden="true">&raquo;</span>
+                                                    </a>
+                                                </li>
                                             </ul>
-                                          </nav>
-                                        </div>
+                                        </nav>
+                                    </div>
                                     <hr style="height:2px;border: 0px;background-color: #ddd">
                                     <div class="row">
                                         <div class="col-lg-10"><h5>最近清洗数据</h5></div>
                                         <div class="col-lg-2">
-                                            <select class="form-control">
-                                                <option>一天</option>
+                                            <select class="form-control">                                           
                                                 <option>一周</option>
                                                 <option>一月</option>
+                                                <option>一天</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <table class="table table-bordered table-hover">
+                                    <table id="zuijinqingxishuju" class="display">
+                                        <thead>
+                                        <tr id="theadtr"><th>表名</th><th>操作人</th><th>操作类型</th><th>时间</th><th>清洗数据量</th><th>操作详情</th></tr>
+                                        </thead>
+                                        <tbody id="tbody">
+                                        
+                                        </tbody>
+                                        <!-- <tfoot>
+                                        <tr id="tfoottr"><th>表名</th><th>操作人</th><th>操作类型</th><th>时间</th><th>清洗数据量</th><th>操作详情</th></tr>
+                                        </tfoot> -->
+                                    </table>
+                                    <!-- <table class="table table-bordered table-hover">
                                         <thead>
                                         <tr><th>表名</th><th>操作人</th><th>时间</th><th>清洗数据量</th><th>操作详情</th></tr>
                                         </thead>
@@ -2016,7 +1997,7 @@
                                         <tr><td>ABC</td><td>xiaoming</td><td>2018-7-21 8:30</td><td>213123</td><td>详情详情详情详情</td></tr>
                                         <tr><td>ABC</td><td>xiaoming</td><td>2018-7-21 8:30</td><td>213123</td><td>详情详情详情详情</td></tr>
                                         <tr><td>ABC</td><td>xiaoming</td><td>2018-7-21 8:30</td><td>213123</td><td>详情详情详情详情</td></tr>
-                                    </table>
+                                    </table> -->
                                     <hr style="height:2px;border: 0px;background-color: #ddd">
                                     <div style="text-align: right;margin-right: 15px">
                                         <div class="dropdown">
@@ -2034,7 +2015,8 @@
                                     </div>
                                     <div id="qingxirenbarchart" style="width: 100%;height: 400px;"></div>
                                     <script>
-                                        var myChart = echarts.init(document.getElementById('qingxirenbarchart'));
+                                        function adminworkstatics(list1,list2){
+                                            var myChart = echarts.init(document.getElementById('qingxirenbarchart'));
                                         option = {
                                             color: ['#3398DB'],
                                             title: {
@@ -2047,6 +2029,13 @@
                                                     type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                                                 }
                                             },
+                                            tooltip : {
+                                                trigger: 'axis',
+                                                axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                                                    type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                                                },
+                                                        formatter: "{b} : <br/>{c}条数据"
+                                                    },
                                             grid: {
                                                 left: '3%',
                                                 right: '4%',
@@ -2056,7 +2045,7 @@
                                             xAxis : [
                                                 {
                                                     type : 'category',
-                                                    data : ['张三', '李四', '王五', '1', '2', '3', '4'],
+                                                    data : list1,
                                                     axisTick: {
                                                         alignWithLabel: true
                                                     }
@@ -2069,14 +2058,15 @@
                                             ],
                                             series : [
                                                 {
-                                                    name:'直接访问',
+                                                    //name:'直接访问',
                                                     type:'bar',
                                                     barWidth: '60%',
-                                                    data:[10, 52, 200, 334, 390, 330, 220]
+                                                    data:list2
                                                 }
                                             ]
                                         };
                                         myChart.setOption(option);
+                                        }
                                     </script>
                                 </div>
                             </div>
@@ -3259,10 +3249,66 @@
             }
             else if((flg10 == 0)&&(scrollTop > 4350)&&(scrollTop<4690)){
                 flg10 = 4690
-                alert(4360)}
+                $.ajax({
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/bindex/bindexContent/10/" ,//url
+                    success:function(data){
+/*                         alert(data.data[0][0].tableName)
+ */                        options = {
+                            "order": [0, "asc"],
+                            "bAutoWidth": false,
+                            "pagingType": "full_numbers",
+                            "aLengthMenu": [[5,10,-1], [5, 10, "全部"]],
+                            "language": {
+                                "lengthMenu": " 每页_MENU_条记录",
+                                "zeroRecords": "没有找到记录",
+                                "info": "第_PAGE_页",/* 第_PAGE_页(共_PAGES_页) */
+                                "infoEmpty": "无记录",
+                                "infoFiltered": "(从_MAX_条记录过滤)",
+                                "oPaginate":{
+                                    "sFirst": "首页",
+                                    "sPrevious": "上页",
+                                    "sNext": "下页",
+                                    "sLast": "末页"
+                                },
+                                "sSearch": "搜索: ",
+                                "sLoadingRecords": "正在加载数据-请等待...",
+                            },
+                            autoFill: true,
+                            destroy:true,
+                            processing: true,
+                            data: data.data[0],
+                            columns:[
+                                { "data": 'tableName' },
+                                { "data": 'adminname' },
+                                { "data": 'optype' },
+                                { "data": 'optime' },
+                                { "data": 'washitemsvolumn' },
+                                { "data": 'opdetils' }
+                            ]
+                        };
+                        table = $('#zuijinqingxishuju').DataTable(options);
+                    },
+                    error:function(data){
+                        alert("获取数据失败！")
+                    }
+                });
+            }
             else if((flg11 == 0)&&(scrollTop > 4690)&&(scrollTop<5170)){
                 flg11 = 5170
-                alert(4700)}
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: "/bindex/bindexContent/11/",
+                    success: function(data){
+                        adminworkstatics(data.data[0],data.data[1])
+                    },
+                    error: function(data){
+                        alert("数据获取失败！")
+                    }
+                })
+            }
             else if((flg12 == 0)&&(scrollTop > 5170)&&(scrollTop<5750)){
                 flg12 = 5750
                 $.ajax({
@@ -3353,12 +3399,12 @@
             $("ul.pagination li:eq("+nextpage+")").addClass("active")
             $("#yuanshujubiaotable tbody tr.axaxaxax").hide()
             start = (nextpage-1)*4
-                end = start + 3
-                for(i=start;i<=end;i = i+1){
-                    $("#yuanshujubiaotable tbody tr.axaxaxax:eq("+i+")").show()
-                }
+            end = start + 3
+            for(i=start;i<=end;i = i+1){
+                $("#yuanshujubiaotable tbody tr.axaxaxax:eq("+i+")").show()
+            }
         }
-        
+
     }
 </script>
 

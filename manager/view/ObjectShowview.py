@@ -70,3 +70,25 @@ def  objectshow(request):
 
     data = {"data": dataList}
     return HttpResponse(json.dumps(data))
+def entitydata(request):
+    import pymysql
+    db = pymysql.connect('localhost', 'root', 'root', 'entity', port=3306)
+    cur = db.cursor()
+    sql = 'select * from entity'
+    cur.execute(sql)
+    data = []
+    entities = cur.fetchall()
+    for entity in entities:
+        dic = {}
+        dic['entityid'] = entity[0]
+        dic['entityname'] = entity[1]
+        dic['entitytype'] = entity[2]
+        articlelist = entity[3].split(',')
+        dic['articles'] = len(articlelist)
+        data.append(dic)
+    db.close()
+    return  JsonResponse({"data":data})
+    pass
+
+def delentity(request):
+    pass
