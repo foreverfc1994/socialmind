@@ -28,6 +28,7 @@ urlpatterns = [
     path('captcha',include('captcha.urls')),
     path('logout/',loginviews.logout),
     path('com_index/', indexview.com_index, name='com_index'),
+    path('loadOrganizationData/emotionTrend/', indexview.index_emotionTrend),
     path('gov_index/', indexview.gov_index, name='gov_index'),
     path('person_index/', indexview.person_index, name='person_index'),
     path('govcom_index/', indexview.govcom_index, name='govcom_index'),
