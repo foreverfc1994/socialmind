@@ -67,7 +67,9 @@ urlpatterns = [
     path('ajaxInitGovUsrForm/',UserInfoManageview.ajaxInitGovUsrForm),
     # background url
     path('bindex/', bloginview.index, name='index'),
-    path('bindex/bindexContent/', bloginview.bindexContent),
+    path('bindex/bindexContent/<int:a>/', bloginview.bindexContent),
+    path('bindex/searchcolnames/', bloginview.searchcolnames),
+    path('bindex/bindexprovinceyuqing/', bloginview.provinceyuqing),
     path('blogin/', bloginview.login, name='login'),
     path('SpiderList/', bviews.SpiderList),
     path('SpiderMonitor/', bviews.SpiderMonitor),
@@ -139,6 +141,11 @@ urlpatterns = [
     path('delconfig/',SpiderView.delconfig),
     path('addconfig/',SpiderView.addconfig),
     path('addspider/',SpiderView.addspider),
+    path('delspider/',SpiderView.delspider),
+    path('queryspider/',SpiderView.queryspider),
+    path('queryspiderspeed/',SpiderView.queryspiderspeed),
+    path('queryerror/',SpiderView.queryerror),
+    path('queryspidernum/',SpiderView.queryspidernum)
 
 
 

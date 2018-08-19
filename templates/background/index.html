@@ -23,6 +23,13 @@
     <link href="{% static 'backgroundfiles/assets/css/style-responsive.css' %}" rel="stylesheet">
     <script src="{% static 'assets0/js/echarts.js' %}"></script>
     <script src="{% static 'assets0/js/china.js' %}"></script>
+    <script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script>
+    <script src="{% static 'backgroundfiles/assets/js/jquery-1.8.3.min.js' %}"></script>
+    <script type="text/javascript" charset="utf8"
+            src="{% static 'backgroundfiles/DataTables-1.10.15/media/js/jquery.dataTables.js' %}"></script>
+    <!-- DataTables -->
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'backgroundfiles/DataTables-1.10.15/media/css/jquery.dataTables.css' %}">
 
     <!-- <link rel="stylesheet" href="css/maruti-media.css" class="skin-color" /> -->
     <style>
@@ -502,7 +509,7 @@
 
                                     <i class='pull-left cc BTC-alt icon-md icon-white mt-10' href="#xitong"></i>
                                     <div  class="stats" href="#xitong">
-                                        <h3 class="color-white mb-5" href="#xitong">251 新增用户</h3>
+                                        <h3 id="numofnewusrs" class="color-white mb-5" href="#xitong"></h3>
                                         <!-- {#                                    <span>50名新增用户</span>#} -->
                                     </div>
                                 </div>
@@ -539,7 +546,7 @@
                                     <div class="icon-after cc BTC-alt"></div>
                                     <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                     <div class="stats">
-                                        <h3 class="color-white mb-5">46 待审核留言</h3>
+                                        <h3 id="numofuncheckedcomments" class="color-white mb-5"></h3>
                                         {#                                    <span>2018-7-21 12:00</span>#}
                                     </div>
                                 </div>
@@ -645,7 +652,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">7213 新增用户数</h3>
+                                                    <h3 class="color-white mb-5 numofnewusrs" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -655,7 +662,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">2111 新增企业用户数</h3>
+                                                    <h3 class="color-white mb-5 numofnewcusrs" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -665,7 +672,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">1111 新增事业用户数</h3>
+                                                    <h3 class="color-white mb-5 numofnewiusrs" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -675,7 +682,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">2131 新增政府用户数</h3>
+                                                    <h3 class="color-white mb-5 numofnewgusrs" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -685,7 +692,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">1234 新增个人用户数</h3>
+                                                    <h3 class="color-white mb-5 numofnewpusrs" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -903,7 +910,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">7213 总用户数</h3>
+                                                    <h3 class="color-white mb-5 zongyonghushu" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -913,7 +920,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">2111 总企业用户数</h3>
+                                                    <h3 class="color-white mb-5 zongqiyeyonghushu" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -923,7 +930,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">1111 总事业用户数</h3>
+                                                    <h3 class="color-white mb-5 zongshiyeyonghushu" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -933,7 +940,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">2131 总政府用户数</h3>
+                                                    <h3 class="color-white mb-5 zongzhengfuyonghushu" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -943,7 +950,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">1234 总个人用户数</h3>
+                                                    <h3 class="color-white mb-5 zonggerenyonghushu" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -965,91 +972,65 @@
                                     </div>
                                     <div id="yonghuzhanbipiechart" style="width: 100%;height: 400px;"></div>
                                     <script>
-                                        var myChart = echarts.init(document.getElementById('yonghuzhanbipiechart'));
-                                        option = {
-                                            title : {
-                                                text: '系统用户统计图',
-                                                x:'center'
-                                            },
-                                            tooltip : {
-                                                trigger: 'item',
-                                                formatter: "{a} <br/>{b} : {c} ({d}%)"
-                                            },
-                                            legend: [
-                                                {
-                                                    orient: 'vertical',
-                                                    left: 'left',
-                                                    data: ['企业用户数','个人用户数','事业用户数','政府用户数']
+                                        function xitongyonghutongji(list1,list2){
+                                            var myChart = echarts.init(document.getElementById('yonghuzhanbipiechart'));
+                                            option = {
+                                                title : {
+                                                    text: '系统用户统计图',
+                                                    x:'center'
                                                 },
-                                                {
-                                                    orient: 'vertical',
-                                                    right: 'right',
-                                                    data: ['新增企业用户数','新增个人用户数','新增事业用户数','新增政府用户数']
+                                                tooltip : {
+                                                    trigger: 'item',
+                                                    formatter: "{a} <br/>{b} : {c} ({d}%)"
                                                 },
-                                            ],
-                                            calculable : true,
-                                            series : [
-                                                {
-                                                    name:'半径模式',
-                                                    type:'pie',
-                                                    radius : [20, 110],
-                                                    center : ['25%', '50%'],
-                                                    //roseType : 'radius',
-                                                    /* label: {
-                                                        normal: {
-                                                            show: false
-                                                        },
-                                                        emphasis: {
-                                                            show: true
-                                                        }
+                                                legend: [
+                                                    {
+                                                        orient: 'vertical',
+                                                        left: 'left',
+                                                        data: ['企业用户数','个人用户数','事业用户数','政府用户数']
                                                     },
-                                                    lableLine: {
-                                                        normal: {
-                                                            show: false
-                                                        },
-                                                        emphasis: {
-                                                            show: true
-                                                        }
-                                                    }, */
-                                                    data:[
-                                                        {value:20, name:'企业用户数'},
-                                                        {value:35, name:'政府用户数'},
-                                                        {value:30, name:'事业用户数'},
-                                                        {value:40, name:'个人用户数'}
-                                                    ]
-                                                },
-                                                {
-                                                    name:'面积模式',
-                                                    type:'pie',
-                                                    radius : [30, 110],
-                                                    center : ['75%', '50%'],
-                                                    //roseType : 'area',
-                                                    data:[
-                                                        {value:10, name:'新增企业用户数'},
-                                                        {value:5, name:'新增政府用户数'},
-                                                        {value:15, name:'新增事业用户数'},
-                                                        {value:25, name:'新增个人用户数'}
-                                                    ]
+                                                    {
+                                                        orient: 'vertical',
+                                                        right: 'right',
+                                                        data: ['新增企业用户数','新增个人用户数','新增事业用户数','新增政府用户数']
+                                                    },
+                                                ],
+                                                calculable : true,
+                                                series : [
+                                                    {
+                                                        name:'半径模式',
+                                                        type:'pie',
+                                                        radius : [20, 110],
+                                                        center : ['25%', '50%'],
+                                                        data:list1
+                                                    },
+                                                    {
+                                                        name:'面积模式',
+                                                        type:'pie',
+                                                        radius : [30, 110],
+                                                        center : ['75%', '50%'],
+                                                        data:list2
+                                                    }
+                                                ]
+                                            };
+                                            myChart.setOption(option);
+                                            myChart.on('click', function (params) {
+                                                if(params.dataIndex==0){
+                                                    window.location.href='/usrManagement/0/';
                                                 }
-                                            ]
-                                        };
-                                        myChart.setOption(option);
-                                        myChart.on('click', function (params) {
-                                            if(params.dataIndex==0){
-                                                window.location.href='/usrManagement/0/';
-                                            }
-                                            else if(params.dataIndex==1){
-                                                window.location.href='/usrManagement/1/';
-                                            }
-                                            else if(params.dataIndex==2){
-                                                window.location.href='/usrManagement/2/';
-                                            }
-                                            else if(params.dataIndex==3){
-                                                window.location.href='/usrManagement/3/';
-                                            }
+                                                else if(params.dataIndex==1){
+                                                    window.location.href='/usrManagement/1/';
+                                                }
+                                                else if(params.dataIndex==2){
+                                                    window.location.href='/usrManagement/2/';
+                                                }
+                                                else if(params.dataIndex==3){
+                                                    window.location.href='/usrManagement/3/';
+                                                }
 
 
-                                        });
+                                            });
+                                        }
                                     </script>
                                     <hr style="height:2px;border: 0px;background-color: #ddd">
                                     <!-- <table class="table">
@@ -1064,7 +1045,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">321 总留言量</h3>
+                                                    <h3 id="zongliuyanliang" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -1074,7 +1055,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">255 昨日留言量</h3>
+                                                    <h3 id="zuoriliuyanliang" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -1116,193 +1097,75 @@
                                     </div>
                                     <div id="dianjilianglinechart" style="width: 100%;height: 400px;"></div>
                                     <script>
-                                        var myChart = echarts.init(document.getElementById('dianjilianglinechart'));
-                                        /* option = {
-            title: {
-                x:'left',
-                text: '点击量与日志量统计图'
-            },
-            tooltip: {
-                trigger: 'axis'
-            },
-            legend: {
-                x:'right',
-                data:['个人新增用户','政府新增用户','事业新增用户','企业新增用户','全部新增用户']
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap: false,
-                data: ['周一','周二','周三','周四','周五','周六','周日']
-            },
-            yAxis: {
-                type: 'value'
-            },
-            series: [
-                {
-                    name:'个人新增用户',
-                    type:'line',
-                    smooth:true,
-                    stack: '总量',
-                    data:[120, 132, 101, 134, 90, 230, 210]
-                },
-                {
-                    name:'政府新增用户',
-                    type:'line',
-                    smooth:true,
-                    stack: '总量',
-                    data:[220, 182, 191, 234, 290, 330, 310]
-                },
-                {
-                    name:'事业新增用户',
-                    type:'line',
-                    smooth:true,
-                    stack: '总量',
-                    data:[150, 232, 201, 154, 190, 330, 410]
-                },
-                {
-                    name:'企业新增用户',
-                    type:'line',
-                    smooth:true,
-                    stack: '总量',
-                    data:[320, 332, 301, 334, 390, 330, 320]
-                },
-                {
-                    name:'全部新增用户',
-                    type:'line',
-                    smooth:true,
-                    stack: '总量',
-                    data:[820, 932, 901, 934, 1290, 1330, 1320]
-                }
-            ]
-        }; */
-                                        option = {
-                                            title: {
-                                                text: '点击量与日志量统计图',
-                                            },
-                                            tooltip: {
-                                                trigger: 'axis',
-                                                axisPointer: {
-                                                    type: 'cross'
-                                                }
-                                            },
-                                            legend: {
-                                                //x:'right',
-                                                data:['用户留言量','日志生成量']
-                                            },
-                                            xAxis:  {
-                                                type: 'category',
-                                                boundaryGap: false,
-                                                data: ['00:00', '01:15', '02:30', '03:45', '05:00', '06:15', '07:30', '08:45', '10:00', '11:15', '12:30', '13:45', '15:00', '16:15', '17:30', '18:45', '20:00', '21:15', '22:30', '23:45']
-                                            },
-                                            yAxis: {
-                                                type: 'value',
-                                                axisLabel: {
-                                                    formatter: '{value} W'
+                                        function liuyanliangyurizhiliang(list1,liuyanlianglist){
+                                            var myChart = echarts.init(document.getElementById('dianjilianglinechart'));
+                                            option = {
+                                                title: {
+                                                    text: '点击量与日志量统计图',
                                                 },
-                                                axisPointer: {
-                                                    snap: true
-                                                }
-                                            },
-                                            /* visualMap: {
-                                                show: false,
-                                                dimension: 0,
-                                                pieces: [{
-                                                    lte: 6,
-                                                    color: 'green'
-                                                }, {
-                                                    gt: 6,
-                                                    lte: 8,
-                                                    color: 'red'
-                                                }, {
-                                                    gt: 8,
-                                                    lte: 14,
-                                                    color: 'green'
-                                                }, {
-                                                    gt: 14,
-                                                    lte: 17,
-                                                    color: 'red'
-                                                }, {
-                                                    gt: 17,
-                                                    color: 'green'
-                                                }]
-                                            }, */
-                                            dataZoom: [
-                                                {
-                                                    type: 'slider',
-                                                    show: true,
-                                                    start: 0,
-                                                    end: 100,
-                                                    handleSize: 8
-                                                },
-                                                {
-                                                    type: 'inside',
-                                                    start: 0,
-                                                    end: 100
-                                                }
-                                            ],
-                                            series: [
-                                                {
-                                                    name:'日志生成量',
-                                                    type:'line',
-                                                    smooth: true,
-                                                    /* itemStyle : {
-                                                    normal : {
-                                                        lineStyle:{
-                                                            color:'blue'
-                                                        }
+                                                tooltip: {
+                                                    trigger: 'axis',
+                                                    axisPointer: {
+                                                        type: 'cross'
                                                     }
-                                                    }, */
-                                                    data: [360, 380, 390, 400, 500, 600, 750, 800, 700, 600, 500, 480, 450, 400, 460, 500, 550, 500, 400, 390],
-                                                    /* markArea: {
-                                                        data: [ [{
-                                                            name: '早高峰',
-                                                            xAxis: '07:30'
-                                                        }, {
-                                                            xAxis: '10:00'
-                                                        }], [{
-                                                            name: '晚高峰',
-                                                            xAxis: '18:45'
-                                                        }, {
-                                                            xAxis: '21:15'
-                                                        }] ]
-                                                    } */
                                                 },
-                                                {
-                                                    name:'用户留言量',
-                                                    type:'line',
-                                                    smooth: true,
-                                                    data: [300, 280, 250, 260, 270, 300, 550, 500, 400, 390, 380, 390, 400, 500, 600, 750, 800, 700, 600, 400],
-                                                    /* markArea: {
-                                                        data: [ [{
-                                                            name: '早高峰',
-                                                            xAxis: '06:15'
-                                                        }, {
-                                                            xAxis: '08:45'
-                                                        }], [{
-                                                            name: '晚高峰',
-                                                            xAxis: '17:30'
-                                                        }, {
-                                                            xAxis: '21:15'
-                                                        }] ]
-                                                    } */
+                                                legend: {
+                                                    //x:'right',
+                                                    data:['用户留言量','日志生成量']
+                                                },
+                                                xAxis:  {
+                                                    type: 'category',
+                                                    boundaryGap: false,
+                                                    data: list1
+                                                },
+                                                yAxis: {
+                                                    type: 'value',
+                                                    axisLabel: {
+                                                        formatter: '{value} W'
+                                                    },
+                                                    axisPointer: {
+                                                        snap: true
+                                                    }
+                                                },
+                                                dataZoom: [
+                                                    {
+                                                        type: 'slider',
+                                                        show: true,
+                                                        start: 0,
+                                                        end: 100,
+                                                        handleSize: 8
+                                                    },
+                                                    {
+                                                        type: 'inside',
+                                                        start: 0,
+                                                        end: 100
+                                                    }
+                                                ],
+                                                series: [
+                                                    {
+                                                        name:'日志生成量',
+                                                        type:'line',
+                                                        smooth: true,
+                                                        data: [360, 380, 390, 400, 500, 600, 750, 800, 700, 600, 500, 480, 450, 400, 460, 500, 550, 500, 400, 390],
+                                                    },
+                                                    {
+                                                        name:'用户留言量',
+                                                        type:'line',
+                                                        smooth: true,
+                                                        data: liuyanlianglist,
+                                                    }
+                                                ]
+                                            };
+                                            myChart.setOption(option);
+                                            myChart.on('click', function (params) {
+                                                if(params.seriesName=='系统点击量'){
+                                                    window.location.href='/operateDiary/';
                                                 }
-                                            ]
-                                        };
-                                        myChart.setOption(option);
-                                        myChart.on('click', function (params) {
-                                            if(params.seriesName=='系统点击量'){
-                                                window.location.href='/operateDiary/';
-                                            }
-                                            else if(params.seriesName=='日志生成量'){
-                                                window.location.href='/operateDiary/';
-                                            }
-                                        });
+                                                else if(params.seriesName=='日志生成量'){
+                                                    window.location.href='/operateDiary/';
+                                                }
+                                            });
+                                        }
                                     </script>
                                 </div>
                             </div>
@@ -1969,7 +1832,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">123 总清洗次数</h3>
+                                                    <h3 id="totalwashtimes"class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -1979,7 +1842,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">454456 清洗总量</h3>
+                                                    <h3 id="washsum" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -1989,7 +1852,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">1次/周 数据清洗频率</h3>
+                                                    <h3 id="washfrequence" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -2009,24 +1872,58 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">2018-7-21 8:30 上次清洗</h3>
+                                                    <h3 id="lastwashtime" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <table class="table">
-                                        <thead><tr><th style="border-bottom: 0px">总清洗次数 10</th><th style="border-bottom: 0px">总清洗数据量 10</th><th style="border-bottom: 0px">数据清洗频率 10</th>
-                                            <th style="width: 12%;padding: 0px;border-bottom: 0px"><a>尚未清洗的表</a></th>
-                                            <th style="width: 12%;padding: 0px;border-bottom: 0px"><a>正在清洗的表</a></th>
-                                            <th style="width: 12%;padding: 0px;border-bottom: 0px"><a>已经清洗的表</a></th>
+                                        <thead><tr><th style="border-bottom: 0px">&emsp;&emsp;&emsp;&emsp;&emsp;</th><th style="border-bottom: 0px">&emsp;&emsp;&emsp;&emsp;&emsp;</th><th style="border-bottom: 0px">&emsp;&emsp;&emsp;&emsp;&emsp;</th><th style="border-bottom: 0px">&emsp;&emsp;&emsp;&emsp;&emsp;</th>
+                                            <!-- <th style="width: 7%;padding: 0px;border-bottom: 0px"><a>尚未清洗的表</a></th> -->
+                                            <th style="width: 7%;padding: 0px;border-bottom: 0px"><a>所有数据表</a></th>
+                                            <th style="width: 7%;padding: 0px;border-bottom: 0px"><a>已经清洗的表</a></th>
                                         </tr></thead>
                                     </table>
-                                    <table id="yuanshujubiaotable" class="table table-bordered table-hover">
+                                    <!-- <table id="yuanshujubiaotable" class="display">
                                         <thead>
-                                        <tr><th>网站名</th><th>数据表名</th><th>表类型</th><th style="width: 8%">列数</th><th>清洗待解决问题</th><th>数据量</th><th>新增数据量</th></tr>
+                                        <tr id="theadtr"><th>网站名</th><th>数据表名</th><th>表类型</th><th style="width: 8%">列数</th><th>清洗待解决问题</th><th>数据量</th><th>新增数据量</th></tr>
                                         </thead>
+                                        <tbody id="tbody">
                                         <tr><td>TTTT</td><td>Crasd</td><td>关系表</td><td><a href="javascript:void(0);" onclick="showandhide(this)" class="btn btn-link" style="padding: 0px 0px;border: 0px;margin-bottom: 0px">10  <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></td><td>数据类型不一致</td><td>10000</td><td>5000</td></tr>
+                                        <tr style="display: none"><td colspan="7">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <table class="table">
+                                                        <thead>
+                                                        <tr><th>列名1</th><th>列名2</th><th>列名3</th><th>列名4</th><th>列名5</th><th>列名6</th><th>列名7</th><th>列名8</th><th>列名9</th><th>列名10</th></tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                            </div></td>
+                                        </tr>
+                                        </tbody>
+                                        <tfoot>
+                                        <tr id="tfoottr"><th>网站名</th><th>数据表名</th><th>表类型</th><th style="width: 8%">列数</th><th>清洗待解决问题</th><th>数据量</th><th>新增数据量</th></tr>
+                                        </tfoot>
+                                    </table> -->
+                                    <table id="yuanshujubiaotable" class="table table-bordered table-hover" style="margin-bottom: 0px">
+                                        <!-- <thead>
+                                        <tr><th>网站名</th><th>数据表名</th><th>表类型</th><th style="width: 8%">列数</th><th>清洗待解决问题</th><th>数据量</th><th>新增数据量</th></tr>
+                                        </thead> -->
+                                        <!-- <tr><td>TTTT</td><td>Crasd</td><td>关系表</td><td><a href="javascript:void(0);" onclick="showandhide(this)" class="btn btn-link" style="padding: 0px 0px;border: 0px;margin-bottom: 0px">10  <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></td><td>数据类型不一致</td><td>10000</td><td>5000</td></tr>
+                                        <tr style="display: none"><td colspan="7">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <table class="table">
+                                                        <thead>
+                                                        <tr><th>列名1</th><th>列名2</th><th>列名3</th><th>列名4</th><th>列名5</th><th>列名6</th><th>列名7</th><th>列名8</th><th>列名9</th><th>列名10</th></tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                            </div></td>
+                                        </tr> -->
+                                        <!-- <tr><td>TTTT</td><td>Crasd</td><td>关系表</td><td><a href="javascript:void(0);" onclick="showandhide(this)" class="btn btn-link" style="padding: 0px 0px;border: 0px;margin-bottom: 0px">10  <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></td><td>数据类型不一致</td><td>10000</td><td>5000</td></tr>
                                         <tr style="display: none"><td colspan="7">
                                             <div class="row">
                                                 <div class="col-lg-12">
@@ -2061,25 +1958,43 @@
                                                     </table>
                                                 </div>
                                             </div></td>
-                                        </tr>
-                                        <tr><td>TTTT</td><td>Crasd</td><td>关系表</td><td><a href="javascript:void(0);" onclick="showandhide(this)" class="btn btn-link" style="padding: 0px 0px;border: 0px;margin-bottom: 0px">10  <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></td><td>数据类型不一致</td><td>10000</td><td>5000</td></tr>
-                                        <tr style="display: none"><td colspan="7">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <table class="table">
-                                                        <thead>
-                                                        <tr><th>列名1</th><th>列名2</th><th>列名3</th><th>列名4</th><th>列名5</th><th>列名6</th><th>列名7</th><th>列名8</th><th>列名9</th><th>列名10</th></tr>
-                                                        </thead>
-                                                    </table>
-                                                </div>
-                                            </div></td>
-                                        </tr>
+                                        </tr> -->
                                     </table>
-                                    <script>
-                                        function showandhide(thisa){
-                                            $(thisa).parent().parent().next().toggle()
-                                        }
-                                    </script>
+                                    <div style="text-align: right">
+                                    <nav aria-label="Page navigation">
+                                            <ul class="pagination" style="margin-top: 0px;margin-bottom: 0px">
+                                              <li>
+                                                <a href="javascript:diyfeye('p');" aria-label="Previous">
+                                                  <span aria-hidden="true">&laquo;</span>
+                                                </a>
+                                              </li>
+                                              <li><a href="javascript:diyfeye(1);">1</a></li>
+                                              <li><a href="javascript:diyfeye(2);">2</a></li>
+                                              <li><a href="javascript:diyfeye(3);">3</a></li>
+                                              <li><a href="javascript:diyfeye(4);">4</a></li>
+                                              <li><a href="javascript:diyfeye(5);">5</a></li>
+                                              <li><a href="javascript:diyfeye(6);">6</a></li>
+                                              <li><a href="javascript:diyfeye(7);">7</a></li>
+                                              <li><a href="javascript:diyfeye(8);">8</a></li>
+                                              <li><a href="javascript:diyfeye(9);">9</a></li>
+                                              <li><a href="javascript:diyfeye(10);">10</a></li>
+                                              <li><a href="javascript:diyfeye(11);">11</a></li>
+                                              <li><a href="javascript:diyfeye(12);">12</a></li>
+                                              <li><a href="javascript:diyfeye(13);">13</a></li>
+                                              <li><a href="javascript:diyfeye(14);">14</a></li>
+                                              <li><a href="javascript:diyfeye(15);">15</a></li>
+                                              <li><a href="javascript:diyfeye(16);">16</a></li>
+                                              <li><a href="javascript:diyfeye(17);">17</a></li>
+                                              <li><a href="javascript:diyfeye(18);">18</a></li>
+                                              <li><a href="javascript:diyfeye(19);">19</a></li>
+                                              <li>
+                                                <a href="javascript:diyfeye('n');" aria-label="Next">
+                                                  <span aria-hidden="true">&raquo;</span>
+                                                </a>
+                                              </li>
+                                            </ul>
+                                          </nav>
+                                        </div>
                                     <hr style="height:2px;border: 0px;background-color: #ddd">
                                     <div class="row">
                                         <div class="col-lg-10"><h5>最近清洗数据</h5></div>
@@ -2192,7 +2107,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">213 总事件数</h3>
+                                                    <h3 id="zongshijianshu" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -2202,7 +2117,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">12 昨日新增事件数</h3>
+                                                    <h3 id="zuorixinzengshijianshu" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -2212,7 +2127,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">100 最近一周新增事件数</h3>
+                                                    <h3 id="zuijinyizhouxinzengshijianshu" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -2222,7 +2137,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">100 平均每周新增事件数</h3>
+                                                    <h3 id="pingjunmeizhouxinzengshijianshu" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -2234,7 +2149,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">132 总实体数</h3>
+                                                    <h3 id="zongshitishu" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -2244,7 +2159,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">21 昨日新增实体数</h3>
+                                                    <h3 id="zuorixinzengshitishu" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -2254,7 +2169,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">101 最近一周新增实体数</h3>
+                                                    <h3 id="zuijinyizhouxinzengshitishu" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -2264,7 +2179,7 @@
                                                 <div class="icon-after cc BTC-alt"></div>
                                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                                 <div style="margin-left: 0px" class="stats">
-                                                    <h3 class="color-white mb-5" style="font-size: 16px">101 平均每周新增实体数</h3>
+                                                    <h3 id="pingjunmeizhouxinzengshitishu" class="color-white mb-5" style="font-size: 16px"></h3>
                                                     <!-- {#                                    <span>人民网 新华网 新浪微博</span>#} -->
                                                 </div>
                                             </div>
@@ -2278,70 +2193,68 @@
                                                 function randomData() {
                                                     return Math.round(Math.random()*200);
                                                 }
-                                                var mydata = [
-                                                    {name: '北京',value: randomData() },{name: '天津',value: randomData() },
-                                                    {name: '上海',value: randomData() },{name: '重庆',value: randomData() },
-                                                    {name: '河北',value: randomData() },{name: '河南',value: randomData() },
-                                                    {name: '云南',value: randomData() },{name: '辽宁',value: randomData() },
-                                                    {name: '黑龙江',value: randomData() },{name: '湖南',value: randomData() },
-                                                    {name: '安徽',value: randomData() },{name: '山东',value: randomData() },
-                                                    {name: '新疆',value: randomData() },{name: '江苏',value: randomData() },
-                                                    {name: '浙江',value: randomData() },{name: '江西',value: randomData() },
-                                                    {name: '湖北',value: randomData() },{name: '广西',value: randomData() },
-                                                    {name: '甘肃',value: randomData() },{name: '山西',value: randomData() },
-                                                    {name: '内蒙古',value: randomData() },{name: '陕西',value: randomData() },
-                                                    {name: '吉林',value: randomData() },{name: '福建',value: randomData() },
-                                                    {name: '贵州',value: randomData() },{name: '广东',value: randomData() },
-                                                    {name: '青海',value: randomData() },{name: '西藏',value: randomData() },
-                                                    {name: '四川',value: randomData() },{name: '宁夏',value: randomData() },
-                                                    {name: '海南',value: randomData() },{name: '台湾',value: randomData() },
-                                                    {name: '香港',value: randomData() },{name: '澳门',value: randomData() }
-                                                ];
-                                                var optionSensitive = {
-                                                    backgroundColor: '#FFFFFF',
-                                                    title: {
-                                                        text: '舆情事件统计'
-                                                    },
-                                                    tooltip : {
-                                                        trigger: 'item',
-                                                        formatter: '{b}<br/>最近一周新增事件数：{c}<br/>最近一周新增实体数：'+randomData()
-                                                        //    b为省份，c为数据
-                                                    },
-                                                    visualMap: {
-                                                        show : true,
-                                                        x: 'left',
-                                                        y: 'bottom',
-                                                        text: ['正面', '负面'],
-                                                        calculable: true,
-                                                        splitList: [
-                                                            {start: 500, end:600},{start: 400, end: 500},
-                                                            {start: 300, end: 400},{start: 200, end: 300},
-                                                            {start: 100, end: 200},{start: 0, end: 100},
-                                                        ],
-                                                        color: ['#00FF00', '#90EE90', '#ADFF2F','#FFFFE0', '#FFA07A', '#FF0000']
-                                                    },
-                                                    series: [{
-                                                        name: '随机数据',
-                                                        type: 'map',
-                                                        mapType: 'china',
-                                                        roam: false,
-                                                        label: {
-                                                            normal: {
-                                                                show: false
-                                                            },
-                                                            emphasis: {
-                                                                show: false
-                                                            }
+                                                function yuqingshijiantongjimap(list,maxval){
+                                                    var mydata = list
+                                                    var optionSensitive = {
+                                                        backgroundColor: '#FFFFFF',
+                                                        title: {
+                                                            text: '舆情事件统计'
                                                         },
-                                                        data:mydata
-                                                    }]
-                                                };
-                                                var chartSensitive = echarts.init(document.getElementById('xinzengshitishulinechart'));
-                                                chartSensitive.setOption(optionSensitive);
-                                                chartSensitive.on('click', function (params) {
-                                                    //alert(params.data.name)
-                                                    redrawprovince(params.data.name);
-                                                });
+                                                        tooltip : {
+                                                            trigger: 'item',
+                                                            //formatter: '{b}<br/>总事件数：{c}<br/>总实体数：'
+                                                            formatter: '{b}<br/>总舆情对象数：{c}'
+                                                            //    b为省份，c为数据
+                                                        },
+                                                        visualMap: {
+                                                            show : true,
+                                                            min: 0,
+                                                            max: maxval,
+                                                            x: 'left',
+                                                            y: 'bottom',
+                                                            text: ['多', '少'],
+                                                            calculable: true,
+                                                            splitList: [
+                                                                {start: 500, end:600},{start: 400, end: 500},
+                                                                {start: 300, end: 400},{start: 200, end: 300},
+                                                                {start: 100, end: 200},{start: 0, end: 100},
+                                                            ],
+                                                            color: ['#FF0000', '#FFA07A', '#FFFFE0','#ADFF2F', '#90EE90', '#00FF00']
+                                                        },
+                                                        series: [{
+                                                            name: '舆情事件统计',
+                                                            type: 'map',
+                                                            mapType: 'china',
+                                                            roam: false,
+                                                            label: {
+                                                                normal: {
+                                                                    show: false
+                                                                },
+                                                                emphasis: {
+                                                                    show: false
+                                                                }
+                                                            },
+                                                            data:mydata
+                                                        }]
+                                                    };
+                                                    var chartSensitive = echarts.init(document.getElementById('xinzengshitishulinechart'));
+                                                    chartSensitive.setOption(optionSensitive);
+                                                    chartSensitive.on('click', function (params) {
+                                                        //alert(params.data.name)
+                                                        $.ajax({
+                                                            type: "POST",//方法类型
+                                                            dataType: "json",//预期服务器返回的数据类型
+                                                            url: "/bindex/bindexprovinceyuqing/" ,//url
+                                                            data: "provincename="+params.data.name,
+                                                            success: function(data){
+                                                                redrawprovince(params.data.name,data.data[0],data.data[1],data.data[2]);
+                                                            },
+                                                            error: function(data){
+                                                                alert("数据获取失败！")
+                                                            }
+                                                        })
+                                                    });
+                                                }
                                             </script>
                                         </div>
                                         <div class="col-lg-6">
@@ -2451,7 +2364,7 @@
                                                     ]
                                                 };
                                                 myChart.setOption(option);
-                                                function redrawprovince(t){
+                                                function redrawprovince(t,list1,list2,list3){
                                                     var myChart = echarts.init(document.getElementById('xinzengshijianshulinechart'));
                                                     option = {
                                                         tooltip: {
@@ -2473,7 +2386,7 @@
                                                         xAxis: {
                                                             type: 'category',
                                                             boundaryGap: false,
-                                                            data: ['一','二','三','四','五','六','日']
+                                                            data: list1
                                                         },
                                                         yAxis: {
                                                             type: 'value'
@@ -2482,13 +2395,13 @@
                                                             {
                                                                 type: 'slider',
                                                                 show: true,
-                                                                start: 50,
+                                                                start: 0,
                                                                 end: 100,
                                                                 handleSize: 8
                                                             },
                                                             {
                                                                 type: 'inside',
-                                                                start: 50,
+                                                                start: 0,
                                                                 end: 100
                                                             }
                                                         ],
@@ -2497,7 +2410,7 @@
                                                                 name:'新增事件数',
                                                                 type:'line',
                                                                 smooth: true,
-                                                                data:[120, 132, 101, 134, 90, 230, 210]
+                                                                data:list2
                                                             },
                                                             {
                                                                 name:'新增实体数',
@@ -2511,7 +2424,7 @@
                                                                         }
                                                                     }
                                                                 },
-                                                                data:[80, 100, 144, 90, 170, 144, 240]
+                                                                data:list3
                                                             },
                                                         ]
                                                     };
@@ -3162,8 +3075,6 @@
 </section>
 
 <!-- js placed at the end of the document so the pages load faster -->
-<script src="{% static 'backgroundfiles/assets/js/jquery.js' %}"></script>
-<script src="{% static 'backgroundfiles/assets/js/jquery-1.8.3.min.js' %}"></script>
 <script src="{% static 'backgroundfiles/assets/js/bootstrap.min.js' %}"></script>
 <script class="include" type="text/javascript" src="{% static 'backgroundfiles/assets/js/jquery.dcjqaccordion.2.7.js' %}"></script>
 <script src="{% static 'backgroundfiles/assets/js/jquery.scrollTo.min.js' %}"></script>
@@ -3216,18 +3127,239 @@
 </script>
 <script>
     $(document).ready(function () {
+        flg1 = 0
+        flg2 = 0
+        flg3 = 0
+        flg4 = 0
+        flg5 = 0
+        flg6 = 0
+        flg7 = 0
+        flg8 = 0
+        flg9 = 0
+        flg10 = 0
+        flg11 = 0
+        flg12 = 0
+        flg13 = 0
         $.ajax({
-                type: "POST",//方法类型
-                dataType: "json",//预期服务器返回的数据类型
-                url: "/bindex/bindexContent/" ,//url
-                success:function(data){
+            type: "POST",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "/bindex/bindexContent/0/" ,//url
+            success:function(data){
+                numofnewusrs = data.data[0].numofnewusrs
+                numofuncheckedcomments = data.data[2]
+                $("#numofnewusrs").empty()
+                $("#numofuncheckedcomments").empty()
+                $("#numofnewusrs").append(numofnewusrs+" 新增用户")
+                $(".numofnewusrs").append(numofnewusrs+" 新增用户数")
+                $(".numofnewcusrs").append(data.data[0].numofcusrs+" 新增企业用户数")
+                $(".numofnewgusrs").append(data.data[0].numofgusrs+" 新增政府用户数")
+                $(".numofnewiusrs").append(data.data[0].numofiusrs+" 新增事业单位用户数")
+                $(".numofnewpusrs").append(data.data[0].numofpusrs+" 新增个人用户数")
+                $("#numofuncheckedcomments").append(numofuncheckedcomments+" 待审核留言")
+            },
+            error:function(data){
+                alert("获取数据失败！")
+            }
+        })
+        $(window).scroll(function(){
+            //下面这句主要是获取网页的总高度，主要是考虑兼容性所以把Ie支持的documentElement也写了，这个方法至少支持IE8
+            var htmlHeight=document.body.scrollHeight||document.documentElement.scrollHeight;
+            //clientHeight是网页在浏览器中的可视高度，
+            var clientHeight=document.body.clientHeight||document.documentElement.clientHeight;
+            //scrollTop是浏览器滚动条的top位置，
+            var scrollTop=document.body.scrollTop||document.documentElement.scrollTop;
+            //通过判断滚动条的top位置与可视网页之和与整个网页的高度是否相等来决定是否加载内容；
 
-                },
-                error:function(data){
-                    alert("获取数据失败！")
-                }
+            if((flg1 == 0)&&(scrollTop>40)&&(scrollTop<550)){
+                flg1 = 550
+                //alert(44)
+            }
+            else if((flg2 == 0)&&(scrollTop > 550)&&(scrollTop<1070)){
+                flg2 = 1070
+                $.ajax({
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/bindex/bindexContent/2/" ,//url
+                    success:function(data){
+                        $(".zongyonghushu").append(data.data[0].zongusrs+" 总用户数")
+                        $(".zonggerenyonghushu").append(data.data[2][0].value+" 总个人用户数")
+                        $(".zongqiyeyonghushu").append(data.data[2][1].value+" 总企业用户数")
+                        $(".zongzhengfuyonghushu").append(data.data[2][2].value+" 总政府用户数")
+                        $(".zongshiyeyonghushu").append(data.data[2][3].value+" 总事业单位用户数")
+                        xitongyonghutongji(data.data[2],data.data[3])
+                    },
+                    error:function(data){
+                        alert("获取数据失败！")
+                    }
+                });
+            }
+            else if((flg3 == 0)&&(scrollTop > 1070)&&(scrollTop<1630)){
+                flg3 = 1630
+                $.ajax({
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/bindex/bindexContent/3/" ,//url
+                    success:function(data){
+                        liuyanliangyurizhiliang(data.data[0],data.data[1])
+                        $("#zongliuyanliang").append(data.data[2]+" 总留言量")
+                        $("#zuoriliuyanliang").append(data.data[3]+" 昨日留言量")
+                    },
+                    error:function(data){
+                        alert("获取数据失败！")
+                    }
+                });
+            }
+            else if((flg4 == 0)&&(scrollTop > 1630)&&(scrollTop<2060)){
+                flg4 = 2060
+                alert(1656)}
+            else if((flg5 == 0)&&(scrollTop > 2060)&&(scrollTop<2640)){
+                flg5 = 2640
+                alert(2088)}
+            else if((flg6 == 0)&&(scrollTop > 2640)&&(scrollTop<3030)){
+                flg6 = 3030
+                alert(2664)}
+            else if((flg7 == 0)&&(scrollTop > 3030)&&(scrollTop<3490)){
+                flg7 = 3490
+                alert(3050)}
+            else if((flg8 == 0)&&(scrollTop > 3490)&&(scrollTop<4020)){
+                flg8 = 4020
+                alert(3500)}
+            else if((flg9 == 0)&&(scrollTop > 4020)&&(scrollTop<4350)){
+                flg9 = 4350
+                $.ajax({
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/bindex/bindexContent/9/" ,//url
+                    success:function(data){
+                        $("#totalwashtimes").append(data.data[0][0]+" 总清洗次数")
+                        $("#washsum").append(data.data[0][1]+" 清洗总量")
+                        $("#washfrequence").append(data.data[0][2]+" 上周清洗次数")
+                        $("#lastwashtime").append(data.data[0][3]+" 上次清洗")
+                        rowlist = data.data[1]
+                        /* alert(rowlist.length) */
+                        $("#yuanshujubiaotable").empty()
+                        $("#yuanshujubiaotable").append('                        <thead><tr><th>网站名</th><th>数据表名</th><th>表类型</th><th style="width: 8%">列数</th><th>清洗待解决问题</th><th>数据量</th><th>新增数据量</th></tr></thead>')
+                        $("#yuanshujubiaotable").append('<tbody>')
+                        for(i=0;i<rowlist.length;i++){
+                            $("#yuanshujubiaotable").append('<tr style="display: none" class="axaxaxax"><td>'+rowlist[i].webSite+'</td><td>'+rowlist[i].tableName+'</td><td>'+rowlist[i].tableType+'</td><td><a href="javascript:void(0);" onclick="showandhide(this)" class="btn btn-link" style="padding: 0px 0px;border: 0px;margin-bottom: 0px">'+rowlist[i].colnumber+'<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></td><td>'+'未知'+'</td><td>'+rowlist[i].dataVolum+'</td><td>'+'0'+'</td></tr>')
+                            $("#yuanshujubiaotable").append('<tr style="display: none"><td colspan="7"><div class="row"><div class="col-lg-12"><table class="table"><thead><tr id="'+rowlist[i].webSite+rowlist[i].tableName+'"></tr></thead></table></div></div></td></tr>')
+                        }
+                        pagenum = parseInt(rowlist.length/4)
+                        if(rowlist.length%4){pagenum = pagenum + 1}
+                        $("#yuanshujubiaotable").append('</tbody>')
+                        for(i=0;i<=3;i=i+1){
+                            $("#yuanshujubiaotable tbody tr.axaxaxax:eq("+i+")").show()
+                        }
+                        $("ul.pagination li:eq(1)").addClass("active")
+                    },
+                    error:function(data){
+                        alert("获取数据失败！")
+                    }
+                });
+            }
+            else if((flg10 == 0)&&(scrollTop > 4350)&&(scrollTop<4690)){
+                flg10 = 4690
+                alert(4360)}
+            else if((flg11 == 0)&&(scrollTop > 4690)&&(scrollTop<5170)){
+                flg11 = 5170
+                alert(4700)}
+            else if((flg12 == 0)&&(scrollTop > 5170)&&(scrollTop<5750)){
+                flg12 = 5750
+                $.ajax({
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/bindex/bindexContent/12/" ,//url
+                    success:function(data){
+                        $("#zongshijianshu").append(data.data[0][0]+" 总事件数")
+                        $("#zuorixinzengshijianshu").append(data.data[0][2]+" 昨日新增事件数")
+                        $("#zuijinyizhouxinzengshijianshu").append(data.data[0][4]+" 最近一周新增事件数")
+                        $("#pingjunmeizhouxinzengshijianshu").append(data.data[0][4]+" 平均每周新增事件数")
+                        $("#zongshitishu").append(data.data[0][1]+" 总实体数")
+                        $("#zuorixinzengshitishu").append(data.data[0][3]+" 昨日新增实体数")
+                        $("#zuijinyizhouxinzengshitishu").append(data.data[0][5]+" 最近一周新增实体数")
+                        $("#pingjunmeizhouxinzengshitishu").append(data.data[0][5]+" 平均每周新增实体数")
+                        yuqingshijiantongjimap(data.data[1],data.data[2])
+                    },
+                    error:function(data){
+                        alert("获取数据失败！")
+                    }
+                });
+            }
+            else if((flg13 == 0)&&scrollTop > 5750){
+                flg13 = 1
+                alert(5760)}
+
         })
     });
+    function showandhide(thisa){
+        var i = 0;
+        var linshi = new Array();
+        $(thisa).parent().parent().children('td').each(function(i){
+            /* alert($(this).text()); */
+            linshi[i] = $(this).text()
+            i = i + 1
+        });
+        /* alert(linshi[0]) */
+        $.ajax({
+            type: "POST",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "/bindex/searchcolnames/" ,//url
+            data: "webSite="+linshi[0]+"&tableName="+linshi[1],
+            success: function(data){
+                $("#"+linshi[0]+linshi[1]).empty()
+                for(i=0;i<data.data[0].length;i++){
+                    $("#"+linshi[0]+linshi[1]).append("<th>"+data.data[0][i]+"</th>")
+                }
+            },
+            error: function(data){
+                alert("获取数据失败！")
+            }
+        })
+        $(thisa).parent().parent().next().toggle()
+    }
+    function diyfeye(a){
+        currentpage = Number($("ul.pagination li.active").text())
+        if(a == 'p'){
+            if(currentpage == 1){/* 什么都不做 */}
+            else{
+                nextpage = currentpage - 1
+                $("ul.pagination li.active").removeClass("active")
+                $("ul.pagination li:eq("+nextpage+")").addClass("active")
+                $("#yuanshujubiaotable tbody tr.axaxaxax").hide()
+                start = (nextpage-1)*4
+                end = start + 3
+                for(i=start;i<=end;i = i+1){
+                    $("#yuanshujubiaotable tbody tr.axaxaxax:eq("+i+")").show()
+                }
+            }
+        }
+        else if(a == 'n'){
+            if(currentpage == 5){/* 什么都不做 */}
+            else{
+                nextpage = currentpage + 1
+                $("ul.pagination li.active").removeClass("active")
+                $("ul.pagination li:eq("+nextpage+")").addClass("active")
+                $("#yuanshujubiaotable tbody tr.axaxaxax").hide()
+                start = (nextpage-1)*4
+                end = start + 3
+                for(i=start;i<=end;i = i+1){
+                    $("#yuanshujubiaotable tbody tr.axaxaxax:eq("+i+")").show()
+                }
+            }
+        }
+        else{
+            nextpage = Number(a)
+            $("ul.pagination li.active").removeClass("active")
+            $("ul.pagination li:eq("+nextpage+")").addClass("active")
+            $("#yuanshujubiaotable tbody tr.axaxaxax").hide()
+            start = (nextpage-1)*4
+                end = start + 3
+                for(i=start;i<=end;i = i+1){
+                    $("#yuanshujubiaotable tbody tr.axaxaxax:eq("+i+")").show()
+                }
+        }
+        
+    }
 </script>
 
 </body>
