@@ -244,6 +244,112 @@ def bindexContent(request,a):
             db.close()  # 关闭连接
         data = {"data": dataList}
         return HttpResponse(json.dumps(data))
+    elif a == 10:
+        dataList = []
+        linshilist = []
+        today = datetime.date.today()
+        today = today - datetime.timedelta(days=6)
+        shangzhou = today.strftime("%Y-%m-%d %H:%M:%S")
+        shangzhou = time.mktime(time.strptime(shangzhou, "%Y-%m-%d %H:%M:%S"))
+        try:
+            f = open('log/datawash.log', 'r', encoding='UTF-8')
+            for line in f:
+                # print(line)
+                pattern = re.search(r'\[[\s\S]*\] wash', line)
+                # print(type(pattern))
+                ms = re.sub(r' wash$', "", pattern.group())
+                # print(pattern,type(pattern))
+                ms = ms[1: -1]
+                index = []
+                for i, ch in enumerate(ms):
+                    if ch == ',' and len(index) < 5:
+                        index.append(i)
+                # print(ms)
+                ls = []
+                ls.append(ms[1: index[0] - 1])
+                ls.append(ms[index[0] + 3: index[1] - 1])
+                ls.append(ms[index[1] + 3:index[2] - 1])
+                ls.append(ms[index[2] + 2: index[3]])
+                ls.append(ms[index[3] + 3: index[4] - 1])
+                ls.append(ms[index[4] + 3: -1])
+                # print(ls,type(ls))
+                pattern = re.search(r'^[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2} [0-9]{2,2}:[0-9]{2,2}:[0-9]{2,2}', line).group()
+                patternshijianchuo = time.mktime(time.strptime(pattern, "%Y-%m-%d %H:%M:%S"))
+                if patternshijianchuo>=shangzhou:
+                    linshilist.append({
+                        "tableName": ls[1]
+                        ,"adminname": ls[2]
+                        ,"optype": ls[4]
+                        ,"optime": pattern
+                        ,"washitemsvolumn": ls[3]
+                        ,"opdetils": ls[5]
+                    })
+                    # print(linshilist)
+            dataList.append(linshilist)
+            f.close()
+        except Exception as e:
+            raise e
+        data = {"data": dataList}
+        return HttpResponse(json.dumps(data))
+    elif a == 11:
+        dataList = []
+        adminnamelist = []
+        adminitemslist = []
+        today = datetime.date.today()
+        today = today - datetime.timedelta(days=6)
+        shangzhou = today.strftime("%Y-%m-%d %H:%M:%S")
+        shangzhou = time.mktime(time.strptime(shangzhou, "%Y-%m-%d %H:%M:%S"))
+        try:
+            f = open('log/datawash.log', 'r', encoding='UTF-8')
+            for line in f:
+                # print(line)
+                pattern = re.search(r'\[[\s\S]*\] wash', line)
+                # print(type(pattern))
+                ms = re.sub(r' wash$', "", pattern.group())
+                # print(pattern,type(pattern))
+                ms = ms[1: -1]
+                index = []
+                for i, ch in enumerate(ms):
+                    if ch == ',' and len(index) < 5:
+                        index.append(i)
+                # print(ms)
+                ls = []
+                ls.append(ms[1: index[0] - 1])
+                ls.append(ms[index[0] + 3: index[1] - 1])
+                ls.append(ms[index[1] + 3:index[2] - 1])
+                ls.append(ms[index[2] + 2: index[3]])
+                ls.append(ms[index[3] + 3: index[4] - 1])
+                ls.append(ms[index[4] + 3: -1])
+                # print(ls,type(ls))
+                pattern = re.search(r'^[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2} [0-9]{2,2}:[0-9]{2,2}:[0-9]{2,2}', line).group()
+                patternshijianchuo = time.mktime(time.strptime(pattern, "%Y-%m-%d %H:%M:%S"))
+                if patternshijianchuo >= shangzhou:
+                    linshiflg = 0
+                    if len(adminnamelist) == 0:
+                        adminnamelist.append(ls[2])
+                        adminitemslist.append(0)
+                    for i in adminnamelist:
+                        if i == ls[2]:
+                            break
+                        else:
+                            linshiflg = 1
+                    if linshiflg == 1:
+                        adminnamelist.append(ls[2])
+                        adminitemslist.append(0)
+                    for index in range(len(adminnamelist)):
+                        if adminnamelist[index] == ls[2]:
+                            if ls[4] == '撤回':
+                                adminitemslist[index] = adminitemslist[index] - int(ls[3])
+                            else:
+                                adminitemslist[index] = adminitemslist[index] + int(ls[3])
+            print(adminnamelist,adminitemslist)
+            dataList.append(adminnamelist)
+            dataList.append(adminitemslist)
+            f.close()
+        except Exception as e:
+            raise e
+        data = {"data": dataList}
+        return HttpResponse(json.dumps(data))
     elif a == 12:
         dataList = []
         Objects = Object.objects.all()
@@ -395,5 +501,33 @@ def provinceyuqing(request):
 @csrf_exempt
 def searchcolnames(request):
     dataList = []
+    aaa = request.POST
+    webSite = aaa.get('webSite')
+    tableName = aaa.get('tableName')
+
+    # print(webSite,tableName)
+    db = pymysql.connect(host="localhost", user="root",
+                         password="461834084", db="linshitongji", port=3306)
+    cur = db.cursor()
+    sql = "select SchemaName from website_schema where WebSite='"+webSite+"'"
+    try:
+        cur.execute(sql)  # 执行sql语句
+        results = cur.fetchall()  # 获取查询的所有记录
+        schemaName = ''
+        for row in results:
+            schemaName = row[0]
+        print(schemaName)
+        sql2 = "desc " + schemaName + "." + tableName
+        cur.execute(sql2)
+        results = cur.fetchall()  # 获取查询的所有记录
+        colnamelist = []
+        for i in results:
+            print(i[0])
+            colnamelist.append(i[0])
+        dataList.append(colnamelist)
+    except Exception as e:
+        raise e
+    finally:
+        db.close()  # 关闭连接
     data = {"data": dataList}
     return HttpResponse(json.dumps(data))

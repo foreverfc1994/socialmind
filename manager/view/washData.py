@@ -181,7 +181,7 @@ def washaction(request):
             a = cur.execute(sql4)
             db.commit()
             print(a)
-            logdata = [sitename, tablename, 'LRX', a, '替换', sql4]
+            logdata = [sitename, tablename, request.session['user_name'], a, '替换', sql4]
             logger.debug(logdata)
             data = {"data": "success"}
         except Exception as e:
@@ -211,7 +211,7 @@ def washaction(request):
                 db.commit()
                 a = cur.execute(sql4)  # 执行sql语句
                 db.commit()
-                logdata = [sitename, tablename, 'LRX', a, '缺失值', sql4]
+                logdata = [sitename, tablename, request.session['user_name'], a, '缺失值', sql4]
                 logger.debug(logdata)
                 data = {"data": "success"}
             except Exception as e:
@@ -241,7 +241,7 @@ def washaction(request):
                 db.commit()
                 numofchanges = cur.execute(sql4)  # 执行sql语句
                 db.commit()
-                logdata = [sitename, tablename, 'LRX', numofchanges, '缺失值', sql4]
+                logdata = [sitename, tablename, request.session['user_name'], numofchanges, '缺失值', sql4]
                 logger.debug(logdata)
                 data = {"data": "success"}
             except Exception as e:
@@ -270,7 +270,7 @@ def washaction(request):
                 db.commit()
                 a = cur.execute(sql4)  # 执行sql语句
                 db.commit()
-                logdata = [sitename, tablename, 'LRX', a, '缺失值', sql4]
+                logdata = [sitename, tablename, request.session['user_name'], a, '缺失值', sql4]
                 logger.debug(logdata)
                 data = {"data": "success"}
             except Exception as e:
@@ -300,7 +300,7 @@ def washaction(request):
                 db.commit()
                 a = cur.execute(sql4)  # 执行sql语句
                 db.commit()
-                logdata = [sitename, tablename, 'LRX', a, '缺失值', sql4]
+                logdata = [sitename, tablename, request.session['user_name'], a, '缺失值', sql4]
                 logger.debug(logdata)
                 data = {"data": "success"}
             except Exception as e:
@@ -348,7 +348,7 @@ def washaction(request):
                 db.commit()
                 a = cur.execute(sql4)  # 执行sql语句
                 db.commit()
-                logdata = [sitename, tablename, 'LRX', a, '缺失值', sql4]
+                logdata = [sitename, tablename, request.session['user_name'], a, '缺失值', sql4]
                 logger.debug(logdata)
                 data = {"data": "success"}
             except Exception as e:
@@ -377,7 +377,7 @@ def washaction(request):
                 db.commit()
                 a = cur.execute(sql4)  # 执行sql语句
                 db.commit()
-                logdata = [sitename, tablename, 'LRX', a, '缺失值', sql4]
+                logdata = [sitename, tablename, request.session['user_name'], a, '缺失值', sql4]
                 logger.debug(logdata)
                 data = {"data": "success"}
             except Exception as e:
@@ -399,7 +399,7 @@ def washaction(request):
                 db.commit()
                 a = cur.execute(sql4)  # 执行sql语句
                 db.commit()
-                logdata = [sitename, tablename, 'LRX', a, '缺失值', sql4]
+                logdata = [sitename, tablename, request.session['user_name'], a, '缺失值', sql4]
                 logger.debug(logdata)
                 data = {"data": "success"}
             except Exception as e:
@@ -420,7 +420,7 @@ def washaction(request):
                 db.commit()
                 a = cur.execute(sql4)  # 执行sql语句
                 db.commit()
-                logdata = [sitename, tablename, 'LRX', a, '缺失值', sql4]
+                logdata = [sitename, tablename, request.session['user_name'], a, '缺失值', sql4]
                 logger.debug(logdata)
                 data = {"data": "success"}
             except Exception as e:
@@ -508,7 +508,7 @@ def washaction(request):
                 print(sql5)
                 if newrow != '':
                     a = cur.execute(sql5)  #
-                    logdata = [sitename, tablename, 'LRX', a, '统一时间格式', sql5]
+                    logdata = [sitename, tablename, request.session['user_name'], a, '统一时间格式', sql5]
                     logger.debug(logdata)
             db.commit()
             data = {"data": "success"}
@@ -582,7 +582,7 @@ def washaction(request):
                 db.commit()
                 a = cur.execute(sql4)  # 执行sql语句
                 db.commit()
-                logdata = [sitename, tablename, 'LRX', a, '逐条修改', sql4]
+                logdata = [sitename, tablename, request.session['user_name'], a, '逐条修改', sql4]
                 logger.debug(logdata)
                 data = {"data": "success"}
             except:
@@ -646,7 +646,7 @@ def washaction(request):
                         t = t + 1
                     # print(sql5)
                     a = cur.execute(sql5)  #
-                    logdata = [sitename, tablename, 'LRX', a, '统一字符串格式', sql5]
+                    logdata = [sitename, tablename, request.session['user_name'], a, '统一字符串格式', sql5]
                     logger.debug(logdata)
             db.commit()
             data = {"data": "success"}
@@ -717,7 +717,7 @@ def rollback(request):
         else:
             print("no " + str(a))
         cur.execute(sql4)
-        logdata = [sitename, tablename, 'LRX', a, '撤回', sql3]
+        logdata = [sitename, tablename, request.session['user_name'], a, '撤回', sql3]
         logger.debug(logdata)
     except Exception as e:
         # Rollback in case there is any error

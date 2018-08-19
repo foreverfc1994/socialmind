@@ -1877,7 +1877,7 @@
                                         <tr id="tfoottr"><th>网站名</th><th>数据表名</th><th>表类型</th><th style="width: 8%">列数</th><th>清洗待解决问题</th><th>数据量</th><th>新增数据量</th></tr>
                                         </tfoot>
                                     </table> -->
-                                    <table id="yuanshujubiaotable" class="table table-bordered table-hover">
+                                    <table id="yuanshujubiaotable" class="table table-bordered table-hover" style="margin-bottom: 0px">
                                         <!-- <thead>
                                         <tr><th>网站名</th><th>数据表名</th><th>表类型</th><th style="width: 8%">列数</th><th>清洗待解决问题</th><th>数据量</th><th>新增数据量</th></tr>
                                         </thead> -->
@@ -1930,18 +1930,64 @@
                                             </div></td>
                                         </tr> -->
                                     </table>
+                                    <div style="text-align: right">
+                                        <nav aria-label="Page navigation">
+                                            <ul class="pagination" style="margin-top: 0px;margin-bottom: 0px">
+                                                <li>
+                                                    <a href="javascript:diyfeye('p');" aria-label="Previous">
+                                                        <span aria-hidden="true">&laquo;</span>
+                                                    </a>
+                                                </li>
+                                                <li><a href="javascript:diyfeye(1);">1</a></li>
+                                                <li><a href="javascript:diyfeye(2);">2</a></li>
+                                                <li><a href="javascript:diyfeye(3);">3</a></li>
+                                                <li><a href="javascript:diyfeye(4);">4</a></li>
+                                                <li><a href="javascript:diyfeye(5);">5</a></li>
+                                                <li><a href="javascript:diyfeye(6);">6</a></li>
+                                                <li><a href="javascript:diyfeye(7);">7</a></li>
+                                                <li><a href="javascript:diyfeye(8);">8</a></li>
+                                                <li><a href="javascript:diyfeye(9);">9</a></li>
+                                                <li><a href="javascript:diyfeye(10);">10</a></li>
+                                                <li><a href="javascript:diyfeye(11);">11</a></li>
+                                                <li><a href="javascript:diyfeye(12);">12</a></li>
+                                                <li><a href="javascript:diyfeye(13);">13</a></li>
+                                                <li><a href="javascript:diyfeye(14);">14</a></li>
+                                                <li><a href="javascript:diyfeye(15);">15</a></li>
+                                                <li><a href="javascript:diyfeye(16);">16</a></li>
+                                                <li><a href="javascript:diyfeye(17);">17</a></li>
+                                                <li><a href="javascript:diyfeye(18);">18</a></li>
+                                                <li><a href="javascript:diyfeye(19);">19</a></li>
+                                                <li>
+                                                    <a href="javascript:diyfeye('n');" aria-label="Next">
+                                                        <span aria-hidden="true">&raquo;</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
                                     <hr style="height:2px;border: 0px;background-color: #ddd">
                                     <div class="row">
                                         <div class="col-lg-10"><h5>最近清洗数据</h5></div>
                                         <div class="col-lg-2">
-                                            <select class="form-control">
-                                                <option>一天</option>
+                                            <select class="form-control">                                           
                                                 <option>一周</option>
                                                 <option>一月</option>
+                                                <option>一天</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <table class="table table-bordered table-hover">
+                                    <table id="zuijinqingxishuju" class="display">
+                                        <thead>
+                                        <tr id="theadtr"><th>表名</th><th>操作人</th><th>操作类型</th><th>时间</th><th>清洗数据量</th><th>操作详情</th></tr>
+                                        </thead>
+                                        <tbody id="tbody">
+                                        
+                                        </tbody>
+                                        <!-- <tfoot>
+                                        <tr id="tfoottr"><th>表名</th><th>操作人</th><th>操作类型</th><th>时间</th><th>清洗数据量</th><th>操作详情</th></tr>
+                                        </tfoot> -->
+                                    </table>
+                                    <!-- <table class="table table-bordered table-hover">
                                         <thead>
                                         <tr><th>表名</th><th>操作人</th><th>时间</th><th>清洗数据量</th><th>操作详情</th></tr>
                                         </thead>
@@ -1951,7 +1997,7 @@
                                         <tr><td>ABC</td><td>xiaoming</td><td>2018-7-21 8:30</td><td>213123</td><td>详情详情详情详情</td></tr>
                                         <tr><td>ABC</td><td>xiaoming</td><td>2018-7-21 8:30</td><td>213123</td><td>详情详情详情详情</td></tr>
                                         <tr><td>ABC</td><td>xiaoming</td><td>2018-7-21 8:30</td><td>213123</td><td>详情详情详情详情</td></tr>
-                                    </table>
+                                    </table> -->
                                     <hr style="height:2px;border: 0px;background-color: #ddd">
                                     <div style="text-align: right;margin-right: 15px">
                                         <div class="dropdown">
@@ -1969,7 +2015,8 @@
                                     </div>
                                     <div id="qingxirenbarchart" style="width: 100%;height: 400px;"></div>
                                     <script>
-                                        var myChart = echarts.init(document.getElementById('qingxirenbarchart'));
+                                        function adminworkstatics(list1,list2){
+                                            var myChart = echarts.init(document.getElementById('qingxirenbarchart'));
                                         option = {
                                             color: ['#3398DB'],
                                             title: {
@@ -1982,6 +2029,13 @@
                                                     type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
                                                 }
                                             },
+                                            tooltip : {
+                                                trigger: 'axis',
+                                                axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                                                    type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                                                },
+                                                        formatter: "{b} : <br/>{c}条数据"
+                                                    },
                                             grid: {
                                                 left: '3%',
                                                 right: '4%',
@@ -1991,7 +2045,7 @@
                                             xAxis : [
                                                 {
                                                     type : 'category',
-                                                    data : ['张三', '李四', '王五', '1', '2', '3', '4'],
+                                                    data : list1,
                                                     axisTick: {
                                                         alignWithLabel: true
                                                     }
@@ -2004,14 +2058,15 @@
                                             ],
                                             series : [
                                                 {
-                                                    name:'直接访问',
+                                                    //name:'直接访问',
                                                     type:'bar',
                                                     barWidth: '60%',
-                                                    data:[10, 52, 200, 334, 390, 330, 220]
+                                                    data:list2
                                                 }
                                             ]
                                         };
                                         myChart.setOption(option);
+                                        }
                                     </script>
                                 </div>
                             </div>
@@ -3174,10 +3229,18 @@
                         /* alert(rowlist.length) */
                         $("#yuanshujubiaotable").empty()
                         $("#yuanshujubiaotable").append('                        <thead><tr><th>网站名</th><th>数据表名</th><th>表类型</th><th style="width: 8%">列数</th><th>清洗待解决问题</th><th>数据量</th><th>新增数据量</th></tr></thead>')
+                        $("#yuanshujubiaotable").append('<tbody>')
                         for(i=0;i<rowlist.length;i++){
-                            $("#yuanshujubiaotable").append('<tr><td>'+rowlist[i].webSite+'</td><td>'+rowlist[i].tableName+'</td><td>'+rowlist[i].tableType+'</td><td><a href="javascript:void(0);" onclick="showandhide(this)" class="btn btn-link" style="padding: 0px 0px;border: 0px;margin-bottom: 0px">'+rowlist[i].colnumber+'<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></td><td>'+'未知'+'</td><td>'+rowlist[i].dataVolum+'</td><td>'+'0'+'</td></tr>')
-                            $("#yuanshujubiaotable").append('<tr style="display: none"><td colspan="7"><div class="row"><div class="col-lg-12"><table class="table"><thead><tr><th>列名1</th><th>列名2</th><th>列名3</th><th>列名4</th><th>列名5</th><th>列名6</th><th>列名7</th><th>列名8</th><th>列名9</th><th>列名10</th></tr></thead></table></div></div></td></tr>')
+                            $("#yuanshujubiaotable").append('<tr style="display: none" class="axaxaxax"><td>'+rowlist[i].webSite+'</td><td>'+rowlist[i].tableName+'</td><td>'+rowlist[i].tableType+'</td><td><a href="javascript:void(0);" onclick="showandhide(this)" class="btn btn-link" style="padding: 0px 0px;border: 0px;margin-bottom: 0px">'+rowlist[i].colnumber+'<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></td><td>'+'未知'+'</td><td>'+rowlist[i].dataVolum+'</td><td>'+'0'+'</td></tr>')
+                            $("#yuanshujubiaotable").append('<tr style="display: none"><td colspan="7"><div class="row"><div class="col-lg-12"><table class="table"><thead><tr id="'+rowlist[i].webSite+rowlist[i].tableName+'"></tr></thead></table></div></div></td></tr>')
                         }
+                        pagenum = parseInt(rowlist.length/4)
+                        if(rowlist.length%4){pagenum = pagenum + 1}
+                        $("#yuanshujubiaotable").append('</tbody>')
+                        for(i=0;i<=3;i=i+1){
+                            $("#yuanshujubiaotable tbody tr.axaxaxax:eq("+i+")").show()
+                        }
+                        $("ul.pagination li:eq(1)").addClass("active")
                     },
                     error:function(data){
                         alert("获取数据失败！")
@@ -3186,10 +3249,66 @@
             }
             else if((flg10 == 0)&&(scrollTop > 4350)&&(scrollTop<4690)){
                 flg10 = 4690
-                alert(4360)}
+                $.ajax({
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: "/bindex/bindexContent/10/" ,//url
+                    success:function(data){
+/*                         alert(data.data[0][0].tableName)
+ */                        options = {
+                            "order": [0, "asc"],
+                            "bAutoWidth": false,
+                            "pagingType": "full_numbers",
+                            "aLengthMenu": [[5,10,-1], [5, 10, "全部"]],
+                            "language": {
+                                "lengthMenu": " 每页_MENU_条记录",
+                                "zeroRecords": "没有找到记录",
+                                "info": "第_PAGE_页",/* 第_PAGE_页(共_PAGES_页) */
+                                "infoEmpty": "无记录",
+                                "infoFiltered": "(从_MAX_条记录过滤)",
+                                "oPaginate":{
+                                    "sFirst": "首页",
+                                    "sPrevious": "上页",
+                                    "sNext": "下页",
+                                    "sLast": "末页"
+                                },
+                                "sSearch": "搜索: ",
+                                "sLoadingRecords": "正在加载数据-请等待...",
+                            },
+                            autoFill: true,
+                            destroy:true,
+                            processing: true,
+                            data: data.data[0],
+                            columns:[
+                                { "data": 'tableName' },
+                                { "data": 'adminname' },
+                                { "data": 'optype' },
+                                { "data": 'optime' },
+                                { "data": 'washitemsvolumn' },
+                                { "data": 'opdetils' }
+                            ]
+                        };
+                        table = $('#zuijinqingxishuju').DataTable(options);
+                    },
+                    error:function(data){
+                        alert("获取数据失败！")
+                    }
+                });
+            }
             else if((flg11 == 0)&&(scrollTop > 4690)&&(scrollTop<5170)){
                 flg11 = 5170
-                alert(4700)}
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: "/bindex/bindexContent/11/",
+                    success: function(data){
+                        adminworkstatics(data.data[0],data.data[1])
+                    },
+                    error: function(data){
+                        alert("数据获取失败！")
+                    }
+                })
+            }
             else if((flg12 == 0)&&(scrollTop > 5170)&&(scrollTop<5750)){
                 flg12 = 5750
                 $.ajax({
@@ -3232,12 +3351,60 @@
             dataType: "json",//预期服务器返回的数据类型
             url: "/bindex/searchcolnames/" ,//url
             data: "webSite="+linshi[0]+"&tableName="+linshi[1],
-            success: function(data){},
+            success: function(data){
+                $("#"+linshi[0]+linshi[1]).empty()
+                for(i=0;i<data.data[0].length;i++){
+                    $("#"+linshi[0]+linshi[1]).append("<th>"+data.data[0][i]+"</th>")
+                }
+            },
             error: function(data){
                 alert("获取数据失败！")
             }
         })
         $(thisa).parent().parent().next().toggle()
+    }
+    function diyfeye(a){
+        currentpage = Number($("ul.pagination li.active").text())
+        if(a == 'p'){
+            if(currentpage == 1){/* 什么都不做 */}
+            else{
+                nextpage = currentpage - 1
+                $("ul.pagination li.active").removeClass("active")
+                $("ul.pagination li:eq("+nextpage+")").addClass("active")
+                $("#yuanshujubiaotable tbody tr.axaxaxax").hide()
+                start = (nextpage-1)*4
+                end = start + 3
+                for(i=start;i<=end;i = i+1){
+                    $("#yuanshujubiaotable tbody tr.axaxaxax:eq("+i+")").show()
+                }
+            }
+        }
+        else if(a == 'n'){
+            if(currentpage == 5){/* 什么都不做 */}
+            else{
+                nextpage = currentpage + 1
+                $("ul.pagination li.active").removeClass("active")
+                $("ul.pagination li:eq("+nextpage+")").addClass("active")
+                $("#yuanshujubiaotable tbody tr.axaxaxax").hide()
+                start = (nextpage-1)*4
+                end = start + 3
+                for(i=start;i<=end;i = i+1){
+                    $("#yuanshujubiaotable tbody tr.axaxaxax:eq("+i+")").show()
+                }
+            }
+        }
+        else{
+            nextpage = Number(a)
+            $("ul.pagination li.active").removeClass("active")
+            $("ul.pagination li:eq("+nextpage+")").addClass("active")
+            $("#yuanshujubiaotable tbody tr.axaxaxax").hide()
+            start = (nextpage-1)*4
+            end = start + 3
+            for(i=start;i<=end;i = i+1){
+                $("#yuanshujubiaotable tbody tr.axaxaxax:eq("+i+")").show()
+            }
+        }
+
     }
 </script>
 

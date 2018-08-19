@@ -68,6 +68,7 @@ urlpatterns = [
     # background url
     path('bindex/', bloginview.index, name='index'),
     path('bindex/bindexContent/<int:a>/', bloginview.bindexContent),
+    path('bindex/searchcolnames/', bloginview.searchcolnames),
     path('bindex/bindexprovinceyuqing/', bloginview.provinceyuqing),
     path('blogin/', bloginview.login, name='login'),
     path('SpiderList/', bviews.SpiderList),

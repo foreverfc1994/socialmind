@@ -216,7 +216,7 @@
         </ul>
     </div>
 
-
+    {% csrf_token %}
     <div class="layui-body">
         <section class="wrapper1">
             <div class="row">
@@ -227,8 +227,8 @@
                                 <div class="icon-after cc BTC-alt"></div>
                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                 <div class="stats">
-                                    <h3 class="color-white mb-5">152 新增事件</h3>
-                                    <span>15420 事件总数</span>
+                                    <h3 class="color-white mb-5">{{ newEventsNum }} 新增事件</h3>
+                                    <span>{{ eventsNum }} 事件总数</span>
                                 </div>
                             </div>
                         </div>
@@ -237,8 +237,8 @@
                                 <div class="icon-after cc BTC-alt"></div>
                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                 <div class="stats">
-                                    <h3 class="color-white mb-5">210 新增敏感信息</h3>
-                                    <span>1140 敏感信息总数</span>
+                                    <h3 class="color-white mb-5">{{ newSensitive }} 新增敏感信息</h3>
+                                    <span>{{ sensitiveInformNum }} 敏感信息总数</span>
                                 </div>
                             </div>
                         </div>
@@ -247,8 +247,8 @@
                                 <div class="icon-after cc BTC-alt"></div>
                                 <i class='pull-left cc BTC-alt icon-md icon-white mt-10'></i>
                                 <div class="stats">
-                                    <h3 class="color-white mb-5">情感倾向 正向</h3>
-                                    <span>2018-7-21 12:00</span>
+                                    <h3 class="color-white mb-5">情感倾向 {{ emotionTrend }}</h3>
+                                    <span>{{ today }}</span>
                                 </div>
                             </div>
                         </div>
