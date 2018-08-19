@@ -422,17 +422,17 @@
 
 <script>
     window.onload = function(){
+        var url = window.location.href;
         $.ajax({
-            url: '/articlelist/getArticleList/',
-            type: 'GET',
+            url: '/objectarticlelsit/',
+            type: 'POST',
             dataType: 'json',
-            success: function(data){
-                getArticleListData(data.data);
-            },
-            error: function(data){
-                alert("数据错误");
+            data:{'url':url},
+            success:function (data) {
+                getArticleListData(data.data)
             }
-        });
+        })
+
     }
 </script>
 </body>

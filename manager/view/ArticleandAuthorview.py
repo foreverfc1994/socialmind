@@ -140,6 +140,56 @@ def ArticlesAndComments(request):
     return render(request, 'background/ArticlesAndComments.html')
 def articleslsit(request):
     return render(request,'background/Articleslist.html')
+@csrf_exempt
+def objectarticlelist(request):
+    url = request.POST.get('url')
+    id = url.split('/')[-2]
+    dataList = []
+    object = models.Object.objects.get(objectid=id)
+    results = models.Article.objects.filter(objectid=object)
+    authorInform = models.Author.objects.values("authorid", "name")
+    for result in results:
+        articleId = result.articleid
+        authorId = if_is_None(result.authorid.authorid)
+        authorName = "暂缺"
+        title = if_is_None(result.title)
+        readed = if_is_None(result.scannumber, 0)
+        if (readed >= 100):
+            heat = "超热"
+        else:
+            heat = "不热"
+        webName, webType = changeWebsite(if_is_None(int(result.websiteid.websiteid) - 1, 2))
+        if (authorId != ""):
+            authorName = authorInform.get(authorid=authorId)['name']
+        dataList.append({"id": articleId, "title": title, "web": webName, "author": authorName, "type": webType,
+                         "readed": str(readed), "heat": heat})
+    res = {"data": dataList}
+    # print(res)
+    return JsonResponse(res)
+def objectarticle(request,id):
+    # try:
+    #     object = models.Object.objects.get(objectid=id)
+    #     articles = models.Article.objects.filter(objectid=object)
+    #     for a in articles:
+    #         dic = {}
+    #         dic['id'] = a.articleid
+    #         dic['title']= a.title
+    #         dic['web'] = a.websiteid.websitename
+    #         try:
+    #            dic['author'] = a.authorid.name
+    #         except:
+    #             dic['author'] = '未知'
+    #         webName, webType = changeWebsite(if_is_None(int(a['websiteid']) - 1, 2))
+    #         dic['type'] =  webType
+    #         dic['readed']
+    #         dic['heat']
+    #
+    #     print(len(articles))
+    # except:
+    #     pass
+
+    return render(request,'background/ObjectArticel.html')
+    pass
 
 def deleteArticle(request):
     id = request.GET.get("id")

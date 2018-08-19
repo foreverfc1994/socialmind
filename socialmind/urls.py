@@ -119,6 +119,8 @@ urlpatterns = [
     path('yuandatashow/getyuandatas/',DataTableShowView.yuandatashow),
     path('operate/<int:a>/', bviews.operate),
     path('articlelist/',bAAview.articleslsit),
+    path('objectarticle/<str:id>/',bAAview.objectarticle),
+    path('objectarticlelsit/',bAAview.objectarticlelist),
     path('objectshow/',bviews.objectshow),
     path('objectshow/event/',ObjectShowview.eventshow),
     path('objectshow/object/',ObjectShowview.objectshow),
