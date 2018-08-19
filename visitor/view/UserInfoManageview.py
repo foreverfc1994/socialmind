@@ -259,13 +259,16 @@ def personalInfoForm(request,a):
         return render(request, 'foreground/CompanyUsrInfoForm.html')
 
 def giveimgurl(url):
-    if(url[:7] == "static/"):
-        newurl = "/static/upload/"
-        newurl += url[7:]
-        print(newurl)
-    else:
-        newurl = url
-    return newurl
+    try:
+        if(url[:7] == "static/"):
+            newurl = "/static/upload/"
+            newurl += url[7:]
+            print(newurl)
+        else:
+            newurl = url
+        return newurl
+    except:
+        return "/static/upload/test.jpg"
 def profile(request):
     userid = request.session["user_id"]
     print("userid: "+userid)

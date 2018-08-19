@@ -79,6 +79,6 @@ def index_emotionTrend(request):
     userid = request.session["user_id"]
 
     now = datetime.datetime.now()
-    graphStartTime = now-datetime.timedelta()
+    graphStartTime = now-datetime.timedelta(days=730)
 
     return JsonResponse({"data": []})
