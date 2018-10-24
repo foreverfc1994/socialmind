@@ -412,6 +412,7 @@
                                                         <th>操作人</th>
                                                         <th>操作类型</th>
                                                         <th>时间</th>
+                                                        <th>清洗数据量</th>
                                                         <th>方法名</th>
                                                         <th>操作详情</th>
                                                     </tr>
@@ -719,6 +720,8 @@
             type: 'POST',
             dataType: 'json',
             success: function(data){
+                var item = 0;
+                
                 options = {
                     "order": [0, "asc"],
                     "bAutoWidth": false,
@@ -739,7 +742,7 @@
                         "sSearch": "搜索: ",
                         "sLoadingRecords": "正在加载数据-请等待...",
                     },
-                    data: datas,
+                    data: data.data,
                     columns: [
                         {
                             data: null, "render": function () {
@@ -752,6 +755,7 @@
                         {data: 'adminname'},
                         {data: 'optype'},
                         {data: 'time'},
+                        {data: 'changeitems'},
                         {data: 'funcname'},
                         {data: 'opdetial'}
                     ]

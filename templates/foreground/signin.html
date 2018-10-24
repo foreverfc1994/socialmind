@@ -61,14 +61,14 @@
             <div class="modal-body">
 
 
-                {% get_topic as topics %}
-                {% for topic in topics %}
-                    <button class="layui-btn layui-btn-primary layui-btn-radius" onclick="change(this)"
-                            value="{{ topic.name }}">{{ topic.name }}
-                    </button>
-                {% empty %}
-
-                {% endfor %}
+{#                {% get_topic as topics %}#}
+{#                {% for topic in topics %}#}
+{#                    <button class="layui-btn layui-btn-primary layui-btn-radius" onclick="change(this)"#}
+{#                            value="{{ topic.name }}">{{ topic.name }}#}
+{#                    </button>#}
+{#                {% empty %}#}
+{##}
+{#                {% endfor %}#}
 
             </div>
             <div class="modal-footer">

@@ -14,7 +14,7 @@ def  eventshow(request):
     print("┗|｀O′|┛ 嗷~~")
     dataList = []
     db = pymysql.connect(host="localhost", user="root",
-                         password="root", db="socialmind", port=3306)
+                         password="461834084", db="socialmind", port=3306)
     # 使用cursor()方法获取操作游标
     cur = db.cursor()
     # 1.查询操作
@@ -59,7 +59,7 @@ def  objectshow(request):
     return HttpResponse(json.dumps(data))
 def entitydata(request):
     import pymysql
-    db = pymysql.connect('localhost', 'root', 'root', 'entity', port=3306)
+    db = pymysql.connect('localhost', 'root', '461834084', 'socialmind', port=3306)
     cur = db.cursor()
     sql = 'select * from entity'
     cur.execute(sql)
